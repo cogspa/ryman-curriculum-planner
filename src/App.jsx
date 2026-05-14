@@ -59,7 +59,7 @@ function Header({ startDate, setStartDate, totalWeeks }) {
     <header className="header">
       <div className="header-left">
         <p className="eyebrow">2026 · 12-week program</p>
-        <h1 className="title">Curriculum planner</h1>
+        <h1 className="title">Ryman Arts Platform Curriculum Planner</h1>
         <p className="subtitle">
           {config.tuesday.label}s {config.tuesday.time} · {config.tuesday.location}
           <span className="dot">·</span>
