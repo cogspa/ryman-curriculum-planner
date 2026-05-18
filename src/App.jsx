@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { curriculum, config } from './curriculum.js';
+import { curriculum, config, changelog } from './curriculum.js';
 import { supabase } from './supabaseClient.js';
 
 const HOLIDAYS = [
@@ -126,11 +126,26 @@ function LoginGate({ children }) {
 
 // ─── components ──────────────────────────────────────────────────────────────
 
+function ChangelogBanner() {
+  return (
+    <div className="changelog-banner">
+      <div className="changelog-track">
+        {changelog.map((entry, i) => (
+          <span key={i} className="changelog-item">
+            <span className="changelog-date">{entry.date}</span>
+            <span className="changelog-msg">{entry.message}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Header({ startDate, setStartDate, totalWeeks }) {
   return (
     <header className="header">
       <div className="header-left">
-        <p className="eyebrow">2026 · 12-week program</p>
+        <p className="eyebrow">2026 · {totalWeeks}-week program</p>
         <h1 className="title">Ryman Arts Platform Curriculum Planner</h1>
         <p className="subtitle">
           {config.tuesday.label}s {config.tuesday.time} · {config.tuesday.location}
@@ -213,7 +228,9 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
     return () => clearTimeout(t);
   }, [notes, week.week]);
 
-  const rangeLabel = `${fmtMonoDate(tuesday)} – ${fmtMonoDate(saturday)}`;
+  const rangeLabel = week.dateOverride
+    ? week.dateOverride.toUpperCase()
+    : `${fmtMonoDate(tuesday)} – ${fmtMonoDate(saturday)}`;
   const hasContent = week.overview || week.topics?.length || week.readings?.length || week.assignments?.length;
 
   return (
@@ -228,22 +245,30 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
 
       <h2 className="card-title">{week.title}</h2>
 
-      <div className="sessions">
-        <div className="session">
-          <span className="session-day">Tue</span>
-          <span className="session-date">{fmtDate(tuesday)}</span>
-          <span className="session-meta">{config.tuesday.time} · {config.tuesday.location}</span>
+      {week.dateOverride ? (
+        <div className="sessions">
+          <div className="session">
+            <span className="session-meta" style={{ gridColumn: 'span 3' }}>{week.dateOverride}</span>
+          </div>
         </div>
-        <div className="session">
-          <span className="session-day">Sat</span>
-          <span className="session-date">{fmtDate(saturday)}</span>
-          {isHoliday(saturday) ? (
-            <span className="session-meta holiday">⛔ NO CLASS — HOLIDAY</span>
-          ) : (
-            <span className="session-meta">{config.saturday.time} · {config.saturday.location}</span>
-          )}
+      ) : (
+        <div className="sessions">
+          <div className="session">
+            <span className="session-day">Tue</span>
+            <span className="session-date">{fmtDate(tuesday)}</span>
+            <span className="session-meta">{config.tuesday.time} · {config.tuesday.location}</span>
+          </div>
+          <div className="session">
+            <span className="session-day">Sat</span>
+            <span className="session-date">{fmtDate(saturday)}</span>
+            {isHoliday(saturday) ? (
+              <span className="session-meta holiday">⛔ NO CLASS — HOLIDAY</span>
+            ) : (
+              <span className="session-meta">{config.saturday.time} · {config.saturday.location}</span>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {hasContent && (
         <div className="curriculum-content">
@@ -301,6 +326,7 @@ export default function App() {
     <LoginGate>
       {(handleLogout) => (
         <div className="app">
+          <ChangelogBanner />
           <div className="container">
             <Header
               startDate={startDate}

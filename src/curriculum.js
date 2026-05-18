@@ -195,12 +195,13 @@ export const curriculum = [
   },
   {
     week: 12,
-    title: 'Final Portfolio Review & Industry Panel',
-    overview: 'Formal portfolio review sessions & networking mixer',
+    title: 'Capstone Preparation',
+    overview: 'Focus: Final preparation for capstone presentations',
     topics: [
-      'Industry panel feedback',
-      'Networking mixer',
-      'Career pathway guidance',
+      'Portfolio layout (PDF + website ready)',
+      'Removing weaker pieces',
+      'Final presentation preparation',
+      'Rehearsal & peer feedback',
     ],
     readings: [
       'Guest Speakers: Concept artists, Art directors, Illustrators, Motion designers',
@@ -210,5 +211,47 @@ export const curriculum = [
       '1 commercial-ready project',
       'Cohesive presentation portfolio',
     ],
+  },
+  {
+    week: 13,
+    title: 'CAPSTONE',
+    overview: 'Formal portfolio review sessions & networking mixer',
+    topics: [
+      'Industry panel feedback',
+      'Networking mixer',
+      'Career pathway guidance',
+      'Final portfolio presentations',
+    ],
+    readings: [],
+    assignments: [
+      'Present final portfolio to industry panel',
+      'Completed commercial-ready project',
+    ],
+    dateOverride: 'Date to be determined',
+  },
+];
+
+// ──────────────────────────────────────────────────────────────────
+//  CHANGELOG
+//  Add entries here when the curriculum is updated.
+//  Newest entries first. They display in the banner at the top.
+// ──────────────────────────────────────────────────────────────────
+
+export const changelog = [
+  {
+    date: '2026-05-18',
+    message: 'Week 12 renamed to "Capstone Preparation" — final review content moved to new Week 13',
+  },
+  {
+    date: '2026-05-18',
+    message: 'Added Week 13: CAPSTONE — formal portfolio presentations & industry panel (date TBD)',
+  },
+  {
+    date: '2026-05-14',
+    message: 'Holiday notes added: no class July 4th & September 5th',
+  },
+  {
+    date: '2026-05-13',
+    message: 'Initial 12-week curriculum populated with all lesson plans',
   },
 ];
