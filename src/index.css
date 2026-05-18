@@ -275,6 +275,12 @@ body {
   text-align: right;
 }
 
+.session-meta.holiday {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
 /* curriculum content */
 
 .curriculum-content {

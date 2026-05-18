@@ -1,5 +1,17 @@
 import { useEffect, useMemo, useState } from 'react';
 import { curriculum, config } from './curriculum.js';
+import { supabase } from './supabaseClient.js';
+
+const HOLIDAYS = [
+  '2026-07-04', // Independence Day
+  '2026-09-05', // Labor Day Weekend
+];
+
+function isHoliday(date) {
+  const d = new Date(date);
+  const iso = d.toISOString().split('T')[0];
+  return HOLIDAYS.includes(iso);
+}
 
 // ─── date utils ──────────────────────────────────────────────────────────────
 
@@ -101,12 +113,43 @@ function Section({ label, items }) {
 function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
   const [notes, setNotes] = useState(() => loadNote(week.week));
   const [savedAt, setSavedAt] = useState(null);
+  const [syncStatus, setSyncStatus] = useState(supabase ? 'connecting...' : null);
 
+  // Fetch initial notes from Supabase (if connected)
   useEffect(() => {
-    const t = setTimeout(() => {
+    if (!supabase) return;
+    let isMounted = true;
+    supabase
+      .from('notes')
+      .select('content')
+      .eq('week_number', week.week)
+      .single()
+      .then(({ data, error }) => {
+        if (!isMounted) return;
+        if (data && !error) {
+          setNotes(data.content || '');
+          saveNote(week.week, data.content || '');
+        }
+        setSyncStatus(null);
+      });
+    return () => { isMounted = false; };
+  }, [week.week]);
+
+  // Save notes locally and remotely
+  useEffect(() => {
+    const t = setTimeout(async () => {
       saveNote(week.week, notes);
       setSavedAt(Date.now());
-    }, 400);
+      
+      if (supabase) {
+        setSyncStatus('syncing...');
+        const { error } = await supabase
+          .from('notes')
+          .upsert({ week_number: week.week, content: notes });
+        setSyncStatus(error ? 'error syncing' : 'cloud saved');
+        setTimeout(() => setSyncStatus(null), 2000);
+      }
+    }, 800);
     return () => clearTimeout(t);
   }, [notes, week.week]);
 
@@ -134,7 +177,11 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
         <div className="session">
           <span className="session-day">Sat</span>
           <span className="session-date">{fmtDate(saturday)}</span>
-          <span className="session-meta">{config.saturday.time} · {config.saturday.location}</span>
+          {isHoliday(saturday) ? (
+            <span className="session-meta holiday">⛔ NO CLASS — HOLIDAY</span>
+          ) : (
+            <span className="session-meta">{config.saturday.time} · {config.saturday.location}</span>
+          )}
         </div>
       </div>
 
@@ -158,7 +205,11 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
           rows={6}
         />
         <div className="save-row">
-          {savedAt && <span className="saved">saved</span>}
+          {syncStatus ? (
+            <span className="saved">{syncStatus}</span>
+          ) : savedAt ? (
+            <span className="saved">local save</span>
+          ) : null}
         </div>
       </div>
 
