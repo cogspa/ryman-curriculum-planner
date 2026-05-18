@@ -206,6 +206,9 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
           saveNote(week.week, data.content || '');
         }
         setSyncStatus(null);
+      })
+      .catch(() => {
+        if (isMounted) setSyncStatus(null);
       });
     return () => { isMounted = false; };
   }, [week.week]);
@@ -213,16 +216,22 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
   // Save notes locally and remotely
   useEffect(() => {
     const t = setTimeout(async () => {
+      // Always save locally first
       saveNote(week.week, notes);
       setSavedAt(Date.now());
       
+      // Then try cloud sync
       if (supabase) {
-        setSyncStatus('syncing...');
-        const { error } = await supabase
-          .from('notes')
-          .upsert({ week_number: week.week, content: notes });
-        setSyncStatus(error ? 'error syncing' : 'cloud saved');
-        setTimeout(() => setSyncStatus(null), 2000);
+        try {
+          setSyncStatus('syncing...');
+          const { error } = await supabase
+            .from('notes')
+            .upsert({ week_number: week.week, content: notes });
+          setSyncStatus(error ? 'sync error — saved locally' : 'cloud saved');
+        } catch {
+          setSyncStatus('offline — saved locally');
+        }
+        setTimeout(() => setSyncStatus(null), 2500);
       }
     }, 800);
     return () => clearTimeout(t);
