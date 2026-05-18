@@ -64,6 +64,66 @@ function saveNote(weekNum, value) {
   } catch {}
 }
 
+// ─── auth gate ───────────────────────────────────────────────────────────────
+
+const AUTH_KEY = 'cp-auth-session';
+
+function LoginGate({ children }) {
+  const [authed, setAuthed] = useState(() => {
+    try { return localStorage.getItem(AUTH_KEY) === 'true'; } catch { return false; }
+  });
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (username === 'RYMAN' && password === 'pLAtform100!') {
+      setAuthed(true);
+      try { localStorage.setItem(AUTH_KEY, 'true'); } catch {}
+    } else {
+      setError('Invalid credentials');
+      setTimeout(() => setError(''), 2500);
+    }
+  }
+
+  function handleLogout() {
+    setAuthed(false);
+    try { localStorage.removeItem(AUTH_KEY); } catch {}
+  }
+
+  if (authed) return <>{children(handleLogout)}</>;
+
+  return (
+    <div className="login-gate">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <p className="login-eyebrow">2026 · 12-week program</p>
+        <h1 className="login-title">Ryman Arts Platform</h1>
+        <p className="login-subtitle">Curriculum Planner</p>
+        <div className="login-fields">
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            autoComplete="username"
+            autoFocus
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+          />
+        </div>
+        <button type="submit" className="login-btn">Enter</button>
+        {error && <p className="login-error">{error}</p>}
+      </form>
+    </div>
+  );
+}
+
 // ─── components ──────────────────────────────────────────────────────────────
 
 function Header({ startDate, setStartDate, totalWeeks }) {
@@ -238,29 +298,36 @@ export default function App() {
   }, [startDate]);
 
   return (
-    <div className="app">
-      <div className="container">
-        <Header
-          startDate={startDate}
-          setStartDate={setStartDate}
-          totalWeeks={weeks.length}
-        />
-        <main className="grid">
-          {weeks.map(({ entry, tuesday, saturday }, idx) => (
-            <WeekCard
-              key={entry.week}
-              week={entry}
-              tuesday={tuesday}
-              saturday={saturday}
-              isCapstone={idx === weeks.length - 1}
-              index={idx}
+    <LoginGate>
+      {(handleLogout) => (
+        <div className="app">
+          <div className="container">
+            <Header
+              startDate={startDate}
+              setStartDate={setStartDate}
+              totalWeeks={weeks.length}
             />
-          ))}
-        </main>
-        <footer className="footer">
-          <p>Notes save automatically to this browser. Edit <code>src/curriculum.js</code> to update titles and content.</p>
-        </footer>
-      </div>
-    </div>
+            <div className="logout-row">
+              <button className="logout-btn" onClick={handleLogout}>Sign out</button>
+            </div>
+            <main className="grid">
+              {weeks.map(({ entry, tuesday, saturday }, idx) => (
+                <WeekCard
+                  key={entry.week}
+                  week={entry}
+                  tuesday={tuesday}
+                  saturday={saturday}
+                  isCapstone={idx === weeks.length - 1}
+                  index={idx}
+                />
+              ))}
+            </main>
+            <footer className="footer">
+              <p>Notes save automatically to this browser. Edit <code>src/curriculum.js</code> to update titles and content.</p>
+            </footer>
+          </div>
+        </div>
+      )}
+    </LoginGate>
   );
 }
