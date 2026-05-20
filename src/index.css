@@ -59,15 +59,34 @@ body {
   color: var(--paper);
   overflow: hidden;
   white-space: nowrap;
-  padding: 8px 0;
+  padding: 12px 0;
   margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.changelog-label {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  background: rgba(168, 72, 42, 0.15);
+  padding: 5px 16px;
+  margin-left: 16px;
+  margin-right: 20px;
+}
+
+.changelog-track-wrap {
+  overflow: hidden;
+  flex: 1;
 }
 
 .changelog-track {
   display: inline-flex;
-  gap: 48px;
-  animation: scroll-left 40s linear infinite;
-  padding-left: 100%;
+  gap: 56px;
+  animation: scroll-left 45s linear infinite;
 }
 
 .changelog-track:hover {
@@ -77,30 +96,30 @@ body {
 .changelog-item {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
 .changelog-date {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent-soft);
   background: rgba(255, 255, 255, 0.08);
-  padding: 2px 8px;
+  padding: 3px 10px;
 }
 
 .changelog-msg {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--paper);
   opacity: 0.85;
 }
 
 @keyframes scroll-left {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ─── header ─────────────────────────────────────────────────────────────── */
@@ -481,6 +500,64 @@ body {
   background: var(--paper-deep);
   padding: 2px 6px;
   color: var(--accent-deep);
+}
+
+/* ─── changelog section ──────────────────────────────────────────────────── */
+
+.changelog-section {
+  margin-top: 60px;
+  padding: 40px 0 0;
+  border-top: 2px solid var(--ink);
+}
+
+.changelog-section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 4px;
+  font-variation-settings: 'opsz' 72;
+}
+
+.changelog-section-subtitle {
+  font-size: 13px;
+  color: var(--ink-mute);
+  margin: 0 0 28px;
+}
+
+.changelog-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.changelog-entry {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hairline);
+  align-items: baseline;
+}
+
+.changelog-entry:first-child {
+  border-top: 1px solid var(--hairline);
+}
+
+.changelog-entry-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.changelog-entry-msg {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-mid);
 }
 
 /* ─── login gate ─────────────────────────────────────────────────────────── */

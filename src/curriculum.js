@@ -61,13 +61,24 @@ export const curriculum = [
     title: 'Digital Brushes & Texture Systems',
     overview: 'Focus: Simulating physical media digitally',
     topics: [
-      'Brush engine deep dive',
-      'Custom brush creation',
-      'Texture overlays',
-      'Canvas simulation techniques',
+      'Brush engine deep dive — hardness, size, opacity, flow, and the bracket-key workflow',
+      'Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset',
+      'Procedural vs. non-procedural texture generation',
+      'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8',
+      'Canvas simulation techniques — Perlin/cloud noise as paper, Worley noise for tooth, grain and stipple filters',
     ],
-    readings: ['Guest: Senior digital illustrator (live demo)'],
-    assignments: ['Textured digital painting study (oil/acrylic simulation)'],
+    readings: [
+      'Defining Brushes — capture-to-preset workflow',
+      'Painting In Photoshop + Brush Hardness and Size — brush engine fundamentals',
+      'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory',
+      'Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation',
+      'Cracked Earth Texture (video walkthrough) — canvas simulation demo',
+      'What are Blend Modes + The Special "8" Blend Modes — layering texture passes',
+      'Guest: Senior digital illustrator — live demo on building a personal brush library',
+    ],
+    assignments: [
+      'Media Tile: Texture Systems & Brush-Based Material Studies — Build an 18-brush library (pigment, surface, atmospheric sets) and render one subject as a 2×2 tile across four physical-media simulations (oil, watercolor, charcoal, invented digital medium). 2000×2000 at 200 dpi. Submit final tile, brush sheet, and 150-word reflection.',
+    ],
   },
   {
     week: 3,
@@ -238,6 +249,10 @@ export const curriculum = [
 // ──────────────────────────────────────────────────────────────────
 
 export const changelog = [
+  {
+    date: '2026-05-20',
+    message: 'Week 2 expanded — detailed brush engine workflow, texture theory readings, and Media Tile assignment added',
+  },
   {
     date: '2026-05-18',
     message: 'Week 12 renamed to "Capstone Preparation" — final review content moved to new Week 13',

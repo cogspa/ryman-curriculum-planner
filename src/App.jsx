@@ -129,15 +129,36 @@ function LoginGate({ children }) {
 function ChangelogBanner() {
   return (
     <div className="changelog-banner">
-      <div className="changelog-track">
-        {changelog.map((entry, i) => (
-          <span key={i} className="changelog-item">
-            <span className="changelog-date">{entry.date}</span>
-            <span className="changelog-msg">{entry.message}</span>
-          </span>
-        ))}
+      <span className="changelog-label">UPDATES</span>
+      <div className="changelog-track-wrap">
+        <div className="changelog-track">
+          {/* duplicate entries for seamless infinite scroll */}
+          {[...changelog, ...changelog].map((entry, i) => (
+            <span key={i} className="changelog-item">
+              <span className="changelog-date">{entry.date}</span>
+              <span className="changelog-msg">{entry.message}</span>
+            </span>
+          ))}
+        </div>
       </div>
     </div>
+  );
+}
+
+function ChangelogSection() {
+  return (
+    <section className="changelog-section">
+      <h2 className="changelog-section-title">Changelog</h2>
+      <p className="changelog-section-subtitle">All curriculum updates in reverse-chronological order</p>
+      <div className="changelog-entries">
+        {changelog.map((entry, i) => (
+          <div key={i} className="changelog-entry">
+            <span className="changelog-entry-date">{entry.date}</span>
+            <span className="changelog-entry-msg">{entry.message}</span>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -357,6 +378,7 @@ export default function App() {
                 />
               ))}
             </main>
+            <ChangelogSection />
             <footer className="footer">
               <p>Notes save automatically to this browser. Edit <code>src/curriculum.js</code> to update titles and content.</p>
             </footer>
