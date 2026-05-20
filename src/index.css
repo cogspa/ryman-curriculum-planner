@@ -570,6 +570,308 @@ body {
   color: var(--ink-mid);
 }
 
+/* ─── inline links ───────────────────────────────────────────────────────── */
+
+.inline-link {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 150ms ease;
+  word-break: break-all;
+}
+
+.inline-link:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* ─── assignment link (in week card) ─────────────────────────────────────── */
+
+.assignment-link {
+  display: block;
+  text-decoration: none;
+  color: var(--ink-mid);
+  padding: 8px 12px;
+  margin: -4px -12px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.assignment-link:hover {
+  border-color: var(--accent);
+  background: rgba(168, 72, 42, 0.04);
+}
+
+.assignment-arrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 6px;
+}
+
+/* ─── assignment detail page ─────────────────────────────────────────────── */
+
+.assignment-page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  text-decoration: none;
+  margin-bottom: 32px;
+  transition: color 150ms ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.assignment-header {
+  margin-bottom: 48px;
+}
+
+.assignment-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+.assignment-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 8px;
+  font-variation-settings: 'opsz' 72;
+}
+
+.assignment-subtitle {
+  font-size: 14px;
+  color: var(--ink-mute);
+  font-style: italic;
+  margin: 0 0 16px;
+}
+
+.assignment-points-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(168, 72, 42, 0.08);
+  padding: 5px 14px;
+}
+
+/* phases */
+
+.assignment-phase {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.assignment-phase:last-child {
+  border-bottom: none;
+}
+
+.phase-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 12px;
+  font-variation-settings: 'opsz' 48;
+}
+
+.phase-intro {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin: 0 0 16px;
+}
+
+.phase-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 20px 0 10px;
+}
+
+.phase-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0 0 12px;
+}
+
+.phase-list li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin-bottom: 6px;
+}
+
+.phase-list li strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.phase-list--accent li::marker {
+  color: var(--accent);
+}
+
+.phase-list--check {
+  list-style: none;
+  padding-left: 0;
+}
+
+.phase-list--check li::before {
+  content: '✓ ';
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.phase-steps {
+  padding-left: 20px;
+  margin: 0 0 16px;
+  counter-reset: step;
+}
+
+.phase-steps li {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  margin-bottom: 4px;
+}
+
+.phase-note {
+  font-size: 13px;
+  color: var(--accent-deep);
+  background: rgba(168, 72, 42, 0.06);
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-style: italic;
+}
+
+/* simulation cards */
+
+.sim-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.sim-card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  padding: 20px;
+  position: relative;
+}
+
+.sim-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--paper-deep);
+  line-height: 1;
+  font-variation-settings: 'opsz' 144;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+}
+
+.sim-name {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.sim-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-mute);
+  margin: 0;
+}
+
+/* grading table */
+
+.grading-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.grading-table th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.grading-table td {
+  font-size: 13px;
+  color: var(--ink-mid);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hairline);
+  vertical-align: top;
+}
+
+.grading-criterion {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.grading-points {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+  text-align: center !important;
+}
+
+.grading-table th:nth-child(2) {
+  text-align: center;
+}
+
+.grading-total td {
+  font-weight: 600;
+  color: var(--ink);
+  border-top: 2px solid var(--ink);
+  border-bottom: none;
+}
+
+.assignment-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline);
+}
+
 /* ─── login gate ─────────────────────────────────────────────────────────── */
 
 .login-gate {
@@ -708,4 +1010,10 @@ body {
   .card-title { font-size: 22px; }
   .login-form { padding: 36px 24px 32px; }
   .login-title { font-size: 28px; }
+  .changelog-label { display: none; }
+  .sim-grid { grid-template-columns: 1fr; }
+  .assignment-title { font-size: 24px; }
+  .grading-table { font-size: 12px; }
+  .grading-table td,
+  .grading-table th { padding: 8px 6px; }
 }

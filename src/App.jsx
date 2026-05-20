@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { curriculum, config, changelog } from './curriculum.js';
+import { assignments } from './assignments.js';
 import { supabase } from './supabaseClient.js';
 
 const HOLIDAYS = [
@@ -193,6 +195,16 @@ function Header({ startDate, setStartDate, totalWeeks }) {
   );
 }
 
+function Linkify({ text }) {
+  const urlRegex = /(https?:\/\/[^\s,]+)/g;
+  const parts = text.split(urlRegex);
+  return parts.map((part, i) =>
+    urlRegex.test(part)
+      ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="inline-link">{part}</a>
+      : part
+  );
+}
+
 function Section({ label, items }) {
   if (!items || items.length === 0) return null;
   return (
@@ -200,7 +212,7 @@ function Section({ label, items }) {
       <p className="section-label">{label}</p>
       <ul className="section-list">
         {items.map((item, i) => (
-          <li key={i}>{item}</li>
+          <li key={i}><Linkify text={item} /></li>
         ))}
       </ul>
     </div>
@@ -306,7 +318,25 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
           {week.overview && <p className="overview">{week.overview}</p>}
           <Section label="Topics" items={week.topics} />
           <Section label="Readings" items={week.readings} />
-          <Section label="Assignments" items={week.assignments} />
+          {week.assignments?.length > 0 && (
+            <div className="section">
+              <p className="section-label">Assignments</p>
+              <ul className="section-list">
+                {week.assignments.map((item, i) => (
+                  <li key={i}>
+                    {assignments[week.week] ? (
+                      <Link to={`/assignment/${week.week}`} className="assignment-link">
+                        {item}
+                        <span className="assignment-arrow">→ View full brief</span>
+                      </Link>
+                    ) : (
+                      <Linkify text={item} />
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
 

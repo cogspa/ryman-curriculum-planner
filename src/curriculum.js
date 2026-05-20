@@ -72,6 +72,7 @@ export const curriculum = [
       'Painting In Photoshop + Brush Hardness and Size — brush engine fundamentals',
       'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory',
       'Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation',
+      'Cellular Noise (The Book of Shaders) — https://thebookofshaders.com/12/',
       'Cracked Earth Texture (video walkthrough) — canvas simulation demo',
       'What are Blend Modes + The Special "8" Blend Modes — layering texture passes',
       'Guest: Senior digital illustrator — live demo on building a personal brush library',
