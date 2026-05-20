@@ -126,6 +126,51 @@ function LoginGate({ children }) {
   );
 }
 
+// ─── countdown ──────────────────────────────────────────────────────────────
+
+const SYLLABUS_DEADLINE = new Date('2026-06-15T23:59:59');
+
+function useCountdown(target) {
+  const [remaining, setRemaining] = useState(() => target - Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setRemaining(target - Date.now()), 1000);
+    return () => clearInterval(id);
+  }, [target]);
+
+  if (remaining <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
+  const s = Math.floor(remaining / 1000);
+  return {
+    days: Math.floor(s / 86400),
+    hours: Math.floor((s % 86400) / 3600),
+    minutes: Math.floor((s % 3600) / 60),
+    seconds: s % 60,
+    expired: false,
+  };
+}
+
+function CountdownBanner() {
+  const cd = useCountdown(SYLLABUS_DEADLINE.getTime());
+  return (
+    <Link to="/syllabus" className="countdown-banner">
+      <span className="countdown-label">SYLLABUS DUE JUNE 15</span>
+      {cd.expired ? (
+        <span className="countdown-expired">DEADLINE PASSED</span>
+      ) : (
+        <div className="countdown-digits">
+          <span className="cd-block"><span className="cd-num">{String(cd.days).padStart(2, '0')}</span><span className="cd-unit">days</span></span>
+          <span className="cd-sep">:</span>
+          <span className="cd-block"><span className="cd-num">{String(cd.hours).padStart(2, '0')}</span><span className="cd-unit">hrs</span></span>
+          <span className="cd-sep">:</span>
+          <span className="cd-block"><span className="cd-num">{String(cd.minutes).padStart(2, '0')}</span><span className="cd-unit">min</span></span>
+          <span className="cd-sep">:</span>
+          <span className="cd-block"><span className="cd-num">{String(cd.seconds).padStart(2, '0')}</span><span className="cd-unit">sec</span></span>
+        </div>
+      )}
+      <span className="countdown-cta">View Syllabus →</span>
+    </Link>
+  );
+}
+
 // ─── components ──────────────────────────────────────────────────────────────
 
 function ChangelogBanner() {
@@ -405,6 +450,7 @@ export default function App() {
     <LoginGate>
       {(handleLogout) => (
         <div className="app">
+          <CountdownBanner />
           <ChangelogBanner />
           <div className="container">
             <Header
