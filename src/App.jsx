@@ -194,6 +194,14 @@ function Header({ startDate, setStartDate, totalWeeks }) {
     </header>
   );
 }
+function NewPill() {
+  return <span className="new-pill">NEW</span>;
+}
+
+function parseNew(text) {
+  if (text.startsWith('[NEW] ')) return { isNew: true, text: text.slice(6) };
+  return { isNew: false, text };
+}
 
 function Linkify({ text }) {
   const urlRegex = /(https?:\/\/[^\s,]+)/g;
@@ -211,9 +219,15 @@ function Section({ label, items }) {
     <div className="section">
       <p className="section-label">{label}</p>
       <ul className="section-list">
-        {items.map((item, i) => (
-          <li key={i}><Linkify text={item} /></li>
-        ))}
+        {items.map((item, i) => {
+          const { isNew, text } = parseNew(item);
+          return (
+            <li key={i} className={isNew ? 'is-new' : ''}>
+              {isNew && <NewPill />}
+              <Linkify text={text} />
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -322,18 +336,22 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
             <div className="section">
               <p className="section-label">Assignments</p>
               <ul className="section-list">
-                {week.assignments.map((item, i) => (
-                  <li key={i}>
-                    {assignments[week.week] ? (
-                      <Link to={`/assignment/${week.week}`} className="assignment-link">
-                        {item}
-                        <span className="assignment-arrow">→ View full brief</span>
-                      </Link>
-                    ) : (
-                      <Linkify text={item} />
-                    )}
-                  </li>
-                ))}
+                {week.assignments.map((rawItem, i) => {
+                  const { isNew, text } = parseNew(rawItem);
+                  return (
+                    <li key={i} className={isNew ? 'is-new' : ''}>
+                      {isNew && <NewPill />}
+                      {assignments[week.week] ? (
+                        <Link to={`/assignment/${week.week}`} className="assignment-link">
+                          {text}
+                          <span className="assignment-arrow">→ View full brief</span>
+                        </Link>
+                      ) : (
+                        <Linkify text={text} />
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}
