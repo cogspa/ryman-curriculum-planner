@@ -389,7 +389,7 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
                       {assignments[week.week] ? (
                         <Link to={`/assignment/${week.week}`} className="assignment-link">
                           {text}
-                          <span className="assignment-arrow">→ View full brief</span>
+                          <span className="assignment-arrow assignment-arrow--pill">VIEW FULL ASSIGNMENT →</span>
                         </Link>
                       ) : (
                         <Linkify text={text} />

@@ -32,9 +32,36 @@ export default function AssignmentPage() {
             {data.totalPoints && (
               <span className="assignment-points-badge">{data.totalPoints} points</span>
             )}
+            {data.extraCredit && (
+              <p className="assignment-extra-credit">⭐ {data.extraCredit}</p>
+            )}
           </div>
 
-          {data.phases.map((phase, pi) => (
+          {/* Generic sections format (used by Week 1) */}
+          {data.sections?.map((section, si) => (
+            <section key={si} className="assignment-phase">
+              <h2 className="phase-title">{section.heading}</h2>
+              {section.body && <p className="phase-intro">{section.body}</p>}
+              {section.subheading && <p className="phase-sub">{section.subheading}</p>}
+
+              {section.bullets && (
+                <ul className="phase-list phase-list--accent">
+                  {section.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                </ul>
+              )}
+
+              {section.numberedSteps && (
+                <ol className="phase-steps">
+                  {section.numberedSteps.map((s, i) => <li key={i}>{s}</li>)}
+                </ol>
+              )}
+
+              {section.note && <p className="phase-note">💡 {section.note}</p>}
+            </section>
+          ))}
+
+          {/* Phases format (used by Week 2) */}
+          {data.phases?.map((phase, pi) => (
             <section key={pi} className="assignment-phase">
               <h2 className="phase-title">{phase.name}</h2>
               {phase.intro && <p className="phase-intro">{phase.intro}</p>}
@@ -92,40 +119,53 @@ export default function AssignmentPage() {
             </section>
           ))}
 
-          <section className="assignment-phase">
-            <h2 className="phase-title">To Submit</h2>
-            <p className="phase-intro">Submit three files:</p>
-            <ol className="phase-steps">
-              {data.submission.map((s, i) => <li key={i}>{s}</li>)}
-            </ol>
-          </section>
+          {/* Submission */}
+          {data.submission && (
+            <section className="assignment-phase">
+              <h2 className="phase-title">To Submit</h2>
+              <ol className="phase-steps">
+                {data.submission.map((s, i) => <li key={i}>{s}</li>)}
+              </ol>
+            </section>
+          )}
 
-          <section className="assignment-phase assignment-grading">
-            <h2 className="phase-title">Grading Criteria</h2>
-            <table className="grading-table">
-              <thead>
-                <tr>
-                  <th>Criterion</th>
-                  <th>Points</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.grading.map((g, i) => (
-                  <tr key={i}>
-                    <td className="grading-criterion">{g.criterion}</td>
-                    <td className="grading-points">{g.points}</td>
-                    <td className="grading-desc">{g.desc}</td>
+          {/* Discussion */}
+          {data.discussion && (
+            <section className="assignment-phase">
+              <h2 className="phase-title">Discussion / Critique</h2>
+              <p className="phase-intro">{data.discussion}</p>
+            </section>
+          )}
+
+          {/* Grading */}
+          {data.grading && (
+            <section className="assignment-phase assignment-grading">
+              <h2 className="phase-title">Grading Criteria</h2>
+              <table className="grading-table">
+                <thead>
+                  <tr>
+                    <th>Criterion</th>
+                    <th>Points</th>
+                    <th>Description</th>
                   </tr>
-                ))}
-                <tr className="grading-total">
-                  <td>Total</td>
-                  <td>{data.totalPoints}</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
+                </thead>
+                <tbody>
+                  {data.grading.map((g, i) => (
+                    <tr key={i}>
+                      <td className="grading-criterion">{g.criterion}</td>
+                      <td className="grading-points">{g.points}</td>
+                      <td className="grading-desc">{g.desc}</td>
+                    </tr>
+                  ))}
+                  <tr className="grading-total">
+                    <td>Total</td>
+                    <td>{data.totalPoints}</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          )}
 
           <div className="assignment-footer">
             <Link to="/" className="back-link">← Back to Curriculum</Link>

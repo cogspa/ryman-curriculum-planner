@@ -5,6 +5,90 @@
 // ──────────────────────────────────────────────────────────────────
 
 export const assignments = {
+  1: {
+    title: 'Line Exploration (Straight and Curved Lines)',
+    subtitle: 'Adapted from DMA 12 Project 2 — Consider this a "warm-up" to get familiar with Photoshop',
+    totalPoints: null,
+    extraCredit: 'Upload your favorite design to Teepublic.com for 10 points extra credit',
+    sections: [
+      {
+        heading: 'Overview',
+        body: 'For this assignment, you will use one of your own traditional art pieces from your time at Ryman as the initial reference. You will create two different line compositions by tracing over your artwork using Photoshop (or Magma.io, Figma, Photopea.com, or GIMP). Each composition explores a different type of line.',
+      },
+      {
+        heading: 'Composition 1: Straight Lines',
+        bullets: [
+          'Use your Ryman artwork as the base image to trace',
+          'To use straight lines with the Brush tool (B), hold Shift for each line you draw',
+          'You can also use the Pen Tool (P) and then use the stroke option to turn the vector line into pixels',
+          'You can also use the Line Shape Tool (U) — in Photoshop, use the stroke option to convert lines to pixels since Adobe has removed the option to draw lines as pixels directly',
+        ],
+      },
+      {
+        heading: 'Composition 2: Curved Lines',
+        body: 'Choose your subject matter from the following: famous movie posters, ancient architecture, or insects.',
+        bullets: [
+          'Use Photoshop\'s smoothing feature with the Brush or Pencil tool',
+          'Use circle shapes',
+          'You can use the Pen Tool (P), Brush Tool (B), and/or the Circle Shape Tool (U)',
+        ],
+      },
+      {
+        heading: 'How to Set Up Your File',
+        subheading: 'Layer structure (3 layers):',
+        numberedSteps: [
+          'Layer 1 — The object/image you want to trace (your Ryman artwork)',
+          'Layer 2 — Filled with white, opacity lowered to 80\u201390%',
+          'Layer 3 — The layer you will draw on',
+        ],
+      },
+      {
+        heading: 'How to Copy and Paste an Image',
+        numberedSteps: [
+          'Search for your reference image using your preferred search engine',
+          'Right-click the image → select "Copy Image"',
+          'Paste into Photoshop using Cmd/Ctrl + V',
+          'Scale the image using Cmd/Ctrl + T (hit Enter after scaling to your preferred size)',
+        ],
+      },
+      {
+        heading: 'Specifications',
+        bullets: [
+          'Colors: Black and white only',
+          'Image Size: Roughly 11" × 17", landscape or portrait, at 200 DPI',
+          'Composition 1 subject: A portrait of a historical figure (or your Ryman piece)',
+          'Composition 2 subject: Famous movie posters, ancient architecture, or insects',
+        ],
+      },
+      {
+        heading: 'Line Qualities to Explore',
+        body: 'For these compositions, try to use a variety of line types:',
+        bullets: [
+          'Length',
+          'Thickness',
+          'Repetitiveness',
+          'Spacing',
+          'Intersections',
+          'Angles',
+        ],
+        note: 'Use the above concepts to create a pleasing composition.',
+      },
+      {
+        heading: 'Tools Reference',
+        bullets: [
+          'Straight-line composition: Brush Tool (B) or Line Tool (U) — set to "pixels" in Photoshop',
+          'Curved-line composition: Pen Tool (P), Brush Tool (B), and/or Circle Shape Tool (U)',
+          'Note: keyboard shortcuts above apply to Photoshop',
+        ],
+      },
+    ],
+    submission: [
+      'Save each final composition as a JPEG or PNG',
+      'Turn off the initial tracing layer before saving',
+      'Upload both compositions to Canvas',
+    ],
+    discussion: 'After both compositions are uploaded, we will critique and discuss which of your two compositions should be uploaded to Teepublic.com.',
+  },
   2: {
     title: 'Media Tile: Texture Systems & Brush-Based Material Studies',
     subtitle: '(Phase structure adapted from Assignment 6, Part 1; style-tile output adapted from Assignment 7)',

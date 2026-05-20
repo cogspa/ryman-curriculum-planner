@@ -733,6 +733,28 @@ body {
   margin-top: 6px;
 }
 
+.assignment-arrow--pill {
+  display: inline-block;
+  color: #5c4a00;
+  background: #ffe566;
+  padding: 4px 14px;
+  font-weight: 600;
+  transition: background 150ms ease;
+}
+
+.assignment-link:hover .assignment-arrow--pill {
+  background: #ffd700;
+}
+
+.assignment-extra-credit {
+  font-size: 13px;
+  color: #5c4a00;
+  background: rgba(255, 229, 102, 0.2);
+  padding: 10px 16px;
+  margin-top: 12px;
+  font-weight: 500;
+}
+
 /* ─── assignment detail page ─────────────────────────────────────────────── */
 
 .assignment-page {
