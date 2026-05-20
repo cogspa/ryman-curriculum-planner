@@ -166,7 +166,7 @@ function Header({ startDate, setStartDate, totalWeeks }) {
   return (
     <header className="header">
       <div className="header-left">
-        <p className="eyebrow">2026 · {totalWeeks}-week program</p>
+        <p className="eyebrow">2026 · 12-week program + capstone</p>
         <h1 className="title">Ryman Arts Platform Curriculum Planner</h1>
         <p className="subtitle">
           {config.tuesday.label}s {config.tuesday.time} · {config.tuesday.location}
@@ -184,8 +184,9 @@ function Header({ startDate, setStartDate, totalWeeks }) {
           />
         </label>
         <div className="counter">
-          <span className="counter-num">{totalWeeks}</span>
+          <span className="counter-num">12</span>
           <span className="counter-label">weeks</span>
+          <span className="counter-capstone">+ capstone</span>
         </div>
       </div>
     </header>
