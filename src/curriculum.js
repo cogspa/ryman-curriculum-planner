@@ -41,20 +41,22 @@ export const curriculum = [
   {
     week: 1,
     title: 'Translating Classical Foundations',
-    overview: 'Focus: What carries over from traditional painting',
+    overview: 'Focus: What carries over from traditional painting — value, composition, gesture, form, and the relationship between digital and physical canvases',
     topics: [
+      '[NEW] Digital vs. Physical Canvas / Understanding Pixels',
+      '[NEW] Origin of the word "pixel"',
+      '[NEW] Elements vs. Principles of Design',
+      '[NEW] Resolution and Quality',
       'Value, composition, gesture, and form',
-      'Digital vs. physical canvas',
-      'Wacom / iPad workflow setup',
-      'Canvas size, resolution, file types',
-      'Layer fundamentals',
-      'File naming conventions',
+      'Side-topic conversations (Tue Zoom): Wacom/iPad workflow setup, canvas size, resolution, file types, layer fundamentals, file-naming conventions',
     ],
     readings: [
+      '[NEW] Photoshop — Learn at Your Own Pace Videos: https://www.youtube.com/playlist?list=PL96BXqp9fQs6EcSwTbDgo57DFI-6EXzQ8',
       'Tools: Adobe Photoshop, Procreate',
-      'Guest: Senior digital illustrator (live demo)',
     ],
-    assignments: ['Recreate one traditional painting digitally'],
+    assignments: [
+      '[NEW] Recreate one of your own traditional art pieces (most likely from your time at Ryman) in Photoshop. Create two digital interpretations of the same piece: one version made entirely with straight edges and lines, and another version made entirely with curves. Examples will be provided. The assignment builds control, observation, and intentional mark-making in Photoshop.',
+    ],
   },
   {
     week: 2,
@@ -250,6 +252,10 @@ export const curriculum = [
 // ──────────────────────────────────────────────────────────────────
 
 export const changelog = [
+  {
+    date: '2026-05-20',
+    message: 'Week 1 expanded — pixel fundamentals, elements vs. principles, YouTube playlist, and new two-interpretation assignment added',
+  },
   {
     date: '2026-05-20',
     message: 'Week 2 expanded — detailed brush engine workflow, texture theory readings, and Media Tile assignment added',
