@@ -843,6 +843,15 @@ body {
   font-variation-settings: 'opsz' 48;
 }
 
+.phase-points-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .phase-intro {
   font-size: 14px;
   line-height: 1.7;

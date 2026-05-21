@@ -63,8 +63,17 @@ export default function AssignmentPage() {
           {/* Phases format (used by Week 2) */}
           {data.phases?.map((phase, pi) => (
             <section key={pi} className="assignment-phase">
-              <h2 className="phase-title">{phase.name}</h2>
+              <h2 className="phase-title">
+                {phase.name}
+                {phase.points && <span className="phase-points-label"> ({phase.points} pts)</span>}
+              </h2>
               {phase.intro && <p className="phase-intro">{phase.intro}</p>}
+
+              {phase.bullets && (
+                <ul className="phase-list phase-list--accent">
+                  {phase.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                </ul>
+              )}
 
               {phase.sets && (
                 <ul className="phase-list phase-list--accent">
@@ -87,42 +96,75 @@ export default function AssignmentPage() {
 
               {phase.note && <p className="phase-note">💡 {phase.note}</p>}
 
-              {phase.simulations && (
-                <div className="sim-grid">
-                  {phase.simulations.map((sim, i) => (
-                    <div key={i} className="sim-card">
-                      <span className="sim-num">{i + 1}</span>
-                      <h3 className="sim-name">{sim.name}</h3>
-                      <p className="sim-desc">{sim.desc}</p>
-                    </div>
-                  ))}
-                </div>
+              {phase.simulationsTable && (
+                <table className="grading-table" style={{ margin: '20px 0' }}>
+                  <thead>
+                    <tr>
+                      <th style={{ width: '40px' }}>#</th>
+                      <th style={{ width: '150px' }}>Medium</th>
+                      <th>Approach</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {phase.simulationsTable.map((sim, i) => (
+                      <tr key={i}>
+                        <td><strong>{sim.num}</strong></td>
+                        <td className="grading-criterion">{sim.medium}</td>
+                        <td className="grading-desc">{sim.approach}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               )}
 
-              {phase.layout && (
-                <>
-                  <p className="phase-sub">Layout requirements:</p>
+              {phase.subsections?.map((sub, i) => (
+                <div key={i} className="phase-subsection" style={{ marginTop: '20px' }}>
+                  <p className="phase-sub">{sub.title}:</p>
                   <ul className="phase-list">
-                    {phase.layout.map((l, i) => <li key={i}>{l}</li>)}
+                    {sub.bullets.map((b, j) => <li key={j}>{b}</li>)}
                   </ul>
-                </>
-              )}
-
-              {phase.requiredTechniques && (
-                <>
-                  <p className="phase-sub">Required techniques (at least one of each):</p>
-                  <ul className="phase-list phase-list--check">
-                    {phase.requiredTechniques.map((t, i) => <li key={i}>{t}</li>)}
-                  </ul>
-                </>
-              )}
+                </div>
+              ))}
             </section>
           ))}
+
+          {/* Tools & Shortcuts Cheat sheet */}
+          {data.shortcuts && (
+            <section className="assignment-phase">
+              <h2 className="phase-title">Tools & Shortcuts</h2>
+              <table className="grading-table">
+                <thead>
+                  <tr>
+                    <th style={{ width: '180px' }}>Shortcut</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.shortcuts.map((s, i) => (
+                    <tr key={i}>
+                      <td className="grading-criterion"><code style={{ background: 'rgba(0,0,0,0.05)', padding: '2px 6px', borderRadius: '3px', fontFamily: 'var(--font-mono)' }}>{s.key}</code></td>
+                      <td className="grading-desc">{s.action}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </section>
+          )}
+
+          {/* Workflow Tips */}
+          {data.tips && (
+            <section className="assignment-phase">
+              <h2 className="phase-title">Workflow Tips</h2>
+              <ul className="phase-list phase-list--accent">
+                {data.tips.map((tip, i) => <li key={i}>{tip}</li>)}
+              </ul>
+            </section>
+          )}
 
           {/* Submission */}
           {data.submission && (
             <section className="assignment-phase">
-              <h2 className="phase-title">To Submit</h2>
+              <h2 className="phase-title">Submission</h2>
               <ol className="phase-steps">
                 {data.submission.map((s, i) => <li key={i}>{s}</li>)}
               </ol>
@@ -146,7 +188,7 @@ export default function AssignmentPage() {
                   <tr>
                     <th>Criterion</th>
                     <th>Points</th>
-                    <th>Description</th>
+                    {data.grading[0].desc && <th>Description</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -154,13 +196,13 @@ export default function AssignmentPage() {
                     <tr key={i}>
                       <td className="grading-criterion">{g.criterion}</td>
                       <td className="grading-points">{g.points}</td>
-                      <td className="grading-desc">{g.desc}</td>
+                      {g.desc && <td className="grading-desc">{g.desc}</td>}
                     </tr>
                   ))}
                   <tr className="grading-total">
                     <td>Total</td>
                     <td>{data.totalPoints}</td>
-                    <td></td>
+                    {data.grading[0].desc && <td></td>}
                   </tr>
                 </tbody>
               </table>

@@ -91,64 +91,127 @@ export const assignments = {
   },
   2: {
     title: 'Media Tile: Texture Systems & Brush-Based Material Studies',
-    subtitle: '(Phase structure adapted from Assignment 6, Part 1; style-tile output adapted from Assignment 7)',
+    subtitle: 'Brush phase adapted from DMA 12 Assignment 6, Part 1 (Landscape Progression). Style-tile output adapted from Assignment 7 (Style Progression). Reference + reflection structure adapted from the DMA 12 Final (Blueprint of the Imagination). Thumbnail planning adapted from the 3D Collage assignment.',
     totalPoints: 130,
     phases: [
       {
+        name: 'Phase 0: Reference Collection & Thumbnail Planning',
+        points: 15,
+        intro: 'Before opening Photoshop, gather your raw material.',
+        bullets: [
+          'Reference board (10–15 images): Photographs of physical paint (bristle marks, palette-knife strokes, impasto buildup), Surface textures (paper grain, canvas weave, plaster, stone, wood), Charcoal and graphite on toned paper, splatters, drips, atmospheric marks.',
+          'References must be photographs, not other artists\' illustrations. Submit the board as a single contact sheet (PNG).',
+          'Four thumbnail sketches — explore how your subject reads across the four media panels before committing. Sketches can be analog (photographed) or digital. Quick, loose, layout-focused. The point is to plan composition and value distribution, not to render.'
+        ]
+      },
+      {
         name: 'Phase 1: Build Your Brush Library',
-        intro: 'Following the same process from the Landscape Progression brush workflow, build three sets of custom brushes, six per set:',
+        points: 30,
+        intro: 'Three sets of custom brushes, six per set:',
         sets: [
-          { name: 'Pigment brushes', desc: 'capture textures of bristles, palette-knife strokes, or impasto from photographs of physical paint' },
-          { name: 'Surface brushes', desc: 'paper grain, canvas weave, wood, plaster, stone, anything with tooth' },
-          { name: 'Atmospheric brushes', desc: 'splatters, drips, mist, particulate (for finishing passes)' },
+          { name: 'Pigment brushes', desc: 'bristles, palette-knife strokes, impasto from photographs of physical paint' },
+          { name: 'Surface brushes', desc: 'paper grain, canvas weave, wood, plaster, stone — anything with tooth' },
+          { name: 'Atmospheric brushes', desc: 'splatters, drips, mist, particulate (finishing passes)' }
         ],
         steps: [
           'Capture or source a wide-enough photo with strong texture',
-          'Convert to black and white: Image > Adjustments > Black and White (Cmd/Ctrl + Option + Shift + B)',
-          'Push contrast with Levels (Cmd/Ctrl + L) — push the dark triangle right, the light triangle left',
+          'Image > Adjustments > Black and White (Cmd/Ctrl + Option + Shift + B)',
+          'Push contrast with Levels (Cmd/Ctrl + L) — dark triangle right, light triangle left',
           'Define a clean rectangular selection with the Marquee tool (M)',
           'Edit > Define Brush Preset',
-          'Name brushes consistently by set (e.g., pigment_01_bristle, surface_03_canvas)',
+          'Name brushes consistently by set: pigment_01_bristle, surface_03_canvas, atmos_02_splatter'
         ],
-        note: 'Remember: with brushes, white is transparent and black is the painted area.',
+        note: 'Remember: with brushes, white is transparent, black is the painted area.'
       },
       {
         name: 'Phase 2: Pick One Subject',
-        intro: 'Choose one simple subject with mass and surface — a piece of fruit, a folded cloth, a stone, a single tool. The subject stays constant across all variations.',
+        intro: 'Choose one simple subject with mass and surface — a piece of fruit, a folded cloth, a stone, a single tool. The subject stays constant across all four panels. Variation lives in the medium, not the subject.'
       },
       {
         name: 'Phase 3: Create the Media Tile',
-        intro: 'Develop the same subject through four physical-media simulations, presented as a single tiled layout:',
-        simulations: [
-          { name: 'Oil paint simulation', desc: 'pigment brushes + impasto, hard edges where strokes break' },
-          { name: 'Watercolor simulation', desc: 'paper grain (surface brush) on multiply, wet-edge brush, bleeds' },
-          { name: 'Charcoal on toned paper', desc: 'mid-gray ground, canvas tooth overlay, additive whites and subtractive blacks' },
-          { name: 'Invented digital medium', desc: 'a material that could only exist digitally, using techniques covered in class (procedural noise overlays, blend modes, layer effects)' },
+        points: 70,
+        intro: 'Develop the same subject through four physical-media simulations, presented as a single tiled layout.',
+        simulationsTable: [
+          { num: '1', medium: 'Oil paint', approach: 'Pigment brushes + impasto, hard edges where strokes break' },
+          { num: '2', medium: 'Watercolor', approach: 'Paper grain (Surface brush) on Multiply, wet-edge brush, bleeds' },
+          { num: '3', medium: 'Charcoal on toned paper', approach: 'Mid-gray ground, canvas-tooth overlay, additive whites + subtractive blacks' },
+          { num: '4', medium: 'Invented digital medium', approach: 'A material that could only exist digitally — procedural noise overlays, blend modes, layer effects' }
         ],
-        layout: [
-          '2×2 grid, each panel 1000×1000, final tile 2000×2000 at 200 dpi',
-          'Caption each panel with the medium name (small, style-tile style)',
-          'Give the overall tile a title that frames the study',
-        ],
-        requiredTechniques: [
-          'Three or more of your custom brushes used across the four panels',
-          'At least one procedural effect per panel (Filter Gallery, noise, cloud filter, threshold, etc.)',
-          'Blend modes for layering surface textures',
-          'A texture overlay on at least two panels using a Surface brush as a stamp',
-        ],
+        subsections: [
+          {
+            title: 'Layout',
+            bullets: [
+              '2×2 grid, each panel 1000×1000',
+              'Final tile 2000×2000 at 200 dpi',
+              'Caption each panel with the medium name (small, style-tile style)',
+              'Give the overall tile a title that frames the study'
+            ]
+          },
+          {
+            title: 'Required techniques (at least one of each)',
+            bullets: [
+              'Three or more of your custom brushes used across the four panels',
+              'At least one procedural effect per panel (Filter Gallery, noise, cloud filter, threshold, etc.)',
+              'Blend modes for layering surface textures (Multiply for darks/wet edges, Overlay/Soft Light for tooth, Lighten for highlights)',
+              'A texture overlay on at least two panels using a Surface brush as a stamp'
+            ]
+          },
+          {
+            title: 'Layer minimums',
+            bullets: [
+              'At least 8 layers per panel',
+              'Each panel organized in its own labeled group (Cmd/Ctrl + G)',
+              'Use adjustment layers non-destructively — no flattening until export'
+            ]
+          }
+        ]
       },
+      {
+        name: 'Phase 4: Written Reflection',
+        points: 5,
+        intro: '150–200 words covering:',
+        bullets: [
+          'Which medium simulation read most convincingly, and why',
+          'One brush that did more work than expected',
+          'What a fifth "invented digital medium" panel might explore if you continued the study'
+        ]
+      }
+    ],
+    shortcuts: [
+      { key: 'D', action: 'Reset black/white foreground/background' },
+      { key: 'X', action: 'Swap foreground/background' },
+      { key: '[ ]', action: 'Decrease / increase brush size' },
+      { key: 'Cmd/Ctrl + T', action: 'Free Transform' },
+      { key: 'Cmd/Ctrl + J', action: 'Duplicate layer' },
+      { key: 'Cmd/Ctrl + G', action: 'Group selected layers' },
+      { key: 'Shift + Cmd/Ctrl + I', action: 'Invert selection' },
+      { key: 'Cmd/Ctrl + I', action: 'Invert layer colors' }
+    ],
+    tips: [
+      'Turn off Auto Select — it gets in the way when you\'re stacking texture layers',
+      'Use File > Scripts > Load Files Into Stack to bring all your references into a single doc',
+      'Make all your masks first, then paint — separates selection work from media work',
+      'Use Quick Selection with Alt/Option to subtract from selection',
+      'Save iterations as .psd while working; export final tile as .png',
+      'Keep your brush library .abr exported (Edit > Presets > Export/Import Presets) — you\'ll reuse this brush set in later assignments'
     ],
     submission: [
-      'Final media tile as a .png (2000×2000)',
-      'Brush sheet — a single .png screenshot showing your eighteen custom brushes laid out in a grid (use the Brush Preset panel or paint each on a blank canvas and label)',
-      'Process reflection — 150 words on which simulation read most convincingly, what gave the others away, and a one-sentence description of your invented digital medium',
+      'Reference board as PNG (Phase 0)',
+      'Four thumbnail sketches as PNG (Phase 0)',
+      'Brush set screenshot — show all 18 brushes in the brushes panel as PNG (Phase 1)',
+      'Final Media Tile — 2000×2000 at 200 dpi as PNG (Phase 3)',
+      'Written reflection — 150–200 words, in the submission comment or as .md/.txt (Phase 4)'
     ],
     grading: [
-      { criterion: 'Brush Library', points: 30, desc: 'Completeness, contrast, and usability of all 18 brushes' },
-      { criterion: 'Material Believability', points: 40, desc: 'How convincingly each of the four panels reads as its medium' },
-      { criterion: 'Procedural / Painted Integration', points: 30, desc: 'Effective combination of filter-based and hand-painted techniques' },
-      { criterion: 'Composition & Layout', points: 20, desc: 'Cohesiveness of the tile as a single piece' },
-      { criterion: 'Reflection', points: 10, desc: 'Thoughtfulness and specificity' },
-    ],
-  },
+      { criterion: 'Reference board + four thumbnails', points: 15 },
+      { criterion: 'Brush library (3 sets × 6, named, usable)', points: 30 },
+      { criterion: 'Oil panel', points: 15 },
+      { criterion: 'Watercolor panel', points: 15 },
+      { criterion: 'Charcoal panel', points: 15 },
+      { criterion: 'Invented digital medium panel', points: 15 },
+      { criterion: 'Layout, title, captions, layer organization', points: 10 },
+      { criterion: 'Required techniques applied (brushes, procedural, blend modes, overlays)', points: 10 },
+      { criterion: 'Written reflection', points: 5 }
+    ]
+  }
 };
