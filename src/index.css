@@ -1259,6 +1259,75 @@ body {
   color: var(--ink);
 }
 
+/* version history */
+
+.syllabus-version-selector {
+  background: var(--card-bg);
+  border: 1px solid var(--hairline);
+  padding: 20px 24px;
+  margin-bottom: 40px;
+  border-radius: 4px;
+}
+
+.version-selector-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+
+.version-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.version-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.version-pill:hover {
+  border-color: var(--ink-mute);
+}
+
+.version-pill.is-active {
+  background: #ffe566;
+  border-color: #5c4a00;
+  color: #5c4a00;
+}
+
+.ver-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ver-date {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.version-description {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-mid);
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+}
+
 /* week blocks */
 
 .syllabus-week {
