@@ -213,5 +213,48 @@ export const assignments = {
       { criterion: 'Required techniques applied (brushes, procedural, blend modes, overlays)', points: 10 },
       { criterion: 'Written reflection', points: 5 }
     ]
+  },
+  3: {
+    title: 'Dramatic Location: Cinematic Light & Atmosphere',
+    subtitle: 'Class 3 Assignment — Explore cinematic light, surfaces, depth, and atmospheric perspective.',
+    totalPoints: 100,
+    sections: [
+      {
+        heading: 'Focus: Dramatic Location',
+        body: 'Pick a location with depth — interior or exterior, real or imagined — that can carry a cinematic lighting treatment. No central figure required. The light *is* the subject. Your location\'s job is to give the light something to act on — surfaces, depth, atmosphere.',
+        bullets: [
+          'Architectural interiors (cathedral, warehouse, subway, lobby)',
+          'Landscapes with strong atmospheric potential (canyon, coastline, forest clearing, ruins)',
+          'Constructed environments (alley, rooftop, industrial site, theater stage)',
+          'Imagined / hybrid spaces (sci-fi corridor, fantasy chamber, post-apocalyptic street)'
+        ]
+      },
+      {
+        heading: 'Lighting Requirements',
+        bullets: [
+          'Strong directional light source (sunlight through window, spotlight, streetlamp, futuristic emitter)',
+          'Clear value hierarchy — deep shadows, distinct midtones, and localized highlights',
+          'Atmospheric scattering — use fog, dust particles, mist, or smoke to render visible light rays'
+        ]
+      },
+      {
+        heading: 'Workflow & Layout',
+        bullets: [
+          'Size: 16" × 9" aspect ratio (horizontal cinematic canvas), 200 DPI',
+          'Use adjustment layers and layer masks to control the light non-destructively',
+          'Utilize Blend Modes (e.g., Multiply for shadows, Color Dodge/Linear Dodge for highlights) to paint light realistically'
+        ]
+      }
+    ],
+    submission: [
+      'Final high-resolution render as JPEG or PNG',
+      'Brief 100-word paragraph describing the narrative of the light in your chosen space'
+    ],
+    grading: [
+      { criterion: 'Cinematic Light & Value Structure', points: 40 },
+      { criterion: 'Atmospheric Perspective & Depth', points: 30 },
+      { criterion: 'Material Surface Interactions & Texture', points: 20 },
+      { criterion: 'Composition & Mood', points: 10 }
+    ]
   }
 };

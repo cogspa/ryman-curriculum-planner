@@ -5,10 +5,32 @@
 
 export const syllabusVersions = [
   {
+    version: '1.3',
+    date: '2026-05-21',
+    description: 'Added Week 3 Dramatic Location assignment for cinematic light and atmosphere studies.',
+  },
+  {
     version: '1.2',
     date: '2026-05-21',
     description: 'Updated Week 1 with pixel fundamentals, YouTube playlist, and straight vs. curved line explorations.',
-    // Uses the live active curriculum by default, but we declare it here for reference
+    curriculumSnapshot: [
+      {
+        week: 3,
+        title: 'Light, Color & Atmosphere for Screen',
+        overview: 'Focus: Advanced digital rendering',
+        topics: [
+          'Glazing vs. digital layering',
+          'Blending modes',
+          'Cinematic lighting',
+          'Atmospheric perspective',
+          'Masking & selections',
+          'Photo compositing',
+          'Realistic lighting adjustments',
+        ],
+        readings: ['Guest: Concept artist or film matte painter (live demo)'],
+        assignments: ['Dramatic lighting portrait or environment'],
+      }
+    ]
   },
   {
     version: '1.1',

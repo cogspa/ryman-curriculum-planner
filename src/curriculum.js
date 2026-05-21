@@ -97,7 +97,9 @@ export const curriculum = [
       'Realistic lighting adjustments',
     ],
     readings: ['Guest: Concept artist or film matte painter (live demo)'],
-    assignments: ['Dramatic lighting portrait or environment'],
+    assignments: [
+      '[NEW] Dramatic Location: Pick a location with depth (interior/exterior, real/imagined) that carries a cinematic lighting treatment (cathedral, warehouse, ruins, sci-fi corridor). The light is the subject; give it surfaces, depth, and atmosphere to act on. No central figure required.',
+    ],
   },
   {
     week: 4,
@@ -252,6 +254,10 @@ export const curriculum = [
 // ──────────────────────────────────────────────────────────────────
 
 export const changelog = [
+  {
+    date: '2026-05-21',
+    message: 'Week 3 assignment updated — Dramatic Location cinematic lighting brief added',
+  },
   {
     date: '2026-05-20',
     message: 'Week 1 expanded — pixel fundamentals, elements vs. principles, YouTube playlist, and new two-interpretation assignment added',
