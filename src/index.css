@@ -755,6 +755,41 @@ body {
   font-weight: 500;
 }
 
+.topic-direct-link {
+  text-decoration: none;
+  color: var(--ink-mid);
+  border-bottom: 1px dotted var(--ink-mute);
+  transition: all 150ms ease;
+}
+
+.topic-direct-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.topic-arrow {
+  color: var(--accent);
+  margin-left: 4px;
+  font-weight: bold;
+}
+
+.section-label-link {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: color 150ms ease;
+  margin-bottom: 8px;
+}
+
+.section-label-link:hover {
+  color: var(--accent);
+}
+
 /* ─── assignment detail page ─────────────────────────────────────────────── */
 
 .assignment-page {

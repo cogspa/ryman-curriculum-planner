@@ -258,18 +258,49 @@ function Linkify({ text }) {
   );
 }
 
-function Section({ label, items }) {
+function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      <p className="section-label">{label}</p>
+      {weekNumber === 1 && label === 'Topics' ? (
+        <Link to="/week/01" className="section-label-link">
+          {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
+        </Link>
+      ) : (
+        <p className="section-label">{label}</p>
+      )}
       <ul className="section-list">
         {items.map((item, i) => {
           const { isNew, text } = parseNew(item);
+
+          let linkPath = null;
+          if (weekNumber === 1 && label === 'Topics') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('canvas') && cleanText.includes('pixels')) {
+              linkPath = '/week/01/digital-vs-physical-canvas';
+            } else if (cleanText.includes('origin') && cleanText.includes('pixel')) {
+              linkPath = '/week/01/origin-of-pixel';
+            } else if (cleanText.includes('elements') && cleanText.includes('principles')) {
+              linkPath = '/week/01/elements-vs-principles';
+            } else if (cleanText.includes('resolution')) {
+              linkPath = '/week/01/resolution-and-quality';
+            } else if (cleanText.includes('value') && cleanText.includes('composition')) {
+              linkPath = '/week/01/value-composition-gesture-form';
+            } else if (cleanText.includes('side-topic') || cleanText.includes('wacom')) {
+              linkPath = '/week/01/workflow-fundamentals';
+            }
+          }
+
           return (
             <li key={i} className={isNew ? 'is-new' : ''}>
               {isNew && <NewPill />}
-              <Linkify text={text} />
+              {linkPath ? (
+                <Link to={linkPath} className="topic-direct-link">
+                  {text} <span className="topic-arrow">→</span>
+                </Link>
+              ) : (
+                <Linkify text={text} />
+              )}
             </li>
           );
         })}
@@ -375,8 +406,8 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
       {hasContent && (
         <div className="curriculum-content">
           {week.overview && <p className="overview">{week.overview}</p>}
-          <Section label="Topics" items={week.topics} />
-          <Section label="Readings" items={week.readings} />
+          <Section label="Topics" items={week.topics} weekNumber={week.week} />
+          <Section label="Readings" items={week.readings} weekNumber={week.week} />
           {week.assignments?.length > 0 && (
             <div className="section">
               <p className="section-label">Assignments</p>

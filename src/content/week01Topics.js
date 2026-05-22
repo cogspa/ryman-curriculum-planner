@@ -1,0 +1,222 @@
+// ──────────────────────────────────────────────────────────────────
+//  WEEK 01 TOPICS DATA SOURCE
+//  Extracted from PCC DMA 12 corpus.
+// ──────────────────────────────────────────────────────────────────
+
+export const TOPIC_DETAILS = {
+  'digital-vs-physical-canvas': {
+    title: 'Digital vs. Physical Canvas / Understanding Pixels',
+    pccSources: ['Pixels: The Building Blocks of Digital Designs', 'Origin of the word Pixel'],
+    sections: [
+      {
+        heading: 'What is a pixel?',
+        body: `The pixel — a portmanteau of "pix" and "element" — is the basic unit of programmable color on a computer display. Every visual element on a screen is comprised of pixels. The screen projects light when creating images, so pixels are the building blocks of digital light.
+
+When creating digital art, we are essentially painting, drawing, sculpting, and designing the wave samples of the pixel. The process of digital art is one of manipulating pixels using an interface or code.`,
+      },
+      {
+        heading: "Alvy Ray Smith's definition",
+        body: `"A pixel is a point sample. It exists only at a point. For a color picture, a pixel might actually contain three samples, one for each primary color contributing to the picture at the sampling point. We can still think of this as a point sample of a color. But we cannot think of a pixel as a square — or anything other than a point."`,
+      },
+      {
+        heading: 'Physical canvas vs digital canvas',
+        body: `A physical canvas has a fixed surface texture and dimensions. A digital canvas has a resolution — its quality depends on the number of pixels per inch, the bit depth of each pixel, and whether you're outputting for screen (additive RGB light) or print (subtractive CMYK pigment). Understanding that the digital surface is sampled light, not pigment, changes how you think about value, opacity, and blend modes.`,
+      },
+    ],
+  },
+
+  'origin-of-pixel': {
+    title: 'Origin of the word "pixel"',
+    pccSources: ['Origin of the word Pixel'],
+    sections: [
+      {
+        heading: 'Frederic C. Billingsley — JPL, 1965',
+        body: `Frederic C. Billingsley first published the word "pixel" in 1965 at Jet Propulsion Laboratory in Pasadena. Billingsley (July 23, 1921 – May 31, 2002) was an American engineer who worked on image processing techniques for American space probes to the moon, Mars, and other planets for most of his career.`,
+      },
+      {
+        heading: 'First documented use',
+        body: `Billingsley used the word "pixel" in two papers published in 1965. This may have been the first published use of the word to describe a computer-generated "picture element."
+
+According to Billingsley, the word didn't originate with him. He heard it came from Keith E. McFarland at General Precision's Link Division in Palo Alto in 1963. McFarland claimed he had no idea where the word originated — it was a general term employed by his colleagues at the time.`,
+      },
+      {
+        heading: 'Why this matters',
+        body: `Pasadena (JPL) is the documented birthplace of the published term. Local relevance for a Pasadena-area studio class: the word for the medium you're working in was coined a few miles from where you're sitting.`,
+      },
+    ],
+  },
+
+  'elements-vs-principles': {
+    title: 'Elements vs. Principles of Design',
+    pccSources: ['Elements of Design', 'Principles of Design', 'Principles of Design-2'],
+    sections: [
+      {
+        heading: 'The Elements of Design',
+        body: `The elements are the raw vocabulary — the things you put on the canvas:
+
+- Line
+- Color
+- Shape
+- Space
+- Form
+- Unity/harmony
+- Balance
+
+For painting and concept art, shape and line are the foundation of any composition you create.`,
+      },
+      {
+        heading: 'The Principles of Design',
+        body: `The principles are how you arrange the elements — the grammar:
+
+- Balance
+- Contrast
+- Emphasis
+- Movement
+- Pattern
+- Rhythm
+- Unity/Variety
+- Direction
+
+These are guidelines, not rigid rules. They're rooted in a mix of physiological, social, and cultural influences. Examining successful designs throughout history shows how these principles have been used to create effective, influential work.`,
+      },
+      {
+        heading: 'The distinction in one line',
+        body: `Elements are the nouns. Principles are the verbs that act on them. A line is an element; rhythm is a principle that organizes lines into a pattern.`,
+      },
+    ],
+  },
+
+  'resolution-and-quality': {
+    title: 'Resolution and Quality',
+    pccSources: ['Resolution and Quality', 'Resolution Revisted'],
+    sections: [
+      {
+        heading: 'Resolution',
+        body: `Resolution is the number of pixels contained on a display monitor, expressed as the number of pixels on the horizontal axis × the number on the vertical axis. In a bitmap image, resolution is the degree of detail, measured in pixels per inch (PPI). Higher resolution = more pixels per inch = better printed image.`,
+      },
+      {
+        heading: 'DPI / PPI',
+        body: `DPI (dots per inch) is the unit of measurement for screen-image sharpness. A computer monitor typically displays images at 72 PPI. To find the on-screen display size of an image, divide horizontal and vertical pixels by 72.
+
+Use 72 PPI for web. Use 200–300 PPI for print.`,
+      },
+      {
+        heading: 'Pixelation, aliasing, interpolation',
+        body: `Scaling up a low-resolution image causes it to "pixelate" — you can see the individual pixels. The process of scaling forces the computer to recalculate the number of pixels, which is called interpolation.
+
+Aliasing produces jagged edges on curved or diagonal lines. Anti-aliasing adds realism by smoothing those edges using partially-filled pixels along the edge to create a gradual fade.`,
+      },
+      {
+        heading: 'Bits per pixel',
+        body: `A pixel can represent several distinct colors depending on the number of bits per pixel (bpp). 1 bpp = on/off. The number of colors doubles with each additional bit — 2 bpp = 4 colors, 3 bpp = 8 colors, 8 bpp = 256 colors, 24 bpp = ~16.7 million colors.`,
+      },
+      {
+        heading: 'Resampling',
+        body: `When you change dimensions or resolution without resampling, image data remains constant — the file's width and height must change to maintain consistent data. With Resample Image selected (in Photoshop's Image Size dialog), you can adjust resolution, width, and height independently, but this adds or removes pixels via interpolation.`,
+      },
+    ],
+  },
+
+  'value-composition-gesture-form': {
+    title: 'Value, Composition, Gesture, and Form',
+    pccSources: ['What is Value?', 'Value Is Emotive', 'Color Gets the Credit, Value Does the Work', 'Value and Contrast'],
+    sections: [
+      {
+        heading: 'What value is',
+        body: `Value refers to the lightness or darkness of a color. It's one of the three main properties of color, alongside hue (the basic color) and saturation (intensity).
+
+A value scale runs from black to white through every monochromatic gray in between. The average human eye can distinguish somewhere between 30 and 500 variations of value — research is inconsistent on the exact number, but computers render 256 shades and most viewers can perceive at least 200.`,
+      },
+      {
+        heading: 'Color gets the credit, value does the work',
+        body: `Colors are recognized, but values are what have the most impact. An object can be red or blue and still have the same value. The value of any work helps establish contrast — and contrast is what gives an image structure, focus, and emotional weight.`,
+      },
+      {
+        heading: 'Value is emotive',
+        body: `Dramatic contrasts — bright lights meeting deep shadows — create tension, drama, suspense. Subtle transitions — gentle gradations from light to dark — evoke calmness, serenity, melancholy.
+
+A horror film uses stark contrasts to unsettle. A romantic film uses softer, muted values to feel dreamy. The same logic applies to a painting or a Photoshop composition.`,
+      },
+      {
+        heading: 'Value contrast',
+        body: `Value contrast is the relationship between areas of dark and light. A consistent gray can appear to change value depending on the values around it. When two grays read as the same value, that's low contrast — the image goes flat. High contrast pulls the eye and creates a focal point.`,
+      },
+      {
+        heading: 'Composition, gesture, form',
+        body: `Composition is how you arrange value across the canvas. Gesture is the directional energy — the implied lines of movement that lead the eye. Form is the illusion of three dimensions, built almost entirely from value transitions: highlight, mid-tone, core shadow, reflected light, cast shadow.
+
+A painting can survive bad color. It cannot survive bad value structure.`,
+      },
+    ],
+  },
+
+  'workflow-fundamentals': {
+    title: 'Wacom / iPad Workflow & Canvas Fundamentals',
+    pccSources: ['Layer Basics', 'Organizing Layers', 'Non-destructive Editing', 'Common File Formats', 'Mastering the Move Tool', 'Zooming and Panning'],
+    sections: [
+      {
+        heading: 'Layer basics',
+        body: `Layers in Photoshop are like sheets of acetate stacked on top of each other. Transparent areas of a layer can be seen through the layers below. You can move content with the move tool, change stacking order, and adjust opacity to make any layer partially transparent.
+
+Use layers to: composite multiple images, add text, add vector shapes, apply layer styles (drop shadow, glow, etc.), mask out portions, and color-correct.`,
+      },
+      {
+        heading: 'Organizing layers',
+        body: `A new Photoshop image has a single background layer. The number of additional layers, layer effects, and layer sets you can add is limited only by your computer's memory. Group layers (Cmd/Ctrl + G) to reduce clutter — you can nest groups within groups and apply attributes or masks to multiple layers at once. F7 opens the Layers panel.`,
+      },
+      {
+        heading: 'Non-destructive editing',
+        body: `Adjustment Layers hold color or tonal adjustments that affect layers below — without editing image pixels directly. Edit the adjustment layer, leave the original pixels untouched.
+
+Smart Objects contain one or more layers of content. You can scale, skew, or reshape a Smart Object without directly editing pixels, and Smart Filters let you apply filters non-destructively so you can tweak or remove the effect later.`,
+      },
+      {
+        heading: 'File formats',
+        body: `Working formats:
+- PSD — Photoshop's native format. Keeps layers, vectors, masks intact.
+- TIFF — raster with optional layers. Common in print.
+- PSB — for very large files (>30,000 px on a side).
+
+Delivery formats:
+- JPEG — lossy, smaller files, no transparency. Photos.
+- PNG — lossless, supports transparency. Web graphics, exports for clients.
+- GIF — 256 colors, supports animation.
+- SVG — vector format for web. Use when exporting from Figma/Illustrator.
+- PDF — preserves vectors, shareable.`,
+      },
+      {
+        heading: 'The move tool',
+        body: `Shortcut: V. Universal across Adobe apps.
+
+Turn OFF Auto Select — it picks the wrong layer constantly and gets in the way of any compositing workflow.
+
+Show Transform Controls puts a transform box around your selection so you can scale (drag corners) and rotate (just outside corners). Hold Shift while scaling to constrain proportions. Hold Cmd/Ctrl while dragging a corner to skew.`,
+      },
+      {
+        heading: 'Zooming and panning',
+        body: `Spacebar = Pan (move the canvas).
+Spacebar + Cmd (Mac) / Spacebar + Ctrl + Alt (Win) = Zoom In.
+Spacebar + Option (Mac) / Spacebar + Alt (Win) = Zoom Out.
+
+On modern macOS the defaults are Cmd + Plus / Cmd + Minus. Zooming is the single most underused tool for precision — zoom in to refine, zoom out to judge composition.`,
+      },
+      {
+        heading: 'Wacom / iPad setup notes',
+        body: `For Wacom: install the driver, set pressure curve so light pressure produces visible marks (default is often too stiff). Map a tablet button to "undo" — saves your wrist.
+
+For iPad / Procreate: file types behave the same conceptually, but Procreate exports .procreate (working) and PSD/PNG/JPG (delivery). Canvas size at creation matters — Procreate caps layer count based on canvas dimensions.
+
+Canvas size for this class: start at 3000 × 2000 px at 300 DPI for any deliverable. You can always scale down. You can't scale up without losing quality.`,
+      },
+    ],
+  },
+};
+
+export const topicList = [
+  { key: 'digital-vs-physical-canvas', label: 'Digital vs. Physical Canvas / Understanding Pixels', isNew: true },
+  { key: 'origin-of-pixel', label: 'Origin of the word "pixel"', isNew: true },
+  { key: 'elements-vs-principles', label: 'Elements vs. Principles of Design', isNew: true },
+  { key: 'resolution-and-quality', label: 'Resolution and Quality', isNew: true },
+  { key: 'value-composition-gesture-form', label: 'Value, composition, gesture, and form', isNew: false },
+  { key: 'workflow-fundamentals', label: 'Side-topic conversations (Tue Zoom): Wacom/iPad workflow setup, canvas size, resolution, file types, layer fundamentals, file-naming conventions', isNew: false },
+];
