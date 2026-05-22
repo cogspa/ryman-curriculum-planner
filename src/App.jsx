@@ -262,8 +262,8 @@ function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      {weekNumber === 1 && label === 'Topics' ? (
-        <Link to="/week/01" className="section-label-link">
+      {(weekNumber === 1 || weekNumber === 2) && (label === 'Topics' || label === 'Readings') ? (
+        <Link to={`/week/0${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
       ) : (
@@ -274,6 +274,7 @@ function Section({ label, items, weekNumber }) {
           const { isNew, text } = parseNew(item);
 
           let linkPath = null;
+          let isExternal = false;
           if (weekNumber === 1 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();
             if (cleanText.includes('canvas') && cleanText.includes('pixels')) {
@@ -289,15 +290,52 @@ function Section({ label, items, weekNumber }) {
             } else if (cleanText.includes('side-topic') || cleanText.includes('wacom')) {
               linkPath = '/week/01/workflow-fundamentals';
             }
+          } else if (weekNumber === 2 && label === 'Topics') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('brush engine') || cleanText.includes('hardness')) {
+              linkPath = '/week/02/brush-engine-deep-dive';
+            } else if (cleanText.includes('custom brush') || cleanText.includes('define brush')) {
+              linkPath = '/week/02/custom-brush-creation';
+            } else if (cleanText.includes('procedural')) {
+              linkPath = '/week/02/procedural-vs-non-procedural';
+            } else if (cleanText.includes('blend modes') || cleanText.includes('overlay')) {
+              linkPath = '/week/02/blend-modes-for-texture';
+            } else if (cleanText.includes('canvas simulation') || cleanText.includes('perlin')) {
+              linkPath = '/week/02/canvas-simulation';
+            }
+          } else if (weekNumber === 2 && label === 'Readings') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('defining brushes')) {
+              linkPath = '/week/02/custom-brush-creation';
+            } else if (cleanText.includes('painting in photoshop')) {
+              linkPath = '/week/02/brush-engine-deep-dive';
+            } else if (cleanText.includes('what is pattern') || cleanText.includes('noise vs. pattern')) {
+              linkPath = '/week/02/procedural-vs-non-procedural';
+            } else if (cleanText.includes('perlin/fractal noise') || cleanText.includes('cellular/worley noise')) {
+              linkPath = '/week/02/canvas-simulation';
+            } else if (cleanText.includes('cracked earth')) {
+              linkPath = '/week/02/canvas-simulation';
+            } else if (cleanText.includes('what are blend modes')) {
+              linkPath = '/week/02/blend-modes-for-texture';
+            } else if (cleanText.includes('the book of shaders') || cleanText.includes('shaders.com')) {
+              linkPath = 'https://thebookofshaders.com/12/';
+              isExternal = true;
+            }
           }
 
           return (
             <li key={i} className={isNew ? 'is-new' : ''}>
               {isNew && <NewPill />}
               {linkPath ? (
-                <Link to={linkPath} className="topic-direct-link">
-                  {text} <span className="topic-arrow">→</span>
-                </Link>
+                isExternal ? (
+                  <a href={linkPath} target="_blank" rel="noopener noreferrer" className="topic-direct-link">
+                    {text} <span className="topic-arrow">↗</span>
+                  </a>
+                ) : (
+                  <Link to={linkPath} className="topic-direct-link">
+                    {text} <span className="topic-arrow">→</span>
+                  </Link>
+                )
               ) : (
                 <Linkify text={text} />
               )}
