@@ -262,7 +262,7 @@ function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      {(weekNumber === 1 || weekNumber === 2) && (label === 'Topics' || label === 'Readings') ? (
+      {(weekNumber === 1 || weekNumber === 2 || weekNumber === 3) && (label === 'Topics' || label === 'Readings') ? (
         <Link to={`/week/0${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
@@ -320,6 +320,23 @@ function Section({ label, items, weekNumber }) {
             } else if (cleanText.includes('the book of shaders') || cleanText.includes('shaders.com')) {
               linkPath = 'https://thebookofshaders.com/12/';
               isExternal = true;
+            }
+          } else if (weekNumber === 3 && label === 'Topics') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('glazing') || cleanText.includes('digital layering')) {
+              linkPath = '/week/03/glazing-vs-digital-layering';
+            } else if (cleanText.includes('blending modes')) {
+              linkPath = '/week/03/blending-modes';
+            } else if (cleanText.includes('cinematic lighting')) {
+              linkPath = '/week/03/cinematic-lighting';
+            } else if (cleanText.includes('atmospheric perspective')) {
+              linkPath = '/week/03/atmospheric-perspective';
+            } else if (cleanText.includes('masking') || cleanText.includes('selections')) {
+              linkPath = '/week/03/masking-and-selections';
+            } else if (cleanText.includes('photo compositing')) {
+              linkPath = '/week/03/photo-compositing';
+            } else if (cleanText.includes('realistic lighting') || cleanText.includes('adjustments')) {
+              linkPath = '/week/03/realistic-lighting-adjustments';
             }
           }
 
