@@ -106,13 +106,14 @@ export const curriculum = [
     title: 'Composition for Screen-Based Media',
     overview: 'Focus: Designing for digital platforms',
     topics: [
-      'Designing for social, web, and print',
-      'Cropping & framing',
+      '[NEW] Designing for social, web, and print',
+      '[NEW] Cropping & framing',
       'Scalable artwork',
       'Exporting for multiple formats',
     ],
     readings: [
-      'Tools: Adobe Illustrator (intro), Adobe InDesign (portfolio basics)',
+      'Tools: Adobe Illustrator (intro)',
+      '[NEW] Tools: Adobe InDesign (portfolio basics)',
       'Guest: Senior graphic designer (live demo)',
     ],
     assignments: ['Adapt one artwork for print, web, and social formats'],
