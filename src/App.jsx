@@ -262,7 +262,7 @@ function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      {(weekNumber === 1 || weekNumber === 2 || weekNumber === 3) && (label === 'Topics' || label === 'Readings') ? (
+      {(weekNumber === 1 || weekNumber === 2 || weekNumber === 3 || weekNumber === 4) && (label === 'Topics' || label === 'Readings') ? (
         <Link to={`/week/0${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
@@ -337,6 +337,24 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/photo-compositing';
             } else if (cleanText.includes('realistic lighting') || cleanText.includes('adjustments')) {
               linkPath = '/week/03/realistic-lighting-adjustments';
+            }
+          } else if (weekNumber === 4 && label === 'Topics') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('designing for social') || cleanText.includes('platforms')) {
+              linkPath = '/week/04/designing-for-platforms';
+            } else if (cleanText.includes('cropping') || cleanText.includes('framing')) {
+              linkPath = '/week/04/cropping-and-framing';
+            } else if (cleanText.includes('scalable')) {
+              linkPath = '/week/04/scalable-artwork';
+            } else if (cleanText.includes('exporting')) {
+              linkPath = '/week/04/exporting-multiple-formats';
+            }
+          } else if (weekNumber === 4 && label === 'Readings') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('illustrator')) {
+              linkPath = '/week/04/illustrator-intro';
+            } else if (cleanText.includes('indesign')) {
+              linkPath = '/week/04/indesign-intro';
             }
           }
 

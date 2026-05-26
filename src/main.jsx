@@ -10,6 +10,8 @@ import Week02Overview from './pages/Week02Overview.jsx';
 import Week02TopicDetail from './pages/Week02TopicDetail.jsx';
 import Week03Overview from './pages/Week03Overview.jsx';
 import Week03TopicDetail from './pages/Week03TopicDetail.jsx';
+import Week04Overview from './pages/Week04Overview.jsx';
+import Week04TopicDetail from './pages/Week04TopicDetail.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -25,6 +27,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/week/02/:topicKey" element={<Week02TopicDetail />} />
         <Route path="/week/03" element={<Week03Overview />} />
         <Route path="/week/03/:topicKey" element={<Week03TopicDetail />} />
+        <Route path="/week/04" element={<Week04Overview />} />
+        <Route path="/week/04/:topicKey" element={<Week04TopicDetail />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
