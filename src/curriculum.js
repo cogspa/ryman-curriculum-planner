@@ -125,11 +125,11 @@ export const curriculum = [
     topics: [
       'Character development',
       'Environmental storytelling',
-      'Sequential thinking',
-      'Storyboarding fundamentals',
+      '[NEW] Sequential thinking',
+      '[NEW] Storyboarding fundamentals',
     ],
     readings: ['Guest: Publishing or entertainment illustrator (live demo)'],
-    assignments: ['3-panel narrative illustration'],
+    assignments: ['[NEW] 3-panel narrative illustration — full workflow brief'],
   },
   {
     week: 6,

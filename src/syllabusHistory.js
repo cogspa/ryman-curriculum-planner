@@ -5,9 +5,29 @@
 
 export const syllabusVersions = [
   {
+    version: '1.5',
+    date: '2026-05-27',
+    description: 'Expanded Week 5 with sequential narrative storytelling, character silhouettes, storyboard beats, and the 3-panel workflow brief.',
+  },
+  {
     version: '1.4',
     date: '2026-05-26',
     description: 'Expanded Week 4 with digital publishing platforms, cropping & framing composition, scalable vector art, and multi-format exports.',
+    curriculumSnapshot: [
+      {
+        week: 5,
+        title: 'Illustration & Visual Storytelling',
+        overview: 'Focus: Moving beyond single-frame fine art',
+        topics: [
+          'Character development',
+          'Environmental storytelling',
+          'Sequential thinking',
+          'Storyboarding fundamentals',
+        ],
+        readings: ['Guest: Publishing or entertainment illustrator (live demo)'],
+        assignments: ['3-panel narrative illustration'],
+      }
+    ]
   },
   {
     version: '1.3',
@@ -29,6 +49,19 @@ export const syllabusVersions = [
           'Guest: Senior graphic designer (live demo)',
         ],
         assignments: ['Adapt one artwork for print, web, and social formats'],
+      },
+      {
+        week: 5,
+        title: 'Illustration & Visual Storytelling',
+        overview: 'Focus: Moving beyond single-frame fine art',
+        topics: [
+          'Character development',
+          'Environmental storytelling',
+          'Sequential thinking',
+          'Storyboarding fundamentals',
+        ],
+        readings: ['Guest: Publishing or entertainment illustrator (live demo)'],
+        assignments: ['3-panel narrative illustration'],
       }
     ]
   },
@@ -68,6 +101,19 @@ export const syllabusVersions = [
           'Guest: Senior graphic designer (live demo)',
         ],
         assignments: ['Adapt one artwork for print, web, and social formats'],
+      },
+      {
+        week: 5,
+        title: 'Illustration & Visual Storytelling',
+        overview: 'Focus: Moving beyond single-frame fine art',
+        topics: [
+          'Character development',
+          'Environmental storytelling',
+          'Sequential thinking',
+          'Storyboarding fundamentals',
+        ],
+        readings: ['Guest: Publishing or entertainment illustrator (live demo)'],
+        assignments: ['3-panel narrative illustration'],
       }
     ]
   },
@@ -109,6 +155,19 @@ export const syllabusVersions = [
           'Guest: Senior graphic designer (live demo)',
         ],
         assignments: ['Adapt one artwork for print, web, and social formats'],
+      },
+      {
+        week: 5,
+        title: 'Illustration & Visual Storytelling',
+        overview: 'Focus: Moving beyond single-frame fine art',
+        topics: [
+          'Character development',
+          'Environmental storytelling',
+          'Sequential thinking',
+          'Storyboarding fundamentals',
+        ],
+        readings: ['Guest: Publishing or entertainment illustrator (live demo)'],
+        assignments: ['3-panel narrative illustration'],
       }
     ]
   },
@@ -165,6 +224,19 @@ export const syllabusVersions = [
           'Guest: Senior graphic designer (live demo)',
         ],
         assignments: ['Adapt one artwork for print, web, and social formats'],
+      },
+      {
+        week: 5,
+        title: 'Illustration & Visual Storytelling',
+        overview: 'Focus: Moving beyond single-frame fine art',
+        topics: [
+          'Character development',
+          'Environmental storytelling',
+          'Sequential thinking',
+          'Storyboarding fundamentals',
+        ],
+        readings: ['Guest: Publishing or entertainment illustrator (live demo)'],
+        assignments: ['3-panel narrative illustration'],
       }
     ]
   }
