@@ -262,7 +262,7 @@ function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      {(weekNumber === 1 || weekNumber === 2 || weekNumber === 3 || weekNumber === 4) && (label === 'Topics' || label === 'Readings') ? (
+      {(weekNumber === 1 || weekNumber === 2 || weekNumber === 3 || weekNumber === 4 || weekNumber === 5) && (label === 'Topics' || label === 'Readings') ? (
         <Link to={`/week/0${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
@@ -355,6 +355,17 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/04/illustrator-intro';
             } else if (cleanText.includes('indesign')) {
               linkPath = '/week/04/indesign-intro';
+            }
+          } else if (weekNumber === 5 && label === 'Topics') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('character') && cleanText.includes('development')) {
+              linkPath = '/week/05/character-development';
+            } else if (cleanText.includes('environmental') && cleanText.includes('storytelling')) {
+              linkPath = '/week/05/environmental-storytelling';
+            } else if (cleanText.includes('sequential') && cleanText.includes('thinking')) {
+              linkPath = '/week/05/sequential-thinking';
+            } else if (cleanText.includes('storyboarding') && cleanText.includes('fundamentals')) {
+              linkPath = '/week/05/storyboarding-fundamentals';
             }
           }
 
@@ -490,7 +501,12 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
                   return (
                     <li key={i} className={isNew ? 'is-new' : ''}>
                       {isNew && <NewPill />}
-                      {assignments[week.week] ? (
+                      {week.week === 5 ? (
+                        <Link to="/week/05/three-panel-assignment" className="assignment-link">
+                          {text}
+                          <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
+                        </Link>
+                      ) : assignments[week.week] ? (
                         <Link to={`/assignment/${week.week}`} className="assignment-link">
                           {text}
                           <span className="assignment-arrow assignment-arrow--pill">VIEW FULL ASSIGNMENT →</span>
