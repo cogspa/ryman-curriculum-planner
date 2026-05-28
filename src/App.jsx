@@ -262,7 +262,7 @@ function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      {(weekNumber === 1 || weekNumber === 2 || weekNumber === 3 || weekNumber === 4 || weekNumber === 5) && (label === 'Topics' || label === 'Readings') ? (
+      {(weekNumber === 1 || weekNumber === 2 || weekNumber === 3 || weekNumber === 4 || weekNumber === 5 || weekNumber === 6 || weekNumber === 7) && (label === 'Topics' || label === 'Readings') ? (
         <Link to={`/week/0${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
@@ -366,6 +366,37 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/05/sequential-thinking';
             } else if (cleanText.includes('storyboarding') && cleanText.includes('fundamentals')) {
               linkPath = '/week/05/storyboarding-fundamentals';
+            }
+          } else if (weekNumber === 6 && label === 'Topics') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('book covers') || cleanText.includes('key art')) {
+              linkPath = '/week/06/book-covers-and-key-art';
+            } else if (cleanText.includes('integrated ad') || cleanText.includes('campaigns')) {
+              linkPath = '/week/06/integrated-ad-campaigns';
+            } else if (cleanText.includes('asset management') || cleanText.includes('libraries')) {
+              linkPath = '/week/06/asset-management-cc-libraries';
+            } else if (cleanText.includes('commercial brief') || cleanText.includes('pitching')) {
+              linkPath = '/week/06/the-commercial-brief';
+            }
+          } else if (weekNumber === 6 && label === 'Readings') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('layout engineering')) {
+              linkPath = '/week/06/book-covers-and-key-art';
+            } else if (cleanText.includes('brand architecture')) {
+              linkPath = '/week/06/asset-management-cc-libraries';
+            } else if (cleanText.includes('visual pitching')) {
+              linkPath = '/week/06/the-commercial-brief';
+            }
+          } else if (weekNumber === 7 && label === 'Topics') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('concept art')) {
+              linkPath = '/week/07/concept-art-track';
+            } else if (cleanText.includes('poster series')) {
+              linkPath = '/week/07/poster-series-track';
+            } else if (cleanText.includes('storyboards') || cleanText.includes('sequential')) {
+              linkPath = '/week/07/storyboard-track';
+            } else if (cleanText.includes('book cover') || cleanText.includes('children')) {
+              linkPath = '/week/07/book-cover-track';
             }
           }
 
@@ -489,7 +520,17 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
 
       {hasContent && (
         <div className="curriculum-content">
-          {week.overview && <p className="overview">{week.overview}</p>}
+          {week.overview && (
+            <p className="overview">
+              {week.week === 7 ? (
+                <Link to="/week/07/client-simulation-overview" className="overview-link">
+                  {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[READ BRIEF FRAMEWORK →]</span>
+                </Link>
+              ) : (
+                week.overview
+              )}
+            </p>
+          )}
           <Section label="Topics" items={week.topics} weekNumber={week.week} />
           <Section label="Readings" items={week.readings} weekNumber={week.week} />
           {week.assignments?.length > 0 && (
@@ -503,6 +544,11 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
                       {isNew && <NewPill />}
                       {week.week === 5 ? (
                         <Link to="/week/05/three-panel-assignment" className="assignment-link">
+                          {text}
+                          <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
+                        </Link>
+                      ) : week.week === 6 ? (
+                        <Link to="/week/06/commercial-campaign-assignment" className="assignment-link">
                           {text}
                           <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
                         </Link>

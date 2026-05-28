@@ -123,12 +123,17 @@ export const curriculum = [
     title: 'Illustration & Visual Storytelling',
     overview: 'Focus: Moving beyond single-frame fine art',
     topics: [
-      'Character development',
-      'Environmental storytelling',
-      '[NEW] Sequential thinking',
-      '[NEW] Storyboarding fundamentals',
+      '[NEW] Character development & emotional range (Preston Blair expression sheets, cartoon takes)',
+      '[NEW] Environmental storytelling & auditory space (diegetic vs. non-diegetic sound, leitmotifs)',
+      '[NEW] Sequential thinking & animation planning (straight ahead vs. pose to pose hybrid approach)',
+      '[NEW] Storyboarding fundamentals & visual cinematography (Dutch tilt, worm\'s eye view, pitch shot, zolly/dolly zooms)',
     ],
-    readings: ['Guest: Publishing or entertainment illustrator (live demo)'],
+    readings: [
+      '[NEW] Animation Mechanics: Preston Blair Expression Guides & Cartoon Takes',
+      '[NEW] Soundscapes in Media: Diegetic vs. Non-Diegetic Sound & Leitmotifs',
+      '[NEW] Cinemagraphics: Dutch Tilt, Pitch Shot, and Dolly Zooms in Storyboards',
+      'Guest: Publishing or entertainment illustrator (live demo)',
+    ],
     assignments: ['[NEW] 3-panel narrative illustration — full workflow brief'],
   },
   {
@@ -136,26 +141,35 @@ export const curriculum = [
     title: 'Introduction to Commercial Application',
     overview: 'Focus: Turning painterly skill into paid work',
     topics: [
-      'Book covers',
-      'Key art',
-      'Editorial illustration',
-      'Entertainment concept art',
+      '[NEW] Book covers & key art page layouts (margins, columns, grids in InDesign)',
+      '[NEW] Integrated ad campaigns (combining typography, graphic layout, & illustration)',
+      '[NEW] Asset management & CC Libraries (collaborative libraries & master page templates)',
+      '[NEW] The commercial brief (visual hierarchy, type & image pairing, campaign pitching)',
     ],
-    readings: ['Guest: Art director or creative agency lead'],
-    assignments: ['Respond to a professional-style brief'],
+    readings: [
+      '[NEW] Layout Engineering: InDesign Page Layout Specs, Margins, and Master Pages',
+      '[NEW] Brand Architecture: Integrated Campaigns & Asset Management (CC Libraries)',
+      '[NEW] Visual Pitching: Combining Type & Image for the "Most Wanted" Design Brief',
+      'Guest: Art director or creative agency lead (live demo)',
+    ],
+    assignments: [
+      '[NEW] Integrated commercial campaign brief: The "Most Wanted" brand assets package',
+    ],
   },
   {
     week: 7,
     title: 'Advanced Project Development',
     overview: 'Client Simulation Project: Students select one track',
     topics: [
-      'Concept art piece',
-      'Illustrated poster series',
-      'Storyboards / sequential art',
-      'Book cover / children’s book illustration',
+      '[NEW] Concept art piece (hero rendering, silhouette sheets, value & color studies, callouts)',
+      '[NEW] Illustrated poster series (Polish Poster, Tanaka type-as-image, Rand economy of form, Makela layers)',
+      '[NEW] Storyboards / sequential art (camera shots/angles/moves, Script Courier 12pt specifications)',
+      '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
     ],
-    readings: [],
-    assignments: ['Begin major track project'],
+    readings: [
+      '[NEW] Client Simulation Framework: Anatomy of a Professional Design Brief',
+    ],
+    assignments: ['[NEW] Begin major track project: select track, draft brief, build reference board, and thumbnail 12+ directions'],
   },
   {
     week: 8,
@@ -255,6 +269,22 @@ export const curriculum = [
 // ──────────────────────────────────────────────────────────────────
 
 export const changelog = [
+  {
+    date: '2026-05-28',
+    message: 'Week 7 detailed pages wired up: Client Simulation brief framework, Concept Art deliverables, Poster Series lineages, Storyboard shots, and Book Cover design traditions.',
+  },
+  {
+    date: '2026-05-28',
+    message: 'Week 6 expanded with InDesign layout specifications, master pages, integrated campaign artboards, CC Libraries asset management, and "Most Wanted" design brief.',
+  },
+  {
+    date: '2026-05-27',
+    message: 'Week 5 expanded with Preston Blair emotional range guides, auditory spaces/leitmotifs, straight-ahead vs. pose-to-pose hybrid planning, and cinematic camera angles.',
+  },
+  {
+    date: '2026-05-26',
+    message: 'Week 4 detailed pages wired up with digital publishing, cropping/framing composition, scalable vector art, and multi-format exports.',
+  },
   {
     date: '2026-05-21',
     message: 'Week 3 assignment updated — Dramatic Location cinematic lighting brief added',

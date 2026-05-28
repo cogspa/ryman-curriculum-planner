@@ -71,6 +71,12 @@ This is the difference between a character and a costume. A costume sits on top 
 
 For the 3-panel narrative this week: decide the theme of your story before you draw the character. Then design the character to carry the theme.`,
       },
+      {
+        heading: 'Exaggeration & Emotional Range',
+        body: `To bring characters to life, they must display emotional range. Designing a character with 5 distinct facial expressions (conveying happiness, anger, sadness, surprise, and fear) forces you to study subtle muscle movements in the eyes, mouth, and eyebrows, referencing the classic Preston Blair expression sheets.
+
+Take inspiration from "cartoon takes" (spontaneous, highly exaggerated character reactions popularized by directors like Tex Avery and Warner Bros. animators). During a cartoon take, character expressions stretch wildly — sometimes filling the entire frame — to emphasize reaction. Exaggeration makes your character's personality clear and memorable.`,
+      },
     ],
   },
 
@@ -155,6 +161,18 @@ In the VR Alien Landscape assignment from PCC, the environment requires three ex
 
 For a 3-panel narrative, you don't need extensive worldbuilding — but each panel should have at least one detail that hints at a larger reality.`,
       },
+      {
+        heading: 'Auditory Space & Leitmotifs (The Sound Landscape)',
+        body: `Even in a static illustration, you should design with a sense of sound. In cinema and animation, sound is a powerful worldbuilding tool divided into:
+
+• Diegetic Sound: Sound originating from within the scene's world, which characters can hear. Footsteps on gravel, the buzz of a neon sign, a hum of a radio, the click of a lock, or the screech of a heavy door opening. It establishes absolute realism and sensory immersion.
+
+• Non-Diegetic Sound: Sound added purely for the audience's benefit. An emotional music score, voiceover narration, or stylized background soundscapes.
+
+• Leitmotif: A recurring musical theme representing a specific character, place, or concept (like the iconic two-note tension motif in Jaws or the Imperial March in Star Wars).
+
+When composition planning, ask yourself: what is the soundtrack of this panel? What does the environment sound like? The rustle of paper, the drip of water, or the absolute silence of an empty room? Designing with an auditory footprint makes the environment feel alive.`,
+      },
     ],
   },
 
@@ -218,6 +236,16 @@ The most powerful sequences change multiple variables at once. Panel 1: wide sho
 There's an analog for sequential storytelling: persistence of narrative. Each panel lingers in the reader's mind for the time they spend on it, and bleeds into the next. The reader doesn't see three separate images — they see a continuous story constructed across three moments.
 
 This is why what happens between panels matters as much as what's in them. The space between is where the reader's imagination does its work.`,
+      },
+      {
+        heading: 'Straight Ahead vs. Pose to Pose (Spontaneity vs. Planning)',
+        body: `When organizing sequential visuals, animators leverage two core methodologies that apply equally to planning narrative illustration panels:
+
+• Straight Ahead: Creating spontaneous drawings frame-by-frame from start to finish without detailed pre-planning. This yields high natural flow, fluid spontaneity, organic movement, and surprise discoveries. However, it risks wandering focus, poor time pacing, and inconsistent character sizing across your panels.
+
+• Pose to Pose: A highly methodical, structured approach. Animators draw the key moments first (storytelling anchors), then fill in the breakdowns and in-betweens. This ensures precision, readable movement, absolute control, and synchronization with narrative action. The main risk is a loss of fluidity, resulting in stiff, overly calculated layouts.
+
+• The Hybrid Approach: The ideal synthesis. Plan the key beats first in small thumbnail layouts to establish structure. Then, spontaneously explore fluid, organic details between those key frames. Layer your work: focus first on primary action, then secondary elements, and finally loose details.`,
       },
     ],
   },
@@ -309,6 +337,18 @@ If they can, the storyboard works. If they can't, something is broken — usuall
 The fix is almost never "make the drawing better." The fix is to clarify the beat structure, change a shot size, or rearrange the order of information within a panel.
 
 Pitch the storyboard before you render the panels. It's the cheapest debugging you'll ever do.`,
+      },
+      {
+        heading: 'Cinematography & Special Camera Angles',
+        body: `A rich storyboard draws upon deep camera vocabulary to direct focus, build tension, or establish psychological states:
+
+• Dutch Tilt (or tilt shot) — tilting the camera slightly off-center to create disorientation, tension, panic, instability, or dreamlike sequences. It signals to the viewer that something is fundamentally wrong in the narrative world.
+
+• Worm's Eye View — placing the camera on the ground looking straight up at the subject. It makes the subject appear monumental, dominant, heroic, or threatening, while making the viewer feel small and powerless.
+
+• Pitch Shot — placing the camera at ground level directly in the subject's path of motion, making the subject appear to pass over the camera. It adds visceral physical scale and speed.
+
+• Zolly Shot (Vertical/Dolly Zoom) — combining a physical camera movement backward with a lens zoom-in, causing the background to recede dramatically while the subject remains constant in size. This creates an optical compression effect that visualizes sudden, gut-wrenching realizations or psychological vertigo.`,
       },
     ],
   },

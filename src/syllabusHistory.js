@@ -5,9 +5,69 @@
 
 export const syllabusVersions = [
   {
+    version: '1.8',
+    date: '2026-05-28',
+    description: 'Wired up Week 7 detailed pages for the Client Simulation framework and the four professional track guidelines (Concept Art, Poster Series, Storyboards, Book Cover).',
+  },
+  {
+    version: '1.7',
+    date: '2026-05-28',
+    description: 'Updated Week 6 with InDesign layout specifications, master pages, integrated campaign artboards, CC Libraries asset management, and "Most Wanted" design brief.',
+    curriculumSnapshot: [
+      {
+        week: 7,
+        title: 'Advanced Project Development',
+        overview: 'Client Simulation Project: Students select one track',
+        topics: [
+          'Concept art piece',
+          'Illustrated poster series',
+          'Storyboards / sequential art',
+          'Book cover / children’s book illustration',
+        ],
+        readings: [],
+        assignments: ['Begin major track project'],
+      }
+    ]
+  },
+  {
+    version: '1.6',
+    date: '2026-05-27',
+    description: 'Updated Week 5 with 2D animation integration: Preston Blair expression guides, auditory space/leitmotifs, straight-ahead vs. pose-to-pose planning, and cinematic camera angles.',
+    curriculumSnapshot: [
+      {
+        week: 6,
+        title: 'Introduction to Commercial Application',
+        overview: 'Focus: Turning painterly skill into paid work',
+        topics: [
+          'Book covers',
+          'Key art',
+          'Editorial illustration',
+          'Entertainment concept art',
+        ],
+        readings: ['Guest: Art director or creative agency lead'],
+        assignments: ['Respond to a professional-style brief'],
+      }
+    ]
+  },
+  {
     version: '1.5',
     date: '2026-05-27',
     description: 'Expanded Week 5 with sequential narrative storytelling, character silhouettes, storyboard beats, and the 3-panel workflow brief.',
+    curriculumSnapshot: [
+      {
+        week: 5,
+        title: 'Illustration & Visual Storytelling',
+        overview: 'Focus: Moving beyond single-frame fine art',
+        topics: [
+          'Character development',
+          'Environmental storytelling',
+          'Sequential thinking',
+          'Storyboarding fundamentals',
+        ],
+        readings: ['Guest: Publishing or entertainment illustrator (live demo)'],
+        assignments: ['3-panel narrative illustration — full workflow brief'],
+      }
+    ]
   },
   {
     version: '1.4',
