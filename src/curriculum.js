@@ -77,9 +77,7 @@ export const curriculum = [
       topics: [
         '⛔ July 4th Holiday — No Saturday Studio Class',
       ],
-      assignments: [
-        '**Brush Engine Prep**: No new assignments. Pushing brush engine material topics and material studies tiles to next Saturday (Week 03).',
-      ],
+      assignments: [],
     }
   },
   {

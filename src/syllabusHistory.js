@@ -5,6 +5,11 @@
 
 export const syllabusVersions = [
   {
+    version: '2.1',
+    date: '2026-05-28',
+    description: 'Removed Week 2 holiday assignment spacer and successfully gave all active assignments across all weeks highly-curated bold titles.',
+  },
+  {
     version: '2.0',
     date: '2026-05-28',
     description: 'Updated Week 2 Saturday to reflect July 4th Independence Day Holiday (No class) and successfully consolidated/pushed custom brush and texture workshop topics/assignments onto July 11th (Week 3 Saturday).',
