@@ -75,21 +75,17 @@ export const curriculum = [
     },
     saturday: {
       topics: [
-        '[NEW] Brush engine deep dive — hardness, size, opacity, flow, and the bracket-key workflow',
-        '[NEW] Custom brush creation — capturing source photography, contrast prep with Levels, Define Brush Preset',
-        '[NEW] Procedural vs. non-procedural texture generation',
-        '[NEW] Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8',
-        '[NEW] Canvas simulation techniques — Perlin/cloud noise as paper, Worley noise for tooth, grain and stipple filters',
+        '⛔ July 4th Holiday — No Saturday Studio Class',
       ],
       assignments: [
-        '[NEW] Media Tile: Texture Systems & Brush-Based Material Studies — Build an 18-brush library (pigment, surface, atmospheric sets) and render one subject as a 2×2 tile across four physical-media simulations (oil, watercolor, charcoal, invented digital medium).',
+        'No new assignments. Pushing brush engine material topics and material studies tiles to next Saturday (Week 03).',
       ],
     }
   },
   {
     week: 3,
     title: 'Light, Color & Atmosphere for Screen',
-    overview: 'Advanced digital rendering using blending modes, atmospheric depth, and cinematic lighting treatments.',
+    overview: 'Advanced digital rendering using blending modes, atmospheric depth, and cinematic lighting treatments, combined with Week 2 material workshop.',
     tuesday: {
       topics: [
         'Discussion: Traditional glazing vs. digital layering and transparency',
@@ -104,15 +100,14 @@ export const curriculum = [
     },
     saturday: {
       topics: [
-        'Glazing vs. digital layering',
-        'Blending modes deep dive',
-        'Cinematic lighting layouts',
-        'Atmospheric perspective rules',
-        'Masking & selections controls',
-        'Photo compositing basics',
-        'Realistic lighting adjustments',
+        '🎨 PUSHED FROM WEEK 2: Custom brush creation & Wacom brackets-key flow',
+        '🎨 PUSHED FROM WEEK 2: Procedural texture generation (Perlin/cellular surface simulation)',
+        '🎨 PUSHED FROM WEEK 2: Special 8 Blend Modes and stipple/grain overlays',
+        'Glazing vs. digital layering transparent applications',
+        'Cinematic lighting, atmospheric perspective, & selection masking compositing',
       ],
       assignments: [
+        '[NEW] Media Tile: Texture Systems & Brush-Based Material Studies (from Week 2)',
         '[NEW] Dramatic Location: Pick a location with depth (interior/exterior, real/imagined) that carries a cinematic lighting treatment (cathedral, warehouse, ruins, sci-fi corridor). The light is the subject; give it surfaces, depth, and atmosphere to act on. No central figure required.',
       ],
     }
@@ -394,6 +389,10 @@ export const curriculum = [
 
 // ─── Changelog ────────────────────────────────────────────────────
 export const changelog = [
+  {
+    date: '2026-05-28',
+    message: 'Consolidated July 4th (Week 2 Saturday holiday) brush & texture workshop topics and material tiles assignments onto July 11th (Week 3 Saturday), keeping the calendar structure intact.',
+  },
   {
     date: '2026-05-28',
     message: 'Restructured all 13 weeks to feature split Tuesday (Zoom discussion & readings preview) and Saturday (In-person Reveal Studio workshop) sections. Week 1 Tuesday specifically details Intro & Reveal logistics.',

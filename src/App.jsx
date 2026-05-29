@@ -663,20 +663,9 @@ export default function App() {
   const weeks = useMemo(() => {
     const start = parseLocal(startDate);
     const firstTue = findTuesdayOnOrAfter(start);
-
-    // Generate valid Saturdays (skipping holidays) sequentially
-    const validSaturdays = [];
-    let checkDate = addDays(firstTue, 4); // First Saturday candidate
-    while (validSaturdays.length < curriculum.length) {
-      if (!isHoliday(checkDate)) {
-        validSaturdays.push(new Date(checkDate));
-      }
-      checkDate = addDays(checkDate, 7);
-    }
-
     return curriculum.map((entry, idx) => {
       const tue = addDays(firstTue, idx * 7);
-      const sat = validSaturdays[idx];
+      const sat = addDays(tue, 4);
       return { entry, tuesday: tue, saturday: sat };
     });
   }, [startDate]);

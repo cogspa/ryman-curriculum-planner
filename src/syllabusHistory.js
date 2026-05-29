@@ -5,6 +5,11 @@
 
 export const syllabusVersions = [
   {
+    version: '2.0',
+    date: '2026-05-28',
+    description: 'Updated Week 2 Saturday to reflect July 4th Independence Day Holiday (No class) and successfully consolidated/pushed custom brush and texture workshop topics/assignments onto July 11th (Week 3 Saturday).',
+  },
+  {
     version: '1.9',
     date: '2026-05-28',
     description: 'Split all 13 weeks into distinct Tuesday (Virtual Zoom Preview & Discussion) and Saturday (In-person Reveal Studio Workshop) sessions, with Week 1 Tuesday covering introduction and Reveal parking/entry procedures.',
