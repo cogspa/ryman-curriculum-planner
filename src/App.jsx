@@ -531,40 +531,98 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
               )}
             </p>
           )}
-          <Section label="Topics" items={week.topics} weekNumber={week.week} />
-          <Section label="Readings" items={week.readings} weekNumber={week.week} />
-          {week.assignments?.length > 0 && (
-            <div className="section">
-              <p className="section-label">Assignments</p>
-              <ul className="section-list">
-                {week.assignments.map((rawItem, i) => {
-                  const { isNew, text } = parseNew(rawItem);
-                  return (
-                    <li key={i} className={isNew ? 'is-new' : ''}>
-                      {isNew && <NewPill />}
-                      {week.week === 5 ? (
-                        <Link to="/week/05/three-panel-assignment" className="assignment-link">
-                          {text}
-                          <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
-                        </Link>
-                      ) : week.week === 6 ? (
-                        <Link to="/week/06/commercial-campaign-assignment" className="assignment-link">
-                          {text}
-                          <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
-                        </Link>
-                      ) : assignments[week.week] ? (
-                        <Link to={`/assignment/${week.week}`} className="assignment-link">
-                          {text}
-                          <span className="assignment-arrow assignment-arrow--pill">VIEW FULL ASSIGNMENT →</span>
-                        </Link>
-                      ) : (
-                        <Linkify text={text} />
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+
+          {week.tuesday || week.saturday ? (
+            <div className="session-splits" style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '16px' }}>
+              {week.tuesday && (
+                <div className="session-split-block tuesday-block" style={{ borderLeft: '3px solid var(--accent-soft)', paddingLeft: '14px', background: 'rgba(168, 72, 42, 0.01)', paddingBottom: '4px', paddingTop: '4px' }}>
+                  <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--accent)', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    📅 Tuesday Session — Zoom Preview & Discussion
+                  </h4>
+                  <Section label="Topics" items={week.tuesday.topics} weekNumber={week.week} />
+                  <Section label="Readings" items={week.tuesday.readings} weekNumber={week.week} />
+                </div>
+              )}
+              {week.saturday && (
+                <div className="session-split-block saturday-block" style={{ borderLeft: '3px solid var(--accent)', paddingLeft: '14px', background: 'rgba(168, 72, 42, 0.03)', paddingBottom: '4px', paddingTop: '4px' }}>
+                  <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--accent-deep)', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    🎨 Saturday Session — Studio Workshop
+                  </h4>
+                  <Section label="Topics" items={week.saturday.topics} weekNumber={week.week} />
+                  {week.saturday.assignments?.length > 0 && (
+                    <div className="section">
+                      <p className="section-label">Assignments</p>
+                      <ul className="section-list">
+                        {week.saturday.assignments.map((rawItem, i) => {
+                          const { isNew, text } = parseNew(rawItem);
+                          return (
+                            <li key={i} className={isNew ? 'is-new' : ''}>
+                              {isNew && <NewPill />}
+                              {week.week === 5 ? (
+                                <Link to="/week/05/three-panel-assignment" className="assignment-link">
+                                  {text}
+                                  <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
+                                </Link>
+                              ) : week.week === 6 ? (
+                                <Link to="/week/06/commercial-campaign-assignment" className="assignment-link">
+                                  {text}
+                                  <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
+                                </Link>
+                              ) : assignments[week.week] ? (
+                                <Link to={`/assignment/${week.week}`} className="assignment-link">
+                                  {text}
+                                  <span className="assignment-arrow assignment-arrow--pill">VIEW FULL ASSIGNMENT →</span>
+                                </Link>
+                              ) : (
+                                <Linkify text={text} />
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
+          ) : (
+            <>
+              <Section label="Topics" items={week.topics} weekNumber={week.week} />
+              <Section label="Readings" items={week.readings} weekNumber={week.week} />
+              {week.assignments?.length > 0 && (
+                <div className="section">
+                  <p className="section-label">Assignments</p>
+                  <ul className="section-list">
+                    {week.assignments.map((rawItem, i) => {
+                      const { isNew, text } = parseNew(rawItem);
+                      return (
+                        <li key={i} className={isNew ? 'is-new' : ''}>
+                          {isNew && <NewPill />}
+                          {week.week === 5 ? (
+                            <Link to="/week/05/three-panel-assignment" className="assignment-link">
+                              {text}
+                              <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
+                            </Link>
+                          ) : week.week === 6 ? (
+                            <Link to="/week/06/commercial-campaign-assignment" className="assignment-link">
+                              {text}
+                              <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
+                            </Link>
+                          ) : assignments[week.week] ? (
+                            <Link to={`/assignment/${week.week}`} className="assignment-link">
+                              {text}
+                              <span className="assignment-arrow assignment-arrow--pill">VIEW FULL ASSIGNMENT →</span>
+                            </Link>
+                          ) : (
+                            <Linkify text={text} />
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </>
           )}
         </div>
       )}

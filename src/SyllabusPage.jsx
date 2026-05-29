@@ -9,10 +9,10 @@ function clean(str) {
 }
 
 export default function SyllabusPage() {
-  const [selectedVer, setSelectedVer] = useState('1.8');
+  const [selectedVer, setSelectedVer] = useState('1.9');
 
   const activeCurriculum = useMemo(() => {
-    if (selectedVer === '1.8') {
+    if (selectedVer === '1.9') {
       return curriculum;
     }
     const verData = syllabusVersions.find((v) => v.version === selectedVer);
@@ -90,31 +90,84 @@ export default function SyllabusPage() {
               <h2 className="syllabus-week-title">{week.title}</h2>
               {week.overview && <p className="syllabus-overview">{week.overview}</p>}
 
-              {week.topics?.length > 0 && (
-                <div className="syllabus-block">
-                  <h3 className="syllabus-block-label">Topics</h3>
-                  <ul>
-                    {week.topics.map((t, i) => <li key={i}>{clean(t)}</li>)}
-                  </ul>
+              {week.tuesday || week.saturday ? (
+                <div className="syllabus-day-splits" style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  {week.tuesday && (
+                    <div className="syllabus-day-block" style={{ borderLeft: '2px solid #8b3a2f', paddingLeft: '14px' }}>
+                      <h4 style={{ fontSize: '11px', textTransform: 'uppercase', fontFamily: 'Menlo, monospace', color: '#8b3a2f', margin: '0 0 10px' }}>
+                        📅 Tuesday Session (Zoom Discussion)
+                      </h4>
+                      {week.tuesday.topics?.length > 0 && (
+                        <div className="syllabus-block" style={{ marginBottom: '10px' }}>
+                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Topics & Discussions</h5>
+                          <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                            {week.tuesday.topics.map((t, i) => <li key={i}>{clean(t)}</li>)}
+                          </ul>
+                        </div>
+                      )}
+                      {week.tuesday.readings?.length > 0 && (
+                        <div className="syllabus-block">
+                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Readings & Discussions</h5>
+                          <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                            {week.tuesday.readings.map((r, i) => <li key={i}>{clean(r)}</li>)}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  {week.saturday && (
+                    <div className="syllabus-day-block" style={{ borderLeft: '2px solid #2a2418', paddingLeft: '14px' }}>
+                      <h4 style={{ fontSize: '11px', textTransform: 'uppercase', fontFamily: 'Menlo, monospace', color: '#2a2418', margin: '0 0 10px' }}>
+                        🎨 Saturday Session (Reveal Workshop)
+                      </h4>
+                      {week.saturday.topics?.length > 0 && (
+                        <div className="syllabus-block" style={{ marginBottom: '10px' }}>
+                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Topics & Workshop</h5>
+                          <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                            {week.saturday.topics.map((t, i) => <li key={i}>{clean(t)}</li>)}
+                          </ul>
+                        </div>
+                      )}
+                      {week.saturday.assignments?.length > 0 && (
+                        <div className="syllabus-block">
+                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Assignments & Prep</h5>
+                          <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                            {week.saturday.assignments.map((a, i) => <li key={i}>{clean(a)}</li>)}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
-              )}
+              ) : (
+                <>
+                  {week.topics?.length > 0 && (
+                    <div className="syllabus-block">
+                      <h3 className="syllabus-block-label">Topics</h3>
+                      <ul>
+                        {week.topics.map((t, i) => <li key={i}>{clean(t)}</li>)}
+                      </ul>
+                    </div>
+                  )}
 
-              {week.readings?.length > 0 && (
-                <div className="syllabus-block">
-                  <h3 className="syllabus-block-label">Readings & Resources</h3>
-                  <ul>
-                    {week.readings.map((r, i) => <li key={i}>{clean(r)}</li>)}
-                  </ul>
-                </div>
-              )}
+                  {week.readings?.length > 0 && (
+                    <div className="syllabus-block">
+                      <h3 className="syllabus-block-label">Readings & Resources</h3>
+                      <ul>
+                        {week.readings.map((r, i) => <li key={i}>{clean(r)}</li>)}
+                      </ul>
+                    </div>
+                  )}
 
-              {week.assignments?.length > 0 && (
-                <div className="syllabus-block">
-                  <h3 className="syllabus-block-label">Assignments</h3>
-                  <ul>
-                    {week.assignments.map((a, i) => <li key={i}>{clean(a)}</li>)}
-                  </ul>
-                </div>
+                  {week.assignments?.length > 0 && (
+                    <div className="syllabus-block">
+                      <h3 className="syllabus-block-label">Assignments</h3>
+                      <ul>
+                        {week.assignments.map((a, i) => <li key={i}>{clean(a)}</li>)}
+                      </ul>
+                    </div>
+                  )}
+                </>
               )}
             </section>
           ))}

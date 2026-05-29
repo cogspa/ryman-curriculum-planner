@@ -5,9 +5,31 @@
 
 export const syllabusVersions = [
   {
+    version: '1.9',
+    date: '2026-05-28',
+    description: 'Split all 13 weeks into distinct Tuesday (Virtual Zoom Preview & Discussion) and Saturday (In-person Reveal Studio Workshop) sessions, with Week 1 Tuesday covering introduction and Reveal parking/entry procedures.',
+  },
+  {
     version: '1.8',
     date: '2026-05-28',
     description: 'Wired up Week 7 detailed pages for the Client Simulation framework and the four professional track guidelines (Concept Art, Poster Series, Storyboards, Book Cover).',
+    curriculumSnapshot: [
+      {
+        week: 7,
+        title: 'Advanced Project Development',
+        overview: 'Client Simulation Project: Students select one track',
+        topics: [
+          '[NEW] Concept art piece (hero rendering, silhouette sheets, value & color studies, callouts)',
+          '[NEW] Illustrated poster series (Polish Poster, Tanaka type-as-image, Rand economy of form, Makela layers)',
+          '[NEW] Storyboards / sequential art (camera shots/angles/moves, Script Courier 12pt specifications)',
+          '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
+        ],
+        readings: [
+          '[NEW] Client Simulation Framework: Anatomy of a Professional Design Brief',
+        ],
+        assignments: ['[NEW] Begin major track project: select track, draft brief, build reference board, and thumbnail 12+ directions'],
+      }
+    ]
   },
   {
     version: '1.7',
