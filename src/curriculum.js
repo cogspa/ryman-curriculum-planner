@@ -106,7 +106,6 @@ export const curriculum = [
       ],
       assignments: [
         '[NEW] **Material Studies**: Media Tile: Texture Systems & Brush-Based Material Studies (from Week 2)',
-        '[NEW] **Atmospheric Spaces**: Dramatic Location: Pick a location with depth (interior/exterior, real/imagined) that carries a cinematic lighting treatment (cathedral, warehouse, ruins, sci-fi corridor). The light is the subject; give it surfaces, depth, and atmosphere to act on. No central figure required.',
       ],
     }
   },
@@ -132,10 +131,9 @@ export const curriculum = [
         '[NEW] Cropping & framing',
         'Scalable artwork systems',
         'Exporting for multiple formats',
+        '🛠️ Task: Adapt one artwork for print, web, and social formats (hierarchy exercise)',
       ],
-      assignments: [
-        '**Responsive Adaptations**: Adapt one artwork for print, web, and social formats, ensuring visual hierarchy is preserved across all crops.',
-      ],
+      assignments: [],
     }
   },
   {
@@ -163,7 +161,7 @@ export const curriculum = [
         '[NEW] Storyboarding fundamentals & visual cinematography (Dutch tilt, worm\'s eye view, pitch shot, zolly/dolly zooms)',
       ],
       assignments: [
-        '[NEW] **Narrative Panels**: 3-panel narrative illustration — full workflow brief: develop a sequential narrative using cinematographic frames and character turnaround studies.',
+        '[NEW] **Atmospheric Spaces**: Dramatic Location: Pick a location with depth (interior/exterior, real/imagined) that carries a cinematic lighting treatment (cathedral, warehouse, ruins, sci-fi corridor). The light is the subject; give it surfaces, depth, and atmosphere to act on. No central figure required.',
       ],
     }
   },
@@ -191,9 +189,7 @@ export const curriculum = [
         '[NEW] Asset management & CC Libraries (collaborative libraries & master page templates)',
         '[NEW] The commercial brief (visual hierarchy, type & image pairing, campaign pitching)',
       ],
-      assignments: [
-        '[NEW] **Most Wanted Campaign**: Integrated commercial campaign brief: The "Most Wanted" brand assets package.',
-      ],
+      assignments: [],
     }
   },
   {
@@ -218,7 +214,7 @@ export const curriculum = [
         '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
       ],
       assignments: [
-        '[NEW] **Simulation Kickoff**: Begin major track project: select track, draft brief, build reference board, and thumbnail 12+ directions.',
+        '[NEW] **Narrative Panels**: 3-panel narrative illustration — full workflow brief: develop a sequential narrative using cinematographic frames and character turnaround studies.',
       ],
     }
   },
@@ -245,10 +241,9 @@ export const curriculum = [
         'Studio handoff etiquette & conventions',
         'Working with art directors role-play',
         'Formal pitch rehearsal & timing',
+        '🛠️ Task: Refine narrative panels for portfolio: export finished layouts and organize reference sheets',
       ],
-      assignments: [
-        '**Handoff Packaging**: Refine track project for portfolio: export finished layouts and organize reference sheets.',
-      ],
+      assignments: [],
     }
   },
   {
@@ -272,9 +267,10 @@ export const curriculum = [
         'Contracts & intellectual property deep dive',
         'Client communication & relationship skills',
         'Taxes basics for creative sole proprietors',
+        '🛠️ Task: Refine campaign assets & apply peer feedback from Week 8 pitch rehearsals',
       ],
       assignments: [
-        '**Feedback Revisions**: Continue project refinement: apply feedback from Week 8 pitch rehearsals.',
+        '[NEW] **Most Wanted Campaign**: Integrated commercial campaign brief: The "Most Wanted" brand assets package.',
       ],
     }
   },
@@ -301,7 +297,7 @@ export const curriculum = [
         'Salary negotiation basics & pricing confidence',
       ],
       assignments: [
-        '**Export Refinement**: Final artwork refinement: ensure the Client Simulation project has all detail sheets exported.',
+        '[NEW] **Final Project Kickoff**: Begin major track project: select track (Concept Art, Poster Series, Storyboards, or Book Cover), draft brief, build reference board, and thumbnail 12+ directions.',
       ],
     }
   },
@@ -324,10 +320,9 @@ export const curriculum = [
         'Portfolio layout & sequence curation',
         'Removing weaker pieces & streamlining selections',
         'Final presentation deck preparation',
+        '🛠️ Task: Curation deliverable: Arrange 6–10 industry-ready pieces in a cohesive sequence',
       ],
-      assignments: [
-        '**Curation Prep**: Deliverable: 6–10 industry-ready pieces arranged in a cohesive sequence.',
-      ],
+      assignments: [],
     }
   },
   {
@@ -351,10 +346,9 @@ export const curriculum = [
         'Removing weaker pieces final review',
         'Final presentation preparation',
         'Rehearsal & peer feedback sessions',
+        '🛠️ Task: Capstone curation: Assemble 6-8 high-quality digital works, commercial campaign, & pitch deck',
       ],
-      assignments: [
-        '**Capstone Curation**: Assemble: 6–8 high-quality digital works, 1 commercial-ready campaign, cohesive pitch deck.',
-      ],
+      assignments: [],
     }
   },
   {
@@ -377,16 +371,19 @@ export const curriculum = [
         'Networking mixer and peer interactions',
         'Career pathway and educational progression guidance',
         'Final portfolio showcases',
+        '🛠️ Task: Present final showcase portfolio deck to industry panel',
       ],
-      assignments: [
-        '**Final Showcase Presentation**: Present final portfolio to industry panel and complete the commercial-ready campaign project.',
-      ],
+      assignments: [],
     }
   },
 ];
 
 // ─── Changelog ────────────────────────────────────────────────────
 export const changelog = [
+  {
+    date: '2026-05-28',
+    message: 'Rebuilt curriculum assignment cadence to a clean biweekly model: 6 graded milestones (Weeks 1, 3, 5, 7, 9, 10), with all other deliverables reframed as preparatory milestones in topics.',
+  },
   {
     date: '2026-05-28',
     message: 'Consolidated July 4th (Week 2 Saturday holiday) brush & texture workshop topics and material tiles assignments onto July 11th (Week 3 Saturday), keeping the calendar structure intact.',

@@ -5,6 +5,11 @@
 
 export const syllabusVersions = [
   {
+    version: '2.2',
+    date: '2026-05-28',
+    description: 'Transitioned curriculum to a structured biweekly graded assignment cadence (6 major assignments on Weeks 1, 3, 5, 7, 9, 10), reframing intermediate deliverables as supportive studio preparatory tasks.',
+  },
+  {
     version: '2.1',
     date: '2026-05-28',
     description: 'Removed Week 2 holiday assignment spacer and successfully gave all active assignments across all weeks highly-curated bold titles.',

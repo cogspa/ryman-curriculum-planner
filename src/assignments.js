@@ -89,7 +89,7 @@ export const assignments = {
     ],
     discussion: 'After both compositions are uploaded, we will critique and discuss which of your two compositions should be uploaded to Teepublic.com.',
   },
-  2: {
+  3: {
     title: 'Media Tile: Texture Systems & Brush-Based Material Studies',
     subtitle: 'Brush phase adapted from DMA 12 Assignment 6, Part 1 (Landscape Progression). Style-tile output adapted from Assignment 7 (Style Progression). Reference + reflection structure adapted from the DMA 12 Final (Blueprint of the Imagination). Thumbnail planning adapted from the 3D Collage assignment.',
     totalPoints: 130,
@@ -214,7 +214,7 @@ export const assignments = {
       { criterion: 'Written reflection', points: 5 }
     ]
   },
-  3: {
+  5: {
     title: 'Dramatic Location: Cinematic Light & Atmosphere',
     subtitle: 'Class 3 Assignment — Explore cinematic light, surfaces, depth, and atmospheric perspective.',
     totalPoints: 100,
