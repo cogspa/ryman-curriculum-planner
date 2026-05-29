@@ -3,9 +3,18 @@ import { Link } from 'react-router-dom';
 import { curriculum, config } from './curriculum.js';
 import { syllabusVersions } from './syllabusHistory.js';
 
-// Strip [NEW] prefix for clean syllabus display
-function clean(str) {
-  return str.startsWith('[NEW] ') ? str.slice(6) : str;
+// Strip [NEW] prefix and render bold markdown (**text**) for syllabus display
+function renderCleaned(str) {
+  const text = str.startsWith('[NEW] ') ? str.slice(6) : str;
+  const boldRegex = /(\*\*.*?\*\*)/g;
+  if (!boldRegex.test(text)) return text;
+  const parts = text.split(boldRegex);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} style={{ fontWeight: '700', color: '#8b3a2f' }}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
 }
 
 export default function SyllabusPage() {
@@ -101,7 +110,7 @@ export default function SyllabusPage() {
                         <div className="syllabus-block" style={{ marginBottom: '10px' }}>
                           <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Topics & Discussions</h5>
                           <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                            {week.tuesday.topics.map((t, i) => <li key={i}>{clean(t)}</li>)}
+                            {week.tuesday.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
                           </ul>
                         </div>
                       )}
@@ -109,7 +118,7 @@ export default function SyllabusPage() {
                         <div className="syllabus-block">
                           <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Readings & Discussions</h5>
                           <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                            {week.tuesday.readings.map((r, i) => <li key={i}>{clean(r)}</li>)}
+                            {week.tuesday.readings.map((r, i) => <li key={i}>{renderCleaned(r)}</li>)}
                           </ul>
                         </div>
                       )}
@@ -124,7 +133,7 @@ export default function SyllabusPage() {
                         <div className="syllabus-block" style={{ marginBottom: '10px' }}>
                           <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Topics & Workshop</h5>
                           <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                            {week.saturday.topics.map((t, i) => <li key={i}>{clean(t)}</li>)}
+                            {week.saturday.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
                           </ul>
                         </div>
                       )}
@@ -132,7 +141,7 @@ export default function SyllabusPage() {
                         <div className="syllabus-block">
                           <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Assignments & Prep</h5>
                           <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                            {week.saturday.assignments.map((a, i) => <li key={i}>{clean(a)}</li>)}
+                            {week.saturday.assignments.map((a, i) => <li key={i}>{renderCleaned(a)}</li>)}
                           </ul>
                         </div>
                       )}
@@ -145,7 +154,7 @@ export default function SyllabusPage() {
                     <div className="syllabus-block">
                       <h3 className="syllabus-block-label">Topics</h3>
                       <ul>
-                        {week.topics.map((t, i) => <li key={i}>{clean(t)}</li>)}
+                        {week.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
                       </ul>
                     </div>
                   )}
@@ -154,7 +163,7 @@ export default function SyllabusPage() {
                     <div className="syllabus-block">
                       <h3 className="syllabus-block-label">Readings & Resources</h3>
                       <ul>
-                        {week.readings.map((r, i) => <li key={i}>{clean(r)}</li>)}
+                        {week.readings.map((r, i) => <li key={i}>{renderCleaned(r)}</li>)}
                       </ul>
                     </div>
                   )}
@@ -163,7 +172,7 @@ export default function SyllabusPage() {
                     <div className="syllabus-block">
                       <h3 className="syllabus-block-label">Assignments</h3>
                       <ul>
-                        {week.assignments.map((a, i) => <li key={i}>{clean(a)}</li>)}
+                        {week.assignments.map((a, i) => <li key={i}>{renderCleaned(a)}</li>)}
                       </ul>
                     </div>
                   )}

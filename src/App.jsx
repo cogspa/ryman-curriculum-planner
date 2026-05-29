@@ -248,14 +248,41 @@ function parseNew(text) {
   return { isNew: false, text };
 }
 
+function BoldText({ text }) {
+  const boldRegex = /(\*\*.*?\*\*)/g;
+  if (!boldRegex.test(text)) return text;
+  const parts = text.split(boldRegex);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i} style={{ fontWeight: '700', color: 'inherit' }}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+}
+
 function Linkify({ text }) {
   const urlRegex = /(https?:\/\/[^\s,]+)/g;
   const parts = text.split(urlRegex);
-  return parts.map((part, i) =>
-    urlRegex.test(part)
-      ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="inline-link">{part}</a>
-      : part
-  );
+  return parts.map((part, i) => {
+    if (urlRegex.test(part)) {
+      return <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="inline-link">{part}</a>;
+    }
+    const boldRegex = /(\*\*.*?\*\*)/g;
+    if (boldRegex.test(part)) {
+      const boldParts = part.split(boldRegex);
+      return (
+        <span key={i}>
+          {boldParts.map((bp, j) => {
+            if (bp.startsWith('**') && bp.endsWith('**')) {
+              return <strong key={j} style={{ fontWeight: '700', color: 'var(--accent-deep)' }}>{bp.slice(2, -2)}</strong>;
+            }
+            return bp;
+          })}
+        </span>
+      );
+    }
+    return part;
+  });
 }
 
 function Section({ label, items, weekNumber }) {
@@ -406,11 +433,11 @@ function Section({ label, items, weekNumber }) {
               {linkPath ? (
                 isExternal ? (
                   <a href={linkPath} target="_blank" rel="noopener noreferrer" className="topic-direct-link">
-                    {text} <span className="topic-arrow">↗</span>
+                    <BoldText text={text} /> <span className="topic-arrow">↗</span>
                   </a>
                 ) : (
                   <Link to={linkPath} className="topic-direct-link">
-                    {text} <span className="topic-arrow">→</span>
+                    <BoldText text={text} /> <span className="topic-arrow">→</span>
                   </Link>
                 )
               ) : (
@@ -560,17 +587,17 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
                               {isNew && <NewPill />}
                               {week.week === 5 ? (
                                 <Link to="/week/05/three-panel-assignment" className="assignment-link">
-                                  {text}
+                                  <BoldText text={text} />
                                   <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
                                 </Link>
                               ) : week.week === 6 ? (
                                 <Link to="/week/06/commercial-campaign-assignment" className="assignment-link">
-                                  {text}
+                                  <BoldText text={text} />
                                   <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
                                 </Link>
                               ) : assignments[week.week] ? (
                                 <Link to={`/assignment/${week.week}`} className="assignment-link">
-                                  {text}
+                                  <BoldText text={text} />
                                   <span className="assignment-arrow assignment-arrow--pill">VIEW FULL ASSIGNMENT →</span>
                                 </Link>
                               ) : (
@@ -600,17 +627,17 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
                           {isNew && <NewPill />}
                           {week.week === 5 ? (
                             <Link to="/week/05/three-panel-assignment" className="assignment-link">
-                              {text}
+                              <BoldText text={text} />
                               <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
                             </Link>
                           ) : week.week === 6 ? (
                             <Link to="/week/06/commercial-campaign-assignment" className="assignment-link">
-                              {text}
+                              <BoldText text={text} />
                               <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
                             </Link>
                           ) : assignments[week.week] ? (
                             <Link to={`/assignment/${week.week}`} className="assignment-link">
-                              {text}
+                              <BoldText text={text} />
                               <span className="assignment-arrow assignment-arrow--pill">VIEW FULL ASSIGNMENT →</span>
                             </Link>
                           ) : (

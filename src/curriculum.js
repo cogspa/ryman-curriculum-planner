@@ -48,7 +48,7 @@ export const curriculum = [
         'Hands-on: Value, composition, gesture, and form on a digital screen',
       ],
       assignments: [
-        '[NEW] Recreate one of your own traditional art pieces in Photoshop. Create two digital interpretations: one made entirely with straight edges and lines, and another made entirely with curves. Builds control, observation, and intentional digital mark-making.',
+        '[NEW] **Traditional Translation**: Recreate one of your own traditional art pieces in Photoshop. Create two digital interpretations: one made entirely with straight edges and lines, and another made entirely with curves. Builds control, observation, and intentional digital mark-making.',
       ],
     }
   },
@@ -78,7 +78,7 @@ export const curriculum = [
         '⛔ July 4th Holiday — No Saturday Studio Class',
       ],
       assignments: [
-        'No new assignments. Pushing brush engine material topics and material studies tiles to next Saturday (Week 03).',
+        '**Brush Engine Prep**: No new assignments. Pushing brush engine material topics and material studies tiles to next Saturday (Week 03).',
       ],
     }
   },
@@ -107,8 +107,8 @@ export const curriculum = [
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
       ],
       assignments: [
-        '[NEW] Media Tile: Texture Systems & Brush-Based Material Studies (from Week 2)',
-        '[NEW] Dramatic Location: Pick a location with depth (interior/exterior, real/imagined) that carries a cinematic lighting treatment (cathedral, warehouse, ruins, sci-fi corridor). The light is the subject; give it surfaces, depth, and atmosphere to act on. No central figure required.',
+        '[NEW] **Material Studies**: Media Tile: Texture Systems & Brush-Based Material Studies (from Week 2)',
+        '[NEW] **Atmospheric Spaces**: Dramatic Location: Pick a location with depth (interior/exterior, real/imagined) that carries a cinematic lighting treatment (cathedral, warehouse, ruins, sci-fi corridor). The light is the subject; give it surfaces, depth, and atmosphere to act on. No central figure required.',
       ],
     }
   },
@@ -136,7 +136,7 @@ export const curriculum = [
         'Exporting for multiple formats',
       ],
       assignments: [
-        'Adapt one artwork for print, web, and social formats, ensuring visual hierarchy is preserved across all crops.',
+        '**Responsive Adaptations**: Adapt one artwork for print, web, and social formats, ensuring visual hierarchy is preserved across all crops.',
       ],
     }
   },
@@ -165,7 +165,7 @@ export const curriculum = [
         '[NEW] Storyboarding fundamentals & visual cinematography (Dutch tilt, worm\'s eye view, pitch shot, zolly/dolly zooms)',
       ],
       assignments: [
-        '[NEW] 3-panel narrative illustration — full workflow brief: develop a sequential narrative using cinematographic frames and character turnaround studies.',
+        '[NEW] **Narrative Panels**: 3-panel narrative illustration — full workflow brief: develop a sequential narrative using cinematographic frames and character turnaround studies.',
       ],
     }
   },
@@ -194,7 +194,7 @@ export const curriculum = [
         '[NEW] The commercial brief (visual hierarchy, type & image pairing, campaign pitching)',
       ],
       assignments: [
-        '[NEW] Integrated commercial campaign brief: The "Most Wanted" brand assets package.',
+        '[NEW] **Most Wanted Campaign**: Integrated commercial campaign brief: The "Most Wanted" brand assets package.',
       ],
     }
   },
@@ -220,7 +220,7 @@ export const curriculum = [
         '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
       ],
       assignments: [
-        '[NEW] Begin major track project: select track, draft brief, build reference board, and thumbnail 12+ directions.',
+        '[NEW] **Simulation Kickoff**: Begin major track project: select track, draft brief, build reference board, and thumbnail 12+ directions.',
       ],
     }
   },
@@ -249,7 +249,7 @@ export const curriculum = [
         'Formal pitch rehearsal & timing',
       ],
       assignments: [
-        'Refine track project for portfolio: export finished layouts and organize reference sheets.',
+        '**Handoff Packaging**: Refine track project for portfolio: export finished layouts and organize reference sheets.',
       ],
     }
   },
@@ -276,7 +276,7 @@ export const curriculum = [
         'Taxes basics for creative sole proprietors',
       ],
       assignments: [
-        'Continue project refinement: apply feedback from Week 8 pitch rehearsals.',
+        '**Feedback Revisions**: Continue project refinement: apply feedback from Week 8 pitch rehearsals.',
       ],
     }
   },
@@ -303,7 +303,7 @@ export const curriculum = [
         'Salary negotiation basics & pricing confidence',
       ],
       assignments: [
-        'Final artwork refinement: ensure the Client Simulation project has all detail sheets exported.',
+        '**Export Refinement**: Final artwork refinement: ensure the Client Simulation project has all detail sheets exported.',
       ],
     }
   },
@@ -328,7 +328,7 @@ export const curriculum = [
         'Final presentation deck preparation',
       ],
       assignments: [
-        'Deliverable: 6–10 industry-ready pieces arranged in a cohesive sequence.',
+        '**Curation Prep**: Deliverable: 6–10 industry-ready pieces arranged in a cohesive sequence.',
       ],
     }
   },
@@ -355,7 +355,7 @@ export const curriculum = [
         'Rehearsal & peer feedback sessions',
       ],
       assignments: [
-        'Assemble: 6–8 high-quality digital works, 1 commercial-ready campaign, cohesive pitch deck.',
+        '**Capstone Curation**: Assemble: 6–8 high-quality digital works, 1 commercial-ready campaign, cohesive pitch deck.',
       ],
     }
   },
@@ -381,7 +381,7 @@ export const curriculum = [
         'Final portfolio showcases',
       ],
       assignments: [
-        'Present final portfolio to industry panel and complete the commercial-ready campaign project.',
+        '**Final Showcase Presentation**: Present final portfolio to industry panel and complete the commercial-ready campaign project.',
       ],
     }
   },
