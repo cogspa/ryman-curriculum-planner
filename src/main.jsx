@@ -18,6 +18,7 @@ import Week06Overview from './pages/Week06Overview.jsx';
 import Week06TopicDetail from './pages/Week06TopicDetail.jsx';
 import Week07Overview from './pages/Week07Overview.jsx';
 import Week07TopicDetail from './pages/Week07TopicDetail.jsx';
+import ClassFAQPage from './ClassFAQPage.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -27,6 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<App />} />
         <Route path="/assignment/:week" element={<AssignmentPage />} />
         <Route path="/syllabus" element={<SyllabusPage />} />
+        <Route path="/faq" element={<ClassFAQPage />} />
         <Route path="/week/01" element={<Week01Overview />} />
         <Route path="/week/01/:topicKey" element={<Week01TopicDetail />} />
         <Route path="/week/02" element={<Week02Overview />} />

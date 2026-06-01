@@ -713,6 +713,22 @@ export default function App() {
               setStartDate={setStartDate}
               totalWeeks={weeks.length}
             />
+
+            <div className="faq-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(5, 150, 105, 0.05)', border: '1px solid rgba(5, 150, 105, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px', marginTop: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>🙋‍♂️</span>
+                <span style={{ fontSize: '13px', fontWeight: '500', color: '#047857' }}>
+                  <strong>Class FAQ:</strong> Answers to questions regarding Zoom sessions and on-site classes at Reveal Studios in Glendale.
+                </span>
+              </div>
+              <Link 
+                to="/faq" 
+                style={{ textDecoration: 'none', background: '#059669', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+              >
+                CLASS FAQ & Reveal Guide →
+              </Link>
+            </div>
+
             <div className="logout-row">
               <button className="logout-btn" onClick={handleLogout}>Sign out</button>
             </div>

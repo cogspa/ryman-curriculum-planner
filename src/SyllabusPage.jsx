@@ -18,10 +18,10 @@ function renderCleaned(str) {
 }
 
 export default function SyllabusPage() {
-  const [selectedVer, setSelectedVer] = useState('2.4');
+  const [selectedVer, setSelectedVer] = useState('2.5');
 
   const activeCurriculum = useMemo(() => {
-    if (selectedVer === '2.4') {
+    if (selectedVer === '2.5') {
       return curriculum;
     }
     const verData = syllabusVersions.find((v) => v.version === selectedVer);

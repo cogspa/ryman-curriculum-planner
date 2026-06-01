@@ -5,6 +5,11 @@
 
 export const syllabusVersions = [
   {
+    version: '2.5',
+    date: '2026-06-01',
+    description: 'Added a dedicated Class FAQ page detailing Saturdays at Reveal Studios (Glendale coordinates, rules, parking, computers, kitchenette, entry word-bubble) and linked it beautifully under the header rule.',
+  },
+  {
     version: '2.4',
     date: '2026-06-01',
     description: 'Added a stylish class speaker indicator with a custom green background to all Tuesday Zoom session panels.',

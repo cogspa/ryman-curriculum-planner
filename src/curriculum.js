@@ -382,6 +382,10 @@ export const curriculum = [
 export const changelog = [
   {
     date: '2026-06-01',
+    message: 'Added a dedicated Class FAQ page detailing Saturdays at Reveal Studios (Glendale coordinates, rules, parking, computers, kitchenette, entry word-bubble) and linked it beautifully under the header rule.',
+  },
+  {
+    date: '2026-06-01',
     message: 'Labeled all 6 graded biweekly milestones with clear assignment numbers (Assignment 1 through Assignment 6) across both interactive cards and linear print pages.',
   },
   {
