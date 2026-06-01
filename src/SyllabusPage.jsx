@@ -102,13 +102,13 @@ export default function SyllabusPage() {
               {week.tuesday || week.saturday ? (
                 <div className="syllabus-day-splits" style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   {week.tuesday && (
-                    <div className="syllabus-day-block" style={{ borderLeft: '2px solid #8b3a2f', paddingLeft: '14px' }}>
-                      <h4 style={{ fontSize: '11px', textTransform: 'uppercase', fontFamily: 'Menlo, monospace', color: '#8b3a2f', margin: '0 0 10px' }}>
+                    <div className="syllabus-day-block tuesday-block" style={{ borderLeft: '3px solid #ec4899', paddingLeft: '14px', background: 'rgba(236, 72, 153, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px' }}>
+                      <h4 style={{ fontSize: '11px', textTransform: 'uppercase', fontFamily: 'Menlo, monospace', color: '#db2777', margin: '0 0 10px' }}>
                         📅 Tuesday Session (Zoom Discussion)
                       </h4>
                       {week.tuesday.topics?.length > 0 && (
                         <div className="syllabus-block" style={{ marginBottom: '10px' }}>
-                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Topics & Discussions</h5>
+                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#db2777', margin: '0 0 6px', fontFamily: 'Menlo, monospace', opacity: 0.85 }}>Topics & Discussions</h5>
                           <ul style={{ margin: 0, paddingLeft: '20px' }}>
                             {week.tuesday.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
                           </ul>
@@ -116,7 +116,7 @@ export default function SyllabusPage() {
                       )}
                       {week.tuesday.readings?.length > 0 && (
                         <div className="syllabus-block">
-                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Readings & Discussions</h5>
+                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#db2777', margin: '0 0 6px', fontFamily: 'Menlo, monospace', opacity: 0.85 }}>Readings & Discussions</h5>
                           <ul style={{ margin: 0, paddingLeft: '20px' }}>
                             {week.tuesday.readings.map((r, i) => <li key={i}>{renderCleaned(r)}</li>)}
                           </ul>
