@@ -6,8 +6,8 @@
 
 export const assignments = {
   1: {
-    title: 'Line Exploration (Straight and Curved Lines)',
-    subtitle: 'Adapted from DMA 12 Project 2 — Consider this a "warm-up" to get familiar with Photoshop',
+    title: 'Assignment 1: Traditional Translation',
+    subtitle: 'Line Exploration (Straight and Curved Lines) — Adapted from DMA 12 Project 2',
     totalPoints: null,
     extraCredit: 'Upload your favorite design to Teepublic.com for 10 points extra credit',
     sections: [
@@ -90,8 +90,8 @@ export const assignments = {
     discussion: 'After both compositions are uploaded, we will critique and discuss which of your two compositions should be uploaded to Teepublic.com.',
   },
   3: {
-    title: 'Media Tile: Texture Systems & Brush-Based Material Studies',
-    subtitle: 'Brush phase adapted from DMA 12 Assignment 6, Part 1 (Landscape Progression). Style-tile output adapted from Assignment 7 (Style Progression). Reference + reflection structure adapted from the DMA 12 Final (Blueprint of the Imagination). Thumbnail planning adapted from the 3D Collage assignment.',
+    title: 'Assignment 2: Material Studies',
+    subtitle: 'Media Tile: Texture Systems & Brush-Based Material Studies (from Week 2)',
     totalPoints: 130,
     phases: [
       {
@@ -215,8 +215,8 @@ export const assignments = {
     ]
   },
   5: {
-    title: 'Dramatic Location: Cinematic Light & Atmosphere',
-    subtitle: 'Class 3 Assignment — Explore cinematic light, surfaces, depth, and atmospheric perspective.',
+    title: 'Assignment 3: Atmospheric Spaces',
+    subtitle: 'Dramatic Location: Pick a location with depth that carries a cinematic lighting treatment.',
     totalPoints: 100,
     sections: [
       {

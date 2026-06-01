@@ -5,6 +5,11 @@
 
 export const syllabusVersions = [
   {
+    version: '2.3',
+    date: '2026-06-01',
+    description: 'Labeled all 6 graded biweekly milestones with clear sequential assignment numbers (Assignment 1 to Assignment 6) across both interactive cards and printable linear pages.',
+  },
+  {
     version: '2.2',
     date: '2026-05-28',
     description: 'Transitioned curriculum to a structured biweekly graded assignment cadence (6 major assignments on Weeks 1, 3, 5, 7, 9, 10), reframing intermediate deliverables as supportive studio preparatory tasks.',

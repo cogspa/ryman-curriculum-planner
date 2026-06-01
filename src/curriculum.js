@@ -48,7 +48,7 @@ export const curriculum = [
         'Hands-on: Value, composition, gesture, and form on a digital screen',
       ],
       assignments: [
-        '[NEW] **Traditional Translation**: Recreate one of your own traditional art pieces in Photoshop. Create two digital interpretations: one made entirely with straight edges and lines, and another made entirely with curves. Builds control, observation, and intentional digital mark-making.',
+        '[NEW] **Assignment 1: Traditional Translation**: Recreate one of your own traditional art pieces in Photoshop. Create two digital interpretations: one made entirely with straight edges and lines, and another made entirely with curves. Builds control, observation, and intentional digital mark-making.',
       ],
     }
   },
@@ -105,7 +105,7 @@ export const curriculum = [
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
       ],
       assignments: [
-        '[NEW] **Material Studies**: Media Tile: Texture Systems & Brush-Based Material Studies (from Week 2)',
+        '[NEW] **Assignment 2: Material Studies**: Media Tile: Texture Systems & Brush-Based Material Studies (from Week 2)',
       ],
     }
   },
@@ -161,7 +161,7 @@ export const curriculum = [
         '[NEW] Storyboarding fundamentals & visual cinematography (Dutch tilt, worm\'s eye view, pitch shot, zolly/dolly zooms)',
       ],
       assignments: [
-        '[NEW] **Atmospheric Spaces**: Dramatic Location: Pick a location with depth (interior/exterior, real/imagined) that carries a cinematic lighting treatment (cathedral, warehouse, ruins, sci-fi corridor). The light is the subject; give it surfaces, depth, and atmosphere to act on. No central figure required.',
+        '[NEW] **Assignment 3: Atmospheric Spaces**: Dramatic Location: Pick a location with depth (interior/exterior, real/imagined) that carries a cinematic lighting treatment (cathedral, warehouse, ruins, sci-fi corridor). The light is the subject; give it surfaces, depth, and atmosphere to act on. No central figure required.',
       ],
     }
   },
@@ -214,7 +214,7 @@ export const curriculum = [
         '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
       ],
       assignments: [
-        '[NEW] **Narrative Panels**: 3-panel narrative illustration — full workflow brief: develop a sequential narrative using cinematographic frames and character turnaround studies.',
+        '[NEW] **Assignment 4: Narrative Panels**: 3-panel narrative illustration — full workflow brief: develop a sequential narrative using cinematographic frames and character turnaround studies.',
       ],
     }
   },
@@ -270,7 +270,7 @@ export const curriculum = [
         '🛠️ Task: Refine campaign assets & apply peer feedback from Week 8 pitch rehearsals',
       ],
       assignments: [
-        '[NEW] **Most Wanted Campaign**: Integrated commercial campaign brief: The "Most Wanted" brand assets package.',
+        '[NEW] **Assignment 5: Most Wanted Campaign**: Integrated commercial campaign brief: The "Most Wanted" brand assets package.',
       ],
     }
   },
@@ -297,7 +297,7 @@ export const curriculum = [
         'Salary negotiation basics & pricing confidence',
       ],
       assignments: [
-        '[NEW] **Final Project Kickoff**: Begin major track project: select track (Concept Art, Poster Series, Storyboards, or Book Cover), draft brief, build reference board, and thumbnail 12+ directions.',
+        '[NEW] **Assignment 6: Final Project Kickoff**: Begin major track project: select track (Concept Art, Poster Series, Storyboards, or Book Cover), draft brief, build reference board, and thumbnail 12+ directions.',
       ],
     }
   },
@@ -380,6 +380,10 @@ export const curriculum = [
 
 // ─── Changelog ────────────────────────────────────────────────────
 export const changelog = [
+  {
+    date: '2026-06-01',
+    message: 'Labeled all 6 graded biweekly milestones with clear assignment numbers (Assignment 1 through Assignment 6) across both interactive cards and linear print pages.',
+  },
   {
     date: '2026-05-28',
     message: 'Rebuilt curriculum assignment cadence to a clean biweekly model: 6 graded milestones (Weeks 1, 3, 5, 7, 9, 10), with all other deliverables reframed as preparatory milestones in topics.',
