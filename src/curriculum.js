@@ -382,6 +382,10 @@ export const curriculum = [
 export const changelog = [
   {
     date: '2026-06-01',
+    message: 'Added a dedicated Potential Guest Speaker database page populated with 19 local industry leads, linked in cyan directly below the Class FAQ banner.',
+  },
+  {
+    date: '2026-06-01',
     message: 'Added a dedicated Class FAQ page detailing Saturdays at Reveal Studios (Glendale coordinates, rules, parking, computers, kitchenette, entry word-bubble) and linked it beautifully under the header rule.',
   },
   {

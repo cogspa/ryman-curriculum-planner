@@ -5,6 +5,11 @@
 
 export const syllabusVersions = [
   {
+    version: '2.6',
+    date: '2026-06-01',
+    description: 'Added a dedicated, searchable and filterable Potential Speaker List page populated with 19 local industry leads, linked in custom cyan below the header rule.',
+  },
+  {
     version: '2.5',
     date: '2026-06-01',
     description: 'Added a dedicated Class FAQ page detailing Saturdays at Reveal Studios (Glendale coordinates, rules, parking, computers, kitchenette, entry word-bubble) and linked it beautifully under the header rule.',
