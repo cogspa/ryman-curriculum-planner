@@ -138,8 +138,8 @@ export default function SyllabusPage() {
                         </div>
                       )}
                       {week.saturday.assignments?.length > 0 && (
-                        <div className="syllabus-block">
-                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Assignments & Prep</h5>
+                        <div className="syllabus-block assignment-block" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
+                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#0891b2', margin: '0 0 6px', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>Assignments & Prep</h5>
                           <ul style={{ margin: 0, paddingLeft: '20px' }}>
                             {week.saturday.assignments.map((a, i) => <li key={i}>{renderCleaned(a)}</li>)}
                           </ul>
@@ -169,9 +169,9 @@ export default function SyllabusPage() {
                   )}
 
                   {week.assignments?.length > 0 && (
-                    <div className="syllabus-block">
-                      <h3 className="syllabus-block-label">Assignments</h3>
-                      <ul>
+                    <div className="syllabus-block assignment-block" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
+                      <h3 className="syllabus-block-label" style={{ color: '#0891b2', fontWeight: 'bold', margin: '0 0 6px' }}>Assignments</h3>
+                      <ul style={{ margin: 0, paddingLeft: '20px' }}>
                         {week.assignments.map((a, i) => <li key={i}>{renderCleaned(a)}</li>)}
                       </ul>
                     </div>

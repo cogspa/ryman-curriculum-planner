@@ -577,8 +577,8 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
                   </h4>
                   <Section label="Topics" items={week.saturday.topics} weekNumber={week.week} />
                   {week.saturday.assignments?.length > 0 && (
-                    <div className="section">
-                      <p className="section-label">Assignments</p>
+                    <div className="section assignment-section" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.07)', borderRadius: '8px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
+                      <p className="section-label" style={{ color: '#0891b2', fontWeight: 'bold', marginBottom: '8px' }}>Assignments</p>
                       <ul className="section-list">
                         {week.saturday.assignments.map((rawItem, i) => {
                           const { isNew, text } = parseNew(rawItem);
