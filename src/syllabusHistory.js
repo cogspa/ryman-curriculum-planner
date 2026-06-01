@@ -5,6 +5,11 @@
 
 export const syllabusVersions = [
   {
+    version: '2.4',
+    date: '2026-06-01',
+    description: 'Added a stylish class speaker indicator with a custom green background to all Tuesday Zoom session panels.',
+  },
+  {
     version: '2.3',
     date: '2026-06-01',
     description: 'Labeled all 6 graded biweekly milestones with clear sequential assignment numbers (Assignment 1 to Assignment 6) across both interactive cards and printable linear pages.',

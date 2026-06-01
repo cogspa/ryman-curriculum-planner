@@ -18,10 +18,10 @@ function renderCleaned(str) {
 }
 
 export default function SyllabusPage() {
-  const [selectedVer, setSelectedVer] = useState('2.3');
+  const [selectedVer, setSelectedVer] = useState('2.4');
 
   const activeCurriculum = useMemo(() => {
-    if (selectedVer === '2.3') {
+    if (selectedVer === '2.4') {
       return curriculum;
     }
     const verData = syllabusVersions.find((v) => v.version === selectedVer);
@@ -115,13 +115,16 @@ export default function SyllabusPage() {
                         </div>
                       )}
                       {week.tuesday.readings?.length > 0 && (
-                        <div className="syllabus-block">
+                        <div className="syllabus-block" style={{ marginBottom: '10px' }}>
                           <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#db2777', margin: '0 0 6px', fontFamily: 'Menlo, monospace', opacity: 0.85 }}>Readings & Discussions</h5>
                           <ul style={{ margin: 0, paddingLeft: '20px' }}>
                             {week.tuesday.readings.map((r, i) => <li key={i}>{renderCleaned(r)}</li>)}
                           </ul>
                         </div>
                       )}
+                      <div className="syllabus-speaker-box" style={{ borderLeft: '2px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.05)', borderRadius: '4px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '11px', color: '#059669', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>
+                        🎤 Speaker for Week {week.week}: TBD
+                      </div>
                     </div>
                   )}
                   {week.saturday && (

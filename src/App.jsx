@@ -568,6 +568,10 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
                   </h4>
                   <Section label="Topics" items={week.tuesday.topics} weekNumber={week.week} />
                   <Section label="Readings" items={week.tuesday.readings} weekNumber={week.week} />
+                  
+                  <div className="speaker-box" style={{ borderLeft: '3px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.08)', borderRadius: '6px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '12px', color: '#059669', fontFamily: 'var(--font-mono)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span>🎤 Speaker for Week {week.week}: TBD</span>
+                  </div>
                 </div>
               )}
               {week.saturday && (
