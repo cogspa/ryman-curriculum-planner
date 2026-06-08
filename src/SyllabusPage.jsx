@@ -24,15 +24,20 @@ export default function SyllabusPage() {
 
   // Sync from cloud database if available to show the latest updates
   useEffect(() => {
-    fetchRemoteCurriculum().then((remoteData) => {
-      if (remoteData) {
-        setCustomCurriculum(remoteData);
-        saveLocalCurriculum(remoteData);
+    fetchRemoteCurriculum().then((remoteObj) => {
+      if (remoteObj && remoteObj.data) {
+        const localUpdated = parseInt(localStorage.getItem('cp-custom-curriculum-updated') || '0', 10);
+        if (remoteObj.updated > localUpdated) {
+          setCustomCurriculum(remoteObj.data);
+          localStorage.setItem('cp-custom-curriculum', JSON.stringify(remoteObj.data));
+          localStorage.setItem('cp-custom-curriculum-updated', remoteObj.updated.toString());
+        }
       }
     }).catch((err) => {
       console.warn('Could not sync remote curriculum for syllabus page:', err);
     });
   }, []);
+
 
   const activeCurriculum = useMemo(() => {
     if (selectedVer === '2.6') {

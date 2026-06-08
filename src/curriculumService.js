@@ -2,6 +2,7 @@ import { curriculum as defaultCurriculum } from './curriculum.js';
 import { supabase } from './supabaseClient.js';
 
 const STORAGE_KEY = 'cp-custom-curriculum';
+const UPDATED_KEY = 'cp-custom-curriculum-updated';
 
 export function loadLocalCurriculum() {
   try {
@@ -15,6 +16,7 @@ export function loadLocalCurriculum() {
 export function saveLocalCurriculum(data) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(UPDATED_KEY, Date.now().toString());
   } catch (e) {
     console.error('Failed to save curriculum locally:', e);
   }
@@ -23,6 +25,7 @@ export function saveLocalCurriculum(data) {
 export function resetLocalCurriculum() {
   try {
     localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(UPDATED_KEY);
   } catch (e) {
     console.error('Failed to reset curriculum locally:', e);
   }
@@ -30,7 +33,7 @@ export function resetLocalCurriculum() {
 
 /**
  * Fetch remote customized curriculum from Supabase
- * Using a special week_number (999) in the notes table to avoid schema changes.
+ * Returns { data: Array, updated: Number } or null if not found
  */
 export async function fetchRemoteCurriculum() {
   if (!supabase) return null;
@@ -43,7 +46,15 @@ export async function fetchRemoteCurriculum() {
     
     if (data && !error && data.content) {
       try {
-        return JSON.parse(data.content);
+        const parsed = JSON.parse(data.content);
+        // Handle migration from old raw array format to wrapper object format
+        if (Array.isArray(parsed)) {
+          return { data: parsed, updated: 0 };
+        }
+        return { 
+          data: parsed.data || defaultCurriculum, 
+          updated: parsed.updated || 0 
+        };
       } catch (err) {
         console.error('Failed to parse remote curriculum content:', err);
       }
@@ -55,14 +66,19 @@ export async function fetchRemoteCurriculum() {
 }
 
 /**
- * Save remote customized curriculum to Supabase
+ * Save remote customized curriculum wrapper to Supabase
  */
 export async function syncRemoteCurriculum(curriculumData) {
   if (!supabase) return;
   try {
+    const updatedStr = localStorage.getItem(UPDATED_KEY) || Date.now().toString();
+    const payload = {
+      data: curriculumData,
+      updated: parseInt(updatedStr, 10)
+    };
     await supabase
       .from('notes')
-      .upsert({ week_number: 999, content: JSON.stringify(curriculumData) });
+      .upsert({ week_number: 999, content: JSON.stringify(payload) });
   } catch (e) {
     console.error('Failed to sync curriculum to cloud:', e);
   }
@@ -82,3 +98,4 @@ export async function clearRemoteCurriculum() {
     console.error('Failed to clear remote curriculum:', e);
   }
 }
+

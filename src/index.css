@@ -1789,14 +1789,19 @@ body {
   border-radius: 2px;
   background: transparent;
   transition: background 150ms ease, height 150ms ease;
-  pointer-events: none;
+}
+
+.drop-indicator.active {
+  height: 12px;
+  background: rgba(168, 72, 42, 0.04);
+  border: 1px dashed var(--hairline-strong);
+  margin: 4px 0;
 }
 
 .drop-indicator.drag-over {
-  height: 8px;
+  height: 20px;
   background: var(--accent);
   border: 1px solid var(--accent-deep);
-  pointer-events: none;
 }
 
 .empty-drop-zone {

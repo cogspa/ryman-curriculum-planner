@@ -460,12 +460,12 @@ function Section({ label, items, weekNumber }) {
   );
 }
 
-function DropIndicator({ onDrop }) {
+function DropIndicator({ onDrop, active }) {
   const [dragOver, setDragOver] = useState(false);
 
   return (
     <div
-      className={`drop-indicator ${dragOver ? 'drag-over' : ''}`}
+      className={`drop-indicator ${active ? 'active' : ''} ${dragOver ? 'drag-over' : ''}`}
       onDragOver={(e) => {
         e.preventDefault();
         setDragOver(true);
@@ -484,12 +484,12 @@ function DropIndicator({ onDrop }) {
   );
 }
 
-function EmptyDropZone({ onDrop }) {
+function EmptyDropZone({ onDrop, active }) {
   const [dragOver, setDragOver] = useState(false);
 
   return (
     <div
-      className={`empty-drop-zone ${dragOver ? 'drag-over' : ''}`}
+      className={`empty-drop-zone ${active ? 'active' : ''} ${dragOver ? 'drag-over' : ''}`}
       onDragOver={(e) => {
         e.preventDefault();
         setDragOver(true);
@@ -523,7 +523,8 @@ function EditableSection({
   onDragStart,
   onDragEnd,
   onDrop,
-  weekNumber
+  weekNumber,
+  isDraggingActive
 }) {
   if (!adminMode) {
     if (!items || items.length === 0) return null;
@@ -538,17 +539,18 @@ function EditableSection({
       
       <div className="section-list-edit">
         {!items || items.length === 0 ? (
-          <EmptyDropZone onDrop={() => onDrop(0)} />
+          <EmptyDropZone active={isDraggingActive} onDrop={() => onDrop(0)} />
         ) : (
           <>
             {items.map((item, i) => (
               <div key={i}>
-                <DropIndicator onDrop={() => onDrop(i)} />
+                <DropIndicator active={isDraggingActive} onDrop={() => onDrop(i)} />
                 <div
                   className="edit-item-row"
                   draggable
                   onDragStart={(e) => {
                     e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', ''); // Required for Safari/Firefox DND trigger
                     onDragStart(i);
                   }}
                   onDragEnd={onDragEnd}
@@ -572,7 +574,7 @@ function EditableSection({
                 </div>
               </div>
             ))}
-            <DropIndicator onDrop={() => onDrop(items.length)} />
+            <DropIndicator active={isDraggingActive} onDrop={() => onDrop(items.length)} />
           </>
         )}
       </div>
@@ -583,6 +585,7 @@ function EditableSection({
     </div>
   );
 }
+
 
 
 function WeekCard({
@@ -598,7 +601,8 @@ function WeekCard({
   onAddItem,
   onDragStart,
   onDragEnd,
-  onDrop
+  onDrop,
+  isDraggingActive
 }) {
   const [notes, setNotes] = useState(() => loadNote(week.week));
   const [savedAt, setSavedAt] = useState(null);
@@ -747,6 +751,7 @@ function WeekCard({
                     onDragEnd={onDragEnd}
                     onDrop={(itemIdx) => onDrop(index, 'tuesday', 'topics', itemIdx)}
                     weekNumber={week.week}
+                    isDraggingActive={isDraggingActive}
                   />
                   <EditableSection
                     label="Readings"
@@ -762,6 +767,7 @@ function WeekCard({
                     onDragEnd={onDragEnd}
                     onDrop={(itemIdx) => onDrop(index, 'tuesday', 'readings', itemIdx)}
                     weekNumber={week.week}
+                    isDraggingActive={isDraggingActive}
                   />
                   
                   <div className="speaker-box" style={{ borderLeft: '3px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.08)', borderRadius: '6px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '12px', color: '#059669', fontFamily: 'var(--font-mono)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -788,6 +794,7 @@ function WeekCard({
                     onDragEnd={onDragEnd}
                     onDrop={(itemIdx) => onDrop(index, 'saturday', 'topics', itemIdx)}
                     weekNumber={week.week}
+                    isDraggingActive={isDraggingActive}
                   />
                   <EditableSection
                     label="Assignments"
@@ -803,6 +810,7 @@ function WeekCard({
                     onDragEnd={onDragEnd}
                     onDrop={(itemIdx) => onDrop(index, 'saturday', 'assignments', itemIdx)}
                     weekNumber={week.week}
+                    isDraggingActive={isDraggingActive}
                   />
                 </div>
               )}
@@ -823,6 +831,7 @@ function WeekCard({
                 onDragEnd={onDragEnd}
                 onDrop={(itemIdx) => onDrop(index, null, 'topics', itemIdx)}
                 weekNumber={week.week}
+                isDraggingActive={isDraggingActive}
               />
               <EditableSection
                 label="Readings"
@@ -838,6 +847,7 @@ function WeekCard({
                 onDragEnd={onDragEnd}
                 onDrop={(itemIdx) => onDrop(index, null, 'readings', itemIdx)}
                 weekNumber={week.week}
+                isDraggingActive={isDraggingActive}
               />
               <EditableSection
                 label="Assignments"
@@ -853,6 +863,7 @@ function WeekCard({
                 onDragEnd={onDragEnd}
                 onDrop={(itemIdx) => onDrop(index, null, 'assignments', itemIdx)}
                 weekNumber={week.week}
+                isDraggingActive={isDraggingActive}
               />
             </>
           )}
@@ -901,11 +912,17 @@ export default function App() {
   useEffect(() => {
     if (supabase) {
       setSaveStatus('connecting to cloud...');
-      fetchRemoteCurriculum().then((remoteData) => {
-        if (remoteData) {
-          setCustomCurriculum(remoteData);
-          saveLocalCurriculum(remoteData);
-          setSaveStatus('cloud loaded');
+      fetchRemoteCurriculum().then((remoteObj) => {
+        if (remoteObj && remoteObj.data) {
+          const localUpdated = parseInt(localStorage.getItem('cp-custom-curriculum-updated') || '0', 10);
+          if (remoteObj.updated > localUpdated) {
+            setCustomCurriculum(remoteObj.data);
+            localStorage.setItem('cp-custom-curriculum', JSON.stringify(remoteObj.data));
+            localStorage.setItem('cp-custom-curriculum-updated', remoteObj.updated.toString());
+            setSaveStatus('cloud loaded');
+          } else {
+            setSaveStatus('local state is newer');
+          }
         } else {
           setSaveStatus('using local state');
         }
@@ -917,28 +934,28 @@ export default function App() {
     }
   }, []);
 
-  // Autosave to localStorage and Supabase on change
+  // Save locally instantly on change
   useEffect(() => {
+    saveLocalCurriculum(customCurriculum);
+  }, [customCurriculum]);
+
+  // Sync to database with debounce
+  useEffect(() => {
+    if (!supabase) return;
     const t = setTimeout(async () => {
-      saveLocalCurriculum(customCurriculum);
-      
-      if (supabase) {
-        try {
-          setSaveStatus('syncing to cloud...');
-          await syncRemoteCurriculum(customCurriculum);
-          setSaveStatus('cloud synced');
-        } catch {
-          setSaveStatus('saved locally (offline)');
-        }
-        setTimeout(() => setSaveStatus(null), 2000);
-      } else {
-        setSaveStatus('saved locally');
-        setTimeout(() => setSaveStatus(null), 2000);
+      try {
+        setSaveStatus('syncing to cloud...');
+        await syncRemoteCurriculum(customCurriculum);
+        setSaveStatus('cloud synced');
+      } catch {
+        setSaveStatus('saved locally (offline)');
       }
-    }, 1000);
+      setTimeout(() => setSaveStatus(null), 2000);
+    }, 1500);
     
     return () => clearTimeout(t);
   }, [customCurriculum]);
+
 
   const weeks = useMemo(() => {
     const start = parseLocal(startDate);
@@ -1161,6 +1178,7 @@ export default function App() {
                   onDragStart={handleDragStart}
                   onDragEnd={handleDragEnd}
                   onDrop={handleDrop}
+                  isDraggingActive={draggedItem !== null}
                 />
               ))}
             </main>
