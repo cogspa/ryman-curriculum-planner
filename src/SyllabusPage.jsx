@@ -1,7 +1,8 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { curriculum, config } from './curriculum.js';
 import { syllabusVersions } from './syllabusHistory.js';
+import { loadLocalCurriculum, fetchRemoteCurriculum, saveLocalCurriculum } from './curriculumService.js';
 
 // Strip [NEW] prefix and render bold markdown (**text**) for syllabus display
 function renderCleaned(str) {
@@ -19,21 +20,34 @@ function renderCleaned(str) {
 
 export default function SyllabusPage() {
   const [selectedVer, setSelectedVer] = useState('2.6');
+  const [customCurriculum, setCustomCurriculum] = useState(() => loadLocalCurriculum());
+
+  // Sync from cloud database if available to show the latest updates
+  useEffect(() => {
+    fetchRemoteCurriculum().then((remoteData) => {
+      if (remoteData) {
+        setCustomCurriculum(remoteData);
+        saveLocalCurriculum(remoteData);
+      }
+    }).catch((err) => {
+      console.warn('Could not sync remote curriculum for syllabus page:', err);
+    });
+  }, []);
 
   const activeCurriculum = useMemo(() => {
     if (selectedVer === '2.6') {
-      return curriculum;
+      return customCurriculum;
     }
     const verData = syllabusVersions.find((v) => v.version === selectedVer);
     if (!verData || !verData.curriculumSnapshot) {
-      return curriculum;
+      return customCurriculum;
     }
     // Merge snapshot overrides
-    return curriculum.map((week) => {
+    return customCurriculum.map((week) => {
       const override = verData.curriculumSnapshot.find((w) => w.week === week.week);
       return override ? override : week;
     });
-  }, [selectedVer]);
+  }, [selectedVer, customCurriculum]);
 
   const activeVersionInfo = useMemo(() => {
     return syllabusVersions.find((v) => v.version === selectedVer);
@@ -42,6 +56,7 @@ export default function SyllabusPage() {
   function handlePrint() {
     window.print();
   }
+
 
   return (
     <div className="app">

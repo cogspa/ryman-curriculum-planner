@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 import { curriculum, config, changelog } from './curriculum.js';
 import { assignments } from './assignments.js';
 import { supabase } from './supabaseClient.js';
+import {
+  loadLocalCurriculum,
+  saveLocalCurriculum,
+  resetLocalCurriculum,
+  fetchRemoteCurriculum,
+  syncRemoteCurriculum,
+  clearRemoteCurriculum
+} from './curriculumService.js';
+
 
 const HOLIDAYS = [
   '2026-07-04', // Independence Day
@@ -451,7 +460,146 @@ function Section({ label, items, weekNumber }) {
   );
 }
 
-function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
+function DropIndicator({ onDrop }) {
+  const [dragOver, setDragOver] = useState(false);
+
+  return (
+    <div
+      className={`drop-indicator ${dragOver ? 'drag-over' : ''}`}
+      onDragOver={(e) => {
+        e.preventDefault();
+        setDragOver(true);
+      }}
+      onDragEnter={(e) => {
+        e.preventDefault();
+        setDragOver(true);
+      }}
+      onDragLeave={() => setDragOver(false)}
+      onDrop={(e) => {
+        e.preventDefault();
+        setDragOver(false);
+        onDrop();
+      }}
+    />
+  );
+}
+
+function EmptyDropZone({ onDrop }) {
+  const [dragOver, setDragOver] = useState(false);
+
+  return (
+    <div
+      className={`empty-drop-zone ${dragOver ? 'drag-over' : ''}`}
+      onDragOver={(e) => {
+        e.preventDefault();
+        setDragOver(true);
+      }}
+      onDragEnter={(e) => {
+        e.preventDefault();
+        setDragOver(true);
+      }}
+      onDragLeave={() => setDragOver(false)}
+      onDrop={(e) => {
+        e.preventDefault();
+        setDragOver(false);
+        onDrop();
+      }}
+    >
+      Drag items here
+    </div>
+  );
+}
+
+function EditableSection({
+  label,
+  items = [],
+  weekIndex,
+  session,
+  section,
+  adminMode,
+  onUpdateItem,
+  onDeleteItem,
+  onAddItem,
+  onDragStart,
+  onDragEnd,
+  onDrop,
+  weekNumber
+}) {
+  if (!adminMode) {
+    if (!items || items.length === 0) return null;
+    return <Section label={label} items={items} weekNumber={weekNumber} />;
+  }
+
+  return (
+    <div className="section admin-section-edit" style={{ marginBottom: '14px' }}>
+      <p className="section-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span>{label}</span>
+      </p>
+      
+      <div className="section-list-edit">
+        {!items || items.length === 0 ? (
+          <EmptyDropZone onDrop={() => onDrop(0)} />
+        ) : (
+          <>
+            {items.map((item, i) => (
+              <div key={i}>
+                <DropIndicator onDrop={() => onDrop(i)} />
+                <div
+                  className="edit-item-row"
+                  draggable
+                  onDragStart={(e) => {
+                    e.dataTransfer.effectAllowed = 'move';
+                    onDragStart(i);
+                  }}
+                  onDragEnd={onDragEnd}
+                >
+                  <span className="drag-handle" title="Drag to reorder">⋮⋮</span>
+                  <input
+                    type="text"
+                    className="edit-item-input"
+                    value={item}
+                    onChange={(e) => onUpdateItem(i, e.target.value)}
+                    placeholder={`New ${label.slice(0, -1)}...`}
+                  />
+                  <button
+                    type="button"
+                    className="delete-item-btn"
+                    onClick={() => onDeleteItem(i)}
+                    title="Delete item"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            ))}
+            <DropIndicator onDrop={() => onDrop(items.length)} />
+          </>
+        )}
+      </div>
+      
+      <button type="button" className="add-item-btn" onClick={onAddItem}>
+        ＋ Add {label.slice(0, -1)}
+      </button>
+    </div>
+  );
+}
+
+
+function WeekCard({
+  week,
+  tuesday,
+  saturday,
+  isCapstone,
+  index,
+  adminMode,
+  onUpdateWeek,
+  onUpdateItem,
+  onDeleteItem,
+  onAddItem,
+  onDragStart,
+  onDragEnd,
+  onDrop
+}) {
   const [notes, setNotes] = useState(() => loadNote(week.week));
   const [savedAt, setSavedAt] = useState(null);
   const [syncStatus, setSyncStatus] = useState(supabase ? 'connecting...' : null);
@@ -518,7 +666,17 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
         <span className="week-range">{rangeLabel}</span>
       </div>
 
-      <h2 className="card-title">{week.title}</h2>
+      {adminMode ? (
+        <input
+          type="text"
+          className="edit-title-input"
+          value={week.title}
+          onChange={(e) => onUpdateWeek(week.week, { title: e.target.value })}
+          placeholder="Week Title"
+        />
+      ) : (
+        <h2 className="card-title">{week.title}</h2>
+      )}
 
       {week.dateOverride ? (
         <div className="sessions">
@@ -545,18 +703,27 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
         </div>
       )}
 
-      {hasContent && (
+      {(hasContent || adminMode) && (
         <div className="curriculum-content">
-          {week.overview && (
-            <p className="overview">
-              {week.week === 7 ? (
-                <Link to="/week/07/client-simulation-overview" className="overview-link">
-                  {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[READ BRIEF FRAMEWORK →]</span>
-                </Link>
-              ) : (
-                week.overview
-              )}
-            </p>
+          {adminMode ? (
+            <textarea
+              className="edit-overview-textarea"
+              value={week.overview || ''}
+              onChange={(e) => onUpdateWeek(week.week, { overview: e.target.value })}
+              placeholder="Week Overview"
+            />
+          ) : (
+            week.overview && (
+              <p className="overview">
+                {week.week === 7 ? (
+                  <Link to="/week/07/client-simulation-overview" className="overview-link">
+                    {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[READ BRIEF FRAMEWORK →]</span>
+                  </Link>
+                ) : (
+                  week.overview
+                )}
+              </p>
+            )
           )}
 
           {week.tuesday || week.saturday ? (
@@ -566,8 +733,36 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
                   <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#db2777', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     📅 Tuesday Session — Zoom Preview & Discussion
                   </h4>
-                  <Section label="Topics" items={week.tuesday.topics} weekNumber={week.week} />
-                  <Section label="Readings" items={week.tuesday.readings} weekNumber={week.week} />
+                  <EditableSection
+                    label="Topics"
+                    items={week.tuesday.topics}
+                    weekIndex={index}
+                    session="tuesday"
+                    section="topics"
+                    adminMode={adminMode}
+                    onUpdateItem={(itemIdx, val) => onUpdateItem(index, 'tuesday', 'topics', itemIdx, val)}
+                    onDeleteItem={(itemIdx) => onDeleteItem(index, 'tuesday', 'topics', itemIdx)}
+                    onAddItem={() => onAddItem(index, 'tuesday', 'topics')}
+                    onDragStart={(itemIdx) => onDragStart(index, 'tuesday', 'topics', itemIdx)}
+                    onDragEnd={onDragEnd}
+                    onDrop={(itemIdx) => onDrop(index, 'tuesday', 'topics', itemIdx)}
+                    weekNumber={week.week}
+                  />
+                  <EditableSection
+                    label="Readings"
+                    items={week.tuesday.readings}
+                    weekIndex={index}
+                    session="tuesday"
+                    section="readings"
+                    adminMode={adminMode}
+                    onUpdateItem={(itemIdx, val) => onUpdateItem(index, 'tuesday', 'readings', itemIdx, val)}
+                    onDeleteItem={(itemIdx) => onDeleteItem(index, 'tuesday', 'readings', itemIdx)}
+                    onAddItem={() => onAddItem(index, 'tuesday', 'readings')}
+                    onDragStart={(itemIdx) => onDragStart(index, 'tuesday', 'readings', itemIdx)}
+                    onDragEnd={onDragEnd}
+                    onDrop={(itemIdx) => onDrop(index, 'tuesday', 'readings', itemIdx)}
+                    weekNumber={week.week}
+                  />
                   
                   <div className="speaker-box" style={{ borderLeft: '3px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.08)', borderRadius: '6px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '12px', color: '#059669', fontFamily: 'var(--font-mono)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span>🎤 Speaker for Week {week.week}: TBD</span>
@@ -579,80 +774,86 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
                   <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--accent-deep)', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     🎨 Saturday Session — Studio Workshop
                   </h4>
-                  <Section label="Topics" items={week.saturday.topics} weekNumber={week.week} />
-                  {week.saturday.assignments?.length > 0 && (
-                    <div className="section assignment-section" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.07)', borderRadius: '8px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
-                      <p className="section-label" style={{ color: '#0891b2', fontWeight: 'bold', marginBottom: '8px' }}>Assignments</p>
-                      <ul className="section-list">
-                        {week.saturday.assignments.map((rawItem, i) => {
-                          const { isNew, text } = parseNew(rawItem);
-                          return (
-                            <li key={i} className={isNew ? 'is-new' : ''}>
-                              {isNew && <NewPill />}
-                              {week.week === 5 ? (
-                                <Link to="/week/05/three-panel-assignment" className="assignment-link">
-                                  <BoldText text={text} />
-                                  <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
-                                </Link>
-                              ) : week.week === 6 ? (
-                                <Link to="/week/06/commercial-campaign-assignment" className="assignment-link">
-                                  <BoldText text={text} />
-                                  <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
-                                </Link>
-                              ) : assignments[week.week] ? (
-                                <Link to={`/assignment/${week.week}`} className="assignment-link">
-                                  <BoldText text={text} />
-                                  <span className="assignment-arrow assignment-arrow--pill">VIEW FULL ASSIGNMENT →</span>
-                                </Link>
-                              ) : (
-                                <Linkify text={text} />
-                              )}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  )}
+                  <EditableSection
+                    label="Topics"
+                    items={week.saturday.topics}
+                    weekIndex={index}
+                    session="saturday"
+                    section="topics"
+                    adminMode={adminMode}
+                    onUpdateItem={(itemIdx, val) => onUpdateItem(index, 'saturday', 'topics', itemIdx, val)}
+                    onDeleteItem={(itemIdx) => onDeleteItem(index, 'saturday', 'topics', itemIdx)}
+                    onAddItem={() => onAddItem(index, 'saturday', 'topics')}
+                    onDragStart={(itemIdx) => onDragStart(index, 'saturday', 'topics', itemIdx)}
+                    onDragEnd={onDragEnd}
+                    onDrop={(itemIdx) => onDrop(index, 'saturday', 'topics', itemIdx)}
+                    weekNumber={week.week}
+                  />
+                  <EditableSection
+                    label="Assignments"
+                    items={week.saturday.assignments}
+                    weekIndex={index}
+                    session="saturday"
+                    section="assignments"
+                    adminMode={adminMode}
+                    onUpdateItem={(itemIdx, val) => onUpdateItem(index, 'saturday', 'assignments', itemIdx, val)}
+                    onDeleteItem={(itemIdx) => onDeleteItem(index, 'saturday', 'assignments', itemIdx)}
+                    onAddItem={() => onAddItem(index, 'saturday', 'assignments')}
+                    onDragStart={(itemIdx) => onDragStart(index, 'saturday', 'assignments', itemIdx)}
+                    onDragEnd={onDragEnd}
+                    onDrop={(itemIdx) => onDrop(index, 'saturday', 'assignments', itemIdx)}
+                    weekNumber={week.week}
+                  />
                 </div>
               )}
             </div>
           ) : (
             <>
-              <Section label="Topics" items={week.topics} weekNumber={week.week} />
-              <Section label="Readings" items={week.readings} weekNumber={week.week} />
-              {week.assignments?.length > 0 && (
-                <div className="section">
-                  <p className="section-label">Assignments</p>
-                  <ul className="section-list">
-                    {week.assignments.map((rawItem, i) => {
-                      const { isNew, text } = parseNew(rawItem);
-                      return (
-                        <li key={i} className={isNew ? 'is-new' : ''}>
-                          {isNew && <NewPill />}
-                          {week.week === 5 ? (
-                            <Link to="/week/05/three-panel-assignment" className="assignment-link">
-                              <BoldText text={text} />
-                              <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
-                            </Link>
-                          ) : week.week === 6 ? (
-                            <Link to="/week/06/commercial-campaign-assignment" className="assignment-link">
-                              <BoldText text={text} />
-                              <span className="assignment-arrow assignment-arrow--pill">VIEW FULL WORKFLOW BRIEF →</span>
-                            </Link>
-                          ) : assignments[week.week] ? (
-                            <Link to={`/assignment/${week.week}`} className="assignment-link">
-                              <BoldText text={text} />
-                              <span className="assignment-arrow assignment-arrow--pill">VIEW FULL ASSIGNMENT →</span>
-                            </Link>
-                          ) : (
-                            <Linkify text={text} />
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              )}
+              <EditableSection
+                label="Topics"
+                items={week.topics}
+                weekIndex={index}
+                session={null}
+                section="topics"
+                adminMode={adminMode}
+                onUpdateItem={(itemIdx, val) => onUpdateItem(index, null, 'topics', itemIdx, val)}
+                onDeleteItem={(itemIdx) => onDeleteItem(index, null, 'topics', itemIdx)}
+                onAddItem={() => onAddItem(index, null, 'topics')}
+                onDragStart={(itemIdx) => onDragStart(index, null, 'topics', itemIdx)}
+                onDragEnd={onDragEnd}
+                onDrop={(itemIdx) => onDrop(index, null, 'topics', itemIdx)}
+                weekNumber={week.week}
+              />
+              <EditableSection
+                label="Readings"
+                items={week.readings}
+                weekIndex={index}
+                session={null}
+                section="readings"
+                adminMode={adminMode}
+                onUpdateItem={(itemIdx, val) => onUpdateItem(index, null, 'readings', itemIdx, val)}
+                onDeleteItem={(itemIdx) => onDeleteItem(index, null, 'readings', itemIdx)}
+                onAddItem={() => onAddItem(index, null, 'readings')}
+                onDragStart={(itemIdx) => onDragStart(index, null, 'readings', itemIdx)}
+                onDragEnd={onDragEnd}
+                onDrop={(itemIdx) => onDrop(index, null, 'readings', itemIdx)}
+                weekNumber={week.week}
+              />
+              <EditableSection
+                label="Assignments"
+                items={week.assignments}
+                weekIndex={index}
+                session={null}
+                section="assignments"
+                adminMode={adminMode}
+                onUpdateItem={(itemIdx, val) => onUpdateItem(index, null, 'assignments', itemIdx, val)}
+                onDeleteItem={(itemIdx) => onDeleteItem(index, null, 'assignments', itemIdx)}
+                onAddItem={() => onAddItem(index, null, 'assignments')}
+                onDragStart={(itemIdx) => onDragStart(index, null, 'assignments', itemIdx)}
+                onDragEnd={onDragEnd}
+                onDrop={(itemIdx) => onDrop(index, null, 'assignments', itemIdx)}
+                weekNumber={week.week}
+              />
             </>
           )}
         </div>
@@ -690,16 +891,182 @@ function WeekCard({ week, tuesday, saturday, isCapstone, index }) {
 
 export default function App() {
   const [startDate, setStartDate] = useState(config.startDate);
+  const [customCurriculum, setCustomCurriculum] = useState(() => loadLocalCurriculum());
+  const [adminMode, setAdminMode] = useState(false);
+  const [draggedItem, setDraggedItem] = useState(null);
+  const [isExportOpen, setIsExportOpen] = useState(false);
+  const [saveStatus, setSaveStatus] = useState(null);
+
+  // Sync from Supabase on load if available
+  useEffect(() => {
+    if (supabase) {
+      setSaveStatus('connecting to cloud...');
+      fetchRemoteCurriculum().then((remoteData) => {
+        if (remoteData) {
+          setCustomCurriculum(remoteData);
+          saveLocalCurriculum(remoteData);
+          setSaveStatus('cloud loaded');
+        } else {
+          setSaveStatus('using local state');
+        }
+        setTimeout(() => setSaveStatus(null), 2500);
+      }).catch(() => {
+        setSaveStatus('offline mode');
+        setTimeout(() => setSaveStatus(null), 2500);
+      });
+    }
+  }, []);
+
+  // Autosave to localStorage and Supabase on change
+  useEffect(() => {
+    const t = setTimeout(async () => {
+      saveLocalCurriculum(customCurriculum);
+      
+      if (supabase) {
+        try {
+          setSaveStatus('syncing to cloud...');
+          await syncRemoteCurriculum(customCurriculum);
+          setSaveStatus('cloud synced');
+        } catch {
+          setSaveStatus('saved locally (offline)');
+        }
+        setTimeout(() => setSaveStatus(null), 2000);
+      } else {
+        setSaveStatus('saved locally');
+        setTimeout(() => setSaveStatus(null), 2000);
+      }
+    }, 1000);
+    
+    return () => clearTimeout(t);
+  }, [customCurriculum]);
 
   const weeks = useMemo(() => {
     const start = parseLocal(startDate);
     const firstTue = findTuesdayOnOrAfter(start);
-    return curriculum.map((entry, idx) => {
+    return customCurriculum.map((entry, idx) => {
       const tue = addDays(firstTue, idx * 7);
       const sat = addDays(tue, 4);
       return { entry, tuesday: tue, saturday: sat };
     });
-  }, [startDate]);
+  }, [startDate, customCurriculum]);
+
+  // Curriculum Edit Handlers
+  const handleUpdateWeek = (weekNum, updatedFields) => {
+    setCustomCurriculum((prev) =>
+      prev.map((w) => (w.week === weekNum ? { ...w, ...updatedFields } : w))
+    );
+  };
+
+  const handleUpdateItem = (weekIndex, session, section, itemIndex, newText) => {
+    setCustomCurriculum((prev) => {
+      const next = JSON.parse(JSON.stringify(prev));
+      const weekData = next[weekIndex];
+      const list = session ? weekData[session][section] : weekData[section];
+      list[itemIndex] = newText;
+      return next;
+    });
+  };
+
+  const handleDeleteItem = (weekIndex, session, section, itemIndex) => {
+    setCustomCurriculum((prev) => {
+      const next = JSON.parse(JSON.stringify(prev));
+      const weekData = next[weekIndex];
+      const list = session ? weekData[session][section] : weekData[section];
+      list.splice(itemIndex, 1);
+      return next;
+    });
+  };
+
+  const handleAddItem = (weekIndex, session, section) => {
+    setCustomCurriculum((prev) => {
+      const next = JSON.parse(JSON.stringify(prev));
+      const weekData = next[weekIndex];
+      if (session) {
+        if (!weekData[session]) {
+          weekData[session] = { topics: [], readings: [], assignments: [] };
+        }
+        if (!weekData[session][section]) {
+          weekData[session][section] = [];
+        }
+      } else {
+        if (!weekData[section]) {
+          weekData[section] = [];
+        }
+      }
+      const list = session ? weekData[session][section] : weekData[section];
+      list.push('');
+      return next;
+    });
+  };
+
+  // Drag & Drop handlers
+  const handleDragStart = (weekIndex, session, section, itemIndex) => {
+    setDraggedItem({ weekIndex, session, section, itemIndex });
+  };
+
+  const handleDragEnd = () => {
+    setDraggedItem(null);
+  };
+
+  const handleDrop = (targetWeekIndex, targetSession, targetSection, targetItemIndex) => {
+    if (!draggedItem) return;
+
+    const { weekIndex: srcWeekIdx, session: srcSession, section: srcSection, itemIndex: srcItemIdx } = draggedItem;
+
+    // Clone custom curriculum
+    const nextCurriculum = JSON.parse(JSON.stringify(customCurriculum));
+
+    // Get source list
+    const srcWeek = nextCurriculum[srcWeekIdx];
+    const srcList = srcSession ? srcWeek[srcSession][srcSection] : srcWeek[srcSection];
+    if (!srcList) return;
+
+    // Remove item from source
+    const [draggedText] = srcList.splice(srcItemIdx, 1);
+
+    // Get target list
+    const targetWeek = nextCurriculum[targetWeekIndex];
+    if (targetSession) {
+      if (!targetWeek[targetSession]) {
+        targetWeek[targetSession] = { topics: [], readings: [], assignments: [] };
+      }
+      if (!targetWeek[targetSession][targetSection]) {
+        targetWeek[targetSession][targetSection] = [];
+      }
+    } else {
+      if (!targetWeek[targetSection]) {
+        targetWeek[targetSection] = [];
+      }
+    }
+    const targetList = targetSession ? targetWeek[targetSession][targetSection] : targetWeek[targetSection];
+
+    // Adjust target index if dropping in same list after source index
+    let insertIdx = targetItemIndex;
+    if (srcWeekIdx === targetWeekIndex && srcSession === targetSession && srcSection === targetSection) {
+      if (srcItemIdx < targetItemIndex) {
+        insertIdx = targetItemIndex - 1;
+      }
+    }
+
+    // Insert item at target
+    targetList.splice(insertIdx, 0, draggedText);
+
+    setCustomCurriculum(nextCurriculum);
+    setDraggedItem(null);
+  };
+
+  const handleReset = async () => {
+    if (window.confirm('Are you sure you want to reset the curriculum to default? All customized changes will be deleted.')) {
+      resetLocalCurriculum();
+      setCustomCurriculum(loadLocalCurriculum());
+      setSaveStatus('resetting to default...');
+      if (supabase) {
+        await clearRemoteCurriculum();
+        setSaveStatus('cloud reset done');
+      }
+      setTimeout(() => setSaveStatus(null), 2500);
+    }
+  };
 
   return (
     <LoginGate>
@@ -708,6 +1075,29 @@ export default function App() {
           <CountdownBanner />
           <ChangelogBanner />
           <div className="container">
+            
+            {/* Admin Control Bar */}
+            {adminMode && (
+              <div className="admin-control-bar">
+                <div className="admin-status">
+                  <span className="admin-status-dot"></span>
+                  <span>🛠️ Admin Edit Mode active</span>
+                  {saveStatus && <span style={{ opacity: 0.8, fontWeight: 'normal', textTransform: 'lowercase', marginLeft: '8px' }}>({saveStatus})</span>}
+                </div>
+                <div className="admin-actions">
+                  <button className="admin-btn" onClick={() => setIsExportOpen(true)}>
+                    Export JSON code
+                  </button>
+                  <button className="admin-btn-secondary" onClick={() => setAdminMode(false)}>
+                    Close Editor
+                  </button>
+                  <button className="admin-btn-danger" onClick={handleReset}>
+                    Reset to Default
+                  </button>
+                </div>
+              </div>
+            )}
+
             <Header
               startDate={startDate}
               setStartDate={setStartDate}
@@ -744,9 +1134,16 @@ export default function App() {
               </Link>
             </div>
 
-            <div className="logout-row">
+            <div className="logout-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <button 
+                className={`admin-toggle-btn ${adminMode ? 'is-active' : ''}`}
+                onClick={() => setAdminMode(!adminMode)}
+              >
+                {adminMode ? '🔒 Exit Edit Mode' : '🛠️ Admin Edit Mode'}
+              </button>
               <button className="logout-btn" onClick={handleLogout}>Sign out</button>
             </div>
+            
             <main className="grid">
               {weeks.map(({ entry, tuesday, saturday }, idx) => (
                 <WeekCard
@@ -756,6 +1153,14 @@ export default function App() {
                   saturday={saturday}
                   isCapstone={idx === weeks.length - 1}
                   index={idx}
+                  adminMode={adminMode}
+                  onUpdateWeek={handleUpdateWeek}
+                  onUpdateItem={handleUpdateItem}
+                  onDeleteItem={handleDeleteItem}
+                  onAddItem={handleAddItem}
+                  onDragStart={handleDragStart}
+                  onDragEnd={handleDragEnd}
+                  onDrop={handleDrop}
                 />
               ))}
             </main>
@@ -764,6 +1169,41 @@ export default function App() {
               <p>Notes save automatically to this browser. Edit <code>src/curriculum.js</code> to update titles and content.</p>
             </footer>
           </div>
+          
+          {/* Export JSON modal overlay */}
+          {isExportOpen && (
+            <div className="export-modal-overlay" onClick={() => setIsExportOpen(false)}>
+              <div className="export-modal" onClick={(e) => e.stopPropagation()}>
+                <div className="export-modal-header">
+                  <h3 className="export-modal-title">Export Curriculum Data</h3>
+                  <button className="export-modal-close" onClick={() => setIsExportOpen(false)}>×</button>
+                </div>
+                <p className="export-modal-subtitle">
+                  Copy the code below and paste it into <code>src/curriculum.js</code> to make your layout changes permanent in the codebase.
+                </p>
+                <textarea
+                  className="export-textarea"
+                  readOnly
+                  value={`export const curriculum = ${JSON.stringify(customCurriculum, null, 2)};`}
+                  onClick={(e) => e.target.select()}
+                />
+                <div className="export-modal-actions">
+                  <button
+                    className="admin-btn"
+                    onClick={() => {
+                      navigator.clipboard.writeText(`export const curriculum = ${JSON.stringify(customCurriculum, null, 2)};`);
+                      alert('Copied to clipboard!');
+                    }}
+                  >
+                    Copy to Clipboard
+                  </button>
+                  <button className="admin-btn-secondary" onClick={() => setIsExportOpen(false)}>
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </LoginGate>
