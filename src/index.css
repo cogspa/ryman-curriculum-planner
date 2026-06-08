@@ -1376,6 +1376,103 @@ body {
   border-top: 1px solid var(--hairline);
 }
 
+/* version manager */
+
+.version-manager {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--hairline);
+}
+
+.version-manager-header h4 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 16px 0;
+}
+
+.version-creator-title {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: var(--ink);
+}
+
+.version-creator-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.version-creator-fields .field-group.full-width {
+  grid-column: span 2;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-group label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.field-group input,
+.field-group textarea {
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--ink);
+  transition: all 150ms ease;
+}
+
+.field-group input:focus,
+.field-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.field-group textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.version-creator-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.version-delete-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(185, 28, 28, 0.05);
+  border: 1px solid rgba(185, 28, 28, 0.15);
+  border-radius: 4px;
+  padding: 12px 18px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: #b91c1c;
+}
+
+.version-delete-box p {
+  margin: 0;
+  font-weight: 500;
+}
+
 /* week blocks */
 
 .syllabus-week {

@@ -1113,6 +1113,9 @@ export default function App() {
                   {saveStatus && <span style={{ opacity: 0.8, fontWeight: 'normal', textTransform: 'lowercase', marginLeft: '8px' }}>({saveStatus})</span>}
                 </div>
                 <div className="admin-actions">
+                  <Link to="/syllabus" className="admin-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+                    Manage Versions
+                  </Link>
                   <button className="admin-btn" onClick={() => setIsExportOpen(true)}>
                     Export JSON code
                   </button>

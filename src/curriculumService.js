@@ -99,3 +99,70 @@ export async function clearRemoteCurriculum() {
   }
 }
 
+const VERSIONS_KEY = 'cp-custom-versions';
+const VERSIONS_UPDATED_KEY = 'cp-custom-versions-updated';
+
+export function loadLocalVersions() {
+  try {
+    const data = localStorage.getItem(VERSIONS_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
+}
+
+export function saveLocalVersions(versions) {
+  try {
+    localStorage.setItem(VERSIONS_KEY, JSON.stringify(versions));
+    localStorage.setItem(VERSIONS_UPDATED_KEY, Date.now().toString());
+  } catch (e) {
+    console.error('Failed to save custom versions locally:', e);
+  }
+}
+
+export async function fetchRemoteVersions() {
+  if (!supabase) return null;
+  try {
+    const { data, error } = await supabase
+      .from('notes')
+      .select('content')
+      .eq('week_number', 998)
+      .single();
+    
+    if (data && !error && data.content) {
+      try {
+        const parsed = JSON.parse(data.content);
+        if (Array.isArray(parsed)) {
+          return { data: parsed, updated: 0 };
+        }
+        return { 
+          data: parsed.data || [], 
+          updated: parsed.updated || 0 
+        };
+      } catch (err) {
+        console.error('Failed to parse remote custom versions content:', err);
+      }
+    }
+  } catch (e) {
+    console.error('Failed to fetch remote custom versions:', e);
+  }
+  return null;
+}
+
+export async function syncRemoteVersions(versions) {
+  if (!supabase) return;
+  try {
+    const updatedStr = localStorage.getItem(VERSIONS_UPDATED_KEY) || Date.now().toString();
+    const payload = {
+      data: versions,
+      updated: parseInt(updatedStr, 10)
+    };
+    await supabase
+      .from('notes')
+      .upsert({ week_number: 998, content: JSON.stringify(payload) });
+  } catch (e) {
+    console.error('Failed to sync custom versions to cloud:', e);
+  }
+}
+
+

@@ -2,7 +2,15 @@ import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { curriculum, config } from './curriculum.js';
 import { syllabusVersions } from './syllabusHistory.js';
-import { loadLocalCurriculum, fetchRemoteCurriculum, saveLocalCurriculum } from './curriculumService.js';
+import { supabase } from './supabaseClient.js';
+import {
+  loadLocalCurriculum,
+  fetchRemoteCurriculum,
+  loadLocalVersions,
+  saveLocalVersions,
+  fetchRemoteVersions,
+  syncRemoteVersions
+} from './curriculumService.js';
 
 // Strip [NEW] prefix and render bold markdown (**text**) for syllabus display
 function renderCleaned(str) {
@@ -19,8 +27,19 @@ function renderCleaned(str) {
 }
 
 export default function SyllabusPage() {
-  const [selectedVer, setSelectedVer] = useState('2.6');
+  const [selectedVer, setSelectedVer] = useState('live');
   const [customCurriculum, setCustomCurriculum] = useState(() => loadLocalCurriculum());
+  const [customVersions, setCustomVersions] = useState(() => loadLocalVersions());
+
+  const [newVersionTag, setNewVersionTag] = useState('');
+  const [newVersionDesc, setNewVersionDesc] = useState('');
+  const [isAdmin] = useState(() => {
+    try {
+      return localStorage.getItem('cp-auth-session') === 'true';
+    } catch {
+      return false;
+    }
+  });
 
   // Sync from cloud database if available to show the latest updates
   useEffect(() => {
@@ -36,27 +55,119 @@ export default function SyllabusPage() {
     }).catch((err) => {
       console.warn('Could not sync remote curriculum for syllabus page:', err);
     });
+
+    fetchRemoteVersions().then((remoteObj) => {
+      if (remoteObj && remoteObj.data) {
+        const localUpdated = parseInt(localStorage.getItem('cp-custom-versions-updated') || '0', 10);
+        if (remoteObj.updated > localUpdated) {
+          setCustomVersions(remoteObj.data);
+          localStorage.setItem('cp-custom-versions', JSON.stringify(remoteObj.data));
+          localStorage.setItem('cp-custom-versions-updated', remoteObj.updated.toString());
+        }
+      }
+    }).catch((err) => {
+      console.warn('Could not sync remote custom versions:', err);
+    });
   }, []);
 
+  const allVersions = useMemo(() => {
+    const preparedCustom = customVersions.map(v => ({ ...v, isCustom: true }));
+    return [...preparedCustom, ...syllabusVersions];
+  }, [customVersions]);
+
+  // Dynamically suggest next version tag
+  useEffect(() => {
+    const numericVersions = allVersions
+      .map(v => parseFloat(v.version))
+      .filter(v => !isNaN(v));
+    const maxVer = numericVersions.length > 0 ? Math.max(...numericVersions) : 2.6;
+    const nextVer = (maxVer + 0.1).toFixed(1);
+    setNewVersionTag(nextVer);
+  }, [allVersions]);
 
   const activeCurriculum = useMemo(() => {
-    if (selectedVer === '2.6') {
+    if (selectedVer === 'live') {
       return customCurriculum;
     }
+
+    // Check if selected is a custom version
+    const customVer = customVersions.find((v) => v.version === selectedVer);
+    if (customVer) {
+      return customVer.curriculumSnapshot;
+    }
+
+    // Otherwise it is a static version
     const verData = syllabusVersions.find((v) => v.version === selectedVer);
-    if (!verData || !verData.curriculumSnapshot) {
-      return customCurriculum;
+    if (!verData) {
+      return curriculum;
     }
-    // Merge snapshot overrides
-    return customCurriculum.map((week) => {
+    if (!verData.curriculumSnapshot) {
+      return curriculum;
+    }
+
+    // Merge snapshot overrides on top of default static curriculum
+    return curriculum.map((week) => {
       const override = verData.curriculumSnapshot.find((w) => w.week === week.week);
       return override ? override : week;
     });
-  }, [selectedVer, customCurriculum]);
+  }, [selectedVer, customCurriculum, customVersions]);
 
   const activeVersionInfo = useMemo(() => {
-    return syllabusVersions.find((v) => v.version === selectedVer);
-  }, [selectedVer]);
+    if (selectedVer === 'live') {
+      return {
+        version: 'live',
+        date: new Date().toISOString().split('T')[0],
+        description: 'Active working draft of the curriculum. Edits from Admin Edit Mode are reflected here.'
+      };
+    }
+    return allVersions.find((v) => v.version === selectedVer);
+  }, [selectedVer, allVersions]);
+
+  async function handleSaveVersion(e) {
+    e.preventDefault();
+    if (!newVersionTag.trim()) {
+      alert('Please enter a version tag.');
+      return;
+    }
+    const cleanTag = newVersionTag.trim().replace(/^v/, '');
+
+    if (allVersions.some(v => v.version === cleanTag)) {
+      alert(`Version v${cleanTag} already exists. Please choose a different version tag.`);
+      return;
+    }
+
+    const newVersion = {
+      version: cleanTag,
+      date: new Date().toISOString().split('T')[0],
+      description: newVersionDesc.trim() || 'No description provided.',
+      curriculumSnapshot: customCurriculum,
+    };
+
+    const updatedVersions = [newVersion, ...customVersions];
+    setCustomVersions(updatedVersions);
+    saveLocalVersions(updatedVersions);
+
+    if (supabase) {
+      await syncRemoteVersions(updatedVersions);
+    }
+
+    setNewVersionDesc('');
+    setSelectedVer(cleanTag);
+    alert(`Successfully saved version v${cleanTag}!`);
+  }
+
+  async function handleDeleteVersion(versionToDelete) {
+    if (window.confirm(`Are you sure you want to delete custom version v${versionToDelete}? This cannot be undone.`)) {
+      const updatedVersions = customVersions.filter(v => v.version !== versionToDelete);
+      setCustomVersions(updatedVersions);
+      saveLocalVersions(updatedVersions);
+      if (supabase) {
+        await syncRemoteVersions(updatedVersions);
+      }
+      setSelectedVer('live');
+      alert(`Deleted version v${versionToDelete}`);
+    }
+  }
 
   function handlePrint() {
     window.print();
@@ -90,7 +201,14 @@ export default function SyllabusPage() {
           <div className="syllabus-version-selector no-print">
             <span className="version-selector-label">Syllabus Version History:</span>
             <div className="version-pills">
-              {syllabusVersions.map((v) => (
+              <button
+                className={`version-pill ${selectedVer === 'live' ? 'is-active' : ''}`}
+                onClick={() => setSelectedVer('live')}
+              >
+                <span className="ver-tag">Live Draft</span>
+                <span className="ver-date">Active</span>
+              </button>
+              {allVersions.map((v) => (
                 <button
                   key={v.version}
                   className={`version-pill ${selectedVer === v.version ? 'is-active' : ''}`}
@@ -103,8 +221,69 @@ export default function SyllabusPage() {
             </div>
             {activeVersionInfo && (
               <p className="version-description">
-                💡 <strong>What changed in v{selectedVer}:</strong> {activeVersionInfo.description}
+                💡 <strong>What changed in {selectedVer === 'live' ? 'Live Draft' : `v${selectedVer}`}:</strong> {activeVersionInfo.description}
               </p>
+            )}
+
+            {isAdmin && (
+              <div className="version-manager">
+                <div className="version-manager-header">
+                  <h4>🛠️ Admin Version History Control</h4>
+                </div>
+                
+                {activeVersionInfo && activeVersionInfo.isCustom && (
+                  <div className="version-delete-box" style={{ marginBottom: '16px', marginTop: '0' }}>
+                    <p>This is a custom user-created version (v{selectedVer}).</p>
+                    <button 
+                      type="button" 
+                      className="admin-btn-danger" 
+                      onClick={() => handleDeleteVersion(selectedVer)}
+                      style={{ padding: '6px 14px', fontSize: '12px' }}
+                    >
+                      🗑️ Delete Version
+                    </button>
+                  </div>
+                )}
+
+                <form className="version-creator" onSubmit={handleSaveVersion}>
+                  <p className="version-creator-title">Save current Live Draft as a new version:</p>
+                  <div className="version-creator-fields">
+                    <div className="field-group">
+                      <label htmlFor="ver-tag-input">Version Tag</label>
+                      <input 
+                        id="ver-tag-input"
+                        type="text" 
+                        value={newVersionTag} 
+                        onChange={(e) => setNewVersionTag(e.target.value)} 
+                        placeholder="e.g. 2.7"
+                      />
+                    </div>
+                    <div className="field-group">
+                      <label>Date</label>
+                      <input 
+                        type="text" 
+                        value={new Date().toISOString().split('T')[0]} 
+                        readOnly 
+                        style={{ opacity: 0.7, cursor: 'not-allowed' }}
+                      />
+                    </div>
+                    <div className="field-group full-width">
+                      <label htmlFor="ver-desc-input">Changelog / Change Description</label>
+                      <textarea 
+                        id="ver-desc-input"
+                        value={newVersionDesc} 
+                        onChange={(e) => setNewVersionDesc(e.target.value)} 
+                        placeholder="Describe what changed in this version..."
+                      />
+                    </div>
+                  </div>
+                  <div className="version-creator-actions">
+                    <button type="submit" className="admin-btn">
+                      💾 Save Version
+                    </button>
+                  </div>
+                </form>
+              </div>
             )}
           </div>
 
@@ -206,7 +385,9 @@ export default function SyllabusPage() {
 
           <footer className="syllabus-footer">
             <p>Ryman Arts Platform · Curriculum Syllabus · 2026</p>
-            <p style={{ fontSize: 9, marginTop: 4, opacity: 0.7 }}>Viewing Version {selectedVer}</p>
+            <p style={{ fontSize: 9, marginTop: 4, opacity: 0.7 }}>
+              {selectedVer === 'live' ? 'Viewing Live Draft' : `Viewing Version v${selectedVer}`}
+            </p>
           </footer>
 
           <div className="syllabus-topbar no-print" style={{ marginTop: 40 }}>
