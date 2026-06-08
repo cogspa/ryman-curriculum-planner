@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { curriculum, config, changelog } from './curriculum.js';
 import { assignments } from './assignments.js';
@@ -907,6 +907,7 @@ export default function App() {
   const [draggedItem, setDraggedItem] = useState(null);
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [saveStatus, setSaveStatus] = useState(null);
+  const userHasEdited = useRef(false);
 
   // Sync from Supabase on load if available
   useEffect(() => {
@@ -936,12 +937,15 @@ export default function App() {
 
   // Save locally instantly on change
   useEffect(() => {
-    saveLocalCurriculum(customCurriculum);
+    // Only run if the user has actually made an edit (prevents mount-time overrides)
+    if (userHasEdited.current) {
+      saveLocalCurriculum(customCurriculum);
+    }
   }, [customCurriculum]);
 
   // Sync to database with debounce
   useEffect(() => {
-    if (!supabase) return;
+    if (!supabase || !userHasEdited.current) return;
     const t = setTimeout(async () => {
       try {
         setSaveStatus('syncing to cloud...');
@@ -957,6 +961,7 @@ export default function App() {
   }, [customCurriculum]);
 
 
+
   const weeks = useMemo(() => {
     const start = parseLocal(startDate);
     const firstTue = findTuesdayOnOrAfter(start);
@@ -969,12 +974,14 @@ export default function App() {
 
   // Curriculum Edit Handlers
   const handleUpdateWeek = (weekNum, updatedFields) => {
+    userHasEdited.current = true;
     setCustomCurriculum((prev) =>
       prev.map((w) => (w.week === weekNum ? { ...w, ...updatedFields } : w))
     );
   };
 
   const handleUpdateItem = (weekIndex, session, section, itemIndex, newText) => {
+    userHasEdited.current = true;
     setCustomCurriculum((prev) => {
       const next = JSON.parse(JSON.stringify(prev));
       const weekData = next[weekIndex];
@@ -985,6 +992,7 @@ export default function App() {
   };
 
   const handleDeleteItem = (weekIndex, session, section, itemIndex) => {
+    userHasEdited.current = true;
     setCustomCurriculum((prev) => {
       const next = JSON.parse(JSON.stringify(prev));
       const weekData = next[weekIndex];
@@ -995,6 +1003,7 @@ export default function App() {
   };
 
   const handleAddItem = (weekIndex, session, section) => {
+    userHasEdited.current = true;
     setCustomCurriculum((prev) => {
       const next = JSON.parse(JSON.stringify(prev));
       const weekData = next[weekIndex];
@@ -1027,6 +1036,7 @@ export default function App() {
 
   const handleDrop = (targetWeekIndex, targetSession, targetSection, targetItemIndex) => {
     if (!draggedItem) return;
+    userHasEdited.current = true;
 
     const { weekIndex: srcWeekIdx, session: srcSession, section: srcSection, itemIndex: srcItemIdx } = draggedItem;
 
@@ -1074,6 +1084,7 @@ export default function App() {
 
   const handleReset = async () => {
     if (window.confirm('Are you sure you want to reset the curriculum to default? All customized changes will be deleted.')) {
+      userHasEdited.current = false;
       resetLocalCurriculum();
       setCustomCurriculum(loadLocalCurriculum());
       setSaveStatus('resetting to default...');
