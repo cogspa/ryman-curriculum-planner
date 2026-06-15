@@ -343,7 +343,29 @@ export default function SyllabusPage() {
                         <div className="syllabus-block assignment-block" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
                           <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#0891b2', margin: '0 0 6px', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>Assignments & Prep</h5>
                           <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                            {week.saturday.assignments.map((a, i) => <li key={i}>{renderCleaned(a)}</li>)}
+                            {week.saturday.assignments.map((a, i) => {
+                              const isGradedAssignment = [1, 3, 5, 7, 9, 10].includes(week.week);
+                              let trackParam = '';
+                              const lower = a.toLowerCase();
+                              if (lower.includes('base assignment') || lower.includes('base')) {
+                                trackParam = '?track=beginner';
+                              } else if (lower.includes('next level') || lower.includes('take it')) {
+                                trackParam = '?track=intermediate';
+                              } else if (lower.includes('3d integration') || lower.includes('3d')) {
+                                trackParam = '?track=advanced';
+                              }
+                              return (
+                                <li key={i}>
+                                  {isGradedAssignment ? (
+                                    <Link to={`/assignment/${week.week}${trackParam}`} className="syllabus-assignment-link" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                      {renderCleaned(a)} <span style={{ fontSize: '0.85em', color: '#0891b2', marginLeft: '4px' }}>→</span>
+                                    </Link>
+                                  ) : (
+                                    renderCleaned(a)
+                                  )}
+                                </li>
+                              );
+                            })}
                           </ul>
                         </div>
                       )}
@@ -374,7 +396,29 @@ export default function SyllabusPage() {
                     <div className="syllabus-block assignment-block" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
                       <h3 className="syllabus-block-label" style={{ color: '#0891b2', fontWeight: 'bold', margin: '0 0 6px' }}>Assignments</h3>
                       <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                        {week.assignments.map((a, i) => <li key={i}>{renderCleaned(a)}</li>)}
+                        {week.assignments.map((a, i) => {
+                          const isGradedAssignment = [1, 3, 5, 7, 9, 10].includes(week.week);
+                          let trackParam = '';
+                          const lower = a.toLowerCase();
+                          if (lower.includes('base assignment') || lower.includes('base')) {
+                            trackParam = '?track=beginner';
+                          } else if (lower.includes('next level') || lower.includes('take it')) {
+                            trackParam = '?track=intermediate';
+                          } else if (lower.includes('3d integration') || lower.includes('3d')) {
+                            trackParam = '?track=advanced';
+                          }
+                          return (
+                            <li key={i}>
+                              {isGradedAssignment ? (
+                                <Link to={`/assignment/${week.week}${trackParam}`} className="syllabus-assignment-link" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                  {renderCleaned(a)} <span style={{ fontSize: '0.85em', color: '#0891b2', marginLeft: '4px' }}>→</span>
+                                </Link>
+                              ) : (
+                                renderCleaned(a)
+                              )}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   )}

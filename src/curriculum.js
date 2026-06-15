@@ -48,7 +48,9 @@ export const curriculum = [
         'Hands-on: Value, composition, gesture, and form on a digital screen',
       ],
       assignments: [
-        '[NEW] **Assignment 1: Traditional Translation**: Recreate one of your own traditional art pieces in Photoshop. Create two digital interpretations: one made entirely with straight edges and lines, and another made entirely with curves. Builds control, observation, and intentional digital mark-making.',
+        '[NEW] **Base Assignment**: *Traditional Translation* — Recreate a traditional character sketch or prop study digitally in Photoshop or Procreate to learn basic brush control and layer setup.',
+        '[NEW] **Next Level**: *Style Adaptability* — Translate a character or prop design into two distinct production styles (e.g., flat graphic vs. painterly visual development) to build stylistic range.',
+        '[NEW] **3D Integration**: *3D Block-In & Paint* — Model a character base mesh or prop in Blender, render orthographic views, and paint them digitally in Photoshop in two different styles.'
       ],
     }
   },
@@ -105,7 +107,9 @@ export const curriculum = [
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
       ],
       assignments: [
-        '[NEW] **Assignment 2: Material Studies**: Media Tile: Texture Systems & Brush-Based Material Studies (from Week 2)',
+        '[NEW] **Base Assignment**: *Media Tile* — Render a simple character prop on a 2×2 grid simulating traditional media (oil, watercolor, charcoal, digital) using custom brush presets and basic blend modes.',
+        '[NEW] **Next Level**: *Wear & Tear prop sheet* — Paint a signature prop from your IP in four distinct wear/weathered states (new, rusted, mossy, active/damaged) to demonstrate texture rendering.',
+        '[NEW] **3D Integration**: *Shader Editor & Bake* — Model the prop in Blender, apply procedural wear shaders, bake ambient occlusion and light passes, and do the final painting in Photoshop.'
       ],
     }
   },
@@ -161,7 +165,9 @@ export const curriculum = [
         '[NEW] Storyboarding fundamentals & visual cinematography (Dutch tilt, worm\'s eye view, pitch shot, zolly/dolly zooms)',
       ],
       assignments: [
-        '[NEW] **Assignment 3: Atmospheric Spaces**: Dramatic Location: Pick a location with depth (interior/exterior, real/imagined) that carries a cinematic lighting treatment (cathedral, warehouse, ruins, sci-fi corridor). The light is the subject; give it surfaces, depth, and atmosphere to act on. No central figure required.',
+        '[NEW] **Base Assignment**: *Atmospheric perspective* — Paint a home base or environment from your IP, focusing on linear perspective, value depth, and dynamic directional light.',
+        '[NEW] **Next Level**: *Narrative Keyframe* — Paint a story-driven environment keyframe featuring your character. Focus on visual storytelling and scale relationships.',
+        '[NEW] **3D Integration**: *3D Cinematic Block-in* — Build the environment in Blender, configure camera focal length and depth-of-field, set up volumetric lighting, and paint over the render.'
       ],
     }
   },
@@ -214,7 +220,9 @@ export const curriculum = [
         '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
       ],
       assignments: [
-        '[NEW] **Assignment 4: Narrative Panels**: 3-panel narrative illustration — full workflow brief: develop a sequential narrative using cinematographic frames and character turnaround studies.',
+        '[NEW] **Base Assignment**: *Narrative Panels* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout.',
+        '[NEW] **Next Level**: *Production Storyboards* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.',
+        '[NEW] **3D Integration**: *Blender Grease Pencil / Animatic* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil.'
       ],
     }
   },
@@ -270,7 +278,9 @@ export const curriculum = [
         '🛠️ Task: Refine campaign assets & apply peer feedback from Week 8 pitch rehearsals',
       ],
       assignments: [
-        '[NEW] **Assignment 5: Most Wanted Campaign**: Integrated commercial campaign brief: The "Most Wanted" brand assets package.',
+        '[NEW] **Base Assignment**: *Most Wanted Poster* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
+        '[NEW] **Next Level**: *Senior Key Art & Grids* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
+        '[NEW] **3D Integration**: *3D Studio Render & Wrap* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
       ],
     }
   },
@@ -297,7 +307,9 @@ export const curriculum = [
         'Salary negotiation basics & pricing confidence',
       ],
       assignments: [
-        '[NEW] **Assignment 6: Final Project Kickoff**: Begin major track project: select track (Concept Art, Poster Series, Storyboards, or Book Cover), draft brief, build reference board, and thumbnail 12+ directions.',
+        '[NEW] **Base Assignment**: *Portfolio Showcase* — Curate and compile 6-8 of your best polished pieces from the assignments into a clean digital portfolio PDF or website.',
+        '[NEW] **Next Level**: *IP Worldbuilding Deck* — Compile a full pitch deck for your IP, including a character lineup, world guide, and color scripts/keys.',
+        '[NEW] **3D Integration**: *IP Production Kit & Bible* — Compile a comprehensive production deck/bible featuring your Blender model layouts, modular kits, and final digital paints.'
       ],
     }
   },

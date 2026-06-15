@@ -1,11 +1,31 @@
-import { useParams, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { assignments } from './assignments.js';
 
 export default function AssignmentPage() {
   const { week } = useParams();
-  const data = assignments[Number(week)];
+  const rawData = assignments[Number(week)];
+  const [searchParams, setSearchParams] = useSearchParams();
+  const trackParam = searchParams.get('track');
+  
+  const [activeTrack, setActiveTrack] = useState(() => {
+    try {
+      if (trackParam && ['beginner', 'intermediate', 'advanced'].includes(trackParam)) {
+        return trackParam;
+      }
+      return localStorage.getItem('cp-active-track') || 'intermediate';
+    } catch {
+      return 'intermediate';
+    }
+  });
 
-  if (!data) {
+  useEffect(() => {
+    if (trackParam && ['beginner', 'intermediate', 'advanced'].includes(trackParam)) {
+      setActiveTrack(trackParam);
+    }
+  }, [trackParam]);
+
+  if (!rawData) {
     return (
       <div className="app">
         <div className="container">
@@ -19,6 +39,9 @@ export default function AssignmentPage() {
     );
   }
 
+  const isMultiTrack = !!rawData.tracks;
+  const data = isMultiTrack ? (rawData.tracks[activeTrack] || rawData.tracks['intermediate']) : rawData;
+
   return (
     <div className="app">
       <div className="container">
@@ -27,15 +50,82 @@ export default function AssignmentPage() {
 
           <div className="assignment-header">
             <p className="assignment-eyebrow">Week {String(week).padStart(2, '0')} · Assignment</p>
-            <h1 className="assignment-title">{data.title}</h1>
-            {data.subtitle && <p className="assignment-subtitle">{data.subtitle}</p>}
+            <h1 className="assignment-title">{rawData.title}</h1>
+            {rawData.subtitle && <p className="assignment-subtitle">{rawData.subtitle}</p>}
             {data.totalPoints && (
-              <span className="assignment-points-badge">{data.totalPoints} points</span>
+              <span className="assignment-points-badge">{data.totalPoints || rawData.totalPoints} points</span>
             )}
-            {data.extraCredit && (
-              <p className="assignment-extra-credit">⭐ {data.extraCredit}</p>
+            {rawData.extraCredit && (
+              <p className="assignment-extra-credit">⭐ {rawData.extraCredit}</p>
             )}
           </div>
+
+          {/* Track Selector Tab Bar */}
+          {isMultiTrack && (
+            <div style={{
+              display: 'flex',
+              background: 'rgba(255, 255, 255, 0.45)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
+              borderRadius: '30px',
+              padding: '6px',
+              gap: '6px',
+              marginBottom: '28px',
+              maxWidth: 'fit-content'
+            }}>
+              {['beginner', 'intermediate', 'advanced'].map((track) => {
+                const isActive = activeTrack === track;
+                const labelMap = {
+                  beginner: 'Base Assignment',
+                  intermediate: 'Take It to the Next Level',
+                  advanced: 'Advanced 3D Integration'
+                };
+                const colorMap = {
+                  beginner: { activeBg: '#3b82f6', text: '#fff' },
+                  intermediate: { activeBg: '#db2777', text: '#fff' },
+                  advanced: { activeBg: '#0f766e', text: '#fff' }
+                };
+                const theme = colorMap[track];
+                return (
+                  <button
+                    key={track}
+                    onClick={() => {
+                      setActiveTrack(track);
+                      try { localStorage.setItem('cp-active-track', track); } catch(e) {}
+                      setSearchParams({ track });
+                    }}
+                    style={{
+                      border: 'none',
+                      background: isActive ? theme.activeBg : 'transparent',
+                      color: isActive ? theme.text : '#475569',
+                      padding: '10px 20px',
+                      borderRadius: '24px',
+                      fontSize: '13px',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease-in-out',
+                      boxShadow: isActive ? '0 4px 12px rgba(0, 0, 0, 0.1)' : 'none',
+                      fontFamily: 'var(--font-sans, sans-serif)'
+                    }}
+                  >
+                    {labelMap[track]}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Track Specific Header details */}
+          {isMultiTrack && (
+            <div style={{
+              borderLeft: `4px solid ${activeTrack === 'beginner' ? '#3b82f6' : activeTrack === 'intermediate' ? '#db2777' : '#0f766e'}`,
+              paddingLeft: '16px',
+              marginBottom: '32px'
+            }}>
+              <h2 style={{ fontSize: '22px', margin: '0 0 6px 0', color: '#0f172a' }}>{data.title}</h2>
+              {data.subtitle && <p style={{ fontSize: '14px', margin: 0, opacity: 0.8, fontStyle: 'italic' }}>{data.subtitle}</p>}
+            </div>
+          )}
 
           {/* Generic sections format (used by Week 1) */}
           {data.sections?.map((section, si) => (
@@ -188,7 +278,7 @@ export default function AssignmentPage() {
                   <tr>
                     <th>Criterion</th>
                     <th>Points</th>
-                    {data.grading[0].desc && <th>Description</th>}
+                    {data.grading[0]?.desc && <th>Description</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -201,8 +291,8 @@ export default function AssignmentPage() {
                   ))}
                   <tr className="grading-total">
                     <td>Total</td>
-                    <td>{data.totalPoints}</td>
-                    {data.grading[0].desc && <td></td>}
+                    <td>{data.totalPoints || rawData.totalPoints}</td>
+                    {data.grading[0]?.desc && <td></td>}
                   </tr>
                 </tbody>
               </table>
@@ -217,3 +307,4 @@ export default function AssignmentPage() {
     </div>
   );
 }
+

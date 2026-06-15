@@ -1552,6 +1552,15 @@ body {
   margin-bottom: 2px;
 }
 
+.syllabus-assignment-link {
+  transition: color 150ms ease;
+}
+
+.syllabus-assignment-link:hover {
+  text-decoration: underline !important;
+  color: #0891b2 !important;
+}
+
 .syllabus-footer {
   margin-top: 48px;
   padding-top: 24px;

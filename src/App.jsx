@@ -311,6 +311,18 @@ function Section({ label, items, weekNumber }) {
 
           let linkPath = null;
           let isExternal = false;
+          if (label === 'Assignments' && [1, 3, 5, 7, 9, 10].includes(weekNumber)) {
+            const cleanText = text.toLowerCase();
+            if (cleanText.includes('base assignment') || cleanText.includes('base')) {
+              linkPath = `/assignment/${weekNumber}?track=beginner`;
+            } else if (cleanText.includes('next level') || cleanText.includes('take it')) {
+              linkPath = `/assignment/${weekNumber}?track=intermediate`;
+            } else if (cleanText.includes('3d integration') || cleanText.includes('3d')) {
+              linkPath = `/assignment/${weekNumber}?track=advanced`;
+            } else {
+              linkPath = `/assignment/${weekNumber}`;
+            }
+          }
           if (weekNumber === 1 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();
             if (cleanText.includes('canvas') && cleanText.includes('pixels')) {
