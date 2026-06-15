@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App.jsx';
 import AssignmentPage from './AssignmentPage.jsx';
+import AssignmentsHubPage from './AssignmentsHubPage.jsx';
 import SyllabusPage from './SyllabusPage.jsx';
 import Week01Overview from './pages/Week01Overview.jsx';
 import Week01TopicDetail from './pages/Week01TopicDetail.jsx';
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/assignment/:week" element={<AssignmentPage />} />
+        <Route path="/assignments" element={<AssignmentsHubPage />} />
         <Route path="/syllabus" element={<SyllabusPage />} />
         <Route path="/faq" element={<ClassFAQPage />} />
         <Route path="/speakers" element={<SpeakerListPage />} />

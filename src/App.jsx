@@ -302,6 +302,10 @@ function Section({ label, items, weekNumber }) {
         <Link to={`/week/0${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
+      ) : label === 'Assignments' ? (
+        <Link to="/assignments" className="section-label-link">
+          {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW HUB →]</span>
+        </Link>
       ) : (
         <p className="section-label">{label}</p>
       )}
@@ -1184,12 +1188,19 @@ export default function App() {
                   <strong>Saturday Assignments:</strong> Access detailed guides, track options, and points distribution for the six graded milestones.
                 </span>
               </div>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+                <Link 
+                  to="/assignments" 
+                  style={{ textDecoration: 'none', background: '#db2777', color: '#fff', fontSize: '11.5px', fontWeight: 'bold', padding: '6px 16px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center', border: '1px dashed #fff' }}
+                  className="assignments-hub-btn"
+                >
+                  VIEW HUB →
+                </Link>
                 {[1, 3, 5, 7, 9, 10].map((wk) => (
                   <Link 
                     key={wk}
                     to={`/assignment/${wk}`} 
-                    style={{ textDecoration: 'none', background: '#db2777', color: '#fff', fontSize: '11px', fontWeight: 'bold', padding: '6px 12px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center' }}
+                    style={{ textDecoration: 'none', background: 'rgba(219, 39, 119, 0.12)', border: '1px solid rgba(219, 39, 119, 0.25)', color: '#be185d', fontSize: '11px', fontWeight: 'bold', padding: '5px 12px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center' }}
                     className="assignment-bar-btn"
                   >
                     Week {wk}

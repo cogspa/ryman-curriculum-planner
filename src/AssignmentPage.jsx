@@ -46,7 +46,11 @@ export default function AssignmentPage() {
     <div className="app">
       <div className="container">
         <div className="assignment-page">
-          <Link to="/" className="back-link">← Back to Curriculum</Link>
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <Link to="/" className="back-link">← Back to Curriculum</Link>
+            <span style={{ opacity: 0.3 }}>|</span>
+            <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
+          </div>
 
           {/* Quick links to other assignments */}
           <div style={{
@@ -338,8 +342,10 @@ export default function AssignmentPage() {
             </section>
           )}
 
-          <div className="assignment-footer">
+          <div className="assignment-footer" style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
             <Link to="/" className="back-link">← Back to Curriculum</Link>
+            <span style={{ opacity: 0.3 }}>|</span>
+            <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
           </div>
         </div>
       </div>
