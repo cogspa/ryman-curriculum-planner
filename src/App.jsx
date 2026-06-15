@@ -1162,7 +1162,7 @@ export default function App() {
               </Link>
             </div>
 
-            <div className="speakers-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(6, 182, 212, 0.05)', border: '1px solid rgba(6, 182, 212, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+            <div className="speakers-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(6, 182, 212, 0.05)', border: '1px solid rgba(6, 182, 212, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ fontSize: '18px' }}>🎤</span>
                 <span style={{ fontSize: '13px', fontWeight: '500', color: '#0891b2' }}>
@@ -1175,6 +1175,27 @@ export default function App() {
               >
                 POTENTIAL SPEAKER LIST →
               </Link>
+            </div>
+
+            <div className="assignments-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(219, 39, 119, 0.05)', border: '1px solid rgba(219, 39, 119, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📝</span>
+                <span style={{ fontSize: '13px', fontWeight: '500', color: '#db2777' }}>
+                  <strong>Saturday Assignments:</strong> Access detailed guides, track options, and points distribution for the six graded milestones.
+                </span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {[1, 3, 5, 7, 9, 10].map((wk) => (
+                  <Link 
+                    key={wk}
+                    to={`/assignment/${wk}`} 
+                    style={{ textDecoration: 'none', background: '#db2777', color: '#fff', fontSize: '11px', fontWeight: 'bold', padding: '6px 12px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center' }}
+                    className="assignment-bar-btn"
+                  >
+                    Week {wk}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             <div className="logout-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>

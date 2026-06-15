@@ -48,6 +48,45 @@ export default function AssignmentPage() {
         <div className="assignment-page">
           <Link to="/" className="back-link">← Back to Curriculum</Link>
 
+          {/* Quick links to other assignments */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            marginBottom: '32px',
+            marginTop: '12px',
+            flexWrap: 'wrap',
+            fontSize: '12px',
+            fontFamily: 'var(--font-mono, monospace)',
+            borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+            paddingBottom: '16px'
+          }}>
+            <span style={{ color: '#64748b', fontWeight: 'bold', marginRight: '6px' }}>All Assignments:</span>
+            {[1, 3, 5, 7, 9, 10].map((wk) => {
+              const isActive = Number(week) === wk;
+              return (
+                <Link
+                  key={wk}
+                  to={`/assignment/${wk}${activeTrack ? `?track=${activeTrack}` : ''}`}
+                  style={{
+                    textDecoration: 'none',
+                    padding: '6px 12px',
+                    borderRadius: '20px',
+                    background: isActive ? 'rgba(0, 0, 0, 0.06)' : 'transparent',
+                    color: isActive ? '#0f172a' : '#64748b',
+                    fontWeight: isActive ? 'bold' : 'normal',
+                    transition: 'all 0.15s ease',
+                    border: '1px solid',
+                    borderColor: isActive ? 'rgba(0, 0, 0, 0.15)' : 'transparent'
+                  }}
+                  className="assignment-nav-link"
+                >
+                  Week {wk}
+                </Link>
+              );
+            })}
+          </div>
+
           <div className="assignment-header">
             <p className="assignment-eyebrow">Week {String(week).padStart(2, '0')} · Assignment</p>
             <h1 className="assignment-title">{rawData.title}</h1>
