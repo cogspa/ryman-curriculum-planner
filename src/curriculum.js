@@ -45,6 +45,7 @@ export const curriculum = [
         '[NEW] Origin of the word "pixel"',
         '[NEW] Elements vs. Principles of Design',
         '[NEW] Resolution and Quality',
+        '[NEW] Hands-on: Biomorphic shapes & the Metaball effect (Gaussian Blur + Levels thresholding to generate organic blob forms via implicit scalar fields)',
         'Hands-on: Value, composition, gesture, and form on a digital screen',
       ],
       assignments: [

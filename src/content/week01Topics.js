@@ -210,6 +210,38 @@ Canvas size for this class: start at 3000 × 2000 px at 300 DPI for any delivera
       },
     ],
   },
+  'biomorphic-shapes-metaballs': {
+    title: 'Biomorphic Shapes & the Metaball Effect',
+    pccSources: ['Implicit Surfaces', 'Scalar Fields and Iso-contours'],
+    sections: [
+      {
+        heading: 'What is a biomorphic metaball blob shape?',
+        body: `In design language, shapes generated this way are often called biomorphic silhouettes, amorphous organic forms, or liquid blob shapes. Creating fluid, organic forms that seamlessly merge is a core technique in visual development, useful for character silhouettes, creature anatomy, and liquid/lava background designs.`,
+      },
+      {
+        heading: 'Photoshop Recipe: Non-destructive Metaballs',
+        body: `Photoshop can simulate metaball blending using image filters and adjustment layers:
+        
+1. Make your source shapes (e.g. black circles) on separate layers.
+2. Select the shape layers, right-click, and choose "Convert to Smart Object". This keeps the workflow non-destructive so you can move the shapes around later.
+3. Choose Filter > Blur > Gaussian Blur. Blur until the shapes' boundaries soften and their outer halos overlap.
+4. Add a Levels adjustment layer (or Threshold adjustment).
+5. Push the black and white Input Levels sliders inward toward the center until the soft blur edges are sharpened back into a crisp, solid silhouette.
+        
+Summary formula: Source Shapes → Blur (Convolution) → Levels/Threshold (Thresholding) = Clean organic blob form.`,
+      },
+      {
+        heading: 'The Computer Graphics Science: Implicit Fields',
+        body: `The math behind this effect is rooted in implicit surfaces (or implicit fields):
+
+- **Scalar Fields**: Rather than defining a shape explicitly using outline vertices (like a vector outline), a metaball defines a shape using a scalar field of influence. Every object projects a soft, invisible field of density values into the surrounding space.
+- **Field Accumulation**: When two objects get close, their soft fields overlap and add their density values together.
+- **Thresholding (Iso-contours)**: The final visible shape is defined by a threshold value. Any point in space where the combined density is higher than the threshold becomes solid; anywhere lower becomes empty. In 2D, this threshold boundary is called an **iso-contour**; in 3D, it is an **iso-surface**.
+
+In modern computer graphics, this concept is widely used in **Signed Distance Fields (SDFs)**, and algorithms like **Marching Squares** (2D) or **Marching Cubes** (3D) are used to compute and render the resulting smooth outlines.`,
+      },
+    ],
+  },
 };
 
 export const topicList = [
@@ -217,6 +249,7 @@ export const topicList = [
   { key: 'origin-of-pixel', label: 'Origin of the word "pixel"', isNew: true },
   { key: 'elements-vs-principles', label: 'Elements vs. Principles of Design', isNew: true },
   { key: 'resolution-and-quality', label: 'Resolution and Quality', isNew: true },
+  { key: 'biomorphic-shapes-metaballs', label: 'Hands-on: Biomorphic shapes & the Metaball effect (Gaussian Blur + Levels thresholding)', isNew: true },
   { key: 'value-composition-gesture-form', label: 'Value, composition, gesture, and form', isNew: false },
   { key: 'workflow-fundamentals', label: 'Side-topic conversations (Tue Zoom): Wacom/iPad workflow setup, canvas size, resolution, file types, layer fundamentals, file-naming conventions', isNew: false },
 ];

@@ -337,6 +337,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/01/elements-vs-principles';
             } else if (cleanText.includes('resolution')) {
               linkPath = '/week/01/resolution-and-quality';
+            } else if (cleanText.includes('biomorphic') || cleanText.includes('metaball')) {
+              linkPath = '/week/01/biomorphic-shapes-metaballs';
             } else if (cleanText.includes('value') && cleanText.includes('composition')) {
               linkPath = '/week/01/value-composition-gesture-form';
             } else if (cleanText.includes('side-topic') || cleanText.includes('wacom')) {
@@ -1166,7 +1168,7 @@ export default function App() {
               </Link>
             </div>
 
-            <div className="speakers-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(6, 182, 212, 0.05)', border: '1px solid rgba(6, 182, 212, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '12px' }}>
+            <div className="speakers-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(6, 182, 212, 0.05)', border: '1px solid rgba(6, 182, 212, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ fontSize: '18px' }}>🎤</span>
                 <span style={{ fontSize: '13px', fontWeight: '500', color: '#0891b2' }}>
@@ -1178,6 +1180,21 @@ export default function App() {
                 style={{ textDecoration: 'none', background: '#06b6d4', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
               >
                 POTENTIAL SPEAKER LIST →
+              </Link>
+            </div>
+
+            <div className="roster-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(124, 58, 237, 0.05)', border: '1px solid rgba(124, 58, 237, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📋</span>
+                <span style={{ fontSize: '13px', fontWeight: '500', color: '#6d28d9' }}>
+                  <strong>Roster:</strong> Final class list roster of the 14 selected candidates with contact info and goals.
+                </span>
+              </div>
+              <Link 
+                to="/roster" 
+                style={{ textDecoration: 'none', background: '#7c3aed', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+              >
+                FINAL CLASS LIST ROSTER →
               </Link>
             </div>
 
