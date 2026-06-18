@@ -311,6 +311,36 @@ export default function SyllabusPage() {
             )}
           </div>
 
+          {/* Syllabus Vision & Worldbuilding Overview */}
+          <div className="curriculum-intro-card" style={{
+            background: 'rgba(246, 242, 232, 0.45)',
+            border: '1px solid var(--hairline-strong, #C9C1AE)',
+            borderRadius: '8px',
+            padding: '20px 24px',
+            marginBottom: '32px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.01)'
+          }}>
+            <h3 style={{
+              fontFamily: 'var(--font-display, serif)',
+              fontSize: '18px',
+              fontWeight: 'normal',
+              margin: '0 0 10px 0',
+              color: 'var(--ink, #1C1A17)',
+              borderBottom: '1px solid var(--hairline, #DDD6C6)',
+              paddingBottom: '8px'
+            }}>
+              Curriculum Vision: Worldbuilding & Digital Workflows
+            </h3>
+            <p style={{
+              fontSize: '13.5px',
+              lineHeight: '1.6',
+              color: 'var(--ink-mid, #44403A)',
+              margin: 0
+            }}>
+              This worldbuilding-based curriculum focuses on teaching digital workflows to achieve the broader goals of workforce development in the visual arts. Rather than disconnected drills, the lessons guide students through the creation of six major assignments and a final capstone presentation. Using their own original ideas, IP (Intellectual Property), and characters, students will visually develop a unified "world of their own."
+            </p>
+          </div>
+
           {activeCurriculum.map((week) => (
             <section key={week.week} className="syllabus-week">
               <div className="syllabus-week-head">
