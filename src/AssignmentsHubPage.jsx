@@ -105,16 +105,6 @@ export default function AssignmentsHubPage() {
                       }}>
                         WEEK {String(wk).padStart(2, '0')}
                       </span>
-                      <span className="hub-card-points" style={{
-                        fontSize: '11px',
-                        fontWeight: 'bold',
-                        color: '#0891b2',
-                        background: 'rgba(6, 182, 212, 0.08)',
-                        padding: '4px 8px',
-                        borderRadius: '4px'
-                      }}>
-                        {info.totalPoints || 100} pts
-                      </span>
                     </div>
 
                     <h3 style={{ fontSize: '18px', fontWeight: 'bold', margin: '0 0 6px 0', color: '#0f172a' }}>

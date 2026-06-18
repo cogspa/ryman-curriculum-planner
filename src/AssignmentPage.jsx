@@ -95,9 +95,6 @@ export default function AssignmentPage() {
             <p className="assignment-eyebrow">Week {String(week).padStart(2, '0')} · Assignment</p>
             <h1 className="assignment-title">{rawData.title}</h1>
             {rawData.subtitle && <p className="assignment-subtitle">{rawData.subtitle}</p>}
-            {data.totalPoints && (
-              <span className="assignment-points-badge">{data.totalPoints || rawData.totalPoints} points</span>
-            )}
             {rawData.extraCredit && (
               <p className="assignment-extra-credit">⭐ {rawData.extraCredit}</p>
             )}
@@ -330,33 +327,18 @@ export default function AssignmentPage() {
             </section>
           )}
 
-          {/* Grading */}
-          {data.grading && (
-            <section className="assignment-phase assignment-grading">
-              <h2 className="phase-title">Grading Criteria</h2>
-              <table className="grading-table">
-                <thead>
-                  <tr>
-                    <th>Criterion</th>
-                    <th>Points</th>
-                    {data.grading[0]?.desc && <th>Description</th>}
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.grading.map((g, i) => (
-                    <tr key={i}>
-                      <td className="grading-criterion">{g.criterion}</td>
-                      <td className="grading-points">{g.points}</td>
-                      {g.desc && <td className="grading-desc">{g.desc}</td>}
-                    </tr>
-                  ))}
-                  <tr className="grading-total">
-                    <td>Total</td>
-                    <td>{data.totalPoints || rawData.totalPoints}</td>
-                    {data.grading[0]?.desc && <td></td>}
-                  </tr>
-                </tbody>
-              </table>
+          {/* Critique Questions */}
+          {data.critiqueQuestions && data.critiqueQuestions.length > 0 && (
+            <section className="assignment-phase assignment-critique">
+              <h2 className="phase-title">Critique Discussion Questions</h2>
+              <p className="phase-intro">
+                Reflect on these questions or bring them to your peer critique discussion once the assignment is completed:
+              </p>
+              <ul className="critique-list" style={{ paddingLeft: '20px', lineHeight: '1.7', fontSize: '15px' }}>
+                {data.critiqueQuestions.map((q, i) => (
+                  <li key={i} style={{ marginBottom: '10px' }}>{q}</li>
+                ))}
+              </ul>
             </section>
           )}
 

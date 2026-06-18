@@ -8,7 +8,6 @@ export const assignments = {
   1: {
     title: 'Assignment 1: Character / Prop Foundation',
     subtitle: 'Worldbuilding Step 1: Establish your core IP characters and signature items.',
-    totalPoints: 100,
     tracks: {
       beginner: {
         title: 'Base Assignment: Traditional Translation',
@@ -40,10 +39,10 @@ export const assignments = {
           'Finished straight-line digital ink drawing as a PNG.',
           'Finished curved-line digital ink drawing as a PNG.',
         ],
-        grading: [
-          { criterion: 'Line weight variation and clean execution', points: 40 },
-          { criterion: 'Faithful translation of the character/prop form', points: 30 },
-          { criterion: 'Correct layer structure and export specs', points: 30 },
+        critiqueQuestions: [
+          'How did you translate the organic, tactile feel of your traditional sketch into clean digital lines?',
+          'What did you discover about your brush control and line confidence when comparing the straight-line and curved-line versions?',
+          'How does the layer structure you set up make it easier to isolate lines and prep for future coloring or adjustments?'
         ],
       },
       intermediate: {
@@ -68,10 +67,10 @@ export const assignments = {
           'Version A (Style 1) render as a PNG.',
           'Version B (Style 2) render as a PNG.',
         ],
-        grading: [
-          { criterion: 'Clear contrast in visual style and rendering choices', points: 40 },
-          { criterion: 'Strong silhouette and anatomical/structural proportions', points: 40 },
-          { criterion: 'Clean layering and smart object utilization', points: 20 },
+        critiqueQuestions: [
+          'What key visual rules (e.g., shape language, linework, value ranges) did you establish to distinguish your two chosen styles?',
+          'How did changing the artistic style shift the personality of the character or the mood of the prop?',
+          'What workflow strategies did you use to maintain consistent anatomical or mechanical proportions across both renders?'
         ],
       },
       advanced: {
@@ -96,10 +95,10 @@ export const assignments = {
           'Orthographic flat renders (PNG).',
           'Two final style paint-overs (PNG).',
         ],
-        grading: [
-          { criterion: 'Proportions, clean mesh blocking, and camera setups in Blender', points: 40 },
-          { criterion: 'Stylistic diversity and rendering execution in Photoshop', points: 40 },
-          { criterion: 'Efficient layer groups and clean file boundaries', points: 20 },
+        critiqueQuestions: [
+          'How did blocking out the 3D shapes in Blender help clarify the proportions and perspective of your initial sketch?',
+          'What choices did you make in your orthographic viewport setups to ensure your renders were clean templates for drawing?',
+          'How did you merge 3D structural correctness with the expressive qualities of hand-drawn digital painting during the paint-over?'
         ],
       },
     },
@@ -107,7 +106,6 @@ export const assignments = {
   3: {
     title: 'Assignment 2: Material Studies & Textures',
     subtitle: 'Worldbuilding Step 2: Define the physical materials and surfaces of your world.',
-    totalPoints: 100,
     tracks: {
       beginner: {
         title: 'Base Assignment: Media Tile Material Studies',
@@ -132,10 +130,10 @@ export const assignments = {
           'Final 2×2 Media Tile layout as a single 2000×2000 PNG file.',
           'Brief written reflection (150 words) on simulating tactile media digitally.',
         ],
-        grading: [
-          { criterion: 'Medium translation accuracy (convincing texture/tactility)', points: 40 },
-          { criterion: 'Custom brush variety and brush engine settings', points: 35 },
-          { criterion: 'File layout, alignment, and layer grouping', points: 25 },
+        critiqueQuestions: [
+          'What brush settings (e.g., texture, opacity pressure, dual brushes) were most effective in simulating physical medium paint or charcoal?',
+          'How did using specific blend modes (like Multiply for watercolor transparent glazes) help replicate traditional paint interaction?',
+          'Which of the four media tiles feels the most tactile, and what specific details create that illusion of physical texture?'
         ],
       },
       intermediate: {
@@ -160,10 +158,10 @@ export const assignments = {
           'Photographic material reference board (10-15 reference photos).',
           'Completed 2×2 prop wear sheet (PNG).',
         ],
-        grading: [
-          { criterion: 'Material fidelity (rendering of metal, rust, moss, energy)', points: 45 },
-          { criterion: 'Structural consistency of the prop shape across states', points: 35 },
-          { criterion: 'Clean adjustment layers and non-destructive stack organization', points: 20 },
+        critiqueQuestions: [
+          'How did you vary your highlights, specular reflections, and surface roughness to distinguish between metal, moss, and energy?',
+          'How does the wear and tear tell a story about the prop’s history—how it was used, where it was kept, or what damaged it?',
+          'What non-destructive layer setups (e.g., masks, adjustment layers) allowed you to paint updates while keeping the original prop shape intact?'
         ],
       },
       advanced: {
@@ -188,10 +186,10 @@ export const assignments = {
           'Baked AO and Diffuse passes as separate files (PNG).',
           'Final illustrative paint-over render (PNG).',
         ],
-        grading: [
-          { criterion: 'Procedural node layout complexity and UV mapping in Blender', points: 40 },
-          { criterion: 'Final paint-over finish quality and specular adjustments', points: 40 },
-          { criterion: 'File layer organization and workflow efficiency', points: 20 },
+        critiqueQuestions: [
+          'How did you use node configurations in Blender (e.g., mixing noise textures with geometry wear attributes) to target edges and crevices?',
+          'What did the ambient occlusion (AO) pass bring to your Photoshop layer stack, and how did you blend it with hand-painted colors?',
+          'How did you balance the clean, mathematical precision of procedural 3D shaders with the warmth and charm of digital paint-over?'
         ],
       },
     },
@@ -199,7 +197,6 @@ export const assignments = {
   5: {
     title: 'Assignment 3: Atmospheric Space',
     subtitle: 'Worldbuilding Step 3: Illustrate a key setting, headquarters, or terrain from your world.',
-    totalPoints: 100,
     tracks: {
       beginner: {
         title: 'Base Assignment: Perspective & Atmospheric Lighting',
@@ -223,10 +220,10 @@ export const assignments = {
           'Value study thumbnail sheet (3 different options).',
           'Final high-resolution digital painting (PNG).',
         ],
-        grading: [
-          { criterion: 'Atmospheric depth and perspective grid correctness', points: 40 },
-          { criterion: 'Lighting hierarchy (shadow, midtone, highlight structure)', points: 40 },
-          { criterion: 'Form, brushwork, and surface rendering', points: 20 },
+        critiqueQuestions: [
+          'How does your perspective grid guide the viewer’s eye through the foreground, midground, and background layers?',
+          'How did you use value contrast (light against dark) and color temperature (cool vs. warm) to establish atmospheric depth?',
+          'Does the directional light source feel integrated across all elements, and how does it define the volume of your structures?'
         ],
       },
       intermediate: {
@@ -251,10 +248,10 @@ export const assignments = {
           'Value / color keys (3 color script variants).',
           'Final cinematic environment keyframe render (PNG).',
         ],
-        grading: [
-          { criterion: 'Storytelling, narrative impact, and character integration', points: 40 },
-          { criterion: 'Lighting treatment and atmospheric realism', points: 35 },
-          { criterion: 'Composition, cropping, and smart smart-object usage', points: 25 },
+        critiqueQuestions: [
+          'What story details or character motivations did you focus on communicating in this keyframe setting?',
+          'How does the camera crop and composition layout create a sense of scale and emotional atmosphere (e.g. isolation, epic grandeur, danger)?',
+          'How did you use cinematic light overlays, atmospheric fog, or depth-of-field to integrate the character seamlessly into the scene?'
         ],
       },
       advanced: {
@@ -280,10 +277,10 @@ export const assignments = {
           'Raw Blender render pass (PNG).',
           'Final painted-over cinematic keyframe (PNG).',
         ],
-        grading: [
-          { criterion: 'Scene layout, volumetric lighting, and camera staging in Blender', points: 40 },
-          { criterion: 'Illustrative paint-over detail and value transitions in Photoshop', points: 40 },
-          { criterion: 'Smart usage of render passes and color correction', points: 20 },
+        critiqueQuestions: [
+          'How did staging your camera lens (focal length, sensor size) in Blender help frame the dramatic depth of the environment?',
+          'What changes did you make to the volumetric settings (fog density, light scattering) in 3D to create strong initial values?',
+          'In the Photoshop stage, how did you decide which render details to keep and which areas to paint over to make it feel hand-painted?'
         ],
       },
     },
@@ -291,7 +288,6 @@ export const assignments = {
   7: {
     title: 'Assignment 4: Narrative Sequence',
     subtitle: 'Worldbuilding Step 4: Map character consistency and tell a sequential action story.',
-    totalPoints: 100,
     tracks: {
       beginner: {
         title: 'Base Assignment: 3-Panel Comic & Turnaround',
@@ -315,10 +311,10 @@ export const assignments = {
           'Clean 3-panel comic sheet layout (PNG).',
           '2-view character turnaround line art sheet (PNG).',
         ],
-        grading: [
-          { criterion: 'Proportional consistency of character across panels', points: 40 },
-          { criterion: 'Clarity of the 3-panel narrative progression', points: 40 },
-          { criterion: 'Clean clean-up lines and digital layout', points: 20 },
+        critiqueQuestions: [
+          'How did the panel framing (establishing shot, medium shot, close-up) help clarify the action and the character’s reaction?',
+          'What features or structural details did you focus on to ensure your character looked consistent between the front and side views?',
+          'How did your clean line art help clarify the focus of each panel without relying on color or shading?'
         ],
       },
       intermediate: {
@@ -342,10 +338,10 @@ export const assignments = {
           'Completed 6-9 panel storyboard sequence sheet (PNG/PDF).',
           'Character model turnaround sheet showing Front, Side, Back, and Expressions (PNG).',
         ],
-        grading: [
-          { criterion: 'Cinematic layout composition and camera movement design', points: 40 },
-          { criterion: 'Character turnaround anatomical consistency and expression weight', points: 40 },
-          { criterion: 'Handoff cleanliness and notation formatting', points: 20 },
+        critiqueQuestions: [
+          'How did using dynamic camera angles (high, low, Dutch tilts) emphasize the emotional shifts in your storyboard sequence?',
+          'What challenges did you face when showing camera motion (e.g. pans, zooms) inside static panels, and how did you use arrows/guides?',
+          'How do the turnaround expression studies help define the character’s acting style and emotional personality?'
         ],
       },
       advanced: {
@@ -370,10 +366,10 @@ export const assignments = {
           'Blender workspace viewport screenshot showing camera rigs and Grease Pencil drawings.',
           'Completed storyboard sequence sheet exported directly from Blender (PNG/PDF) or compiled animatic video (MP4).',
         ],
-        grading: [
-          { criterion: 'Camera staging, lens choice, and cinematography principles in Blender', points: 40 },
-          { criterion: 'Grease Pencil sketch quality, posing, and dynamic gestures', points: 40 },
-          { criterion: 'Timeline setup, layout consistency, and export quality', points: 20 },
+        critiqueQuestions: [
+          'How did staging the storyboard in a 3D environment help you test camera movements and spatial relationships before drawing?',
+          'What advantages did you find in drawing on a 3D grid with Grease Pencil compared to standard 2D sketching?',
+          'How did timing your panels along the Blender timeline help you understand the pacing and rhythm of the cinematic sequence?'
         ],
       },
     },
@@ -381,7 +377,6 @@ export const assignments = {
   9: {
     title: 'Assignment 5: Release Campaign',
     subtitle: 'Worldbuilding Step 5: Design the promotional assets and release package for your world.',
-    totalPoints: 100,
     tracks: {
       beginner: {
         title: 'Base Assignment: Most Wanted Poster Campaign',
@@ -404,10 +399,10 @@ export const assignments = {
           'Mockup design thumbnail sketch showing layout grids.',
           'Completed poster print-ready file (PDF or high-res PNG).',
         ],
-        grading: [
-          { criterion: 'Typography choices and layout grid balance', points: 40 },
-          { criterion: 'Integration of image and text', points: 40 },
-          { criterion: 'Correct file setup (DPI, bleed margins, layout templates)', points: 20 },
+        critiqueQuestions: [
+          'How did you establish typography hierarchy so that the title/logo is read first, followed by taglines and secondary credits?',
+          'What choices did you make regarding margins and layout grid alignment to ensure the poster feels balanced and commercial?',
+          'How did the composition of your digital painting adapt to leave appropriate negative space for the text overlay?'
         ],
       },
       intermediate: {
@@ -431,10 +426,10 @@ export const assignments = {
           'Completed campaign package containing 4 layout formats (PDF/PNG).',
           'Asset package folder screenshot showing linked high-res source files.',
         ],
-        grading: [
-          { criterion: 'Grid structure, page design, and margins consistency in InDesign', points: 40 },
-          { criterion: 'Asset scaling, smart object links, and raster-vector integrations', points: 40 },
-          { criterion: 'Responsive cropping choices and text layout adjustments', points: 20 },
+        critiqueQuestions: [
+          'How did you adapt your layout grids in InDesign to fit four very different shapes (horizontal, vertical, square, spine)?',
+          'What adjustments did you make to the focal points, text positioning, and crop bounds to keep the story clear in every size?',
+          'How did linking assets (smart objects, vectors) through libraries help you work efficiently and avoid losing quality?'
         ],
       },
       advanced: {
@@ -456,14 +451,14 @@ export const assignments = {
           },
         ],
         submission: [
-          'Blender viewport screenshot showing 3D studio light positioning.',
+          'Blender workspace viewport screenshot showing 3D studio light positioning.',
           'Raw 3D render passes (transparent background PNG).',
           'Completed multi-format marketing deck layouts (PDF/PNG).',
         ],
-        grading: [
-          { criterion: 'Blender studio lighting quality, shadow catcher setup, and rendering passes', points: 40 },
-          { criterion: 'Graphic design hierarchy, logo design, and campaign composite quality', points: 40 },
-          { criterion: 'Technical file compilation and transparency settings', points: 20 },
+        critiqueQuestions: [
+          'How did your three-point studio lighting setup (Key, Fill, Rim) in Blender carve out form and highlight the model’s details?',
+          'What role did colored light accents or spotlight gobos play in matching the marketing deck\'s theme with the IP\'s story?',
+          'How did you organize your render passes (shadow catchers, emissions) in Photoshop/InDesign to create a professional commercial layout?'
         ],
       },
     },
@@ -471,7 +466,6 @@ export const assignments = {
   10: {
     title: 'Assignment 6: Capstone Pitch Deck',
     subtitle: 'Worldbuilding Step 6: Compile your IP worldbuilding project into a showcase-ready presentation.',
-    totalPoints: 100,
     tracks: {
       beginner: {
         title: 'Base Assignment: Portfolio Showcase Deck',
@@ -493,10 +487,10 @@ export const assignments = {
         submission: [
           'Completed portfolio showcase deck (PDF or link to live website).',
         ],
-        grading: [
-          { criterion: 'Curation quality and consistent styling of the presentation slides', points: 40 },
-          { criterion: 'Visual hierarchy, typography choice, and grid alignment', points: 40 },
-          { criterion: 'Process breakdown slide clarity', points: 20 },
+        critiqueQuestions: [
+          'What unified design choices (margins, fonts, color themes) did you establish to make the entire presentation slide deck feel cohesive?',
+          'How did you organize your presentation grids to balance artwork focal points with descriptive text columns?',
+          'Does your process page clearly show a progression that helps other artists understand your digital workflow?'
         ],
       },
       intermediate: {
@@ -522,10 +516,10 @@ export const assignments = {
         submission: [
           'Completed IP Worldbuilding Pitch Deck (16:9 PDF format).',
         ],
-        grading: [
-          { criterion: 'Cohesion, narrative depth, and concept polish across slides', points: 45 },
-          { criterion: 'Professional presentation design, margins, and typography', points: 35 },
-          { criterion: 'Technical completeness and file settings', points: 20 },
+        critiqueQuestions: [
+          'How did you sequence the slides (logline, characters, environments, storyboards) to build a compelling narrative about your IP?',
+          'What choices did you make in typography size, page grids, and color schemes to give your pitch deck a premium, studio-ready look?',
+          'Does the color script successfully show the emotional beats of the story in a simple, visual chart?'
         ],
       },
       advanced: {
@@ -551,10 +545,10 @@ export const assignments = {
         submission: [
           'Completed IP Production Bible & 3D Assets Deck (16:9 PDF format).',
         ],
-        grading: [
-          { criterion: 'Technical depth of the 3D assets (topology, shaders, camera setups)', points: 45 },
-          { criterion: 'Cohesion and aesthetic layout of the production slides', points: 35 },
-          { criterion: 'Final composite quality and asset detail', points: 20 },
+        critiqueQuestions: [
+          'How does your slide layout explain your Blender-to-Photoshop pipeline to someone who might not know 3D software?',
+          'How did you frame wireframes and topology views to showcase your clean modeling work and polygon efficiency?',
+          'Does the modular asset kit layout demonstrate how individual 3D objects can build a wider world efficiently?'
         ],
       },
     },

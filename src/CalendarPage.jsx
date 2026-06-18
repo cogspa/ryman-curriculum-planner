@@ -783,9 +783,6 @@ export default function CalendarPage() {
                             }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
                                 <span style={{ fontWeight: 'bold', color: '#db2777' }}>📝 Milestone: {assignment.title}</span>
-                                <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: '#db2777', fontWeight: 'bold' }}>
-                                  {assignment.totalPoints || 100} pts
-                                </span>
                               </div>
                               <p style={{ margin: '0 0 6px 0', color: 'var(--ink-mute, #847C6F)', fontStyle: 'italic' }}>
                                 {assignment.subtitle}
