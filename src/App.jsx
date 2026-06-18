@@ -161,9 +161,9 @@ function CountdownBanner() {
   const cd = useCountdown(SYLLABUS_DEADLINE.getTime());
   return (
     <Link to="/syllabus" className="countdown-banner">
-      <span className="countdown-label">SYLLABUS DUE JUNE 15</span>
+      <span className="countdown-label">LATEST SYLLABUS</span>
       {cd.expired ? (
-        <span className="countdown-expired">DEADLINE PASSED</span>
+        <span className="countdown-expired">UPDATED JUNE 18</span>
       ) : (
         <div className="countdown-digits">
           <span className="cd-block"><span className="cd-num">{String(cd.days).padStart(2, '0')}</span><span className="cd-unit">days</span></span>
