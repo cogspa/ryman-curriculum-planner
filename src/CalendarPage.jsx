@@ -1,0 +1,681 @@
+import React, { useState, useMemo, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { loadLocalCurriculum, fetchRemoteCurriculum } from './curriculumService.js';
+import { config } from './curriculum.js';
+import { assignments } from './assignments.js';
+
+// ─── Constants & Date Helpers ──────────────────────────────────────────────
+
+const HOLIDAYS = [
+  '2026-07-04', // Independence Day
+  '2026-09-05', // Labor Day Weekend
+];
+
+function isHoliday(date) {
+  if (!date) return false;
+  const d = new Date(date);
+  const iso = d.toISOString().split('T')[0];
+  return HOLIDAYS.includes(iso);
+}
+
+function parseLocal(str) {
+  if (!str) return new Date();
+  const [y, m, d] = str.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+function addDays(date, days) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return d;
+}
+
+function findTuesdayOnOrAfter(date) {
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = (2 - day + 7) % 7;
+  d.setDate(d.getDate() + diff);
+  return d;
+}
+
+function fmtDate(date) {
+  return date.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
+function fmtMonoDate(date) {
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase();
+}
+
+function isSameDate(d1, d2) {
+  if (!d1 || !d2) return false;
+  return d1.getFullYear() === d2.getFullYear() &&
+         d1.getMonth() === d2.getMonth() &&
+         d1.getDate() === d2.getDate();
+}
+
+function getGuestSpeaker(tuesday) {
+  if (!tuesday || !tuesday.readings) return null;
+  const guestItem = tuesday.readings.find(r => 
+    r.startsWith('Guest:') || 
+    r.startsWith('Guest Panel:') || 
+    r.startsWith('Guest Speakers:')
+  );
+  if (guestItem) {
+    return guestItem.replace(/^Guest( Panel| Speakers)?:\s*/i, '');
+  }
+  return null;
+}
+
+export default function CalendarPage() {
+  const [startDate] = useState(() => {
+    try {
+      return localStorage.getItem('cp-start-date') || config.startDate;
+    } catch {
+      return config.startDate;
+    }
+  });
+
+  const [customCurriculum, setCustomCurriculum] = useState(() => loadLocalCurriculum());
+  const [selectedSession, setSelectedSession] = useState(null);
+
+  // Sync from remote database if available
+  useEffect(() => {
+    fetchRemoteCurriculum().then((remoteObj) => {
+      if (remoteObj && remoteObj.data) {
+        const localUpdated = parseInt(localStorage.getItem('cp-custom-curriculum-updated') || '0', 10);
+        if (remoteObj.updated > localUpdated) {
+          setCustomCurriculum(remoteObj.data);
+        }
+      }
+    }).catch(() => {});
+  }, []);
+
+  // Compute calculated dates for weeks
+  const weeks = useMemo(() => {
+    const start = parseLocal(startDate);
+    const firstTue = findTuesdayOnOrAfter(start);
+    return customCurriculum.map((entry, idx) => {
+      const tue = addDays(firstTue, idx * 7);
+      const sat = addDays(tue, 4);
+      const speaker = getGuestSpeaker(entry.tuesday);
+      return { entry, tuesday: tue, saturday: sat, speaker };
+    });
+  }, [startDate, customCurriculum]);
+
+  // Compute unique months spanning the term
+  const months = useMemo(() => {
+    if (weeks.length === 0) return [];
+    const start = weeks[0].tuesday;
+    const end = weeks[weeks.length - 1].saturday;
+    
+    const list = [];
+    let curr = new Date(start.getFullYear(), start.getMonth(), 1);
+    const last = new Date(end.getFullYear(), end.getMonth(), 1);
+    
+    while (curr <= last) {
+      list.push({
+        year: curr.getFullYear(),
+        month: curr.getMonth(),
+        name: curr.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+      });
+      curr.setMonth(curr.getMonth() + 1);
+    }
+    return list;
+  }, [weeks]);
+
+  // Generate calendar days for each month grid
+  const monthDays = useMemo(() => {
+    const map = {};
+    months.forEach(({ year, month }) => {
+      const key = `${year}-${month}`;
+      const firstDay = new Date(year, month, 1);
+      const startDayOfWeek = firstDay.getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      
+      const cells = [];
+      // Empty padding cells for start offsets
+      for (let i = 0; i < startDayOfWeek; i++) {
+        cells.push({ day: null, date: null, session: null, isHoliday: false });
+      }
+      
+      // Actual calendar days
+      for (let d = 1; d <= daysInMonth; d++) {
+        const date = new Date(year, month, d);
+        let session = null;
+        
+        weeks.forEach((w) => {
+          if (isSameDate(date, w.tuesday)) {
+            session = { type: 'tuesday', week: w.entry.week, date, entry: w.entry, speaker: w.speaker };
+          } else if (isSameDate(date, w.saturday)) {
+            session = { type: 'saturday', week: w.entry.week, date, entry: w.entry };
+          }
+        });
+        
+        cells.push({ day: d, date, session, isHoliday: isHoliday(date) });
+      }
+      map[key] = cells;
+    });
+    return map;
+  }, [months, weeks]);
+
+  // Default active session to Week 1 Tuesday on load
+  useEffect(() => {
+    if (weeks.length > 0 && !selectedSession) {
+      // Find first Tuesday
+      const first = weeks[0];
+      setSelectedSession({
+        type: 'tuesday',
+        week: first.entry.week,
+        date: first.tuesday,
+        entry: first.entry,
+        speaker: first.speaker
+      });
+    }
+  }, [weeks, selectedSession]);
+
+  const handleCellClick = (session) => {
+    if (session) {
+      setSelectedSession(session);
+    }
+  };
+
+  const getWeekAssignments = (weekNum) => {
+    return assignments[weekNum] || null;
+  };
+
+  return (
+    <div className="app">
+      <div className="container">
+        
+        {/* Navigation */}
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'center', marginBottom: '20px' }}>
+          <Link to="/" className="back-link">← Back to Curriculum</Link>
+          <span style={{ opacity: 0.3 }}>|</span>
+          <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
+        </div>
+
+        {/* Header */}
+        <header className="syllabus-header" style={{ marginBottom: '40px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', paddingBottom: '32px' }}>
+          <p className="syllabus-eyebrow">Academic Term Calendar · Interactive Grid</p>
+          <h1 className="syllabus-title" style={{ fontSize: '38px', letterSpacing: '-0.02em', marginBottom: '12px' }}>
+            Curriculum Schedule Grid
+          </h1>
+          <p className="syllabus-sub-title" style={{ fontSize: '15px', margin: '0', color: '#475569', lineHeight: '1.6' }}>
+            View all 13 weeks of curriculum sessions at a quick glance. Highlighted days are interactive—click any session to inspect topics, guests, and assignments.
+          </p>
+        </header>
+
+        {/* Top Interactive View (Calendar Grid & Inspector Card) */}
+        <div className="calendar-interactive-layout" style={{
+          display: 'grid',
+          gridTemplateColumns: '1.6fr 1fr',
+          gap: '32px',
+          marginBottom: '48px',
+          alignItems: 'start'
+        }}>
+          
+          {/* Calendar Months Grids */}
+          <div className="calendar-grids-container" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '24px'
+          }}>
+            {months.map(({ year, month, name }) => {
+              const key = `${year}-${month}`;
+              const cells = monthDays[key] || [];
+              const weekHeaders = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+
+              return (
+                <div key={key} className="month-calendar" style={{
+                  background: 'var(--card, #FBFAF6)',
+                  border: '1px solid var(--hairline, #DDD6C6)',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.02)'
+                }}>
+                  <h3 style={{ 
+                    fontFamily: 'var(--font-display, serif)', 
+                    fontSize: '18px', 
+                    fontWeight: 'normal', 
+                    margin: '0 0 16px 0', 
+                    textAlign: 'center',
+                    borderBottom: '1px solid var(--hairline, #DDD6C6)',
+                    paddingBottom: '8px',
+                    color: 'var(--ink, #1C1A17)'
+                  }}>
+                    {name}
+                  </h3>
+
+                  {/* Day headers */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px', textAlign: 'center', marginBottom: '8px' }}>
+                    {weekHeaders.map((h, i) => (
+                      <span key={i} style={{ 
+                        fontSize: '10px', 
+                        fontFamily: 'var(--font-mono, monospace)', 
+                        color: 'var(--ink-mute, #847C6F)', 
+                        fontWeight: 'bold' 
+                      }}>
+                        {h}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Days grid */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '4px' }}>
+                    {cells.map((cell, idx) => {
+                      const isSelected = selectedSession && cell.session && 
+                                         selectedSession.type === cell.session.type && 
+                                         selectedSession.week === cell.session.week;
+                      
+                      let cellStyle = {
+                        height: '42px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderRadius: '6px',
+                        fontSize: '13px',
+                        position: 'relative',
+                        transition: 'all 0.15s ease'
+                      };
+
+                      let bgClass = 'cell-empty';
+                      let label = '';
+                      let badgeStyle = null;
+
+                      if (cell.day) {
+                        cellStyle.cursor = 'default';
+                        if (cell.session) {
+                          cellStyle.cursor = 'pointer';
+                          if (cell.session.type === 'tuesday') {
+                            bgClass = isSelected ? 'cell-tuesday-selected' : 'cell-tuesday';
+                            label = `W${cell.session.week}`;
+                            badgeStyle = { background: '#d97706', color: '#fff' };
+                          } else if (cell.session.type === 'saturday') {
+                            const isSatHoliday = cell.session.entry.saturday?.topics?.[0]?.includes('Holiday');
+                            if (isSatHoliday || cell.isHoliday) {
+                              bgClass = isSelected ? 'cell-holiday-selected' : 'cell-holiday';
+                              label = '⛔';
+                            } else {
+                              bgClass = isSelected ? 'cell-saturday-selected' : 'cell-saturday';
+                              label = `W${cell.session.week}`;
+                              badgeStyle = { background: 'var(--accent, #A8482A)', color: '#fff' };
+                            }
+                          }
+                        } else if (cell.isHoliday) {
+                          bgClass = 'cell-holiday-empty';
+                        }
+                      }
+
+                      return (
+                        <div 
+                          key={idx} 
+                          className={`calendar-cell ${bgClass}`}
+                          style={cellStyle}
+                          onClick={() => cell.session && handleCellClick(cell.session)}
+                          title={cell.session ? `Week ${cell.session.week} ${cell.session.type === 'tuesday' ? 'Tuesday Zoom' : 'Saturday Reveal Studio'}` : ''}
+                        >
+                          {cell.day && (
+                            <>
+                              <span style={{ 
+                                fontWeight: cell.session ? 'bold' : 'normal',
+                                color: cell.session ? 'inherit' : 'var(--ink-mid, #44403A)',
+                                fontSize: '13px'
+                              }}>
+                                {cell.day}
+                              </span>
+                              {label && (
+                                <span style={{
+                                  position: 'absolute',
+                                  bottom: '2px',
+                                  fontSize: '8px',
+                                  fontFamily: 'var(--font-mono, monospace)',
+                                  padding: '1px 3px',
+                                  borderRadius: '3px',
+                                  lineHeight: '1',
+                                  ...badgeStyle
+                                }}>
+                                  {label}
+                                </span>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Session Inspector Card */}
+          <div className="selected-session-card" style={{
+            background: 'var(--card-warm, #F6F2E8)',
+            border: '2px solid var(--hairline-strong, #C9C1AE)',
+            borderRadius: '12px',
+            padding: '24px',
+            position: 'sticky',
+            top: '20px',
+            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.05)'
+          }}>
+            {selectedSession ? (
+              <div>
+                {/* Header */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', borderBottom: '1px solid var(--hairline, #DDD6C6)', paddingBottom: '12px' }}>
+                  <span style={{
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontSize: '11px',
+                    fontWeight: 'bold',
+                    textTransform: 'uppercase',
+                    color: selectedSession.type === 'tuesday' ? '#d97706' : 'var(--accent, #A8482A)',
+                    background: selectedSession.type === 'tuesday' ? 'rgba(217, 119, 6, 0.1)' : 'rgba(168, 72, 42, 0.1)',
+                    padding: '4px 10px',
+                    borderRadius: '4px'
+                  }}>
+                    Week {String(selectedSession.week).padStart(2, '0')} · {selectedSession.type === 'tuesday' ? 'Tuesday Zoom' : 'Saturday Studio'}
+                  </span>
+                  <span style={{ fontSize: '12px', color: 'var(--ink-mute, #847C6F)', fontFamily: 'var(--font-mono, monospace)' }}>
+                    {fmtMonoDate(selectedSession.date)}
+                  </span>
+                </div>
+
+                <h2 style={{ fontFamily: 'var(--font-display, serif)', fontSize: '24px', fontWeight: 'normal', margin: '0 0 8px 0', color: 'var(--ink, #1C1A17)' }}>
+                  {selectedSession.entry.title}
+                </h2>
+                <p style={{ fontSize: '13.5px', color: 'var(--ink-mid, #44403A)', margin: '0 0 20px 0', fontStyle: 'italic', lineHeight: '1.4' }}>
+                  {selectedSession.entry.overview}
+                </p>
+
+                {/* Logistics */}
+                <div style={{ background: '#fff', border: '1px solid var(--hairline, #DDD6C6)', borderRadius: '6px', padding: '12px', marginBottom: '20px', fontSize: '12.5px' }}>
+                  <div style={{ marginBottom: '6px' }}>
+                    <strong>⏰ Time:</strong> {selectedSession.type === 'tuesday' ? config.tuesday.time : config.saturday.time}
+                  </div>
+                  <div style={{ marginBottom: selectedSession.speaker ? '6px' : '0' }}>
+                    <strong>📍 Location:</strong> {selectedSession.type === 'tuesday' ? config.tuesday.location : config.saturday.location}
+                  </div>
+                  {selectedSession.speaker && (
+                    <div>
+                      <strong>🎤 Guest Speaker:</strong> <span style={{ color: 'var(--accent, #A8482A)', fontWeight: '500' }}>{selectedSession.speaker}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Session Details */}
+                {selectedSession.type === 'tuesday' ? (
+                  <>
+                    <h4 style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--accent, #A8482A)', margin: '0 0 8px 0' }}>
+                      Session Topics
+                    </h4>
+                    <ul style={{ paddingLeft: '18px', margin: '0 0 20px 0', fontSize: '13.5px', lineHeight: '1.5', color: 'var(--ink, #1C1A17)' }}>
+                      {selectedSession.entry.tuesday.topics.map((t, idx) => (
+                        <li key={idx} style={{ marginBottom: '6px' }}>{t.replace(/^\[NEW\]\s*/i, '')}</li>
+                      ))}
+                    </ul>
+
+                    {selectedSession.entry.tuesday.readings && selectedSession.entry.tuesday.readings.length > 0 && (
+                      <>
+                        <h4 style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--accent, #A8482A)', margin: '0 0 8px 0' }}>
+                          Preparatory Readings / Media
+                        </h4>
+                        <ul style={{ paddingLeft: '18px', margin: '0 0 16px 0', fontSize: '13.5px', lineHeight: '1.5', color: 'var(--ink, #1C1A17)' }}>
+                          {selectedSession.entry.tuesday.readings.map((r, idx) => (
+                            <li key={idx} style={{ marginBottom: '6px' }}>{r.replace(/^\[NEW\]\s*/i, '')}</li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <h4 style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--accent, #A8482A)', margin: '0 0 8px 0' }}>
+                      Studio Topics
+                    </h4>
+                    <ul style={{ paddingLeft: '18px', margin: '0 0 20px 0', fontSize: '13.5px', lineHeight: '1.5', color: 'var(--ink, #1C1A17)' }}>
+                      {selectedSession.entry.saturday.topics.map((t, idx) => (
+                        <li key={idx} style={{ marginBottom: '6px' }}>{t.replace(/^\[NEW\]\s*/i, '')}</li>
+                      ))}
+                    </ul>
+
+                    {/* Saturday Assignment Milestone */}
+                    {getWeekAssignments(selectedSession.week) && (
+                      <div style={{
+                        background: 'rgba(168, 72, 42, 0.03)',
+                        borderLeft: '3px solid var(--accent, #A8482A)',
+                        padding: '12px 14px',
+                        borderRadius: '0 6px 6px 0',
+                        marginTop: '16px'
+                      }}>
+                        <h5 style={{ margin: '0 0 4px 0', fontSize: '12.5px', fontWeight: 'bold', color: 'var(--accent, #A8482A)' }}>
+                          📝 Saturday Graded Milestone
+                        </h5>
+                        <p style={{ margin: '0 0 10px 0', fontSize: '12px', fontWeight: '500' }}>
+                          {getWeekAssignments(selectedSession.week).title}
+                        </p>
+                        <Link 
+                          to={`/assignment/${selectedSession.week}`} 
+                          style={{
+                            fontSize: '11px',
+                            fontFamily: 'var(--font-mono, monospace)',
+                            color: 'var(--accent, #A8482A)',
+                            textDecoration: 'none',
+                            fontWeight: 'bold',
+                            display: 'inline-block'
+                          }}
+                        >
+                          OPEN ASSIGNMENT GUIDE →
+                        </Link>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {/* Sub-nav Overview Link */}
+                {selectedSession.week <= 7 && (
+                  <div style={{ marginTop: '24px', borderTop: '1px solid var(--hairline, #DDD6C6)', paddingTop: '16px', textAlign: 'center' }}>
+                    <Link 
+                      to={`/week/0${selectedSession.week}`} 
+                      className="inline-link"
+                      style={{ fontSize: '12.5px', fontFamily: 'var(--font-mono, monospace)', textTransform: 'uppercase', textDecoration: 'none', fontWeight: 'bold' }}
+                    >
+                      Browse Week {selectedSession.week} Overview →
+                    </Link>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <p style={{ textAlign: 'center', color: 'var(--ink-mute, #847C6F)', fontSize: '14px', margin: '20px 0' }}>
+                Select a session in the calendar grid to view full details.
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Directory Lists Section */}
+        <section className="calendar-directory-lists" style={{
+          borderTop: '1px solid var(--hairline, #DDD6C6)',
+          paddingTop: '40px',
+          marginTop: '32px'
+        }}>
+          <h2 style={{ fontFamily: 'var(--font-display, serif)', fontSize: '28px', fontWeight: 'normal', margin: '0 0 24px 0', color: 'var(--ink, #1C1A17)' }}>
+            Schedule Directory List
+          </h2>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))',
+            gap: '32px'
+          }}>
+            
+            {/* Tuesdays ZOOM list */}
+            <div>
+              <h3 style={{ 
+                fontFamily: 'var(--font-sans, sans-serif)', 
+                fontSize: '18px', 
+                fontWeight: 'bold', 
+                color: '#d97706',
+                borderBottom: '2px solid #fcd34d',
+                paddingBottom: '8px',
+                marginBottom: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                <span>🖥️</span> Tuesday Zoom Sessions (7:00–8:30 pm)
+              </h3>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {weeks.map(({ entry, tuesday, speaker }) => (
+                  <div 
+                    key={entry.week} 
+                    style={{
+                      background: '#fff',
+                      border: '1px solid var(--hairline, #DDD6C6)',
+                      borderRadius: '8px',
+                      padding: '16px',
+                      transition: 'transform 0.15s ease, border-color 0.15s ease',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => setSelectedSession({ type: 'tuesday', week: entry.week, date: tuesday, entry, speaker })}
+                    className={`directory-list-item ${selectedSession?.type === 'tuesday' && selectedSession?.week === entry.week ? 'is-active' : ''}`}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                      <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono, monospace)', fontWeight: 'bold', color: '#d97706' }}>
+                        WEEK {String(entry.week).padStart(2, '0')} · ZOOM
+                      </span>
+                      <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono, monospace)', color: 'var(--ink-mute, #847C6F)' }}>
+                        {fmtDate(tuesday)}
+                      </span>
+                    </div>
+
+                    <h4 style={{ margin: '0 0 6px 0', fontSize: '15px', fontWeight: 'bold', color: 'var(--ink, #1C1A17)' }}>
+                      {entry.title}
+                    </h4>
+
+                    {speaker && (
+                      <p style={{ margin: '0 0 8px 0', fontSize: '12.5px', color: 'var(--accent, #A8482A)', fontWeight: '500' }}>
+                        🎤 Guest: {speaker}
+                      </p>
+                    )}
+
+                    <div style={{ fontSize: '12.5px', color: 'var(--ink-mid, #44403A)' }}>
+                      <span style={{ fontWeight: 'bold' }}>Topics Preview:</span>
+                      <ul style={{ margin: '4px 0 0 0', paddingLeft: '18px' }}>
+                        {entry.tuesday.topics.map((t, i) => (
+                          <li key={i}>{t.replace(/^\[NEW\]\s*/i, '')}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Saturdays IN-PERSON list */}
+            <div>
+              <h3 style={{ 
+                fontFamily: 'var(--font-sans, sans-serif)', 
+                fontSize: '18px', 
+                fontWeight: 'bold', 
+                color: 'var(--accent, #A8482A)',
+                borderBottom: '2px solid var(--accent-soft, #E6CFC4)',
+                paddingBottom: '8px',
+                marginBottom: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                <span>🎨</span> Saturday Reveal Studio Sessions (10:00 am–3:30 pm)
+              </h3>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {weeks.map(({ entry, saturday, speaker }) => {
+                  const isSatHoliday = entry.saturday?.topics?.[0]?.includes('Holiday');
+                  const assignment = getWeekAssignments(entry.week);
+
+                  return (
+                    <div 
+                      key={entry.week} 
+                      style={{
+                        background: isSatHoliday ? '#f3f4f6' : '#fff',
+                        border: '1px solid var(--hairline, #DDD6C6)',
+                        borderRadius: '8px',
+                        padding: '16px',
+                        transition: 'transform 0.15s ease, border-color 0.15s ease',
+                        cursor: 'pointer',
+                        opacity: isSatHoliday ? 0.75 : 1
+                      }}
+                      onClick={() => !isSatHoliday && setSelectedSession({ type: 'saturday', week: entry.week, date: saturday, entry, speaker })}
+                      className={`directory-list-item ${selectedSession?.type === 'saturday' && selectedSession?.week === entry.week ? 'is-active' : ''}`}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                        <span style={{ 
+                          fontSize: '11px', 
+                          fontFamily: 'var(--font-mono, monospace)', 
+                          fontWeight: 'bold', 
+                          color: isSatHoliday ? '#64748b' : 'var(--accent, #A8482A)' 
+                        }}>
+                          WEEK {String(entry.week).padStart(2, '0')} · {isSatHoliday ? 'HOLIDAY' : 'STUDIO'}
+                        </span>
+                        <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono, monospace)', color: 'var(--ink-mute, #847C6F)' }}>
+                          {fmtDate(saturday)}
+                        </span>
+                      </div>
+
+                      <h4 style={{ margin: '0 0 8px 0', fontSize: '15px', fontWeight: 'bold', color: 'var(--ink, #1C1A17)' }}>
+                        {isSatHoliday ? 'Holiday Break — No Class' : entry.title}
+                      </h4>
+
+                      <div style={{ fontSize: '12.5px', color: 'var(--ink-mid, #44403A)', marginBottom: assignment ? '12px' : '0' }}>
+                        <span style={{ fontWeight: 'bold' }}>Studio Workshop:</span>
+                        <ul style={{ margin: '4px 0 0 0', paddingLeft: '18px' }}>
+                          {entry.saturday.topics.map((t, i) => (
+                            <li key={i} style={{ color: isSatHoliday ? '#b91c1c' : 'inherit', fontWeight: isSatHoliday ? 'bold' : 'normal' }}>
+                              {t.replace(/^\[NEW\]\s*/i, '')}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {assignment && !isSatHoliday && (
+                        <div style={{ 
+                          background: 'rgba(219, 39, 119, 0.04)', 
+                          border: '1px solid rgba(219, 39, 119, 0.1)', 
+                          borderRadius: '6px', 
+                          padding: '10px 12px',
+                          fontSize: '12px'
+                        }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                            <span style={{ fontWeight: 'bold', color: '#db2777' }}>📝 Milestone: {assignment.title}</span>
+                            <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '10px', color: '#db2777', fontWeight: 'bold' }}>
+                              {assignment.totalPoints || 100} pts
+                            </span>
+                          </div>
+                          <p style={{ margin: '0 0 6px 0', color: 'var(--ink-mute, #847C6F)', fontStyle: 'italic' }}>
+                            {assignment.subtitle}
+                          </p>
+                          <div style={{ display: 'flex', gap: '8px', fontSize: '10.5px' }}>
+                            <span style={{ color: '#2563eb', fontWeight: '600' }}>• Base</span>
+                            <span style={{ color: '#db2777', fontWeight: '600' }}>• Next Level</span>
+                            <span style={{ color: '#0f766e', fontWeight: '600' }}>• 3D</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+  );
+}

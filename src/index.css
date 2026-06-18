@@ -2135,4 +2135,112 @@ body {
   box-shadow: 0 4px 12px rgba(219, 39, 119, 0.3) !important;
 }
 
+/* ─── Curriculum Calendar Page ────────────────────────────────────────────── */
 
+@media (max-width: 990px) {
+  .calendar-interactive-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.calendar-cell {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  color: var(--ink-mid);
+}
+
+.calendar-cell.cell-empty {
+  background: transparent !important;
+  border-color: transparent !important;
+  pointer-events: none;
+}
+
+/* Tuesdays - Zoom */
+.calendar-cell.cell-tuesday {
+  background: #fef3c7 !important;
+  border-color: #fcd34d !important;
+  color: #92400e !important;
+}
+
+.calendar-cell.cell-tuesday:hover {
+  background: #fde68a !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(217, 119, 6, 0.15);
+}
+
+.calendar-cell.cell-tuesday-selected {
+  background: #d97706 !important;
+  border-color: #b45309 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+/* Saturdays - Reveal Studio */
+.calendar-cell.cell-saturday {
+  background: #fce7f3 !important;
+  border-color: #fbcfe8 !important;
+  color: #9d174d !important;
+}
+
+.calendar-cell.cell-saturday:hover {
+  background: #fbcfe8 !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(168, 72, 42, 0.15);
+}
+
+.calendar-cell.cell-saturday-selected {
+  background: var(--accent, #A8482A) !important;
+  border-color: var(--accent-deep, #6E2D17) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(168, 72, 42, 0.35);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+/* Holidays */
+.calendar-cell.cell-holiday {
+  background: #f3f4f6 !important;
+  border-color: #e5e7eb !important;
+  color: #9ca3af !important;
+}
+
+.calendar-cell.cell-holiday:hover {
+  background: #e5e7eb !important;
+  transform: scale(1.05);
+}
+
+.calendar-cell.cell-holiday-selected {
+  background: #4b5563 !important;
+  border-color: #1f2937 !important;
+  color: #ffffff !important;
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.calendar-cell.cell-holiday-empty {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: transparent !important;
+  color: #d1d5db !important;
+}
+
+/* Directory List Items */
+.directory-list-item {
+  background: #ffffff !important;
+  border: 1px solid var(--hairline, #DDD6C6) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01) !important;
+}
+
+.directory-list-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--hairline-strong, #C9C1AE) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03) !important;
+}
+
+.directory-list-item.is-active {
+  border-color: var(--accent, #A8482A) !important;
+  border-width: 2px !important;
+  background: var(--card-warm, #F6F2E8) !important;
+  box-shadow: 0 8px 20px rgba(168, 72, 42, 0.05) !important;
+}

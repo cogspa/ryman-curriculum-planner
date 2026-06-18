@@ -919,13 +919,27 @@ function WeekCard({
 // ─── app ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const [startDate, setStartDate] = useState(config.startDate);
+  const [startDate, setStartDate] = useState(() => {
+    try {
+      return localStorage.getItem('cp-start-date') || config.startDate;
+    } catch {
+      return config.startDate;
+    }
+  });
   const [customCurriculum, setCustomCurriculum] = useState(() => loadLocalCurriculum());
   const [adminMode, setAdminMode] = useState(false);
   const [draggedItem, setDraggedItem] = useState(null);
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [saveStatus, setSaveStatus] = useState(null);
   const userHasEdited = useRef(false);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('cp-start-date', startDate);
+    } catch (e) {
+      console.error('Failed to save start date locally:', e);
+    }
+  }, [startDate]);
 
   // Sync from Supabase on load if available
   useEffect(() => {
@@ -1224,6 +1238,21 @@ export default function App() {
                   </Link>
                 ))}
               </div>
+            </div>
+
+            <div className="calendar-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(217, 119, 6, 0.05)', border: '1px solid rgba(217, 119, 6, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📅</span>
+                <span style={{ fontSize: '13px', fontWeight: '500', color: '#d97706' }}>
+                  <strong>Calendar View:</strong> Traditional calendar grid layout showing all Tuesday and Saturday sessions at a glance.
+                </span>
+              </div>
+              <Link 
+                to="/calendar" 
+                style={{ textDecoration: 'none', background: '#d97706', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+              >
+                VIEW CALENDAR GRID →
+              </Link>
             </div>
 
             <div className="logout-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
