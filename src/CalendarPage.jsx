@@ -222,6 +222,34 @@ export default function CalendarPage() {
     return assignments[weekNum] || null;
   };
 
+  const downloadCSV = () => {
+    const headers = ['Month', 'Date', 'Time', 'Session Name'];
+    const rows = chronologicalSessions.map(s => {
+      const dayOfWeek = s.date.toLocaleDateString('en-US', { weekday: 'short' });
+      return [
+        s.month,
+        `${s.dateNum} (${dayOfWeek})`,
+        s.time,
+        s.name.replace(/"/g, '""')
+      ];
+    });
+    
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(r => r.map(val => `"${val}"`).join(','))
+    ].join('\n');
+    
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'ryman_curriculum_schedule.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="app">
       <div className="container">
@@ -254,7 +282,8 @@ export default function CalendarPage() {
           padding: '4px',
           gap: '4px',
           marginBottom: '32px',
-          maxWidth: 'fit-content'
+          maxWidth: 'fit-content',
+          flexWrap: 'wrap'
         }}>
           <button
             onClick={() => setViewMode('grid')}
@@ -271,7 +300,7 @@ export default function CalendarPage() {
               fontFamily: 'var(--font-sans, sans-serif)'
             }}
           >
-            📅 Interactive Calendar Grid
+            📅 Interactive Grid
           </button>
           <button
             onClick={() => setViewMode('list')}
@@ -288,7 +317,24 @@ export default function CalendarPage() {
               fontFamily: 'var(--font-sans, sans-serif)'
             }}
           >
-            📋 Simple Agenda List
+            📋 Detailed Agenda
+          </button>
+          <button
+            onClick={() => setViewMode('list-simple')}
+            style={{
+              border: 'none',
+              background: viewMode === 'list-simple' ? '#d97706' : 'transparent',
+              color: viewMode === 'list-simple' ? '#fff' : '#475569',
+              padding: '8px 20px',
+              borderRadius: '24px',
+              fontSize: '13px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'all 0.15s ease-in-out',
+              fontFamily: 'var(--font-sans, sans-serif)'
+            }}
+          >
+            📃 Simple List (No Description)
           </button>
         </div>
 
@@ -761,84 +807,115 @@ export default function CalendarPage() {
             </section>
           </>
         ) : (
-          <div className="simple-agenda-list" style={{
-            background: 'var(--card, #FBFAF6)',
-            border: '1px solid var(--hairline, #DDD6C6)',
-            borderRadius: '12px',
-            padding: '24px',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.02)',
-            marginBottom: '48px',
-            overflowX: 'auto'
-          }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px', minWidth: '700px' }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--hairline, #DDD6C6)', textAlign: 'left' }}>
-                  <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)', width: '120px' }}>MONTH</th>
-                  <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)', width: '100px' }}>DATE</th>
-                  <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)', width: '150px' }}>TIME</th>
-                  <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)', width: '320px' }}>SESSION NAME</th>
-                  <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)' }}>DESCRIPTION</th>
-                </tr>
-              </thead>
-              <tbody>
-                {chronologicalSessions.map((session, idx) => {
-                  const dayOfWeek = session.date.toLocaleDateString('en-US', { weekday: 'short' });
-                  return (
-                    <tr 
-                      key={idx} 
-                      style={{ 
-                        borderBottom: '1px solid var(--hairline, #DDD6C6)',
-                        background: session.isHoliday ? 'rgba(0, 0, 0, 0.015)' : 'transparent',
-                        opacity: session.isHoliday ? 0.75 : 1
-                      }}
-                      className="agenda-row"
-                    >
-                      <td style={{ padding: '14px 8px', fontWeight: 'bold', color: 'var(--ink, #1C1A17)' }}>
-                        {session.month}
-                      </td>
-                      <td style={{ padding: '14px 8px', fontFamily: 'var(--font-mono, monospace)', color: 'var(--ink-mid, #44403A)' }}>
-                        {session.dateNum} <span style={{ fontSize: '11px', opacity: 0.6 }}>({dayOfWeek})</span>
-                      </td>
-                      <td style={{ padding: '14px 8px', color: 'var(--ink-mid, #44403A)' }}>
-                        <span style={{
-                          display: 'inline-block',
-                          padding: '3px 8px',
-                          borderRadius: '12px',
-                          fontSize: '11.5px',
-                          fontWeight: 'bold',
-                          background: session.type === 'tuesday' ? 'rgba(217, 119, 6, 0.08)' : session.isHoliday ? 'rgba(0, 0, 0, 0.06)' : 'rgba(168, 72, 42, 0.08)',
-                          color: session.type === 'tuesday' ? '#d97706' : session.isHoliday ? '#4b5563' : 'var(--accent, #A8482A)'
-                        }}>
-                          {session.time}
-                        </span>
-                      </td>
-                      <td style={{ padding: '14px 8px' }}>
-                        <div style={{ fontWeight: 'bold', color: 'var(--ink, #1C1A17)', fontSize: '14px' }}>
-                          {session.isHoliday ? (
-                            <span style={{ color: '#b91c1c' }}>⛔ {session.name}</span>
-                          ) : (
-                            session.name
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '16px' }}>
+              <button 
+                onClick={downloadCSV} 
+                style={{ 
+                  background: '#059669', 
+                  color: '#fff', 
+                  border: 'none', 
+                  padding: '8px 16px', 
+                  borderRadius: '20px', 
+                  fontSize: '12.5px', 
+                  fontWeight: 'bold', 
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                  transition: 'opacity 0.2s'
+                }}
+                onMouseOver={(e) => e.currentTarget.style.opacity = 0.9}
+                onMouseOut={(e) => e.currentTarget.style.opacity = 1}
+              >
+                📥 Download Spreadsheet (CSV)
+              </button>
+            </div>
+            
+            <div className="simple-agenda-list" style={{
+              background: 'var(--card, #FBFAF6)',
+              border: '1px solid var(--hairline, #DDD6C6)',
+              borderRadius: '12px',
+              padding: '24px',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.02)',
+              marginBottom: '48px',
+              overflowX: 'auto'
+            }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px', minWidth: viewMode === 'list-simple' ? '500px' : '700px' }}>
+                <thead>
+                  <tr style={{ borderBottom: '2px solid var(--hairline, #DDD6C6)', textAlign: 'left' }}>
+                    <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)', width: '120px' }}>MONTH</th>
+                    <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)', width: '100px' }}>DATE</th>
+                    <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)', width: '150px' }}>TIME</th>
+                    <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)', width: viewMode === 'list-simple' ? 'auto' : '320px' }}>SESSION NAME</th>
+                    {viewMode !== 'list-simple' && (
+                      <th style={{ padding: '12px 8px', fontFamily: 'var(--font-mono, monospace)', fontSize: '11px', color: 'var(--ink-mute, #847C6F)' }}>DESCRIPTION</th>
+                    )}
+                  </tr>
+                </thead>
+                <tbody>
+                  {chronologicalSessions.map((session, idx) => {
+                    const dayOfWeek = session.date.toLocaleDateString('en-US', { weekday: 'short' });
+                    return (
+                      <tr 
+                        key={idx} 
+                        style={{ 
+                          borderBottom: '1px solid var(--hairline, #DDD6C6)',
+                          background: session.isHoliday ? 'rgba(0, 0, 0, 0.015)' : 'transparent',
+                          opacity: session.isHoliday ? 0.75 : 1
+                        }}
+                        className="agenda-row"
+                      >
+                        <td style={{ padding: '14px 8px', fontWeight: 'bold', color: 'var(--ink, #1C1A17)' }}>
+                          {session.month}
+                        </td>
+                        <td style={{ padding: '14px 8px', fontFamily: 'var(--font-mono, monospace)', color: 'var(--ink-mid, #44403A)' }}>
+                          {session.dateNum} <span style={{ fontSize: '11px', opacity: 0.6 }}>({dayOfWeek})</span>
+                        </td>
+                        <td style={{ padding: '14px 8px', color: 'var(--ink-mid, #44403A)' }}>
+                          <span style={{
+                            display: 'inline-block',
+                            padding: '3px 8px',
+                            borderRadius: '12px',
+                            fontSize: '11.5px',
+                            fontWeight: 'bold',
+                            background: session.type === 'tuesday' ? 'rgba(217, 119, 6, 0.08)' : session.isHoliday ? 'rgba(0, 0, 0, 0.06)' : 'rgba(168, 72, 42, 0.08)',
+                            color: session.type === 'tuesday' ? '#d97706' : session.isHoliday ? '#4b5563' : 'var(--accent, #A8482A)'
+                          }}>
+                            {session.time}
+                          </span>
+                        </td>
+                        <td style={{ padding: '14px 8px' }}>
+                          <div style={{ fontWeight: 'bold', color: 'var(--ink, #1C1A17)', fontSize: '14px' }}>
+                            {session.isHoliday ? (
+                              <span style={{ color: '#b91c1c' }}>⛔ {session.name}</span>
+                            ) : (
+                              session.name
+                            )}
+                          </div>
+                          {session.speaker && (
+                            <div style={{ fontSize: '12px', color: 'var(--accent, #A8482A)', marginTop: '4px', fontWeight: '500' }}>
+                              🎤 Guest: {session.speaker}
+                            </div>
                           )}
-                        </div>
-                        {session.speaker && (
-                          <div style={{ fontSize: '12px', color: 'var(--accent, #A8482A)', marginTop: '4px', fontWeight: '500' }}>
-                            🎤 Guest: {session.speaker}
-                          </div>
+                        </td>
+                        {viewMode !== 'list-simple' && (
+                          <td style={{ padding: '14px 8px', color: 'var(--ink-mid, #44403A)', lineHeight: '1.5' }}>
+                            <div style={{ marginBottom: '6px' }}>{session.description}</div>
+                            {session.topics && session.topics.length > 0 && !session.isHoliday && (
+                              <div style={{ fontSize: '12px', opacity: 0.8 }}>
+                                <strong>Topics:</strong> {session.topics.map(t => t.replace(/^\[NEW\]\s*/i, '')).join(' · ')}
+                              </div>
+                            )}
+                          </td>
                         )}
-                      </td>
-                      <td style={{ padding: '14px 8px', color: 'var(--ink-mid, #44403A)', lineHeight: '1.5' }}>
-                        <div style={{ marginBottom: '6px' }}>{session.description}</div>
-                        {session.topics && session.topics.length > 0 && !session.isHoliday && (
-                          <div style={{ fontSize: '12px', opacity: 0.8 }}>
-                            <strong>Topics:</strong> {session.topics.map(t => t.replace(/^\[NEW\]\s*/i, '')).join(' · ')}
-                          </div>
-                        )}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
 
