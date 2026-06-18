@@ -49,6 +49,14 @@ export default function Week07TopicDetail() {
         <section key={i} style={sectionStyle}>
           <h2 style={sectionHeadingStyle}>{section.heading}</h2>
           <p style={sectionBodyStyle}>{section.body}</p>
+          {section.imageUrl && (
+            <div style={{ margin: '20px 0', textAlign: 'center' }}>
+              <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '6px', border: '1px solid #d4c9a8' }} />
+              {section.imageCaption && (
+                <p style={{ fontSize: '11px', color: '#8b3a2f', marginTop: '6px', fontStyle: 'italic', fontFamily: 'Menlo, monospace' }}>{section.imageCaption}</p>
+              )}
+            </div>
+          )}
         </section>
       ))}
     </div>

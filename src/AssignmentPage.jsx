@@ -177,6 +177,15 @@ export default function AssignmentPage() {
               {section.body && <p className="phase-intro">{section.body}</p>}
               {section.subheading && <p className="phase-sub">{section.subheading}</p>}
 
+              {section.imageUrl && (
+                <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                  <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.08)' }} />
+                  {section.imageCaption && (
+                    <p style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontStyle: 'italic' }}>{section.imageCaption}</p>
+                  )}
+                </div>
+              )}
+
               {section.bullets && (
                 <ul className="phase-list phase-list--accent">
                   {section.bullets.map((b, i) => <li key={i}>{b}</li>)}
@@ -201,6 +210,15 @@ export default function AssignmentPage() {
                 {phase.points && <span className="phase-points-label"> ({phase.points} pts)</span>}
               </h2>
               {phase.intro && <p className="phase-intro">{phase.intro}</p>}
+
+              {phase.imageUrl && (
+                <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                  <img src={phase.imageUrl} alt={phase.imageCaption || phase.name} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.08)' }} />
+                  {phase.imageCaption && (
+                    <p style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontStyle: 'italic' }}>{phase.imageCaption}</p>
+                  )}
+                </div>
+              )}
 
               {phase.bullets && (
                 <ul className="phase-list phase-list--accent">
