@@ -166,45 +166,94 @@ export default function AssignmentPage() {
                 {rawData.introduction.heading}
               </h2>
               
-              {rawData.introduction.body && rawData.introduction.body.split('\n\n').map((para, idx) => (
-                <p key={idx} style={{
-                  fontSize: '14.5px',
-                  lineHeight: '1.6',
-                  color: 'var(--ink-mid, #44403A)',
-                  marginBottom: '14px'
-                }}>
-                  {parseMarkdownLinks(para)}
-                </p>
-              ))}
-
-              {rawData.introduction.bullets && (
-                <ul style={{
-                  paddingLeft: '20px',
-                  margin: '16px 0',
-                  fontSize: '14.5px',
-                  lineHeight: '1.6',
-                  color: 'var(--ink-mid, #44403A)'
-                }}>
-                  {rawData.introduction.bullets.map((bullet, idx) => (
-                    <li key={idx} style={{ marginBottom: '8px' }}>
-                      {bullet}
-                    </li>
+              <div style={{
+                display: 'flex',
+                gap: '24px',
+                flexDirection: 'row',
+                alignItems: 'flex-start',
+                flexWrap: 'wrap'
+              }}>
+                <div style={{ flex: '1 1 500px' }}>
+                  {rawData.introduction.body && rawData.introduction.body.split('\n\n').map((para, idx) => (
+                    <p key={idx} style={{
+                      fontSize: '14.5px',
+                      lineHeight: '1.6',
+                      color: 'var(--ink-mid, #44403A)',
+                      marginBottom: '14px'
+                    }}>
+                      {parseMarkdownLinks(para)}
+                    </p>
                   ))}
-                </ul>
-              )}
 
-              {rawData.introduction.closing && (
-                <p style={{
-                  fontSize: '14.5px',
-                  lineHeight: '1.6',
-                  fontWeight: '500',
-                  color: 'var(--ink, #1C1A17)',
-                  margin: '16px 0 0 0',
-                  fontStyle: 'italic'
-                }}>
-                  {parseMarkdownLinks(rawData.introduction.closing)}
-                </p>
-              )}
+                  {rawData.introduction.bullets && (
+                    <ul style={{
+                      paddingLeft: '20px',
+                      margin: '16px 0',
+                      fontSize: '14.5px',
+                      lineHeight: '1.6',
+                      color: 'var(--ink-mid, #44403A)'
+                    }}>
+                      {rawData.introduction.bullets.map((bullet, idx) => (
+                        <li key={idx} style={{ marginBottom: '8px' }}>
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {rawData.introduction.closing && (
+                    <p style={{
+                      fontSize: '14.5px',
+                      lineHeight: '1.6',
+                      fontWeight: '500',
+                      color: 'var(--ink, #1C1A17)',
+                      margin: '16px 0 0 0',
+                      fontStyle: 'italic'
+                    }}>
+                      {parseMarkdownLinks(rawData.introduction.closing)}
+                    </p>
+                  )}
+                </div>
+
+                {rawData.introduction.imageUrl && (
+                  <div style={{
+                    flex: '0 0 180px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    background: '#fff',
+                    padding: '8px',
+                    borderRadius: '8px',
+                    border: '1px solid var(--hairline, #C9C1AE)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.03)',
+                    margin: '4px auto 0 auto'
+                  }}>
+                    <img 
+                      src={rawData.introduction.imageUrl} 
+                      alt={rawData.introduction.imageCaption || "Introduction Visual"} 
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        borderRadius: '4px',
+                        display: 'block'
+                      }}
+                    />
+                    {rawData.introduction.imageCaption && (
+                      <p style={{
+                        fontSize: '11px',
+                        color: 'var(--ink-mid, #64748b)',
+                        marginTop: '8px',
+                        marginBottom: 0,
+                        textAlign: 'center',
+                        lineHeight: '1.3',
+                        fontStyle: 'italic'
+                      }}>
+                        {rawData.introduction.imageCaption}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           )}
 
