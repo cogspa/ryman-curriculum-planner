@@ -57,6 +57,28 @@ function fmtMonoDate(date) {
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase();
 }
 
+function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
+  const formatDate = (d) => {
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  };
+  const speakersMap = {
+    1: { name: 'No speaker - First Class', date: formatDate(tuesdayDate) },
+    2: { name: 'Senior digital illustrator', date: formatDate(tuesdayDate) },
+    3: { name: 'Concept artist or film matte painter', date: formatDate(tuesdayDate) },
+    4: { name: 'Senior graphic designer', date: formatDate(tuesdayDate) },
+    5: { name: 'Nancy Seruto', date: formatDate(tuesdayDate) },
+    6: { name: 'Art director or creative agency lead', date: formatDate(tuesdayDate) },
+    7: { name: 'TBD', date: formatDate(tuesdayDate) },
+    8: { name: 'No guest speaker (Presentation Pitch Decks)', date: formatDate(tuesdayDate) },
+    9: { name: 'Eugenia Chen', date: formatDate(tuesdayDate) },
+    10: { name: 'Jeremy Costello (Guest Panel)', date: formatDate(tuesdayDate) },
+    11: { name: 'Heidi Hirsch', date: formatDate(saturdayDate) },
+    12: { name: 'Past graduates sharing showcase experiences', date: formatDate(tuesdayDate) },
+    13: { name: 'TBD', date: formatDate(tuesdayDate) }
+  };
+  return speakersMap[weekNum] || { name: 'TBD', date: formatDate(tuesdayDate) };
+}
+
 // ─── persistence ─────────────────────────────────────────────────────────────
 
 const STORAGE_PREFIX = `cp-v${config.storageVersion}-notes-week-`;
@@ -789,7 +811,7 @@ function WeekCard({
                   />
                   
                   <div className="speaker-box" style={{ borderLeft: '3px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.08)', borderRadius: '6px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '12px', color: '#059669', fontFamily: 'var(--font-mono)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span>🎤 Speaker for Week {week.week}: TBD</span>
+                    <span>🎤 Speaker: {getSpeakerInfoForWeek(week.week, tuesday, saturday).name} · {getSpeakerInfoForWeek(week.week, tuesday, saturday).date}</span>
                   </div>
                 </div>
               )}

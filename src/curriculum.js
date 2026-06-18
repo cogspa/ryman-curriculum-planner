@@ -38,6 +38,7 @@ export const curriculum = [
         '[NEW] Photoshop — Learn at Your Own Pace Videos: https://www.youtube.com/playlist?list=PL96BXqp9fQs6EcSwTbDgo57DFI-6EXzQ8',
         'Tools Overview: Adobe Photoshop vs. Procreate workflows',
         '[NEW] Reading: V. S. Ramachandran — Phantoms in the Brain: Probing the Mysteries of the Human Mind: https://www.amazon.com/Phantoms-Brain-Probing-Mysteries-Human/dp/0688172172',
+        'Guest: No speaker - First Class',
       ],
     },
     saturday: {
@@ -156,7 +157,7 @@ export const curriculum = [
         '[NEW] Animation Mechanics: Preston Blair Expression Guides & Cartoon Takes',
         '[NEW] Soundscapes in Media: Diegetic vs. Non-Diegetic Sound & Leitmotifs',
         '[NEW] Cinemagraphics: Dutch Tilt, Pitch Shot, and Dolly Zooms in Storyboards',
-        'Guest: Publishing or entertainment illustrator — narrative structure demo',
+        'Guest: Nancy Seruto — Publishing or entertainment illustrator — narrative structure demo',
       ],
     },
     saturday: {
@@ -268,7 +269,7 @@ export const curriculum = [
       ],
       readings: [
         'Intellectual Property Guide: Copyrights, trademarks, and usage licensing rights',
-        'Guest: Creative entrepreneur — navigating freelance taxes & operations',
+        'Guest: Eugenia Chen — Creative entrepreneur — navigating freelance taxes & operations',
       ],
     },
     saturday: {
@@ -298,7 +299,7 @@ export const curriculum = [
       ],
       readings: [
         'Recruiter Insights: What catches the eye in a 6-second portfolio review',
-        'Guest Panel: Hiring managers & agency recruiters',
+        'Guest: Jeremy Costello — Hiring managers & agency recruiters (Guest Panel)',
       ],
     },
     saturday: {
@@ -327,6 +328,7 @@ export const curriculum = [
       ],
       readings: [
         'Modern Portfolios: Grid standards, typography, and site architectures',
+        'Guest: Heidi Hirsch — live review of student portfolios',
       ],
     },
     saturday: {
@@ -377,6 +379,7 @@ export const curriculum = [
       ],
       readings: [
         'Industry Panels: Directory of attendees and review workflows',
+        'Guest: TBD',
       ],
     },
     saturday: {

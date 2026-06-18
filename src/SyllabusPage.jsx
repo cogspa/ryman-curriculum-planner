@@ -50,6 +50,28 @@ function renderCleaned(str) {
   });
 }
 
+function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
+  const formatDate = (d) => {
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  };
+  const speakersMap = {
+    1: { name: 'No speaker - First Class', date: formatDate(tuesdayDate) },
+    2: { name: 'Senior digital illustrator', date: formatDate(tuesdayDate) },
+    3: { name: 'Concept artist or film matte painter', date: formatDate(tuesdayDate) },
+    4: { name: 'Senior graphic designer', date: formatDate(tuesdayDate) },
+    5: { name: 'Nancy Seruto', date: formatDate(tuesdayDate) },
+    6: { name: 'Art director or creative agency lead', date: formatDate(tuesdayDate) },
+    7: { name: 'TBD', date: formatDate(tuesdayDate) },
+    8: { name: 'No guest speaker (Presentation Pitch Decks)', date: formatDate(tuesdayDate) },
+    9: { name: 'Eugenia Chen', date: formatDate(tuesdayDate) },
+    10: { name: 'Jeremy Costello (Guest Panel)', date: formatDate(tuesdayDate) },
+    11: { name: 'Heidi Hirsch', date: formatDate(saturdayDate) },
+    12: { name: 'Past graduates sharing showcase experiences', date: formatDate(tuesdayDate) },
+    13: { name: 'TBD', date: formatDate(tuesdayDate) }
+  };
+  return speakersMap[weekNum] || { name: 'TBD', date: formatDate(tuesdayDate) };
+}
+
 export default function SyllabusPage() {
   const [selectedVer, setSelectedVer] = useState('live');
   const [customCurriculum, setCustomCurriculum] = useState(() => loadLocalCurriculum());
@@ -146,6 +168,34 @@ export default function SyllabusPage() {
     }
     return allVersions.find((v) => v.version === selectedVer);
   }, [selectedVer, allVersions]);
+
+  const startDate = useMemo(() => {
+    try {
+      return localStorage.getItem('cp-start-date') || config.startDate;
+    } catch {
+      return config.startDate;
+    }
+  }, []);
+
+  function findTuesdayOnOrAfter(date) {
+    const result = new Date(date);
+    while (result.getDay() !== 2) {
+      result.setDate(result.getDate() + 1);
+    }
+    return result;
+  }
+
+  const weeksWithDates = useMemo(() => {
+    const start = new Date(startDate);
+    const firstTue = findTuesdayOnOrAfter(start);
+    return activeCurriculum.map((week, idx) => {
+      const tue = new Date(firstTue);
+      tue.setDate(firstTue.getDate() + idx * 7);
+      const sat = new Date(tue);
+      sat.setDate(tue.getDate() + 4);
+      return { week, tuesday: tue, saturday: sat };
+    });
+  }, [startDate, activeCurriculum]);
 
   async function handleSaveVersion(e) {
     e.preventDefault();
@@ -341,7 +391,7 @@ export default function SyllabusPage() {
             </p>
           </div>
 
-          {activeCurriculum.map((week) => (
+          {weeksWithDates.map(({ week, tuesday, saturday }) => (
             <section key={week.week} className="syllabus-week">
               <div className="syllabus-week-head">
                 <span className="syllabus-week-num">Week {String(week.week).padStart(2, '0')}</span>
@@ -376,7 +426,7 @@ export default function SyllabusPage() {
                         </div>
                       )}
                       <div className="syllabus-speaker-box" style={{ borderLeft: '2px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.05)', borderRadius: '4px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '11px', color: '#059669', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>
-                        🎤 Speaker for Week {week.week}: TBD
+                        🎤 Speaker: {getSpeakerInfoForWeek(week.week, tuesday, saturday).name} · {getSpeakerInfoForWeek(week.week, tuesday, saturday).date}
                       </div>
                     </div>
                   )}
