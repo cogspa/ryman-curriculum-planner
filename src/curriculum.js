@@ -9,7 +9,7 @@ export const config = {
 
   tuesday: {
     label: 'Tuesday (Virtual)',
-    time: '7:00–8:30 pm',
+    time: '7:00–9:00 pm',
     location: 'Zoom',
   },
   saturday: {

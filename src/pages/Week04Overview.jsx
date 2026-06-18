@@ -16,7 +16,7 @@ export default function Week04Overview() {
       <h1 style={titleStyle}>Composition for Screen-Based Media</h1>
 
       <div style={scheduleStyle}>
-        <div><strong>TUE</strong> &nbsp; Tue, Jul 14 &nbsp; · &nbsp; 7:00–8:30 pm · Zoom</div>
+        <div><strong>TUE</strong> &nbsp; Tue, Jul 14 &nbsp; · &nbsp; 7:00–9:00 pm · Zoom</div>
         <div><strong>SAT</strong> &nbsp; Sat, Jul 18 &nbsp; · &nbsp; 10:00 am–3:30 pm · Reveal Studio</div>
       </div>
 

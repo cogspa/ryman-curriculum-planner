@@ -16,7 +16,7 @@ export default function Week02Overview() {
       <h1 style={titleStyle}>Digital Brushes &amp; Texture Systems</h1>
 
       <div style={scheduleStyle}>
-        <div><strong>TUE</strong> &nbsp; Tue, Jun 30 &nbsp; · &nbsp; 7:00–8:30 pm · Zoom</div>
+        <div><strong>TUE</strong> &nbsp; Tue, Jun 30 &nbsp; · &nbsp; 7:00–9:00 pm · Zoom</div>
         <div style={holidayStyle}><strong>SAT</strong> &nbsp; Sat, Jul 04 &nbsp; · &nbsp; ⛔ NO CLASS — HOLIDAY</div>
       </div>
 

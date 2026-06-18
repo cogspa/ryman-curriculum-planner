@@ -657,7 +657,7 @@ export default function CalendarPage() {
                     alignItems: 'center',
                     gap: '8px'
                   }}>
-                    <span>🖥️</span> Tuesday Zoom Sessions (7:00–8:30 pm)
+                    <span>🖥️</span> Tuesday Zoom Sessions (7:00–9:00 pm)
                   </h3>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

@@ -16,7 +16,7 @@ export default function Week01Overview() {
       <h1 style={titleStyle}>Translating Classical Foundations</h1>
 
       <div style={scheduleStyle}>
-        <div><strong>TUE</strong> &nbsp; Tue, Jun 23 &nbsp; · &nbsp; 7:00–8:30 pm · Zoom</div>
+        <div><strong>TUE</strong> &nbsp; Tue, Jun 23 &nbsp; · &nbsp; 7:00–9:00 pm · Zoom</div>
         <div><strong>SAT</strong> &nbsp; Sat, Jun 27 &nbsp; · &nbsp; 10:00 am–3:30 pm · Reveal Studio</div>
       </div>
 

@@ -16,7 +16,7 @@ export default function Week03Overview() {
       <h1 style={titleStyle}>Light, Color &amp; Atmosphere for Screen</h1>
 
       <div style={scheduleStyle}>
-        <div><strong>TUE</strong> &nbsp; Tue, Jul 07 &nbsp; · &nbsp; 7:00–8:30 pm · Zoom</div>
+        <div><strong>TUE</strong> &nbsp; Tue, Jul 07 &nbsp; · &nbsp; 7:00–9:00 pm · Zoom</div>
         <div><strong>SAT</strong> &nbsp; Sat, Jul 11 &nbsp; · &nbsp; 10:00 am–3:30 pm · Reveal Studio</div>
       </div>
 

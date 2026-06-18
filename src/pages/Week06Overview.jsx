@@ -16,7 +16,7 @@ export default function Week06Overview() {
       <h1 style={titleStyle}>Introduction to Commercial Application</h1>
 
       <div style={scheduleStyle}>
-        <div><strong>TUE</strong> &nbsp; Tue, Jul 28 &nbsp; · &nbsp; 7:00–8:30 pm · Zoom</div>
+        <div><strong>TUE</strong> &nbsp; Tue, Jul 28 &nbsp; · &nbsp; 7:00–9:00 pm · Zoom</div>
         <div><strong>SAT</strong> &nbsp; Sat, Aug 01 &nbsp; · &nbsp; 10:00 am–3:30 pm · Reveal Studio</div>
       </div>
 

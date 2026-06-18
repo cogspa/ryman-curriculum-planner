@@ -19,7 +19,7 @@ All program content lives in **`src/curriculum.js`**.
 export const config = {
   startDate: '2026-06-23',  // First Tuesday
   endDate:   '2026-09-12',
-  tuesday:   { time: '7:00–8:30 pm', location: 'Zoom' },
+  tuesday:   { time: '7:00–9:00 pm', location: 'Zoom' },
   saturday:  { time: '10:00 am–3:30 pm', location: 'Reveal Studio' },
 };
 
