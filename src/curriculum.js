@@ -330,10 +330,7 @@ export const curriculum = [
     },
     saturday: {
       topics: [
-        'Portfolio layout & sequence curation',
-        'Removing weaker pieces & streamlining selections',
-        'Final presentation deck preparation',
-        '🛠️ Task: Curation deliverable: Arrange 6–10 industry-ready pieces in a cohesive sequence',
+        '⛔ September 5th Holiday (Labor Day Weekend) — No Saturday Studio Class',
       ],
       assignments: [],
     }
@@ -355,6 +352,9 @@ export const curriculum = [
     },
     saturday: {
       topics: [
+        '🎨 PUSHED FROM WEEK 11: Portfolio layout & sequence curation',
+        '🎨 PUSHED FROM WEEK 11: Removing weaker pieces & streamlining selections',
+        '🎨 PUSHED FROM WEEK 11: Final presentation deck preparation',
         'Portfolio layout check (PDF + website ready)',
         'Removing weaker pieces final review',
         'Final presentation preparation',

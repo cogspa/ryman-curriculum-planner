@@ -124,7 +124,7 @@ export default function CalendarPage() {
         topics: entry.tuesday.topics
       });
 
-      const isSatHoliday = entry.saturday?.topics?.[0]?.includes('Holiday');
+      const isSatHoliday = entry.saturday?.topics?.[0]?.includes('Holiday') || isHoliday(saturday);
       list.push({
         date: saturday,
         month: saturday.toLocaleDateString('en-US', { month: 'long' }),
@@ -726,7 +726,7 @@ export default function CalendarPage() {
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     {weeks.map(({ entry, saturday, speaker }) => {
-                      const isSatHoliday = entry.saturday?.topics?.[0]?.includes('Holiday');
+                      const isSatHoliday = entry.saturday?.topics?.[0]?.includes('Holiday') || isHoliday(saturday);
                       const assignment = getWeekAssignments(entry.week);
 
                       return (
