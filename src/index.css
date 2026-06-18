@@ -1598,6 +1598,9 @@ body {
   body {
     background: #fff;
     font-size: 11pt;
+    color: #000;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .app {
@@ -1607,19 +1610,46 @@ body {
 
   .syllabus-page {
     max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .syllabus-header {
     margin-bottom: 24px;
     padding-bottom: 20px;
+    border-bottom: 2px solid #000;
   }
 
   .syllabus-title { font-size: 28pt; }
   .syllabus-sub-title { font-size: 16pt; }
 
   .syllabus-week {
-    padding: 16px 0;
-    break-inside: avoid;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  .syllabus-week-head,
+  .syllabus-week-title {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .syllabus-day-block {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 16px;
+  }
+
+  .syllabus-block {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .curriculum-intro-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   .syllabus-week-title { font-size: 14pt; }
@@ -1632,6 +1662,8 @@ body {
   .syllabus-footer {
     margin-top: 24px;
     padding-top: 12px;
+    page-break-before: avoid !important;
+    break-before: avoid !important;
   }
 }
 
