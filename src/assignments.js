@@ -26,6 +26,39 @@ export const assignments = {
             ],
           },
           {
+            heading: 'Tool Guide: Creating Straight Lines in Photoshop',
+            body: 'You will be using the following tools to create straight lines. These tools are fairly common for the majority of the software products that I have previously mentioned, but most of the details I provide below pertain mostly to Photoshop. I will explain in our first Zoom how these tools work in other programs.',
+            toolGuides: [
+              {
+                title: 'The Pen Tool (P)',
+                subtitle: '(found in Photoshop, Illustrator, GIMP, and Figma)',
+                description: 'The Pen tool (P) is used to create paths or vectors (also called strokes). With the Pen tool, you draw out your paths point by point. The path is called a bezier.',
+              },
+              {
+                title: 'The Path Palette',
+                description: 'In Photoshop, paths are stored in the Path Palette. You can finish a path by hitting Escape, then draw a new path.',
+              },
+              {
+                title: 'Converting Paths to Pixels in Photoshop',
+                description: 'Here are the steps to turn the paths into pixels:',
+                steps: [
+                  'First, create a new layer.',
+                  'Then use the Path Selection tool (A shortcut in Photoshop) to select the paths.',
+                  'Select the paths, then right-click on the paths, and in the menu that appears click "Stroke Path" and select the Pencil tool or the Brush tool.',
+                  'The pencil or brush tool settings will determine the quality of the brushstroke that is applied to the path.',
+                ],
+              },
+              {
+                title: 'The Brush Tool (B)',
+                description: 'We can use the Brush tool (B shortcut in Photoshop) to create straight lines by dragging on the canvas while hitting Shift. Click once, hit Shift, and then click somewhere else where you want the line to end. This technique works in Photoshop, GIMP, and Magma.io. After each line, hit Escape, otherwise, you will get one continuous line.',
+              },
+              {
+                title: 'The Line Tool (U)',
+                description: 'In Photoshop, you will have to press Shift + U a couple of times to access the Line tool. Make sure the line type is set to pixels.',
+              },
+            ],
+          },
+          {
             heading: 'Recommended File Setup',
             numberedSteps: [
               'Layer 1 (Bottom): Import your traditional sketch scan/photo, set opacity to 30%.',

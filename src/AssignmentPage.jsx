@@ -167,11 +167,19 @@ export default function AssignmentPage() {
             </div>
           )}
 
-          {/* Generic sections format (used by Week 1) */}
+           {/* Generic sections format (used by Week 1) */}
           {data.sections?.map((section, si) => (
             <section key={si} className="assignment-phase">
               <h2 className="phase-title">{section.heading}</h2>
-              {section.body && <p className="phase-intro">{section.body}</p>}
+              {section.body && (
+                typeof section.body === 'string' ? (
+                  section.body.split('\n\n').map((para, pi) => (
+                    <p key={pi} className="phase-intro" style={{ marginBottom: '16px' }}>{para}</p>
+                  ))
+                ) : (
+                  <p className="phase-intro">{section.body}</p>
+                )
+              )}
               {section.subheading && <p className="phase-sub">{section.subheading}</p>}
 
               {section.imageUrl && (
@@ -196,6 +204,31 @@ export default function AssignmentPage() {
               )}
 
               {section.note && <p className="phase-note">💡 {section.note}</p>}
+
+              {section.toolGuides && (
+                <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  {section.toolGuides.map((tg, tgi) => (
+                    <div key={tgi} style={{
+                      background: 'rgba(255, 255, 255, 0.4)',
+                      border: '1px solid rgba(0, 0, 0, 0.06)',
+                      borderRadius: '8px',
+                      padding: '16px 20px',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.01)'
+                    }}>
+                      <h3 style={{ fontSize: '16px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#0f172a' }}>{tg.title}</h3>
+                      {tg.subtitle && <p style={{ fontSize: '12px', margin: '0 0 8px 0', color: '#64748b', fontStyle: 'italic' }}>{tg.subtitle}</p>}
+                      {tg.description && <p style={{ fontSize: '14px', margin: '0 0 8px 0', color: '#334155', lineHeight: '1.5' }}>{tg.description}</p>}
+                      {tg.steps && (
+                        <ol style={{ paddingLeft: '20px', margin: '8px 0 0 0', fontSize: '13.5px', color: '#334155', lineHeight: '1.6' }}>
+                          {tg.steps.map((step, si) => (
+                            <li key={si} style={{ marginBottom: '6px' }}>{step}</li>
+                          ))}
+                        </ol>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </section>
           ))}
 
