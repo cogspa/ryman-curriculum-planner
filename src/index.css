@@ -2244,3 +2244,16 @@ body {
   background: var(--card-warm, #F6F2E8) !important;
   box-shadow: 0 8px 20px rgba(168, 72, 42, 0.05) !important;
 }
+
+/* Homepage Introduction Styles */
+.intro-asg-link {
+  transition: all 150ms ease !important;
+}
+.intro-asg-link:hover {
+  color: var(--accent, #A8482A) !important;
+  transform: translateX(2px);
+}
+.intro-asg-link:hover span {
+  transform: scale(1.1) !important;
+  background-color: var(--accent-deep, #8A3E24) !important;
+}

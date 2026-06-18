@@ -1264,7 +1264,103 @@ export default function App() {
               </button>
               <button className="logout-btn" onClick={handleLogout}>Sign out</button>
             </div>
-            
+
+            {/* Curriculum Vision & Worldbuilding Overview */}
+            <div className="curriculum-intro-card" style={{
+              background: 'rgba(255, 255, 255, 0.45)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
+              borderRadius: '12px',
+              padding: '24px 28px',
+              marginBottom: '28px',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.015)'
+            }}>
+              <h2 style={{
+                fontFamily: 'var(--font-display, serif)',
+                fontSize: '20px',
+                fontWeight: 'normal',
+                margin: '0 0 12px 0',
+                color: 'var(--ink, #1C1A17)',
+                borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
+                paddingBottom: '8px'
+              }}>
+                Curriculum Vision: Worldbuilding & Digital Workflows
+              </h2>
+              <p style={{
+                fontSize: '14px',
+                lineHeight: '1.6',
+                color: 'var(--ink-mid, #44403A)',
+                margin: '0 0 16px 0'
+              }}>
+                This worldbuilding-based curriculum focuses on teaching digital workflows to achieve the broader goals of workforce development in the visual arts. Rather than disconnected drills, the lessons guide students through the creation of <strong>six major assignments</strong> and a final <strong>capstone presentation</strong>. Using their own original ideas, IP (Intellectual Property), and characters, students will visually develop a unified "world of their own."
+              </p>
+              <div style={{
+                background: 'rgba(0, 0, 0, 0.02)',
+                borderRadius: '8px',
+                padding: '16px',
+                border: '1px solid rgba(0, 0, 0, 0.04)'
+              }}>
+                <h4 style={{
+                  fontSize: '11px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  fontFamily: 'var(--font-mono, monospace)',
+                  color: 'var(--accent, #A8482A)',
+                  margin: '0 0 10px 0'
+                }}>
+                  Curriculum Milestones
+                </h4>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+                  gap: '8px 16px'
+                }}>
+                  {[
+                    { num: 1, name: 'Character / Prop Foundation', wk: 1 },
+                    { num: 2, name: 'Material Studies & Textures', wk: 3 },
+                    { num: 3, name: 'Atmospheric Space', wk: 5 },
+                    { num: 4, name: 'Narrative Sequence', wk: 7 },
+                    { num: 5, name: 'Release Campaign', wk: 9 },
+                    { num: 6, name: 'Capstone Pitch Deck', wk: 10 }
+                  ].map((asg) => (
+                    <Link 
+                      key={asg.num}
+                      to={`/assignment/${asg.wk}`}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        textDecoration: 'none',
+                        color: 'var(--ink, #1C1A17)',
+                        fontSize: '13px',
+                        transition: 'color 0.15s ease',
+                        padding: '4px 0'
+                      }}
+                      className="intro-asg-link"
+                    >
+                      <span style={{
+                        background: 'var(--accent, #A8482A)',
+                        color: '#fff',
+                        fontSize: '10px',
+                        fontWeight: 'bold',
+                        borderRadius: '4px',
+                        width: '18px',
+                        height: '18px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                        transition: 'transform 0.15s ease'
+                      }}>
+                        {asg.num}
+                      </span>
+                      <span style={{ fontWeight: '500' }}>{asg.name}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <main className="grid">
               {weeks.map(({ entry, tuesday, saturday }, idx) => (
                 <WeekCard
