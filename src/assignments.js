@@ -71,6 +71,18 @@ export const assignments = {
                 title: 'The Line Tool (U)',
                 description: 'In Photoshop, you will have to press Shift + U a couple of times to access the Line tool. Make sure the line type is set to pixels.',
               },
+              {
+                title: 'The Polygonal Lasso Tool (L)',
+                subtitle: '(Photoshop and digital painting software)',
+                description: 'The Polygonal Lasso tool (L) is a powerful tool to build up initial digital painting concepts. Instead of drawing paths point-by-point like the Pen tool, the Polygonal Lasso lets you click to create straight-edge selection boundaries. Constrain angles using Shift, click to set corners, and close the loop to make your selection active.',
+                imageUrl: '/polygonal_lasso_tool.png',
+                steps: [
+                  'Use it to quickly block in value masses: layout background, midground, and foreground planes on separate layers to immediately establish structure and form.',
+                  'Create quick character silhouettes or hard-edged mechanical shapes in the scene.',
+                  'Use selections to paint straight beams of light or crisp cast shadows without overspraying onto other areas.',
+                  'Fill selections directly with the Paint Bucket tool or brush inside the active boundary to lock in the shapes.'
+                ]
+              },
             ],
           },
           {

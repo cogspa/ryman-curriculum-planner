@@ -362,7 +362,7 @@ export default function AssignmentPage() {
 
               {section.note && <p className="phase-note">💡 {section.note}</p>}
 
-              {section.toolGuides && (
+               {section.toolGuides && (
                 <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   {section.toolGuides.map((tg, tgi) => (
                     <div key={tgi} style={{
@@ -372,16 +372,43 @@ export default function AssignmentPage() {
                       padding: '16px 20px',
                       boxShadow: '0 2px 8px rgba(0,0,0,0.01)'
                     }}>
-                      <h3 style={{ fontSize: '16px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#0f172a' }}>{tg.title}</h3>
-                      {tg.subtitle && <p style={{ fontSize: '12px', margin: '0 0 8px 0', color: '#64748b', fontStyle: 'italic' }}>{tg.subtitle}</p>}
-                      {tg.description && <p style={{ fontSize: '14px', margin: '0 0 8px 0', color: '#334155', lineHeight: '1.5' }}>{tg.description}</p>}
-                      {tg.steps && (
-                        <ol style={{ paddingLeft: '20px', margin: '8px 0 0 0', fontSize: '13.5px', color: '#334155', lineHeight: '1.6' }}>
-                          {tg.steps.map((step, si) => (
-                            <li key={si} style={{ marginBottom: '6px' }}>{step}</li>
-                          ))}
-                        </ol>
-                      )}
+                      <div style={{
+                        display: 'flex',
+                        gap: '20px',
+                        flexDirection: 'row',
+                        alignItems: 'flex-start',
+                        flexWrap: 'wrap-reverse'
+                      }}>
+                        <div style={{ flex: '1 1 300px' }}>
+                          <h3 style={{ fontSize: '16px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#0f172a' }}>{tg.title}</h3>
+                          {tg.subtitle && <p style={{ fontSize: '12px', margin: '0 0 8px 0', color: '#64748b', fontStyle: 'italic' }}>{tg.subtitle}</p>}
+                          {tg.description && <p style={{ fontSize: '14px', margin: '0 0 8px 0', color: '#334155', lineHeight: '1.5' }}>{tg.description}</p>}
+                          {tg.steps && (
+                            <ol style={{ paddingLeft: '20px', margin: '8px 0 0 0', fontSize: '13.5px', color: '#334155', lineHeight: '1.6' }}>
+                              {tg.steps.map((step, si) => (
+                                <li key={si} style={{ marginBottom: '6px' }}>{step}</li>
+                              ))}
+                            </ol>
+                          )}
+                        </div>
+                        {tg.imageUrl && (
+                          <div style={{
+                            flex: '0 0 160px',
+                            background: '#fff',
+                            padding: '4px',
+                            borderRadius: '6px',
+                            border: '1px solid var(--hairline, #C9C1AE)',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
+                            margin: '0 auto 0 auto'
+                          }}>
+                            <img 
+                              src={tg.imageUrl} 
+                              alt={tg.title} 
+                              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px' }} 
+                            />
+                          </div>
+                        )}
+                      </div>
                     </div>
                   ))}
                 </div>
