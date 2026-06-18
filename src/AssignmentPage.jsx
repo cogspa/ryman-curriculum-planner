@@ -2,6 +2,50 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { assignments } from './assignments.js';
 
+function parseMarkdownLinks(text) {
+  if (typeof text !== 'string') return text;
+  const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  if (!linkRegex.test(text)) return text;
+  
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  
+  // Reset regex state
+  linkRegex.lastIndex = 0;
+  
+  while ((match = linkRegex.exec(text)) !== null) {
+    const matchIndex = match.index;
+    const [fullMatch, linkText, linkUrl] = match;
+    
+    // Add text before the link
+    if (matchIndex > lastIndex) {
+      parts.push(text.substring(lastIndex, matchIndex));
+    }
+    
+    // Add the link element
+    parts.push(
+      <a 
+        key={matchIndex} 
+        href={linkUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        style={{ color: '#db2777', textDecoration: 'underline', fontWeight: '500' }}
+      >
+        {linkText}
+      </a>
+    );
+    
+    lastIndex = linkRegex.lastIndex;
+  }
+  
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+  
+  return parts;
+}
+
 export default function AssignmentPage() {
   const { week } = useParams();
   const rawData = assignments[Number(week)];
@@ -129,7 +173,7 @@ export default function AssignmentPage() {
                   color: 'var(--ink-mid, #44403A)',
                   marginBottom: '14px'
                 }}>
-                  {para}
+                  {parseMarkdownLinks(para)}
                 </p>
               ))}
 
@@ -158,7 +202,7 @@ export default function AssignmentPage() {
                   margin: '16px 0 0 0',
                   fontStyle: 'italic'
                 }}>
-                  {rawData.introduction.closing}
+                  {parseMarkdownLinks(rawData.introduction.closing)}
                 </p>
               )}
             </div>
