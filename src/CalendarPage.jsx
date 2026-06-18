@@ -70,6 +70,29 @@ function getGuestSpeaker(tuesday) {
   return null;
 }
 
+function renderItemText(str) {
+  const text = str.replace(/^\[NEW\]\s*/i, '');
+  const urlRegex = /(https?:\/\/[^\s,]+)/g;
+  if (!urlRegex.test(text)) return text;
+  const parts = text.split(urlRegex);
+  return parts.map((part, idx) => {
+    if (urlRegex.test(part)) {
+      return (
+        <a 
+          key={idx} 
+          href={part} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          style={{ color: 'var(--accent, #A8482A)', textDecoration: 'underline', fontWeight: 'bold' }}
+        >
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 export default function CalendarPage() {
   const [startDate] = useState(() => {
     try {
@@ -545,7 +568,7 @@ export default function CalendarPage() {
                         </h4>
                         <ul style={{ paddingLeft: '18px', margin: '0 0 20px 0', fontSize: '13.5px', lineHeight: '1.5', color: 'var(--ink, #1C1A17)' }}>
                           {selectedSession.entry.tuesday.topics.map((t, idx) => (
-                            <li key={idx} style={{ marginBottom: '6px' }}>{t.replace(/^\[NEW\]\s*/i, '')}</li>
+                            <li key={idx} style={{ marginBottom: '6px' }}>{renderItemText(t)}</li>
                           ))}
                         </ul>
 
@@ -556,7 +579,7 @@ export default function CalendarPage() {
                             </h4>
                             <ul style={{ paddingLeft: '18px', margin: '0 0 16px 0', fontSize: '13.5px', lineHeight: '1.5', color: 'var(--ink, #1C1A17)' }}>
                               {selectedSession.entry.tuesday.readings.map((r, idx) => (
-                                <li key={idx} style={{ marginBottom: '6px' }}>{r.replace(/^\[NEW\]\s*/i, '')}</li>
+                                <li key={idx} style={{ marginBottom: '6px' }}>{renderItemText(r)}</li>
                               ))}
                             </ul>
                           </>
@@ -569,7 +592,7 @@ export default function CalendarPage() {
                         </h4>
                         <ul style={{ paddingLeft: '18px', margin: '0 0 20px 0', fontSize: '13.5px', lineHeight: '1.5', color: 'var(--ink, #1C1A17)' }}>
                           {selectedSession.entry.saturday.topics.map((t, idx) => (
-                            <li key={idx} style={{ marginBottom: '6px' }}>{t.replace(/^\[NEW\]\s*/i, '')}</li>
+                            <li key={idx} style={{ marginBottom: '6px' }}>{renderItemText(t)}</li>
                           ))}
                         </ul>
 

@@ -12,17 +12,41 @@ import {
   syncRemoteVersions
 } from './curriculumService.js';
 
-// Strip [NEW] prefix and render bold markdown (**text**) for syllabus display
+// Strip [NEW] prefix and render bold markdown (**text**) and linkified URLs for syllabus display
 function renderCleaned(str) {
   const text = str.startsWith('[NEW] ') ? str.slice(6) : str;
+  const urlRegex = /(https?:\/\/[^\s,]+)/g;
   const boldRegex = /(\*\*.*?\*\*)/g;
-  if (!boldRegex.test(text)) return text;
+
+  const linkify = (txt) => {
+    if (typeof txt !== 'string') return txt;
+    if (!urlRegex.test(txt)) return txt;
+    const urlParts = txt.split(urlRegex);
+    return urlParts.map((part, idx) => {
+      if (urlRegex.test(part)) {
+        return (
+          <a 
+            key={idx} 
+            href={part} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            style={{ color: '#db2777', textDecoration: 'underline', wordBreak: 'break-all' }}
+          >
+            {part}
+          </a>
+        );
+      }
+      return part;
+    });
+  };
+
+  if (!boldRegex.test(text)) return linkify(text);
   const parts = text.split(boldRegex);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
-      return <strong key={i} style={{ fontWeight: '700', color: '#8b3a2f' }}>{part.slice(2, -2)}</strong>;
+      return <strong key={i} style={{ fontWeight: '700', color: '#8b3a2f' }}>{linkify(part.slice(2, -2))}</strong>;
     }
-    return part;
+    return linkify(part);
   });
 }
 

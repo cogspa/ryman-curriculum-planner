@@ -37,6 +37,7 @@ export const curriculum = [
       readings: [
         '[NEW] Photoshop — Learn at Your Own Pace Videos: https://www.youtube.com/playlist?list=PL96BXqp9fQs6EcSwTbDgo57DFI-6EXzQ8',
         'Tools Overview: Adobe Photoshop vs. Procreate workflows',
+        '[NEW] Reading: V. S. Ramachandran — Phantoms in the Brain: Probing the Mysteries of the Human Mind: https://www.amazon.com/Phantoms-Brain-Probing-Mysteries-Human/dp/0688172172',
       ],
     },
     saturday: {
