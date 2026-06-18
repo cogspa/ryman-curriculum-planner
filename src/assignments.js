@@ -8,6 +8,19 @@ export const assignments = {
   1: {
     title: 'Assignment 1: Character / Prop Foundation',
     subtitle: 'Worldbuilding Step 1: Establish your core IP characters and signature items.',
+    introduction: {
+      heading: 'Assignment Introduction: Line, Shape, and the Visual Building Blocks of Digital Art',
+      body: 'When we look at an image, we do not perceive every detail at once. The visual system first responds to simpler visual information: changes in light and dark, color differences, edges, directions, textures, overlapping forms, and larger shape groupings. In early visual cortex, many neurons are especially responsive to the orientation of an edge or bar—vertical, horizontal, diagonal, curved, or moving. Other visual networks contribute to color, figure-ground separation, spatial depth, motion, and object recognition.\n\nThis does not mean that the brain literally sees a finished drawing as outlines and blobs. Instead, it builds recognition from many kinds of visual evidence. A character, vehicle, building, or landscape becomes understandable because the brain can organize boundaries, silhouettes, value groupings, color regions, and spatial relationships into a coherent whole.\n\nFor artists, this is the reason to study line and shape breakdowns. A line is not only a contour. It can communicate direction, gesture, perspective, overlap, structure, and a change in plane or value. A shape is not only a filled-in area. It can establish silhouette, negative space, figure-ground separation, proportion, composition, lighting, and depth. Before a viewer reads the texture of a costume or the detail in a background, they usually read the larger organization of shapes.\n\nDigital-art tools are built around comparable visual components. Raster images are made from pixels: small samples of color and brightness that can be grouped into values, edges, textures, and color fields. Vector graphics use anchor points, path segments, and Bézier handles to define editable straight lines and curves. These systems are not copies of the brain, but they give artists a practical way to construct, isolate, and revise the same kinds of visual information that make an image readable.\n\nOnce an image is created, digital tools also allow it to be analyzed and adjusted as visual data. Channels separate color information; masks isolate selected areas; Levels and Curves remap shadows, midtones, highlights, and color relationships; filters can emphasize blur, sharpening, edge contrast, texture, or scale. These tools allow an artist to test whether an image still works as a composition of values, shapes, edges, and color masses before relying on detail.\n\nFor this assignment, break down your selected reference into its visual building blocks:',
+      bullets: [
+        'Major shapes: What are the largest light, dark, and color masses?',
+        'Silhouette and negative space: What makes the subject separate from its background?',
+        'Directional lines: Where do gesture, perspective, contours, or repeated angles guide the eye?',
+        'Simple forms: Can complex objects be reduced to boxes, cylinders, spheres, wedges, or flat graphic shapes?',
+        'Value structure: Does the image still read when viewed small, blurred, or in grayscale?',
+        'Focal hierarchy: Where are the sharpest edges, strongest contrast, highest saturation, or most specific details?'
+      ],
+      closing: 'The goal is not to trace a finished image. The goal is to understand its visual construction well enough to use those principles in your own original digital artwork.'
+    },
     tracks: {
       beginner: {
         title: 'Base Assignment: Traditional Translation',

@@ -100,6 +100,70 @@ export default function AssignmentPage() {
             )}
           </div>
 
+          {/* Assignment Introduction */}
+          {rawData.introduction && (
+            <div style={{
+              background: 'rgba(246, 242, 232, 0.65)',
+              border: '1px solid var(--hairline-strong, #C9C1AE)',
+              borderRadius: '12px',
+              padding: '28px',
+              marginBottom: '36px',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.01)'
+            }}>
+              <h2 style={{
+                fontFamily: 'var(--font-display, serif)',
+                fontSize: '22px',
+                fontWeight: 'normal',
+                margin: '0 0 16px 0',
+                color: 'var(--ink, #1C1A17)',
+                borderBottom: '1px solid var(--hairline, #DDD6C6)',
+                paddingBottom: '10px'
+              }}>
+                {rawData.introduction.heading}
+              </h2>
+              
+              {rawData.introduction.body && rawData.introduction.body.split('\n\n').map((para, idx) => (
+                <p key={idx} style={{
+                  fontSize: '14.5px',
+                  lineHeight: '1.6',
+                  color: 'var(--ink-mid, #44403A)',
+                  marginBottom: '14px'
+                }}>
+                  {para}
+                </p>
+              ))}
+
+              {rawData.introduction.bullets && (
+                <ul style={{
+                  paddingLeft: '20px',
+                  margin: '16px 0',
+                  fontSize: '14.5px',
+                  lineHeight: '1.6',
+                  color: 'var(--ink-mid, #44403A)'
+                }}>
+                  {rawData.introduction.bullets.map((bullet, idx) => (
+                    <li key={idx} style={{ marginBottom: '8px' }}>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {rawData.introduction.closing && (
+                <p style={{
+                  fontSize: '14.5px',
+                  lineHeight: '1.6',
+                  fontWeight: '500',
+                  color: 'var(--ink, #1C1A17)',
+                  margin: '16px 0 0 0',
+                  fontStyle: 'italic'
+                }}>
+                  {rawData.introduction.closing}
+                </p>
+              )}
+            </div>
+          )}
+
           {/* Track Selector Tab Bar */}
           {isMultiTrack && (
             <div style={{
