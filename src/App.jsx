@@ -1239,6 +1239,21 @@ export default function App() {
               </Link>
             </div>
 
+            <div className="mentorship-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(244, 63, 94, 0.05)', border: '1px solid rgba(244, 63, 94, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>🤝</span>
+                <span style={{ fontSize: '13px', fontWeight: '500', color: '#e11d48' }}>
+                  <strong>Mentorship Pairs:</strong> Dedicated layout of designated alumni mentors matched to cohort candidates.
+                </span>
+              </div>
+              <Link 
+                to="/mentorship" 
+                style={{ textDecoration: 'none', background: '#f43f5e', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+              >
+                VIEW MENTORSHIP ASSIGNMENTS →
+              </Link>
+            </div>
+
             <div className="assignments-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(219, 39, 119, 0.05)', border: '1px solid rgba(219, 39, 119, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ fontSize: '18px' }}>📝</span>
