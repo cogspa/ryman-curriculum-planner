@@ -388,6 +388,26 @@ export const curriculum = [
 // ─── Changelog ────────────────────────────────────────────────────
 export const changelog = [
   {
+    date: '2026-06-19',
+    message: 'Added condensed Alvy Ray Smith bio, YouTube video embed, and link to "A Pixel Is Not A Little Square" PDF on the Digital vs. Physical Canvas topic page (Week 01).',
+  },
+  {
+    date: '2026-06-19',
+    message: 'Split Curriculum Vision intro into three paragraphs with a highlighted 3D Integration callout note on the Syllabus page.',
+  },
+  {
+    date: '2026-06-19',
+    message: 'Updated Capstone Showcase (Week 13): removed Tuesday Zoom session, set final date to "End of September," location at Reveal Studio.',
+  },
+  {
+    date: '2026-06-18',
+    message: 'Added condensed syllabus toggle view and "Download Condensed Syllabus PDF" button alongside the full syllabus download.',
+  },
+  {
+    date: '2026-06-18',
+    message: 'Assignment 5 renamed from "Most Wanted" Poster Campaign to "Your World" Poster Campaign — updated across syllabus, assignments, and topic pages.',
+  },
+  {
     date: '2026-06-01',
     message: 'Added a dedicated Potential Guest Speaker database page populated with 19 local industry leads, linked in cyan directly below the Class FAQ banner.',
   },

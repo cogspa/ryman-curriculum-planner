@@ -177,7 +177,7 @@ body {
 .changelog-track {
   display: inline-flex;
   gap: 56px;
-  animation: scroll-left 45s linear infinite;
+  animation: scroll-left 90s linear infinite;
 }
 
 .changelog-track:hover {
