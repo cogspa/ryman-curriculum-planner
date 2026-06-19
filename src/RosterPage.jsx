@@ -125,11 +125,207 @@ export default function RosterPage() {
           <Link to="/" className="back-link">← Back to Curriculum</Link>
 
           <div className="assignment-header" style={{ marginBottom: '32px' }}>
+            <img 
+              src="https://images.squarespace-cdn.com/content/v1/67806c279fb734295979b37e/9e044490-3bd2-4589-a460-cbabd7c93b35/Ryman_Arts_Logo_No_Tagline.png" 
+              alt="Ryman Arts Logo" 
+              style={{ height: '44px', marginBottom: '16px', display: 'block' }} 
+            />
             <p className="assignment-eyebrow" style={{ color: '#7c3aed', letterSpacing: '0.15em' }}>RYMAN ARTS PLATFORM</p>
             <h1 className="assignment-title" style={{ fontSize: '32px', margin: '8px 0' }}>Final Class List Roster</h1>
             <p className="assignment-subtitle" style={{ fontSize: '15px', opacity: 0.85 }}>
               Official roster of the 14 selected candidates for the inaugural pLAtform cohort. Access student bios, contact information, and download the full spreadsheet roster.
             </p>
+          </div>
+
+          {/* Mentorship Pairings & Focus Tracks */}
+          <div style={{ marginBottom: '40px' }}>
+            <h2 style={{ 
+              fontFamily: 'var(--font-display, serif)', 
+              fontSize: '22px', 
+              fontWeight: 'normal', 
+              marginBottom: '16px', 
+              color: '#0f172a',
+              borderBottom: '1px solid rgba(0,0,0,0.08)',
+              paddingBottom: '8px'
+            }}>
+              🤝 Mentorship Pairings & Industry Focus Tracks
+            </h2>
+            
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', 
+              gap: '20px' 
+            }}>
+              {/* Illustration / Teacher Track */}
+              <div className="curriculum-intro-card" style={{ 
+                background: 'rgba(124, 58, 237, 0.03)', 
+                border: '1px solid rgba(124, 58, 237, 0.12)', 
+                borderRadius: '10px', 
+                padding: '20px' 
+              }}>
+                <span style={{ 
+                  fontSize: '10px', 
+                  textTransform: 'uppercase', 
+                  fontWeight: 'bold', 
+                  color: '#7c3aed', 
+                  letterSpacing: '0.05em',
+                  fontFamily: 'var(--font-mono)'
+                }}>
+                  Track: Illustration & Education
+                </span>
+                <h3 style={{ margin: '6px 0 16px 0', fontSize: '18px', fontWeight: 'bold' }}>Illustration / Teacher</h3>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <div style={{ background: '#fff', padding: '14px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                    <div style={{ fontWeight: 'bold', fontSize: '14px', color: '#0f172a' }}>Kaylee Hawley (Ryman ’15)</div>
+                    <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>Illustrator & Visual Arts Teacher</div>
+                    <div style={{ 
+                      marginTop: '12px', 
+                      paddingTop: '10px', 
+                      borderTop: '1px solid #f1f5f9',
+                      fontSize: '13px' 
+                    }}>
+                      <strong>Mentees:</strong>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>
+                        <span style={{ background: 'rgba(124, 58, 237, 0.08)', color: '#7c3aed', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Emma Tiedemann</span>
+                        <span style={{ background: 'rgba(124, 58, 237, 0.08)', color: '#7c3aed', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Miriam Sills</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Themed Entertainment Track */}
+              <div className="curriculum-intro-card" style={{ 
+                background: 'rgba(168, 72, 42, 0.03)', 
+                border: '1px solid rgba(168, 72, 42, 0.12)', 
+                borderRadius: '10px', 
+                padding: '20px' 
+              }}>
+                <span style={{ 
+                  fontSize: '10px', 
+                  textTransform: 'uppercase', 
+                  fontWeight: 'bold', 
+                  color: 'var(--accent)', 
+                  letterSpacing: '0.05em',
+                  fontFamily: 'var(--font-mono)'
+                }}>
+                  Track: Themed Entertainment & Experiential
+                </span>
+                <h3 style={{ margin: '6px 0 16px 0', fontSize: '18px', fontWeight: 'bold' }}>Themed Entertainment, Experiential Design, & Architecture</h3>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  <div style={{ background: '#fff', padding: '14px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                    <div style={{ fontWeight: 'bold', fontSize: '14px', color: '#0f172a' }}>Stephanie Jazmines (Ryman \'06)</div>
+                    <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>Senior Designer, Walt Disney Imagineering (WDI) - Graphic Designer</div>
+                    <div style={{ 
+                      marginTop: '12px', 
+                      paddingTop: '10px', 
+                      borderTop: '1px solid #f1f5f9',
+                      fontSize: '13px' 
+                    }}>
+                      <strong>Mentees:</strong>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>
+                        <span style={{ background: 'rgba(168, 72, 42, 0.08)', color: 'var(--accent)', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Lucy Levine</span>
+                        <span style={{ background: 'rgba(168, 72, 42, 0.08)', color: 'var(--accent)', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Tiana Chamsi</span>
+                        <span style={{ background: 'rgba(168, 72, 42, 0.08)', color: 'var(--accent)', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Hyeyeon (Claire) Choi</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ background: '#fff', padding: '14px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                    <div style={{ fontWeight: 'bold', fontSize: '14px', color: '#0f172a' }}>Emma Wood (Ryman \'12)</div>
+                    <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>Designer, BRC Imagination Arts</div>
+                    <div style={{ 
+                      marginTop: '12px', 
+                      paddingTop: '10px', 
+                      borderTop: '1px solid #f1f5f9',
+                      fontSize: '13px' 
+                    }}>
+                      <strong>Mentees:</strong>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>
+                        <span style={{ background: 'rgba(168, 72, 42, 0.08)', color: 'var(--accent)', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Sabrina Jiang</span>
+                        <span style={{ background: 'rgba(168, 72, 42, 0.08)', color: 'var(--accent)', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Moka Tsukino</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Visual Entertainment Track */}
+              <div className="curriculum-intro-card" style={{ 
+                background: 'rgba(6, 182, 212, 0.03)', 
+                border: '1px solid rgba(6, 182, 212, 0.12)', 
+                borderRadius: '10px', 
+                padding: '20px' 
+              }}>
+                <span style={{ 
+                  fontSize: '10px', 
+                  textTransform: 'uppercase', 
+                  fontWeight: 'bold', 
+                  color: '#0891b2', 
+                  letterSpacing: '0.05em',
+                  fontFamily: 'var(--font-mono)'
+                }}>
+                  Track: Animation & Storyboards
+                </span>
+                <h3 style={{ margin: '6px 0 16px 0', fontSize: '18px', fontWeight: 'bold' }}>Visual Entertainment</h3>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  <div style={{ background: '#fff', padding: '14px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                    <div style={{ fontWeight: 'bold', fontSize: '14px', color: '#0f172a' }}>Emily Oetzell (Ryman ‘12)</div>
+                    <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>Storyboard Artist, Shadow Machine</div>
+                    <div style={{ 
+                      marginTop: '12px', 
+                      paddingTop: '10px', 
+                      borderTop: '1px solid #f1f5f9',
+                      fontSize: '13px' 
+                    }}>
+                      <strong>Mentees:</strong>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>
+                        <span style={{ background: 'rgba(6, 182, 212, 0.08)', color: '#0891b2', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Neko Ohnsman</span>
+                        <span style={{ background: 'rgba(6, 182, 212, 0.08)', color: '#0891b2', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Kelsy Hua</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ background: '#fff', padding: '14px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                    <div style={{ fontWeight: 'bold', fontSize: '14px', color: '#0f172a' }}>Leslie Park (Ryman \'11)</div>
+                    <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>Director & Storyboard Artist, Disney Television Animation</div>
+                    <div style={{ 
+                      marginTop: '12px', 
+                      paddingTop: '10px', 
+                      borderTop: '1px solid #f1f5f9',
+                      fontSize: '13px' 
+                    }}>
+                      <strong>Mentees:</strong>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>
+                        <span style={{ background: 'rgba(6, 182, 212, 0.08)', color: '#0891b2', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Lilly Phan</span>
+                        <span style={{ background: 'rgba(6, 182, 212, 0.08)', color: '#0891b2', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Alyssa Valdivia</span>
+                        <span style={{ background: 'rgba(6, 182, 212, 0.08)', color: '#0891b2', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Shan Lee</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ background: '#fff', padding: '14px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.04)' }}>
+                    <div style={{ fontWeight: 'bold', fontSize: '14px', color: '#0f172a' }}>Alycea Tinoyan (Ryman \'11)</div>
+                    <div style={{ fontSize: '12px', color: '#64748b', marginTop: '2px' }}>Background Designer, Rick and Morty</div>
+                    <div style={{ 
+                      marginTop: '12px', 
+                      paddingTop: '10px', 
+                      borderTop: '1px solid #f1f5f9',
+                      fontSize: '13px' 
+                    }}>
+                      <strong>Mentees:</strong>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>
+                        <span style={{ background: 'rgba(6, 182, 212, 0.08)', color: '#0891b2', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Claire van Beek</span>
+                        <span style={{ background: 'rgba(6, 182, 212, 0.08)', color: '#0891b2', padding: '2px 8px', borderRadius: '12px', fontWeight: '500', fontSize: '12px' }}>Nadia Alwiny</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Search, Filter, and Export Bar */}

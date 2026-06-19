@@ -286,6 +286,11 @@ export default function CalendarPage() {
 
         {/* Header */}
         <header className="syllabus-header" style={{ marginBottom: '40px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', paddingBottom: '32px' }}>
+          <img 
+            src="https://images.squarespace-cdn.com/content/v1/67806c279fb734295979b37e/9e044490-3bd2-4589-a460-cbabd7c93b35/Ryman_Arts_Logo_No_Tagline.png" 
+            alt="Ryman Arts Logo" 
+            style={{ height: '48px', marginBottom: '16px', display: 'block' }} 
+          />
           <p className="syllabus-eyebrow">Academic Term Calendar · Interactive Grid</p>
           <h1 className="syllabus-title" style={{ fontSize: '38px', letterSpacing: '-0.02em', marginBottom: '12px' }}>
             Curriculum Schedule Grid

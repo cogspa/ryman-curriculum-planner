@@ -275,6 +275,11 @@ export default function SpeakerListPage() {
           <Link to="/" className="back-link">← Back to Curriculum</Link>
 
           <div className="assignment-header" style={{ marginBottom: '32px' }}>
+            <img 
+              src="https://images.squarespace-cdn.com/content/v1/67806c279fb734295979b37e/9e044490-3bd2-4589-a460-cbabd7c93b35/Ryman_Arts_Logo_No_Tagline.png" 
+              alt="Ryman Arts Logo" 
+              style={{ height: '48px', marginBottom: '16px', display: 'block' }} 
+            />
             <p className="assignment-eyebrow" style={{ color: '#06b6d4', letterSpacing: '0.15em' }}>RYMAN ARTS PLATFORM</p>
             <h1 className="assignment-title" style={{ fontSize: '32px', margin: '8px 0' }}>Potential Guest Speakers</h1>
             <p className="assignment-subtitle" style={{ fontSize: '15px', opacity: 0.85 }}>

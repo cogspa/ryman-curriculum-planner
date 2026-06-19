@@ -260,6 +260,11 @@ export default function SyllabusPage() {
           </div>
 
           <header className="syllabus-header">
+            <img 
+              src="https://images.squarespace-cdn.com/content/v1/67806c279fb734295979b37e/9e044490-3bd2-4589-a460-cbabd7c93b35/Ryman_Arts_Logo_No_Tagline.png" 
+              alt="Ryman Arts Logo" 
+              style={{ height: '48px', marginBottom: '16px', display: 'block' }} 
+            />
             <p className="syllabus-eyebrow">2026 · 12-week program + capstone</p>
             <h1 className="syllabus-title">Ryman Arts Platform</h1>
             <p className="syllabus-sub-title">Curriculum Syllabus</p>
