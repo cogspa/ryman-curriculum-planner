@@ -1252,6 +1252,52 @@ body {
   background: var(--accent);
 }
 
+.syllabus-toggle-pills {
+  display: flex;
+  background: var(--card-bg, #f6f2e8);
+  border: 1px solid var(--hairline, #ddd6c6);
+  padding: 3px;
+  border-radius: 6px;
+  gap: 2px;
+}
+
+.toggle-pill {
+  border: none;
+  background: transparent;
+  color: var(--ink-mute, #686256);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 150ms ease;
+}
+
+.toggle-pill:hover {
+  color: var(--ink, #1c1a17);
+}
+
+.toggle-pill.is-active {
+  background: var(--paper, #fbfaf7);
+  color: var(--ink, #1c1a17);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-weight: bold;
+}
+
+.syllabus-download.secondary {
+  background: transparent;
+  color: var(--ink, #1c1a17);
+  border: 1px solid var(--ink, #1c1a17);
+}
+
+.syllabus-download.secondary:hover {
+  background: var(--ink, #1c1a17);
+  color: var(--paper, #fbfaf7);
+}
+
 .syllabus-header {
   text-align: center;
   margin-bottom: 56px;

@@ -187,7 +187,7 @@ export const curriculum = [
       readings: [
         '[NEW] Layout Engineering: InDesign Page Layout Specs, Margins, and Master Pages',
         '[NEW] Brand Architecture: Integrated Campaigns & Asset Management (CC Libraries)',
-        '[NEW] Visual Pitching: Combining Type & Image for the "Most Wanted" Design Brief',
+        '[NEW] Visual Pitching: Combining Type & Image for the "Your World" Design Brief',
         'Guest: Art director or creative agency lead — live portfolio brief breakdown',
       ],
     },
@@ -281,7 +281,7 @@ export const curriculum = [
         '🛠️ Task: Refine campaign assets & apply peer feedback from Week 8 pitch rehearsals',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *Most Wanted Poster* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
+        '[NEW] **Base Assignment**: *"Your World" Poster* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
         '[NEW] **Next Level**: *Senior Key Art & Grids* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
         '[NEW] **3D Integration**: *3D Studio Render & Wrap* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
       ],
@@ -371,24 +371,14 @@ export const curriculum = [
     week: 13,
     title: 'CAPSTONE SHOWCASE',
     overview: 'Formal portfolio reviews, presentations, and networking mixers with industry panels.',
-    tuesday: {
-      topics: [
-        'Discussion: Networking and professional social etiquette at Reveal',
-        'Preview: Meet the panel profiles and company briefs',
-        'Workflow breakdown: Following up, promo cards, and email templates',
-      ],
-      readings: [
-        'Industry Panels: Directory of attendees and review workflows',
-        'Guest: TBD',
-      ],
-    },
+    dateOverride: 'End of September',
     saturday: {
       topics: [
         'Formal portfolio reviews and critiques with panels',
         'Networking mixer and peer interactions',
         'Career pathway and educational progression guidance',
         'Final portfolio showcases',
-        '🛠️ Task: Present final showcase portfolio deck to industry panel',
+        '🛠️ Task: Final Project and Portfolio Deck reveal',
       ],
       assignments: [],
     }
@@ -427,7 +417,7 @@ export const changelog = [
   },
   {
     date: '2026-05-28',
-    message: 'Week 6 expanded with InDesign layout specifications, master pages, integrated campaign artboards, CC Libraries asset management, and "Most Wanted" design brief.',
+    message: 'Week 6 expanded with InDesign layout specifications, master pages, integrated campaign artboards, CC Libraries asset management, and "Your World" design brief.',
   },
   {
     date: '2026-05-27',

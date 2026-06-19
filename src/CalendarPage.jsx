@@ -134,32 +134,36 @@ export default function CalendarPage() {
   const chronologicalSessions = useMemo(() => {
     const list = [];
     weeks.forEach(({ entry, tuesday, saturday, speaker }) => {
-      list.push({
-        date: tuesday,
-        month: tuesday.toLocaleDateString('en-US', { month: 'long' }),
-        dateNum: tuesday.getDate(),
-        time: config.tuesday.time,
-        type: 'tuesday',
-        week: entry.week,
-        name: `Week ${String(entry.week).padStart(2, '0')} · Tuesday Zoom — ${entry.title}`,
-        description: entry.overview,
-        speaker,
-        topics: entry.tuesday.topics
-      });
+      if (entry.tuesday) {
+        list.push({
+          date: tuesday,
+          month: tuesday.toLocaleDateString('en-US', { month: 'long' }),
+          dateNum: tuesday.getDate(),
+          time: config.tuesday.time,
+          type: 'tuesday',
+          week: entry.week,
+          name: `Week ${String(entry.week).padStart(2, '0')} · Tuesday Zoom — ${entry.title}`,
+          description: entry.overview,
+          speaker,
+          topics: entry.tuesday.topics || []
+        });
+      }
 
-      const isSatHoliday = entry.saturday?.topics?.[0]?.includes('Holiday') || isHoliday(saturday);
-      list.push({
-        date: saturday,
-        month: saturday.toLocaleDateString('en-US', { month: 'long' }),
-        dateNum: saturday.getDate(),
-        time: config.saturday.time,
-        type: 'saturday',
-        week: entry.week,
-        name: `Week ${String(entry.week).padStart(2, '0')} · Saturday Studio ${isSatHoliday ? '(Holiday Break)' : ''}`,
-        description: isSatHoliday ? 'Holiday Break — No Saturday Studio Class' : entry.overview,
-        topics: entry.saturday.topics,
-        isHoliday: isSatHoliday
-      });
+      if (entry.saturday) {
+        const isSatHoliday = entry.saturday.topics?.[0]?.includes('Holiday') || isHoliday(saturday);
+        list.push({
+          date: saturday,
+          month: saturday.toLocaleDateString('en-US', { month: 'long' }),
+          dateNum: saturday.getDate(),
+          time: config.saturday.time,
+          type: 'saturday',
+          week: entry.week,
+          name: `Week ${String(entry.week).padStart(2, '0')} · Saturday Studio ${isSatHoliday ? '(Holiday Break)' : ''}`,
+          description: isSatHoliday ? 'Holiday Break — No Saturday Studio Class' : entry.overview,
+          topics: entry.saturday.topics || [],
+          isHoliday: isSatHoliday
+        });
+      }
     });
     return list.sort((a, b) => a.date - b.date);
   }, [weeks]);
@@ -206,9 +210,9 @@ export default function CalendarPage() {
         let session = null;
         
         weeks.forEach((w) => {
-          if (isSameDate(date, w.tuesday)) {
+          if (w.entry.tuesday && isSameDate(date, w.tuesday)) {
             session = { type: 'tuesday', week: w.entry.week, date, entry: w.entry, speaker: w.speaker };
-          } else if (isSameDate(date, w.saturday)) {
+          } else if (w.entry.saturday && isSameDate(date, w.saturday)) {
             session = { type: 'saturday', week: w.entry.week, date, entry: w.entry };
           }
         });
@@ -689,7 +693,7 @@ export default function CalendarPage() {
                   </h3>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    {weeks.map(({ entry, tuesday, speaker }) => (
+                    {weeks.filter(w => w.entry.tuesday).map(({ entry, tuesday, speaker }) => (
                       <div 
                         key={entry.week} 
                         style={{
@@ -753,7 +757,7 @@ export default function CalendarPage() {
                   </h3>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    {weeks.map(({ entry, saturday, speaker }) => {
+                    {weeks.filter(w => w.entry.saturday).map(({ entry, saturday, speaker }) => {
                       const isSatHoliday = entry.saturday?.topics?.[0]?.includes('Holiday') || isHoliday(saturday);
                       const assignment = getWeekAssignments(entry.week);
 

@@ -69,7 +69,7 @@ export const syllabusVersions = [
   {
     version: '1.7',
     date: '2026-05-28',
-    description: 'Updated Week 6 with InDesign layout specifications, master pages, integrated campaign artboards, CC Libraries asset management, and "Most Wanted" design brief.',
+    description: 'Updated Week 6 with InDesign layout specifications, master pages, integrated campaign artboards, CC Libraries asset management, and "Your World" design brief.',
     curriculumSnapshot: [
       {
         week: 7,

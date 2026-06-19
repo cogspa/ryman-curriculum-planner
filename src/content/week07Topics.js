@@ -2,8 +2,8 @@
 export const TOPIC_DETAILS = {
   'client-simulation-overview': {
     title: 'Client Simulation — The Design Brief Framework',
-    pccSources: ['DMA 010: Run Down of the Design Brief', 'DMA 010: The Most Wanted Campaign Introduction', 'DMA 010: Final Project — Most Wanted Integrated Campaign'],
-    sourceNote: 'Adapted from the design-brief structure of Joe Micallef\'s Most Wanted Campaign final project in DMA 010. The framework applies whichever of the four tracks you choose.',
+    pccSources: ['DMA 010: Run Down of the Design Brief', 'DMA 010: The "Your World" Campaign Introduction', 'DMA 010: Final Project — "Your World" Integrated Campaign'],
+    sourceNote: 'Adapted from the design-brief structure of Joe Micallef\'s "Your World" Campaign final project in DMA 010. The framework applies whichever of the four tracks you choose.',
     sections: [
       {
         heading: 'What a client simulation does for you',
@@ -155,7 +155,7 @@ Aim for all three.`,
 
   'poster-series-track': {
     title: 'Track B — Illustrated Poster Series',
-    pccSources: ['DMA 010: Final Project — Most Wanted Integrated Campaign', 'DMA 010: The Most Wanted Campaign Introduction', 'DMA 010: Polish Poster School (Solidarity logo, Jerzy Janiszewski)', 'DMA 010: Ikko Tanaka — type as image', 'DMA 010: Paul Rand IBM Poster', 'DMA 010: Scott Makela Siggraph poster (1991)', 'DMA 012: Assignment 7 — Style Progression'],
+    pccSources: ['DMA 010: Final Project — "Your World" Integrated Campaign', 'DMA 010: The "Your World" Campaign Introduction', 'DMA 010: Polish Poster School (Solidarity logo, Jerzy Janiszewski)', 'DMA 010: Ikko Tanaka — type as image', 'DMA 010: Paul Rand IBM Poster', 'DMA 010: Scott Makela Siggraph poster (1991)', 'DMA 012: Assignment 7 — Style Progression'],
     sections: [
       {
         heading: 'What this track is for',
@@ -171,7 +171,7 @@ Pick this track if you want to build a portfolio piece aimed at editorial illust
 
 • What is the series for? Three posters for a fictitious music festival? A film retrospective at a museum? An environmental campaign? A book imprint relaunch?
 
-• What is the unifying theme or hook? The thing every poster in the series shares. The Most Wanted Campaign from DMA 010 uses the phrase "Most Wanted:" as the unifying header across every collateral piece. Yours could use a recurring object, a recurring color palette, a recurring composition structure, or a recurring slogan.
+• What is the unifying theme or hook? The thing every poster in the series shares. The "Your World" Campaign from DMA 010 uses a phrase or brand representing the world as the unifying header across every collateral piece. Yours could use a recurring object, a recurring color palette, a recurring composition structure, or a recurring slogan.
 
 • What is the audience? The audience drives every aesthetic decision — from font choice to image style to color palette.
 
@@ -183,7 +183,7 @@ Pick this track if you want to build a portfolio piece aimed at editorial illust
         heading: 'Required deliverables',
         body: `1. THREE FINISHED POSTERS — Same dimensions, same delivery format. Standard size: 18 × 24" at 300 DPI for print, or 1200 × 1600 px at 72 DPI for screen-only. Submit as PNG or PDF.
 
-2. STYLE GUIDE — A one-page document showing the unifying elements: color palette (5 colors max), typography (2 typefaces max), the recurring visual element or treatment, and the logo/lockup if applicable. The Most Wanted assignment from DMA 010 requires this style guide as its core organizing artifact.
+2. STYLE GUIDE — A one-page document showing the unifying elements: color palette (5 colors max), typography (2 typefaces max), the recurring visual element or treatment, and the logo/lockup if applicable. The "Your World" assignment from DMA 010 requires this style guide as its core organizing artifact.
 
 3. THUMBNAIL SETS — At least 9 thumbnail sets (3 thumbnails per set, so 27 thumbnails total) exploring different conceptual directions before the final three are chosen.
 
@@ -207,7 +207,7 @@ Each of these references answers a different question. Polish Poster: political 
       },
       {
         heading: 'Workflow',
-        body: `Step 1: Brief and theme. Define the series. Write the unifying header or concept that ties the three posters together. (Per DMA 010: "Most Wanted: [thing]" is the model. Yours doesn't need to follow that pattern — but it needs an equivalent unifying device.)
+        body: `Step 1: Brief and theme. Define the series. Write the unifying header or concept that ties the three posters together. (Per DMA 010: "[Your World Brand]: [thing]" is the model. Yours doesn't need to follow that pattern — but it needs an equivalent unifying device.)
 
 Step 2: Reference. Build a reference board for each of the three posters, plus a unified reference board for the visual language across all three. Four boards total.
 

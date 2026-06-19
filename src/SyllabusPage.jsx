@@ -25,11 +25,11 @@ function renderCleaned(str) {
     return urlParts.map((part, idx) => {
       if (urlRegex.test(part)) {
         return (
-          <a 
-            key={idx} 
-            href={part} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            key={idx}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{ color: '#db2777', textDecoration: 'underline', wordBreak: 'break-all' }}
           >
             {part}
@@ -67,13 +67,14 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     10: { name: 'Jeremy Costello (Guest Panel)', date: formatDate(tuesdayDate) },
     11: { name: 'Heidi Hirsch', date: formatDate(saturdayDate) },
     12: { name: 'Past graduates sharing showcase experiences', date: formatDate(tuesdayDate) },
-    13: { name: 'TBD', date: formatDate(tuesdayDate) }
+    13: { name: 'None', date: 'End of September' }
   };
   return speakersMap[weekNum] || { name: 'TBD', date: formatDate(tuesdayDate) };
 }
 
 export default function SyllabusPage() {
   const [selectedVer, setSelectedVer] = useState('live');
+  const [isCondensed, setIsCondensed] = useState(false);
   const [customCurriculum, setCustomCurriculum] = useState(() => loadLocalCurriculum());
   const [customVersions, setCustomVersions] = useState(() => loadLocalVersions());
 
@@ -243,37 +244,86 @@ export default function SyllabusPage() {
     }
   }
 
-  function handlePrint() {
-    window.print();
-  }
+  const handlePrintFull = () => {
+    const wasCondensed = isCondensed;
+    setIsCondensed(false);
+    setTimeout(() => {
+      window.print();
+      const restore = () => {
+        setIsCondensed(wasCondensed);
+        window.removeEventListener('afterprint', restore);
+      };
+      window.addEventListener('afterprint', restore);
+    }, 150);
+  };
+
+  const handlePrintCondensed = () => {
+    const wasCondensed = isCondensed;
+    setIsCondensed(true);
+    setTimeout(() => {
+      window.print();
+      const restore = () => {
+        setIsCondensed(wasCondensed);
+        window.removeEventListener('afterprint', restore);
+      };
+      window.addEventListener('afterprint', restore);
+    }, 150);
+  };
 
 
   return (
     <div className="app">
       <div className="container">
         <div className="syllabus-page">
-          <div className="syllabus-topbar no-print">
+          <div className="syllabus-topbar no-print" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
             <Link to="/" className="back-link">← Back to Curriculum</Link>
-            <button className="syllabus-download" onClick={handlePrint}>
-              ↓ Download PDF
-            </button>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              {/* Segmented view switcher */}
+              <div className="syllabus-toggle-pills">
+                <button
+                  type="button"
+                  className={`toggle-pill ${!isCondensed ? 'is-active' : ''}`}
+                  onClick={() => setIsCondensed(false)}
+                >
+                  👁️ Full View
+                </button>
+                <button
+                  type="button"
+                  className={`toggle-pill ${isCondensed ? 'is-active' : ''}`}
+                  onClick={() => setIsCondensed(true)}
+                >
+                  📰 Condensed View
+                </button>
+              </div>
+
+              {/* Download Buttons */}
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button className="syllabus-download" onClick={handlePrintFull}>
+                  ↓ Download PDF
+                </button>
+                <button className="syllabus-download secondary" onClick={handlePrintCondensed}>
+                  ↓ Download Condensed PDF
+                </button>
+              </div>
+            </div>
           </div>
 
           <header className="syllabus-header">
-            <img 
-              src="https://images.squarespace-cdn.com/content/v1/67806c279fb734295979b37e/9e044490-3bd2-4589-a460-cbabd7c93b35/Ryman_Arts_Logo_No_Tagline.png" 
-              alt="Ryman Arts Logo" 
-              style={{ height: '48px', marginBottom: '16px', display: 'block' }} 
+            <img
+              src="https://images.squarespace-cdn.com/content/v1/67806c279fb734295979b37e/9e044490-3bd2-4589-a460-cbabd7c93b35/Ryman_Arts_Logo_No_Tagline.png"
+              alt="Ryman Arts Logo"
+              style={{ height: '48px', marginBottom: '16px', display: 'block' }}
             />
             <p className="syllabus-eyebrow">2026 · 12-week program + capstone</p>
             <h1 className="syllabus-title">Ryman Arts pLAtform</h1>
             <p className="syllabus-sub-title">Curriculum Syllabus</p>
             <div className="syllabus-meta">
-              <span>{config.tuesday.label}s {config.tuesday.time} · {config.tuesday.location}</span>
+              <span>{config.tuesday.label} {config.tuesday.time} · {config.tuesday.location}</span>
               <span className="dot">·</span>
-              <span>{config.saturday.label}s {config.saturday.time} · {config.saturday.location}</span>
+              <span>{config.saturday.label} {config.saturday.time} · {config.saturday.location}</span>
             </div>
-            <p className="syllabus-deadline">Syllabus due: <strong>June 15, 2026</strong></p>
+            {/* <p className="syllabus-deadline">Syllabus due: <strong>June 15, 2026</strong></p> */}
           </header>
 
           {/* Version History Selector */}
@@ -309,13 +359,13 @@ export default function SyllabusPage() {
                 <div className="version-manager-header">
                   <h4>🛠️ Admin Version History Control</h4>
                 </div>
-                
+
                 {activeVersionInfo && activeVersionInfo.isCustom && (
                   <div className="version-delete-box" style={{ marginBottom: '16px', marginTop: '0' }}>
                     <p>This is a custom user-created version (v{selectedVer}).</p>
-                    <button 
-                      type="button" 
-                      className="admin-btn-danger" 
+                    <button
+                      type="button"
+                      className="admin-btn-danger"
                       onClick={() => handleDeleteVersion(selectedVer)}
                       style={{ padding: '6px 14px', fontSize: '12px' }}
                     >
@@ -329,29 +379,29 @@ export default function SyllabusPage() {
                   <div className="version-creator-fields">
                     <div className="field-group">
                       <label htmlFor="ver-tag-input">Version Tag</label>
-                      <input 
+                      <input
                         id="ver-tag-input"
-                        type="text" 
-                        value={newVersionTag} 
-                        onChange={(e) => setNewVersionTag(e.target.value)} 
+                        type="text"
+                        value={newVersionTag}
+                        onChange={(e) => setNewVersionTag(e.target.value)}
                         placeholder="e.g. 2.7"
                       />
                     </div>
                     <div className="field-group">
                       <label>Date</label>
-                      <input 
-                        type="text" 
-                        value={new Date().toISOString().split('T')[0]} 
-                        readOnly 
+                      <input
+                        type="text"
+                        value={new Date().toISOString().split('T')[0]}
+                        readOnly
                         style={{ opacity: 0.7, cursor: 'not-allowed' }}
                       />
                     </div>
                     <div className="field-group full-width">
                       <label htmlFor="ver-desc-input">Changelog / Change Description</label>
-                      <textarea 
+                      <textarea
                         id="ver-desc-input"
-                        value={newVersionDesc} 
-                        onChange={(e) => setNewVersionDesc(e.target.value)} 
+                        value={newVersionDesc}
+                        onChange={(e) => setNewVersionDesc(e.target.value)}
                         placeholder="Describe what changed in this version..."
                       />
                     </div>
@@ -390,151 +440,262 @@ export default function SyllabusPage() {
               fontSize: '13.5px',
               lineHeight: '1.6',
               color: 'var(--ink-mid, #44403A)',
-              margin: 0
+              margin: '0 0 12px 0'
             }}>
-              This worldbuilding-based curriculum focuses on teaching digital workflows to achieve the broader goals of workforce development in the visual arts. Rather than disconnected drills, the lessons guide students through the creation of six major assignments and a final capstone presentation. Using their own original ideas, IP (Intellectual Property), and characters, students will visually develop a unified "world of their own."
+              This worldbuilding-based curriculum focuses on teaching digital workflows to achieve the broader goals of workforce development in the visual arts. Rather than disconnected drills, the lessons guide students through the creation of six major assignments and a final capstone presentation.
             </p>
+            <p style={{
+              fontSize: '13.5px',
+              lineHeight: '1.6',
+              color: 'var(--ink-mid, #44403A)',
+              margin: '0 0 12px 0'
+            }}>
+              Using their own original ideas, IP (Intellectual Property), and characters, students will visually develop a unified "world of their own." Assignments are intentionally designed to build upon each other, creating a cohesive portfolio that tells a story.
+            </p>
+            <div style={{
+              fontSize: '12.5px',
+              lineHeight: '1.5',
+              color: '#0f766e',
+              background: 'rgba(15, 118, 110, 0.06)',
+              border: '1px solid rgba(15, 118, 110, 0.15)',
+              borderRadius: '6px',
+              padding: '10px 14px',
+              margin: 0,
+              fontWeight: '500'
+            }}>
+              💡 <strong>Note:</strong> Assignments are developed to meet your level of expertise, and the <strong>"3D Integration"</strong> sections are optional.
+            </div>
           </div>
 
-          {weeksWithDates.map(({ week, tuesday, saturday }) => (
-            <section key={week.week} className="syllabus-week">
-              <div className="syllabus-week-head">
-                <span className="syllabus-week-num">Week {String(week.week).padStart(2, '0')}</span>
-                {week.dateOverride && (
-                  <span className="syllabus-week-tbd">{week.dateOverride}</span>
-                )}
-              </div>
-              <h2 className="syllabus-week-title">{week.title}</h2>
-              {week.overview && <p className="syllabus-overview">{week.overview}</p>}
+          {weeksWithDates.map(({ week, tuesday, saturday }) => {
+            const assignmentsList = (week.saturday && week.saturday.assignments) || week.assignments || [];
+            const speakerInfo = getSpeakerInfoForWeek(week.week, tuesday, saturday);
 
-              {week.tuesday || week.saturday ? (
-                <div className="syllabus-day-splits" style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  {week.tuesday && (
-                    <div className="syllabus-day-block tuesday-block" style={{ borderLeft: '3px solid #ec4899', paddingLeft: '14px', background: 'rgba(236, 72, 153, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px' }}>
-                      <h4 style={{ fontSize: '11px', textTransform: 'uppercase', fontFamily: 'Menlo, monospace', color: '#db2777', margin: '0 0 10px' }}>
-                        📅 Tuesday Session (Zoom Discussion)
-                      </h4>
-                      {week.tuesday.topics?.length > 0 && (
-                        <div className="syllabus-block" style={{ marginBottom: '10px' }}>
-                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#db2777', margin: '0 0 6px', fontFamily: 'Menlo, monospace', opacity: 0.85 }}>Topics & Discussions</h5>
-                          <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                            {week.tuesday.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
-                          </ul>
-                        </div>
-                      )}
-                      {week.tuesday.readings?.length > 0 && (
-                        <div className="syllabus-block" style={{ marginBottom: '10px' }}>
-                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#db2777', margin: '0 0 6px', fontFamily: 'Menlo, monospace', opacity: 0.85 }}>Readings & Discussions</h5>
-                          <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                            {week.tuesday.readings.map((r, i) => <li key={i}>{renderCleaned(r)}</li>)}
-                          </ul>
-                        </div>
-                      )}
-                      <div className="syllabus-speaker-box" style={{ borderLeft: '2px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.05)', borderRadius: '4px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '11px', color: '#059669', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>
-                        🎤 Speaker: {getSpeakerInfoForWeek(week.week, tuesday, saturday).name} · {getSpeakerInfoForWeek(week.week, tuesday, saturday).date}
-                      </div>
-                    </div>
-                  )}
-                  {week.saturday && (
-                    <div className="syllabus-day-block" style={{ borderLeft: '2px solid #2a2418', paddingLeft: '14px' }}>
-                      <h4 style={{ fontSize: '11px', textTransform: 'uppercase', fontFamily: 'Menlo, monospace', color: '#2a2418', margin: '0 0 10px' }}>
-                        🎨 Saturday Session (Reveal Workshop)
-                      </h4>
-                      {week.saturday.topics?.length > 0 && (
-                        <div className="syllabus-block" style={{ marginBottom: '10px' }}>
-                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Topics & Workshop</h5>
-                          <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                            {week.saturday.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
-                          </ul>
-                        </div>
-                      )}
-                      {week.saturday.assignments?.length > 0 && (
-                        <div className="syllabus-block assignment-block" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
-                          <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#0891b2', margin: '0 0 6px', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>Assignments & Prep</h5>
-                          <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                            {week.saturday.assignments.map((a, i) => {
-                              const isGradedAssignment = [1, 3, 5, 7, 9, 10].includes(week.week);
-                              let trackParam = '';
-                              const lower = a.toLowerCase();
-                              if (lower.includes('base assignment') || lower.includes('base')) {
-                                trackParam = '?track=beginner';
-                              } else if (lower.includes('next level') || lower.includes('take it')) {
-                                trackParam = '?track=intermediate';
-                              } else if (lower.includes('3d integration') || lower.includes('3d')) {
-                                trackParam = '?track=advanced';
-                              }
-                              return (
-                                <li key={i}>
-                                  {isGradedAssignment ? (
-                                    <Link to={`/assignment/${week.week}${trackParam}`} className="syllabus-assignment-link" style={{ color: 'inherit', textDecoration: 'none' }}>
-                                      {renderCleaned(a)} <span style={{ fontSize: '0.85em', color: '#0891b2', marginLeft: '4px' }}>→</span>
-                                    </Link>
-                                  ) : (
-                                    renderCleaned(a)
-                                  )}
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
+            return (
+              <section key={week.week} className="syllabus-week">
+                <div className="syllabus-week-head">
+                  <span className="syllabus-week-num">Week {String(week.week).padStart(2, '0')}</span>
+                  {week.dateOverride && (
+                    <span className="syllabus-week-tbd">{week.dateOverride}</span>
                   )}
                 </div>
-              ) : (
-                <>
-                  {week.topics?.length > 0 && (
-                    <div className="syllabus-block">
-                      <h3 className="syllabus-block-label">Topics</h3>
-                      <ul>
-                        {week.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
-                      </ul>
-                    </div>
-                  )}
+                <h2 className="syllabus-week-title">{week.title}</h2>
 
-                  {week.readings?.length > 0 && (
-                    <div className="syllabus-block">
-                      <h3 className="syllabus-block-label">Readings & Resources</h3>
-                      <ul>
-                        {week.readings.map((r, i) => <li key={i}>{renderCleaned(r)}</li>)}
-                      </ul>
-                    </div>
-                  )}
+                {isCondensed ? (
+                  <div className="syllabus-condensed-content" style={{ marginTop: '12px' }}>
+                    {/* Dates & Times */}
+                    {week.tuesday || week.saturday ? (
+                      <div className="syllabus-condensed-schedule" style={{ display: 'grid', gridTemplateColumns: week.tuesday && week.saturday ? '1fr 1fr' : '1fr', gap: '16px', margin: '8px 0 12px 0' }}>
+                        {week.tuesday && (
+                          <div style={{ padding: '8px 12px', background: 'rgba(236, 72, 153, 0.03)', borderLeft: '2px solid #ec4899', borderRadius: '0 4px 4px 0' }}>
+                            <strong style={{ fontSize: '10px', color: '#db2777', textTransform: 'uppercase', fontFamily: 'var(--font-mono, monospace)', display: 'block', marginBottom: '2px' }}>
+                              📅 Tuesday Session (Zoom)
+                            </strong>
+                            <span style={{ fontSize: '13px', color: 'var(--ink-mid, #44403A)' }}>
+                              {tuesday.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} · {config.tuesday.time}
+                            </span>
+                          </div>
+                        )}
+                        {week.saturday && (
+                          <div style={{ padding: '8px 12px', background: 'rgba(42, 36, 24, 0.03)', borderLeft: '2px solid #2a2418', borderRadius: '0 4px 4px 0' }}>
+                            <strong style={{ fontSize: '10px', color: '#2a2418', textTransform: 'uppercase', fontFamily: 'var(--font-mono, monospace)', display: 'block', marginBottom: '2px' }}>
+                              {week.week === 13 ? '🎨 Saturday Showcase (In-Person)' : '🎨 Saturday Workshop (In-Person)'}
+                            </strong>
+                            <span style={{ fontSize: '13px', color: 'var(--ink-mid, #44403A)' }}>
+                              {week.dateOverride ? week.dateOverride : `${saturday.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} · ${config.saturday.time}`}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div style={{ margin: '8px 0 12px 0', fontSize: '13px', color: 'var(--ink-mid, #44403A)', fontFamily: 'var(--font-mono, monospace)' }}>
+                        📅 Date: {week.dateOverride || `${tuesday.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} – ${saturday.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`}
+                      </div>
+                    )}
 
-                  {week.assignments?.length > 0 && (
-                    <div className="syllabus-block assignment-block" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
-                      <h3 className="syllabus-block-label" style={{ color: '#0891b2', fontWeight: 'bold', margin: '0 0 6px' }}>Assignments</h3>
-                      <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                        {week.assignments.map((a, i) => {
-                          const isGradedAssignment = [1, 3, 5, 7, 9, 10].includes(week.week);
-                          let trackParam = '';
-                          const lower = a.toLowerCase();
-                          if (lower.includes('base assignment') || lower.includes('base')) {
-                            trackParam = '?track=beginner';
-                          } else if (lower.includes('next level') || lower.includes('take it')) {
-                            trackParam = '?track=intermediate';
-                          } else if (lower.includes('3d integration') || lower.includes('3d')) {
-                            trackParam = '?track=advanced';
-                          }
-                          return (
-                            <li key={i}>
-                              {isGradedAssignment ? (
-                                <Link to={`/assignment/${week.week}${trackParam}`} className="syllabus-assignment-link" style={{ color: 'inherit', textDecoration: 'none' }}>
-                                  {renderCleaned(a)} <span style={{ fontSize: '0.85em', color: '#0891b2', marginLeft: '4px' }}>→</span>
-                                </Link>
-                              ) : (
-                                renderCleaned(a)
-                              )}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  )}
-                </>
-              )}
-            </section>
-          ))}
+                    {/* Speaker */}
+                    {speakerInfo && speakerInfo.name && speakerInfo.name !== 'None' && (
+                      <div style={{ fontSize: '12px', color: '#059669', fontFamily: 'var(--font-mono, monospace)', fontWeight: '600', marginBottom: '12px', background: 'rgba(16, 185, 129, 0.05)', padding: '6px 12px', borderRadius: '4px', display: 'inline-block' }}>
+                        🎤 Speaker: {speakerInfo.name}
+                      </div>
+                    )}
+
+                    {/* Brief Description */}
+                    {week.overview && (
+                      <p className="syllabus-overview" style={{ fontSize: '13px', lineHeight: '1.6', color: 'var(--ink-mid, #44403A)', fontStyle: 'italic', margin: '0 0 12px 0' }}>
+                        {week.overview}
+                      </p>
+                    )}
+
+                    {/* Assignments */}
+                    {assignmentsList.length > 0 && (
+                      <div style={{ background: 'rgba(6, 182, 212, 0.04)', borderLeft: '3px solid #06b6d4', padding: '10px 14px', borderRadius: '0 6px 6px 0', marginTop: '12px' }}>
+                        <h4 style={{ margin: '0 0 6px 0', fontSize: '10px', textTransform: 'uppercase', color: '#0891b2', fontFamily: 'var(--font-mono, monospace)', letterSpacing: '0.05em', fontWeight: 'bold' }}>
+                          Assignments & Deliverables
+                        </h4>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                          {assignmentsList.map((a, i) => {
+                            const isGradedAssignment = [1, 3, 5, 7, 9, 10].includes(week.week);
+                            let trackParam = '';
+                            const lower = a.toLowerCase();
+                            if (lower.includes('base assignment') || lower.includes('base')) {
+                              trackParam = '?track=beginner';
+                            } else if (lower.includes('next level') || lower.includes('take it')) {
+                              trackParam = '?track=intermediate';
+                            } else if (lower.includes('3d integration') || lower.includes('3d')) {
+                              trackParam = '?track=advanced';
+                            }
+                            return (
+                              <div key={i} style={{ fontSize: '13px', lineHeight: '1.5', color: 'var(--ink, #1C1A17)' }}>
+                                {isGradedAssignment ? (
+                                  <Link to={`/assignment/${week.week}${trackParam}`} className="syllabus-assignment-link" style={{ color: 'inherit', textDecoration: 'none', fontWeight: '500' }}>
+                                    {renderCleaned(a)} <span style={{ fontSize: '0.85em', color: '#0891b2', marginLeft: '4px' }}>→</span>
+                                  </Link>
+                                ) : (
+                                  renderCleaned(a)
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    {week.overview && <p className="syllabus-overview">{week.overview}</p>}
+
+                    {week.tuesday || week.saturday ? (
+                      <div className="syllabus-day-splits" style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                        {week.tuesday && (
+                          <div className="syllabus-day-block tuesday-block" style={{ borderLeft: '3px solid #ec4899', paddingLeft: '14px', background: 'rgba(236, 72, 153, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px' }}>
+                            <h4 style={{ fontSize: '11px', textTransform: 'uppercase', fontFamily: 'Menlo, monospace', color: '#db2777', margin: '0 0 10px' }}>
+                              📅 Tuesday Session (Zoom Discussion)
+                            </h4>
+                            {week.tuesday.topics?.length > 0 && (
+                              <div className="syllabus-block" style={{ marginBottom: '10px' }}>
+                                <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#db2777', margin: '0 0 6px', fontFamily: 'Menlo, monospace', opacity: 0.85 }}>Topics & Discussions</h5>
+                                <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                                  {week.tuesday.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
+                                </ul>
+                              </div>
+                            )}
+                            {week.tuesday.readings?.length > 0 && (
+                              <div className="syllabus-block" style={{ marginBottom: '10px' }}>
+                                <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#db2777', margin: '0 0 6px', fontFamily: 'Menlo, monospace', opacity: 0.85 }}>Readings & Discussions</h5>
+                                <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                                  {week.tuesday.readings.map((r, i) => <li key={i}>{renderCleaned(r)}</li>)}
+                                </ul>
+                              </div>
+                            )}
+                            <div className="syllabus-speaker-box" style={{ borderLeft: '2px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.05)', borderRadius: '4px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '11px', color: '#059669', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>
+                              🎤 Speaker: {speakerInfo.name} · {speakerInfo.date}
+                            </div>
+                          </div>
+                        )}
+                        {week.saturday && (
+                          <div className="syllabus-day-block" style={{ borderLeft: '2px solid #2a2418', paddingLeft: '14px' }}>
+                            <h4 style={{ fontSize: '11px', textTransform: 'uppercase', fontFamily: 'Menlo, monospace', color: '#2a2418', margin: '0 0 10px' }}>
+                              {week.week === 13 ? '🎨 Saturday Showcase (Reveal Studio)' : '🎨 Saturday Session (Reveal Workshop)'} {week.dateOverride && `· ${week.dateOverride}`}
+                            </h4>
+                            {week.saturday.topics?.length > 0 && (
+                              <div className="syllabus-block" style={{ marginBottom: '10px' }}>
+                                <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#5a4a2f', margin: '0 0 6px', fontFamily: 'Menlo, monospace' }}>Topics & Workshop</h5>
+                                <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                                  {week.saturday.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
+                                </ul>
+                              </div>
+                            )}
+                            {week.saturday.assignments?.length > 0 && (
+                              <div className="syllabus-block assignment-block" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
+                                <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#0891b2', margin: '0 0 6px', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>Assignments & Prep</h5>
+                                <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                                  {week.saturday.assignments.map((a, i) => {
+                                    const isGradedAssignment = [1, 3, 5, 7, 9, 10].includes(week.week);
+                                    let trackParam = '';
+                                    const lower = a.toLowerCase();
+                                    if (lower.includes('base assignment') || lower.includes('base')) {
+                                      trackParam = '?track=beginner';
+                                    } else if (lower.includes('next level') || lower.includes('take it')) {
+                                      trackParam = '?track=intermediate';
+                                    } else if (lower.includes('3d integration') || lower.includes('3d')) {
+                                      trackParam = '?track=advanced';
+                                    }
+                                    return (
+                                      <li key={i}>
+                                        {isGradedAssignment ? (
+                                          <Link to={`/assignment/${week.week}${trackParam}`} className="syllabus-assignment-link" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                            {renderCleaned(a)} <span style={{ fontSize: '0.85em', color: '#0891b2', marginLeft: '4px' }}>→</span>
+                                          </Link>
+                                        ) : (
+                                          renderCleaned(a)
+                                        )}
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <>
+                        {week.topics?.length > 0 && (
+                          <div className="syllabus-block">
+                            <h3 className="syllabus-block-label">Topics</h3>
+                            <ul>
+                              {week.topics.map((t, i) => <li key={i}>{renderCleaned(t)}</li>)}
+                            </ul>
+                          </div>
+                        )}
+
+                        {week.readings?.length > 0 && (
+                          <div className="syllabus-block">
+                            <h3 className="syllabus-block-label">Readings & Resources</h3>
+                            <ul>
+                              {week.readings.map((r, i) => <li key={i}>{renderCleaned(r)}</li>)}
+                            </ul>
+                          </div>
+                        )}
+
+                        {week.assignments?.length > 0 && (
+                          <div className="syllabus-block assignment-block" style={{ borderLeft: '3px solid #06b6d4', paddingLeft: '14px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '6px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px', marginTop: '10px' }}>
+                            <h3 className="syllabus-block-label" style={{ color: '#0891b2', fontWeight: 'bold', margin: '0 0 6px' }}>Assignments</h3>
+                            <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                              {week.assignments.map((a, i) => {
+                                const isGradedAssignment = [1, 3, 5, 7, 9, 10].includes(week.week);
+                                let trackParam = '';
+                                const lower = a.toLowerCase();
+                                if (lower.includes('base assignment') || lower.includes('base')) {
+                                  trackParam = '?track=beginner';
+                                } else if (lower.includes('next level') || lower.includes('take it')) {
+                                  trackParam = '?track=intermediate';
+                                } else if (lower.includes('3d integration') || lower.includes('3d')) {
+                                  trackParam = '?track=advanced';
+                                }
+                                return (
+                                  <li key={i}>
+                                    {isGradedAssignment ? (
+                                      <Link to={`/assignment/${week.week}${trackParam}`} className="syllabus-assignment-link" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                        {renderCleaned(a)} <span style={{ fontSize: '0.85em', color: '#0891b2', marginLeft: '4px' }}>→</span>
+                                      </Link>
+                                    ) : (
+                                      renderCleaned(a)
+                                    )}
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </>
+                )}
+              </section>
+            );
+          })}
 
           <footer className="syllabus-footer">
             <p>Ryman Arts pLAtform · Curriculum Syllabus · 2026</p>
@@ -543,14 +704,41 @@ export default function SyllabusPage() {
             </p>
           </footer>
 
-          <div className="syllabus-topbar no-print" style={{ marginTop: 40 }}>
+          <div className="syllabus-topbar no-print" style={{ marginTop: 40, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
             <Link to="/" className="back-link">← Back to Curriculum</Link>
-            <button className="syllabus-download" onClick={handlePrint}>
-              ↓ Download PDF
-            </button>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              {/* Segmented view switcher */}
+              <div className="syllabus-toggle-pills">
+                <button
+                  type="button"
+                  className={`toggle-pill ${!isCondensed ? 'is-active' : ''}`}
+                  onClick={() => setIsCondensed(false)}
+                >
+                  👁️ Full View
+                </button>
+                <button
+                  type="button"
+                  className={`toggle-pill ${isCondensed ? 'is-active' : ''}`}
+                  onClick={() => setIsCondensed(true)}
+                >
+                  📰 Condensed View
+                </button>
+              </div>
+
+              {/* Download Buttons */}
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button className="syllabus-download" onClick={handlePrintFull}>
+                  ↓ Download PDF
+                </button>
+                <button className="syllabus-download secondary" onClick={handlePrintCondensed}>
+                  ↓ Download Condensed PDF
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

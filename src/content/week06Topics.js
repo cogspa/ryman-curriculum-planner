@@ -150,12 +150,12 @@ By framing your art within a professional structure, you transition from a simpl
     ],
   },
   'commercial-campaign-assignment': {
-    title: 'Assignment Brief: The "Most Wanted" Integrated Campaign',
-    pccSources: ['Final Project: Most Wanted Integrated Campaign', 'Final Project Most Wanted Template.ai', 'Assignment 5: Fictitious Fast Food Logo'],
+    title: 'Assignment Brief: The "Your World" Integrated Campaign',
+    pccSources: ['Final Project: "Your World" Integrated Campaign', 'Final Project "Your World" Template.ai', 'Assignment 5: Fictitious Fast Food Logo'],
     sections: [
       {
         heading: 'Assignment Overview',
-        body: `For this assignment, you will step into the role of a professional commercial illustrator tasked with delivering a high-fidelity **Integrated Ad Campaign** for a fictional client project. The project is titled **"The Most Wanted Campaign."**
+        body: `For this assignment, you will step into the role of a professional commercial illustrator tasked with delivering a high-fidelity **Integrated Ad Campaign** for a fictional client project. The project is titled **"The 'Your World' Campaign."**
 
 You will combine all the skills you have developed throughout the term—digital painting, custom brush creation, non-destructive adjustment masking, typography pairing, and multiple-format composition—into a unified package of commercial assets.
 
@@ -214,9 +214,9 @@ Your challenge is to take one of your digital illustrations (such as your Week 3
 **Required Submission Package:**
 ✓  **One Combined Campaign Presentation PNG**: A single horizontal sheet (3840 × 1080 px or similar) displaying all three layouts (Poster, Banner, Social) side-by-side on a dark charcoal grid background to showcase campaign consistency.
 ✓  **Three Individual Asset PNGs**: The full-resolution, exported layouts.
-    *   \`yourname_w06_wanted_poster.png\`
-    *   \`yourname_w06_wanted_banner.png\`
-    *   \`yourname_w06_wanted_social.png\`
+    *   \`yourname_w06_yourworld_poster.png\`
+    *   \`yourname_w06_yourworld_banner.png\`
+    *   \`yourname_w06_yourworld_social.png\`
 ✓  **A 100-word Brand Narrative**: A text write-up explaining:
     1.  The fictional brand or release your campaign represents.
     2.  Your typography pairing choices (e.g., serif vs. sans-serif) and how they resonate.

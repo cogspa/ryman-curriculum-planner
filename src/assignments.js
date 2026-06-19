@@ -439,7 +439,7 @@ export const assignments = {
     subtitle: 'Worldbuilding Step 5: Design the promotional assets and release package for your world.',
     tracks: {
       beginner: {
-        title: 'Base Assignment: Most Wanted Poster Campaign',
+        title: 'Base Assignment: "Your World" Poster Campaign',
         subtitle: 'Focus: Typography hierarchy, bleed margins, and raster-vector combinations.',
         sections: [
           {

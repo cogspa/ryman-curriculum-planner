@@ -46,7 +46,7 @@ export default function Week06Overview() {
         <li style={topicItemStyle}>
           <span style={newBadgeStyle}>NEW</span>
           <Link to="/week/06/commercial-campaign-assignment" style={topicLinkStyle}>
-            Respond to a professional brief: The "Most Wanted" Integrated Campaign
+            Respond to a professional brief: The "Your World" Integrated Campaign
           </Link>
         </li>
       </ul>

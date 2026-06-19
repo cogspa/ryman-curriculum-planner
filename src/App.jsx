@@ -74,7 +74,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     10: { name: 'Jeremy Costello (Guest Panel)', date: formatDate(tuesdayDate) },
     11: { name: 'Heidi Hirsch', date: formatDate(saturdayDate) },
     12: { name: 'Past graduates sharing showcase experiences', date: formatDate(tuesdayDate) },
-    13: { name: 'TBD', date: formatDate(tuesdayDate) }
+    13: { name: 'None', date: 'End of September' }
   };
   return speakersMap[weekNum] || { name: 'TBD', date: formatDate(tuesdayDate) };
 }
@@ -1334,9 +1334,25 @@ export default function App() {
                 fontSize: '14px',
                 lineHeight: '1.6',
                 color: 'var(--ink-mid, #44403A)',
+                margin: '0 0 12px 0'
+              }}>
+                This worldbuilding-based curriculum focuses on teaching digital workflows to achieve the broader goals of workforce development in the visual arts. Rather than disconnected drills, the lessons guide students through the creation of <strong>six major assignments</strong> and a final <strong>capstone presentation</strong>.
+              </p>
+              <p style={{
+                fontSize: '14px',
+                lineHeight: '1.6',
+                color: 'var(--ink-mid, #44403A)',
+                margin: '0 0 12px 0'
+              }}>
+                Using their own original ideas, IP (Intellectual Property), and characters, students will visually develop a unified "world of their own." Assignments are intentionally designed to build upon each other, creating a cohesive portfolio that tells a story.
+              </p>
+              <p style={{
+                fontSize: '14px',
+                lineHeight: '1.6',
+                color: 'var(--ink-mid, #44403A)',
                 margin: '0 0 16px 0'
               }}>
-                This worldbuilding-based curriculum focuses on teaching digital workflows to achieve the broader goals of workforce development in the visual arts. Rather than disconnected drills, the lessons guide students through the creation of <strong>six major assignments</strong> and a final <strong>capstone presentation</strong>. Using their own original ideas, IP (Intellectual Property), and characters, students will visually develop a unified "world of their own."
+                Note that the assignments are developed to meet your level of expertise, and the "3D Integration" sections are optional.
               </p>
               <div style={{
                 background: 'rgba(0, 0, 0, 0.02)',
