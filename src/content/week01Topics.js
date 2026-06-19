@@ -116,28 +116,28 @@ According to Billingsley, the word didn't originate with him. He heard it came f
         heading: 'The Elements of Design',
         body: `The elements are the raw vocabulary — the things you put on the canvas:
 
-- Line
-- Color
-- Shape
-- Space
-- Form
-- Unity/harmony
-- Balance
+• <strong>Line</strong> — <em>Line Tool (U)</em> · Brush Tool (B) · Pen Tool (P) → Stroke Path
+• <strong>Color</strong> — <em>Color Picker (foreground swatch click)</em> · Swatches panel (Window → Swatches) · Eyedropper (I) · Hue/Saturation (⌘U)
+• <strong>Shape</strong> — <em>Shape Tool (U)</em>: Rectangle, Ellipse, Polygon, Custom Shape · Pen Tool (P) for custom vector shapes
+• <strong>Space</strong> — <em>Canvas Size (⌘⌥C)</em> · Crop Tool (C) · Transform (⌘T) to scale elements and create depth
+• <strong>Form</strong> — <em>Dodge (O) / Burn (O)</em> to sculpt light and shadow · Layer Styles → Bevel &amp; Emboss · Gradient Tool (G)
+• <strong>Unity/Harmony</strong> — <em>Adjustment Layers</em> (Layer → New Adjustment Layer) · Color Lookup Tables · Gradient Map (⌘⌥G via adjustment)
+• <strong>Balance</strong> — <em>Guides (⌘R for rulers, drag to set)</em> · View → New Guide Layout · Symmetry mode (paint symmetry butterfly icon)
 
-For painting and concept art, shape and line are the foundation of any composition you create.`,
+For painting and concept art, <strong>shape</strong> and <strong>line</strong> are the foundation of any composition you create.`,
       },
       {
         heading: 'The Principles of Design',
         body: `The principles are how you arrange the elements — the grammar:
 
-- Balance
-- Contrast
-- Emphasis
-- Movement
-- Pattern
-- Rhythm
-- Unity/Variety
-- Direction
+• <strong>Balance</strong> — <em>View → New Guide Layout</em> · Rule of Thirds grid (Crop Tool overlay) · Flip Canvas (Image → Image Rotation → Flip Canvas Horizontal)
+• <strong>Contrast</strong> — <em>Curves (⌘M)</em> · Levels (⌘L) · Brightness/Contrast (Image → Adjustments) · Black &amp; White (⌘⌥⇧B)
+• <strong>Emphasis</strong> — <em>Selective Color</em> (Image → Adjustments → Selective Color) · Dodge/Burn (O) · Radial Blur (Filter → Blur → Radial Blur)
+• <strong>Movement</strong> — <em>Smudge Tool</em> · Motion Blur (Filter → Blur → Motion Blur) · Warp Transform (Edit → Transform → Warp) · Liquify (⌘⇧X)
+• <strong>Pattern</strong> — <em>Edit → Define Pattern</em> · Pattern Stamp Tool (S) · Fill → Pattern (⇧F5) · Pattern Overlay layer style
+• <strong>Rhythm</strong> — <em>Edit → Free Transform (⌘T)</em> + Step and Repeat (⌘⌥⇧T) to duplicate transforms at regular intervals
+• <strong>Unity/Variety</strong> — <em>Clipping Masks (⌘⌥G)</em> · Linked Layers · Smart Objects (Layer → Smart Objects → Convert) for consistent edits
+• <strong>Direction</strong> — <em>Path Tool (A)</em> · Transform → Rotate/Skew (⌘T) · Pen Tool (P) for directional vector paths · Perspective Transform
 
 These are guidelines, not rigid rules. They're rooted in a mix of physiological, social, and cultural influences. Examining successful designs throughout history shows how these principles have been used to create effective, influential work.`,
       },
