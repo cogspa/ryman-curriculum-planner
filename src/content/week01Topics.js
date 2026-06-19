@@ -19,6 +19,8 @@ When creating digital art, we are essentially painting, drawing, sculpting, and 
         body: `"A pixel is a point sample. It exists only at a point. For a color picture, a pixel might actually contain three samples, one for each primary color contributing to the picture at the sampling point. We can still think of this as a point sample of a color. But we cannot think of a pixel as a square — or anything other than a point."
 
 📄 <a href="https://alvyray.com/Memos/CG/Microsoft/6_pixel.pdf" target="_blank" rel="noopener noreferrer" style="color:#8b3a2f; text-decoration:underline;">Read the full paper: <em>A Pixel Is Not A Little Square</em> — Alvy Ray Smith (PDF)</a>`,
+        imageUrl: '/pixel_paper_cover.png',
+        imageCaption: 'A Pixel Is Not A Little Square — Technical Memo 6, Alvy Ray Smith, July 17, 1995',
       },
       {
         heading: 'Physical canvas vs digital canvas',
