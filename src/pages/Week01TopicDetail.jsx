@@ -45,7 +45,7 @@ export default function Week01TopicDetail() {
       {topic.sections.map((section, i) => (
         <section key={i} style={sectionStyle}>
           <h2 style={sectionHeadingStyle}>{section.heading}</h2>
-          <p style={sectionBodyStyle}>{section.body}</p>
+          <div style={sectionBodyStyle} dangerouslySetInnerHTML={{ __html: section.body.replace(/\n/g, '<br/>') }} />
           {section.videoUrl && (
             <div style={{ margin: '24px 0 8px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #d4c9a8' }}>
               <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>

@@ -12,11 +12,13 @@ export const TOPIC_DETAILS = {
         heading: 'What is a pixel?',
         body: `The pixel — a portmanteau of "pix" and "element" — is the basic unit of programmable color on a computer display. Every visual element on a screen is comprised of pixels. The screen projects light when creating images, so pixels are the building blocks of digital light.
 
-When creating digital art, we are essentially painting, drawing, sculpting, and designing the wave samples of the pixel. The process of digital art is one of manipulating pixels using an interface or code.`,
+When creating digital art, we are essentially painting, drawing, sculpting, and <strong>designing the wave samples of the pixel</strong>. The process of digital art is one of manipulating pixels using an interface or code.`,
       },
       {
         heading: "Alvy Ray Smith's definition",
-        body: `"A pixel is a point sample. It exists only at a point. For a color picture, a pixel might actually contain three samples, one for each primary color contributing to the picture at the sampling point. We can still think of this as a point sample of a color. But we cannot think of a pixel as a square — or anything other than a point."`,
+        body: `"A pixel is a point sample. It exists only at a point. For a color picture, a pixel might actually contain three samples, one for each primary color contributing to the picture at the sampling point. We can still think of this as a point sample of a color. But we cannot think of a pixel as a square — or anything other than a point."
+
+📄 <a href="https://alvyray.com/Memos/CG/Microsoft/6_pixel.pdf" target="_blank" rel="noopener noreferrer" style="color:#8b3a2f; text-decoration:underline;">Read the full paper: <em>A Pixel Is Not A Little Square</em> — Alvy Ray Smith (PDF)</a>`,
       },
       {
         heading: 'Physical canvas vs digital canvas',
