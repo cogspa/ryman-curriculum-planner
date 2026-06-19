@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOPIC_DETAILS } from '../content/week01Topics.js';
+import PixelWaveSample from './PixelWaveSample.jsx';
 
 export default function Week01TopicDetail() {
   const { topicKey } = useParams();
@@ -68,6 +69,12 @@ export default function Week01TopicDetail() {
               {section.imageCaption && (
                 <p style={{ fontSize: '11px', color: '#8b3a2f', marginTop: '6px', fontStyle: 'italic', fontFamily: 'Menlo, monospace' }}>{section.imageCaption}</p>
               )}
+            </div>
+          )}
+          {/* Embed the interactive pixel wave sampler after the first section on the canvas page */}
+          {topicKey === 'digital-vs-physical-canvas' && i === 0 && (
+            <div style={{ margin: '24px 0 8px', padding: '20px 24px', background: 'rgba(0,0,0,0.02)', borderRadius: '8px', border: '1px solid #d4c9a8' }}>
+              <PixelWaveSample />
             </div>
           )}
         </section>
