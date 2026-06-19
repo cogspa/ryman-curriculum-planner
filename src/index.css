@@ -243,14 +243,13 @@ body {
 }
 
 .title {
-  font-family: var(--font-display);
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: clamp(40px, 6vw, 64px);
   line-height: 1;
   letter-spacing: -0.02em;
   margin: 0 0 16px;
   color: var(--ink);
-  font-variation-settings: 'opsz' 144;
 }
 
 .subtitle {
