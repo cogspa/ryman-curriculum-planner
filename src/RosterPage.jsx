@@ -2,6 +2,59 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { rosterData } from './rosterData.js';
 
+const getStudentMentor = (studentName) => {
+  const name = studentName.toLowerCase().trim();
+  if (name.includes('emma tiedemann')) {
+    return { name: 'Kaylee Hawley', class: "Ryman '15", role: 'Illustrator' };
+  }
+  if (name.includes('miriam sills')) {
+    return { name: 'Kaylee Hawley', class: "Ryman '15", role: 'Illustrator' };
+  }
+  if (name.includes('lucy levine')) {
+    return { name: 'Stephanie Jazmines', class: "Ryman '06", role: 'Senior Designer, Walt Disney Imagineering - Graphic Designer' };
+  }
+  if (name.includes('tiana chamsi')) {
+    return { name: 'Stephanie Jazmines', class: "Ryman '06", role: 'Senior Designer, Walt Disney Imagineering - Graphic Designer' };
+  }
+  if (name.includes('hyeyeon') || name.includes('claire choi')) {
+    return { name: 'Stephanie Jazmines', class: "Ryman '06", role: 'Senior Designer, Walt Disney Imagineering - Graphic Designer' };
+  }
+  if (name.includes('sabrina jiang')) {
+    return { name: 'Emma Wood', class: "Ryman '12", role: 'Designer, BRC Imagination Arts' };
+  }
+  if (name.includes('moka tsukino')) {
+    return { name: 'Emma Wood', class: "Ryman '12", role: 'Designer, BRC Imagination Arts' };
+  }
+  if (name.includes('neko ohnsman')) {
+    return { name: 'Emily Oetzell', class: "Ryman '12", role: 'Storyboard Artist, Shadow Machine' };
+  }
+  if (name.includes('kelsy hua')) {
+    return { name: 'Emily Oetzell', class: "Ryman '12", role: 'Storyboard Artist, Shadow Machine' };
+  }
+  if (name.includes('lilly phan')) {
+    return { name: 'Leslie Park', class: "Ryman '11", role: 'Director & Storyboard Artist, Disney Television Animation' };
+  }
+  if (name.includes('alyssa valdivia')) {
+    return { name: 'Leslie Park', class: "Ryman '11", role: 'Director & Storyboard Artist, Disney Television Animation' };
+  }
+  if (name.includes('shan lee')) {
+    return { name: 'Leslie Park', class: "Ryman '11", role: 'Director & Storyboard Artist, Disney Television Animation' };
+  }
+  if (name.includes('claire van beek')) {
+    return { name: 'Alycea Tinoyan', class: "Ryman '11", role: 'Background Designer, Rick and Morty' };
+  }
+  if (name.includes('nadia alwiny')) {
+    return { name: 'Alycea Tinoyan', class: "Ryman '11", role: 'Background Designer, Rick and Morty' };
+  }
+  return null;
+};
+
+const getStudentMentorString = (studentName) => {
+  const mentor = getStudentMentor(studentName);
+  if (!mentor) return '';
+  return `${mentor.name} (${mentor.class}) – ${mentor.role}`;
+};
+
 export default function RosterPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedGoals, setExpandedGoals] = useState({});
@@ -41,6 +94,7 @@ export default function RosterPage() {
       'Email',
       'Phone',
       'City',
+      'Alumni Mentor',
       'Career Goals',
       'Portfolio Goal'
     ];
@@ -52,6 +106,7 @@ export default function RosterPage() {
       student.email,
       student.phone,
       student.city,
+      getStudentMentorString(student.name),
       student.careerGoals,
       student.portfolioGoal
     ]);
@@ -405,9 +460,10 @@ export default function RosterPage() {
             <table className="grading-table" style={{ margin: 0, width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
               <thead>
                 <tr style={{ background: '#f8fafc', borderBottom: '2px solid rgba(0,0,0,0.08)' }}>
-                  <th style={{ padding: '14px 18px', width: '220px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#7c3aed', fontFamily: 'var(--font-mono)' }}>Student</th>
-                  <th style={{ padding: '14px 18px', width: '250px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#7c3aed', fontFamily: 'var(--font-mono)' }}>Contact Details</th>
-                  <th style={{ padding: '14px 18px', width: '130px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#7c3aed', fontFamily: 'var(--font-mono)' }}>Location</th>
+                  <th style={{ padding: '14px 18px', width: '200px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#7c3aed', fontFamily: 'var(--font-mono)' }}>Student</th>
+                  <th style={{ padding: '14px 18px', width: '220px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#7c3aed', fontFamily: 'var(--font-mono)' }}>Contact Details</th>
+                  <th style={{ padding: '14px 18px', width: '120px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#7c3aed', fontFamily: 'var(--font-mono)' }}>Location</th>
+                  <th style={{ padding: '14px 18px', width: '220px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#7c3aed', fontFamily: 'var(--font-mono)' }}>Alumni Mentor</th>
                   <th style={{ padding: '14px 18px', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#7c3aed', fontFamily: 'var(--font-mono)' }}>Career & Portfolio Goals</th>
                 </tr>
               </thead>
@@ -465,6 +521,21 @@ export default function RosterPage() {
                         📍 {student.city || '—'}
                       </td>
 
+                      {/* Mentor Column */}
+                      <td style={{ padding: '14px 18px', verticalAlign: 'top', fontSize: '13px' }}>
+                        {(() => {
+                          const mentor = getStudentMentor(student.name);
+                          if (!mentor) return <span style={{ color: '#94a3b8', fontStyle: 'italic' }}>None assigned</span>;
+                          return (
+                            <div>
+                              <div style={{ fontWeight: 'bold', color: '#0f172a' }}>{mentor.name}</div>
+                              <div style={{ fontSize: '12px', color: '#7c3aed', marginTop: '2px', fontWeight: '500' }}>{mentor.class}</div>
+                              <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', lineHeight: '1.3' }}>{mentor.role}</div>
+                            </div>
+                          );
+                        })()}
+                      </td>
+
                       {/* Goals Column */}
                       <td style={{ padding: '14px 18px', verticalAlign: 'top' }}>
                         <div style={{ marginBottom: '12px' }}>
@@ -480,7 +551,7 @@ export default function RosterPage() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="4" style={{ padding: '24px', textAlign: 'center', color: '#64748b', fontStyle: 'italic' }}>
+                    <td colSpan="5" style={{ padding: '24px', textAlign: 'center', color: '#64748b', fontStyle: 'italic' }}>
                       No cohort members match your search criteria.
                     </td>
                   </tr>
