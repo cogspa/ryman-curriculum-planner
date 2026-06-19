@@ -244,13 +244,15 @@ function Header({ startDate, setStartDate, totalWeeks }) {
   return (
     <header className="header">
       <div className="header-left">
-        <img 
-          src="https://images.squarespace-cdn.com/content/v1/67806c279fb734295979b37e/9e044490-3bd2-4589-a460-cbabd7c93b35/Ryman_Arts_Logo_No_Tagline.png" 
-          alt="Ryman Arts Logo" 
-          style={{ height: '48px', marginBottom: '16px', display: 'block' }} 
-        />
         <p className="eyebrow">2026 · 12-week program + capstone</p>
-        <h1 className="title">Ryman Arts pLAtform Curriculum Planner</h1>
+        <h1 className="title" style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px 14px', margin: '0 0 16px', lineHeight: '1.2' }}>
+          <img 
+            src="https://images.squarespace-cdn.com/content/v1/67806c279fb734295979b37e/9e044490-3bd2-4589-a460-cbabd7c93b35/Ryman_Arts_Logo_No_Tagline.png" 
+            alt="Ryman Arts Logo" 
+            style={{ height: '48px', width: 'auto', display: 'inline-block', verticalAlign: 'middle' }} 
+          />
+          <span style={{ display: 'inline-block', verticalAlign: 'middle' }}>pLAtform Curriculum Planner</span>
+        </h1>
         <p className="subtitle">
           {config.tuesday.label}s {config.tuesday.time} · {config.tuesday.location}
           <span className="dot">·</span>
