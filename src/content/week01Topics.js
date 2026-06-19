@@ -22,6 +22,62 @@ When creating digital art, we are essentially painting, drawing, sculpting, and 
         heading: 'Physical canvas vs digital canvas',
         body: `A physical canvas has a fixed surface texture and dimensions. A digital canvas has a resolution — its quality depends on the number of pixels per inch, the bit depth of each pixel, and whether you're outputting for screen (additive RGB light) or print (subtractive CMYK pigment). Understanding that the digital surface is sampled light, not pigment, changes how you think about value, opacity, and blend modes.`,
       },
+      {
+        heading: 'Who is Alvy Ray Smith?',
+        body: `Alvy Ray Smith is one of the people who turned pixel-based imaging from an expensive research capability into the foundation for painting software, animation, visual effects, and eventually tools like Photoshop.
+
+He worked at several pivotal moments in computer-graphics history: Xerox PARC-era digital paint systems, the New York Institute of Technology computer-graphics lab, Lucasfilm's Computer Division, and Pixar — which he co-founded with Ed Catmull. He was deeply involved in the transition from primitive computer graphics to images that could be painted, layered, animated, composited, and used in filmmaking.
+
+Smith also worked on early high-resolution digital paint systems, including BigPaint3, a 24-bit paint program capable of higher-than-video-resolution imagery. "24-bit" color meant that red, green, and blue values could be stored with enough precision to produce millions of colors — the RGB image model digital artists still use today.`,
+      },
+      {
+        heading: 'The Alpha Channel — Smith\'s most influential contribution',
+        body: `RGB tells software what color a pixel is. Smith's alpha channel tells it how opaque or transparent that pixel is. A pixel can be represented as:
+
+(R, G, B, α)
+
+Where R, G, B describe color and α describes coverage or opacity — how much that image element contributes when combined with another.
+
+This is why a figure can have soft hair edges, smoke can fade into the background, a painted cloud can be partially transparent, and a green-screen subject can be cleanly composited into another scene. Smith's 1978 writing on alpha describes the digital matte concept that became the basis for modern compositing.
+
+In Photoshop, alpha is behind much of what artists take for granted: layer masks, transparent PNGs, selections saved as channels, soft-edged erasing, compositing photographs and painted elements, VFX keying and rotoscoping, motion-blur and atmospheric fades, and exporting assets for games, animation, and web design.
+
+Without alpha logic, digital collage would be like cutting paper shapes with hard edges. With alpha, images can behave like light, fog, paint, glass, fabric, smoke, or a soft brushstroke.`,
+      },
+      {
+        heading: 'Why pixels matter for artists',
+        body: `A pixel is often called "a tiny square," but that is only a useful simplification. More precisely, a pixel is a sample of visual information — a stored measurement of color and sometimes transparency at a particular location in an image. A raster image is a grid: I(x, y) = [R, G, B, α]. Each location stores values that describe the image there.
+
+Once an image becomes a pixel grid, software can operate on it mathematically. A blur averages neighboring samples. A sharpen filter exaggerates local contrast. Levels remap brightness ranges. Curves remap tonal values. A selection isolates a region. A mask controls where an operation applies. A blend mode combines numerical values from two image layers.
+
+An ordinary layer composite can be simplified as:
+
+C_out = α_f · C_f + (1 − α_f) · C_b
+
+Where C_f is the foreground color, C_b is the background color, α_f is the foreground opacity, and C_out is the blended result. When you lower opacity on a Photoshop layer, paint with a semi-transparent brush, or soften a mask, you are working through variations of this logic.`,
+      },
+      {
+        heading: 'The connection to Photoshop',
+        body: `Smith did not invent Photoshop — that was Thomas and John Knoll, developed commercially by Adobe. But Smith's work helped create the technical ecosystem Photoshop depends on: high-color raster painting, editable image regions, transparency logic, digital compositing, channels, anti-aliasing, and the broader premise that pixels are an expressive visual medium.
+
+A useful way to put it: Alvy Ray Smith helped establish the grammar of digital images. Photoshop and later art tools turned that grammar into an accessible studio practice.
+
+The Photoshop canvas is a pixel field. Brushes change pixel values. Masks control alpha. Layers use compositing mathematics. Filters analyze and transform pixel neighborhoods. Channels separate and manipulate image information. The artist is not merely "using effects" — they are directing a structured system of sampled color and transparency.`,
+      },
+      {
+        heading: 'Why this matters for artists learning digital tools',
+        body: `Studying pixels helps artists see digital tools as extensions of visual fundamentals rather than mysterious software features:
+
+Drawing → the placement and variation of marks across a grid.
+Painting → controlled color, value, and opacity changes.
+Composition → the organization of visual information over a frame.
+Texture → patterned variation in color, contrast, and scale.
+Atmosphere → layered transparency, depth, and color scattering.
+Compositing → the visual combination of separate image systems.
+3D rendering → the calculation of pixel values from light, materials, geometry, and camera position.
+
+Smith's larger argument is that digital imagery should not be treated as somehow less real or less artistic because it is numerical. Pixels are simply the medium's basic units — much like pigment particles, halftone dots, film grain, weave in a textile, or marks on paper. His work helped make that medium mature enough for artists to work with directly.`,
+      },
     ],
   },
 
