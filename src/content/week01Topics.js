@@ -29,6 +29,8 @@ When creating digital art, we are essentially painting, drawing, sculpting, and 
 He worked at several pivotal moments in computer-graphics history: Xerox PARC-era digital paint systems, the New York Institute of Technology computer-graphics lab, Lucasfilm's Computer Division, and Pixar — which he co-founded with Ed Catmull. He was deeply involved in the transition from primitive computer graphics to images that could be painted, layered, animated, composited, and used in filmmaking.
 
 Smith also worked on early high-resolution digital paint systems, including BigPaint3, a 24-bit paint program capable of higher-than-video-resolution imagery. "24-bit" color meant that red, green, and blue values could be stored with enough precision to produce millions of colors — the RGB image model digital artists still use today.`,
+        videoUrl: 'https://www.youtube.com/embed/Vn_TkHwDwq0',
+        videoCaption: 'Alvy Ray Smith — The History of Pixar and Computer Graphics',
       },
       {
         heading: 'The Alpha Channel — Smith\'s most influential contribution',

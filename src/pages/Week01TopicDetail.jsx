@@ -46,6 +46,22 @@ export default function Week01TopicDetail() {
         <section key={i} style={sectionStyle}>
           <h2 style={sectionHeadingStyle}>{section.heading}</h2>
           <p style={sectionBodyStyle}>{section.body}</p>
+          {section.videoUrl && (
+            <div style={{ margin: '24px 0 8px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #d4c9a8' }}>
+              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+                <iframe
+                  src={section.videoUrl}
+                  title={section.videoCaption || section.heading}
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              {section.videoCaption && (
+                <p style={{ fontSize: '11px', color: '#8b3a2f', padding: '8px 12px', margin: 0, fontStyle: 'italic', fontFamily: 'Menlo, monospace', background: 'rgba(0,0,0,0.02)' }}>{section.videoCaption}</p>
+              )}
+            </div>
+          )}
           {section.imageUrl && (
             <div style={{ margin: '20px 0', textAlign: 'center' }}>
               <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '6px', border: '1px solid #d4c9a8' }} />
