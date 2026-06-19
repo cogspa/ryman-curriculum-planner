@@ -88,22 +88,66 @@ Smith's larger argument is that digital imagery should not be treated as somehow
   },
 
   'origin-of-pixel': {
-    title: 'Origin of the word "pixel"',
+    title: 'The Origin of the Pixel',
     pccSources: ['Origin of the word Pixel'],
     sections: [
       {
         heading: 'Frederic C. Billingsley — JPL, 1965',
-        body: `Frederic C. Billingsley first published the word "pixel" in 1965 at Jet Propulsion Laboratory in Pasadena. Billingsley (July 23, 1921 – May 31, 2002) was an American engineer who worked on image processing techniques for American space probes to the moon, Mars, and other planets for most of his career.`,
-      },
-      {
-        heading: 'First documented use',
-        body: `Billingsley used the word "pixel" in two papers published in 1965. This may have been the first published use of the word to describe a computer-generated "picture element."
+        body: `The word <em>pixel</em> is now part of everyday digital language. It describes the small picture elements that make up photographs, screens, video, digital paintings, games, and computer-generated images.
 
-According to Billingsley, the word didn't originate with him. He heard it came from Keith E. McFarland at General Precision's Link Division in Palo Alto in 1963. McFarland claimed he had no idea where the word originated — it was a general term employed by his colleagues at the time.`,
+According to historian and imaging researcher Richard F. Lyon, the term <em>pixel</em> first appeared in print in two 1965 SPIE papers by Frederic C. Billingsley, an engineer at Caltech's Jet Propulsion Laboratory in Pasadena.
+
+Billingsley worked in JPL's Image Processing Laboratory, where engineers developed systems for processing and analyzing images returned from lunar and planetary missions. His work was connected to the growing challenge of converting visual information into measurable samples that could be transmitted, stored, enhanced, and reconstructed.`,
       },
       {
-        heading: 'Why this matters',
-        body: `Pasadena (JPL) is the documented birthplace of the published term. Local relevance for a Pasadena-area studio class: the word for the medium you're working in was coined a few miles from where you're sitting.`,
+        heading: 'The First Known Published Uses',
+        body: `Lyon identifies Billingsley's two 1965 SPIE papers as the earliest known published uses of the word <em>pixel</em>:
+
+• <em>"Digital Video Processing at JPL"</em>
+• <em>"Processing Ranger and Mariner Photography"</em>
+
+The term was used in the context of scientific image processing rather than computer graphics. At the time, engineers needed a concise way to describe small units of sampled visual information within an image.
+
+Today, we often think of a pixel as a tiny colored square on a screen. In image processing, however, a pixel is more accurately understood as a <strong>discrete sample of visual data</strong>. Each pixel can store information such as brightness, color, depth, temperature, or other measurements captured by an imaging system.`,
+      },
+      {
+        heading: 'Where Did the Word Come From?',
+        body: `Billingsley did not claim to have invented the word himself.
+
+He later recalled that <em>pixel</em> may have come from engineers working for General Precision's Link Division in Palo Alto, a company that built equipment for JPL. Lyon interviewed former Link engineer Keith E. McFarland, who said that the word was already being used informally by colleagues at the time.
+
+The exact origin of the word remains uncertain. What Lyon was able to document is that Billingsley's 1965 papers are the earliest known printed examples of <em>pixel</em> used in its modern technical sense.`,
+      },
+      {
+        heading: 'Why This Matters for Digital Artists',
+        body: `The history of the pixel is also the history of digital image-making.
+
+Before an image can be edited in Photoshop, painted in Procreate, rendered in Blender, composited in After Effects, or displayed on a phone, it must be translated into visual data. Pixels are the basic units that make that translation possible.
+
+They allow an image to be:
+
+• captured by a camera or scanner
+• stored as digital information
+• edited through color, contrast, masks, layers, and filters
+• transmitted across networks
+• displayed on screens
+• analyzed by software and AI systems
+
+For artists, pixels are not just technical limitations. They are the <strong>material structure of the digital canvas</strong>.`,
+      },
+      {
+        heading: 'A Local Connection',
+        body: `JPL's Image Processing Laboratory was located in Pasadena, only a short distance from many of the studios, schools, and creative communities that now use digital tools every day.
+
+That makes the history especially meaningful for Los Angeles-area artists: one of the earliest documented uses of the word <em>pixel</em> emerged from local work on scientific imaging and space exploration.
+
+The same basic idea — breaking an image into small, editable units of information — now supports digital painting, photography, animation, visual effects, game design, graphic design, and AI-assisted image tools.`,
+      },
+      {
+        heading: 'Source',
+        body: `Richard F. Lyon, "A Brief History of 'Pixel,'" <em>Digital Photography II</em>, IS&T/SPIE Symposium on Electronic Imaging, 2006.
+
+📄 <a href="https://www.dicklyon.com/tech/Photography/Pixel-SPIE06-Lyon.pdf" target="_blank" rel="noopener noreferrer" style="color:#8b3a2f; text-decoration:underline;">Read Richard Lyon's "A Brief History of 'Pixel'" (PDF)</a>`,
       },
     ],
   },
