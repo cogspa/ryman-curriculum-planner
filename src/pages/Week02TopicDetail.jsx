@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { TOPIC_DETAILS } from '../content/week02Topics.js';
+import { TOPIC_DETAILS, topicList } from '../content/week02Topics.js';
+import TopicNav from './TopicNav.jsx';
 
 export default function Week02TopicDetail() {
   const { topicKey } = useParams();
@@ -56,6 +57,8 @@ export default function Week02TopicDetail() {
           )}
         </section>
       ))}
+
+      <TopicNav topicList={topicList} topicKey={topicKey} weekNum="02" />
     </div>
   );
 }
