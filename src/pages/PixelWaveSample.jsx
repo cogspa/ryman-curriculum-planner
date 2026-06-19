@@ -311,34 +311,86 @@ function Popup({ onClose }) {
   );
 }
 
-export default function PixelWaveSample({
-  triggerText = "wave samples of the pixel",
-}) {
-  const [open, setOpen] = useState(false);
-  const close = useCallback(() => setOpen(false), []);
+export default function PixelWaveSample() {
+  const [rgb, setRgb] = useState({ r: 102, g: 51, b: 153 });
+  const setCh = (k, v) => setRgb((p) => ({ ...p, [k]: Math.max(0, Math.min(255, +v)) }));
 
   return (
-    <>
-      <p>
-        When creating digital art, we are essentially painting, drawing,
-        sculpting, and designing the{" "}
-        <button
-          onClick={() => setOpen(true)}
-          style={{
-            font: "inherit", fontWeight: 700, color: "inherit",
-            background: "none", border: "none", padding: 0, cursor: "pointer",
-            borderBottom: "2px dotted currentColor",
-            textUnderlineOffset: "2px",
-          }}
-          title="Open the pixel wave sampler"
-        >
-          {triggerText}
-        </button>
-        . The process of digital art is one of manipulating pixels using an
-        interface or code.
-      </p>
+    <div
+      style={{
+        background: "#101317",
+        border: "1px solid #232a32",
+        borderRadius: 8,
+        overflow: "hidden",
+        color: "#e8e4da",
+        fontFamily: "'IBM Plex Mono', ui-monospace, Menlo, monospace",
+      }}
+    >
+      {/* title bar */}
+      <div style={{
+        height: 40, flexShrink: 0,
+        display: "flex", alignItems: "center",
+        padding: "0 14px", borderBottom: "1px solid #1c2127",
+      }}>
+        <span style={{ fontSize: 11, letterSpacing: "0.18em", color: "#9aa3ad" }}>
+          PIXEL <span style={{ color: "#3a424c" }}>·</span> WAVE&nbsp;SAMPLE
+        </span>
+      </div>
 
-      {open && <Popup onClose={close} />}
-    </>
+      {/* body */}
+      <div style={{ display: "flex", minHeight: 0, padding: 14, gap: 14, flexWrap: "wrap" }}>
+        {/* rail */}
+        <div style={{ width: 210, flexShrink: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+            <div style={{
+              width: 56, height: 56, borderRadius: 4, flexShrink: 0,
+              background: toHex(rgb), border: "1px solid #2a313a",
+              boxShadow: `0 0 22px ${toHex(rgb)}55`,
+            }} />
+            <div style={{ minWidth: 0 }}>
+              <input
+                type="color"
+                value={toHex(rgb)}
+                onChange={(e) => setRgb(fromHex(e.target.value))}
+                aria-label="Pick pixel color"
+                style={{ width: 36, height: 24, background: "none", border: "none", padding: 0, cursor: "pointer" }}
+              />
+              <div style={{ fontSize: 13, letterSpacing: "0.06em", marginTop: 4 }}>{toHex(rgb)}</div>
+              <div style={{ fontSize: 10, color: "#6b7480" }}>
+                {rgb.r}, {rgb.g}, {rgb.b}
+              </div>
+            </div>
+          </div>
+
+          {CHANNELS.map((ch) => (
+            <label key={ch.key} style={{ display: "block" }}>
+              <div style={{
+                display: "flex", justifyContent: "space-between",
+                fontSize: 11, color: ch.color, marginBottom: 3, letterSpacing: "0.05em",
+              }}>
+                <span>{ch.label}</span>
+                <span style={{ color: "#9aa3ad" }}>{rgb[ch.key]}</span>
+              </div>
+              <input
+                type="range" min={0} max={255} value={rgb[ch.key]}
+                onChange={(e) => setCh(ch.key, e.target.value)}
+                style={{ width: "100%", accentColor: ch.color, cursor: "pointer" }}
+              />
+            </label>
+          ))}
+
+          <p style={{
+            margin: 0, marginTop: "auto", fontSize: 10.5, lineHeight: 1.5,
+            color: "#6b7480",
+          }}>
+            Each channel is the <span style={{ color: "#9aa3ad" }}>amplitude sample</span> of
+            a light-wave. The pixel stores three numbers; together they reconstruct
+            the composite trace.
+          </p>
+        </div>
+
+        <WaveScope rgb={rgb} />
+      </div>
+    </div>
   );
 }
