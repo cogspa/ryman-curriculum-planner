@@ -280,7 +280,7 @@ export default function SpeakerListPage() {
               alt="Ryman Arts Logo" 
               style={{ height: '48px', marginBottom: '16px', display: 'block' }} 
             />
-            <p className="assignment-eyebrow" style={{ color: '#06b6d4', letterSpacing: '0.15em' }}>RYMAN ARTS PLATFORM</p>
+            <p className="assignment-eyebrow" style={{ color: '#06b6d4', letterSpacing: '0.15em' }}>RYMAN ARTS pLAtform</p>
             <h1 className="assignment-title" style={{ fontSize: '32px', margin: '8px 0' }}>Potential Guest Speakers</h1>
             <p className="assignment-subtitle" style={{ fontSize: '15px', opacity: 0.85 }}>
               A curated database of industry professionals, board members, and creative specialists to invite for Zoom & studio presentations.

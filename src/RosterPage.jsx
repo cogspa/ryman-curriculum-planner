@@ -185,7 +185,7 @@ export default function RosterPage() {
               alt="Ryman Arts Logo" 
               style={{ height: '44px', marginBottom: '16px', display: 'block' }} 
             />
-            <p className="assignment-eyebrow" style={{ color: '#7c3aed', letterSpacing: '0.15em' }}>RYMAN ARTS PLATFORM</p>
+            <p className="assignment-eyebrow" style={{ color: '#7c3aed', letterSpacing: '0.15em' }}>RYMAN ARTS pLAtform</p>
             <h1 className="assignment-title" style={{ fontSize: '32px', margin: '8px 0' }}>Final Class List Roster</h1>
             <p className="assignment-subtitle" style={{ fontSize: '15px', opacity: 0.85 }}>
               Official roster of the 14 selected candidates for the inaugural pLAtform cohort. Access student bios, contact information, and download the full spreadsheet roster.

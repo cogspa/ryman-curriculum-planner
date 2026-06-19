@@ -266,7 +266,7 @@ export default function SyllabusPage() {
               style={{ height: '48px', marginBottom: '16px', display: 'block' }} 
             />
             <p className="syllabus-eyebrow">2026 · 12-week program + capstone</p>
-            <h1 className="syllabus-title">Ryman Arts Platform</h1>
+            <h1 className="syllabus-title">Ryman Arts pLAtform</h1>
             <p className="syllabus-sub-title">Curriculum Syllabus</p>
             <div className="syllabus-meta">
               <span>{config.tuesday.label}s {config.tuesday.time} · {config.tuesday.location}</span>
@@ -537,7 +537,7 @@ export default function SyllabusPage() {
           ))}
 
           <footer className="syllabus-footer">
-            <p>Ryman Arts Platform · Curriculum Syllabus · 2026</p>
+            <p>Ryman Arts pLAtform · Curriculum Syllabus · 2026</p>
             <p style={{ fontSize: 9, marginTop: 4, opacity: 0.7 }}>
               {selectedVer === 'live' ? 'Viewing Live Draft' : `Viewing Version v${selectedVer}`}
             </p>

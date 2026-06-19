@@ -131,7 +131,7 @@ function LoginGate({ children }) {
     <div className="login-gate">
       <form className="login-form" onSubmit={handleSubmit}>
         <p className="login-eyebrow">2026 · 12-week program</p>
-        <h1 className="login-title">Ryman Arts Platform</h1>
+        <h1 className="login-title">Ryman Arts pLAtform</h1>
         <p className="login-subtitle">Curriculum Planner</p>
         <div className="login-fields">
           <input
@@ -250,7 +250,7 @@ function Header({ startDate, setStartDate, totalWeeks }) {
           style={{ height: '48px', marginBottom: '16px', display: 'block' }} 
         />
         <p className="eyebrow">2026 · 12-week program + capstone</p>
-        <h1 className="title">Ryman Arts Platform Curriculum Planner</h1>
+        <h1 className="title">Ryman Arts pLAtform Curriculum Planner</h1>
         <p className="subtitle">
           {config.tuesday.label}s {config.tuesday.time} · {config.tuesday.location}
           <span className="dot">·</span>
