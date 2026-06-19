@@ -243,7 +243,7 @@ body {
 }
 
 .title {
-  font-family: var(--font-display);
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: clamp(40px, 6vw, 64px);
   line-height: 1.1;
