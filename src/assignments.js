@@ -34,10 +34,11 @@ export const assignments = {
           },
           {
             heading: 'Exercise Guidelines',
+            body: 'Using your selected traditional sketch as reference, create three separate digital versions of your character or prop—each using a different blocking approach.',
             bullets: [
-              'Create a straight-line version of your character/prop: Hold Shift with the Brush (B) tool for rigid paths.',
-              'Create a curved-line version: Enable brush smoothing (80-90%) in Photoshop or Procreate to achieve clean, swooping lines.',
-              'Keep the values purely black and white (line art only).',
+              { text: 'Straight Line Blocking: Use the Pen Tool (P) to lay down precise bezier paths, or use the Brush Tool (B) with Shift held down to click point-to-point for rigid straight-line construction. Focus on angular structure and clean geometric edges.', imageUrl: '/example_lasso_shape_blocking.png', imageCaption: 'Straight Line Blocking' },
+              { text: 'Sketch Approach: Work freehand with the Brush Tool, using brush smoothing (80–90%) to achieve loose, gestural, expressive lines. Capture energy and movement over precision.', imageUrl: '/example_sketch_approach.png', imageCaption: 'Sketch Approach' },
+              { text: 'Lasso Block Approach: Use the Polygonal Lasso Tool (L) to click out flat shape selections, then fill them with the Paint Bucket or brush inside the selection boundary. Build up your character/prop as a series of flat, hard-edged value masses—like a paper cut-out silhouette.', imageUrl: '/example_straight_line_blocking.png', imageCaption: 'Lasso Block Approach' },
             ],
           },
           {
@@ -94,10 +95,12 @@ export const assignments = {
             ],
           },
         ],
+
         submission: [
           'Scan/photo of the original traditional reference.',
-          'Finished straight-line digital ink drawing as a PNG.',
-          'Finished curved-line digital ink drawing as a PNG.',
+          'Finished Straight Line Blocking version as a PNG.',
+          'Finished Sketch Approach version as a PNG.',
+          'Finished Lasso Block Approach version as a PNG.',
         ],
         critiqueQuestions: [
           'How did you translate the organic, tactile feel of your traditional sketch into clean digital lines?',

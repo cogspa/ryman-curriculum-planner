@@ -355,7 +355,60 @@ export default function AssignmentPage() {
 
               {section.bullets && (
                 <ul className="phase-list phase-list--accent">
-                  {section.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                  {section.bullets.map((b, i) => {
+                    if (typeof b === 'string') {
+                      return <li key={i}>{b}</li>;
+                    }
+                    return (
+                      <li key={i}>
+                        {b.text}
+                        {b.imageUrl && (
+                          <div style={{
+                            marginTop: '14px',
+                            marginBottom: '8px',
+                            background: '#fff',
+                            borderRadius: '10px',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
+                            overflow: 'hidden',
+                            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+                            maxWidth: '480px'
+                          }}>
+                            <div style={{
+                              width: '100%',
+                              aspectRatio: '16 / 10',
+                              overflow: 'hidden',
+                              background: '#f1f0ec'
+                            }}>
+                              <img
+                                src={b.imageUrl}
+                                alt={b.imageCaption || b.text}
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                  objectFit: 'cover',
+                                  display: 'block'
+                                }}
+                              />
+                            </div>
+                            {b.imageCaption && (
+                              <p style={{
+                                fontSize: '12px',
+                                fontWeight: '600',
+                                color: 'var(--ink-mid, #64748b)',
+                                textAlign: 'center',
+                                padding: '10px 16px',
+                                margin: 0,
+                                fontFamily: 'var(--font-sans, sans-serif)',
+                                fontStyle: 'italic'
+                              }}>
+                                {b.imageCaption}
+                              </p>
+                            )}
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
 
@@ -420,6 +473,7 @@ export default function AssignmentPage() {
               )}
             </section>
           ))}
+
 
           {/* Phases format (used by Week 2) */}
           {data.phases?.map((phase, pi) => (
