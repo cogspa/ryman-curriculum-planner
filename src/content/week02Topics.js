@@ -282,6 +282,40 @@ The result reads as carved, eroded, or scarred — useful for sci-fi environment
       },
     ],
   },
+
+  'color-palette-extraction': {
+    title: 'Color Palette Extraction & SwatchForge',
+    pccSources: ['Color Libraries', 'ASE Swatch Formats', 'Value and Gamut Systems'],
+    sections: [
+      {
+        heading: 'The Importance of Building Color Libraries',
+        body: `Digital artists must build their own libraries of color rather than relying on default color pickers or random selection. A cohesive color palette acts as the visual backbone of a project, creating structural unity across characters, props, and environments.
+
+By intentionally gathering colors from photographic references, film stills, or master paintings, you establish a curated gamut. This ensures your color choices carry specific intent, mood, and style, rather than feeling disjointed or arbitrary. A personal color library is just as valuable to a digital painter as a custom brush library.`,
+      },
+      {
+        heading: 'The Adobe Swatch Exchange (.ASE) Format',
+        body: `The .ASE (Adobe Swatch Exchange) file format is an industry standard for sharing color libraries across various graphics programs (including Photoshop, Illustrator, and InDesign).
+
+ASE files encode color data—primarily in RGB, CMYK, or Grayscale color spaces—as binary data blocks, grouping swatches into named folders. By exporting palettes as .ASE files, you can seamlessly load your curated color harmonies directly into your software's Swatches palette, ensuring absolute color consistency across your working files.`,
+      },
+      {
+        heading: 'Efficiency: Small Palettes for Big Lighting',
+        body: `A common beginner mistake is using too many colors. In reality, a small number of swatches (typically 3 to 5 colors) is all you need to define spatial depth and atmospheric light.
+
+By limiting your palette, you force yourself to establish clear lighting relationships:
+• **Key Light Swatch:** defines the color of the primary light source.
+• **Shadow Swatch:** defines the ambient fill and local color in shadow.
+• **Transition/Haze Swatch:** defines the atmospheric perspective (objects becoming cooler and lower contrast as they recede into the distance).
+
+This tight color range creates a strong color script, unifying the composition and selling the illusion of a single, cohesive light source wrapping around the forms.`,
+      },
+      {
+        heading: 'SwatchForge Interactive Tool',
+        body: `Use the SwatchForge tool below to extract color palettes directly from reference images. You can drop or paste any image, choose auto-extraction via the median-cut algorithm, or use the eyedropper to select exact pixel values, then export your palette directly as an Adobe .ase file.`,
+      },
+    ],
+  },
 };
 
 export const topicList = [
@@ -290,6 +324,7 @@ export const topicList = [
   { key: 'procedural-vs-non-procedural', label: 'Procedural vs. non-procedural texture generation', isNew: true },
   { key: 'blend-modes-for-texture', label: 'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8', isNew: true },
   { key: 'canvas-simulation', label: 'Canvas simulation techniques — Perlin/cloud noise as paper, Worley noise for tooth, grain and stipple filters', isNew: true },
+  { key: 'color-palette-extraction', label: 'Color palette extraction — building color libraries, the ASE format, and SwatchForge tool', isNew: true },
 ];
 
 export const readingsList = [
@@ -300,4 +335,5 @@ export const readingsList = [
   { key: 'external-book-of-shaders', label: 'Cellular Noise (The Book of Shaders) — https://thebookofshaders.com/12/', isNew: true, external: 'https://thebookofshaders.com/12/' },
   { key: 'canvas-simulation', label: 'Cracked Earth Texture (video walkthrough) — canvas simulation demo', isNew: true },
   { key: 'blend-modes-for-texture', label: 'What are Blend Modes + The Special "8" Blend Modes — layering texture passes', isNew: true },
+  { key: 'color-palette-extraction', label: 'Color Palette Extraction — building color libraries and ASE swatch formats', isNew: true },
 ];

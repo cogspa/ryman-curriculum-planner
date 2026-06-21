@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOPIC_DETAILS, topicList } from '../content/week02Topics.js';
 import TopicNav from './TopicNav.jsx';
+import SwatchForge from '../SwatchForge.jsx';
 
 export default function Week02TopicDetail() {
   const { topicKey } = useParams();
@@ -58,10 +59,25 @@ export default function Week02TopicDetail() {
         </section>
       ))}
 
+      {topicKey === 'color-palette-extraction' && (
+        <div style={swatchForgeContainerStyle}>
+          <SwatchForge />
+        </div>
+      )}
+
       <TopicNav topicList={topicList} topicKey={topicKey} weekNum="02" />
     </div>
   );
 }
+
+const swatchForgeContainerStyle = {
+  marginTop: '40px',
+  border: '1px solid #d4c9a8',
+  borderRadius: '8px',
+  overflow: 'hidden',
+  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+  marginBottom: '40px',
+};
 
 // ─── Styles (editorial / hauntological — yellowed paper, mono accents) ─────
 const containerStyle = {
