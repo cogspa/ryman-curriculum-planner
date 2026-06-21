@@ -46,6 +46,46 @@ function parseMarkdownLinks(text) {
   return parts;
 }
 
+function parseInlineMarkdown(text) {
+  if (typeof text !== 'string') return text;
+  const withLinks = parseMarkdownLinks(text);
+  const processString = (str) => {
+    if (typeof str !== 'string') return str;
+    const boldRegex = /\*\*(.+?)\*\*/g;
+    if (!boldRegex.test(str)) return str;
+    boldRegex.lastIndex = 0;
+    const parts = [];
+    let last = 0;
+    let m;
+    while ((m = boldRegex.exec(str)) !== null) {
+      if (m.index > last) parts.push(str.substring(last, m.index));
+      parts.push(
+        <strong key={`b${m.index}`} style={{
+          fontWeight: '700',
+          background: 'rgba(0, 0, 0, 0.05)',
+          padding: '1px 5px',
+          borderRadius: '3px',
+          fontSize: '0.92em',
+          fontFamily: 'var(--font-mono, ui-monospace, monospace)',
+          letterSpacing: '0.02em'
+        }}>
+          {m[1]}
+        </strong>
+      );
+      last = boldRegex.lastIndex;
+    }
+    if (last < str.length) parts.push(str.substring(last));
+    return parts;
+  };
+  if (Array.isArray(withLinks)) {
+    return withLinks.flatMap((part) => {
+      const result = processString(part);
+      return Array.isArray(result) ? result : [result];
+    });
+  }
+  return processString(withLinks);
+}
+
 export default function AssignmentPage() {
   const { week } = useParams();
   const rawData = assignments[Number(week)];
@@ -357,11 +397,11 @@ export default function AssignmentPage() {
                 <ul className="phase-list phase-list--accent">
                   {section.bullets.map((b, i) => {
                     if (typeof b === 'string') {
-                      return <li key={i}>{b}</li>;
+                      return <li key={i}>{parseInlineMarkdown(b)}</li>;
                     }
                     return (
                       <li key={i}>
-                        {b.text}
+                        {parseInlineMarkdown(b.text)}
                         {b.imageUrl && (
                           <div style={{
                             marginTop: '14px',
@@ -406,6 +446,31 @@ export default function AssignmentPage() {
                             )}
                           </div>
                         )}
+                        {b.subIntro && (
+                          <p style={{
+                            marginTop: '14px',
+                            marginBottom: '8px',
+                            fontSize: '14px',
+                            color: '#334155',
+                            lineHeight: '1.6',
+                            fontStyle: 'italic'
+                          }}>
+                            {parseInlineMarkdown(b.subIntro)}
+                          </p>
+                        )}
+                        {b.substeps && (
+                          <ol style={{
+                            paddingLeft: '20px',
+                            margin: '8px 0 4px 0',
+                            fontSize: '13.5px',
+                            color: '#334155',
+                            lineHeight: '1.6'
+                          }}>
+                            {b.substeps.map((step, si) => (
+                              <li key={si} style={{ marginBottom: '8px' }}>{parseInlineMarkdown(step)}</li>
+                            ))}
+                          </ol>
+                        )}
                       </li>
                     );
                   })}
@@ -414,11 +479,11 @@ export default function AssignmentPage() {
 
               {section.numberedSteps && (
                 <ol className="phase-steps">
-                  {section.numberedSteps.map((s, i) => <li key={i}>{s}</li>)}
+                  {section.numberedSteps.map((s, i) => <li key={i}>{parseInlineMarkdown(s)}</li>)}
                 </ol>
               )}
 
-              {section.note && <p className="phase-note">💡 {section.note}</p>}
+              {section.note && <p className="phase-note">💡 {parseInlineMarkdown(section.note)}</p>}
 
                {section.toolGuides && (
                 <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -438,13 +503,13 @@ export default function AssignmentPage() {
                         flexWrap: 'wrap-reverse'
                       }}>
                         <div style={{ flex: '1 1 300px' }}>
-                          <h3 style={{ fontSize: '16px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#0f172a' }}>{tg.title}</h3>
+                          <h3 style={{ fontSize: '16px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#0f172a' }}>{parseInlineMarkdown(tg.title)}</h3>
                           {tg.subtitle && <p style={{ fontSize: '12px', margin: '0 0 8px 0', color: '#64748b', fontStyle: 'italic' }}>{tg.subtitle}</p>}
-                          {tg.description && <p style={{ fontSize: '14px', margin: '0 0 8px 0', color: '#334155', lineHeight: '1.5' }}>{tg.description}</p>}
+                          {tg.description && <p style={{ fontSize: '14px', margin: '0 0 8px 0', color: '#334155', lineHeight: '1.5' }}>{parseInlineMarkdown(tg.description)}</p>}
                           {tg.steps && (
                             <ol style={{ paddingLeft: '20px', margin: '8px 0 0 0', fontSize: '13.5px', color: '#334155', lineHeight: '1.6' }}>
                               {tg.steps.map((step, si) => (
-                                <li key={si} style={{ marginBottom: '6px' }}>{step}</li>
+                                <li key={si} style={{ marginBottom: '6px' }}>{parseInlineMarkdown(step)}</li>
                               ))}
                             </ol>
                           )}

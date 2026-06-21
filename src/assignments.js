@@ -36,9 +36,9 @@ export const assignments = {
             heading: 'Exercise Guidelines',
             body: 'Using your selected traditional sketch as reference, create three separate digital versions of your character or prop—each using a different blocking approach.',
             bullets: [
-              { text: 'Straight Line Blocking: Use the Pen Tool (P) to lay down precise bezier paths, or use the Brush Tool (B) with Shift held down to click point-to-point for rigid straight-line construction. Focus on angular structure and clean geometric edges.', imageUrl: '/example_lasso_shape_blocking.png', imageCaption: 'Straight Line Blocking' },
-              { text: 'Sketch Approach: Work freehand with the Brush Tool, using brush smoothing (80–90%) to achieve loose, gestural, expressive lines. Capture energy and movement over precision.', imageUrl: '/example_sketch_approach.png', imageCaption: 'Sketch Approach' },
-              { text: 'Lasso Block Approach: Use the Polygonal Lasso Tool (L) to click out flat shape selections, then fill them with the Paint Bucket or brush inside the selection boundary. Build up your character/prop as a series of flat, hard-edged value masses—like a paper cut-out silhouette.', imageUrl: '/example_straight_line_blocking.png', imageCaption: 'Lasso Block Approach' },
+              { text: '**Straight Line Blocking:** Use the Pen Tool (**P**) to lay down precise bezier paths, or use the Brush Tool (**B**) with **Shift** held down to click point-to-point for rigid straight-line construction. Focus on angular structure and clean geometric edges.', imageUrl: '/example_lasso_shape_blocking.png', imageCaption: 'Straight Line Blocking' },
+              { text: '**Sketch Approach:** Work freehand with the Brush Tool, using brush smoothing (80–90%) to achieve loose, gestural, expressive lines. Capture energy and movement over precision.', imageUrl: '/example_sketch_approach.png', imageCaption: 'Sketch Approach' },
+              { text: '**Lasso Block Approach:** Use the Polygonal Lasso Tool (**L**) to click out flat shape selections, then fill them with the Paint Bucket or brush inside the selection boundary. Build up your character/prop as a series of flat, hard-edged value masses—like a paper cut-out silhouette.', imageUrl: '/example_straight_line_blocking.png', imageCaption: 'Lasso Block Approach', subIntro: 'This is a simple process, and many artists use it as an initial step to create a landscape. It\'s quick and simple because it works best with a mouse, and the results for landscape depth can be surprisingly good for such a simple process. Here are the steps:', substeps: ['Create a New Layer — For each layer type (background, midground, foreground), create a new layer in Photoshop. Use the keyboard shortcut **Ctrl + Alt + Shift + N** (**Cmd + Option + Shift + N** on Mac) to quickly add a new layer.', 'Select the Polygonal Lasso Tool — Select the Polygonal Lasso tool from the toolbar to create your landscape elements. Access this tool quickly by pressing **Shift + L** until the Polygonal Lasso tool is active.', 'Draw and Fill Your Landscape Shapes — Using the Polygonal Lasso tool, draw the outline of your landscape elements such as mountains, rivers, or trees. You can switch from the Polygonal Lasso to the freeform Lasso by holding **Alt/Option**. Once you\'ve completed a selection, fill it with your chosen color by pressing **Alt + Backspace** (**Option + Delete** on Mac) to fill with the foreground color.', 'Deselect and Move to the Next Layer — After you have filled the selection, deselect by pressing **Ctrl + D** (**Cmd + D** on Mac). Move on to the next layer to create your next landscape element.'] },
             ],
           },
           {
@@ -46,9 +46,9 @@ export const assignments = {
             body: 'You will be using the following tools to create straight lines. These tools are fairly common for the majority of the software products that I have previously mentioned, but most of the details I provide below pertain mostly to Photoshop. I will explain in our first Zoom how these tools work in other programs.',
             toolGuides: [
               {
-                title: 'The Pen Tool (P)',
+                title: 'The Pen Tool (**P**)',
                 subtitle: '(found in Photoshop, Illustrator, GIMP, and Figma)',
-                description: 'The Pen tool (P) is used to create paths or vectors (also called strokes). With the Pen tool, you draw out your paths point by point. The path is called a bezier.',
+                description: 'The Pen tool (**P**) is used to create paths or vectors (also called strokes). With the Pen tool, you draw out your paths point by point. The path is called a bezier.',
               },
               {
                 title: 'The Path Palette',
@@ -59,23 +59,23 @@ export const assignments = {
                 description: 'Here are the steps to turn the paths into pixels:',
                 steps: [
                   'First, create a new layer.',
-                  'Then use the Path Selection tool (A shortcut in Photoshop) to select the paths.',
+                  'Then use the Path Selection tool (**A** shortcut in Photoshop) to select the paths.',
                   'Select the paths, then right-click on the paths, and in the menu that appears click "Stroke Path" and select the Pencil tool or the Brush tool.',
                   'The pencil or brush tool settings will determine the quality of the brushstroke that is applied to the path.',
                 ],
               },
               {
-                title: 'The Brush Tool (B)',
-                description: 'We can use the Brush tool (B shortcut in Photoshop) to create straight lines by dragging on the canvas while hitting Shift. Click once, hit Shift, and then click somewhere else where you want the line to end. This technique works in Photoshop, GIMP, and Magma.io. After each line, hit Escape, otherwise, you will get one continuous line.',
+                title: 'The Brush Tool (**B**)',
+                description: 'We can use the Brush tool (**B** shortcut in Photoshop) to create straight lines by dragging on the canvas while hitting **Shift**. Click once, hit **Shift**, and then click somewhere else where you want the line to end. This technique works in Photoshop, GIMP, and Magma.io. After each line, hit **Escape**, otherwise, you will get one continuous line.',
               },
               {
-                title: 'The Line Tool (U)',
-                description: 'In Photoshop, you will have to press Shift + U a couple of times to access the Line tool. Make sure the line type is set to pixels.',
+                title: 'The Line Tool (**U**)',
+                description: 'In Photoshop, you will have to press **Shift + U** a couple of times to access the Line tool. Make sure the line type is set to pixels.',
               },
               {
-                title: 'The Polygonal Lasso Tool (L)',
+                title: 'The Polygonal Lasso Tool (**L**)',
                 subtitle: '(Photoshop and digital painting software)',
-                description: 'The Polygonal Lasso tool (L) is a powerful tool to build up initial digital painting concepts. Instead of drawing paths point-by-point like the Pen tool, the Polygonal Lasso lets you click to create straight-edge selection boundaries. Constrain angles using Shift, click to set corners, and close the loop to make your selection active.',
+                description: 'The Polygonal Lasso tool (**L**) is a powerful tool to build up initial digital painting concepts. Instead of drawing paths point-by-point like the Pen tool, the Polygonal Lasso lets you click to create straight-edge selection boundaries. Constrain angles using **Shift**, click to set corners, and close the loop to make your selection active.',
                 imageUrl: '/polygonal_lasso_tool.png',
                 steps: [
                   'Use it to quickly block in value masses: layout background, midground, and foreground planes on separate layers to immediately establish structure and form.',
@@ -167,92 +167,209 @@ export const assignments = {
     },
   },
   3: {
-    title: 'Assignment 2: Material Studies & Textures',
-    subtitle: 'Worldbuilding Step 2: Define the physical materials and surfaces of your world.',
+    title: 'Assignment 2: Compositional Brush Library & Landscape Exploration',
+    subtitle: 'Worldbuilding Step 2: Build custom brushes from real-world imagery and use them to construct environment compositions.',
     tracks: {
       beginner: {
-        title: 'Base Assignment: Media Tile Material Studies',
-        subtitle: 'Focus: Brush customization, blend modes, and traditional medium simulation.',
+        title: 'Base Assignment: Compositional Brush Library',
+        subtitle: 'Focus: Building custom brush libraries from real-world imagery to use as compositional painting tools.',
         sections: [
           {
             heading: 'Overview & Worldbuilding Through-line',
-            body: 'Render a signature item or element from your IP (e.g., character mask, crystal, wood shield) using a 2×2 media tile layout. Simulate traditional mediums digitally.',
+            body: 'In this assignment, you will build your own custom brush library that represents the visual elements of your world.\n\nAn important distinction: the brushes you are creating here are not meant to emulate traditional artistic materials like charcoal, oil paint, or watercolor. Instead, these brushes represent real compositional elements—clouds, building silhouettes, tree canopies, industrial structures, terrain features—that you stamp and paint directly onto the canvas to construct a scene. This is how many professional concept artists and digital matte painters work. They build libraries of compositional brushes sourced from photographic reference, then use those brushes to rapidly block out environments, establish depth, and define lighting in their compositions.\n\nIf you don\'t have Photoshop, you can use Photopea.com, which supports custom brush definition the same way.',
           },
           {
-            heading: 'Simulated Mediums',
+            heading: 'Create Your Brush Library',
+            body: 'Start with a minimum of three core categories — Atmospheric, Landscape/Background, and Messy/Junk brushes. Aim for six brushes in each, but push for more from the expanded list below. Having a broad brush library is essential as you build up your digital painting skills. Use images that are wide enough to ensure the brushes have sufficient detail, and organize your brushes into clearly labeled folders within the Brushes panel.',
+            imageUrl: '/brush_types_examples.png',
+            imageCaption: 'Examples of the three brush categories: Atmospheric, Background, and Messy/Junk brushes.',
             bullets: [
-              'Panel 1: Oil Paint (using thick impasto brush, hard lighting edges).',
-              'Panel 2: Watercolor (using paper textures, bleeding edges, Multiply blend modes).',
-              'Panel 3: Charcoal (using tooth textures, additive white chalk, soft smudging).',
-              'Panel 4: Invented Medium (using neon glows, glitch lines, or digital filters).',
+              { text: '**Atmospheric Brushes:** Clouds, fog banks, smoke plumes, mist layers, and sky textures. These are used to establish mood, atmosphere, and depth in the background and sky areas of your composition. For atmospheric brushes, it\'s good to feather the selection edges before defining the brush (Select > Modify > Feather, set to 40–50px) so you don\'t get hard edges when painting.', imageCaption: 'Atmospheric Brushes' },
+              { text: '**Landscape/Background Brushes:** City skyline silhouettes, mountain ridges, tree lines, building clusters, terrain profiles, and architectural forms. These define the structural shapes and horizon lines of your environments. These brushes can keep their hard edges since architectural and landscape forms naturally have defined silhouettes.', imageCaption: 'Landscape/Background Brushes' },
+              { text: '**Messy/Junk Brushes:** Industrial parts, girders, telephone poles, mechanical fragments, scaffolding, pipes, wires, and random geometric debris. These add visual complexity, foreground interest, and textural grit to your scenes. They\'re great for framing elements—creating the feeling of looking through something to see the scene behind it.', imageCaption: 'Messy/Junk Brushes' },
+              '**Architectural Brushes:** windows, brick, concrete seams, roof tiles, scaffolding, pipes, vents, signage, trim, perspective-grid marks.',
+              '**Figure / Anatomy Brushes:** gesture lines, skin texture, hair, fabric folds, hands, facial planes, silhouettes, crowd stamps.',
+              '**Vehicle / Mechanical Brushes:** tires, treads, panel lines, rivets, exhaust grime, cables, gears, engine parts, chrome reflections.',
+              '**Nature / Organic Brushes:** foliage, bark, rocks, grass, moss, clouds, water, dirt, coral, insects, fur.',
+              '**Industrial / Construction Brushes:** rust, weld marks, hazard stripes, concrete damage, peeling paint, rebar, chain-link, metal grates.',
+              '**Graphic-Design Brushes:** halftones, ink splatter, dry marker, screenprint grain, photocopy noise, tape edges, torn paper.',
+              '**Material Brushes:** leather, denim, wood grain, brushed metal, plastic, ceramic, velvet, scales, slime, cracked paint.',
+              '**Lighting / Effects Brushes:** bloom, fog, smoke, sparks, rain, snow, lens grime, glowing particles, rim-light haze.',
+              '**Narrative / Worldbuilding Brushes:** symbols, posters, graffiti, maps, alien writing, warning labels, UI fragments, emblems.',
+              '**Creature / Character-Detail Brushes:** scales, pores, horns, feathers, claws, wrinkles, wounds, armor plates, bioluminescent markings.',
+              '**Pattern / Textile Brushes:** embroidery, plaid, camouflage, knit fabric, lace, quilting, woven fibers, decorative trims.',
+              '**Damage / Age Brushes:** scratches, dents, chipped edges, corrosion, soot, oil stains, water streaks, mold, grime buildup.',
+            ],
+          },
+          {
+            heading: 'How to Create a Brush',
+            body: 'The process for turning a found image into a usable compositional brush:',
+            numberedSteps: [
+              'Find your source image (search for clouds, city skylines, industrial structures, etc.) and copy or screenshot the portion you want.',
+              'In Photoshop (or Photopea.com), paste the selection into a new or existing document.',
+              'Convert to black and white: **Image > Adjustments > Black and White** (**Cmd + Option + Shift + B** on Mac).',
+              'Add contrast using Levels (**Cmd + L**): push the dark triangle to the right and the light triangle to the left to increase contrast. Remember: white areas become transparent in the brush, so you want a clean white background with strong dark forms.',
+              'Use the Rectangular Marquee tool (**M**) to select the area you want to define as a brush. Make the selection comprehensive—bigger brushes are generally better than smaller ones.',
+              'Define the brush: **Edit > Define Brush Preset**. Name it clearly (e.g., "Cloud 01", "Skyline 02", "Grunge 03").',
+            ],
+            note: 'Tip: For atmospheric brushes like clouds, the grayscale values of the cloud may need to be inverted (**Cmd + I**) before defining the brush—since brushes paint with dark values, and clouds are naturally light. Use Levels to push the background fully white after inverting so you get a clean, usable cloud brush.',
+          },
+          {
+            heading: 'Understanding Levels for Brush Creation',
+            body: 'Levels is a critical tool for this assignment. In the Levels panel, you see a histogram of the image\'s tonal values with three triangles beneath it: black (shadows), gray (midtones), and white (highlights).\n\nDragging the black triangle to the right makes dark areas darker. Dragging the white triangle to the left makes light areas lighter. Together, these push your image toward a high-contrast silhouette—which is exactly what you want for a clean brush definition.\n\nWhy does this matter? A brush is defined by its dark values—the dark areas become the painted marks, and the white areas become transparent. If your source image has muddy grays in the background, those will show up as faint noise when you paint. By using Levels to push the background fully white and your subject fully dark, you get crisp, intentional brush strokes.\n\nLevels also has broader uses beyond brush creation: increasing vibrancy, revealing detail in dark or light areas, and making colors stand out. Understanding Levels will serve you well throughout your digital painting workflow.',
+          },
+        ],
+        submission: [
+          'Brush library screenshot showing your organized brush folders (Atmospheric, Background, Messy/Junk) with all 18 brushes.',
+          'A test sheet showing each brush stamped once at full size, labeled with its name and category.',
+        ],
+        critiqueQuestions: [
+          'How did your choice of source imagery for each brush category (clouds, skylines, industrial parts) reflect the world you are building?',
+          'How did you use Levels to clean up your brush definitions, and what difference did it make in the quality of the brush strokes?',
+          'Which brushes do you think will be the most versatile for composing full environments, and why?'
+        ],
+      },
+      intermediate: {
+        title: 'Take It to the Next Level: Landscape Compositions',
+        subtitle: 'Focus: Using your custom brush library to paint three themed landscape compositions with depth layering.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Now that you have built your compositional brush library (from the Base Assignment), put it to work. You will use your brush library, starting with the Atmospheric, Background, and Messy/Junk brushes, to paint three separate landscape compositions—all set within the same world as your character IP, but each showing a different phase or variation of that world.\n\nThis process will involve stamping your brushes rather than painting with them. Each time you stamp, create a new layer for that stamped brush.\n\nUse techniques to establish landmasses and structure, such as polygonal lasso blocking, in addition to the brushes you will use.\n\nKeeping your layers organized is critical—so be sure to use groups and subgroups to keep this organized.\n\nMake this greyscale for now.',
+            imageUrl: '/three_compositions_example.png',
+            imageCaption: 'Three separate landscape compositions — each showing a different phase of the same world.',
+          },
+          {
+            heading: 'Paint Three Landscape Compositions',
+            body: 'Using your custom brushes, create three separate landscape compositions. Each composition should be 11" × 17" at 72 DPI. All three landscapes exist within the same world as your character IP, but each one shows a different phase or variation of that world.\n\nChoose one thematic approach for your three phases:',
+            bullets: [
+              'Seasonal: Summer → Fall → Winter (or any three seasons)',
+              'Genre Shift: Fantasy → Modern → Science Fiction',
+              'Timeline: Past → Present → Future',
+              'Time of Day: Dawn → Midday → Night',
+            ],
+          },
+          {
+            heading: 'Composing with Depth: Foreground, Midground & Background',
+            body: 'As you build each landscape, think in terms of three depth layers. Keep each layer on its own separate layer in your Photoshop file—this is essential because in a future assignment, we will combine all three landscapes into one long panoramic image, colorize them, and animate the foreground, midground, and background at different speeds to create a parallax animation.\n\nValue creates the illusion of depth:',
+            bullets: [
+              'Foreground elements should be the darkest values—use your Messy/Junk brushes and strong black shapes to create framing elements close to the viewer.',
+              'Midground elements should be medium values—use your Background brushes for architecture, terrain, and structural forms.',
+              'Background elements should be the lightest values—use your Atmospheric brushes for sky, clouds, distant mountains, and haze. Things fade out the further they recede into the distance.',
+            ],
+            note: 'You can build up density by clicking multiple times with the same brush. You can also paint in white to carve back into dark areas and break up repetitive patterns. Scale your brushes up and down, and rotate them to create variety.',
+          },
+          {
+            heading: 'File Setup & Organization',
+            bullets: [
+              'Work in a single Photoshop document with three Artboards (use the Artboard tool to create each one at 11" × 17"), or create three separate .PSD files.',
+              'Keep foreground, midground, and background on separate layers within each composition.',
+              'Save your working files as .PSD to preserve layers—you will need them for the parallax animation assignment.',
+              'Export each composition as a PNG for submission.',
             ],
           },
         ],
         submission: [
-          'Brush library screenshot showcasing your custom brush engine setups.',
-          'Final 2×2 Media Tile layout as a single 2000×2000 PNG file.',
-          'Brief written reflection (150 words) on simulating tactile media digitally.',
+          'Three landscape compositions as PNG files (11" × 17" at 72 DPI).',
+          'Each composition should clearly show foreground, midground, and background depth separation.',
+          'Layered .PSD files with foreground, midground, and background on separate layers.',
         ],
         critiqueQuestions: [
-          'What brush settings (e.g., texture, opacity pressure, dual brushes) were most effective in simulating physical medium paint or charcoal?',
-          'How did using specific blend modes (like Multiply for watercolor transparent glazes) help replicate traditional paint interaction?',
-          'Which of the four media tiles feels the most tactile, and what specific details create that illusion of physical texture?'
+          'How did your choice of source imagery for each brush category (clouds, skylines, industrial parts) affect the mood and genre of your final landscapes?',
+          'How did you use value contrast across your foreground, midground, and background layers to create a convincing sense of depth?',
+          'Which brushes were the most versatile across your three compositions, and how did scaling, rotating, and layering them create variety from a limited set?'
         ],
       },
-      intermediate: {
-        title: 'Take It to the Next Level: Wear & Tear Prop Sheet',
-        subtitle: 'Focus: Painting texture weathering, rust, dirt, and material aging.',
+      advanced: {
+        title: 'Advanced 3D Integration: Shader Editor, Render Bake & Photoshop Asset Authoring',
+        subtitle: 'Focus: Prop Wear States — The Procedural-to-Painted Pipeline.',
         sections: [
           {
             heading: 'Overview & Worldbuilding Through-line',
-            body: 'Take the signature prop of your character and paint it in four distinct wear-and-tear states. This showcases how materials age, react to damage, and decay in your world.',
+            body: 'Take the signature prop of your character and tell its life story across four wear-and-tear states. But instead of painting each state from scratch, you\'ll first turn Blender into an asset factory: build procedural materials on your prop, bake out physically meaningful maps, and convert those bakes into a reusable Photoshop library of patterns, brushes, and masks. Then you\'ll assemble all four wear states non-destructively over a single untouched base.\n\nThe point: clean mathematical procedural surfaces from Blender + the warmth of hand-painted overlays in Photoshop, with the bakes deciding where wear is physically allowed to live.',
+          },
+          {
+            heading: 'The Core Idea: Blender Ships Photoshop Three Asset Classes',
+            body: 'Blender\'s procedural shaders and baking pipeline produce three distinct types of assets that become your Photoshop toolkit:',
+            bullets: [
+              'Patterns — Built by baking a procedural shader to a tileable square (Emit bake). Becomes a Define Pattern → Pattern Fill layer in Photoshop. Used to express broad surfaces: rust fields, moss carpets, scratch grain.',
+              'Brushes — Built by baking a single isolated element to a grayscale alpha. Becomes a Define Brush Preset → scatter/jitter stamp. Used to express discrete damage: cracks, dents, moss clumps, energy fissures.',
+              'Mask Maps — Built by baking AO, curvature, and position from the prop. Loaded as selections or layer masks. Used to decide where wear goes — the wear logic.',
+            ],
+            note: 'The mask maps are the lesson. They aren\'t textures — they\'re rules. Curvature (Pointiness) → exposed edges → metal scrape, paint chip, rust onset (the story of handling). Ambient Occlusion → crevices and contact points → grime, moss, damp settling (the story of storage/environment). Z-Position/Height → base vs. top → mud and ground contact below, sun-bleach above (the story of orientation in the world).',
+          },
+          {
+            heading: 'Part A — Blender: Build the Shader and the Asset Library',
+            body: 'This part covers the Blender-side workflow: building procedural wear shaders, baking passes, and creating tileable patterns and stamp brushes.',
+          },
+          {
+            heading: 'A1. Procedural Wear Shader',
+            body: 'Build a node setup in the Shader Editor that defines wear boundaries procedurally:',
+            bullets: [
+              'Use Noise Texture for organic grain and patina. (Blender 5.1 has no standalone Musgrave node — it lives inside Noise Texture under the Type dropdown: fBM, Multifractal, Ridged Multifractal, Hetero Terrain.)',
+              'Use Voronoi for cellular rust pitting and chipped-paint cells.',
+              'Drive everything through Color Ramps to harden the wear boundaries (narrow ramps = crisp edge scraping; soft ramps = gradual patina).',
+              'Mix layers with Mix/MixColor nodes, masked by a Geometry > Pointiness signal so rust and scrape concentrate on exposed edges.',
+            ],
+          },
+          {
+            heading: 'A2. Unwrap and Bake (Cycles)',
+            body: 'Switch the render engine to Cycles (EEVEE baking is limited). UV unwrap the prop, create and assign an image texture node, then bake each pass to its own image. Set a Margin/bleed of a few pixels to avoid UV-seam halos.\n\nBake these passes as separate PNGs:',
+            bullets: [
+              'Diffuse / Base Color — Bake Type: Diffuse, uncheck Direct & Indirect, keep Color only (gives flat base color, no baked lighting).',
+              'Ambient Occlusion — Bake Type: Ambient Occlusion. Your crevice/grime/moss mask.',
+              'Curvature — plug Geometry > Pointiness → ColorRamp (squeeze the ramp around the mid-gray to isolate edges) → Emission, then Bake Type: Emit. Your edge-wear mask. (Pointiness reads flat on low-poly — subdivide the mesh or bake from a high-poly version.)',
+              'Position / Height — Geometry > Position → Separate XYZ → Z → ColorRamp → Emission → Bake Emit. Your top-vs-base mask for sun-bleach and mud.',
+              '(Optional) Normal map for relighting/detail in Photoshop.',
+            ],
+            note: 'The Emit-bake trick: to capture any raw procedural value cleanly (curvature, position, a noise field), plug it into an Emission shader and bake Emit. This bypasses all scene lighting so you get the pure data, not a lit render.',
+          },
+          {
+            heading: 'A3. Build the Tileable Patterns',
+            body: 'On a separate flat plane (UVs filling 0–1), build a procedural rust/moss/scratch material and bake it via the Emit trick to a square image. To make it seamless for a Pattern Fill: run Photoshop\'s Filter > Other > Offset with Wrap Around on, then heal the seam line that appears. (Truly procedural tiling via wrapped coordinates is the advanced route — Offset-and-heal is the dependable classroom method.)',
+          },
+          {
+            heading: 'A4. Build the Stamp Brushes',
+            body: 'Model or procedurally isolate a single wear element — one crack, one moss clump, one dent, one energy fissure — on a black background. Bake its height or AO to a square grayscale image. In Photoshop: desaturate, push contrast with Levels, then Edit > Define Brush Preset. In the Brush Settings panel enable Scattering, Size Jitter, and Angle Jitter so repeated stamps never look cloned.',
+          },
+          {
+            heading: 'Part B — Photoshop: Assemble the Four Wear States Non-Destructively',
+            body: 'Build one master file. The baked Diffuse + AO form the foundation layer that you never paint on directly — every wear state is a group of fills, stamps, and adjustments masked above it.\n\nStandard stack, bottom to top:',
+            numberedSteps: [
+              'Base — baked Diffuse (locked).',
+              'AO — set to Multiply, low opacity, to ground every layer above.',
+              'Wear groups — each is a Pattern Fill (rust/moss/mud) + a layer mask driven by the relevant baked map (Curvature for edge rust; AO + Position for moss and mud) + clipped adjustment layers for color.',
+              'Hand-paint — your custom brushes, clipped to the wear group, adding the warmth and intent the procedural can\'t.',
+              'Energy/glow (ruined state) — emission painting on Screen or Linear Dodge (Add), masked tightly to the cracks.',
+              'Global grade — adjustment layers on top to unify each state\'s mood.',
+            ],
+            note: 'Each of the four states is the same prop shape with a different recombination of these groups — toggle groups on/off to move between states.',
           },
           {
             heading: 'Required Wear States',
             bullets: [
-              'Pristine/Factory State: Brand new, perfect surfaces, specular highlights, clean reflections.',
-              'Oxidized/Weathered State: Rust, surface patina, sun-bleaching, and micro-scratches.',
-              'Overgrown/Organic State: Moss, mud, vine growth, and damp surface characteristics.',
-              'Ruined/Active State: Severe battle damage (cracks, dents) combined with glowing cracked energy or magical leakage.',
+              'Pristine / Factory — perfect surfaces, clean speculars and reflections. Mostly base + light AO; minimal masking.',
+              'Oxidized / Weathered — rust, patina, sun-bleach, micro-scratches. Edge-rust via the Curvature mask; sun-bleach via the Position mask top; scratch brush stamping.',
+              'Overgrown / Organic — moss, mud, vine growth, damp. Moss pattern via AO + Position-base mask; mud at the base; raise roughness, kill speculars.',
+              'Ruined / Active — severe battle damage (cracks, dents) + glowing cracked energy. Crack and dent brushes; energy group on Screen/Add leaking from the fissures.',
             ],
           },
         ],
         submission: [
-          'Photographic material reference board (10-15 reference photos).',
-          'Completed 2×2 prop wear sheet (PNG).',
+          'Photographic material reference board — 10–15 reference photos covering all four states.',
+          'Blender node setup screenshot — the procedural shader mapping in the Shader Editor.',
+          'Baked passes (separate PNGs) — Diffuse, AO, Curvature, Position (Normal optional).',
+          'Custom asset library — at least 2 tileable patterns + 3 stamp brushes derived from your bakes (the .pat / .abr exports or screenshots of them defined).',
+          'Completed 2×2 prop wear sheet (PNG) — all four states, same shape.',
+          'Final illustrative paint-over render (PNG) — your best single state, fully finished.',
         ],
         critiqueQuestions: [
-          'How did you vary your highlights, specular reflections, and surface roughness to distinguish between metal, moss, and energy?',
-          'How does the wear and tear tell a story about the prop’s history—how it was used, where it was kept, or what damaged it?',
-          'What non-destructive layer setups (e.g., masks, adjustment layers) allowed you to paint updates while keeping the original prop shape intact?'
-        ],
-      },
-      advanced: {
-        title: 'Advanced 3D Integration: Shader Editor & Render Bake',
-        subtitle: 'Focus: Designing procedural shaders in Blender and backing them up with Photoshop overlays.',
-        sections: [
-          {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Use Blender\'s Shader Editor to build procedural materials (metal, rust, moss, wear) on your 3D prop. Bake the lighting and Ambient Occlusion (AO) maps, and do the final painting in Photoshop.',
-          },
-          {
-            heading: 'Shader & Bake Workflow',
-            numberedSteps: [
-              'Create a procedural shader setup in Blender using Noise/Musgrave textures mixed with color ramps to define wear boundaries (like edge scraping).',
-              'Unwrap your prop mesh and bake out a clean Ambient Occlusion (AO) pass and Diffuse color map.',
-              'Import the baked textures into Photoshop and paint over them using custom texture overlays and adjustment layers to give it an illustrative, hand-painted finish.',
-            ],
-          },
-        ],
-        submission: [
-          'Node setup screenshot showing your Blender Shader Editor mapping.',
-          'Baked AO and Diffuse passes as separate files (PNG).',
-          'Final illustrative paint-over render (PNG).',
-        ],
-        critiqueQuestions: [
-          'How did you use node configurations in Blender (e.g., mixing noise textures with geometry wear attributes) to target edges and crevices?',
-          'What did the ambient occlusion (AO) pass bring to your Photoshop layer stack, and how did you blend it with hand-painted colors?',
-          'How did you balance the clean, mathematical precision of procedural 3D shaders with the warmth and charm of digital paint-over?'
+          'How did your node configuration (Noise Texture type + Voronoi + Color Ramps, masked by Pointiness) target edges and crevices rather than washing wear evenly across the surface?',
+          'What did the AO and Curvature bakes bring to your Photoshop stack — how did you blend baked masks with hand-painted color, and where did each mask decide placement for you?',
+          'How did you vary highlights, specular reflection, and surface roughness to read metal vs. moss vs. energy as genuinely different materials?',
+          'How does the placement of wear tell the prop\'s story — edges from handling, crevices from where it was kept, base from ground contact, cracks from what damaged it?',
+          'What non-destructive setup (pattern fills, layer masks driven by bakes, clipped adjustment layers, smart objects) let you move between four states while keeping the original shape untouched?',
+          'How did you balance the mathematical precision of procedural 3D shaders with the warmth and charm of digital paint-over — where did each one win?'
         ],
       },
     },
