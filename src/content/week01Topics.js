@@ -231,27 +231,37 @@ Aliasing produces jagged edges on curved or diagonal lines. Anti-aliasing adds r
         heading: 'What value is',
         body: `Value refers to the lightness or darkness of a color. It's one of the three main properties of color, alongside hue (the basic color) and saturation (intensity).
 
-A value scale runs from black to white through every monochromatic gray in between. The average human eye can distinguish somewhere between 30 and 500 variations of value — research is inconsistent on the exact number, but computers render 256 shades and most viewers can perceive at least 200.`,
+A value scale runs from black to white through every monochromatic gray in between. The average human eye can distinguish somewhere between 30 and 500 variations of value — research is inconsistent on the exact number, but computers render 256 shades and most viewers can perceive at least 200.
+
+**Photoshop Value & Color Tools:** Use **Hue/Saturation** (<kbd>Cmd + U</kbd> on Mac, <kbd>Ctrl + U</kbd> on Windows) to drag saturation to zero, allowing you to inspect the pure value structure of an image without the distraction of color. You can also open the **Info Panel** (<kbd>F8</kbd>) to check the exact Grayscale (K%) value of any pixel under your cursor.`,
       },
       {
         heading: 'Color gets the credit, value does the work',
-        body: `Colors are recognized, but values are what have the most impact. An object can be red or blue and still have the same value. The value of any work helps establish contrast — and contrast is what gives an image structure, focus, and emotional weight.`,
+        body: `Colors are recognized, but values are what have the most impact. An object can be red or blue and still have the same value. The value of any work helps establish contrast — and contrast is what gives an image structure, focus, and emotional weight.
+
+**Photoshop Value & Color Tools:** Use **Curves** (<kbd>Cmd + M</kbd> on Mac, <kbd>Ctrl + M</kbd> on Windows) or **Levels** (<kbd>Cmd + L</kbd> on Mac, <kbd>Ctrl + L</kbd> on Windows) to adjust value ranges and verify that your focal points have the strongest contrast. To verify your values non-destructively, create a **Black & White** adjustment layer (<kbd>Cmd + Option + Shift + B</kbd> on Mac, <kbd>Ctrl + Alt + Shift + B</kbd> on Windows) at the top of your stack to toggle grayscale on and off.`,
       },
       {
         heading: 'Value is emotive',
         body: `Dramatic contrasts — bright lights meeting deep shadows — create tension, drama, suspense. Subtle transitions — gentle gradations from light to dark — evoke calmness, serenity, melancholy.
 
-A horror film uses stark contrasts to unsettle. A romantic film uses softer, muted values to feel dreamy. The same logic applies to a painting or a Photoshop composition.`,
+A horror film uses stark contrasts to unsettle. A romantic film uses softer, muted values to feel dreamy. The same logic applies to a painting or a Photoshop composition.
+
+**Photoshop Value & Color Tools:** Sculpt local color temperature and mood using the **Color Balance** tool (<kbd>Cmd + B</kbd> on Mac, <kbd>Ctrl + B</kbd> on Windows) to shift shadows toward cool blues and highlights toward warm yellows. For global color scripts, add a non-destructive **Gradient Map** adjustment layer to map colors directly onto your grayscale value values.`,
       },
       {
         heading: 'Value contrast',
-        body: `Value contrast is the relationship between areas of dark and light. A consistent gray can appear to change value depending on the values around it. When two grays read as the same value, that's low contrast — the image goes flat. High contrast pulls the eye and creates a focal point.`,
+        body: `Value contrast is the relationship between areas of dark and light. A consistent gray can appear to change value depending on the values around it. When two grays read as the same value, that's low contrast — the image goes flat. High contrast pulls the eye and creates a focal point.
+
+**Photoshop Value & Color Tools:** Fine-tune local contrast by steepening the contrast line in **Curves** (<kbd>Cmd + M</kbd> on Mac, <kbd>Ctrl + M</kbd> on Windows) to widen the gap between darks and lights. You can also use the **Dodge Tool** (<kbd>O</kbd>) or **Burn Tool** (<kbd>O</kbd>) to paint light highlights or dark core shadows directly onto your layers to emphasize forms.`,
       },
       {
         heading: 'Composition, gesture, form',
         body: `Composition is how you arrange value across the canvas. Gesture is the directional energy — the implied lines of movement that lead the eye. Form is the illusion of three dimensions, built almost entirely from value transitions: highlight, mid-tone, core shadow, reflected light, cast shadow.
 
-A painting can survive bad color. It cannot survive bad value structure.`,
+A painting can survive bad color. It cannot survive bad value structure.
+
+**Photoshop Value & Color Tools:** Build solid forms using the **Brush Tool** (<kbd>B</kbd>) and **Eraser Tool** (<kbd>E</kbd>) to sculpt your shapes. Regularly check your composition's dynamic range using the histogram in **Levels** (<kbd>Cmd + L</kbd> on Mac, <kbd>Ctrl + L</kbd> on Windows) to ensure your values stretch cleanly from pure black to true white.`,
       },
     ],
   },
