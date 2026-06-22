@@ -331,7 +331,7 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 20px;
 }
 
@@ -2492,5 +2492,24 @@ kbd {
   }
   .concept {
     font-size: 18px;
+  }
+}
+
+/* Responsive Session Splits */
+.session-splits {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .session-splits {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .session-split-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 }

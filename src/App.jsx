@@ -726,7 +726,7 @@ function WeekCard({
           )}
 
           {week.tuesday || week.saturday ? (
-            <div className="session-splits" style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '16px' }}>
+            <div className="session-splits" style={{ marginTop: '16px' }}>
               {week.tuesday && (
                 <div className="session-split-block tuesday-block" style={{ borderLeft: '3px solid #ec4899', paddingLeft: '14px', background: 'rgba(236, 72, 153, 0.07)', borderRadius: '8px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px' }}>
                   <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#db2777', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
