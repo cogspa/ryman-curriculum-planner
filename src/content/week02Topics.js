@@ -291,13 +291,17 @@ The result reads as carved, eroded, or scarred — useful for sci-fi environment
         heading: 'The Importance of Building Color Libraries',
         body: `Digital artists must build their own libraries of color rather than relying on default color pickers or random selection. A cohesive color palette acts as the visual backbone of a project, creating structural unity across characters, props, and environments.
 
-By intentionally gathering colors from photographic references, film stills, or master paintings, you establish a curated gamut. This ensures your color choices carry specific intent, mood, and style, rather than feeling disjointed or arbitrary. A personal color library is just as valuable to a digital painter as a custom brush library.`,
+By intentionally gathering colors from photographic references, film stills, or master paintings, you establish a curated gamut. This ensures your color choices carry specific intent, mood, and style, rather than feeling disjointed or arbitrary. A personal color library is just as valuable to a digital painter as a custom brush library.
+
+**Photoshop Value & Color Tools:** When building these libraries, Photoshop provides several key tools to refine and adjust colors after extraction. You can adjust the overall color cast using **Color Balance** (**Cmd + B** on Mac, **Ctrl + B** on Windows) or target specific hues using the **Hue/Saturation** tool (**Cmd + U** on Mac, **Ctrl + U** on Windows) to shift the mood of your palette.`,
       },
       {
         heading: 'The Adobe Swatch Exchange (.ASE) Format',
         body: `The .ASE (Adobe Swatch Exchange) file format is an industry standard for sharing color libraries across various graphics programs (including Photoshop, Illustrator, and InDesign).
 
-ASE files encode color data—primarily in RGB, CMYK, or Grayscale color spaces—as binary data blocks, grouping swatches into named folders. By exporting palettes as .ASE files, you can seamlessly load your curated color harmonies directly into your software's Swatches palette, ensuring absolute color consistency across your working files.`,
+ASE files encode color data—primarily in RGB, CMYK, or Grayscale color spaces—as binary data blocks, grouping swatches into named folders. By exporting palettes as .ASE files, you can seamlessly load your curated color harmonies directly into your software's Swatches palette, ensuring absolute color consistency across your working files.
+
+**Photoshop Value & Color Tools:** Before exporting your swatches to ASE, you can analyze and tweak individual swatch values. Use **Levels** (**Cmd + L** on Mac, **Ctrl + L** on Windows) or **Curves** (**Cmd + M** on Mac, **Ctrl + M** on Windows) to verify that your color values have a wide enough range (from dark shadows to bright highlights) before lock-in.`,
       },
       {
         heading: 'Efficiency: Small Palettes for Big Lighting',
@@ -308,11 +312,15 @@ By limiting your palette, you force yourself to establish clear lighting relatio
 • **Shadow Swatch:** defines the ambient fill and local color in shadow.
 • **Transition/Haze Swatch:** defines the atmospheric perspective (objects becoming cooler and lower contrast as they recede into the distance).
 
-This tight color range creates a strong color script, unifying the composition and selling the illusion of a single, cohesive light source wrapping around the forms.`,
+This tight color range creates a strong color script, unifying the composition and selling the illusion of a single, cohesive light source wrapping around the forms.
+
+**Photoshop Value & Color Tools:** To test how your limited palette holds up under different lighting conditions, you can use **Non-destructive Adjustment Layers** (like **Hue/Saturation** or **Curves** adjustment layers, accessible at the bottom of the Layers Panel). This allows you to check values by quickly desaturating your canvas (drag saturation to zero) or mapping your small palette across a grayscale composition to see how values hold up.`,
       },
       {
         heading: 'SwatchForge Interactive Tool',
-        body: `Use the SwatchForge tool below to extract color palettes directly from reference images. You can drop or paste any image, choose auto-extraction via the median-cut algorithm, or use the eyedropper to select exact pixel values, then export your palette directly as an Adobe .ase file.`,
+        body: `Use the SwatchForge tool below to extract color palettes directly from reference images. You can drop or paste any image, choose auto-extraction via the median-cut algorithm, or use the eyedropper to select exact pixel values, then export your palette directly as an Adobe .ase file.
+
+**Photoshop Value & Color Tools:** Once you extract your colors, you can import them into Photoshop. From there, you can apply **Curves** (**Cmd + M** on Mac, **Ctrl + M** on Windows) to dynamically compress or expand the tonal range of your painting to match your new swatches.`,
       },
     ],
   },
