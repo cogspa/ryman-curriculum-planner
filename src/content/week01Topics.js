@@ -157,6 +157,10 @@ The same basic idea — breaking an image into small, editable units of informat
     pccSources: ['Elements of Design', 'Principles of Design', 'Principles of Design-2'],
     sections: [
       {
+        heading: 'The Language of Digital Graphics',
+        body: `Computer graphics developed from the same visual building blocks artists have always used: points, lines, shapes, color, form, and time. In digital tools, these elements become both visual and mathematical. A point may be a single pixel of light on a screen or a Bézier anchor point that controls a vector path. Points connect to create lines—either mathematically precise vector curves or the visual illusion of a line created from anti-aliased pixels. Lines enclose shapes; shapes can be painted by hand, constructed with vector mathematics, or assembled into the tessellated faces of a 3D model. Artists can then use light, color, perspective, and texture to create the illusion of dimensional form, or build that form directly in three-dimensional space. Once these elements are organized over time, they can also move, transform, and become animation. Understanding the elements of design therefore means understanding both the foundations of visual art and the underlying language of computer graphics.`,
+      },
+      {
         heading: 'The Elements of Design',
         body: `The elements are the raw vocabulary — the things you put on the canvas:
  
