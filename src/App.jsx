@@ -1110,7 +1110,7 @@ export default function App() {
   const visibleWeeks = useMemo(() => {
     return weeks.filter(w => {
       if (role === 'admin') return true;
-      return isWeekReleased(w.entry.week, w.tuesday);
+      return isWeekReleased(w.entry.week);
     });
   }, [weeks, role]);
 
@@ -1244,7 +1244,7 @@ export default function App() {
               const weekData = weeks.find(w => w.entry.week === wk);
               if (!weekData) return null;
               
-              const isReleased = role === 'admin' || isWeekReleased(wk, weekData.tuesday);
+              const isReleased = role === 'admin' || isWeekReleased(wk);
               if (!isReleased) return null;
               
               return (
@@ -1367,7 +1367,7 @@ export default function App() {
                 { num: 6, name: 'Capstone Pitch Deck', wk: 10 }
               ].filter(asg => {
                 const weekData = weeks.find(w => w.entry.week === asg.wk);
-                return !weekData || role === 'admin' || isWeekReleased(asg.wk, weekData.tuesday);
+                return !weekData || role === 'admin' || isWeekReleased(asg.wk);
               }).map((asg) => (
                 <Link 
                   key={asg.num}
