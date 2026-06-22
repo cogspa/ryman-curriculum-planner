@@ -159,16 +159,15 @@ The same basic idea — breaking an image into small, editable units of informat
       {
         heading: 'The Elements of Design',
         body: `The elements are the raw vocabulary — the things you put on the canvas:
-
-• <strong>Line</strong> — <em>Line Tool (U)</em> · Brush Tool (B) · Pen Tool (P) → Stroke Path
-• <strong>Color</strong> — <em>Color Picker (foreground swatch click)</em> · Swatches panel (Window → Swatches) · Eyedropper (I) · Hue/Saturation (⌘U)
-• <strong>Shape</strong> — <em>Shape Tool (U)</em>: Rectangle, Ellipse, Polygon, Custom Shape · Pen Tool (P) for custom vector shapes
-• <strong>Space</strong> — <em>Canvas Size (⌘⌥C)</em> · Crop Tool (C) · Transform (⌘T) to scale elements and create depth
-• <strong>Form</strong> — <em>Dodge (O) / Burn (O)</em> to sculpt light and shadow · Layer Styles → Bevel &amp; Emboss · Gradient Tool (G)
-• <strong>Unity/Harmony</strong> — <em>Adjustment Layers</em> (Layer → New Adjustment Layer) · Color Lookup Tables · Gradient Map (⌘⌥G via adjustment)
-• <strong>Balance</strong> — <em>Guides (⌘R for rulers, drag to set)</em> · View → New Guide Layout · Symmetry mode (paint symmetry butterfly icon)
-
-For painting and concept art, <strong>shape</strong> and <strong>line</strong> are the foundation of any composition you create.`,
+ 
+• <strong>Points</strong> — A single pixel mark made with the <em>Brush Tool (B)</em> or vector anchor points.
+• <strong>Lines</strong> — <em>Line Tool (U)</em> · Brush Tool (B) · Pen Tool (P) → Stroke Path.
+• <strong>Shapes</strong> — <em>Shape Tool (U)</em>: Rectangle, Ellipse, Polygon, Custom Shape · Pen Tool (P) for custom vector shapes.
+• <strong>Color</strong> — <em>Color Picker (foreground swatch click)</em> · Swatches panel (Window → Swatches) · Eyedropper (I) · Hue/Saturation (⌘U).
+• <strong>Form (Dimension)</strong> — <em>Dodge (O) / Burn (O)</em> to sculpt light and shadow · Layer Styles → Bevel &amp; Emboss · Gradient Tool (G).
+• <strong>Time</strong> — <em>Timeline panel (Window → Timeline)</em> to sequence layers and create animatics or frame animations.
+ 
+For painting and concept art, <strong>points</strong>, <strong>lines</strong>, and <strong>shapes</strong> are the foundation of any composition you create.`,
       },
       {
         heading: 'The Principles of Design',
