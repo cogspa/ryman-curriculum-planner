@@ -458,6 +458,20 @@ export default function AssignmentPage() {
                             {parseInlineMarkdown(b.subIntro)}
                           </p>
                         )}
+                        {b.subbullets && (
+                          <ul style={{
+                            paddingLeft: '20px',
+                            margin: '8px 0 8px 0',
+                            fontSize: '13.5px',
+                            color: '#334155',
+                            lineHeight: '1.6',
+                            listStyleType: 'disc'
+                          }}>
+                            {b.subbullets.map((bullet, bi) => (
+                              <li key={bi} style={{ marginBottom: '6px' }}>{parseInlineMarkdown(bullet)}</li>
+                            ))}
+                          </ul>
+                        )}
                         {b.substeps && (
                           <ol style={{
                             paddingLeft: '20px',
@@ -478,8 +492,100 @@ export default function AssignmentPage() {
               )}
 
               {section.numberedSteps && (
-                <ol className="phase-steps">
-                  {section.numberedSteps.map((s, i) => <li key={i}>{parseInlineMarkdown(s)}</li>)}
+                <ol className="phase-steps" start={section.start}>
+                  {section.numberedSteps.map((s, i) => {
+                    if (typeof s === 'string') {
+                      return <li key={i}>{parseInlineMarkdown(s)}</li>;
+                    }
+                    return (
+                      <li key={i}>
+                        {parseInlineMarkdown(s.text)}
+                        {s.imageUrl && (
+                          <div style={{
+                            marginTop: '14px',
+                            marginBottom: '8px',
+                            background: '#fff',
+                            borderRadius: '10px',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
+                            overflow: 'hidden',
+                            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+                            maxWidth: '480px'
+                          }}>
+                            <div style={{
+                              width: '100%',
+                              aspectRatio: '16 / 10',
+                              overflow: 'hidden',
+                              background: '#f1f0ec'
+                            }}>
+                              <img
+                                src={s.imageUrl}
+                                alt={s.imageCaption || s.text}
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                  objectFit: 'cover',
+                                  display: 'block'
+                                }}
+                              />
+                            </div>
+                            {s.imageCaption && (
+                              <p style={{
+                                fontSize: '12px',
+                                fontWeight: '600',
+                                color: 'var(--ink-mid, #64748b)',
+                                textAlign: 'center',
+                                padding: '10px 16px',
+                                margin: 0,
+                                fontFamily: 'var(--font-sans, sans-serif)',
+                                fontStyle: 'italic'
+                              }}>
+                                {s.imageCaption}
+                              </p>
+                            )}
+                          </div>
+                        )}
+                        {s.subIntro && (
+                          <p style={{
+                            marginTop: '14px',
+                            marginBottom: '8px',
+                            fontSize: '14px',
+                            color: '#334155',
+                            lineHeight: '1.6',
+                            fontStyle: 'italic'
+                          }}>
+                            {parseInlineMarkdown(s.subIntro)}
+                          </p>
+                        )}
+                        {s.subbullets && (
+                          <ul style={{
+                            paddingLeft: '20px',
+                            margin: '8px 0 8px 0',
+                            fontSize: '13.5px',
+                            color: '#334155',
+                            lineHeight: '1.6',
+                            listStyleType: 'disc'
+                          }}>
+                            {s.subbullets.map((bullet, bi) => (
+                              <li key={bi} style={{ marginBottom: '6px' }}>{parseInlineMarkdown(bullet)}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {s.substeps && (
+                          <ol style={{
+                            paddingLeft: '20px',
+                            margin: '8px 0 4px 0',
+                            fontSize: '13.5px',
+                            color: '#334155',
+                            lineHeight: '1.6'
+                          }}>
+                            {s.substeps.map((step, si) => (
+                              <li key={si} style={{ marginBottom: '8px' }}>{parseInlineMarkdown(step)}</li>
+                            ))}
+                          </ol>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ol>
               )}
 

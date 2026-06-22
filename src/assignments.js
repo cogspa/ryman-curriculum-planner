@@ -109,31 +109,75 @@ export const assignments = {
         ],
       },
       intermediate: {
-        title: 'Take It to the Next Level: Style Adaptability',
-        subtitle: 'Focus: Adapting a character or prop design to match varying studio art directions.',
+        title: 'Assignment 1 — Part 2: Scene Integration',
+        subtitle: 'Focus: Combining your blocking methods, working from photo reference, and moving from value to color through lighting.',
         sections: [
           {
             heading: 'Overview & Worldbuilding Through-line',
-            body: 'Take your character or signature prop design and render it in two completely distinct commercial styles. This is a crucial skill for concept artists who must adapt to style guides.',
+            body: 'In Part 1, you translated a traditional sketch into a digital character or prop and explored three different blocking approaches. That character or prop is the seed of your world. In Part 2, you will plant it in three different environments.\n\nYou will create **three scenes**, each built from a different photographic reference, and place your IP character or prop into each one. This is where the methods from Part 1 stop being separate exercises and start working together. The goal is **not** a finished photoreal scene — it is to capture the *essence* of the world you are developing. Keep everything loose and sketchy. The viewer\'s imagination fills the gaps.',
           },
           {
-            heading: 'Style Options (Choose Two)',
+            heading: 'Exercise Guidelines',
+            body: 'Gather three different photographic references — three distinct environments, moods, or settings your character could inhabit. For each one, build a scene by working through the process below.',
+          },
+          {
+            heading: 'Process',
+            numberedSteps: [
+              '**Block out and sketch the scene.**\nStart by combining the techniques from Part 1. You can sketch freehand or block out background elements with the Polygonal Lasso — or both in the same scene. Use straight-line blocking, the sketch approach, and lasso blocks wherever they fit. Establish the big forms first: where the character sits, where the major masses of the environment are.',
+              '**Refine the forms.**\nOnce the main forms are determined, sketch further and tighten things up. You are not chasing detail — you are finding the structure and the shape relationships.',
+              '**Organize with layers and your Library.**\nUse layers to keep your scene readable (background, midground, foreground, character, lighting). Use the CC Library to store and reuse assets across your three scenes — your character, props, or any shape you want to carry forward.',
+              '**Think about shape language.**\nAs you block and refine, pay attention to the *shape language* of your forms — the angles, curves, and silhouettes that define the feel of your world. If a shape becomes interesting or reusable, save it to the Library too.',
+              '**Keep brushes simple.**\nWe have not covered custom brushes yet, so stay with the basics. Don\'t get distracted by texture or fancy strokes — the focus right now is structure, value, and light.',
+            ],
+          },
+          {
+            heading: 'From Value to Color',
+            start: 6,
+            numberedSteps: [
+              '**Study the light in your reference.**\nLook at your photo reference and read the light: where it\'s coming from, the direction it travels, and how that translates into color. This observation is what makes the next steps believable.',
+              '**Block everything out in greyscale.**\nGet the full scene working in value first — lights and darks, no color. A scene that reads in greyscale will read in color.',
+              '**Build a small palette and paint the light.**\nOnce the greyscale is in place, build a focused color palette of **4 to 6 colors** and paint the lighting over your value blockout.',
+              {
+                text: '**Apply the lighting with blend modes.**\nFor now, use layer blend modes to apply lighting rather than painting it manually — it\'s faster and keeps you flexible. My recommended starting points:',
+                subbullets: [
+                  '**Linear Light** — for your darker colors (shadows)',
+                  '**Pin Light** — for your lighter colors (highlights)',
+                  '**Overlay** — for your mid-tones'
+                ],
+                subIntro: 'Put your lighting/color passes on their own layers so you can dial intensity and swap modes freely.'
+              }
+            ],
+          },
+          {
+            heading: 'Working With Your Reference',
+            body: 'A few ways to keep your photo reference visible while you paint:',
             bullets: [
-              'Flat Graphic Style: Hard edges, bold graphic shapes, minimal shading, heavy focus on silhouette (e.g., Samurai Jack style).',
-              'Painterly / Visual Dev Style: Rich textures, soft value transitions, backlit lighting effects (e.g., Disney/Pixar style).',
-              'Line & Ink Style: Dynamic comic inks with flat color fills (e.g., French-Belgian comic style).',
+              'Place the reference on a **separate artboard** alongside your canvas.',
+              'Use **PureRef** (note: this is now a paid app).',
+              'Or drop the reference on the **base layer** and toggle layers on and off to compare against it.',
+            ],
+          },
+          {
+            heading: 'Recommended File Setup',
+            bullets: [
+              '**Reference layer (bottom):** Your photographic reference, set to a low opacity, on its own toggleable layer.',
+              '**Greyscale blockout:** Background, midground, foreground, and character forms on organized layers.',
+              '**Lighting / color passes (top):** Separate layers set to your recommended blend modes.',
+              '**Library:** Character, props, and any reusable shapes saved for use across all three scenes.',
             ],
           },
         ],
         submission: [
-          'Core sketch/underdrawing of the character or prop.',
-          'Version A (Style 1) render as a PNG.',
-          'Version B (Style 2) render as a PNG.',
+          'The three photographic references used (one per scene).',
+          'Scene 1 — finished loose color study as a PNG.',
+          'Scene 2 — finished loose color study as a PNG.',
+          'Scene 3 — finished loose color study as a PNG.',
         ],
         critiqueQuestions: [
-          'What key visual rules (e.g., shape language, linework, value ranges) did you establish to distinguish your two chosen styles?',
-          'How did changing the artistic style shift the personality of the character or the mood of the prop?',
-          'What workflow strategies did you use to maintain consistent anatomical or mechanical proportions across both renders?'
+          'How did combining the Part 1 methods change the way you approached building a full scene?',
+          'What did studying the light in your reference teach you about translating value into color?',
+          'How did the blend-mode lighting workflow affect the mood of each scene, and which mode gave you the most useful result?',
+          'Looking at all three scenes together, what shape language is starting to define your world?',
         ],
       },
       advanced: {
