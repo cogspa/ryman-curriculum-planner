@@ -4,6 +4,27 @@ import { TOPIC_DETAILS, topicList } from '../content/week01Topics.js';
 import PixelWaveSample from './PixelWaveSample.jsx';
 import TopicNav from './TopicNav.jsx';
 
+function ToolRow({ tool }) {
+  const sameKeys = tool.mac === tool.win;
+  const Cap = ({ children }) => children === '—' ? null : <kbd className="kc">{children}</kbd>;
+  return (
+    <div className="toolrow">
+      <div className="toolhead">
+        <span className="toolname">{tool.name}</span>
+        <span className="keys">
+          {tool.mac !== '—' && (
+            <span className="keygrp">{!sameKeys && <span className="oslabel">mac</span>}<Cap>{tool.mac}</Cap></span>
+          )}
+          {tool.win !== '—' && !sameKeys && (
+            <span className="keygrp"><span className="oslabel">win</span><Cap>{tool.win}</Cap></span>
+          )}
+        </span>
+      </div>
+      <p className="tooldesc">{tool.desc}</p>
+    </div>
+  );
+}
+
 export default function Week01TopicDetail() {
   const { topicKey } = useParams();
   const topic = TOPIC_DETAILS[topicKey];
@@ -32,6 +53,8 @@ export default function Week01TopicDetail() {
     );
   }
 
+  const isCustomTopic = topicKey === 'value-composition-gesture-form';
+
   return (
     <div style={containerStyle}>
       <Link to="/week/01" style={backButtonStyle}>
@@ -41,45 +64,66 @@ export default function Week01TopicDetail() {
       <h1 style={detailTitleStyle}>{topic.title}</h1>
       
       <div style={sourceTagStyle}>
-        Adapted from PCC DMA 12: {topic.pccSources.join(' · ')}
+        {topic.sourceEyebrow ? topic.sourceEyebrow : `Adapted from PCC DMA 12: ${topic.pccSources?.join(' · ')}`}
       </div>
 
-      {topic.sections.map((section, i) => (
-        <section key={i} style={sectionStyle}>
-          <h2 style={sectionHeadingStyle}>{section.heading}</h2>
-          <div style={sectionBodyStyle} dangerouslySetInnerHTML={{ __html: section.body.replace(/\n/g, '<br/>') }} />
-          {section.videoUrl && (
-            <div style={{ margin: '24px 0 8px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #d4c9a8' }}>
-              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
-                <iframe
-                  src={section.videoUrl}
-                  title={section.videoCaption || section.heading}
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+      {isCustomTopic ? (
+        topic.sections.map((section, i) => (
+          <section key={i} className="sec">
+            <h2 className="sechead">
+              <span className="secnum">{String(i + 1).padStart(2, '0')}</span>
+              {section.heading}
+            </h2>
+            <p className="concept">{section.concept}</p>
+            <p className="bridge">{section.bridge}</p>
+            <div className="panel">
+              <div className="panellabel">In Photoshop</div>
+              <div className="tools">
+                {section.tools.map((t) => (
+                  <ToolRow key={t.name} tool={t} />
+                ))}
               </div>
-              {section.videoCaption && (
-                <p style={{ fontSize: '11px', color: '#8b3a2f', padding: '8px 12px', margin: 0, fontStyle: 'italic', fontFamily: 'Menlo, monospace', background: 'rgba(0,0,0,0.02)' }}>{section.videoCaption}</p>
-              )}
             </div>
-          )}
-          {section.imageUrl && (
-            <div style={{ margin: '20px 0', textAlign: 'center' }}>
-              <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '6px', border: '1px solid #d4c9a8' }} />
-              {section.imageCaption && (
-                <p style={{ fontSize: '11px', color: '#8b3a2f', marginTop: '6px', fontStyle: 'italic', fontFamily: 'Menlo, monospace' }}>{section.imageCaption}</p>
-              )}
-            </div>
-          )}
-          {/* Embed the interactive pixel wave sampler after the first section on the canvas page */}
-          {topicKey === 'digital-vs-physical-canvas' && i === 0 && (
-            <div style={{ margin: '24px 0 8px', padding: '20px 24px', background: 'rgba(0,0,0,0.02)', borderRadius: '8px', border: '1px solid #d4c9a8' }}>
-              <PixelWaveSample />
-            </div>
-          )}
-        </section>
-      ))}
+          </section>
+        ))
+      ) : (
+        topic.sections.map((section, i) => (
+          <section key={i} style={sectionStyle}>
+            <h2 style={sectionHeadingStyle}>{section.heading}</h2>
+            <div style={sectionBodyStyle} dangerouslySetInnerHTML={{ __html: section.body.replace(/\n/g, '<br/>') }} />
+            {section.videoUrl && (
+              <div style={{ margin: '24px 0 8px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #d4c9a8' }}>
+                <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+                  <iframe
+                    src={section.videoUrl}
+                    title={section.videoCaption || section.heading}
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                {section.videoCaption && (
+                  <p style={{ fontSize: '11px', color: '#8b3a2f', padding: '8px 12px', margin: 0, fontStyle: 'italic', fontFamily: 'Menlo, monospace', background: 'rgba(0,0,0,0.02)' }}>{section.videoCaption}</p>
+                )}
+              </div>
+            )}
+            {section.imageUrl && (
+              <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '6px', border: '1px solid #d4c9a8' }} />
+                {section.imageCaption && (
+                  <p style={{ fontSize: '11px', color: '#8b3a2f', marginTop: '6px', fontStyle: 'italic', fontFamily: 'Menlo, monospace' }}>{section.imageCaption}</p>
+                )}
+              </div>
+            )}
+            {/* Embed the interactive pixel wave sampler after the first section on the canvas page */}
+            {topicKey === 'digital-vs-physical-canvas' && i === 0 && (
+              <div style={{ margin: '24px 0 8px', padding: '20px 24px', background: 'rgba(0,0,0,0.02)', borderRadius: '8px', border: '1px solid #d4c9a8' }}>
+                <PixelWaveSample />
+              </div>
+            )}
+          </section>
+        ))
+      )}
 
       <TopicNav topicList={topicList} topicKey={topicKey} weekNum="01" />
     </div>
