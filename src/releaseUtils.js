@@ -1,0 +1,42 @@
+import { config } from './curriculum.js';
+
+function parseLocal(str) {
+  const [y, m, d] = str.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+function addDays(date, days) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return d;
+}
+
+function findTuesdayOnOrAfter(date) {
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = (2 - day + 7) % 7;
+  d.setDate(d.getDate() + diff);
+  return d;
+}
+
+export function getWeekMonday(weekNum, startDateStr) {
+  const startDate = startDateStr || localStorage.getItem('cp-start-date') || config.startDate;
+  const start = parseLocal(startDate);
+  const firstTue = findTuesdayOnOrAfter(start);
+  const tue = addDays(firstTue, (weekNum - 1) * 7);
+  const monday = new Date(tue);
+  monday.setDate(monday.getDate() - 1);
+  monday.setHours(0, 0, 0, 0);
+  return monday;
+}
+
+export function isWeekReleased(weekNum, startDateStr) {
+  const role = localStorage.getItem('cp-auth-role') || 'student';
+  if (role === 'admin') return true;
+  
+  const monday = getWeekMonday(weekNum, startDateStr);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  return today >= monday;
+}

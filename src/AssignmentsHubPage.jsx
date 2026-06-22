@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { assignments } from './assignments.js';
+import { isWeekReleased } from './releaseUtils.js';
 
 export default function AssignmentsHubPage() {
-  const gradedWeeks = [1, 3, 5, 7, 9, 10];
+  const role = localStorage.getItem('cp-auth-role') || 'student';
+  const gradedWeeks = [1, 3, 5, 7, 9, 10].filter((wk) => {
+    return role === 'admin' || isWeekReleased(wk);
+  });
 
   return (
     <div className="app">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { assignments } from './assignments.js';
+import { isWeekReleased } from './releaseUtils.js';
 
 function parseMarkdownLinks(text) {
   if (typeof text !== 'string') return text;
@@ -150,7 +151,10 @@ export default function AssignmentPage() {
             paddingBottom: '16px'
           }}>
             <span style={{ color: '#64748b', fontWeight: 'bold', marginRight: '6px' }}>All Assignments:</span>
-            {[1, 3, 5, 7, 9, 10].map((wk) => {
+            {[1, 3, 5, 7, 9, 10].filter(wk => {
+              const role = localStorage.getItem('cp-auth-role') || 'student';
+              return role === 'admin' || isWeekReleased(wk);
+            }).map((wk) => {
               const isActive = Number(week) === wk;
               return (
                 <Link

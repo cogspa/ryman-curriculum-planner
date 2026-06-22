@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { curriculum, config, changelog } from './curriculum.js';
 import { assignments } from './assignments.js';
 import { supabase } from './supabaseClient.js';
+import { isWeekReleased } from './releaseUtils.js';
 import {
   loadLocalCurriculum,
   saveLocalCurriculum,
@@ -101,62 +102,6 @@ function saveNote(weekNum, value) {
 
 const AUTH_KEY = 'cp-auth-session';
 
-function LoginGate({ children }) {
-  const [authed, setAuthed] = useState(() => {
-    try { return localStorage.getItem(AUTH_KEY) === 'true'; } catch { return false; }
-  });
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (username === 'RYMAN' && password === 'pLAtform100!') {
-      setAuthed(true);
-      try { localStorage.setItem(AUTH_KEY, 'true'); } catch {}
-    } else {
-      setError('Invalid credentials');
-      setTimeout(() => setError(''), 2500);
-    }
-  }
-
-  function handleLogout() {
-    setAuthed(false);
-    try { localStorage.removeItem(AUTH_KEY); } catch {}
-  }
-
-  if (authed) return <>{children(handleLogout)}</>;
-
-  return (
-    <div className="login-gate">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <p className="login-eyebrow">2026 · 12-week program</p>
-        <h1 className="login-title">Ryman Arts pLAtform</h1>
-        <p className="login-subtitle">Curriculum Planner</p>
-        <div className="login-fields">
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            autoComplete="username"
-            autoFocus
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-          />
-        </div>
-        <button type="submit" className="login-btn">Enter</button>
-        {error && <p className="login-error">{error}</p>}
-      </form>
-    </div>
-  );
-}
-
 // ─── countdown ──────────────────────────────────────────────────────────────
 
 const SYLLABUS_DEADLINE = new Date('2026-06-15T23:59:59');
@@ -241,6 +186,7 @@ function ChangelogSection() {
 }
 
 function Header({ startDate, setStartDate, totalWeeks }) {
+  const role = localStorage.getItem('cp-auth-role') || 'student';
   return (
     <header className="header">
       <div className="header-left">
@@ -260,14 +206,16 @@ function Header({ startDate, setStartDate, totalWeeks }) {
         </p>
       </div>
       <div className="header-right">
-        <label className="date-field">
-          <span>First Tuesday</span>
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
-        </label>
+        {role === 'admin' && (
+          <label className="date-field">
+            <span>First Tuesday</span>
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+          </label>
+        )}
         <div className="counter">
           <span className="counter-num">12</span>
           <span className="counter-label">weeks</span>
@@ -1157,333 +1105,369 @@ export default function App() {
     }
   };
 
+  const role = localStorage.getItem('cp-auth-role') || 'student';
+
+  const visibleWeeks = useMemo(() => {
+    return weeks.filter(w => {
+      if (role === 'admin') return true;
+      return isWeekReleased(w.entry.week, w.tuesday);
+    });
+  }, [weeks, role]);
+
+  const handleLogout = () => {
+    try {
+      localStorage.removeItem('cp-auth-session');
+      localStorage.removeItem('cp-auth-role');
+    } catch {}
+    window.location.reload();
+  };
+
   return (
-    <LoginGate>
-      {(handleLogout) => (
-        <div className="app">
-          <CountdownBanner />
-          <ChangelogBanner />
-          <div className="container">
-            
-            {/* Admin Control Bar */}
-            {adminMode && (
-              <div className="admin-control-bar">
-                <div className="admin-status">
-                  <span className="admin-status-dot"></span>
-                  <span>🛠️ Admin Edit Mode active</span>
-                  {saveStatus && <span style={{ opacity: 0.8, fontWeight: 'normal', textTransform: 'lowercase', marginLeft: '8px' }}>({saveStatus})</span>}
-                </div>
-                <div className="admin-actions">
-                  <Link to="/syllabus" className="admin-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
-                    Manage Versions
-                  </Link>
-                  <button className="admin-btn" onClick={() => setIsExportOpen(true)}>
-                    Export JSON code
-                  </button>
-                  <button className="admin-btn-secondary" onClick={() => setAdminMode(false)}>
-                    Close Editor
-                  </button>
-                  <button className="admin-btn-danger" onClick={handleReset}>
-                    Reset to Default
-                  </button>
-                </div>
-              </div>
-            )}
-
-            <Header
-              startDate={startDate}
-              setStartDate={setStartDate}
-              totalWeeks={weeks.length}
-            />
-
-            <div className="faq-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(5, 150, 105, 0.05)', border: '1px solid rgba(5, 150, 105, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '12px', marginTop: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '18px' }}>🙋‍♂️</span>
-                <span style={{ fontSize: '13px', fontWeight: '500', color: '#047857' }}>
-                  <strong>Class FAQ:</strong> Answers to questions regarding Zoom sessions and on-site classes at Reveal Studios in Glendale.
-                </span>
-              </div>
-              <Link 
-                to="/faq" 
-                style={{ textDecoration: 'none', background: '#059669', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
-              >
-                CLASS FAQ & Reveal Guide →
-              </Link>
+    <div className="app">
+      <CountdownBanner />
+      {role === 'admin' && <ChangelogBanner />}
+      <div className="container">
+        
+        {/* Admin Control Bar */}
+        {adminMode && role === 'admin' && (
+          <div className="admin-control-bar">
+            <div className="admin-status">
+              <span className="admin-status-dot"></span>
+              <span>🛠️ Admin Edit Mode active</span>
+              {saveStatus && <span style={{ opacity: 0.8, fontWeight: 'normal', textTransform: 'lowercase', marginLeft: '8px' }}>({saveStatus})</span>}
             </div>
-
-            <div className="speakers-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(6, 182, 212, 0.05)', border: '1px solid rgba(6, 182, 212, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '18px' }}>🎤</span>
-                <span style={{ fontSize: '13px', fontWeight: '500', color: '#0891b2' }}>
-                  <strong>Speakers:</strong> Curated list of prospective guest lecturers and industry leaders for zoom and studio tracks.
-                </span>
-              </div>
-              <Link 
-                to="/speakers" 
-                style={{ textDecoration: 'none', background: '#06b6d4', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
-              >
-                POTENTIAL SPEAKER LIST →
+            <div className="admin-actions">
+              <Link to="/syllabus" className="admin-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+                Manage Versions
               </Link>
+              <button className="admin-btn" onClick={() => setIsExportOpen(true)}>
+                Export JSON code
+              </button>
+              <button className="admin-btn-secondary" onClick={() => setAdminMode(false)}>
+                Close Editor
+              </button>
+              <button className="admin-btn-danger" onClick={handleReset}>
+                Reset to Default
+              </button>
             </div>
+          </div>
+        )}
 
-            <div className="roster-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(124, 58, 237, 0.05)', border: '1px solid rgba(124, 58, 237, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '18px' }}>📋</span>
-                <span style={{ fontSize: '13px', fontWeight: '500', color: '#6d28d9' }}>
-                  <strong>Roster:</strong> Final class list roster of the 14 selected candidates with contact info and goals.
-                </span>
-              </div>
-              <Link 
-                to="/roster" 
-                style={{ textDecoration: 'none', background: '#7c3aed', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
-              >
-                FINAL CLASS LIST ROSTER →
-              </Link>
+        <Header
+          startDate={startDate}
+          setStartDate={setStartDate}
+          totalWeeks={weeks.length}
+        />
+
+        {role === 'admin' && (
+          <div className="faq-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(5, 150, 105, 0.05)', border: '1px solid rgba(5, 150, 105, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '12px', marginTop: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>🙋‍♂️</span>
+              <span style={{ fontSize: '13px', fontWeight: '500', color: '#047857' }}>
+                <strong>Class FAQ:</strong> Answers to questions regarding Zoom sessions and on-site classes at Reveal Studios in Glendale.
+              </span>
             </div>
+            <Link 
+              to="/faq" 
+              style={{ textDecoration: 'none', background: '#059669', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+            >
+              CLASS FAQ & Reveal Guide →
+            </Link>
+          </div>
+        )}
 
-            <div className="mentorship-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(244, 63, 94, 0.05)', border: '1px solid rgba(244, 63, 94, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '18px' }}>🤝</span>
-                <span style={{ fontSize: '13px', fontWeight: '500', color: '#e11d48' }}>
-                  <strong>Mentorship Pairs:</strong> Dedicated layout of designated alumni mentors matched to cohort candidates.
-                </span>
-              </div>
-              <Link 
-                to="/mentorship" 
-                style={{ textDecoration: 'none', background: '#f43f5e', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
-              >
-                VIEW MENTORSHIP ASSIGNMENTS →
-              </Link>
+        {role === 'admin' && (
+          <div className="speakers-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(6, 182, 212, 0.05)', border: '1px solid rgba(6, 182, 212, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>🎤</span>
+              <span style={{ fontSize: '13px', fontWeight: '500', color: '#0891b2' }}>
+                <strong>Speakers:</strong> Curated list of prospective guest lecturers and industry leaders for zoom and studio tracks.
+              </span>
             </div>
+            <Link 
+              to="/speakers" 
+              style={{ textDecoration: 'none', background: '#06b6d4', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+            >
+              POTENTIAL SPEAKER LIST →
+            </Link>
+          </div>
+        )}
 
-            <div className="assignments-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(219, 39, 119, 0.05)', border: '1px solid rgba(219, 39, 119, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '18px' }}>📝</span>
-                <span style={{ fontSize: '13px', fontWeight: '500', color: '#db2777' }}>
-                  <strong>Saturday Assignments:</strong> Access detailed guides, track options, and points distribution for the six graded milestones.
-                </span>
-              </div>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+        <div className="roster-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(124, 58, 237, 0.05)', border: '1px solid rgba(124, 58, 237, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px', marginTop: role === 'student' ? '16px' : '0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '18px' }}>📋</span>
+            <span style={{ fontSize: '13px', fontWeight: '500', color: '#6d28d9' }}>
+              <strong>Roster:</strong> Final class list roster of the 14 selected candidates with contact info and goals.
+            </span>
+          </div>
+          <Link 
+            to="/roster" 
+            style={{ textDecoration: 'none', background: '#7c3aed', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+          >
+            FINAL CLASS LIST ROSTER →
+          </Link>
+        </div>
+
+        {role === 'admin' && (
+          <div className="mentorship-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(244, 63, 94, 0.05)', border: '1px solid rgba(244, 63, 94, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>🤝</span>
+              <span style={{ fontSize: '13px', fontWeight: '500', color: '#e11d48' }}>
+                <strong>Mentorship Pairs:</strong> Dedicated layout of designated alumni mentors matched to cohort candidates.
+              </span>
+            </div>
+            <Link 
+              to="/mentorship" 
+              style={{ textDecoration: 'none', background: '#f43f5e', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+            >
+              VIEW MENTORSHIP ASSIGNMENTS →
+            </Link>
+          </div>
+        )}
+
+        <div className="assignments-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(219, 39, 119, 0.05)', border: '1px solid rgba(219, 39, 119, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '18px' }}>📝</span>
+            <span style={{ fontSize: '13px', fontWeight: '500', color: '#db2777' }}>
+              <strong>Saturday Assignments:</strong> Access detailed guides, track options, and points distribution for the six graded milestones.
+            </span>
+          </div>
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+            <Link 
+              to="/assignments" 
+              style={{ textDecoration: 'none', background: '#db2777', color: '#fff', fontSize: '11.5px', fontWeight: 'bold', padding: '6px 16px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center', border: '1px dashed #fff' }}
+              className="assignments-hub-btn"
+            >
+              VIEW HUB →
+            </Link>
+            {[1, 3, 5, 7, 9, 10].map((wk) => {
+              const weekData = weeks.find(w => w.entry.week === wk);
+              if (!weekData) return null;
+              
+              const isReleased = role === 'admin' || isWeekReleased(wk, weekData.tuesday);
+              if (!isReleased) return null;
+              
+              return (
                 <Link 
-                  to="/assignments" 
-                  style={{ textDecoration: 'none', background: '#db2777', color: '#fff', fontSize: '11.5px', fontWeight: 'bold', padding: '6px 16px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center', border: '1px dashed #fff' }}
-                  className="assignments-hub-btn"
+                  key={wk}
+                  to={`/assignment/${wk}`} 
+                  style={{ textDecoration: 'none', background: 'rgba(219, 39, 119, 0.12)', border: '1px solid rgba(219, 39, 119, 0.25)', color: '#be185d', fontSize: '11px', fontWeight: 'bold', padding: '5px 12px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center' }}
+                  className="assignment-bar-btn"
                 >
-                  VIEW HUB →
+                  Week {wk}
                 </Link>
-                {[1, 3, 5, 7, 9, 10].map((wk) => (
-                  <Link 
-                    key={wk}
-                    to={`/assignment/${wk}`} 
-                    style={{ textDecoration: 'none', background: 'rgba(219, 39, 119, 0.12)', border: '1px solid rgba(219, 39, 119, 0.25)', color: '#be185d', fontSize: '11px', fontWeight: 'bold', padding: '5px 12px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center' }}
-                    className="assignment-bar-btn"
-                  >
-                    Week {wk}
-                  </Link>
-                ))}
-              </div>
-            </div>
+              );
+            })}
+          </div>
+        </div>
 
-            <div className="calendar-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(217, 119, 6, 0.05)', border: '1px solid rgba(217, 119, 6, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '18px' }}>📅</span>
-                <span style={{ fontSize: '13px', fontWeight: '500', color: '#d97706' }}>
-                  <strong>Calendar View:</strong> Traditional calendar grid layout showing all Tuesday and Saturday sessions at a glance.
-                </span>
-              </div>
-              <Link 
-                to="/calendar" 
-                style={{ textDecoration: 'none', background: '#d97706', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
-              >
-                VIEW CALENDAR GRID →
-              </Link>
+        {role === 'admin' && (
+          <div className="calendar-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(217, 119, 6, 0.05)', border: '1px solid rgba(217, 119, 6, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>📅</span>
+              <span style={{ fontSize: '13px', fontWeight: '500', color: '#d97706' }}>
+                <strong>Calendar View:</strong> Traditional calendar grid layout showing all Tuesday and Saturday sessions at a glance.
+              </span>
             </div>
+            <Link 
+              to="/calendar" 
+              style={{ textDecoration: 'none', background: '#d97706', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+            >
+              VIEW CALENDAR GRID →
+            </Link>
+          </div>
+        )}
 
-            <div className="logout-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <div className="logout-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+          <div>
+            {role === 'admin' && (
               <button 
                 className={`admin-toggle-btn ${adminMode ? 'is-active' : ''}`}
                 onClick={() => setAdminMode(!adminMode)}
               >
                 {adminMode ? '🔒 Exit Edit Mode' : '🛠️ Admin Edit Mode'}
               </button>
-              <button className="logout-btn" onClick={handleLogout}>Sign out</button>
-            </div>
-
-            {/* Curriculum Vision & Worldbuilding Overview */}
-            <div className="curriculum-intro-card" style={{
-              background: 'rgba(255, 255, 255, 0.45)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(0, 0, 0, 0.08)',
-              borderRadius: '12px',
-              padding: '24px 28px',
-              marginBottom: '28px',
-              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.015)'
-            }}>
-              <h2 style={{
-                fontFamily: 'var(--font-display, serif)',
-                fontSize: '20px',
-                fontWeight: 'normal',
-                margin: '0 0 12px 0',
-                color: 'var(--ink, #1C1A17)',
-                borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
-                paddingBottom: '8px'
-              }}>
-                Curriculum Vision: Worldbuilding & Digital Workflows
-              </h2>
-              <p style={{
-                fontSize: '14px',
-                lineHeight: '1.6',
-                color: 'var(--ink-mid, #44403A)',
-                margin: '0 0 12px 0'
-              }}>
-                This worldbuilding-based curriculum focuses on teaching digital workflows to achieve the broader goals of workforce development in the visual arts. Rather than disconnected drills, the lessons guide students through the creation of <strong>six major assignments</strong> and a final <strong>capstone presentation</strong>.
-              </p>
-              <p style={{
-                fontSize: '14px',
-                lineHeight: '1.6',
-                color: 'var(--ink-mid, #44403A)',
-                margin: '0 0 12px 0'
-              }}>
-                Using their own original ideas, IP (Intellectual Property), and characters, students will visually develop a unified "world of their own." Assignments are intentionally designed to build upon each other, creating a cohesive portfolio that tells a story.
-              </p>
-              <p style={{
-                fontSize: '14px',
-                lineHeight: '1.6',
-                color: 'var(--ink-mid, #44403A)',
-                margin: '0 0 16px 0'
-              }}>
-                Note that the assignments are developed to meet your level of expertise, and the "3D Integration" sections are optional.
-              </p>
-              <div style={{
-                background: 'rgba(0, 0, 0, 0.02)',
-                borderRadius: '8px',
-                padding: '16px',
-                border: '1px solid rgba(0, 0, 0, 0.04)'
-              }}>
-                <h4 style={{
-                  fontSize: '11px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
-                  fontFamily: 'var(--font-mono, monospace)',
-                  color: 'var(--accent, #A8482A)',
-                  margin: '0 0 10px 0'
-                }}>
-                  Curriculum Milestones
-                </h4>
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-                  gap: '8px 16px'
-                }}>
-                  {[
-                    { num: 1, name: 'Character / Prop Foundation', wk: 1 },
-                    { num: 2, name: 'Material Studies & Textures', wk: 3 },
-                    { num: 3, name: 'Atmospheric Space', wk: 5 },
-                    { num: 4, name: 'Narrative Sequence', wk: 7 },
-                    { num: 5, name: 'Release Campaign', wk: 9 },
-                    { num: 6, name: 'Capstone Pitch Deck', wk: 10 }
-                  ].map((asg) => (
-                    <Link 
-                      key={asg.num}
-                      to={`/assignment/${asg.wk}`}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        textDecoration: 'none',
-                        color: 'var(--ink, #1C1A17)',
-                        fontSize: '13px',
-                        transition: 'color 0.15s ease',
-                        padding: '4px 0'
-                      }}
-                      className="intro-asg-link"
-                    >
-                      <span style={{
-                        background: 'var(--accent, #A8482A)',
-                        color: '#fff',
-                        fontSize: '10px',
-                        fontWeight: 'bold',
-                        borderRadius: '4px',
-                        width: '18px',
-                        height: '18px',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexShrink: 0,
-                        transition: 'transform 0.15s ease'
-                      }}>
-                        {asg.num}
-                      </span>
-                      <span style={{ fontWeight: '500' }}>{asg.name}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <main className="grid">
-              {weeks.map(({ entry, tuesday, saturday }, idx) => (
-                <WeekCard
-                  key={entry.week}
-                  week={entry}
-                  tuesday={tuesday}
-                  saturday={saturday}
-                  isCapstone={idx === weeks.length - 1}
-                  index={idx}
-                  adminMode={adminMode}
-                  onUpdateWeek={handleUpdateWeek}
-                  onUpdateItem={handleUpdateItem}
-                  onDeleteItem={handleDeleteItem}
-                  onAddItem={handleAddItem}
-                  onDragStart={handleDragStart}
-                  onDragEnd={handleDragEnd}
-                  onDrop={handleDrop}
-                  isDraggingActive={draggedItem !== null}
-                />
-              ))}
-            </main>
-            <ChangelogSection />
-            <footer className="footer">
-              <p>Notes save automatically to this browser. Edit <code>src/curriculum.js</code> to update titles and content.</p>
-            </footer>
+            )}
           </div>
-          
-          {/* Export JSON modal overlay */}
-          {isExportOpen && (
-            <div className="export-modal-overlay" onClick={() => setIsExportOpen(false)}>
-              <div className="export-modal" onClick={(e) => e.stopPropagation()}>
-                <div className="export-modal-header">
-                  <h3 className="export-modal-title">Export Curriculum Data</h3>
-                  <button className="export-modal-close" onClick={() => setIsExportOpen(false)}>×</button>
-                </div>
-                <p className="export-modal-subtitle">
-                  Copy the code below and paste it into <code>src/curriculum.js</code> to make your layout changes permanent in the codebase.
-                </p>
-                <textarea
-                  className="export-textarea"
-                  readOnly
-                  value={`export const curriculum = ${JSON.stringify(customCurriculum, null, 2)};`}
-                  onClick={(e) => e.target.select()}
-                />
-                <div className="export-modal-actions">
-                  <button
-                    className="admin-btn"
-                    onClick={() => {
-                      navigator.clipboard.writeText(`export const curriculum = ${JSON.stringify(customCurriculum, null, 2)};`);
-                      alert('Copied to clipboard!');
-                    }}
-                  >
-                    Copy to Clipboard
-                  </button>
-                  <button className="admin-btn-secondary" onClick={() => setIsExportOpen(false)}>
-                    Close
-                  </button>
-                </div>
-              </div>
+          <button className="logout-btn" onClick={handleLogout}>Sign out</button>
+        </div>
+
+        {/* Curriculum Vision & Worldbuilding Overview */}
+        <div className="curriculum-intro-card" style={{
+          background: 'rgba(255, 255, 255, 0.45)',
+          backdropFilter: 'blur(8px)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
+          borderRadius: '12px',
+          padding: '24px 28px',
+          marginBottom: '28px',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.015)'
+        }}>
+          <h2 style={{
+            fontFamily: 'var(--font-display, serif)',
+            fontSize: '20px',
+            fontWeight: 'normal',
+            margin: '0 0 12px 0',
+            color: 'var(--ink, #1C1A17)',
+            borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
+            paddingBottom: '8px'
+          }}>
+            Curriculum Vision: Worldbuilding & Digital Workflows
+          </h2>
+          <p style={{
+            fontSize: '14px',
+            lineHeight: '1.6',
+            color: 'var(--ink-mid, #44403A)',
+            margin: '0 0 12px 0'
+          }}>
+            This worldbuilding-based curriculum focuses on teaching digital workflows to achieve the broader goals of workforce development in the visual arts. Rather than disconnected drills, the lessons guide students through the creation of <strong>six major assignments</strong> and a final <strong>capstone presentation</strong>.
+          </p>
+          <p style={{
+            fontSize: '14px',
+            lineHeight: '1.6',
+            color: 'var(--ink-mid, #44403A)',
+            margin: '0 0 12px 0'
+          }}>
+            Using their own original ideas, IP (Intellectual Property), and characters, students will visually develop a unified "world of their own." Assignments are intentionally designed to build upon each other, creating a cohesive portfolio that tells a story.
+          </p>
+          <p style={{
+            fontSize: '14px',
+            lineHeight: '1.6',
+            color: 'var(--ink-mid, #44403A)',
+            margin: '0 0 16px 0'
+          }}>
+            Note that the assignments are developed to meet your level of expertise, and the "3D Integration" sections are optional.
+          </p>
+          <div style={{
+            background: 'rgba(0, 0, 0, 0.02)',
+            borderRadius: '8px',
+            padding: '16px',
+            border: '1px solid rgba(0, 0, 0, 0.04)'
+          }}>
+            <h4 style={{
+              fontSize: '11px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              fontFamily: 'var(--font-mono, monospace)',
+              color: 'var(--accent, #A8482A)',
+              margin: '0 0 10px 0'
+            }}>
+              Curriculum Milestones
+            </h4>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gap: '8px 16px'
+            }}>
+              {[
+                { num: 1, name: 'Character / Prop Foundation', wk: 1 },
+                { num: 2, name: 'Material Studies & Textures', wk: 3 },
+                { num: 3, name: 'Atmospheric Space', wk: 5 },
+                { num: 4, name: 'Narrative Sequence', wk: 7 },
+                { num: 5, name: 'Release Campaign', wk: 9 },
+                { num: 6, name: 'Capstone Pitch Deck', wk: 10 }
+              ].filter(asg => {
+                const weekData = weeks.find(w => w.entry.week === asg.wk);
+                return !weekData || role === 'admin' || isWeekReleased(asg.wk, weekData.tuesday);
+              }).map((asg) => (
+                <Link 
+                  key={asg.num}
+                  to={`/assignment/${asg.wk}`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    textDecoration: 'none',
+                    color: 'var(--ink, #1C1A17)',
+                    fontSize: '13px',
+                    transition: 'color 0.15s ease',
+                    padding: '4px 0'
+                  }}
+                  className="intro-asg-link"
+                >
+                  <span style={{
+                    background: 'var(--accent, #A8482A)',
+                    color: '#fff',
+                    fontSize: '10px',
+                    fontWeight: 'bold',
+                    borderRadius: '4px',
+                    width: '18px',
+                    height: '18px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    transition: 'transform 0.15s ease'
+                  }}>
+                    {asg.num}
+                  </span>
+                  <span style={{ fontWeight: '500' }}>{asg.name}</span>
+                </Link>
+              ))}
             </div>
-          )}
+          </div>
+        </div>
+
+        <main className="grid">
+          {visibleWeeks.map(({ entry, tuesday, saturday }, idx) => (
+            <WeekCard
+              key={entry.week}
+              week={entry}
+              tuesday={tuesday}
+              saturday={saturday}
+              isCapstone={entry.week === 13}
+              index={idx}
+              adminMode={adminMode && role === 'admin'}
+              onUpdateWeek={handleUpdateWeek}
+              onUpdateItem={handleUpdateItem}
+              onDeleteItem={handleDeleteItem}
+              onAddItem={handleAddItem}
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+              onDrop={handleDrop}
+              isDraggingActive={draggedItem !== null}
+            />
+          ))}
+        </main>
+        {role === 'admin' && <ChangelogSection />}
+        <footer className="footer">
+          <p>Notes save automatically to this browser. Edit <code>src/curriculum.js</code> to update titles and content.</p>
+        </footer>
+      </div>
+      
+      {/* Export JSON modal overlay */}
+      {isExportOpen && role === 'admin' && (
+        <div className="export-modal-overlay" onClick={() => setIsExportOpen(false)}>
+          <div className="export-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="export-modal-header">
+              <h3 className="export-modal-title">Export Curriculum Data</h3>
+              <button className="export-modal-close" onClick={() => setIsExportOpen(false)}>×</button>
+            </div>
+            <p className="export-modal-subtitle">
+              Copy the code below and paste it into <code>src/curriculum.js</code> to make your layout changes permanent in the codebase.
+            </p>
+            <textarea
+              className="export-textarea"
+              readOnly
+              value={`export const curriculum = ${JSON.stringify(customCurriculum, null, 2)};`}
+              onClick={(e) => e.target.select()}
+            />
+            <div className="export-modal-actions">
+              <button
+                className="admin-btn"
+                onClick={() => {
+                  navigator.clipboard.writeText(`export const curriculum = ${JSON.stringify(customCurriculum, null, 2)};`);
+                  alert('Copied to clipboard!');
+                }}
+              >
+                Copy to Clipboard
+              </button>
+              <button className="admin-btn-secondary" onClick={() => setIsExportOpen(false)}>
+                Close
+              </button>
+            </div>
+          </div>
         </div>
       )}
-    </LoginGate>
+    </div>
   );
 }
