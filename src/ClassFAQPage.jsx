@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 export default function ClassFAQPage() {
   return (
@@ -143,6 +144,7 @@ export default function ClassFAQPage() {
           <div className="assignment-footer">
             <Link to="/" className="back-link">← Back to Curriculum</Link>
           </div>
+          <LegalDisclaimer style={{ borderTop: 'none', paddingTop: 0 }} />
         </div>
       </div>
     </div>

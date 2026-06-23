@@ -30,8 +30,21 @@ export function getWeekMonday(weekNum, startDateStr) {
   return monday;
 }
 
+export function getActiveRole() {
+  try {
+    const authRole = localStorage.getItem('cp-auth-role') || 'student';
+    const viewAsStudent = localStorage.getItem('cp-view-as-student') === 'true';
+    if (authRole === 'admin' && viewAsStudent) {
+      return 'student';
+    }
+    return authRole;
+  } catch {
+    return 'student';
+  }
+}
+
 export function isWeekReleased(weekNum, startDateStr) {
-  const role = localStorage.getItem('cp-auth-role') || 'student';
+  const role = getActiveRole();
   if (role === 'admin') return true;
   
   const monday = getWeekMonday(weekNum, startDateStr);

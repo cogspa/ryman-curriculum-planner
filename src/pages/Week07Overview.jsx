@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week07Topics.js';
+import LegalDisclaimer from '../LegalDisclaimer.jsx';
 
 export default function Week07Overview() {
   return (
@@ -50,6 +51,7 @@ export default function Week07Overview() {
       <p style={assignmentTextStyle}>
         Begin major track project — by end of this week, deliver: written brief, reference board, 12+ thumbnails, one approved direction, and rough comp started.
       </p>
+      <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );
 }

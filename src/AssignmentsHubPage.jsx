@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { assignments } from './assignments.js';
-import { isWeekReleased } from './releaseUtils.js';
+import { isWeekReleased, getActiveRole } from './releaseUtils.js';
+import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 export default function AssignmentsHubPage() {
-  const role = localStorage.getItem('cp-auth-role') || 'student';
+  const role = getActiveRole();
   const gradedWeeks = [1, 3, 5, 7, 9, 10].filter((wk) => {
     return role === 'admin' || isWeekReleased(wk);
   });
@@ -164,6 +165,7 @@ export default function AssignmentsHubPage() {
           <div className="assignment-footer" style={{ marginTop: '48px' }}>
             <Link to="/" className="back-link">← Back to Curriculum</Link>
           </div>
+          <LegalDisclaimer style={{ borderTop: 'none', paddingTop: 0 }} />
 
         </div>
       </div>

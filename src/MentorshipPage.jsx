@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { rosterData } from './rosterData.js';
+import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 export default function MentorshipPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -507,6 +508,7 @@ export default function MentorshipPage() {
           <div style={{ marginTop: '40px' }} className="no-print">
             <Link to="/" className="back-link">← Back to Curriculum</Link>
           </div>
+          <LegalDisclaimer style={{ borderTop: 'none', paddingTop: 0 }} />
 
         </div>
       </div>

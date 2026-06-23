@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import LegalDisclaimer from './LegalDisclaimer.jsx';
 import { rosterData } from './rosterData.js';
 
 const getStudentMentor = (studentName) => {
@@ -575,6 +576,7 @@ export default function RosterPage() {
           <div className="assignment-footer" style={{ marginTop: '32px' }}>
             <Link to="/" className="back-link">← Back to Curriculum</Link>
           </div>
+          <LegalDisclaimer style={{ borderTop: 'none', paddingTop: 0 }} />
         </div>
       </div>
     </div>

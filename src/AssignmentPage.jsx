@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { assignments } from './assignments.js';
-import { isWeekReleased } from './releaseUtils.js';
+import { isWeekReleased, getActiveRole } from './releaseUtils.js';
+import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 function parseMarkdownLinks(text) {
   if (typeof text !== 'string') return text;
@@ -152,7 +153,7 @@ export default function AssignmentPage() {
           }}>
             <span style={{ color: '#64748b', fontWeight: 'bold', marginRight: '6px' }}>All Assignments:</span>
             {[1, 3, 5, 7, 9, 10].filter(wk => {
-              const role = localStorage.getItem('cp-auth-role') || 'student';
+              const role = getActiveRole();
               return role === 'admin' || isWeekReleased(wk);
             }).map((wk) => {
               const isActive = Number(week) === wk;
@@ -798,6 +799,7 @@ export default function AssignmentPage() {
             <span style={{ opacity: 0.3 }}>|</span>
             <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
           </div>
+          <LegalDisclaimer style={{ borderTop: 'none', paddingTop: 0 }} />
         </div>
       </div>
     </div>

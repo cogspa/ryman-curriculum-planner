@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { curriculum, config, changelog } from './curriculum.js';
 import { assignments } from './assignments.js';
 import { supabase } from './supabaseClient.js';
-import { isWeekReleased } from './releaseUtils.js';
+import { isWeekReleased, getActiveRole } from './releaseUtils.js';
 import {
   loadLocalCurriculum,
   saveLocalCurriculum,
@@ -12,6 +12,7 @@ import {
   syncRemoteCurriculum,
   clearRemoteCurriculum
 } from './curriculumService.js';
+import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 
 const HOLIDAYS = [
@@ -186,7 +187,7 @@ function ChangelogSection() {
 }
 
 function Header({ startDate, setStartDate, totalWeeks }) {
-  const role = localStorage.getItem('cp-auth-role') || 'student';
+  const role = getActiveRole();
   return (
     <header className="header">
       <div className="header-left">
@@ -197,7 +198,7 @@ function Header({ startDate, setStartDate, totalWeeks }) {
             alt="Ryman Arts Logo" 
             style={{ height: '48px', width: 'auto', display: 'inline-block', verticalAlign: 'middle' }} 
           />
-          <span style={{ display: 'inline-block', verticalAlign: 'middle' }}>pLAtform Curriculum Planner</span>
+          <span style={{ display: 'inline-block', verticalAlign: 'middle' }}>pLAtform Launch Pad Summer/Fall 2026</span>
         </h1>
         <p className="subtitle">
           {config.tuesday.label}s {config.tuesday.time} · {config.tuesday.location}
@@ -1105,7 +1106,7 @@ export default function App() {
     }
   };
 
-  const role = localStorage.getItem('cp-auth-role') || 'student';
+  const role = getActiveRole();
 
   const visibleWeeks = useMemo(() => {
     return weeks.filter(w => {
@@ -1118,6 +1119,7 @@ export default function App() {
     try {
       localStorage.removeItem('cp-auth-session');
       localStorage.removeItem('cp-auth-role');
+      localStorage.removeItem('cp-view-as-student');
     } catch {}
     window.location.reload();
   };
@@ -1429,8 +1431,11 @@ export default function App() {
           ))}
         </main>
         {role === 'admin' && <ChangelogSection />}
-        <footer className="footer">
-          <p>Notes save automatically to this browser. Edit <code>src/curriculum.js</code> to update titles and content.</p>
+        <footer className="footer" style={{ borderTop: 'none', paddingTop: 0 }}>
+          <LegalDisclaimer />
+          {role === 'admin' && (
+            <p style={{ marginTop: '16px' }}>Notes save automatically to this browser. Edit <code>src/curriculum.js</code> to update titles and content.</p>
+          )}
         </footer>
       </div>
       

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import LegalDisclaimer from '../LegalDisclaimer.jsx';
 
 /**
  * TopicNav — prev/next navigation for topic detail subpages.
@@ -14,31 +15,32 @@ export default function TopicNav({ topicList, topicKey, weekNum }) {
   const prev = idx > 0 ? topicList[idx - 1] : null;
   const next = idx < topicList.length - 1 ? topicList[idx + 1] : null;
 
-  return (
-    <nav style={navStyle}>
-      {prev ? (
-        <Link to={`/week/${weekNum}/${prev.key}`} style={linkStyle}>
-          <span style={arrowStyle}>←</span>
-          <span style={labelStyle}>{prev.label}</span>
-        </Link>
-      ) : (
-        <span />
-      )}
+    <>
+      <nav style={navStyle}>
+        {prev ? (
+          <Link to={`/week/${weekNum}/${prev.key}`} style={linkStyle}>
+            <span style={arrowStyle}>←</span>
+            <span style={labelStyle}>{prev.label}</span>
+          </Link>
+        ) : (
+          <span />
+        )}
 
-      <Link to={`/week/${weekNum}`} style={backLinkStyle}>
-        All Topics
-      </Link>
-
-      {next ? (
-        <Link to={`/week/${weekNum}/${next.key}`} style={{ ...linkStyle, textAlign: 'right' }}>
-          <span style={labelStyle}>{next.label}</span>
-          <span style={arrowStyle}>→</span>
+        <Link to={`/week/${weekNum}`} style={backLinkStyle}>
+          All Topics
         </Link>
-      ) : (
-        <span />
-      )}
-    </nav>
-  );
+
+        {next ? (
+          <Link to={`/week/${weekNum}/${next.key}`} style={{ ...linkStyle, textAlign: 'right' }}>
+            <span style={labelStyle}>{next.label}</span>
+            <span style={arrowStyle}>→</span>
+          </Link>
+        ) : (
+          <span />
+        )}
+      </nav>
+      <LegalDisclaimer style={{ borderTop: 'none', paddingTop: 0, marginTop: '24px' }} />
+    </>
 }
 
 const navStyle = {

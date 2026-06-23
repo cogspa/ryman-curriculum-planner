@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { topicList, readingsList } from '../content/week02Topics.js';
+import LegalDisclaimer from '../LegalDisclaimer.jsx';
 
 export default function Week02Overview() {
   return (
@@ -58,6 +59,7 @@ export default function Week02Overview() {
       <p style={guestStyle}>
         Senior digital illustrator — live demo on building a personal brush library
       </p>
+      <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );
 }

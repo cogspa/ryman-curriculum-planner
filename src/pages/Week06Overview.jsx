@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week06Topics.js';
+import LegalDisclaimer from '../LegalDisclaimer.jsx';
 
 export default function Week06Overview() {
   return (
@@ -50,6 +51,7 @@ export default function Week06Overview() {
           </Link>
         </li>
       </ul>
+      <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );
 }

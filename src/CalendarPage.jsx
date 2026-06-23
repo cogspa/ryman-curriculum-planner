@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { loadLocalCurriculum, fetchRemoteCurriculum } from './curriculumService.js';
 import { config } from './curriculum.js';
 import { assignments } from './assignments.js';
+import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 // ─── Constants & Date Helpers ──────────────────────────────────────────────
 
@@ -948,6 +949,9 @@ export default function CalendarPage() {
           </div>
         )}
 
+        <div style={{ marginTop: '40px', paddingBottom: '40px' }}>
+          <LegalDisclaimer />
+        </div>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import {
   fetchRemoteVersions,
   syncRemoteVersions
 } from './curriculumService.js';
+import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 // Strip [NEW] prefix and render bold markdown (**text**) and linkified URLs for syllabus display
 function renderCleaned(str) {
@@ -697,11 +698,12 @@ export default function SyllabusPage() {
             );
           })}
 
-          <footer className="syllabus-footer">
+          <footer className="syllabus-footer" style={{ borderTop: 'none', paddingTop: 0 }}>
             <p>Ryman Arts pLAtform · Curriculum Syllabus · 2026</p>
             <p style={{ fontSize: 9, marginTop: 4, opacity: 0.7 }}>
               {selectedVer === 'live' ? 'Viewing Live Draft' : `Viewing Version v${selectedVer}`}
             </p>
+            <LegalDisclaimer />
           </footer>
 
           <div className="syllabus-topbar no-print" style={{ marginTop: 40, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>

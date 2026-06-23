@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { topicList, readingsList } from '../content/week04Topics.js';
+import LegalDisclaimer from '../LegalDisclaimer.jsx';
 
 export default function Week04Overview() {
   return (
@@ -57,6 +58,7 @@ export default function Week04Overview() {
       <p style={guestStyle}>
         Adapt one artwork for print, web, and social formats
       </p>
+      <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );
 }

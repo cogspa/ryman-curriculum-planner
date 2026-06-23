@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week03Topics.js';
+import LegalDisclaimer from '../LegalDisclaimer.jsx';
 
 export default function Week03Overview() {
   return (
@@ -45,6 +46,7 @@ export default function Week03Overview() {
       <p style={guestStyle}>
         Dramatic location painting — see Week 03 assignment brief
       </p>
+      <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );
 }
