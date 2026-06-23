@@ -716,15 +716,48 @@ function WeekCard({
             />
           ) : (
             week.overview && (
-              <p className="overview">
-                {week.week === 7 ? (
-                  <Link to="/week/07/client-simulation-overview" className="overview-link">
-                    {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[READ BRIEF FRAMEWORK →]</span>
-                  </Link>
-                ) : (
-                  week.overview
+              <>
+                <p className="overview">
+                  {week.week === 7 ? (
+                    <Link to="/week/07/client-simulation-overview" className="overview-link">
+                      {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[READ BRIEF FRAMEWORK →]</span>
+                    </Link>
+                  ) : week.week === 1 ? (
+                    <Link to="/week/01" className="overview-link">
+                      {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
+                    </Link>
+                  ) : (
+                    week.overview
+                  )}
+                </p>
+                {week.week === 1 && (
+                  <div className="week1-extra-content" style={{ marginTop: '12px', marginBottom: '16px', fontSize: '13.5px', color: 'var(--ink-mid)' }}>
+                    <p style={{ lineHeight: '1.6', marginBottom: '10px' }}>
+                      Week 1 introduces the visual language of digital art. Students will translate traditional foundations—line, shape, value, gesture, composition, and form—into a digital workflow using pixels, layers, selections, brushes, and simple vector tools. The goal is to understand how images are built from visual structure, then use those principles to begin developing an original world.
+                    </p>
+                    <ul style={{ paddingLeft: '18px', margin: '0', lineHeight: '1.65', listStyleType: 'disc' }}>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Digital vs. physical canvas:</strong> pixels, resolution, layers, transparency, and file setup
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Elements and principles of design:</strong> line, shape, contrast, hierarchy, movement, and balance
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Reading images</strong> through silhouette, negative space, value masses, directional lines, and simple forms
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Hands-on Photoshop workflow:</strong> brushes, straight-line construction, Pen Tool paths, Polygonal Lasso blocking, and organized layers
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Assignment 1:</strong> translate an original character or prop through sketch, straight-line, and lasso-blocking studies
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Scene Integration:</strong> place the character or prop into three loose photo-reference scenes using grayscale value studies, simple color palettes, lighting, and blend modes. Explore advanced integrations using a Blender Grease pencil, and a quick trick to create simple 3D models.
+                      </li>
+                    </ul>
+                  </div>
                 )}
-              </p>
+              </>
             )
           )}
 
