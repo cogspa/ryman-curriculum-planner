@@ -591,6 +591,7 @@ function WeekCard({
   isCapstone,
   index,
   adminMode,
+  isAdminView = false,
   onUpdateWeek,
   onUpdateItem,
   onDeleteItem,
@@ -727,7 +728,7 @@ function WeekCard({
           )}
 
           {week.tuesday || week.saturday ? (
-            <div className={`session-splits ${adminMode ? 'admin-stacked' : ''}`} style={{ marginTop: '16px' }}>
+            <div className={`session-splits ${(adminMode || isAdminView) ? 'admin-stacked' : ''}`} style={{ marginTop: '16px' }}>
               {week.tuesday && (
                 <div className="session-split-block tuesday-block" style={{ borderLeft: '3px solid #ec4899', paddingLeft: '14px', background: 'rgba(236, 72, 153, 0.07)', borderRadius: '8px', paddingBottom: '8px', paddingTop: '8px', paddingRight: '8px' }}>
                   <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#db2777', margin: '0 0 10px 0', display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -1419,6 +1420,7 @@ export default function App() {
               isCapstone={entry.week === 13}
               index={idx}
               adminMode={adminMode && role === 'admin'}
+              isAdminView={role === 'admin'}
               onUpdateWeek={handleUpdateWeek}
               onUpdateItem={handleUpdateItem}
               onDeleteItem={handleDeleteItem}
