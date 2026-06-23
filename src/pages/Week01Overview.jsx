@@ -21,10 +21,57 @@ export default function Week01Overview() {
         <div><strong>SAT</strong> &nbsp; Sat, Jun 27 &nbsp; · &nbsp; 10:00 am–3:30 pm · Reveal Studio</div>
       </div>
 
-      <p style={focusStyle}>
-        <strong>Focus:</strong> What carries over from traditional painting —
-        value, composition, gesture, form, and the relationship between digital and physical canvases.
-      </p>
+      <div style={focusStyle}>
+        <h2 style={{
+          fontFamily: 'Georgia, serif',
+          fontSize: '18px',
+          fontWeight: 'bold',
+          margin: '0 0 8px 0',
+          color: '#8b3a2f',
+        }}>
+          What Carries Over From Traditional Painting
+        </h2>
+        <p style={{
+          fontSize: '14px',
+          fontStyle: 'italic',
+          color: '#5c4e37',
+          margin: '0 0 20px 0',
+        }}>
+          value, composition, gesture, form, and the relationship between digital and physical canvases.
+        </p>
+        <p style={{
+          fontSize: '15px',
+          lineHeight: '1.65',
+          margin: '0 0 20px 0',
+        }}>
+          Week 1 introduces the visual language of digital art. Students will translate traditional foundations—line, shape, value, gesture, composition, and form—into a digital workflow using pixels, layers, selections, brushes, and simple vector tools. The goal is to understand how images are built from visual structure, then use those principles to begin developing an original world.
+        </p>
+        <ul style={{
+          paddingLeft: '20px',
+          margin: '0 0 10px 0',
+          fontSize: '14.5px',
+          lineHeight: '1.7',
+        }}>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Digital vs. physical canvas:</strong> pixels, resolution, layers, transparency, and file setup
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Elements and principles of design:</strong> line, shape, contrast, hierarchy, movement, and balance
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Reading images</strong> through silhouette, negative space, value masses, directional lines, and simple forms
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Hands-on Photoshop workflow:</strong> brushes, straight-line construction, Pen Tool paths, Polygonal Lasso blocking, and organized layers
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Assignment 1:</strong> translate an original character or prop through sketch, straight-line, and lasso-blocking studies
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Scene Integration:</strong> place the character or prop into three loose photo-reference scenes using grayscale value studies, simple color palettes, lighting, and blend modes. Explore advanced integrations using a Blender Grease pencil, and a quick trick to create simple 3D models.
+          </li>
+        </ul>
+      </div>
 
       <h2 style={sectionHeadingStyle}>Topics</h2>
       <ul style={topicListStyle}>
