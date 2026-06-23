@@ -718,11 +718,11 @@ function WeekCard({
             week.overview && (
               <>
                 <p className="overview">
-                  {week.week === 7 ? (
+                  {Number(week.week) === 7 ? (
                     <Link to="/week/07/client-simulation-overview" className="overview-link">
                       {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[READ BRIEF FRAMEWORK →]</span>
                     </Link>
-                  ) : week.week === 1 ? (
+                  ) : Number(week.week) === 1 ? (
                     <Link to="/week/01" className="overview-link">
                       {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
                     </Link>
@@ -730,7 +730,7 @@ function WeekCard({
                     week.overview
                   )}
                 </p>
-                {week.week === 1 && (
+                {Number(week.week) === 1 && (
                   <div className="week1-extra-content" style={{ marginTop: '12px', marginBottom: '16px', fontSize: '13.5px', color: 'var(--ink-mid)' }}>
                     <p style={{ lineHeight: '1.6', marginBottom: '10px' }}>
                       Week 1 introduces the visual language of digital art. Students will translate traditional foundations—line, shape, value, gesture, composition, and form—into a digital workflow using pixels, layers, selections, brushes, and simple vector tools. The goal is to understand how images are built from visual structure, then use those principles to begin developing an original world.
@@ -1453,7 +1453,7 @@ export default function App() {
               week={entry}
               tuesday={tuesday}
               saturday={saturday}
-              isCapstone={entry.week === 13}
+              isCapstone={Number(entry.week) === 13}
               index={idx}
               adminMode={adminMode && role === 'admin'}
               isAdminView={role === 'admin'}

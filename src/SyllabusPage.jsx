@@ -155,7 +155,7 @@ export default function SyllabusPage() {
 
     // Merge snapshot overrides on top of default static curriculum
     return curriculum.map((week) => {
-      const override = verData.curriculumSnapshot.find((w) => w.week === week.week);
+      const override = verData.curriculumSnapshot.find((w) => Number(w.week) === Number(week.week));
       return override ? override : week;
     });
   }, [selectedVer, customCurriculum, customVersions]);
@@ -500,7 +500,7 @@ export default function SyllabusPage() {
                         {week.saturday && (
                           <div style={{ padding: '8px 12px', background: 'rgba(42, 36, 24, 0.03)', borderLeft: '2px solid #2a2418', borderRadius: '0 4px 4px 0' }}>
                             <strong style={{ fontSize: '10px', color: '#2a2418', textTransform: 'uppercase', fontFamily: 'var(--font-mono, monospace)', display: 'block', marginBottom: '2px' }}>
-                              {week.week === 13 ? '🎨 Saturday Showcase (In-Person)' : '🎨 Saturday Workshop (In-Person)'}
+                              {Number(week.week) === 13 ? '🎨 Saturday Showcase (In-Person)' : '🎨 Saturday Workshop (In-Person)'}
                             </strong>
                             <span style={{ fontSize: '13px', color: 'var(--ink-mid, #44403A)' }}>
                               {week.dateOverride ? week.dateOverride : `${saturday.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} · ${config.saturday.time}`}
@@ -536,7 +536,7 @@ export default function SyllabusPage() {
                         </h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                           {assignmentsList.map((a, i) => {
-                            const isGradedAssignment = [1, 3, 5, 7, 9, 10].includes(week.week);
+                            const isGradedAssignment = [1, 3, 5, 7, 9, 10].includes(Number(week.week));
                             let trackParam = '';
                             const lower = a.toLowerCase();
                             if (lower.includes('base assignment') || lower.includes('base')) {
@@ -597,7 +597,7 @@ export default function SyllabusPage() {
                         {week.saturday && (
                           <div className="syllabus-day-block" style={{ borderLeft: '2px solid #2a2418', paddingLeft: '14px' }}>
                             <h4 style={{ fontSize: '11px', textTransform: 'uppercase', fontFamily: 'Menlo, monospace', color: '#2a2418', margin: '0 0 10px' }}>
-                              {week.week === 13 ? '🎨 Saturday Showcase (Reveal Studio)' : '🎨 Saturday Session (Reveal Workshop)'} {week.dateOverride && `· ${week.dateOverride}`}
+                              {Number(week.week) === 13 ? '🎨 Saturday Showcase (Reveal Studio)' : '🎨 Saturday Session (Reveal Workshop)'} {week.dateOverride && `· ${week.dateOverride}`}
                             </h4>
                             {week.saturday.topics?.length > 0 && (
                               <div className="syllabus-block" style={{ marginBottom: '10px' }}>

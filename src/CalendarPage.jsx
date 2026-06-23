@@ -433,7 +433,7 @@ export default function CalendarPage() {
                         {cells.map((cell, idx) => {
                           const isSelected = selectedSession && cell.session && 
                                              selectedSession.type === cell.session.type && 
-                                             selectedSession.week === cell.session.week;
+                                             Number(selectedSession.week) === Number(cell.session.week);
                           
                           let cellStyle = {
                             height: '42px',
@@ -706,7 +706,7 @@ export default function CalendarPage() {
                           cursor: 'pointer'
                         }}
                         onClick={() => setSelectedSession({ type: 'tuesday', week: entry.week, date: tuesday, entry, speaker })}
-                        className={`directory-list-item ${selectedSession?.type === 'tuesday' && selectedSession?.week === entry.week ? 'is-active' : ''}`}
+                        className={`directory-list-item ${selectedSession?.type === 'tuesday' && Number(selectedSession?.week) === Number(entry.week) ? 'is-active' : ''}`}
                       >
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                           <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono, monospace)', fontWeight: 'bold', color: '#d97706' }}>
@@ -775,7 +775,7 @@ export default function CalendarPage() {
                             opacity: isSatHoliday ? 0.75 : 1
                           }}
                           onClick={() => !isSatHoliday && setSelectedSession({ type: 'saturday', week: entry.week, date: saturday, entry, speaker })}
-                          className={`directory-list-item ${selectedSession?.type === 'saturday' && selectedSession?.week === entry.week ? 'is-active' : ''}`}
+                          className={`directory-list-item ${selectedSession?.type === 'saturday' && Number(selectedSession?.week) === Number(entry.week) ? 'is-active' : ''}`}
                         >
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                             <span style={{ 

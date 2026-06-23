@@ -7,7 +7,12 @@ const UPDATED_KEY = 'cp-custom-curriculum-updated';
 export function loadLocalCurriculum() {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
-    return data ? JSON.parse(data) : defaultCurriculum;
+    if (!data) return defaultCurriculum;
+    const parsed = JSON.parse(data);
+    return parsed.map(w => ({
+      ...w,
+      week: Number(w.week)
+    }));
   } catch {
     return defaultCurriculum;
   }
@@ -48,12 +53,22 @@ export async function fetchRemoteCurriculum() {
       try {
         const parsed = JSON.parse(data.content);
         // Handle migration from old raw array format to wrapper object format
+        let rawData;
+        let updatedTime;
         if (Array.isArray(parsed)) {
-          return { data: parsed, updated: 0 };
+          rawData = parsed;
+          updatedTime = 0;
+        } else {
+          rawData = parsed.data || defaultCurriculum;
+          updatedTime = parsed.updated || 0;
         }
+        const sanitized = rawData.map(w => ({
+          ...w,
+          week: Number(w.week)
+        }));
         return { 
-          data: parsed.data || defaultCurriculum, 
-          updated: parsed.updated || 0 
+          data: sanitized, 
+          updated: updatedTime 
         };
       } catch (err) {
         console.error('Failed to parse remote curriculum content:', err);
@@ -105,7 +120,15 @@ const VERSIONS_UPDATED_KEY = 'cp-custom-versions-updated';
 export function loadLocalVersions() {
   try {
     const data = localStorage.getItem(VERSIONS_KEY);
-    return data ? JSON.parse(data) : [];
+    if (!data) return [];
+    const parsed = JSON.parse(data);
+    return parsed.map(v => ({
+      ...v,
+      curriculumSnapshot: (v.curriculumSnapshot || []).map(w => ({
+        ...w,
+        week: Number(w.week)
+      }))
+    }));
   } catch {
     return [];
   }
@@ -132,12 +155,25 @@ export async function fetchRemoteVersions() {
     if (data && !error && data.content) {
       try {
         const parsed = JSON.parse(data.content);
+        let rawData;
+        let updatedTime;
         if (Array.isArray(parsed)) {
-          return { data: parsed, updated: 0 };
+          rawData = parsed;
+          updatedTime = 0;
+        } else {
+          rawData = parsed.data || [];
+          updatedTime = parsed.updated || 0;
         }
+        const sanitized = rawData.map(v => ({
+          ...v,
+          curriculumSnapshot: (v.curriculumSnapshot || []).map(w => ({
+            ...w,
+            week: Number(w.week)
+          }))
+        }));
         return { 
-          data: parsed.data || [], 
-          updated: parsed.updated || 0 
+          data: sanitized, 
+          updated: updatedTime 
         };
       } catch (err) {
         console.error('Failed to parse remote custom versions content:', err);
