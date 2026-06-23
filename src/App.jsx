@@ -13,6 +13,7 @@ import {
   clearRemoteCurriculum
 } from './curriculumService.js';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
+import CurriculumProgression from './CurriculumProgression.jsx';
 
 
 const HOLIDAYS = [
@@ -1409,6 +1410,8 @@ export default function App() {
             </div>
           </div>
         </div>
+
+        <CurriculumProgression />
 
         <main className="grid">
           {visibleWeeks.map(({ entry, tuesday, saturday }, idx) => (
