@@ -2507,9 +2507,16 @@ kbd {
     flex-direction: row;
     align-items: stretch;
   }
+  .session-splits.admin-stacked {
+    flex-direction: column;
+  }
   .session-split-block {
     flex: 1;
     display: flex;
     flex-direction: column;
+  }
+  .session-splits.admin-stacked .session-split-block {
+    flex: none;
+    width: 100%;
   }
 }
