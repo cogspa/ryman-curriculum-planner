@@ -300,7 +300,7 @@ function Section({ label, items, weekNumber }) {
               linkPath = `/assignment/${weekNumber}?track=beginner`;
             } else if (cleanText.includes('next level') || cleanText.includes('take it')) {
               linkPath = `/assignment/${weekNumber}?track=intermediate`;
-            } else if (cleanText.includes('3d integration') || cleanText.includes('3d')) {
+            } else if (cleanText.includes('advanced integration') || cleanText.includes('advanced') || cleanText.includes('3d integration') || cleanText.includes('3d')) {
               linkPath = `/assignment/${weekNumber}?track=advanced`;
             } else {
               linkPath = `/assignment/${weekNumber}`;
@@ -1339,7 +1339,7 @@ export default function App() {
             color: 'var(--ink-mid, #44403A)',
             margin: '0 0 16px 0'
           }}>
-            Note that the assignments are developed to meet your level of expertise, and the "3D Integration" sections are optional.
+            Note that the assignments are developed to meet your level of expertise, and the "Advanced Integration" sections are optional.
           </p>
           <div style={{
             background: 'rgba(0, 0, 0, 0.02)',

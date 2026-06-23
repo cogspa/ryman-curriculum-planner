@@ -181,7 +181,7 @@ export const assignments = {
         ],
       },
       advanced: {
-        title: 'Advanced 3D Integration: 3D Base Model & Paint-over',
+        title: 'Advanced Integration: 3D Base Model & Paint-over',
         subtitle: 'Focus: Modeling assets in Blender and painting details digitally in Photoshop.',
         sections: [
           {
@@ -325,7 +325,7 @@ export const assignments = {
         ],
       },
       advanced: {
-        title: 'Advanced 3D Integration: Shader Editor, Render Bake & Photoshop Asset Authoring',
+        title: 'Advanced Integration: Shader Editor, Render Bake & Photoshop Asset Authoring',
         subtitle: 'Focus: Prop Wear States — The Procedural-to-Painted Pipeline.',
         sections: [
           {
@@ -479,7 +479,7 @@ export const assignments = {
         ],
       },
       advanced: {
-        title: 'Advanced 3D Integration: 3D Cinematic Block-In',
+        title: 'Advanced Integration: 3D Cinematic Block-In',
         subtitle: 'Focus: Staging environments in 3D, configuring volumetric cameras, and painting over the render.',
         sections: [
           {
@@ -569,7 +569,7 @@ export const assignments = {
         ],
       },
       advanced: {
-        title: 'Advanced 3D Integration: Blender Grease Pencil / Animatic Block-In',
+        title: 'Advanced Integration: Blender Grease Pencil / Animatic Block-In',
         subtitle: 'Focus: Virtual camera timelines, 3D storyboard blocking, and Grease Pencil sketching.',
         sections: [
           {
@@ -657,7 +657,7 @@ export const assignments = {
         ],
       },
       advanced: {
-        title: 'Advanced 3D Integration: 3D Studio lighting & Asset Marketing Deck',
+        title: 'Advanced Integration: 3D Studio lighting & Asset Marketing Deck',
         subtitle: 'Focus: Setting up studio lighting in Blender, rendering hero passes, and compiling marketing decks.',
         sections: [
           {
@@ -747,7 +747,7 @@ export const assignments = {
         ],
       },
       advanced: {
-        title: 'Advanced 3D Integration: IP Production Bible & 3D Assets Deck',
+        title: 'Advanced Integration: IP Production Bible & 3D Assets Deck',
         subtitle: 'Focus: 3D modeling topology, rendering breakdowns, and master visual production bibles.',
         sections: [
           {

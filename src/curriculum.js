@@ -53,7 +53,7 @@ export const curriculum = [
       assignments: [
         '[NEW] **Base Assignment**: *Traditional Translation* — Recreate a traditional character sketch or prop study digitally in Photoshop or Procreate to learn basic brush control and layer setup.',
         '[NEW] **Next Level**: *Style Adaptability* — Translate a character or prop design into two distinct production styles (e.g., flat graphic vs. painterly visual development) to build stylistic range.',
-        '[NEW] **3D Integration**: *3D Block-In & Paint* — Model a character base mesh or prop in Blender, render orthographic views, and paint them digitally in Photoshop in two different styles.'
+        '[NEW] **Advanced Integration**: *3D Block-In & Paint* — Model a character base mesh or prop in Blender, render orthographic views, and paint them digitally in Photoshop in two different styles.'
       ],
     }
   },
@@ -114,7 +114,7 @@ export const curriculum = [
       assignments: [
         '[NEW] **Base Assignment**: *Media Tile* — Render a simple character prop on a 2×2 grid simulating traditional media (oil, watercolor, charcoal, digital) using custom brush presets and basic blend modes.',
         '[NEW] **Next Level**: *Wear & Tear prop sheet* — Paint a signature prop from your IP in four distinct wear/weathered states (new, rusted, mossy, active/damaged) to demonstrate texture rendering.',
-        '[NEW] **3D Integration**: *Shader Editor & Bake* — Model the prop in Blender, apply procedural wear shaders, bake ambient occlusion and light passes, and do the final painting in Photoshop.'
+        '[NEW] **Advanced Integration**: *Shader Editor & Bake* — Model the prop in Blender, apply procedural wear shaders, bake ambient occlusion and light passes, and do the final painting in Photoshop.'
       ],
     }
   },
@@ -172,7 +172,7 @@ export const curriculum = [
       assignments: [
         '[NEW] **Base Assignment**: *Atmospheric perspective* — Paint a home base or environment from your IP, focusing on linear perspective, value depth, and dynamic directional light.',
         '[NEW] **Next Level**: *Narrative Keyframe* — Paint a story-driven environment keyframe featuring your character. Focus on visual storytelling and scale relationships.',
-        '[NEW] **3D Integration**: *3D Cinematic Block-in* — Build the environment in Blender, configure camera focal length and depth-of-field, set up volumetric lighting, and paint over the render.'
+        '[NEW] **Advanced Integration**: *3D Cinematic Block-in* — Build the environment in Blender, configure camera focal length and depth-of-field, set up volumetric lighting, and paint over the render.'
       ],
     }
   },
@@ -227,7 +227,7 @@ export const curriculum = [
       assignments: [
         '[NEW] **Base Assignment**: *Narrative Panels* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout.',
         '[NEW] **Next Level**: *Production Storyboards* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.',
-        '[NEW] **3D Integration**: *Blender Grease Pencil / Animatic* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil.'
+        '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil.'
       ],
     }
   },
@@ -285,7 +285,7 @@ export const curriculum = [
       assignments: [
         '[NEW] **Base Assignment**: *"Your World" Poster* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
         '[NEW] **Next Level**: *Senior Key Art & Grids* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
-        '[NEW] **3D Integration**: *3D Studio Render & Wrap* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
+        '[NEW] **Advanced Integration**: *3D Studio Render & Wrap* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
       ],
     }
   },
@@ -314,7 +314,7 @@ export const curriculum = [
       assignments: [
         '[NEW] **Base Assignment**: *Portfolio Showcase* — Curate and compile 6-8 of your best polished pieces from the assignments into a clean digital portfolio PDF or website.',
         '[NEW] **Next Level**: *IP Worldbuilding Deck* — Compile a full pitch deck for your IP, including a character lineup, world guide, and color scripts/keys.',
-        '[NEW] **3D Integration**: *IP Production Kit & Bible* — Compile a comprehensive production deck/bible featuring your Blender model layouts, modular kits, and final digital paints.'
+        '[NEW] **Advanced Integration**: *IP Production Kit & Bible* — Compile a comprehensive production deck/bible featuring your Blender model layouts, modular kits, and final digital paints.'
       ],
     }
   },
@@ -395,7 +395,7 @@ export const changelog = [
   },
   {
     date: '2026-06-19',
-    message: 'Split Curriculum Vision intro into three paragraphs with a highlighted 3D Integration callout note on the Syllabus page.',
+    message: 'Split Curriculum Vision intro into three paragraphs with a highlighted Advanced Integration callout note on the Syllabus page.',
   },
   {
     date: '2026-06-19',

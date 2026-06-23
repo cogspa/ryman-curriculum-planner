@@ -140,7 +140,7 @@ export default function AssignmentsHubPage() {
                       <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
                         <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#0f766e' }}></span>
                         <span style={{ fontSize: '11.5px', color: '#475569' }}>
-                          <strong>3D:</strong> {info.tracks?.advanced?.title?.replace(/^Advanced 3D Integration:\s*/i, '') || 'Blender Concept Pipeline'}
+                          <strong>Advanced:</strong> {info.tracks?.advanced?.title?.replace(/^Advanced Integration:\s*/i, '')?.replace(/^Advanced 3D Integration:\s*/i, '') || 'Blender Concept Pipeline'}
                         </span>
                       </div>
                     </div>

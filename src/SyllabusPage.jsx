@@ -464,7 +464,7 @@ export default function SyllabusPage() {
               margin: 0,
               fontWeight: '500'
             }}>
-              💡 <strong>Note:</strong> Assignments are developed to meet your level of expertise, and the <strong>"3D Integration"</strong> sections are optional.
+              💡 <strong>Note:</strong> Assignments are developed to meet your level of expertise, and the <strong>"Advanced Integration"</strong> sections are optional.
             </div>
           </div>
 
@@ -543,7 +543,7 @@ export default function SyllabusPage() {
                               trackParam = '?track=beginner';
                             } else if (lower.includes('next level') || lower.includes('take it')) {
                               trackParam = '?track=intermediate';
-                            } else if (lower.includes('3d integration') || lower.includes('3d')) {
+                            } else if (lower.includes('advanced integration') || lower.includes('advanced') || lower.includes('3d integration') || lower.includes('3d')) {
                               trackParam = '?track=advanced';
                             }
                             return (
@@ -619,7 +619,7 @@ export default function SyllabusPage() {
                                       trackParam = '?track=beginner';
                                     } else if (lower.includes('next level') || lower.includes('take it')) {
                                       trackParam = '?track=intermediate';
-                                    } else if (lower.includes('3d integration') || lower.includes('3d')) {
+                                    } else if (lower.includes('advanced integration') || lower.includes('advanced') || lower.includes('3d integration') || lower.includes('3d')) {
                                       trackParam = '?track=advanced';
                                     }
                                     return (
@@ -672,7 +672,7 @@ export default function SyllabusPage() {
                                   trackParam = '?track=beginner';
                                 } else if (lower.includes('next level') || lower.includes('take it')) {
                                   trackParam = '?track=intermediate';
-                                } else if (lower.includes('3d integration') || lower.includes('3d')) {
+                                } else if (lower.includes('advanced integration') || lower.includes('advanced') || lower.includes('3d integration') || lower.includes('3d')) {
                                   trackParam = '?track=advanced';
                                 }
                                 return (

@@ -325,7 +325,7 @@ export default function AssignmentPage() {
                 const labelMap = {
                   beginner: 'Base Assignment',
                   intermediate: 'Take It to the Next Level',
-                  advanced: 'Advanced 3D Integration'
+                  advanced: 'Advanced Integration'
                 };
                 const colorMap = {
                   beginner: { activeBg: '#3b82f6', text: '#fff' },
