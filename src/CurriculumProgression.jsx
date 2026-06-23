@@ -128,7 +128,29 @@ const cpStyles = `
 }
 .cp-sub { font-size: 13px; color: var(--ink-mute, #847C6F); margin: 0; }
 
-.cp-rail-wrap { overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+.cp-rail-wrap {
+  overflow-x: auto;
+  padding-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent, #A8482A) var(--hairline, #DDD6C6);
+}
+.cp-rail-wrap::-webkit-scrollbar {
+  height: 6px;
+  display: block;
+}
+.cp-rail-wrap::-webkit-scrollbar-track {
+  background: var(--hairline, #DDD6C6);
+  border-radius: 3px;
+}
+.cp-rail-wrap::-webkit-scrollbar-thumb {
+  background: var(--accent, #A8482A);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.cp-rail-wrap::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-deep, #7E2F1A);
+}
 .cp-rail {
   display: flex; align-items: stretch; justify-content: center;
   min-width: min-content; margin: 0 auto;

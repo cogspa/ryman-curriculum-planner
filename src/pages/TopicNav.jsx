@@ -15,6 +15,7 @@ export default function TopicNav({ topicList, topicKey, weekNum }) {
   const prev = idx > 0 ? topicList[idx - 1] : null;
   const next = idx < topicList.length - 1 ? topicList[idx + 1] : null;
 
+  return (
     <>
       <nav style={navStyle}>
         {prev ? (
@@ -41,6 +42,7 @@ export default function TopicNav({ topicList, topicKey, weekNum }) {
       </nav>
       <LegalDisclaimer style={{ borderTop: 'none', paddingTop: 0, marginTop: '24px' }} />
     </>
+  );
 }
 
 const navStyle = {
