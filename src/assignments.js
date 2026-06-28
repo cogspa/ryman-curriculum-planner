@@ -89,9 +89,8 @@ export const assignments = {
         ],
 
         submission: [
-          'Straight Line Blocking rendering (1920 × 1080 px PNG)',
-          'Sketch Approach rendering (1920 × 1080 px PNG)',
-          'Lasso Block Approach rendering (1920 × 1080 px PNG)',
+          '3 deliverables: Save a PNG for each type of rendering (Straight Line, Sketch, and Lasso Block Approach).',
+          'Size: 1920 px by 1080 px',
         ],
         critiqueQuestions: [
           'How did your three blocking approaches (straight-line, sketch, lasso block) differ in ease of execution and final aesthetic character?',
