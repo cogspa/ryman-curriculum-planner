@@ -38,6 +38,7 @@ export const curriculum = [
         '[NEW] Photoshop — Learn at Your Own Pace Videos: https://www.youtube.com/playlist?list=PL96BXqp9fQs6EcSwTbDgo57DFI-6EXzQ8',
         'Tools Overview: Adobe Photoshop vs. Procreate workflows',
         '[NEW] Reading: V. S. Ramachandran — Phantoms in the Brain: Probing the Mysteries of the Human Mind: https://www.amazon.com/Phantoms-Brain-Probing-Mysteries-Human/dp/0688172172',
+        '[NEW] Book: A Biography of the Pixel by Alvy Ray Smith: https://www.amazon.com/Biography-Pixel-Leonardo-Alvy-Smith/dp/0262542455',
         'Guest: No speaker - First Class',
       ],
     },
@@ -47,13 +48,15 @@ export const curriculum = [
         '[NEW] Origin of the word "pixel"',
         '[NEW] Elements vs. Principles of Design',
         '[NEW] Resolution and Quality',
+        '[NEW] Interactive Tool: The Pixel Budget',
+        '[NEW] Selection, Vector, Mask, Channel Interchangeability',
         '[NEW] Hands-on: Biomorphic shapes & the Metaball effect (Gaussian Blur + Levels thresholding to generate organic blob forms via implicit scalar fields)',
         'Hands-on: Value, composition, gesture, and form on a digital screen',
       ],
       assignments: [
         '[NEW] **Base Assignment**: *Traditional Translation* — Recreate a traditional character sketch or prop study digitally in Photoshop or Procreate to learn basic brush control and layer setup.',
-        '[NEW] **Next Level**: *Style Adaptability* — Translate a character or prop design into two distinct production styles (e.g., flat graphic vs. painterly visual development) to build stylistic range.',
-        '[NEW] **Advanced Integration**: *3D Block-In & Paint* — Model a character base mesh or prop in Blender, render orthographic views, and paint them digitally in Photoshop in two different styles.'
+        '[NEW] **Next Level**: *Scene Integration* — Place your IP character or prop into three distinct photo-reference scenes, conducting value-to-color lighting studies.',
+        '[NEW] **Advanced Integration**: *Illustrated 3D Prop Composite* — Convert a 2D outline into a simple 3D object in Blender, apply Grease Pencil line art, and composite it back into a scene.'
       ],
     }
   },
@@ -112,9 +115,9 @@ export const curriculum = [
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *Media Tile* — Render a simple character prop on a 2×2 grid simulating traditional media (oil, watercolor, charcoal, digital) using custom brush presets and basic blend modes.',
-        '[NEW] **Next Level**: *Wear & Tear prop sheet* — Paint a signature prop from your IP in four distinct wear/weathered states (new, rusted, mossy, active/damaged) to demonstrate texture rendering.',
-        '[NEW] **Advanced Integration**: *Shader Editor & Bake* — Model the prop in Blender, apply procedural wear shaders, bake ambient occlusion and light passes, and do the final painting in Photoshop.'
+        '[NEW] **Base Assignment**: *Compositional Brush Library* — Build custom brush presets from real-world photos (atmospheric, landscape, messy/junk) to establish a digital painting toolbox.',
+        '[NEW] **Next Level**: *Landscape Compositions* — Paint three themed landscape scenes using your custom brush presets to establish foreground, midground, and background depth layering.',
+        '[NEW] **Advanced Integration**: *Shader Editor & Bake* — Create a procedural wear shader on your Blender model, bake ambient occlusion and curvature maps, and assemble four wear-and-tear states in Photoshop.'
       ],
     }
   },
@@ -170,7 +173,7 @@ export const curriculum = [
         '[NEW] Storyboarding fundamentals & visual cinematography (Dutch tilt, worm\'s eye view, pitch shot, zolly/dolly zooms)',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *Atmospheric perspective* — Paint a home base or environment from your IP, focusing on linear perspective, value depth, and dynamic directional light.',
+        '[NEW] **Base Assignment**: *Perspective & Atmospheric Lighting* — Paint an environment setting from your IP, focusing on linear perspective grids, value depth, and dynamic directional light.',
         '[NEW] **Next Level**: *Narrative Keyframe* — Paint a story-driven environment keyframe featuring your character. Focus on visual storytelling and scale relationships.',
         '[NEW] **Advanced Integration**: *3D Cinematic Block-in* — Build the environment in Blender, configure camera focal length and depth-of-field, set up volumetric lighting, and paint over the render.'
       ],
@@ -225,9 +228,9 @@ export const curriculum = [
         '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *Narrative Panels* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout.',
-        '[NEW] **Next Level**: *Production Storyboards* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.',
-        '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil.'
+        '[NEW] **Base Assignment**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout.',
+        '[NEW] **Next Level**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.',
+        '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil.'
       ],
     }
   },
@@ -283,9 +286,9 @@ export const curriculum = [
         '🛠️ Task: Refine campaign assets & apply peer feedback from Week 8 pitch rehearsals',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *"Your World" Poster* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
-        '[NEW] **Next Level**: *Senior Key Art & Grids* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
-        '[NEW] **Advanced Integration**: *3D Studio Render & Wrap* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
+        '[NEW] **Base Assignment**: *"Your World" Poster Campaign* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
+        '[NEW] **Next Level**: *Multi-Format Key Art Campaign* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
+        '[NEW] **Advanced Integration**: *3D Studio lighting & Asset Marketing Deck* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
       ],
     }
   },
@@ -312,9 +315,9 @@ export const curriculum = [
         'Salary negotiation basics & pricing confidence',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *Portfolio Showcase* — Curate and compile 6-8 of your best polished pieces from the assignments into a clean digital portfolio PDF or website.',
-        '[NEW] **Next Level**: *IP Worldbuilding Deck* — Compile a full pitch deck for your IP, including a character lineup, world guide, and color scripts/keys.',
-        '[NEW] **Advanced Integration**: *IP Production Kit & Bible* — Compile a comprehensive production deck/bible featuring your Blender model layouts, modular kits, and final digital paints.'
+        '[NEW] **Base Assignment**: *Portfolio Showcase Deck* — Curate and compile 6-8 of your best polished pieces from the assignments into a clean digital portfolio PDF or website.',
+        '[NEW] **Next Level**: *IP Worldbuilding Pitch Deck* — Compile a full pitch deck for your IP, including a character lineup, world guide, and color scripts/keys.',
+        '[NEW] **Advanced Integration**: *IP Production Bible & 3D Assets Deck* — Compile a comprehensive production deck/bible featuring your Blender model layouts, modular kits, and final digital paints.'
       ],
     }
   },

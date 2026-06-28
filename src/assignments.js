@@ -129,6 +129,8 @@ export const assignments = {
               '**Think about shape language.**\nAs you block and refine, pay attention to the *shape language* of your forms — the angles, curves, and silhouettes that define the feel of your world. If a shape becomes interesting or reusable, save it to the Library too.',
               '**Keep brushes simple.**\nWe have not covered custom brushes yet, so stay with the basics. Don\'t get distracted by texture or fancy strokes — the focus right now is structure, value, and light.',
             ],
+            bottomImageUrl: '/cyclist_paint_over_comparison.png',
+            bottomImageCaption: 'Example of blocking out and sketching a scene from photo reference (left) into painted value shapes (right).'
           },
           {
             heading: 'From Value to Color',
@@ -181,32 +183,113 @@ export const assignments = {
         ],
       },
       advanced: {
-        title: 'Advanced Integration: 3D Base Model & Paint-over',
-        subtitle: 'Focus: Modeling assets in Blender and painting details digitally in Photoshop.',
+        title: 'Advanced Integration: Illustrated 3D Prop Composite',
+        subtitle: 'Focus: Combine Photoshop, vector outlines, and Blender Grease Pencil to build an illustrated 3D prop composite.',
         sections: [
           {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Model your character base mesh or signature prop using Blender. You will render orthographic views (Front, Side, Back) and paint over them in Photoshop in two different commercial styles.',
+            heading: 'Overview',
+            body: 'For this assignment, you will choose one scene and add one illustrated 3D prop to it using a hybrid workflow that combines Photoshop, Illustrator/glTF, Blender, Grease Pencil, and Photoshop compositing.\n\nThe goal is not to learn full 3D modeling. Instead, the goal is to use a 2D drawing as the basis for a simple 3D object, then enhance it with hand-drawn linework and paint so it feels expressive, stylized, and integrated into an illustration or photo composite.\n\nThis workflow allows you to create props that can be:\n- rotated to find a better camera angle,\n- placed in perspective,\n- lit more consistently,\n- painted over for a hand-made look,\n- and composited into a finished scene.\n\nThink of this as Illustrated 3D Props, not traditional hard-surface modeling.',
+            images: [
+              { url: '/photoshop_bike_drawing.png', caption: 'Original Photoshop outline drawing of the bike.' },
+              { url: '/blender_grease_pencil_example.png', caption: 'The final simple 3D bike model with Grease Pencil line art applied.' }
+            ]
           },
           {
-            heading: 'Blender & Photoshop Workflow',
-            numberedSteps: [
-              'Block out the prop or low-poly character mannequin in Blender using primitive shapes and subdivision modifiers.',
-              'Set up orthographic cameras (Front, Side, and Back) and render them with flat gray shaders.',
-              'Import renders into Photoshop, establish a clean line art overlay, and apply two distinct style renders (flat graphic and textured painterly).',
+            heading: 'Assignment Prompt',
+            body: 'Pick one scene and add one 3D prop that belongs in that world.\n\nYour prop should begin as a 2D outline drawn in Photoshop, be converted into a vector, brought into Blender as a simple extruded object, enhanced with Grease Pencil, and then composited back into a final Photoshop scene.\n\nYour final image should feel like a finished illustration, concept image, poster, or stylized photo composite.',
+          },
+          {
+            heading: 'Examples of Props',
+            body: 'You may choose almost any prop, as long as it can begin as a clear silhouette or outline.',
+            bullets: [
+              'Guitar',
+              'Skateboard',
+              'Surfboard',
+              'Bike frame',
+              'Shoe',
+              'Robot part',
+              'Sign',
+              'Helmet',
+              'Ray gun',
+              'Vehicle silhouette',
+              'Chair',
+              'Mask',
+              'Hand-held device',
+              'Fantasy object',
             ],
           },
+          {
+            heading: 'Learning Goals',
+            bullets: [
+              'Translate a 2D drawing into a simple 3D object.',
+              'Understand how vector outlines can become extruded forms.',
+              'Use Blender in an accessible way without full polygon modeling.',
+              'Add expressive drawn detail using Grease Pencil.',
+              'Composite a rendered object into a Photoshop illustration.',
+              'Combine 2D and 3D methods into one workflow.',
+            ],
+          },
+          {
+            heading: 'Workflow Steps',
+            body: 'Follow these steps to complete the assignment:',
+            numberedSteps: [
+              '**Step 1: Choose Your Scene.** Start by selecting or creating one scene where your prop will appear. This could be a painted environment, photo collage, poster composition, editorial illustration, character scene, album-cover, or designed setting. Your prop should feel like it belongs in the world of the scene.',
+              '**Step 2: Draw the Prop in Photoshop.** Create a clean outline drawing of your prop in Photoshop. You may use the Pen Tool, Shape Tools, or carefully drawn outline work that can be turned into paths. Focus on a strong silhouette, clear readable form, and a design that translates well into a simple extruded object. At this stage, think in terms of shape design, not tiny details.',
+              {
+                text: '**Step 3: Convert the Outline to Vector.** Turn your outline into a vector-ready shape. Suggested workflow: save or refine the path in Photoshop, export the path to Illustrator if needed, clean up the vector shape, and export the final shape as glTF. The glTF should be simple, clean, and easy to import into Blender.',
+                imageUrl: '/asset_export_gltf.png',
+                imageCaption: 'Photoshop Asset Export settings panel showing GLTF output option for the vector shapes.'
+              },
+              '**Step 4: Import the glTF into Blender.** Bring your glTF into Blender. Once imported, use the curve/object as the basis for your prop: give it a small amount of extrusion, add a slight bevel if needed, and create a dimensional "cutout" version of the object. This is not meant to be a complex model. You are creating a simple 3D form from a 2D silhouette.',
+              '**Step 5: Add Only Minimal 3D Forms.** You may add a few extra dimensional parts if needed, but keep the object simple (e.g. guitar neck/strings, skateboard trucks/wheels, bike wheels/handlebars). **Important Limitation:** To keep the assignment focused, you may add no more than 3 modeled forms beyond the original silhouette. Don\'t get stuck building a fully realistic object or worry about perfect topology. The goal is a convincing illustrated prop, not engineering accuracy.',
+              {
+                text: '**Step 6: Use Grease Pencil to Stylize the Prop.** Take all GLTF and put them in collection (rt. click in tghe Scene Collection window and choose container) and then to apply the grease pencil to the geometry hit shift + A in the 3D viewport, select Grease Pencil > Collection Line Art.  You can adjust the width of Grease Pencil line by line Radius in the Line Art modifier in Properties.\n\n*In order to properly see the grease pencil outlines you need to toggle camera and click on the lock icon in the viewport.*',
+                images: [
+                  { url: '/blender_new_collection.png', caption: 'Create a New Collection in the Outliner window.' },
+                  { url: '/blender_grease_pencil_collection_line_art.png', caption: 'Select Grease Pencil > Collection Line Art.' },
+                  { url: '/blender_modifier_line_radius.png', caption: 'Set the Line Radius in the Modifier properties.' },
+                  { url: '/blender_lock_camera.png', caption: 'Toggle camera and click the lock icon in the viewport.' }
+                ]
+              },
+              '**Step 7: Render the Prop.** Render your prop from the best camera angle for your scene. Output a transparent PNG still (or a short transparent sequence if you want multiple options). Your prop should be lit in a way that helps it fit your final scene.',
+              '**Step 8: Composite the Prop in Photoshop.** Bring your rendered prop back into Photoshop and composite it into your chosen scene. In Photoshop, you may adjust scale and placement, color-correct the prop, paint over the render, add cast shadows, add atmosphere, add texture, integrate lighting, and unify the overall image. Your final piece should feel like one finished image, not just an object pasted onto a background.'
+            ]
+          },
+          {
+            heading: 'Technical Notes',
+            bullets: [
+              'Use Photoshop for the original outline and final composite.',
+              'Use Illustrator or glTF export as the bridge between Photoshop and Blender if needed.',
+              'Use Blender for extrusion, simple form development, and Grease Pencil.',
+              'Export the prop as a transparent render.',
+              'If you want to preserve the object for future use, Blender can export it as glTF or OBJ (glTF is preferred for modern reuse, OBJ is acceptable for basic geometry export).'
+            ]
+          },
+          {
+            heading: 'Requirements',
+            bullets: [
+              'Include one scene.',
+              'Include one illustrated 3D prop.',
+              'Begin with a 2D outline.',
+              'Use a vector-to-3D workflow.',
+              'Include some Grease Pencil or hand-drawn enhancement.',
+              'End as a finished Photoshop composite.'
+            ]
+          }
         ],
         submission: [
-          'Screenshot of the Blender viewport showing your 3D mesh topology.',
-          'Orthographic flat renders (PNG).',
-          'Two final style paint-overs (PNG).',
+          'Original Photoshop prop drawing (the outline or shape design used to begin the prop).',
+          'Vector source file (glTF, Illustrator file, or equivalent exported vector).',
+          'Blender file (showing the imported shape and simple 3D construction).',
+          'Rendered prop (one transparent PNG of the prop by itself).',
+          'Final composited scene (a finished Photoshop image with the prop integrated into the scene).',
+          'Optional: Second camera angle or variation (optional alternate render or alternate composite).'
         ],
         critiqueQuestions: [
-          'How did blocking out the 3D shapes in Blender help clarify the proportions and perspective of your initial sketch?',
-          'What choices did you make in your orthographic viewport setups to ensure your renders were clean templates for drawing?',
-          'How did you merge 3D structural correctness with the expressive qualities of hand-drawn digital painting during the paint-over?'
-        ],
+          'How did combining 2D drawing, vector outlines, and simple 3D forms change your approach to designing props?',
+          'What expressive elements did you add using Grease Pencil, and how did they help bridge the gap between 3D renders and your 2D illustration?',
+          'How did you handle lighting, color grading, and shadows in Photoshop to make the rendered prop feel integrated into the final scene?'
+        ]
       },
     },
   },

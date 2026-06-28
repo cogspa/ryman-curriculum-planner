@@ -398,6 +398,64 @@ export default function AssignmentPage() {
                 </div>
               )}
 
+              {section.images && (
+                <div style={{
+                  display: 'flex',
+                  gap: '16px',
+                  flexWrap: 'wrap',
+                  marginTop: '14px',
+                  marginBottom: '20px',
+                  justifyContent: 'center'
+                }}>
+                  {section.images.map((img, idx) => (
+                    <div key={idx} style={{
+                      flex: '1 1 280px',
+                      background: '#fff',
+                      borderRadius: '10px',
+                      border: '1px solid rgba(0, 0, 0, 0.08)',
+                      overflow: 'hidden',
+                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+                      maxWidth: '400px'
+                    }}>
+                      <div style={{
+                        width: '100%',
+                        aspectRatio: '16 / 10',
+                        overflow: 'hidden',
+                        background: '#f1f0ec',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                        <img
+                          src={img.url}
+                          alt={img.caption || section.heading}
+                          style={{
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                            objectFit: 'contain',
+                            display: 'block'
+                          }}
+                        />
+                      </div>
+                      {img.caption && (
+                        <p style={{
+                          fontSize: '11px',
+                          fontWeight: '600',
+                          color: 'var(--ink-mid, #64748b)',
+                          textAlign: 'center',
+                          padding: '8px 12px',
+                          margin: 0,
+                          fontFamily: 'var(--font-sans, sans-serif)',
+                          fontStyle: 'italic'
+                        }}>
+                          {img.caption}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
               {section.bullets && (
                 <ul className="phase-list phase-list--accent">
                   {section.bullets.map((b, i) => {
@@ -422,15 +480,18 @@ export default function AssignmentPage() {
                               width: '100%',
                               aspectRatio: '16 / 10',
                               overflow: 'hidden',
-                              background: '#f1f0ec'
+                              background: '#f1f0ec',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
                             }}>
                               <img
                                 src={b.imageUrl}
                                 alt={b.imageCaption || b.text}
                                 style={{
-                                  width: '100%',
-                                  height: '100%',
-                                  objectFit: 'cover',
+                                  maxWidth: '100%',
+                                  maxHeight: '100%',
+                                  objectFit: 'contain',
                                   display: 'block'
                                 }}
                               />
@@ -504,7 +565,15 @@ export default function AssignmentPage() {
                     }
                     return (
                       <li key={i}>
-                        {parseInlineMarkdown(s.text)}
+                        {typeof s.text === 'string' && s.text.includes('\n') ? (
+                          s.text.split('\n').map((para, pIdx) => (
+                            <p key={pIdx} style={{ margin: pIdx === 0 ? '0' : '8px 0 0 0' }}>
+                              {parseInlineMarkdown(para)}
+                            </p>
+                          ))
+                        ) : (
+                          parseInlineMarkdown(s.text)
+                        )}
                         {s.imageUrl && (
                           <div style={{
                             marginTop: '14px',
@@ -520,15 +589,18 @@ export default function AssignmentPage() {
                               width: '100%',
                               aspectRatio: '16 / 10',
                               overflow: 'hidden',
-                              background: '#f1f0ec'
+                              background: '#f1f0ec',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
                             }}>
                               <img
                                 src={s.imageUrl}
                                 alt={s.imageCaption || s.text}
                                 style={{
-                                  width: '100%',
-                                  height: '100%',
-                                  objectFit: 'cover',
+                                  maxWidth: '100%',
+                                  maxHeight: '100%',
+                                  objectFit: 'contain',
                                   display: 'block'
                                 }}
                               />
@@ -547,6 +619,62 @@ export default function AssignmentPage() {
                                 {s.imageCaption}
                               </p>
                             )}
+                          </div>
+                        )}
+                        {s.images && (
+                          <div style={{
+                            display: 'flex',
+                            gap: '16px',
+                            flexWrap: 'wrap',
+                            marginTop: '14px',
+                            marginBottom: '8px'
+                          }}>
+                            {s.images.map((img, idx) => (
+                              <div key={idx} style={{
+                                flex: '1 1 200px',
+                                background: '#fff',
+                                borderRadius: '10px',
+                                border: '1px solid rgba(0, 0, 0, 0.08)',
+                                overflow: 'hidden',
+                                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+                                maxWidth: '280px'
+                              }}>
+                                <div style={{
+                                  width: '100%',
+                                  aspectRatio: '16 / 10',
+                                  overflow: 'hidden',
+                                  background: '#f1f0ec',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center'
+                                }}>
+                                  <img
+                                    src={img.url}
+                                    alt={img.caption || s.text}
+                                    style={{
+                                      maxWidth: '100%',
+                                      maxHeight: '100%',
+                                      objectFit: 'contain',
+                                      display: 'block'
+                                    }}
+                                  />
+                                </div>
+                                {img.caption && (
+                                  <p style={{
+                                    fontSize: '11px',
+                                    fontWeight: '600',
+                                    color: 'var(--ink-mid, #64748b)',
+                                    textAlign: 'center',
+                                    padding: '8px 12px',
+                                    margin: 0,
+                                    fontFamily: 'var(--font-sans, sans-serif)',
+                                    fontStyle: 'italic'
+                                  }}>
+                                    {img.caption}
+                                  </p>
+                                )}
+                              </div>
+                            ))}
                           </div>
                         )}
                         {s.subIntro && (
@@ -595,6 +723,52 @@ export default function AssignmentPage() {
               )}
 
               {section.note && <p className="phase-note">💡 {parseInlineMarkdown(section.note)}</p>}
+
+              {section.bottomImageUrl && (
+                <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                  <div style={{
+                    display: 'inline-block',
+                    background: '#fff',
+                    borderRadius: '10px',
+                    border: '1px solid rgba(0, 0, 0, 0.08)',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+                    maxWidth: '640px'
+                  }}>
+                    <div style={{
+                      width: '100%',
+                      background: '#f1f0ec',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}>
+                      <img
+                        src={section.bottomImageUrl}
+                        alt={section.bottomImageCaption || section.heading}
+                        style={{
+                          maxWidth: '100%',
+                          height: 'auto',
+                          display: 'block'
+                        }}
+                      />
+                    </div>
+                    {section.bottomImageCaption && (
+                      <p style={{
+                        fontSize: '12px',
+                        fontWeight: '600',
+                        color: 'var(--ink-mid, #64748b)',
+                        textAlign: 'center',
+                        padding: '10px 16px',
+                        margin: 0,
+                        fontFamily: 'var(--font-sans, sans-serif)',
+                        fontStyle: 'italic'
+                      }}>
+                        {section.bottomImageCaption}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              )}
 
                {section.toolGuides && (
                 <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>

@@ -53,3 +53,14 @@ export function isWeekReleased(weekNum, startDateStr) {
   
   return today >= monday;
 }
+
+export function isNewPillActive(weekNum, startDateStr) {
+  try {
+    const nextWeekMonday = getWeekMonday(weekNum + 1, startDateStr);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return today < nextWeekMonday;
+  } catch {
+    return true;
+  }
+}

@@ -25,6 +25,7 @@ import ClassFAQPage from './ClassFAQPage.jsx';
 import SpeakerListPage from './SpeakerListPage.jsx';
 import RosterPage from './RosterPage.jsx';
 import MentorshipPage from './MentorshipPage.jsx';
+import PixelBudget from './PixelBudget.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -41,6 +42,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/speakers" element={<SpeakerListPage />} />
           <Route path="/roster" element={<RosterPage />} />
           <Route path="/mentorship" element={<MentorshipPage />} />
+          <Route path="/pixel-budget" element={<PixelBudget />} />
+          <Route path="/week/01/pixel-budget" element={<PixelBudget />} />
           <Route path="/week/01" element={<Week01Overview />} />
           <Route path="/week/01/:topicKey" element={<Week01TopicDetail />} />
           <Route path="/week/02" element={<Week02Overview />} />

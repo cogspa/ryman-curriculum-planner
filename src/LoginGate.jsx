@@ -80,14 +80,15 @@ export default function LoginGate() {
     // Student allowed pages:
     // - Home: /
     // - Syllabus: /syllabus
-    // - Roster: /roster
+    // - FAQ: /faq
+    // - Calendar: /calendar
     // - Assignments Hub (filtered): /assignments
     // - Released assignments: /assignment/:week (only if released)
     // - Released weeks: /week/01, /week/01/:topicKey, etc. (only if released)
     
     let isAllowed = false;
     
-    if (path === '/' || path === '/syllabus' || path === '/roster' || path === '/assignments') {
+    if (path === '/' || path === '/syllabus' || path === '/assignments' || path === '/faq' || path === '/calendar' || path === '/pixel-budget') {
       isAllowed = true;
     } else {
       const assignmentMatch = path.match(/^\/assignment\/(\d+)/);

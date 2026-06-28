@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { curriculum, config, changelog } from './curriculum.js';
 import { assignments } from './assignments.js';
 import { supabase } from './supabaseClient.js';
-import { isWeekReleased, getActiveRole } from './releaseUtils.js';
+import { isWeekReleased, getActiveRole, isNewPillActive } from './releaseUtils.js';
 import {
   loadLocalCurriculum,
   saveLocalCurriculum,
@@ -277,7 +277,7 @@ function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      {(weekNumber === 1 || weekNumber === 2 || weekNumber === 3 || weekNumber === 4 || weekNumber === 5 || weekNumber === 6 || weekNumber === 7) && (label === 'Topics' || label === 'Readings') ? (
+      {([1, 2, 3, 4, 5, 6, 7].includes(Number(weekNumber))) && (label === 'Topics' || label === 'Readings') ? (
         <Link to={`/week/0${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
@@ -291,22 +291,23 @@ function Section({ label, items, weekNumber }) {
       <ul className="section-list">
         {items.map((item, i) => {
           const { isNew, text } = parseNew(item);
+          const showNew = isNew && isNewPillActive(Number(weekNumber));
 
           let linkPath = null;
           let isExternal = false;
-          if (label === 'Assignments' && [1, 3, 5, 7, 9, 10].includes(weekNumber)) {
+          if (label === 'Assignments' && [1, 3, 5, 7, 9, 10].includes(Number(weekNumber))) {
             const cleanText = text.toLowerCase();
             if (cleanText.includes('base assignment') || cleanText.includes('base')) {
-              linkPath = `/assignment/${weekNumber}?track=beginner`;
+              linkPath = `/assignment/${Number(weekNumber)}?track=beginner`;
             } else if (cleanText.includes('next level') || cleanText.includes('take it')) {
-              linkPath = `/assignment/${weekNumber}?track=intermediate`;
+              linkPath = `/assignment/${Number(weekNumber)}?track=intermediate`;
             } else if (cleanText.includes('advanced integration') || cleanText.includes('advanced') || cleanText.includes('3d integration') || cleanText.includes('3d')) {
-              linkPath = `/assignment/${weekNumber}?track=advanced`;
+              linkPath = `/assignment/${Number(weekNumber)}?track=advanced`;
             } else {
-              linkPath = `/assignment/${weekNumber}`;
+              linkPath = `/assignment/${Number(weekNumber)}`;
             }
           }
-          if (weekNumber === 1 && label === 'Topics') {
+          if (Number(weekNumber) === 1 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();
             if (cleanText.includes('canvas') && cleanText.includes('pixels')) {
               linkPath = '/week/01/digital-vs-physical-canvas';
@@ -316,6 +317,10 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/01/elements-vs-principles';
             } else if (cleanText.includes('resolution')) {
               linkPath = '/week/01/resolution-and-quality';
+            } else if (cleanText.includes('pixel budget')) {
+              linkPath = '/pixel-budget';
+            } else if (cleanText.includes('selection') || cleanText.includes('vector') || cleanText.includes('mask') || cleanText.includes('interchangeability')) {
+              linkPath = '/week/01/selection-vector-mask-channel';
             } else if (cleanText.includes('biomorphic') || cleanText.includes('metaball')) {
               linkPath = '/week/01/biomorphic-shapes-metaballs';
             } else if (cleanText.includes('value') && cleanText.includes('composition')) {
@@ -434,8 +439,8 @@ function Section({ label, items, weekNumber }) {
           }
 
           return (
-            <li key={i} className={isNew ? 'is-new' : ''}>
-              {isNew && <NewPill />}
+            <li key={i} className={showNew ? 'is-new' : ''}>
+              {showNew && <NewPill />}
               {linkPath ? (
                 isExternal ? (
                   <a href={linkPath} target="_blank" rel="noopener noreferrer" className="topic-direct-link">
@@ -1196,7 +1201,7 @@ export default function App() {
           totalWeeks={weeks.length}
         />
 
-        {role === 'admin' && (
+        {(role === 'admin' || role === 'student') && (
           <div className="faq-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(5, 150, 105, 0.05)', border: '1px solid rgba(5, 150, 105, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '12px', marginTop: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ fontSize: '18px' }}>🙋‍♂️</span>
@@ -1230,20 +1235,22 @@ export default function App() {
           </div>
         )}
 
-        <div className="roster-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(124, 58, 237, 0.05)', border: '1px solid rgba(124, 58, 237, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px', marginTop: role === 'student' ? '16px' : '0' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '18px' }}>📋</span>
-            <span style={{ fontSize: '13px', fontWeight: '500', color: '#6d28d9' }}>
-              <strong>Roster:</strong> Final class list roster of the 14 selected candidates with contact info and goals.
-            </span>
+        {role === 'admin' && (
+          <div className="roster-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(124, 58, 237, 0.05)', border: '1px solid rgba(124, 58, 237, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>📋</span>
+              <span style={{ fontSize: '13px', fontWeight: '500', color: '#6d28d9' }}>
+                <strong>Roster:</strong> Final class list roster of the 14 selected candidates with contact info and goals.
+              </span>
+            </div>
+            <Link 
+              to="/roster" 
+              style={{ textDecoration: 'none', background: '#7c3aed', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
+            >
+              FINAL CLASS LIST ROSTER →
+            </Link>
           </div>
-          <Link 
-            to="/roster" 
-            style={{ textDecoration: 'none', background: '#7c3aed', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s' }}
-          >
-            FINAL CLASS LIST ROSTER →
-          </Link>
-        </div>
+        )}
 
         {role === 'admin' && (
           <div className="mentorship-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(244, 63, 94, 0.05)', border: '1px solid rgba(244, 63, 94, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
@@ -1298,7 +1305,7 @@ export default function App() {
           </div>
         </div>
 
-        {role === 'admin' && (
+        {(role === 'admin' || role === 'student') && (
           <div className="calendar-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(217, 119, 6, 0.05)', border: '1px solid rgba(217, 119, 6, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span style={{ fontSize: '18px' }}>📅</span>

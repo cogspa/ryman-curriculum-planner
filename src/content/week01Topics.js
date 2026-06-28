@@ -226,6 +226,85 @@ Aliasing produces jagged edges on curved or diagonal lines. Anti-aliasing adds r
     ],
   },
 
+  'selection-vector-mask-channel': {
+    title: 'Selection, Vector, Mask, Channel Interchangeability',
+    sourceEyebrow: 'Photoshop Systems Integration',
+    imageUrl: '/selections_to_vectors.png',
+    imageCaption: 'Photoshop selections, channels, masks, and vector paths can all represent the exact same silhouette.',
+    sections: [
+      {
+        heading: 'Introduction',
+        body: `This screen grab shows how Photoshop can move the same silhouette between several different systems: selections, alpha channels, masks, and vector paths.`
+      },
+      {
+        heading: '1. Active Selection',
+        body: `The marching ants / blue anchor-like outline around the black creature represents an active selection. A selection defines which pixels Photoshop can affect: paint, erase, fill, transform, copy, apply adjustments, or isolate.`
+      },
+      {
+        heading: '2. Save Selection → Alpha Channel',
+        body: `In the Select menu, Save Selection… stores the current selection as a named grayscale channel. In the Channels panel at left, this appears as an Alpha channel.
+
+White = selected / visible
+Black = unselected / hidden
+Gray = partially selected / semi-transparent
+
+An alpha channel is essentially a saved pixel-based selection map. It is useful because you can return to a complex selection at any time without rebuilding it.`
+      },
+      {
+        heading: '3. Alpha Channel → Layer Mask',
+        body: `That saved selection can become a layer mask. The layer panel on the right shows a thumbnail next to the artwork thumbnail: that is the mask.
+
+A mask uses the same black-and-white logic as an alpha channel:
+
+Paint white to reveal the layer
+Paint black to hide it
+Paint gray for partial transparency
+
+So, in practical terms, an alpha channel is a saved selection, while a layer mask uses that same selection information to control visibility on a specific layer.`
+      },
+      {
+        heading: '4. Selection → Path',
+        body: `The Paths panel shows a saved path, goblin_path. Photoshop can convert a selection into a Work Path or saved path using Make Work Path.
+
+Unlike channels and masks, which are raster/pixel-based, a path is built from vector anchor points and Bézier handles. This makes it useful for:
+
+- Clean editable outlines
+- Shape layers and vector masks
+- Precise cutouts
+- Logos, icons, silhouettes, and repeated motifs
+- Exporting or transferring artwork toward Illustrator`
+      },
+      {
+        heading: 'Important Distinction',
+        body: `These systems are connected, but they are not identical:
+
+- **Selection / alpha channel / layer mask**: pixel-based; can preserve soft edges, textures, transparency, and painterly detail.
+- **Path / vector mask / shape**: mathematically defined curves; ideal for clean silhouettes, but fine texture and soft feathering may be simplified or lost.
+
+For a rough hand-drawn or painted edge, the vector path may need cleanup after conversion. Photoshop’s Tolerance setting during Make Work Path determines how closely the path follows the original selection: lower values create more points and closer detail; higher values create smoother, simpler curves.`
+      },
+      {
+        heading: 'Why This Is Useful',
+        body: `This workflow lets one image element travel through multiple production stages:
+
+Painted shape → selection → saved alpha channel → layer mask → vector path → Illustrator-compatible outline → SVG/AI-style vector asset → Blender curve or extruded 3D form.
+
+That flexibility is especially valuable for creating:
+- Brushes and brush tips
+- Repeat patterns and textile motifs
+- Stencils and screen-print separations
+- Custom shapes and icons
+- Logo-like silhouettes
+- Layered Illustrator artwork
+- 3D extrusions for Blender, Cinema 4D, or other 3D tools`
+      },
+      {
+        heading: 'Blender & 3D Extrusion Note',
+        body: `For Blender, the cleanest route is usually to refine the path in Photoshop or Illustrator, save/export it as an SVG, import it as a Curve, then give it bevel depth or extrude it into geometry. Clean vector contours produce much better 3D results than a highly detailed raster selection.`
+      }
+    ]
+  },
+
   'value-composition-gesture-form': {
     title: 'Value, Composition, Gesture, and Form',
     sourceEyebrow: 'Adapted from PCC DMA 12 — What Is Value? · Value Is Emotive · Color Gets the Credit, Value Does the Work · Value and Contrast',
@@ -380,6 +459,8 @@ export const topicList = [
   { key: 'origin-of-pixel', label: 'Origin of the word "pixel"', isNew: true },
   { key: 'elements-vs-principles', label: 'Elements vs. Principles of Design', isNew: true },
   { key: 'resolution-and-quality', label: 'Resolution and Quality', isNew: true },
+  { key: 'pixel-budget', label: 'Interactive Tool: The Pixel Budget', isNew: true },
+  { key: 'selection-vector-mask-channel', label: 'Selection, Vector, Mask, Channel Interchangeability', isNew: true },
   { key: 'biomorphic-shapes-metaballs', label: 'Hands-on: Biomorphic shapes & the Metaball effect (Gaussian Blur + Levels thresholding)', isNew: true },
   { key: 'value-composition-gesture-form', label: 'Value, composition, gesture, and form', isNew: false },
   { key: 'workflow-fundamentals', label: 'Side-topic conversations (Tue Zoom): Wacom/iPad workflow setup, canvas size, resolution, file types, layer fundamentals, file-naming conventions', isNew: false },

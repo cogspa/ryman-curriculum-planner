@@ -4,6 +4,7 @@ import { loadLocalCurriculum, fetchRemoteCurriculum } from './curriculumService.
 import { config } from './curriculum.js';
 import { assignments } from './assignments.js';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
+import { getActiveRole } from './releaseUtils.js';
 
 // ─── Constants & Date Helpers ──────────────────────────────────────────────
 
@@ -95,6 +96,7 @@ function renderItemText(str) {
 }
 
 export default function CalendarPage() {
+  const role = getActiveRole();
   const [startDate] = useState(() => {
     try {
       return localStorage.getItem('cp-start-date') || config.startDate;
@@ -621,19 +623,31 @@ export default function CalendarPage() {
                             <p style={{ margin: '0 0 10px 0', fontSize: '12px', fontWeight: '500' }}>
                               {getWeekAssignments(selectedSession.week).title}
                             </p>
-                            <Link 
-                              to={`/assignment/${selectedSession.week}`} 
-                              style={{
+                            {role === 'student' && selectedSession.week !== 1 ? (
+                              <span style={{
                                 fontSize: '11px',
                                 fontFamily: 'var(--font-mono, monospace)',
-                                color: 'var(--accent, #A8482A)',
-                                textDecoration: 'none',
-                                fontWeight: 'bold',
+                                color: '#94a3b8',
+                                cursor: 'not-allowed',
                                 display: 'inline-block'
-                              }}
-                            >
-                              OPEN ASSIGNMENT GUIDE →
-                            </Link>
+                              }}>
+                                🔒 ASSIGNMENT GUIDE (LOCKED)
+                              </span>
+                            ) : (
+                              <Link 
+                                to={`/assignment/${selectedSession.week}`} 
+                                style={{
+                                  fontSize: '11px',
+                                  fontFamily: 'var(--font-mono, monospace)',
+                                  color: 'var(--accent, #A8482A)',
+                                  textDecoration: 'none',
+                                  fontWeight: 'bold',
+                                  display: 'inline-block'
+                                }}
+                              >
+                                OPEN ASSIGNMENT GUIDE →
+                              </Link>
+                            )}
                           </div>
                         )}
                       </>
@@ -642,13 +656,21 @@ export default function CalendarPage() {
                     {/* Sub-nav Overview Link */}
                     {selectedSession.week <= 7 && (
                       <div style={{ marginTop: '24px', borderTop: '1px solid var(--hairline, #DDD6C6)', paddingTop: '16px', textAlign: 'center' }}>
-                        <Link 
-                          to={`/week/0${selectedSession.week}`} 
-                          className="inline-link"
-                          style={{ fontSize: '12.5px', fontFamily: 'var(--font-mono, monospace)', textTransform: 'uppercase', textDecoration: 'none', fontWeight: 'bold' }}
-                        >
-                          Browse Week {selectedSession.week} Overview →
-                        </Link>
+                        {role === 'student' && selectedSession.week !== 1 ? (
+                          <span 
+                            style={{ fontSize: '12.5px', fontFamily: 'var(--font-mono, monospace)', textTransform: 'uppercase', color: '#94a3b8', cursor: 'not-allowed' }}
+                          >
+                            🔒 Browse Week {selectedSession.week} Overview (LOCKED)
+                          </span>
+                        ) : (
+                          <Link 
+                            to={`/week/0${selectedSession.week}`} 
+                            className="inline-link"
+                            style={{ fontSize: '12.5px', fontFamily: 'var(--font-mono, monospace)', textTransform: 'uppercase', textDecoration: 'none', fontWeight: 'bold' }}
+                          >
+                            Browse Week {selectedSession.week} Overview →
+                          </Link>
+                        )}
                       </div>
                     )}
                   </div>

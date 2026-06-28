@@ -67,6 +67,21 @@ export default function Week01TopicDetail() {
         {topic.sourceEyebrow ? topic.sourceEyebrow : `Adapted from PCC DMA 12: ${topic.pccSources?.join(' · ')}`}
       </div>
 
+      {topic.imageUrl && (
+        <div style={{ margin: '0 0 32px', textAlign: 'center' }}>
+          <img 
+            src={topic.imageUrl} 
+            alt={topic.imageCaption || topic.title} 
+            style={{ maxWidth: '100%', maxHeight: '480px', borderRadius: '6px', border: '1px solid #d4c9a8' }} 
+          />
+          {topic.imageCaption && (
+            <p style={{ fontSize: '11px', color: '#8b3a2f', marginTop: '8px', fontStyle: 'italic', fontFamily: 'Menlo, monospace' }}>
+              {topic.imageCaption}
+            </p>
+          )}
+        </div>
+      )}
+
       {isCustomTopic ? (
         topic.sections.map((section, i) => (
           <section key={i} className="sec">
