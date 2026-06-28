@@ -307,6 +307,51 @@ export default function AssignmentPage() {
             </div>
           )}
 
+          {/* Deliverables Overview Alert Box */}
+          <div style={{
+            background: 'linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%)',
+            border: '1px solid #f59e0b',
+            borderRadius: '12px',
+            padding: '20px 24px',
+            marginBottom: '28px',
+            boxShadow: '0 4px 12px rgba(245, 158, 11, 0.05)',
+            display: 'flex',
+            gap: '16px',
+            alignItems: 'flex-start'
+          }}>
+            <span style={{ fontSize: '24px', lineHeight: '1.2' }}>📋</span>
+            <div>
+              <h3 style={{
+                margin: '0 0 6px 0',
+                fontSize: '15px',
+                fontWeight: 'bold',
+                color: '#92400e',
+                fontFamily: 'var(--font-sans, sans-serif)'
+              }}>
+                Course Deliverables & Submission Guidelines
+              </h3>
+              <p style={{
+                margin: 0,
+                fontSize: '14px',
+                lineHeight: '1.5',
+                color: '#78350f',
+                fontFamily: 'var(--font-sans, sans-serif)'
+              }}>
+                To complete the weekly requirements, students must submit both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong>. The <strong>Advanced Integration</strong> track is optional.
+              </p>
+              <p style={{
+                margin: '8px 0 0 0',
+                fontSize: '13.5px',
+                lineHeight: '1.5',
+                color: '#b45309',
+                fontStyle: 'italic',
+                fontFamily: 'var(--font-sans, sans-serif)'
+              }}>
+                <strong>Note:</strong> Please hold onto all of your assignment files. Have them ready for our weekly critiques and save them to compile into your final capstone project at the end of the course.
+              </p>
+            </div>
+          </div>
+
           {/* Track Selector Tab Bar */}
           {isMultiTrack && (
             <div style={{
