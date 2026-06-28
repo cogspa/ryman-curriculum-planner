@@ -89,10 +89,9 @@ export const assignments = {
         ],
 
         submission: [
-          'Scan/photo of the original traditional reference.',
-          'Finished Straight Line Blocking version as a PNG.',
-          'Finished Sketch Approach version as a PNG.',
-          'Finished Lasso Block Approach version as a PNG.',
+          'Straight Line Blocking rendering (1920 × 1080 px PNG)',
+          'Sketch Approach rendering (1920 × 1080 px PNG)',
+          'Lasso Block Approach rendering (1920 × 1080 px PNG)',
         ],
         critiqueQuestions: [
           'How did your three blocking approaches (straight-line, sketch, lasso block) differ in ease of execution and final aesthetic character?',
