@@ -328,7 +328,7 @@ export default function AssignmentPage() {
                 color: '#92400e',
                 fontFamily: 'var(--font-sans, sans-serif)'
               }}>
-                Course Deliverables & Submission Guidelines
+                Course Deliverables & Guidelines
               </h3>
               <p style={{
                 margin: 0,
@@ -337,11 +337,20 @@ export default function AssignmentPage() {
                 color: '#78350f',
                 fontFamily: 'var(--font-sans, sans-serif)'
               }}>
-                To complete the weekly requirements, students must submit both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong>. The <strong>Advanced Integration</strong> track is optional.
+                We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks, which typically consist of <strong>2 to 4 base thumbnail studies or layout sheets</strong> (students are welcome to do more). The <strong>Advanced Integration</strong> track is optional.
               </p>
               <p style={{
                 margin: '8px 0 0 0',
                 fontSize: '13.5px',
+                lineHeight: '1.5',
+                color: '#78350f',
+                fontFamily: 'var(--font-sans, sans-serif)'
+              }}>
+                These are designed to be quick, foundational concepts and should not be overly detailed. Ideally, these studies connect to the worldbuilding flow of the class, but if you do not have a pre-existing IP to work from, that is absolutely fine.
+              </p>
+              <p style={{
+                margin: '8px 0 0 0',
+                fontSize: '13px',
                 lineHeight: '1.5',
                 color: '#b45309',
                 fontStyle: 'italic',

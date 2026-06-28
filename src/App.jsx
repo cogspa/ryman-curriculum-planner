@@ -864,7 +864,7 @@ function WeekCard({
                       <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
                         <span style={{ fontSize: '13px', lineHeight: '1.2' }}>📋</span>
                         <div>
-                          <strong>Deliverables:</strong> <em>Base Assignment</em> and <em>Next Level</em> are required. The <em>Advanced Integration</em> track is optional. Have your files ready for weekly critiques and saved for your final capstone project.
+                          <strong>Deliverables:</strong> We recommend completing both the <em>Base Assignment</em> and <em>Next Level</em> tracks, typically consisting of 2 to 4 base thumbnail studies or sheets (feel free to do more). These are concept sketches and shouldn't be overly detailed. Ideally they relate to the class worldbuilding flow, but working on a new theme is completely fine if you don't have a pre-existing IP. Note: The <em>Advanced Integration</em> track is optional. Have your files ready for weekly critiques and saved for your final capstone project.
                         </div>
                       </div>
                     </div>
