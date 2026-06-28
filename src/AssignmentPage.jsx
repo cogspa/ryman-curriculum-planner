@@ -337,7 +337,7 @@ export default function AssignmentPage() {
                 color: '#78350f',
                 fontFamily: 'var(--font-sans, sans-serif)'
               }}>
-                We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks, which typically consist of <strong>2 to 4 base thumbnail studies or layout sheets</strong> (students are welcome to do more). The <strong>Advanced Integration</strong> track is optional.
+                We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. We typically work at a <strong>16:9 widescreen ratio</strong> (the standard landscape format for typical monitors and mobile screens), and suggest a baseline resolution of <strong>1920 × 1080 px</strong>, though this is not a strict rule. You are encouraged to explore different sizes and create varied layouts using Illustrator. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. The <strong>Advanced Integration</strong> track is optional.
               </p>
               <p style={{
                 margin: '8px 0 0 0',

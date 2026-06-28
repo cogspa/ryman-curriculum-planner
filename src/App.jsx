@@ -864,7 +864,7 @@ function WeekCard({
                       <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
                         <span style={{ fontSize: '13px', lineHeight: '1.2' }}>📋</span>
                         <div>
-                          <strong>Deliverables:</strong> We recommend completing both the <em>Base Assignment</em> and <em>Next Level</em> tracks, typically consisting of 2 to 4 base thumbnail studies or sheets (feel free to do more). These are concept sketches and shouldn't be overly detailed. Ideally they relate to the class worldbuilding flow, but working on a new theme is completely fine if you don't have a pre-existing IP. Note: The <em>Advanced Integration</em> track is optional. Have your files ready for weekly critiques and saved for your final capstone project.
+                          <strong>Deliverables:</strong> We recommend completing the <em>Base Assignment</em> and <em>Next Level</em> tracks. We typically work at a <strong>16:9 widescreen ratio</strong> (the standard landscape format for typical monitors and mobile screens), and recommend a baseline resolution of <strong>1920 × 1080 px</strong> (not a strict rule). You can explore different sizes and create varied layouts using Illustrator. If using Photoshop, keep the active Artboard count to a minimum to avoid large files. These are quick concept sketches and shouldn't be overly detailed. Ideally they relate to the class worldbuilding flow, but a new theme is fine if you don't have a pre-existing IP. Note: The <em>Advanced Integration</em> track is optional. Have files ready for critiques and saved for the final capstone project.
                         </div>
                       </div>
                     </div>
