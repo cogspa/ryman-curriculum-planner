@@ -161,10 +161,9 @@ export const assignments = {
           },
         ],
         submission: [
-          'The three photographic references used (one per scene).',
-          'Scene 1 — finished loose color study as a PNG.',
-          'Scene 2 — finished loose color study as a PNG.',
-          'Scene 3 — finished loose color study as a PNG.',
+          'At least 3 PNGs of your environment lighting scenes (feel free to do more).',
+          'Canvas Size: You can explore variations in size, or stick with 16:9 or 9:16 screen ratios.',
+          'Note: These should be loose concept explorations and not overly detailed.',
         ],
         critiqueQuestions: [
           'How did combining the Part 1 methods change the way you approached building a full scene?',
