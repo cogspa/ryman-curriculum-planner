@@ -980,10 +980,10 @@ export default function AssignmentPage() {
             </section>
           )}
 
-          {/* Submission */}
+          {/* Deliverables */}
           {data.submission && (
             <section className="assignment-phase">
-              <h2 className="phase-title">Submission</h2>
+              <h2 className="phase-title">Deliverables</h2>
               <ol className="phase-steps">
                 {data.submission.map((s, i) => <li key={i}>{s}</li>)}
               </ol>

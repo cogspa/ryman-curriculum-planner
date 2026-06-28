@@ -86,14 +86,6 @@ export const assignments = {
               },
             ],
           },
-          {
-            heading: 'Recommended File Setup',
-            numberedSteps: [
-              'Layer 1 (Bottom): Import your traditional sketch scan/photo, set opacity to 30%.',
-              'Layer 2 (Middle): Solid white background layer.',
-              'Layer 3 (Top): Your active drawing layer for inking.',
-            ],
-          },
         ],
 
         submission: [
@@ -103,9 +95,10 @@ export const assignments = {
           'Finished Lasso Block Approach version as a PNG.',
         ],
         critiqueQuestions: [
-          'How did you translate the organic, tactile feel of your traditional sketch into clean digital lines?',
-          'What did you discover about your brush control and line confidence when comparing the straight-line and curved-line versions?',
-          'How does the layer structure you set up make it easier to isolate lines and prep for future coloring or adjustments?'
+          'How did your three blocking approaches (straight-line, sketch, lasso block) differ in ease of execution and final aesthetic character?',
+          'What did you discover about your brush control, line confidence, and hand-eye coordination when doing the freehand gestural sketch versus the straight-line path blocking?',
+          'How does the flat silhouette lasso blocking style help you see form and shape value hierarchy differently compared to traditional linework?',
+          'How will organizing these drawing phases on separate layers make it easier to apply color and lighting overlays in later assignments?'
         ],
       },
       intermediate: {
