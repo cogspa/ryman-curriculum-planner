@@ -848,6 +848,27 @@ function WeekCard({
                     weekNumber={week.week}
                     isDraggingActive={isDraggingActive}
                   />
+                  {week.saturday.assignments && week.saturday.assignments.length > 0 && (
+                    <div style={{
+                      marginTop: '10px',
+                      padding: '8px 12px',
+                      background: 'rgba(245, 158, 11, 0.05)',
+                      border: '1px solid rgba(245, 158, 11, 0.2)',
+                      borderRadius: '6px',
+                      fontSize: '11.5px',
+                      lineHeight: '1.4',
+                      color: '#78350f',
+                      fontFamily: 'var(--font-sans, sans-serif)',
+                      marginBottom: '4px'
+                    }}>
+                      <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+                        <span style={{ fontSize: '13px', lineHeight: '1.2' }}>📋</span>
+                        <div>
+                          <strong>Deliverables:</strong> <em>Base Assignment</em> and <em>Next Level</em> are required. The <em>Advanced Integration</em> track is optional. Have your files ready for weekly critiques and saved for your final capstone project.
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
