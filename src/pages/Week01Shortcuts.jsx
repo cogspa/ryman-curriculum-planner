@@ -112,6 +112,15 @@ export default function Week01Shortcuts() {
                   </div>
                 ))}
               </div>
+              {group.title === 'Navigation' && (
+                <div style={{ marginTop: '16px', display: 'flex', justifyContent: 'center', background: '#f5efe1', padding: '12px', borderRadius: '8px', border: '1px solid #d4c9a8' }}>
+                  <img 
+                    src="/platform-navigation-keys.gif" 
+                    alt="Navigation keys demo" 
+                    style={{ maxWidth: '100%', height: 'auto', borderRadius: '4px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }} 
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>
