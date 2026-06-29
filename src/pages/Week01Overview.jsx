@@ -73,6 +73,18 @@ export default function Week01Overview() {
         </ul>
       </div>
 
+      <div style={videoCalloutStyle}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span style={{ fontSize: '20px' }}>🎥</span>
+          <div style={{ fontSize: '14px', fontFamily: 'Georgia, serif' }}>
+            <strong>Video Gallery:</strong> Watch the recorded technique tutorials and blocking guides for Week 1.
+          </div>
+        </div>
+        <Link to="/week/01/videos" style={videoCalloutLinkStyle}>
+          View Video Guides →
+        </Link>
+      </div>
+
       <h2 style={sectionHeadingStyle}>Topics</h2>
       <ul style={topicListStyle}>
         {topicList.map(({ key, label, isNew }) => (
@@ -200,4 +212,25 @@ const backLinkStyle = {
   textDecoration: 'none',
   display: 'inline-block',
   marginBottom: '24px',
+};
+
+const videoCalloutStyle = {
+  background: 'rgba(139, 58, 47, 0.06)',
+  border: '1px solid #8b3a2f',
+  borderRadius: '8px',
+  padding: '16px 20px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '12px',
+  marginBottom: '32px',
+};
+
+const videoCalloutLinkStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '12px',
+  fontWeight: 'bold',
+  color: '#8b3a2f',
+  textDecoration: 'none',
+  alignSelf: 'flex-start',
+  borderBottom: '1px solid #8b3a2f',
 };
