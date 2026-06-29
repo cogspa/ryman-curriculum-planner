@@ -10,6 +10,7 @@ import SyllabusPage from './SyllabusPage.jsx';
 import Week01Overview from './pages/Week01Overview.jsx';
 import Week01TopicDetail from './pages/Week01TopicDetail.jsx';
 import Week01Videos from './pages/Week01Videos.jsx';
+import Week01Shortcuts from './pages/Week01Shortcuts.jsx';
 import Week02Overview from './pages/Week02Overview.jsx';
 import Week02TopicDetail from './pages/Week02TopicDetail.jsx';
 import Week03Overview from './pages/Week03Overview.jsx';
@@ -47,6 +48,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/01/pixel-budget" element={<PixelBudget />} />
           <Route path="/week/01" element={<Week01Overview />} />
           <Route path="/week/01/videos" element={<Week01Videos />} />
+          <Route path="/week/01/shortcuts" element={<Week01Shortcuts />} />
           <Route path="/week/01/:topicKey" element={<Week01TopicDetail />} />
           <Route path="/week/02" element={<Week02Overview />} />
           <Route path="/week/02/:topicKey" element={<Week02TopicDetail />} />

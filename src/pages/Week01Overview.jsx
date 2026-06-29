@@ -73,16 +73,30 @@ export default function Week01Overview() {
         </ul>
       </div>
 
-      <div style={videoCalloutStyle}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '20px' }}>🎥</span>
-          <div style={{ fontSize: '14px', fontFamily: 'Georgia, serif' }}>
-            <strong>Video Gallery:</strong> Watch the recorded technique tutorials and blocking guides for Week 1.
+      <div style={resourceGridStyle}>
+        <div style={resourceCardStyle}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+            <span style={{ fontSize: '20px' }}>🎥</span>
+            <div style={{ fontSize: '14px', fontFamily: 'Georgia, serif', lineHeight: '1.4' }}>
+              <strong>Video Gallery:</strong> Watch the recorded technique tutorials and blocking guides for Week 1.
+            </div>
           </div>
+          <Link to="/week/01/videos" style={videoCalloutLinkStyle}>
+            View Video Guides →
+          </Link>
         </div>
-        <Link to="/week/01/videos" style={videoCalloutLinkStyle}>
-          View Video Guides →
-        </Link>
+
+        <div style={resourceCardStyle}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+            <span style={{ fontSize: '20px' }}>⌨️</span>
+            <div style={{ fontSize: '14px', fontFamily: 'Georgia, serif', lineHeight: '1.4' }}>
+              <strong>Shortcuts Sheet:</strong> View the Photoshop keyboard shortcuts cheat sheet for digital painting efficiency.
+            </div>
+          </div>
+          <Link to="/week/01/shortcuts" style={videoCalloutLinkStyle}>
+            View Shortcuts →
+          </Link>
+        </div>
       </div>
 
       <h2 style={sectionHeadingStyle}>Topics</h2>
@@ -214,15 +228,22 @@ const backLinkStyle = {
   marginBottom: '24px',
 };
 
-const videoCalloutStyle = {
+const resourceGridStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+  gap: '16px',
+  marginBottom: '32px',
+};
+
+const resourceCardStyle = {
   background: 'rgba(139, 58, 47, 0.06)',
   border: '1px solid #8b3a2f',
   borderRadius: '8px',
   padding: '16px 20px',
   display: 'flex',
   flexDirection: 'column',
+  justifyContent: 'space-between',
   gap: '12px',
-  marginBottom: '32px',
 };
 
 const videoCalloutLinkStyle = {
