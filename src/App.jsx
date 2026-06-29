@@ -760,6 +760,55 @@ function WeekCard({
                         <strong>Scene Integration:</strong> place the character or prop into three loose photo-reference scenes using grayscale value studies, simple color palettes, lighting, and blend modes. Explore advanced integrations using a Blender Grease pencil, and a quick trick to create simple 3D models.
                       </li>
                     </ul>
+                    <div style={{
+                      marginTop: '16px',
+                      display: 'flex',
+                      gap: '12px',
+                      flexWrap: 'wrap',
+                      fontSize: '12px',
+                      fontFamily: 'var(--font-mono, monospace)',
+                      borderTop: '1px solid rgba(0, 0, 0, 0.06)',
+                      paddingTop: '12px'
+                    }}>
+                      <Link 
+                        to="/week/01/videos" 
+                        style={{
+                          textDecoration: 'none',
+                          color: '#8b3a2f',
+                          fontWeight: 'bold',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          border: '1px solid rgba(139, 58, 47, 0.2)',
+                          background: 'rgba(139, 58, 47, 0.04)',
+                          padding: '6px 12px',
+                          borderRadius: '16px',
+                          transition: 'all 0.15s ease'
+                        }}
+                        className="resource-button"
+                      >
+                        🎥 Video Gallery
+                      </Link>
+                      <Link 
+                        to="/week/01/shortcuts" 
+                        style={{
+                          textDecoration: 'none',
+                          color: '#8b3a2f',
+                          fontWeight: 'bold',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          border: '1px solid rgba(139, 58, 47, 0.2)',
+                          background: 'rgba(139, 58, 47, 0.04)',
+                          padding: '6px 12px',
+                          borderRadius: '16px',
+                          transition: 'all 0.15s ease'
+                        }}
+                        className="resource-button"
+                      >
+                        ⌨️ Shortcuts Sheet
+                      </Link>
+                    </div>
                   </div>
                 )}
               </>
