@@ -66,7 +66,7 @@ export const curriculum = [
     overview: 'Simulating physical media digitally with custom brush assets and procedural overlay systems.',
     tuesday: {
       topics: [
-        '[NEW] Brush engine deep dive — hardness, size, opacity, flow, and the bracket-key workflow',
+        '[NEW] Brush Basics — hardness, size, opacity, flow, and the bracket-key workflow',
         '[NEW] Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset',
         '[NEW] What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory',
         '[NEW] Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8',

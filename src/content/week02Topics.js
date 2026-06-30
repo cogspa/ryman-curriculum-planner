@@ -5,7 +5,7 @@
 
 export const TOPIC_DETAILS = {
   'brush-engine-deep-dive': {
-    title: 'Brush Engine Deep Dive',
+    title: 'Brush Basics',
     pccSources: ['Painting In Photoshop', 'Brush Hardness and Size'],
     sections: [
       {
@@ -307,7 +307,7 @@ This tight color range creates a strong color script, unifying the composition a
 };
 
 export const topicList = [
-  { key: 'brush-engine-deep-dive', label: 'Brush engine deep dive — hardness, size, opacity, flow, and the bracket-key workflow', isNew: true },
+  { key: 'brush-engine-deep-dive', label: 'Brush Basics — hardness, size, opacity, flow, and the bracket-key workflow', isNew: true },
   { key: 'custom-brush-creation', label: 'Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset', isNew: true },
   { key: 'procedural-vs-non-procedural', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
   { key: 'blend-modes-for-texture', label: 'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8', isNew: true },
