@@ -47,7 +47,11 @@ export default function Week03TopicDetail() {
       {topic.sections.map((section, i) => (
         <section key={i} style={sectionStyle}>
           <h2 style={sectionHeadingStyle}>{section.heading}</h2>
-          <p style={sectionBodyStyle}>{section.body}</p>
+          <p style={sectionBodyStyle}>
+            {section.body && section.body.split('**').map((part, idx) => 
+              idx % 2 === 1 ? <strong key={idx}>{part}</strong> : part
+            )}
+          </p>
           {section.imageUrl && (
             <div style={{ margin: '20px 0', textAlign: 'center' }}>
               <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '6px', border: '1px solid #d4c9a8' }} />
