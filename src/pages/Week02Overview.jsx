@@ -21,9 +21,56 @@ export default function Week02Overview() {
         <div style={holidayStyle}><strong>SAT</strong> &nbsp; Sat, Jul 04 &nbsp; · &nbsp; ⛔ NO CLASS — HOLIDAY</div>
       </div>
 
-      <p style={focusStyle}>
-        <strong>Focus:</strong> Simulating physical media digitally
-      </p>
+      <div style={focusStyle}>
+        <h2 style={{
+          fontFamily: 'Georgia, serif',
+          fontSize: '18px',
+          fontWeight: 'bold',
+          margin: '0 0 8px 0',
+          color: '#8b3a2f',
+        }}>
+          Creating tactile digital surfaces through brushes, procedural texture, color, and contrast.
+        </h2>
+        <p style={{
+          fontSize: '14.5px',
+          lineHeight: '1.65',
+          margin: '0 0 16px 0',
+        }}>
+          “Simulating tactile surfaces in a tactile digital space” is essentially about creating the illusion of touch through digital painting, brushes, texture, contrast, and color.
+        </p>
+        <p style={{
+          fontSize: '14.5px',
+          lineHeight: '1.65',
+          margin: '0 0 16px 0',
+        }}>
+          The topics below support that idea in a logical sequence:
+        </p>
+        <ul style={{
+          paddingLeft: '20px',
+          margin: '0 0 10px 0',
+          fontSize: '14.5px',
+          lineHeight: '1.7',
+        }}>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Noise vs. pattern / procedural generation:</strong> explains where believable texture comes from. Natural surfaces are rarely perfectly uniform; they contain randomness, repetition, variation, grain, cracks, fibers, pores, etc.
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Custom brush presets:</strong> give students a practical way to turn those texture ideas into usable Photoshop tools.
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Color-palette extraction and ASE libraries:</strong> helps students capture material-specific color relationships from reference images—such as rust, skin, fabric, stone, plastic, foliage, or metal.
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Defining brushes / brush hardness and size:</strong> covers the mechanics of shaping marks, edges, and surface qualities.
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Perlin and fractal noise:</strong> goes deeper into the kinds of controlled randomness that can make digital textures feel organic rather than stamped or artificial.
+          </li>
+          <li style={{ marginBottom: '8px' }}>
+            <strong>Contrast preparation:</strong> connects texture to lighting: highlights, shadows, edge variation, and value shifts are what make a surface feel dimensional and touchable.
+          </li>
+        </ul>
+      </div>
 
       <h2 style={sectionHeadingStyle}>Topics</h2>
       <ul style={topicListStyle}>

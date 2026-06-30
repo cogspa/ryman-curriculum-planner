@@ -66,7 +66,7 @@ export const curriculum = [
     overview: 'Simulating physical media digitally with custom brush assets and procedural overlay systems.',
     tuesday: {
       topics: [
-        'Discussion: Simulating tactile surfaces in a backlit digital space',
+        'Discussion: Creating tactile digital surfaces through brushes, procedural texture, color, and contrast.',
         'Preview: Tuesday readings review — Noise vs. Pattern & Procedural generation',
         'Workflow breakdown: Contrast preparation for custom brush presets',
         '[NEW] Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool',
