@@ -815,6 +815,33 @@ function WeekCard({
                     </div>
                   </div>
                 )}
+                {Number(week.week) === 2 && (
+                  <div className="week2-extra-content" style={{ marginTop: '12px', marginBottom: '16px', fontSize: '13.5px', color: 'var(--ink-mid)' }}>
+                    <p style={{ lineHeight: '1.6', marginBottom: '10px' }}>
+                      Week 2 dives into the materiality of digital paint and texture. Students will bridge the gap between physical and digital media by learning how to design and build custom brush assets, apply procedural noise algorithms, and harness advanced layer blend modes. The goal is to move past the sterile, flat look of default software brushes, using texture and value contrast to create digital surfaces that feel organic, tactile, and responsive to light.
+                    </p>
+                    <ul style={{ paddingLeft: '18px', margin: '0', lineHeight: '1.65', listStyleType: 'disc' }}>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Creating tactile digital surfaces:</strong> understanding how to create the illusion of touch through painting, brushes, texture, contrast, and color.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Noise vs. pattern / procedural generation:</strong> explaining where believable texture comes from and using noise algorithms to simulate organic variation.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Custom brush presets:</strong> designing and capturing textures to build custom Photoshop brush libraries.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Color-palette extraction:</strong> capturing material-specific color relationships from photo references to build ASE libraries.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Defining brushes:</strong> mechanics of brush engine settings, hardness, size, opacity, and flow.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Contrast preparation:</strong> connecting texture to lighting via highlights, shadows, and value shifts.
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </>
             )
           )}
