@@ -102,7 +102,7 @@ Six brushes per set, three sets, eighteen brushes total. This is the foundation 
       {
         heading: 'What is noise?',
         body: `In the audio world, noise is a sound, especially loud or unpleasant, that causes disturbance.`,
-        imageUrl: '/audio-noise.png',
+        imageUrl: '/visual-noise.png',
         imageCaption: 'audio noise',
       },
       {
@@ -110,7 +110,7 @@ Six brushes per set, three sets, eighteen brushes total. This is the foundation 
         body: `In digital art, noise is a group of pixels with randomized values or colors.
 
 William J. Mitchell states in his book, "The Reconfigured Eye," "...there are few things that look more utterly chaotic than an array of randomly colored pixels."`,
-        imageUrl: '/visual-noise.png',
+        imageUrl: '/audio-noise.png',
         imageCaption: 'visual noise',
       },
       {
