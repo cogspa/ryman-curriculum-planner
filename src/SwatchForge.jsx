@@ -288,7 +288,7 @@ export default function SwatchForge() {
     <div style={S.wrap}>
       <div style={{ maxWidth: 980, margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 4 }}>
-          <h1 style={{ fontSize: 18, margin: 0, letterSpacing: "0.04em" }}>SWATCH&nbsp;FORGE</h1>
+          <h1 style={{ fontSize: 18, margin: 0, letterSpacing: "0.04em" }}>ASE&nbsp;COLOR&nbsp;EXTRACTOR</h1>
           <span style={{ color: THEME.accentHi, fontSize: 11, letterSpacing: "0.18em" }}>IMAGE → .ASE</span>
         </div>
         <p style={{ color: THEME.muted, fontSize: 12, marginTop: 0, marginBottom: 20 }}>
