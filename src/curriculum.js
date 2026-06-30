@@ -66,19 +66,16 @@ export const curriculum = [
     overview: 'Simulating physical media digitally with custom brush assets and procedural overlay systems.',
     tuesday: {
       topics: [
-        'Discussion: Creating tactile digital surfaces through brushes, procedural texture, color, and contrast.',
-        'Preview: Tuesday readings review — Noise vs. Pattern & Procedural generation',
-        'Workflow breakdown: Contrast preparation for custom brush presets',
+        '[NEW] Brush engine deep dive — hardness, size, opacity, flow, and the bracket-key workflow',
+        '[NEW] Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset',
+        '[NEW] What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory',
+        '[NEW] Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8',
         '[NEW] Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool',
       ],
       readings: [
-        '[NEW] Defining Brushes — capture-to-preset workflow',
-        '[NEW] Painting In Photoshop + Brush Hardness and Size — brush engine fundamentals',
-        '[NEW] Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation',
         '[NEW] Cellular Noise (The Book of Shaders) — https://thebookofshaders.com/12/',
+        '[NEW] Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation',
         '[NEW] Cracked Earth Texture (video walkthrough) — canvas simulation demo',
-        '[NEW] What are Blend Modes + The Special "8" Blend Modes — layering texture passes',
-        '[NEW] Color Palette Extraction — building color libraries and ASE swatch formats',
       ],
     },
     saturday: {
