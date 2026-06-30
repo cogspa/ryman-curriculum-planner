@@ -354,7 +354,7 @@ function Section({ label, items, weekNumber }) {
             } else if (cleanText.includes('perlin/fractal noise') || cleanText.includes('cellular/worley noise')) {
               linkPath = '/week/02/canvas-simulation';
             } else if (cleanText.includes('cracked earth')) {
-              linkPath = '/week/02/canvas-simulation';
+              linkPath = '/week/02/cracked-earth-texture';
             } else if (cleanText.includes('what are blend modes')) {
               linkPath = '/week/02/blend-modes-for-texture';
             } else if (cleanText.includes('the book of shaders') || cleanText.includes('shaders.com')) {

@@ -248,6 +248,13 @@ The watercolor now reads as sitting on textured paper instead of floating on gla
 
 Brushwork now picks up canvas tooth, especially in transparent or impasto areas.`,
       },
+    ],
+  },
+
+  'cracked-earth-texture': {
+    title: 'Cracked Earth, Stone & Plaster',
+    pccSources: ['Cracked Earth Texture', 'Organic Surface Weathering'],
+    sections: [
       {
         heading: 'Cracked earth, stone, plaster',
         body: `For coarser, more dramatic surfaces — stone walls, dried earth, weathered plaster — combine noise with threshold passes. The Cracked Earth video tutorial in the PCC corpus walks through this technique end-to-end:
@@ -304,12 +311,11 @@ export const topicList = [
   { key: 'custom-brush-creation', label: 'Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset', isNew: true },
   { key: 'procedural-vs-non-procedural', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
   { key: 'blend-modes-for-texture', label: 'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8', isNew: true },
-  { key: 'canvas-simulation', label: 'Canvas simulation techniques — Perlin/cloud noise as paper, Worley noise for tooth, grain and stipple filters', isNew: true },
   { key: 'color-palette-extraction', label: 'Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool', isNew: true },
 ];
 
 export const readingsList = [
   { key: 'external-book-of-shaders', label: 'Cellular Noise (The Book of Shaders) — https://thebookofshaders.com/12/', isNew: true, external: 'https://thebookofshaders.com/12/' },
   { key: 'canvas-simulation', label: 'Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation', isNew: true },
-  { key: 'canvas-simulation', label: 'Cracked Earth Texture (video walkthrough) — canvas simulation demo', isNew: true },
+  { key: 'cracked-earth-texture', label: 'Cracked Earth Texture (video walkthrough) — canvas simulation demo', isNew: true },
 ];
