@@ -57,7 +57,7 @@ export default function Week02Overview() {
 
       <h2 style={sectionHeadingStyle}>Guest</h2>
       <p style={guestStyle}>
-        Senior digital illustrator — live demo on building a personal brush library
+        TBD
       </p>
       <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>

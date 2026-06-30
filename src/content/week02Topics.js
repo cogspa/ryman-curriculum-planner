@@ -284,7 +284,7 @@ The result reads as carved, eroded, or scarred — useful for sci-fi environment
   },
 
   'color-palette-extraction': {
-    title: 'Color Palette Extraction & SwatchForge',
+    title: 'Color Palette Extraction & ASE Swatch Maker',
     pccSources: ['Color Libraries', 'ASE Swatch Formats', 'Value and Gamut Systems'],
     sections: [
       {
@@ -311,8 +311,8 @@ By limiting your palette, you force yourself to establish clear lighting relatio
 This tight color range creates a strong color script, unifying the composition and selling the illusion of a single, cohesive light source wrapping around the forms.`,
       },
       {
-        heading: 'SwatchForge Interactive Tool',
-        body: `Use the SwatchForge tool below to extract color palettes directly from reference images. You can drop or paste any image, choose auto-extraction via the median-cut algorithm, or use the eyedropper to select exact pixel values, then export your palette directly as an Adobe .ase file.`,
+        heading: 'ASE Swatch Maker Interactive Tool',
+        body: `Use the ASE Swatch Maker tool below to extract color palettes directly from reference images. You can drop or paste any image, choose auto-extraction via the median-cut algorithm, or use the eyedropper to select exact pixel values, then export your palette directly as an Adobe .ase file.`,
       },
     ],
   },
@@ -324,7 +324,7 @@ export const topicList = [
   { key: 'procedural-vs-non-procedural', label: 'Procedural vs. non-procedural texture generation', isNew: true },
   { key: 'blend-modes-for-texture', label: 'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8', isNew: true },
   { key: 'canvas-simulation', label: 'Canvas simulation techniques — Perlin/cloud noise as paper, Worley noise for tooth, grain and stipple filters', isNew: true },
-  { key: 'color-palette-extraction', label: 'Color palette extraction — building color libraries, the ASE format, and SwatchForge tool', isNew: true },
+  { key: 'color-palette-extraction', label: 'Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool', isNew: true },
 ];
 
 export const readingsList = [

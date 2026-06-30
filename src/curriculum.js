@@ -69,7 +69,7 @@ export const curriculum = [
         'Discussion: Simulating tactile surfaces in a backlit digital space',
         'Preview: Tuesday readings review — Noise vs. Pattern & Procedural generation',
         'Workflow breakdown: Contrast preparation for custom brush presets',
-        '[NEW] Color palette extraction — building color libraries, the ASE format, and SwatchForge tool',
+        '[NEW] Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool',
       ],
       readings: [
         '[NEW] Defining Brushes — capture-to-preset workflow',
@@ -80,7 +80,6 @@ export const curriculum = [
         '[NEW] Cracked Earth Texture (video walkthrough) — canvas simulation demo',
         '[NEW] What are Blend Modes + The Special "8" Blend Modes — layering texture passes',
         '[NEW] Color Palette Extraction — building color libraries and ASE swatch formats',
-        'Guest: Senior digital illustrator — live demo on building a personal brush library',
       ],
     },
     saturday: {

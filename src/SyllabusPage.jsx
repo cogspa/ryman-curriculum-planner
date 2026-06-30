@@ -57,7 +57,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
   };
   const speakersMap = {
     1: { name: 'No speaker - First Class', date: formatDate(tuesdayDate) },
-    2: { name: 'Senior digital illustrator', date: formatDate(tuesdayDate) },
+    2: { name: 'TBD', date: formatDate(tuesdayDate) },
     3: { name: 'Concept artist or film matte painter', date: formatDate(tuesdayDate) },
     4: { name: 'Senior graphic designer', date: formatDate(tuesdayDate) },
     5: { name: 'Nancy Seruto', date: formatDate(tuesdayDate) },
