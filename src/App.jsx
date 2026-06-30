@@ -1504,7 +1504,7 @@ export default function App() {
               gap: '8px 16px'
             }}>
               {[
-                { num: 1, name: 'Character / Prop Foundation', wk: 1 },
+                { num: 1, name: 'Character/Prop/Environment Blocking Foundation', wk: 1 },
                 { num: 2, name: 'Material Studies & Textures', wk: 3 },
                 { num: 3, name: 'Atmospheric Space', wk: 5 },
                 { num: 4, name: 'Narrative Sequence', wk: 7 },

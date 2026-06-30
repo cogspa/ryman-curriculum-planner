@@ -12,7 +12,7 @@ import React, { useState, useRef, useEffect } from "react";
  */
 
 const STEPS = [
-  { n: 1, week: 1,  accent: "#C68A3A", title: "Character / Prop Foundation",
+  { n: 1, week: 1,  accent: "#C68A3A", title: "Character/Prop/Environment Blocking Foundation",
     desc: "Worldbuilding Step 1 — establish your core IP characters and signature items." },
   { n: 2, week: 3,  accent: "#BC7333", title: "Compositional Brush Library & Landscape",
     desc: "Worldbuilding Step 2 — build custom brushes from real-world imagery and construct environments." },

@@ -6,7 +6,7 @@
 
 export const assignments = {
   1: {
-    title: 'Assignment 1: Character / Prop Foundation',
+    title: 'Assignment 1: Character/Prop/Environment Blocking Foundation',
     subtitle: 'Worldbuilding Step 1: Establish your core IP characters and signature items.',
     introduction: {
       heading: 'Assignment Introduction: Line, Shape, and the Visual Building Blocks of Digital Art',
