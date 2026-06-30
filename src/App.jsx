@@ -360,6 +360,8 @@ function Section({ label, items, weekNumber }) {
             } else if (cleanText.includes('the book of shaders') || cleanText.includes('shaders.com')) {
               linkPath = 'https://thebookofshaders.com/12/';
               isExternal = true;
+            } else if (cleanText.includes('color palette') || cleanText.includes('swatch') || cleanText.includes('extraction')) {
+              linkPath = '/week/02/color-palette-extraction';
             }
           } else if (weekNumber === 3 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();
