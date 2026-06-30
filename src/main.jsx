@@ -14,6 +14,7 @@ import Week01Shortcuts from './pages/Week01Shortcuts.jsx';
 import Week02Overview from './pages/Week02Overview.jsx';
 import Week02TopicDetail from './pages/Week02TopicDetail.jsx';
 import NoiseVsPattern from './pages/NoiseVsPattern.jsx';
+import NoiseLesson from './pages/NoiseLesson.jsx';
 import Week03Overview from './pages/Week03Overview.jsx';
 import Week03TopicDetail from './pages/Week03TopicDetail.jsx';
 import Week04Overview from './pages/Week04Overview.jsx';
@@ -52,6 +53,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/01/shortcuts" element={<Week01Shortcuts />} />
           <Route path="/week/01/:topicKey" element={<Week01TopicDetail />} />
           <Route path="/week/02" element={<Week02Overview />} />
+          <Route path="/week/02/generating-noise-in-photoshop" element={<NoiseLesson />} />
           <Route path="/week/02/procedural-vs-non-procedural" element={<NoiseVsPattern />} />
           <Route path="/week/02/:topicKey" element={<Week02TopicDetail />} />
           <Route path="/week/03" element={<Week03Overview />} />

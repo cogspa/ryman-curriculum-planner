@@ -344,6 +344,7 @@ export const topicList = [
   { key: 'brush-engine-deep-dive', label: 'Brush Basics — hardness, size, opacity, flow, and the bracket-key workflow', isNew: true },
   { key: 'custom-brush-creation', label: 'Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset', isNew: true },
   { key: 'what-is-noise', label: 'What is Noise?', isNew: true },
+  { key: 'generating-noise-in-photoshop', label: 'Generating Noise in Photoshop', isNew: true },
   { key: 'procedural-vs-non-procedural', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
   { key: 'blend-modes-for-texture', label: 'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8', isNew: true },
   { key: 'color-palette-extraction', label: 'Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool', isNew: true },

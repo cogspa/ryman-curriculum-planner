@@ -336,6 +336,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/02/custom-brush-creation';
             } else if (cleanText.includes('what is noise') || cleanText.includes('art of noise')) {
               linkPath = '/week/02/what-is-noise';
+            } else if (cleanText.includes('generating noise')) {
+              linkPath = '/week/02/generating-noise-in-photoshop';
             } else if (cleanText.includes('procedural') || cleanText.includes('what is pattern')) {
               linkPath = '/week/02/procedural-vs-non-procedural';
             } else if (cleanText.includes('blend modes') || cleanText.includes('overlay')) {
