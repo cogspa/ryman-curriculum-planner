@@ -68,6 +68,7 @@ export const curriculum = [
       topics: [
         '[NEW] Brush Basics — hardness, size, opacity, flow, and the bracket-key workflow',
         '[NEW] Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset',
+        '[NEW] What is Noise?',
         '[NEW] What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory',
         '[NEW] Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8',
         '[NEW] Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool',

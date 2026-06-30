@@ -96,8 +96,8 @@ Six brushes per set, three sets, eighteen brushes total. This is the foundation 
   },
 
   'what-is-noise': {
-    title: 'Noise vs. Pattern, Procedural vs. Non-procedural',
-    pccSources: ['Noise vs. Pattern, Procedural vs. Non-procedural', 'The Art of Noise'],
+    title: 'The Art of Noise',
+    pccSources: ['The Art of Noise'],
     sections: [
       {
         heading: 'What is noise?',
@@ -126,6 +126,13 @@ William J. Mitchell states in his book, "The Reconfigured Eye," "...there are fe
   • **Historical Reference:** The use of Perlin Noise, developed by Ken Perlin in the 1980s, has been fundamental in computer graphics and procedural design, aiding in creating natural-looking textures and forms.
 • **But too much noise can be a distraction.**`,
       },
+    ],
+  },
+
+  'procedural-vs-non-procedural': {
+    title: 'Noise vs. Pattern, Procedural vs. Non-procedural',
+    pccSources: ['Noise vs. Pattern, Procedural vs. Non-procedural', 'The Art of Noise'],
+    sections: [
       {
         heading: 'Noise vs. Pattern',
         body: `Noise can be the building block of a pattern, but you can generate patterns manually without noise. The key to making a successful pattern is that a pattern is generally predictable. I say "generally" since patterns can exhibit some sense of randomness, and often the predictability can be assumed but not proven.`,
@@ -336,7 +343,8 @@ This tight color range creates a strong color script, unifying the composition a
 export const topicList = [
   { key: 'brush-engine-deep-dive', label: 'Brush Basics — hardness, size, opacity, flow, and the bracket-key workflow', isNew: true },
   { key: 'custom-brush-creation', label: 'Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset', isNew: true },
-  { key: 'what-is-noise', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
+  { key: 'what-is-noise', label: 'What is Noise?', isNew: true },
+  { key: 'procedural-vs-non-procedural', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
   { key: 'blend-modes-for-texture', label: 'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8', isNew: true },
   { key: 'color-palette-extraction', label: 'Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool', isNew: true },
 ];
