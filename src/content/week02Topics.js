@@ -100,6 +100,33 @@ Six brushes per set, three sets, eighteen brushes total. This is the foundation 
     pccSources: ['Noise vs. Pattern, Procedural vs. Non-procedural', 'The Art of Noise'],
     sections: [
       {
+        heading: 'What is noise?',
+        body: `In the audio world, noise is a sound, especially loud or unpleasant, that causes disturbance.`,
+        imageUrl: '/audio-noise.png',
+        imageCaption: 'audio noise',
+      },
+      {
+        heading: 'Visual Noise',
+        body: `In digital art, noise is a group of pixels with randomized values or colors.
+
+William J. Mitchell states in his book, "The Reconfigured Eye," "...there are few things that look more utterly chaotic than an array of randomly colored pixels."`,
+        imageUrl: '/visual-noise.png',
+        imageCaption: 'visual noise',
+      },
+      {
+        heading: 'Signal-to-Noise Ratio',
+        body: `In information theory, the signal-to-noise ratio is the amount of desired information versus undesired information.
+
+**Historical Reference:** The concept of Signal-to-Noise Ratio (SNR) has its roots in electrical engineering and was later adopted in information theory by Claude Shannon. His work laid the foundations for modern digital communication and computing.`,
+      },
+      {
+        heading: 'Why is Noise Important?',
+        body: `• **Noise can add authenticity:** In photography, film grain, a type of visual noise, is often appreciated for adding a vintage or authentic feel to the images.
+• **Noise is also often the first step in generating procedural designs:**
+  • **Historical Reference:** The use of Perlin Noise, developed by Ken Perlin in the 1980s, has been fundamental in computer graphics and procedural design, aiding in creating natural-looking textures and forms.
+• **But too much noise can be a distraction.**`,
+      },
+      {
         heading: 'Noise vs. Pattern',
         body: `Noise can be the building block of a pattern, but you can generate patterns manually without noise. The key to making a successful pattern is that a pattern is generally predictable. I say "generally" since patterns can exhibit some sense of randomness, and often the predictability can be assumed but not proven.`,
         imageUrl: '/random-pattern.png',
