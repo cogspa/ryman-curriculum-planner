@@ -74,7 +74,6 @@ export const curriculum = [
       readings: [
         '[NEW] Defining Brushes — capture-to-preset workflow',
         '[NEW] Painting In Photoshop + Brush Hardness and Size — brush engine fundamentals',
-        '[NEW] What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory',
         '[NEW] Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation',
         '[NEW] Cellular Noise (The Book of Shaders) — https://thebookofshaders.com/12/',
         '[NEW] Cracked Earth Texture (video walkthrough) — canvas simulation demo',

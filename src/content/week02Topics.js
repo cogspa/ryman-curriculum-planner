@@ -302,14 +302,13 @@ This tight color range creates a strong color script, unifying the composition a
 export const topicList = [
   { key: 'brush-engine-deep-dive', label: 'Brush engine deep dive — hardness, size, opacity, flow, and the bracket-key workflow', isNew: true },
   { key: 'custom-brush-creation', label: 'Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset', isNew: true },
-  { key: 'procedural-vs-non-procedural', label: 'Procedural vs. non-procedural texture generation', isNew: true },
+  { key: 'procedural-vs-non-procedural', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
   { key: 'blend-modes-for-texture', label: 'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8', isNew: true },
   { key: 'canvas-simulation', label: 'Canvas simulation techniques — Perlin/cloud noise as paper, Worley noise for tooth, grain and stipple filters', isNew: true },
   { key: 'color-palette-extraction', label: 'Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool', isNew: true },
 ];
 
 export const readingsList = [
-  { key: 'procedural-vs-non-procedural', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
   { key: 'external-book-of-shaders', label: 'Cellular Noise (The Book of Shaders) — https://thebookofshaders.com/12/', isNew: true, external: 'https://thebookofshaders.com/12/' },
   { key: 'canvas-simulation', label: 'Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation', isNew: true },
   { key: 'canvas-simulation', label: 'Cracked Earth Texture (video walkthrough) — canvas simulation demo', isNew: true },
