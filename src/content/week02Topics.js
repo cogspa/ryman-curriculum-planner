@@ -96,51 +96,32 @@ Six brushes per set, three sets, eighteen brushes total. This is the foundation 
   },
 
   'procedural-vs-non-procedural': {
-    title: 'Procedural vs. Non-Procedural Texture Generation',
+    title: 'Noise vs. Pattern, Procedural vs. Non-procedural',
     pccSources: ['Noise vs. Pattern, Procedural vs. Non-procedural', 'The Art of Noise'],
     sections: [
       {
-        heading: 'The two ways to make a texture',
-        body: `Procedural methods use algorithms — filters, math, noise functions — to generate textures, patterns, and effects automatically.
-
-Non-procedural methods are manual — painting by hand, stamping with custom brushes, layering scanned photographs.
-
-Most professional work mixes both. Procedural for base layers and atmospheric passes, non-procedural for control and intent.`,
+        heading: 'Noise vs. Pattern',
+        body: `Noise can be the building block of a pattern, but you can generate patterns manually without noise. The key to making a successful pattern is that a pattern is generally predictable. I say "generally" since patterns can exhibit some sense of randomness, and often the predictability can be assumed but not proven.`,
+        imageUrl: '/random-pattern.png',
+        imageCaption: 'random pattern',
       },
       {
-        heading: 'Procedural strengths',
-        body: `• Speed — a noise filter generates in seconds what would take hours to paint
-- Consistency — the algorithm doesn't get tired or distracted
-- Tilability — many procedural methods produce seamless patterns
-- Randomness — useful for organic textures (stone, fabric, foliage)
+        heading: 'Noise vs. Pattern Differences',
+        body: `Below are some fundamental differences between noise and patterns.
 
-Procedural methods rely more on the computer to randomly generate effects rather than painting those effects manually.`,
+• Noise is random
+• Patterns are predictable
+• You can generate noise procedurally
+• Patterns can be procedural and non-procedural
+• You can use noise to create textures
+• Noise can make digital art seem more natural
+• Patterns can make digital feel constructed and artificial`,
       },
       {
-        heading: 'Procedural weaknesses',
-        body: `• Generic look — over-reliance on default filters reads as "computer-generated"
-- Lack of intent — the algorithm doesn't know what your painting is about
-- Hard to modify — once a filter bakes in, it's baked
-
-The cure for the generic look: use procedural output as a base layer, then paint over it non-procedurally to add intent.`,
-      },
-      {
-        heading: 'Non-procedural strengths',
-        body: `• Specificity — every mark is intentional
-- Personality — your hand shows in the work
-- Narrative weight — a hand-painted shadow tells a different story than a filtered one
-
-The cost is time. The benefit is authorship.`,
-      },
-      {
-        heading: 'Noise as the bridge',
-        body: `Noise is the building block of most procedural textures.
-
-In digital art, noise is a group of pixels with randomized values or colors. William J. Mitchell wrote in The Reconfigured Eye: "there are few things that look more utterly chaotic than an array of randomly-colored pixels."
-
-But noise can add authenticity — film grain is noise, and it makes images feel photographic rather than computer-generated. Noise is also the first step in generating procedural designs. The Perlin Noise algorithm (Ken Perlin, 1983) is fundamental to natural-looking textures in everything from Pixar films to game terrain.
-
-Too much noise becomes distraction. The signal-to-noise ratio — Claude Shannon's term — is the amount of desired information versus undesired information. Good texture work respects that ratio.`,
+        heading: 'Procedural vs. Non-Procedural',
+        body: `• Procedural methods use algorithms to generate designs, textures, and art.
+• The counter to procedural design are manual techniques
+• Procedural methods rely more on the computer to randomly generate effects rather than painting those effects manually.`,
       },
     ],
   },
