@@ -95,7 +95,7 @@ Six brushes per set, three sets, eighteen brushes total. This is the foundation 
     ],
   },
 
-  'procedural-vs-non-procedural': {
+  'what-is-noise': {
     title: 'Noise vs. Pattern, Procedural vs. Non-procedural',
     pccSources: ['Noise vs. Pattern, Procedural vs. Non-procedural', 'The Art of Noise'],
     sections: [
@@ -336,7 +336,7 @@ This tight color range creates a strong color script, unifying the composition a
 export const topicList = [
   { key: 'brush-engine-deep-dive', label: 'Brush Basics — hardness, size, opacity, flow, and the bracket-key workflow', isNew: true },
   { key: 'custom-brush-creation', label: 'Custom brush creation — capturing source photography, contrast prep with Levels, Edit > Define Brush Preset', isNew: true },
-  { key: 'procedural-vs-non-procedural', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
+  { key: 'what-is-noise', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
   { key: 'blend-modes-for-texture', label: 'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8', isNew: true },
   { key: 'color-palette-extraction', label: 'Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool', isNew: true },
 ];

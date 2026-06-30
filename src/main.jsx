@@ -52,7 +52,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/01/shortcuts" element={<Week01Shortcuts />} />
           <Route path="/week/01/:topicKey" element={<Week01TopicDetail />} />
           <Route path="/week/02" element={<Week02Overview />} />
-          <Route path="/week/02/procedural-vs-non-procedural" element={<NoiseVsPattern />} />
+          <Route path="/week/02/what-is-noise" element={<NoiseVsPattern />} />
           <Route path="/week/02/:topicKey" element={<Week02TopicDetail />} />
           <Route path="/week/03" element={<Week03Overview />} />
           <Route path="/week/03/:topicKey" element={<Week03TopicDetail />} />

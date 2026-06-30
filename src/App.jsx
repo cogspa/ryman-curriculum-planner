@@ -335,7 +335,7 @@ function Section({ label, items, weekNumber }) {
             } else if (cleanText.includes('custom brush') || cleanText.includes('define brush')) {
               linkPath = '/week/02/custom-brush-creation';
             } else if (cleanText.includes('procedural')) {
-              linkPath = '/week/02/procedural-vs-non-procedural';
+              linkPath = '/week/02/what-is-noise';
             } else if (cleanText.includes('blend modes') || cleanText.includes('overlay')) {
               linkPath = '/week/02/blend-modes-for-texture';
             } else if (cleanText.includes('canvas simulation') || cleanText.includes('perlin')) {
@@ -350,7 +350,7 @@ function Section({ label, items, weekNumber }) {
             } else if (cleanText.includes('painting in photoshop')) {
               linkPath = '/week/02/brush-engine-deep-dive';
             } else if (cleanText.includes('what is pattern') || cleanText.includes('noise vs. pattern')) {
-              linkPath = '/week/02/procedural-vs-non-procedural';
+              linkPath = '/week/02/what-is-noise';
             } else if (cleanText.includes('perlin/fractal noise') || cleanText.includes('cellular/worley noise')) {
               linkPath = '/week/02/canvas-simulation';
             } else if (cleanText.includes('cracked earth')) {
