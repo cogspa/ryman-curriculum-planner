@@ -9,7 +9,9 @@ export default function Week01Videos() {
     { id: 'P-FPfLx8-Vs', title: 'Blocking Out Using Curves' },
     { id: 'iuEUNPkSeB8', title: 'Smart Objects' },
     { id: 'IikGTKncTVw', title: 'Thumbnails with Artboards' },
-    { id: '2vOYBMrL1NY', title: 'Illustrator to Photoshop Techniques for Block Out Templates' }
+    { id: '2vOYBMrL1NY', title: 'Illustrator to Photoshop Techniques for Block Out Templates' },
+    { id: 'IFKzj3z7pyI', title: 'Blocking Out with the Lasso Tool' },
+    { id: '_ld6mQERMio', title: 'Using The Pen Tool in Photoshop' }
   ];
 
   return (
