@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
+import TopicNav from "./TopicNav.jsx";
+import { topicList } from "../content/week02Topics.js";
 
 /**
  * NoiseVsPattern.jsx
@@ -493,9 +495,7 @@ export default function NoiseVsPattern() {
           </p>
         </Section>
 
-        <footer style={S.footer}>
-          <span style={S.footMono}>pLAtform · concept art foundations</span>
-        </footer>
+        <TopicNav topicList={topicList} topicKey="procedural-vs-non-procedural" weekNum="02" />
       </article>
     </div>
   );
