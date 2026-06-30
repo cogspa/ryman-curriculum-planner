@@ -328,12 +328,8 @@ export const topicList = [
 ];
 
 export const readingsList = [
-  { key: 'custom-brush-creation', label: 'Defining Brushes — capture-to-preset workflow', isNew: true },
-  { key: 'brush-engine-deep-dive', label: 'Painting In Photoshop + Brush Hardness and Size — brush engine fundamentals', isNew: true },
   { key: 'procedural-vs-non-procedural', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
-  { key: 'canvas-simulation', label: 'Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation', isNew: true },
   { key: 'external-book-of-shaders', label: 'Cellular Noise (The Book of Shaders) — https://thebookofshaders.com/12/', isNew: true, external: 'https://thebookofshaders.com/12/' },
+  { key: 'canvas-simulation', label: 'Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation', isNew: true },
   { key: 'canvas-simulation', label: 'Cracked Earth Texture (video walkthrough) — canvas simulation demo', isNew: true },
-  { key: 'blend-modes-for-texture', label: 'What are Blend Modes + The Special "8" Blend Modes — layering texture passes', isNew: true },
-  { key: 'color-palette-extraction', label: 'Color Palette Extraction — building color libraries and ASE swatch formats', isNew: true },
 ];
