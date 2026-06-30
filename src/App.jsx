@@ -714,6 +714,34 @@ function WeekCard({
         </div>
       )}
 
+      {(week.week === 1 || week.week === 2) && (
+        <div className="week-due-banner" style={{
+          margin: '12px 0 16px 0',
+          padding: '12px 14px',
+          background: 'rgba(139, 58, 47, 0.06)',
+          borderLeft: '4px solid #8b3a2f',
+          borderRadius: '0 8px 8px 0',
+          fontSize: '0.85rem',
+          lineHeight: '1.4',
+          color: '#2b2622'
+        }}>
+          <div style={{ fontWeight: 'bold', color: '#8b3a2f', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem' }}>
+            ⏳ Deliverable Alert
+          </div>
+          <div style={{ marginBottom: '8px' }}>
+            <strong>Must do by July 11:</strong> 6 PNGs total – three grayscale block-outs and three color/lighting explorations.
+          </div>
+          <div style={{ fontSize: '0.8rem', color: '#5a5048', borderTop: '1px solid rgba(139, 58, 47, 0.15)', paddingTop: '6px' }}>
+            <span style={{ display: 'block', marginBottom: '3px' }}>
+              ℹ️ <strong>Helpful review:</strong> the edited video clips and photoshop shortcut sheet.
+            </span>
+            <span style={{ display: 'block' }}>
+              💡 <strong>Optional challenge:</strong> Blender/SVG integration.
+            </span>
+          </div>
+        </div>
+      )}
+
       {(hasContent || adminMode) && (
         <div className="curriculum-content">
           {adminMode ? (
