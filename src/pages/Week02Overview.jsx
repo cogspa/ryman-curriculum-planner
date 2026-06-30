@@ -104,7 +104,7 @@ export default function Week02Overview() {
 
       <h2 style={sectionHeadingStyle}>Guest</h2>
       <p style={guestStyle}>
-        TBD
+        Alycea Tinoyan - Background Designer for Rick and Morty
       </p>
       <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>

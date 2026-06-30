@@ -77,6 +77,7 @@ export const curriculum = [
         '[NEW] Cellular Noise (The Book of Shaders) — https://thebookofshaders.com/12/',
         '[NEW] Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation',
         '[NEW] Cracked Earth Texture (video walkthrough) — canvas simulation demo',
+        'Guest: Alycea Tinoyan — Background Designer for Rick and Morty',
       ],
     },
     saturday: {
