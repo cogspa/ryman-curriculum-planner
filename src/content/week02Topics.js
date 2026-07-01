@@ -80,13 +80,12 @@ That's why Levels work matters — you're not adjusting contrast for aesthetics,
       },
       {
         heading: 'Build sets, not one-offs',
-        body: `Don't make a single brush. Make a set of six per category. Categories that pay back the time investment:
+        body: `Start to make multiple brushes in many categories. Build up your brush library. Categories can include:
 
-- Pigment — bristles, palette-knife, impasto
 - Surface — paper grain, canvas weave, plaster, stone
-- Atmospheric — splatters, drips, mist, dust, particulate
+- Atmospheric — splatters, drips, mist, dust, particulate, foliage: trees, bushes, branches, leaves, and more
 
-Six brushes per set, three sets, eighteen brushes total. This is the foundation you'll reuse across every assignment for the rest of the semester.`,
+Just try to build up as many categories as possible.`,
       },
       {
         heading: 'Export your library',
