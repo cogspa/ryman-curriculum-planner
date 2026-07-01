@@ -399,6 +399,57 @@ export default function NoiseVsPattern() {
               "Non-procedural example: hand-drawn stripes, painted textiles, arranged shapes",
             ]}
           />
+
+          <h3 style={S.h3}>The Relationship between Patterns and Programming</h3>
+          <p style={S.p}>
+            Many different types of patterns exist, such as dress patterns and process patterns.
+          </p>
+          <p style={S.p}>
+            An example of a pattern-making machine that inspired computer programming is the <strong>Jacquard Loom</strong>.
+          </p>
+          <p style={S.p}>
+            Developed by Joseph Jacquard and demonstrated in 1801, the Jacquard Loom is an attachment for the fabric looms used at the time. The Jacquard Loom used punch cards instructing the loom on how to weave intricate textile patterns.
+          </p>
+          <p style={S.p}>
+            The Jacquard Loom is considered the predecessor to the modern computer. It uses a binary system to store information that can be read by the loom and replicated multiple times. Binary is a means of keeping information by using indicators that have two settings. Without a binary system, digital art would not be possible, and digital art is essentially a pattern of 1s and 0s.
+          </p>
+
+          <h3 style={S.h3}>Cellular Patterns</h3>
+          <p style={S.p}>
+            Cellular patterns are common in nature; they also can be developed using recursive noise algorithms. Photoshop can generate these patterns as well, which are also known as reaction-diffusion patterns. Digital artists can create this pattern using the high pass filter and then applying the threshold (from the image menu) to develop the "reaction." A gaussian blur can generate diffusion, and repeating these steps over and over again creates cellular patterns.
+          </p>
+          
+          <figure style={S.figure}>
+            <div style={S.plateFrame}>
+              <img src="/pattern/celluar.png" alt="cellular patterns" style={{ display: "block", width: "100%", height: "auto" }} />
+            </div>
+            <figcaption style={S.caption}>
+              <span style={S.captionLabel}>cellular patterns</span>
+            </figcaption>
+          </figure>
+
+          <h3 style={S.h3}>Voronoi Patterns</h3>
+          <p style={S.p}>
+            Voronoi diagrams are named after Georgy Voronoy, a Russian mathematician born in 1868.
+          </p>
+          <p style={S.p}>
+            In the simplest case, a Voronoi Diagram is represented by many points called seeds. There is a corresponding region for each seed, called a Voronoi cell, defined by plane points of neighboring cells.
+          </p>
+          <p style={S.p}>
+            The Voronoi pattern has practical and theoretical applications in many fields, mainly science, technology, and digital art.
+          </p>
+          <p style={S.p}>
+            Voronoi patterns in digital art can be used for general visual effects, such as breaking glass, or to simulate materials, such as cracked earth. Voronoi patterns can be generated in Photoshop with a combination of the noise and crystallize filters.
+          </p>
+
+          <figure style={S.figure}>
+            <div style={S.plateFrame}>
+              <img src="/pattern/voronoi.png" alt="voronoi patterns" style={{ display: "block", width: "100%", height: "auto" }} />
+            </div>
+            <figcaption style={S.caption}>
+              <span style={S.captionLabel}>voronoi patterns</span>
+            </figcaption>
+          </figure>
         </Section>
 
         <Section label="Noise and Pattern Together">
@@ -582,6 +633,15 @@ const S = {
     margin: "0 0 16px",
     paddingBottom: 8,
     borderBottom: `1px solid ${C.rule}`,
+  },
+  h3: {
+    fontFamily: MONO,
+    fontSize: 11,
+    fontWeight: 600,
+    letterSpacing: "0.14em",
+    textTransform: "uppercase",
+    color: C.oxblood,
+    margin: "32px 0 12px",
   },
   p: {
     fontFamily: SERIF,
