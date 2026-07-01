@@ -344,6 +344,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/02/blend-modes-for-texture';
             } else if (cleanText.includes('canvas simulation') || cleanText.includes('perlin')) {
               linkPath = '/week/02/canvas-simulation';
+            } else if (cleanText.includes('define & save') || cleanText.includes('define presets') || cleanText.includes('reusable toolkit')) {
+              linkPath = '/week/02/define-presets';
             } else if (cleanText.includes('color palette') || cleanText.includes('swatch') || cleanText.includes('extraction')) {
               linkPath = '/week/02/color-palette-extraction';
             }

@@ -72,6 +72,7 @@ export const curriculum = [
         '[NEW] Generating Noise in Photoshop',
         '[NEW] What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory',
         '[NEW] Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8',
+        '[NEW] Define & Save: Photoshop custom brush, pattern, and swatch presets',
         '[NEW] Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool',
       ],
       readings: [

@@ -347,6 +347,7 @@ export const topicList = [
   { key: 'generating-noise-in-photoshop', label: 'Generating Noise in Photoshop', isNew: true },
   { key: 'procedural-vs-non-procedural', label: 'What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory', isNew: true },
   { key: 'blend-modes-for-texture', label: 'Texture overlays via blend modes — Multiply, Overlay, Soft Light, and the Special 8', isNew: true },
+  { key: 'define-presets', label: 'Define & Save: Photoshop custom brush, pattern, and swatch presets', isNew: true },
   { key: 'color-palette-extraction', label: 'Color palette extraction — building color libraries, the ASE format, and ASE Swatch Maker tool', isNew: true },
 ];
 
