@@ -387,6 +387,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/realistic-lighting-adjustments';
             } else if (cleanText.includes('brush maker') || cleanText.includes('brush forge') || cleanText.includes('brush foundry')) {
               linkPath = '/week/03/brush-maker';
+            } else if (cleanText.includes('notan light lab') || cleanText.includes('notanlightlab')) {
+              linkPath = '/week/03/notan-light-lab';
             }
           } else if (weekNumber === 4 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();

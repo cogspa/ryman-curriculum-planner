@@ -437,4 +437,5 @@ export const topicList = [
   { key: 'photo-compositing', label: 'Photo compositing', isNew: true },
   { key: 'realistic-lighting-adjustments', label: 'Realistic lighting adjustments', isNew: false },
   { key: 'brush-maker', label: 'Tool: Brush Maker', isNew: true },
+  { key: 'notan-light-lab', label: 'Tool: Notan Light Lab', isNew: true },
 ];
