@@ -358,16 +358,16 @@ If you instead see a collage — separate images sitting next to each other — 
     pccSources: ['Histograms and Levels', 'How To Use Levels', 'Where do you find Levels in the UI?', 'Value and Contrast'],
     sections: [
       {
-        heading: 'Levels — the fundamental adjustment',
-        body: `With the Levels adjustment, you can explore and correct an image's tonal range by adjusting the intensity levels of shadows, midtones, and highlights.
+        heading: 'Levels: Why Use Them',
+        body: `With the Levels adjustment, you can explore and correct an image's tonal value range by adjusting the intensity levels of shadows, mid-tones, and highlights. You can access levels in Photoshop using cmd (mac)/control (PC) + L .  This shortcut applies to photopea.com.
 
-Shortcut: Cmd/Ctrl + L. Works the same way in Photoshop and Photopea.
-
-Use cases:
-- Increase contrast across an image for more dynamic effects
-- Mask out a subject, duplicate to a separate layer, then darken the background with Levels to make the subject pop
-- Lighten or darken a mask itself by applying Levels to it
-- Compress the value range on a distant plane for atmospheric perspective`,
+You can use levels to:
+- Increase contrast in an image for more dynamic effects.
+- Mask out the subject of an image, duplicate the subject layers, and apply levels to the background to make the subject stand out more.
+- Use levels on your masks to darken or lighten a mask.
+- Use levels on your graffiti assignment. Push the levels to the left or right. What parts of the images begin to stand out more? Do you see "things" appearing in the image that you didn't think of initially?`,
+        imageUrl: '/Screen Shot 2021-09-22 at 5.13.00 AM.png',
+        imageCaption: 'the levels dialog in photoshop',
       },
       {
         heading: 'Reading a histogram',
@@ -384,14 +384,20 @@ A high-contrast image: the histogram has data at both edges, possibly with a gap
 Reading histograms tells you what kind of correction is needed before you make a single move.`,
       },
       {
-        heading: 'The three Levels sliders',
-        body: `Black point slider (left triangle) — sets the value that becomes pure black. Move right to push more pixels to black, increasing shadow depth.
+        heading: 'Sliders for level adjustment',
+        body: `Using levels sliders (the “triangles”), you can influence three tonal areas of an image: the shadows, mid-tones, and highlights. By moving the sliders (or using black point or white point eyedropper), you can define better black or white points in an image. The gray-eyedropper is used to determine areas of color and images.
 
-Midtone slider (middle triangle, gamma) — lightens or darkens the midtones without affecting the black and white points. Move left to lighten the image overall; move right to darken.
-
-White point slider (right triangle) — sets the value that becomes pure white. Move left to push more pixels to white, blowing out highlights.
-
-Remember: left lightens, right darkens. The black point and white point are about defining the limits of your range; the midtone slider redistributes everything in between.`,
+- Black point slider (left triangle) — sets the value that becomes pure black. Move right to push more pixels to black, increasing shadow depth.
+- Midtone slider (middle triangle, gamma) — lightens or darkens the midtones without affecting the black and white points. Move left to lighten the image overall; move right to darken.
+- White point slider (right triangle) — sets the value that becomes pure white. Move left to push more pixels to white, blowing out highlights.`,
+        imageUrl: '/Screen Shot 2021-09-22 at 4.54.49 AM.png',
+        imageCaption: 'level sliders',
+      },
+      {
+        heading: 'Left Lightens, Right Darkens',
+        body: `You can make an image more vivid by altering the white and black points and moving the mid-tone slider to the left to lighten the idea or to the right to darken it.`,
+        imageUrl: '/Screen Shot 2021-09-22 at 5.47.22 AM.png',
+        imageCaption: 'lighten left, darken right',
       },
       {
         heading: 'Where Levels lives in Photoshop',
