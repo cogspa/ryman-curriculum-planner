@@ -138,85 +138,77 @@ export default function LayerBasics() {
 
         <div className="lb-split">
           <div className="lb-split-text">
-            <h3 className="lb-sub">The Layers panel</h3>
+            <h3 className="lb-sub">The Layers Panel</h3>
             <p>
-              You work with layers in the <strong>Layers panel</strong>. If
-              you close it by accident, press <Keys keys={["F7"]} /> to bring
-              it back.
+              You work with layers in the Layers panel. The keyboard shortcut for the layers panel is <Keys keys={["F7"]} />.
             </p>
 
-            <h3 className="lb-sub">The Background layer</h3>
+            <h3 className="lb-sub">The Background Layer</h3>
             <p>
-              A new image opens with a single layer called the{" "}
-              <strong>Background layer</strong> — it is part of every
-              Photoshop document by default. You can paint and draw on it,
-              but you cannot erase or delete its pixels: it is locked. To
-              unlock it, right-click the Background layer and choose{" "}
-              <span className="lb-menu">Layer from Background…</span>
+              In Photoshop, a new image has a single layer called a background layer. The background layer is part of every Photoshop document by default. You can paint and draw on that layer, but you cannot erase or delete the pixels on the background layer. If you want to delete or erase pixels on the background layer you can rt. click on the background layer and select "layer from background".
             </p>
             <Plate
               src={layerFromBackground}
               alt="Right-click menu on the Background layer showing Layer from Background"
-              caption="fig. 1b — unlocking the Background layer"
+              caption="fig. 1b — layer from background"
               maxWidth={480}
             />
 
             <h3 className="lb-sub">How many layers can you have?</h3>
             <p>
-              The number of layers, layer effects, and layer sets you can add
-              to an image is limited only by your computer's memory.
+              The number of additional layers, layer effects, and layer sets you can add to an image is limited only by your computer’s memory.
             </p>
           </div>
 
           <Plate
             src={layersPanel}
-            alt="The Photoshop Layers panel showing Layer 1, Layer 2, and a locked Background layer"
-            caption="fig. 1a — the Layers panel (F7)"
+            alt="The Photoshop Layers panel showing layers"
+            caption="fig. 1a — layers panel"
             maxWidth={320}
           />
         </div>
 
-        <h3 className="lb-sub">Creating new layers</h3>
+        <h3 className="lb-sub">How to create new layers</h3>
         <div className="lb-split lb-split-tight">
           <div className="lb-split-text">
             <p>
-              Click the small <strong>box with a plus sign</strong> in the
-              lower-right corner of the Layers panel — or use the keyboard:
+              To create a new layer click on the small box with a plus sign icon in the lower-right corner of the layers panel as seen below.
+            </p>
+            <p style={{ marginTop: 12 }}>
+              You can also use the keyboard shortcut to create a new layer:
             </p>
             <div className="lb-shortcut-card">
               <ShortcutRow
                 label="New layer"
-                mac={["⇧ shift", "⌥ option", "⌘ command", "N"]}
-                pc={["shift", "alt", "ctrl", "N"]}
+                mac={["shift", "option", "command", "N"]}
+                pc={["shift", "alt", "control", "N"]}
               />
             </div>
           </div>
           <Plate
             src={newLayerIcon}
             alt="The new layer icon — a box with a plus sign at the bottom of the Layers panel"
-            caption="fig. 1c — the new-layer button"
+            caption="fig. 1c — new layer icon"
             maxWidth={200}
           />
         </div>
 
-        <h3 className="lb-sub">Layer groups</h3>
+        <h3 className="lb-sub">Layer Groups</h3>
         <p>
-          Layer groups help you organize and manage layers: arrange them
-          logically, reduce clutter in the panel, and apply attributes and
-          masks to several layers at once. Groups can be nested inside other
-          groups. Shift-select two or more layers, then:
+          Layer groups help you organize and manage layers. You can use groups to arrange your layers logically and reduce clutter in the Layers panel. You can nest groups within other groups. You can also use groups to apply attributes and masks to multiple layers simultaneously.
         </p>
-        <div className="lb-shortcut-card">
+        <p>
+          To create a layer group shift select two or more layers and use the shortcut:
+        </p>
+        <div className="lb-shortcut-card" style={{ marginBottom: 16 }}>
           <ShortcutRow
             label="Group layers"
-            mac={["⌘ command", "G"]}
-            pc={["ctrl", "G"]}
+            mac={["command", "G"]}
+            pc={["control", "G"]}
           />
         </div>
         <p>
-          You can also click the <strong>folder icon</strong> at the bottom of
-          the Layers panel to create an empty group, then drag and drop layers
-          into it.
+          You can also click on the folder icon in the layers panel, which can be found at the bottom of the layers panel. This will create a group in the layers panel and you can drag and drop layers into that group.
         </p>
       </section>
 
