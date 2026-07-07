@@ -19,6 +19,7 @@ import DefinePresetsLesson from './pages/DefinePresetsLesson.jsx';
 import BrushFoundry from './pages/brush-maker.jsx';
 import NotanLightLab from './pages/NotanLightLab2.jsx';
 import ValueStudiesCarousel from './pages/ValueStudiesCarousel.jsx';
+import LayerBasics from './pages/LayerBasics.jsx';
 import Week03Overview from './pages/Week03Overview.jsx';
 import Week03TopicDetail from './pages/Week03TopicDetail.jsx';
 import Week04Overview from './pages/Week04Overview.jsx';
@@ -65,6 +66,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/03/brush-maker" element={<BrushFoundry />} />
           <Route path="/week/03/notan-light-lab" element={<NotanLightLab />} />
           <Route path="/week/03/value-studies" element={<ValueStudiesCarousel />} />
+          <Route path="/week/03/layer-basics" element={<LayerBasics />} />
           <Route path="/week/03/:topicKey" element={<Week03TopicDetail />} />
           <Route path="/week/04" element={<Week04Overview />} />
           <Route path="/week/04/:topicKey" element={<Week04TopicDetail />} />

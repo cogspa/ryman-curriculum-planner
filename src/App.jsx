@@ -391,6 +391,13 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/brush-maker';
             } else if (cleanText.includes('notan light lab') || cleanText.includes('notanlightlab')) {
               linkPath = '/week/03/notan-light-lab';
+            } else if (cleanText.includes('layer basics')) {
+              linkPath = '/week/03/layer-basics';
+            }
+          } else if (weekNumber === 3 && label === 'Readings') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('layer basics')) {
+              linkPath = '/week/03/layer-basics';
             }
           } else if (weekNumber === 4 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();
