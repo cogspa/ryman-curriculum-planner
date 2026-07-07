@@ -96,20 +96,22 @@ export default function AssignmentPage() {
   
   const [activeTrack, setActiveTrack] = useState(() => {
     try {
-      if (trackParam && ['beginner', 'intermediate', 'advanced'].includes(trackParam)) {
+      if (trackParam && rawData?.tracks?.[trackParam]) {
         return trackParam;
       }
-      return localStorage.getItem('cp-active-track') || 'intermediate';
+      const saved = localStorage.getItem('cp-active-track');
+      if (saved && rawData?.tracks?.[saved]) return saved;
+      return Object.keys(rawData?.tracks || {})[0] || 'beginner';
     } catch {
-      return 'intermediate';
+      return 'beginner';
     }
   });
 
   useEffect(() => {
-    if (trackParam && ['beginner', 'intermediate', 'advanced'].includes(trackParam)) {
+    if (trackParam && rawData?.tracks?.[trackParam]) {
       setActiveTrack(trackParam);
     }
-  }, [trackParam]);
+  }, [trackParam, rawData]);
 
   if (!rawData) {
     return (
@@ -126,7 +128,20 @@ export default function AssignmentPage() {
   }
 
   const isMultiTrack = !!rawData.tracks;
-  const data = isMultiTrack ? (rawData.tracks[activeTrack] || rawData.tracks['intermediate']) : rawData;
+  const data = isMultiTrack ? (rawData.tracks[activeTrack] || rawData.tracks['beginner'] || rawData.tracks['intermediate']) : rawData;
+
+  const beginnerTrack = rawData.tracks?.beginner;
+  const intermediateTrack = rawData.tracks?.intermediate;
+  const advancedTrack = rawData.tracks?.advanced;
+
+  const cleanTitle = (title, fallback) => {
+    if (!title) return fallback;
+    return title
+      .replace(/^Base Assignment:\s*/i, '')
+      .replace(/^Take It to the Next Level:\s*/i, '')
+      .replace(/^Advanced Integration:\s*/i, '')
+      .trim();
+  };
 
   return (
     <div className="app">
@@ -320,7 +335,7 @@ export default function AssignmentPage() {
             alignItems: 'flex-start'
           }}>
             <span style={{ fontSize: '24px', lineHeight: '1.2' }}>📋</span>
-            <div>
+            <div style={{ width: '100%' }}>
               <h3 style={{
                 margin: '0 0 6px 0',
                 fontSize: '15px',
@@ -337,16 +352,74 @@ export default function AssignmentPage() {
                 color: '#78350f',
                 fontFamily: 'var(--font-sans, sans-serif)'
               }}>
-                We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. We typically work at a <strong>16:9 widescreen ratio</strong> (the standard landscape format for typical monitors and mobile screens), and suggest a baseline resolution of <strong>1920 × 1080 px</strong>, though this is not a strict rule. You are encouraged to explore different sizes and create varied layouts using Illustrator. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. The <strong>Advanced Integration</strong> track is optional.
+                We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional.
+                {isMultiTrack && " Please refer to the specific deliverables for each track below:"}
               </p>
+
+              {isMultiTrack && (
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '14px',
+                  marginTop: '12px',
+                  borderTop: '1px solid rgba(245, 158, 11, 0.25)',
+                  paddingTop: '12px'
+                }}>
+                  {beginnerTrack && (
+                    <div style={{ fontSize: '13.5px', fontFamily: 'var(--font-sans, sans-serif)' }}>
+                      <div style={{ fontWeight: 'bold', color: '#92400e', marginBottom: '4px' }}>
+                        Base Assignment: <span style={{ textDecoration: 'underline' }}>{cleanTitle(beginnerTrack.title, 'Base Track')}</span>
+                      </div>
+                      {beginnerTrack.submission && (
+                        <ul style={{ margin: 0, paddingLeft: '20px', color: '#78350f', lineHeight: '1.45' }}>
+                          {beginnerTrack.submission.map((s, idx) => (
+                            <li key={idx} style={{ marginBottom: '2px' }}>{s}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  )}
+                  {intermediateTrack && (
+                    <div style={{ fontSize: '13.5px', fontFamily: 'var(--font-sans, sans-serif)' }}>
+                      <div style={{ fontWeight: 'bold', color: '#92400e', marginBottom: '4px' }}>
+                        Take It to the Next Level: <span style={{ textDecoration: 'underline' }}>{cleanTitle(intermediateTrack.title, 'Next Level')}</span>
+                      </div>
+                      {intermediateTrack.submission && (
+                        <ul style={{ margin: 0, paddingLeft: '20px', color: '#78350f', lineHeight: '1.45' }}>
+                          {intermediateTrack.submission.map((s, idx) => (
+                            <li key={idx} style={{ marginBottom: '2px' }}>{s}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  )}
+                  {advancedTrack && (
+                    <div style={{ fontSize: '13.5px', fontFamily: 'var(--font-sans, sans-serif)', opacity: 0.95 }}>
+                      <div style={{ fontWeight: 'bold', color: '#92400e', marginBottom: '4px' }}>
+                        ⭐ Advanced Integration (Optional): <span style={{ textDecoration: 'underline' }}>{cleanTitle(advancedTrack.title, 'Advanced Integration')}</span>
+                      </div>
+                      {advancedTrack.submission && (
+                        <ul style={{ margin: 0, paddingLeft: '20px', color: '#78350f', lineHeight: '1.45' }}>
+                          {advancedTrack.submission.map((s, idx) => (
+                            <li key={idx} style={{ marginBottom: '2px' }}>{s}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
               <p style={{
-                margin: '8px 0 0 0',
+                margin: '12px 0 0 0',
                 fontSize: '13.5px',
                 lineHeight: '1.5',
                 color: '#78350f',
-                fontFamily: 'var(--font-sans, sans-serif)'
+                fontFamily: 'var(--font-sans, sans-serif)',
+                borderTop: isMultiTrack ? '1px solid rgba(245, 158, 11, 0.15)' : 'none',
+                paddingTop: isMultiTrack ? '8px' : 0
               }}>
-                These are designed to be quick, foundational concepts and should not be overly detailed. Ideally, these studies connect to the worldbuilding flow of the class, but if you do not have a pre-existing IP to work from, that is absolutely fine.
+                These are designed to be quick, foundational concepts and should not be overly detailed. Ideally, these studies connect to the worldbuilding flow of the class, but if you do not have a pre-existing IP to work from, that is absolutely fine. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size.
               </p>
               <p style={{
                 margin: '8px 0 0 0',
@@ -374,7 +447,7 @@ export default function AssignmentPage() {
               marginBottom: '28px',
               maxWidth: 'fit-content'
             }}>
-              {['beginner', 'intermediate', 'advanced'].map((track) => {
+              {['beginner', 'intermediate', 'advanced'].filter(track => rawData?.tracks?.[track]).map((track) => {
                 const isActive = activeTrack === track;
                 const labelMap = {
                   beginner: 'Base Assignment',

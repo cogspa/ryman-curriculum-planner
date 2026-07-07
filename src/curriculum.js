@@ -95,22 +95,18 @@ export const curriculum = [
     overview: 'Advanced digital rendering using blending modes, atmospheric depth, and cinematic lighting treatments, combined with Week 2 material workshop.',
     tuesday: {
       topics: [
-        'Discussion: Traditional glazing vs. digital layering and transparency',
-        'Preview: Lighting as a character and cinematic depth',
         'Workflow breakdown: Non-destructive light adjustments and layer stack safety',
+        '[NEW] Tool: Brush Maker',
       ],
       readings: [
         '[NEW] Glazing vs. Digital Layering — core mechanics of transparent overlays',
         'Layer Basics: Selection masking, non-destructive adjustment layers, and layer organization',
-        'Guest: Concept artist or film matte painter — live demo on building atmospheric depth',
+        'Guest: Jax Jocson (Concept Artist) — live demo on building atmospheric depth',
       ],
     },
     saturday: {
       topics: [
-        '🎨 PUSHED FROM WEEK 2: Custom brush creation & Wacom brackets-key flow',
-        '🎨 PUSHED FROM WEEK 2: Procedural texture generation (Perlin/cellular surface simulation)',
-        '🎨 PUSHED FROM WEEK 2: Special 8 Blend Modes and stipple/grain overlays',
-        'Glazing vs. digital layering transparent applications',
+        'Traditional glazing vs. digital layering and transparency',
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
       ],
       assignments: [

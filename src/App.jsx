@@ -67,7 +67,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
   const speakersMap = {
     1: { name: 'No speaker - First Class', date: formatDate(tuesdayDate) },
     2: { name: 'Alycea Tinoyan - Background Designer for Rick and Morty', date: formatDate(tuesdayDate) },
-    3: { name: 'Concept artist or film matte painter', date: formatDate(tuesdayDate) },
+    3: { name: 'Jax Jocson: Concept Artist', date: formatDate(tuesdayDate) },
     4: { name: 'Senior graphic designer', date: formatDate(tuesdayDate) },
     5: { name: 'Nancy Seruto', date: formatDate(tuesdayDate) },
     6: { name: 'Art director or creative agency lead', date: formatDate(tuesdayDate) },
@@ -385,6 +385,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/photo-compositing';
             } else if (cleanText.includes('realistic lighting') || cleanText.includes('adjustments')) {
               linkPath = '/week/03/realistic-lighting-adjustments';
+            } else if (cleanText.includes('brush maker') || cleanText.includes('brush forge') || cleanText.includes('brush foundry')) {
+              linkPath = '/week/03/brush-maker';
             }
           } else if (weekNumber === 4 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();
@@ -748,6 +750,35 @@ function WeekCard({
         </div>
       )}
 
+      {week.week === 3 && (
+        <div className="week-due-banner" style={{
+          margin: '12px 0 16px 0',
+          padding: '12px 14px',
+          background: 'rgba(139, 58, 47, 0.06)',
+          borderLeft: '4px solid #8b3a2f',
+          borderRadius: '0 8px 8px 0',
+          fontSize: '0.85rem',
+          lineHeight: '1.4',
+          color: '#2b2622'
+        }}>
+          <div style={{ fontWeight: 'bold', color: '#8b3a2f', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem' }}>
+            ⏳ Deliverable Alert
+          </div>
+          <div style={{ marginBottom: '8px' }}>
+            <strong>Must do by July 25:</strong>
+            <div style={{ marginTop: '4px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div><strong>Base:</strong> 18 custom brushes in folders + stamp test sheet.</div>
+              <div><strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 72 DPI, layered PSD).</div>
+            </div>
+          </div>
+          <div style={{ fontSize: '0.8rem', color: '#5a5048', borderTop: '1px solid rgba(139, 58, 47, 0.15)', paddingTop: '6px' }}>
+            <span style={{ display: 'block' }}>
+              💡 <strong>Optional challenge:</strong> Advanced Integration (Shader Editor & Bake).
+            </span>
+          </div>
+        </div>
+      )}
+
       {(hasContent || adminMode) && (
         <div className="curriculum-content">
           {adminMode ? (
@@ -962,27 +993,7 @@ function WeekCard({
                     weekNumber={week.week}
                     isDraggingActive={isDraggingActive}
                   />
-                  {week.saturday.assignments && week.saturday.assignments.length > 0 && (
-                    <div style={{
-                      marginTop: '10px',
-                      padding: '8px 12px',
-                      background: 'rgba(245, 158, 11, 0.05)',
-                      border: '1px solid rgba(245, 158, 11, 0.2)',
-                      borderRadius: '6px',
-                      fontSize: '11.5px',
-                      lineHeight: '1.4',
-                      color: '#78350f',
-                      fontFamily: 'var(--font-sans, sans-serif)',
-                      marginBottom: '4px'
-                    }}>
-                      <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                        <span style={{ fontSize: '13px', lineHeight: '1.2' }}>📋</span>
-                        <div>
-                          <strong>Deliverables:</strong> We recommend completing the <em>Base Assignment</em> and <em>Next Level</em> tracks. We typically work at a <strong>16:9 widescreen ratio</strong> (the standard landscape format for typical monitors and mobile screens), and recommend a baseline resolution of <strong>1920 × 1080 px</strong> (not a strict rule). You can explore different sizes and create varied layouts using Illustrator. If using Photoshop, keep the active Artboard count to a minimum to avoid large files. These are quick concept sketches and shouldn't be overly detailed. Ideally they relate to the class worldbuilding flow, but a new theme is fine if you don't have a pre-existing IP. Note: The <em>Advanced Integration</em> track is optional. Have files ready for critiques and saved for the final capstone project.
-                        </div>
-                      </div>
-                    </div>
-                  )}
+
                 </div>
               )}
             </div>
@@ -1037,6 +1048,43 @@ function WeekCard({
                 isDraggingActive={isDraggingActive}
               />
             </>
+          )}
+
+          {((week.saturday?.assignments && week.saturday.assignments.length > 0) || (week.assignments && week.assignments.length > 0)) && (
+            <div style={{
+              marginTop: '16px',
+              padding: '12px 16px',
+              background: 'rgba(245, 158, 11, 0.04)',
+              border: '1px solid rgba(245, 158, 11, 0.18)',
+              borderRadius: '8px',
+              fontSize: '13px',
+              lineHeight: '1.45',
+              color: '#78350f',
+              fontFamily: 'var(--font-sans, sans-serif)',
+              marginBottom: '16px'
+            }}>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                <span style={{ fontSize: '16px', lineHeight: '1.2' }}>📋</span>
+                <div style={{ width: '100%' }}>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px', color: '#92400e' }}>Deliverables:</strong>
+                  {week.week === 3 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      <div>
+                        <strong>Base:</strong> 18 custom brushes in folders + stamp test sheet.
+                      </div>
+                      <div>
+                        <strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 72 DPI, layered PSD).
+                      </div>
+                      <div style={{ fontSize: '12px', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.15)', color: '#b45309', fontStyle: 'italic' }}>
+                        <strong>Note:</strong> Keep active Artboards to a minimum. Advanced Integration is optional. Save files for final capstone.
+                      </div>
+                    </div>
+                  ) : (
+                    <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone.</span>
+                  )}
+                </div>
+              </div>
+            </div>
           )}
         </div>
       )}

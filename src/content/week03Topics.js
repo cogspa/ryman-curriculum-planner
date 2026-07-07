@@ -436,4 +436,5 @@ export const topicList = [
   { key: 'masking-and-selections', label: 'Masking & selections', isNew: false },
   { key: 'photo-compositing', label: 'Photo compositing', isNew: true },
   { key: 'realistic-lighting-adjustments', label: 'Realistic lighting adjustments', isNew: false },
+  { key: 'brush-maker', label: 'Tool: Brush Maker', isNew: true },
 ];

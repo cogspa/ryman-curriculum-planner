@@ -39,7 +39,7 @@ export default function Week03Overview() {
 
       <h2 style={sectionHeadingStyle}>Guest</h2>
       <p style={guestStyle}>
-        Concept artist or film matte painter — live demo
+        Jax Jocson (Concept Artist) — live demo
       </p>
 
       <h2 style={sectionHeadingStyle}>Assignment</h2>
