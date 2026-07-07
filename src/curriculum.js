@@ -100,7 +100,6 @@ export const curriculum = [
         '[NEW] Tool: Notan Light Lab',
       ],
       readings: [
-        '[NEW] Glazing vs. Digital Layering — core mechanics of transparent overlays',
         'Layer Basics: Selection masking, non-destructive adjustment layers, and layer organization',
         'Guest: Jax Jocson (Concept Artist) — live demo on building atmospheric depth',
       ],
