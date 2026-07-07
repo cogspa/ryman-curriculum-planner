@@ -1090,6 +1090,8 @@ function WeekCard({
                         <strong>Note:</strong> Keep active Artboards to a minimum. Advanced Integration is optional. Save files for final capstone.
                       </div>
                     </div>
+                  ) : week.week === 1 ? (
+                    <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone. Base Assignment requires three initial black and white studies at 16:9, and Take It to the Next Level requires three color versions at 16:9 (but they can also be 9:16).</span>
                   ) : (
                     <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone.</span>
                   )}
