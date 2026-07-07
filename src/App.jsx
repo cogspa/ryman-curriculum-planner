@@ -1591,7 +1591,7 @@ export default function App() {
             }}>
               {[
                 { num: 1, name: 'Character/Prop/Environment Blocking Foundation', wk: 1 },
-                { num: 2, name: 'Material Studies & Textures', wk: 3 },
+                { num: 2, name: 'Textures, Brushes and Landscape Studies', wk: 3 },
                 { num: 3, name: 'Atmospheric Space', wk: 5 },
                 { num: 4, name: 'Narrative Sequence', wk: 7 },
                 { num: 5, name: 'Release Campaign', wk: 9 },
