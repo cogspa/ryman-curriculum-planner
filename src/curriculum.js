@@ -97,6 +97,7 @@ export const curriculum = [
       topics: [
         'Workflow breakdown: Non-destructive light adjustments and layer stack safety',
         '[NEW] Tool: Brush Maker',
+        '[NEW] Tool: Threshold Notan',
         '[NEW] Tool: Notan Light Lab',
       ],
       readings: [

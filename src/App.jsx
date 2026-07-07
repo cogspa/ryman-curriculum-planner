@@ -391,6 +391,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/brush-maker';
             } else if (cleanText.includes('notan light lab') || cleanText.includes('notanlightlab')) {
               linkPath = '/week/03/notan-light-lab';
+            } else if (cleanText.includes('threshold') || cleanText.includes('threshold notan')) {
+              linkPath = '/week/03/threshold-notan';
             } else if (cleanText.includes('layer basics')) {
               linkPath = '/week/03/layer-basics';
             }
