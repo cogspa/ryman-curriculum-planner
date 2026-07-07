@@ -918,6 +918,33 @@ function WeekCard({
                     </ul>
                   </div>
                 )}
+                {Number(week.week) === 3 && (
+                  <div className="week3-extra-content" style={{ marginTop: '12px', marginBottom: '16px', fontSize: '13.5px', color: 'var(--ink-mid)' }}>
+                    <p style={{ lineHeight: '1.6', marginBottom: '10px' }}>
+                      Week 3 explores the interplay of light, color, and value to establish atmospheric depth and mood. Students will master non-destructive adjustment layers, explore value-driven composition tools, and build custom brush libraries to paint environmental studies. The goal is to learn how to light scenes realistically, separate depth planes with atmospheric perspective, and organize a complex layer stack for a non-destructive production workflow.
+                    </p>
+                    <ul style={{ paddingLeft: '18px', margin: '0', lineHeight: '1.65', listStyleType: 'disc' }}>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Value and Chiaroscuro:</strong> understanding how value and tonal range establish mood and organize composition.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Levels and Histograms:</strong> reading value graphs in Photoshop to define black/white limits and adjust midtones.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Non-destructive Workflow:</strong> organizing complex files using layer masks, group structures, and clipped adjustment layers.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Atmospheric Perspective:</strong> separating foreground, midground, and background planes using value shifts and soft, ambient brushes.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Digital Tools (Brush Maker & Notan Lab):</strong> designing custom brushes from real-world imagery and using shader tools to study value boundaries.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Compositing & Lighting Match:</strong> matching light direction, color temperature, and contrast intensity between photographed elements.
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </>
             )
           )}
