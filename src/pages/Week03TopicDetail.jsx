@@ -75,6 +75,30 @@ export default function Week03TopicDetail() {
               )}
             </div>
           )}
+          {section.linkUrl && (
+            <div style={{ margin: '20px 0', textAlign: 'center' }}>
+              <Link to={section.linkUrl} style={{
+                fontFamily: 'Menlo, monospace',
+                fontSize: '11px',
+                color: '#fff',
+                backgroundColor: '#8b3a2f',
+                padding: '8px 20px',
+                borderRadius: '4px',
+                textDecoration: 'none',
+                display: 'inline-block',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontWeight: 'bold',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                transition: 'background-color 0.15s ease'
+              }}
+              onMouseOver={(e) => e.target.style.backgroundColor = '#72281e'}
+              onMouseOut={(e) => e.target.style.backgroundColor = '#8b3a2f'}
+              >
+                {section.linkText || 'Open Link'}
+              </Link>
+            </div>
+          )}
         </section>
       ))}
 

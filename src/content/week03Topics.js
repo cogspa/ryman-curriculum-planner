@@ -180,6 +180,12 @@ Dramatic contrasts — bright lights meeting deep shadows — create tension, dr
 
 For your dramatic location painting this week: decide the emotion first, then design the value structure to deliver it. The lighting setup is just the mechanism. The value distribution is the message.`,
       },
+      {
+        heading: 'Interactive Lesson: Painting Four Skies',
+        body: `Apply these shading and temperature concepts by studying the gradients and color palettes of four cinematic sky conditions. Check the values in grayscale and download Adobe Swatch Exchange (.ase) libraries.`,
+        linkUrl: '/week/03/sky-color',
+        linkText: 'Open Lesson: Painting Four Skies',
+      },
     ],
   },
 
