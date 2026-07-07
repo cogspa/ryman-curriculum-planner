@@ -110,6 +110,7 @@ export const curriculum = [
         'Traditional glazing vs. digital layering and transparency',
         '[NEW] Emotive Power of Value',
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
+        '[NEW] Lesson: Painting Four Skies',
       ],
       assignments: [
         '[NEW] **Base Assignment**: *Compositional Brush Library* — Build custom brush presets from real-world photos (atmospheric, landscape, messy/junk) to establish a digital painting toolbox.',

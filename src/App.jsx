@@ -393,6 +393,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/notan-light-lab';
             } else if (cleanText.includes('threshold') || cleanText.includes('threshold notan')) {
               linkPath = '/week/03/threshold-notan';
+            } else if (cleanText.includes('sky color') || cleanText.includes('painting four skies') || cleanText.includes('skies')) {
+              linkPath = '/week/03/sky-color';
             } else if (cleanText.includes('layer basics')) {
               linkPath = '/week/03/layer-basics';
             }
