@@ -359,7 +359,7 @@ If you instead see a collage — separate images sitting next to each other — 
     sections: [
       {
         heading: 'Levels: Why Use Them',
-        body: `With the Levels adjustment, you can explore and correct an image's tonal value range by adjusting the intensity levels of shadows, mid-tones, and highlights. You can access levels in Photoshop using cmd (mac)/control (PC) + L .  This shortcut applies to photopea.com.
+        body: `With the Levels adjustment, you can explore and correct an image's tonal value range by adjusting the intensity levels of shadows, mid-tones, and highlights. You can access levels in Photoshop using cmd (mac)/control (PC) + L .  This shortcut applies to photopea.com. Watch the video tutorial below for a visual guide.
 
 You can use levels to:
 - Increase contrast in an image for more dynamic effects.
@@ -368,6 +368,8 @@ You can use levels to:
 - Use levels on your graffiti assignment. Push the levels to the left or right. What parts of the images begin to stand out more? Do you see "things" appearing in the image that you didn't think of initially?`,
         imageUrl: '/Screen Shot 2021-09-22 at 5.13.00 AM.png',
         imageCaption: 'the levels dialog in photoshop',
+        videoUrl: 'https://youtu.be/rcEoCyTJEb8?si=k19kedhLuc6cFYtC',
+        videoCaption: 'Video: Tutorial on Levels and Histograms in Photoshop',
       },
       {
         heading: 'Reading a histogram',

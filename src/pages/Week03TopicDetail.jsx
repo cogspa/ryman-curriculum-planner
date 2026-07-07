@@ -60,6 +60,21 @@ export default function Week03TopicDetail() {
               )}
             </div>
           )}
+          {section.videoUrl && (
+            <div style={{ margin: '20px 0', textAlign: 'center' }}>
+              <a href={section.videoUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', position: 'relative', overflow: 'hidden', borderRadius: '6px', border: '1px solid #d4c9a8' }}>
+                <img src={`https://img.youtube.com/vi/${section.videoUrl.split('/').pop().split('?')[0]}/hqdefault.jpg`} alt="Video Thumbnail" style={{ display: 'block', maxWidth: '100%', maxHeight: '360px' }} />
+                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.2)' }}>
+                  <div style={{ width: 54, height: 54, borderRadius: '50%', background: '#8b3a2f', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 20, paddingLeft: 3, boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>▶</div>
+                </div>
+              </a>
+              {section.videoCaption && (
+                <p style={{ fontSize: '11px', color: '#8b3a2f', marginTop: '6px', fontStyle: 'italic', fontFamily: 'Menlo, monospace' }}>
+                  <a href={section.videoUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#8b3a2f', textDecoration: 'underline' }}>{section.videoCaption}</a>
+                </p>
+              )}
+            </div>
+          )}
         </section>
       ))}
 
