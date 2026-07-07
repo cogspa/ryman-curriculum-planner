@@ -373,6 +373,8 @@ function Section({ label, items, weekNumber }) {
             const cleanText = text.trim().toLowerCase();
             if (cleanText.includes('glazing') || cleanText.includes('digital layering')) {
               linkPath = '/week/03/glazing-vs-digital-layering';
+            } else if (cleanText.includes('emotive power of value') || cleanText.includes('value-studies') || cleanText.includes('value studies')) {
+              linkPath = '/week/03/value-studies';
             } else if (cleanText.includes('blending modes')) {
               linkPath = '/week/03/blending-modes';
             } else if (cleanText.includes('cinematic lighting')) {

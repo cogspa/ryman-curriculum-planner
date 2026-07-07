@@ -430,6 +430,7 @@ Choose based on what the image is about, then use Levels and Curves to deliver t
 
 export const topicList = [
   { key: 'glazing-vs-digital-layering', label: 'Glazing vs. digital layering', isNew: true },
+  { key: 'value-studies', label: 'Emotive Power of Value', isNew: true },
   { key: 'blending-modes', label: 'Blending modes', isNew: false },
   { key: 'cinematic-lighting', label: 'Cinematic lighting', isNew: true },
   { key: 'atmospheric-perspective', label: 'Atmospheric perspective', isNew: true },

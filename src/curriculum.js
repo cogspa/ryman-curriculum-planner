@@ -107,6 +107,7 @@ export const curriculum = [
     saturday: {
       topics: [
         'Traditional glazing vs. digital layering and transparency',
+        '[NEW] Emotive Power of Value',
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
       ],
       assignments: [
