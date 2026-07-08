@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
+import { topicList } from "../content/week03Topics.js";
+import TopicNav from "./TopicNav.jsx";
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  ValueStudiesCarousel
@@ -262,7 +264,7 @@ export default function ValueStudiesCarousel() {
             );
           })}
         </div>
-
+        <TopicNav topicList={topicList} topicKey="value-studies" weekNum="03" />
       </div>
     </div>
   );

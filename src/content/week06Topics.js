@@ -159,7 +159,7 @@ By framing your art within a professional structure, you transition from a simpl
 
 You will combine all the skills you have developed throughout the term—digital painting, custom brush creation, non-destructive adjustment masking, typography pairing, and multiple-format composition—into a unified package of commercial assets.
 
-Your challenge is to take one of your digital illustrations (such as your Week 3 Dramatic Location, your Week 5 Character Sheet, or a new piece) and package it with cohesive typography and vector branding across three distinct artboards to form a single, synchronized visual campaign.`,
+Your challenge is to take one of your digital illustrations (such as your Week 3 Landscape Compositions, your Week 5 Character Sheet, or a new piece) and package it with cohesive typography and vector branding across three distinct artboards to form a single, synchronized visual campaign.`,
       },
       {
         heading: 'The Creative Design Brief',

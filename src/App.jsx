@@ -375,16 +375,12 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/glazing-vs-digital-layering';
             } else if (cleanText.includes('emotive power of value') || cleanText.includes('value-studies') || cleanText.includes('value studies')) {
               linkPath = '/week/03/value-studies';
-            } else if (cleanText.includes('blending modes')) {
-              linkPath = '/week/03/blending-modes';
             } else if (cleanText.includes('cinematic lighting')) {
               linkPath = '/week/03/cinematic-lighting';
             } else if (cleanText.includes('atmospheric perspective')) {
               linkPath = '/week/03/atmospheric-perspective';
             } else if (cleanText.includes('masking') || cleanText.includes('selections')) {
               linkPath = '/week/03/masking-and-selections';
-            } else if (cleanText.includes('photo compositing')) {
-              linkPath = '/week/03/photo-compositing';
             } else if (cleanText.includes('realistic lighting') || cleanText.includes('adjustments')) {
               linkPath = '/week/03/realistic-lighting-adjustments';
             } else if (cleanText.includes('brush maker') || cleanText.includes('brush forge') || cleanText.includes('brush foundry')) {
@@ -395,6 +391,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/threshold-notan';
             } else if (cleanText.includes('sky color') || cleanText.includes('painting four skies') || cleanText.includes('skies')) {
               linkPath = '/week/03/sky-color';
+            } else if (cleanText.includes('diffuse & specular on a sphere') || cleanText.includes('sphere-material-studies') || cleanText.includes('sphere')) {
+              linkPath = '/week/03/sphere-material-studies';
             } else if (cleanText.includes('layer basics')) {
               linkPath = '/week/03/layer-basics';
             }

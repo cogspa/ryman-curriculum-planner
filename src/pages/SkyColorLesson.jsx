@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { topicList } from "../content/week03Topics.js";
+import TopicNav from "./TopicNav.jsx";
 
 /* ============================================================
    pLAtform · Color & Light
@@ -719,6 +721,7 @@ export default function SkyColorLesson() {
             six swatches. No color picker, no mixing.
           </p>
         </section>
+        <TopicNav topicList={topicList} topicKey="sky-color" weekNum="03" />
       </div>
     </div>
   );

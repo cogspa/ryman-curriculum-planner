@@ -1,4 +1,6 @@
 import React from "react";
+import { topicList } from "../content/week03Topics.js";
+import TopicNav from "./TopicNav.jsx";
 
 /**
  * LayerBasics.jsx
@@ -358,6 +360,7 @@ export default function LayerBasics() {
         </div>
         <p className="lb-colophon">pLAtform · Photoshop Foundations · Layer Basics</p>
       </footer>
+      <TopicNav topicList={topicList} topicKey="layer-basics" weekNum="03" />
     </article>
   );
 }

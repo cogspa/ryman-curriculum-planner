@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { topicList } from "../content/week03Topics.js";
+import TopicNav from "./TopicNav.jsx";
 
 /*
   NOTAN LIGHT LAB
@@ -729,6 +731,7 @@ export default function NotanLightLab() {
           Move the light and watch the shapes it carves — the drawing is
           in the break, not the rendering.
         </div>
+        <TopicNav topicList={topicList} topicKey="notan-light-lab" weekNum="03" />
       </div>
     </div>
   );

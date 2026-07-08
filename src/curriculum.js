@@ -92,7 +92,7 @@ export const curriculum = [
   {
     week: 3,
     title: 'Light, Color & Atmosphere for Screen',
-    overview: 'Advanced digital rendering using blending modes, atmospheric depth, and cinematic lighting treatments, combined with Week 2 material workshop.',
+    overview: 'Advanced digital rendering using atmospheric depth and cinematic lighting treatments, combined with Week 2 material workshop.',
     tuesday: {
       topics: [
         'Workflow breakdown: Non-destructive light adjustments and layer stack safety',
@@ -108,6 +108,7 @@ export const curriculum = [
     saturday: {
       topics: [
         'Traditional glazing vs. digital layering and transparency',
+        '[NEW] Lesson: Diffuse & Specular on a Sphere',
         '[NEW] Emotive Power of Value',
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
         '[NEW] Lesson: Painting Four Skies',

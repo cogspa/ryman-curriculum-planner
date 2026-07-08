@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { topicList } from "../content/week03Topics.js";
+import TopicNav from "./TopicNav.jsx";
 
 /* ============================================================
    BRUSH FOUNDRY — pLAtform tool
@@ -418,6 +420,7 @@ export default function BrushFoundry() {
               Settings after import.
             </p>
           </div>
+          <TopicNav topicList={topicList} topicKey="brush-maker" weekNum="03" />
         </div>
       </div>
     </div>

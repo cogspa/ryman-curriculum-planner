@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { topicList } from "../content/week03Topics.js";
+import TopicNav from "./TopicNav.jsx";
 
 /* ============================================================
    pLAtform · Color & Light
@@ -635,6 +637,7 @@ export default function ThresholdNotanLesson() {
             "silhouette everywhere except the focal area."
           </p>
         </section>
+        <TopicNav topicList={topicList} topicKey="threshold-notan" weekNum="03" />
       </div>
     </div>
   );

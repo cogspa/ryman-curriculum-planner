@@ -53,67 +53,6 @@ F7 opens the Layers panel. Cmd/Ctrl + G groups selected layers.`,
     ],
   },
 
-  'blending-modes': {
-    title: 'Blending Modes',
-    pccSources: ['What are Blend Modes', 'The Special "8" Blend Modes', 'Additive and Subtractive Color', 'Keyboard Shortcuts for Blend Modes'],
-    sections: [
-      {
-        heading: 'Blend modes are pixel math',
-        body: `Blend modes are a means to do "pixel math" — combining the colors of layers in different ways. They're found in the Layers panel dropdown and in the Brush tool's control panel.
-
-Combining layers using blend modes is also known as compositing — the fundamental means to combine computer graphics with filmed images in visual effects. Live-action work for compositing is variously called "chroma key," "blue screen," or "green screen."
-
-Blend modes are parametric: every change is non-destructive. You can revisit and readjust without damaging the original pixels.`,
-      },
-      {
-        heading: 'The four blend modes you actually need for lighting',
-        body: `• Multiply — for shadows, occlusion, painted-on darkness. If the active layer is darker than what's below, the darks are kept.
-
-- Screen — for key lights, rim lights, glows, god rays. The lightening counterpart to Multiply. Black on a Screen layer becomes invisible; lighter pixels accumulate.
-
-- Overlay — for surface light/dark adjustments. Combines Multiply's darkening with Screen's lightening, preserving midtones. Use for general "this whole area gets darker" or "this whole area gets brighter" passes.
-
-- Color — for hue glazes without affecting value. Paint a warm hue on a Color layer over a cool scene to introduce a sunset cast without recolor everything.
-
-These four cover 80% of cinematic lighting work.`,
-      },
-      {
-        heading: 'Additive and subtractive color via blend modes',
-        body: `Screen behaves like additive color — light wavelengths combining. Overlap a cyan circle, a yellow circle, and a magenta circle on Screen blend mode, and where all three meet you get white. This is RGB light math, the same way screens, projectors, and the sun work.
-
-Multiply behaves like subtractive color — pigment wavelengths absorbing each other. Overlap a cyan circle, a yellow circle, and a magenta circle on Multiply, and where all three meet you get black. This is CMYK pigment math, the same way ink and paint work.
-
-For cinematic lighting, you're almost always working in light math — Screen and its variants. For shadow and depth, you're in pigment math — Multiply.`,
-      },
-      {
-        heading: 'The Special 8 — for advanced lighting effects',
-        body: `Eight blend modes behave differently when Fill is adjusted versus Opacity: Color Burn, Linear Burn, Color Dodge, Linear Dodge (Add), Vivid Light, Linear Light, Hard Mix, and Difference.
-
-For cinematic lighting, two of these matter most:
-
-- Color Dodge — the cleanest way to paint glowing highlights, neon, hot specular hits. At full Fill it usually blows out; drop Fill to 30–50% and it produces controllable luminosity.
-
-- Linear Dodge (Add) — for very bright additive highlights like light shafts, lens flares, and god rays. Behaves like physical light addition.
-
-Try these on small white-painted marks against a dark scene. The difference between Screen, Color Dodge, and Linear Dodge is subtle but important — Screen is gentle, Color Dodge is saturated, Linear Dodge is pure brightness.`,
-      },
-      {
-        heading: 'Keyboard shortcuts',
-        body: `Shift + Alt/Option + [letter] cycles blend modes:
-
-- M — Multiply
-- S — Screen
-- O — Overlay
-- F — Soft Light
-- D — Color Dodge
-- B — Color Burn
-- U — Linear Dodge (Add)
-- N — Normal (reset)
-
-Shift + Alt + Plus / Minus cycles through the full list one at a time. When you're not sure which mode to use, flip through them with a layer selected and watch the canvas in real time.`,
-      },
-    ],
-  },
 
   'cinematic-lighting': {
     title: 'Cinematic Lighting',
@@ -178,13 +117,11 @@ The single most reliable cinematic move: warm key, cool fill. Or invert: cool ke
 
 Dramatic contrasts — bright lights meeting deep shadows — create tension, drama, suspense. Subtle transitions — gentle gradations from light to dark — evoke calmness, serenity, melancholy. A horror film uses stark contrasts to unsettle. A romantic film uses softer, muted values for a dreamy ambiance.
 
-For your dramatic location painting this week: decide the emotion first, then design the value structure to deliver it. The lighting setup is just the mechanism. The value distribution is the message.`,
+For your environment compositions this week: decide the emotion first, then design the value structure to deliver it. The lighting setup is just the mechanism. The value distribution is the message.`,
       },
       {
         heading: 'Interactive Lesson: Painting Four Skies',
         body: `Apply these shading and temperature concepts by studying the gradients and color palettes of four cinematic sky conditions. Check the values in grayscale and download Adobe Swatch Exchange (.ase) libraries.`,
-        linkUrl: '/week/03/sky-color',
-        linkText: 'Open Lesson: Painting Four Skies',
       },
     ],
   },
@@ -269,6 +206,8 @@ Use Levels (Cmd/Ctrl + L) on each plane group to compress: pull the white output
 Why this matters: erasing is destructive. Masking is reversible. You can paint the mask back to white and the pixels come back. For any compositing or photo work, mask — never erase.
 
 To add a mask: with a layer selected, click the rectangle-with-circle icon at the bottom of the Layers panel. Click on the mask thumbnail (not the layer thumbnail) to paint on the mask.`,
+        videoUrl: 'https://youtu.be/YpvfbA97Qvc?si=RubXLFxN9-gySqiy',
+        videoCaption: 'Video: Selections and Masking in Photoshop',
       },
       {
         heading: 'Why a mask is called an alpha channel',
@@ -307,54 +246,6 @@ X — swap foreground/background (useful when painting on a mask: white reveals,
 D — reset foreground/background to default black/white
 Alt/Option + click mask thumbnail — view the mask itself in isolation
 \\ (backslash) — toggle quick mask overlay view`,
-      },
-    ],
-  },
-
-  'photo-compositing': {
-    title: 'Photo Compositing',
-    pccSources: ['What are Blend Modes', 'Layer Masks', 'Alpha Channels'],
-    sourceNote: 'PCC defines compositing in the context of blend modes; cinematic photo compositing is the practical application of those mechanics.',
-    sections: [
-      {
-        heading: 'What compositing is',
-        body: `Compositing combines visual elements from separate sources into a single image, often to create the illusion that all those elements are parts of the same scene.
-
-In film: chroma key (green screen), matte paintings, CG elements layered with live footage. Same logic, different sources.
-
-In digital painting: photo elements masked together with painted elements, all unified by lighting and color grading.
-
-Compositing using blend modes and masks together is the fundamental technique for any photo-based cinematic image.`,
-      },
-      {
-        heading: 'The five-step compositing workflow',
-        body: `1. Gather sources. Multiple photographs, each on its own layer. Name them clearly: bg_mountain, mid_trees, fg_subject.
-
-2. Mask each layer. Use the right tool for each edge type. Non-destructive masks only — no erasing.
-
-3. Establish planes. Group layers into BACKGROUND, MIDGROUND, FOREGROUND. Each group becomes a unit for later lighting and atmosphere work.
-
-4. Match the lighting. This is the make-or-break step. The light source direction, color temperature, and intensity must agree across all layers. Use adjustment layers clipped (Cmd/Ctrl + Option + G) to each photo layer to color-correct it toward the scene's master lighting.
-
-5. Unify with a grade stack. Above everything, add adjustment layers that touch every plane equally — a Curves, a Color Balance, a Gradient Map at low opacity. This is what makes disparate photos read as one image.`,
-      },
-      {
-        heading: 'Matching lighting between sources',
-        body: `When you composite a photographed subject against a photographed background, the eye reads "fake" within seconds if the lighting doesn't match. Three things must agree:
-
-- Direction — where is the key light? If the background has light coming from camera-left, your subject's shadows must fall to camera-right. If they don't, flip the subject horizontally, or repaint shadows.
-
-- Color temperature — warm scene, warm subject. Cool scene, cool subject. Use a Color Balance adjustment layer clipped to the subject to push it toward the scene's temperature.
-
-- Intensity / contrast — bright scene, the subject can't be dim. Match the brightness range using Curves clipped to the subject.
-
-If you can't get all three to agree, replace the source. Bad references cost more time than they save.`,
-      },
-      {
-        heading: 'The "stand back and squint" test',
-        body: `Every twenty minutes of compositing, zoom out to fit the whole canvas on screen, then squint until you can barely see detail. What you should perceive is a single coherent value structure — light areas connected, dark areas connected, a clear focal point.
-
-If you instead see a collage — separate images sitting next to each other — your composite isn't done. Usually the fix is more atmospheric haze on the background and a heavier grade stack on top.`,
       },
     ],
   },
@@ -443,16 +334,15 @@ Choose based on what the image is about, then use Levels and Curves to deliver t
 };
 
 export const topicList = [
-  { key: 'glazing-vs-digital-layering', label: 'Glazing vs. digital layering', isNew: true },
-  { key: 'value-studies', label: 'Emotive Power of Value', isNew: true },
-  { key: 'blending-modes', label: 'Blending modes', isNew: false },
-  { key: 'cinematic-lighting', label: 'Cinematic lighting', isNew: true },
-  { key: 'atmospheric-perspective', label: 'Atmospheric perspective', isNew: true },
-  { key: 'masking-and-selections', label: 'Masking & selections', isNew: false },
-  { key: 'photo-compositing', label: 'Photo compositing', isNew: true },
-  { key: 'realistic-lighting-adjustments', label: 'Realistic lighting adjustments', isNew: false },
+  { key: 'masking-and-selections', label: 'Review: Masking and Selections', isNew: false },
+  { key: 'realistic-lighting-adjustments', label: 'Workflow breakdown: Non-destructive light adjustments and layer stack safety', isNew: false },
   { key: 'brush-maker', label: 'Tool: Brush Maker', isNew: true },
   { key: 'threshold-notan', label: 'Tool: Threshold Notan', isNew: true },
   { key: 'notan-light-lab', label: 'Tool: Notan Light Lab', isNew: true },
-  { key: 'layer-basics', label: 'Organizing Layers (Layer Basics)', isNew: true },
+  { key: 'layer-basics', label: 'Layer Basics: Selection masking, non-destructive adjustment layers, and layer organization', isNew: false },
+  { key: 'glazing-vs-digital-layering', label: 'Traditional glazing vs. digital layering and transparency', isNew: false },
+  { key: 'sphere-material-studies', label: 'Lesson: Diffuse & Specular on a Sphere', isNew: true },
+  { key: 'value-studies', label: 'Emotive Power of Value', isNew: true },
+  { key: 'cinematic-lighting', label: 'Cinematic lighting, atmospheric perspective, & selection masking compositing', isNew: false },
+  { key: 'sky-color', label: 'Lesson: Painting Four Skies', isNew: true },
 ];
