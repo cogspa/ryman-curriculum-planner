@@ -64,6 +64,7 @@ export default function Week03Overview() {
         {renderTopicLink('value-studies')}
         {renderTopicLink('cinematic-lighting')}
         {renderTopicLink('sky-color')}
+        {renderTopicLink('gradient-marquee')}
       </ul>
 
       <h2 style={sectionHeadingStyle}>Guest</h2>

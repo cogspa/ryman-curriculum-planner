@@ -23,6 +23,7 @@ import LayerBasics from './pages/LayerBasics.jsx';
 import ThresholdNotanLesson from './pages/ThresholdNotanLesson.jsx';
 import SkyColorLesson from './pages/SkyColorLesson.jsx';
 import SphereMaterialStudies from './pages/SphereMaterialStudies.jsx';
+import GradientMarquee from './pages/GradientMarquee.jsx';
 import Week03Overview from './pages/Week03Overview.jsx';
 import Week03TopicDetail from './pages/Week03TopicDetail.jsx';
 import Week04Overview from './pages/Week04Overview.jsx';
@@ -70,6 +71,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/03/notan-light-lab" element={<NotanLightLab />} />
           <Route path="/week/03/threshold-notan" element={<ThresholdNotanLesson />} />
           <Route path="/week/03/sky-color" element={<SkyColorLesson />} />
+          <Route path="/week/03/gradient-marquee" element={<GradientMarquee />} />
           <Route path="/week/03/sphere-material-studies" element={<SphereMaterialStudies />} />
           <Route path="/week/03/value-studies" element={<ValueStudiesCarousel />} />
           <Route path="/week/03/layer-basics" element={<LayerBasics />} />

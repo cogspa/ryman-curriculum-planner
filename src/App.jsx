@@ -391,6 +391,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/threshold-notan';
             } else if (cleanText.includes('sky color') || cleanText.includes('painting four skies') || cleanText.includes('skies')) {
               linkPath = '/week/03/sky-color';
+            } else if (cleanText.includes('gradient marquee') || cleanText.includes('gradient-marquee') || cleanText.includes('marquee')) {
+              linkPath = '/week/03/gradient-marquee';
             } else if (cleanText.includes('diffuse & specular on a sphere') || cleanText.includes('sphere-material-studies') || cleanText.includes('sphere')) {
               linkPath = '/week/03/sphere-material-studies';
             } else if (cleanText.includes('layer basics')) {
