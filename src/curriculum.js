@@ -113,6 +113,7 @@ export const curriculum = [
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
         '[NEW] Lesson: Painting Four Skies',
         '[NEW] Lesson: The Block-Out Method',
+        '[NEW] Lesson: Block-Out Study',
         '[NEW] Tool: Gradient Marquee',
         '[NEW] Tool: Brush Maker II',
       ],

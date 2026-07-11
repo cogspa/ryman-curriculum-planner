@@ -65,6 +65,7 @@ export default function Week03Overview() {
         {renderTopicLink('cinematic-lighting')}
         {renderTopicLink('sky-color')}
         {renderTopicLink('block-out-process')}
+        {renderTopicLink('block-out-study')}
         {renderTopicLink('gradient-marquee')}
         {renderTopicLink('brush-foundry-ii')}
       </ul>
