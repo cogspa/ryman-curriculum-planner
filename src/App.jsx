@@ -785,7 +785,7 @@ function WeekCard({
             <strong>Must do by July 25:</strong>
             <div style={{ marginTop: '4px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <div><strong>Base:</strong> 18 custom brushes in folders + stamp test sheet.</div>
-              <div><strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 72 DPI, layered PSD).</div>
+              <div><strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 300 DPI, layered PSD).</div>
             </div>
           </div>
           <div style={{ fontSize: '0.8rem', color: '#5a5048', borderTop: '1px solid rgba(139, 58, 47, 0.15)', paddingTop: '6px' }}>
@@ -1117,7 +1117,7 @@ function WeekCard({
                         <strong>Base:</strong> 18 custom brushes in folders + stamp test sheet.
                       </div>
                       <div>
-                        <strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 72 DPI, layered PSD).
+                        <strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 300 DPI, layered PSD).
                       </div>
                       <div style={{ fontSize: '12px', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.15)', color: '#b45309', fontStyle: 'italic' }}>
                         <strong>Note:</strong> Keep active Artboards to a minimum. Advanced Integration is optional. Save files for final capstone.
