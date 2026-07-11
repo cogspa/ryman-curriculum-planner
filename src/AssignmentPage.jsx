@@ -6,7 +6,7 @@ import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 function parseMarkdownLinks(text) {
   if (typeof text !== 'string') return text;
-  const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+|\/[^\s)]+)\)/g;
   if (!linkRegex.test(text)) return text;
   
   const parts = [];
@@ -26,17 +26,29 @@ function parseMarkdownLinks(text) {
     }
     
     // Add the link element
-    parts.push(
-      <a 
-        key={matchIndex} 
-        href={linkUrl} 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        style={{ color: '#db2777', textDecoration: 'underline', fontWeight: '500' }}
-      >
-        {linkText}
-      </a>
-    );
+    if (linkUrl.startsWith('http://') || linkUrl.startsWith('https://')) {
+      parts.push(
+        <a 
+          key={matchIndex} 
+          href={linkUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          style={{ color: '#db2777', textDecoration: 'underline', fontWeight: '500' }}
+        >
+          {linkText}
+        </a>
+      );
+    } else {
+      parts.push(
+        <Link
+          key={matchIndex}
+          to={linkUrl}
+          style={{ color: '#db2777', textDecoration: 'underline', fontWeight: '500' }}
+        >
+          {linkText}
+        </Link>
+      );
+    }
     
     lastIndex = linkRegex.lastIndex;
   }
