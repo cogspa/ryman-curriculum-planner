@@ -25,6 +25,7 @@ import SkyColorLesson from './pages/SkyColorLesson.jsx';
 import SphereMaterialStudies from './pages/SphereMaterialStudies.jsx';
 import GradientMarquee from './pages/GradientMarquee.jsx';
 import BrushFoundryII from './pages/BrushFoundryII.jsx';
+import BlockOutProcess from './pages/BlockOutProcess.jsx';
 import Week03Overview from './pages/Week03Overview.jsx';
 import Week03TopicDetail from './pages/Week03TopicDetail.jsx';
 import Week04Overview from './pages/Week04Overview.jsx';
