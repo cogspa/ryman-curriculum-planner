@@ -399,6 +399,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/block-out-process';
             } else if (cleanText.includes('gradient marquee') || cleanText.includes('gradient-marquee') || cleanText.includes('marquee')) {
               linkPath = '/week/03/gradient-marquee';
+            } else if (cleanText.includes('triad') || cleanText.includes('triad-palettes') || cleanText.includes('palette')) {
+              linkPath = '/week/03/triad-palettes';
             } else if (cleanText.includes('diffuse & specular on a sphere') || cleanText.includes('sphere-material-studies') || cleanText.includes('sphere')) {
               linkPath = '/week/03/sphere-material-studies';
             } else if (cleanText.includes('layer basics')) {

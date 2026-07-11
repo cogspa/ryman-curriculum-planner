@@ -359,6 +359,7 @@ export const assignments = {
           {
             heading: 'Paint Three Landscape Compositions',
             body: 'Using your custom brushes, create three separate landscape compositions. Each composition should be 11" × 17" at 300 DPI. All three landscapes exist within the same world as your character IP, but each one shows a different phase or variation of that world.\n\nChoose one thematic approach for your three phases:',
+            note: 'You can use the interactive [Tool: Triad Palettes](/week/03/triad-palettes) to select, customize, and export color triads (such as Seasonal, Time of Day, or Genre Shift) as Photoshop-ready .ase files.',
             bullets: [
               'Seasonal: Summer → Fall → Winter (or any three seasons)',
               'Genre Shift: Fantasy → Modern → Science Fiction',

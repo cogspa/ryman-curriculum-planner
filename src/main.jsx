@@ -27,6 +27,7 @@ import GradientMarquee from './pages/GradientMarquee.jsx';
 import BrushFoundryII from './pages/BrushFoundryII.jsx';
 import BlockOutProcess from './pages/BlockOutProcess.jsx';
 import BlockOutStudy from './pages/BlockOutStudy.jsx';
+import TriadPalettes from './pages/TriadPalettes.jsx';
 import Week03Overview from './pages/Week03Overview.jsx';
 import Week03TopicDetail from './pages/Week03TopicDetail.jsx';
 import Week04Overview from './pages/Week04Overview.jsx';
@@ -76,6 +77,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/03/sky-color" element={<SkyColorLesson />} />
           <Route path="/week/03/block-out-process" element={<BlockOutProcess />} />
           <Route path="/week/03/block-out-study" element={<BlockOutStudy />} />
+          <Route path="/week/03/triad-palettes" element={<TriadPalettes />} />
           <Route path="/week/03/gradient-marquee" element={<GradientMarquee />} />
           <Route path="/week/03/brush-foundry-ii" element={<BrushFoundryII />} />
           <Route path="/week/03/sphere-material-studies" element={<SphereMaterialStudies />} />
