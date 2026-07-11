@@ -346,4 +346,5 @@ export const topicList = [
   { key: 'cinematic-lighting', label: 'Cinematic lighting, atmospheric perspective, & selection masking compositing', isNew: false },
   { key: 'sky-color', label: 'Lesson: Painting Four Skies', isNew: true },
   { key: 'gradient-marquee', label: 'Tool: Gradient Marquee', isNew: true },
+  { key: 'brush-foundry-ii', label: 'Tool: Brush Foundry II', isNew: true },
 ];
