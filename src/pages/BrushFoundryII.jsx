@@ -713,7 +713,7 @@ export default function BrushFoundryII() {
               lineHeight: 1.05,
             }}
           >
-            Brush Foundry II
+            Brush Maker II
           </h1>
         </div>
         <div style={{ fontSize: "11px", letterSpacing: "0.06em", opacity: 0.65 }}>

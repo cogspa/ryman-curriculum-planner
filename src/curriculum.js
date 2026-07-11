@@ -113,7 +113,7 @@ export const curriculum = [
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
         '[NEW] Lesson: Painting Four Skies',
         '[NEW] Tool: Gradient Marquee',
-        '[NEW] Tool: Brush Maker 2',
+        '[NEW] Tool: Brush Maker II',
       ],
       assignments: [
         '[NEW] **Base Assignment**: *Compositional Brush Library* — Build custom brush presets from real-world photos (atmospheric, landscape, messy/junk) to establish a digital painting toolbox.',

@@ -383,7 +383,7 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/masking-and-selections';
             } else if (cleanText.includes('realistic lighting') || cleanText.includes('adjustments')) {
               linkPath = '/week/03/realistic-lighting-adjustments';
-            } else if (cleanText.includes('brush maker 2') || cleanText.includes('brush-maker-2') || cleanText.includes('brush foundry ii') || cleanText.includes('brush-foundry-ii') || cleanText.includes('foundry ii')) {
+            } else if (cleanText.includes('brush maker ii') || cleanText.includes('brush-maker-ii') || cleanText.includes('brush maker 2') || cleanText.includes('brush-maker-2') || cleanText.includes('brush foundry ii') || cleanText.includes('brush-foundry-ii') || cleanText.includes('foundry ii')) {
               linkPath = '/week/03/brush-foundry-ii';
             } else if (cleanText.includes('brush maker') || cleanText.includes('brush forge') || cleanText.includes('brush foundry')) {
               linkPath = '/week/03/brush-maker';
