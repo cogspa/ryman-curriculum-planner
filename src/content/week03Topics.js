@@ -345,6 +345,7 @@ export const topicList = [
   { key: 'value-studies', label: 'Emotive Power of Value', isNew: true },
   { key: 'cinematic-lighting', label: 'Cinematic lighting, atmospheric perspective, & selection masking compositing', isNew: false },
   { key: 'sky-color', label: 'Lesson: Painting Four Skies', isNew: true },
+  { key: 'block-out-process', label: 'Lesson: The Block-Out Method', isNew: true },
   { key: 'gradient-marquee', label: 'Tool: Gradient Marquee', isNew: true },
   { key: 'brush-foundry-ii', label: 'Tool: Brush Maker II', isNew: true },
 ];

@@ -112,6 +112,7 @@ export const curriculum = [
         '[NEW] Emotive Power of Value',
         'Cinematic lighting, atmospheric perspective, & selection masking compositing',
         '[NEW] Lesson: Painting Four Skies',
+        '[NEW] Lesson: The Block-Out Method',
         '[NEW] Tool: Gradient Marquee',
         '[NEW] Tool: Brush Maker II',
       ],

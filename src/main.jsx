@@ -73,6 +73,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/03/notan-light-lab" element={<NotanLightLab />} />
           <Route path="/week/03/threshold-notan" element={<ThresholdNotanLesson />} />
           <Route path="/week/03/sky-color" element={<SkyColorLesson />} />
+          <Route path="/week/03/block-out-process" element={<BlockOutProcess />} />
           <Route path="/week/03/gradient-marquee" element={<GradientMarquee />} />
           <Route path="/week/03/brush-foundry-ii" element={<BrushFoundryII />} />
           <Route path="/week/03/sphere-material-studies" element={<SphereMaterialStudies />} />

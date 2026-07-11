@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { topicList } from "../content/week03Topics.js";
+import TopicNav from "./TopicNav.jsx";
 
 // ─────────────────────────────────────────────────────────────
 // pLAtform · Digital Painting — The Block-Out Method
@@ -566,6 +568,7 @@ export default function BlockOutProcess() {
           <span>pLAtform / digital painting / block-out method</span>
           <span>value first · edges second · detail last</span>
         </footer>
+        <TopicNav topicList={topicList} topicKey="block-out-process" weekNum="03" />
       </div>
 
       <style>{`
