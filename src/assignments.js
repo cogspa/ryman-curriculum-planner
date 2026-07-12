@@ -423,6 +423,7 @@ export const assignments = {
           {
             heading: 'A1. Procedural Wear Shader',
             body: 'Build a node setup in the Shader Editor that defines wear boundaries procedurally:',
+            note: 'Refer to the step-by-step [Lesson: Procedural Wear Shader](/week/03/procedural-wear) for node diagrams, before/after slider comparisons, and exact Blender Cycles baking parameters.',
             bullets: [
               'Use Noise Texture for organic grain and patina. (Blender 5.1 has no standalone Musgrave node — it lives inside Noise Texture under the Type dropdown: fBM, Multifractal, Ridged Multifractal, Hetero Terrain.)',
               'Use Voronoi for cellular rust pitting and chipped-paint cells.',

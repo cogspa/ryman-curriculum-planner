@@ -401,6 +401,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/03/gradient-marquee';
             } else if (cleanText.includes('triad') || cleanText.includes('triad-palettes') || cleanText.includes('palette')) {
               linkPath = '/week/03/triad-palettes';
+            } else if (cleanText.includes('procedural wear') || cleanText.includes('procedural-wear') || cleanText.includes('wear')) {
+              linkPath = '/week/03/procedural-wear';
             } else if (cleanText.includes('diffuse & specular on a sphere') || cleanText.includes('sphere-material-studies') || cleanText.includes('sphere')) {
               linkPath = '/week/03/sphere-material-studies';
             } else if (cleanText.includes('layer basics')) {

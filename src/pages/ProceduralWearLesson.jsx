@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import LegalDisclaimer from "../LegalDisclaimer.jsx";
 
 /**
  * A1 — Procedural Wear Shader (Blender 5.1 / Cycles)
@@ -462,6 +463,7 @@ export default function ProceduralWearLesson() {
           values, ramp positions and renders in this lesson were captured from the
           working file <span style={S.mono}>procedural_wear_lesson.blend</span>.
         </p>
+        <LegalDisclaimer style={{ marginTop: 48 }} />
       </div>
     </div>
   );
