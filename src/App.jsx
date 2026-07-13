@@ -959,6 +959,33 @@ function WeekCard({
                     </ul>
                   </div>
                 )}
+                {Number(week.week) === 4 && (
+                  <div className="week4-extra-content" style={{ marginTop: '12px', marginBottom: '16px', fontSize: '13.5px', color: 'var(--ink-mid)' }}>
+                    <p style={{ lineHeight: '1.6', marginBottom: '10px' }}>
+                      Week 4 focuses on page geometry, layout systems, and scalable vector systems for print and digital publishing. Students will explore InDesign's margin, column, and grid systems, contrast vector graphics with raster images in Illustrator and Photoshop, and build responsive layouts designed to scale across varying screen aspect ratios. The goal is to establish professional asset pipeline workflows, export parameters, and formatting conventions required to present artwork in professional portfolios.
+                    </p>
+                    <ul style={{ paddingLeft: '18px', margin: '0', lineHeight: '1.65', listStyleType: 'disc' }}>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Vector vs. Raster Geometry:</strong> understanding mathematical curves vs. pixel grids to make the right software choices for artwork.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>InDesign Page Layouts:</strong> engineering layout systems using document margins, column grids, and structural text boxes.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Grids and Hierarchy:</strong> aligning text, illustrations, and negative space to establish a clear visual pathway for the viewer's eye.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Multi-Format Adaptation:</strong> adapting a single master artwork into social, web, and print formats by adjusting crop boxes, compositions, and text hierarchy.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Responsive Layout Design:</strong> building scalable interfaces and design systems that adapt dynamically across diverse screen ratios and viewports.
+                      </li>
+                      <li style={{ marginBottom: '6px' }}>
+                        <strong>Production Asset Export:</strong> mastering professional export presets, image compression settings, bleed margins, and crop marks for high-quality output.
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </>
             )
           )}
