@@ -1146,7 +1146,7 @@ function WeekCard({
                 <span style={{ fontSize: '16px', lineHeight: '1.2' }}>📋</span>
                 <div style={{ width: '100%' }}>
                   <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px', color: '#92400e' }}>Deliverables:</strong>
-                  {week.week === 3 ? (
+                  {week.week === 3 || week.week === 4 ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                       <div>
                         <strong>Base:</strong> 18 custom brushes in folders + stamp test sheet.
