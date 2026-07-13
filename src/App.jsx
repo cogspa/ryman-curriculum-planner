@@ -775,7 +775,7 @@ function WeekCard({
         </div>
       )}
 
-      {week.week === 3 && (
+      {(week.week === 3 || week.week === 4) && (
         <div className="week-due-banner" style={{
           margin: '12px 0 16px 0',
           padding: '12px 14px',
