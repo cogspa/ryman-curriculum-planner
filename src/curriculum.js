@@ -171,6 +171,7 @@ export const curriculum = [
     },
     saturday: {
       topics: [
+        'Discussion: Continuing digital painting techniques',
         '[NEW] Character development & emotional range (Preston Blair expression sheets, cartoon takes)',
         '[NEW] Environmental storytelling & auditory space (diegetic vs. non-diegetic sound, leitmotifs)',
         '[NEW] Sequential thinking & animation planning (straight ahead vs. pose to pose hybrid approach)',
