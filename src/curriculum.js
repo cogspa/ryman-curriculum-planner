@@ -199,7 +199,7 @@ export const curriculum = [
         '[NEW] Layout Engineering: InDesign Page Layout Specs, Margins, and Master Pages',
         '[NEW] Brand Architecture: Integrated Campaigns & Asset Management (CC Libraries)',
         '[NEW] Visual Pitching: Combining Type & Image for the "Your World" Design Brief',
-        'Guest: Art director or creative agency lead — live portfolio brief breakdown',
+        'Guest: Christian Hope — live portfolio brief breakdown',
       ],
     },
     saturday: {
@@ -224,6 +224,7 @@ export const curriculum = [
       ],
       readings: [
         '[NEW] Client Simulation Framework: Anatomy of a Professional Design Brief',
+        'Guest: Sam Gochman (Gensler) — design brief & development feedback',
       ],
     },
     saturday: {
@@ -252,7 +253,7 @@ export const curriculum = [
       ],
       readings: [
         'Industry Standards: Design reviews & creative studio hierarchy',
-        'Guest: Panel critic — live review of past student portfolios',
+        'Guest: Wayne Hunt — design feedback & presentation prep',
       ],
     },
     saturday: {
@@ -310,7 +311,7 @@ export const curriculum = [
       ],
       readings: [
         'Recruiter Insights: What catches the eye in a 6-second portfolio review',
-        'Guest: Jeremy Costello — Hiring managers & agency recruiters (Guest Panel)',
+        'Guest: Jeremy Costello — Hiring managers & agency recruiters',
       ],
     },
     saturday: {
@@ -361,7 +362,7 @@ export const curriculum = [
       ],
       readings: [
         'Pitch Deck Guide: Formats, sequences, and slide outlines',
-        'Guest Speakers: Past graduates sharing their showcase experiences',
+        'Guest: Domee Shi (TBD) — live showcase preview & QA',
       ],
     },
     saturday: {

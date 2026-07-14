@@ -68,15 +68,15 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     1: { name: 'No speaker - First Class', date: formatDate(tuesdayDate) },
     2: { name: 'Alycea Tinoyan - Background Designer for Rick and Morty', date: formatDate(tuesdayDate) },
     3: { name: 'Jax Jocson: Concept Artist', date: formatDate(tuesdayDate) },
-    4: { name: 'James Rallison', date: formatDate(tuesdayDate), saturdaySpeaker: 'Andrea Favilli', saturdayDate: formatDate(saturdayDate) },
+    4: { name: 'James Rallison', date: formatDate(tuesdayDate), saturdaySpeaker: 'Andrea Favilla', saturdayDate: formatDate(saturdayDate) },
     5: { name: 'Nancy Seruto', date: formatDate(tuesdayDate) },
-    6: { name: 'Art director or creative agency lead', date: formatDate(tuesdayDate) },
-    7: { name: 'TBD', date: formatDate(tuesdayDate) },
-    8: { name: 'No guest speaker (Presentation Pitch Decks)', date: formatDate(tuesdayDate) },
+    6: { name: 'Christian Hope', date: formatDate(tuesdayDate) },
+    7: { name: 'Sam Gochman (Gensler)', date: formatDate(tuesdayDate) },
+    8: { name: 'Wayne Hunt', date: formatDate(tuesdayDate) },
     9: { name: 'Eugenia Chen', date: formatDate(tuesdayDate) },
-    10: { name: 'Jeremy Costello (Guest Panel)', date: formatDate(tuesdayDate) },
+    10: { name: 'Jeremy Costello', date: formatDate(tuesdayDate) },
     11: { name: 'Heidi Hirsch', date: formatDate(saturdayDate) },
-    12: { name: 'Past graduates sharing showcase experiences', date: formatDate(tuesdayDate) },
+    12: { name: 'Domee Shi (TBD)', date: formatDate(tuesdayDate) },
     13: { name: 'None', date: 'End of September' }
   };
   return speakersMap[weekNum] || { name: 'TBD', date: formatDate(tuesdayDate) };

@@ -39,7 +39,7 @@ export default function Week05Overview() {
 
       <h2 style={sectionHeadingStyle}>Guest</h2>
       <p style={guestStyle}>
-        Publishing or entertainment illustrator — live demo
+        Nancy Seruto — live demo
       </p>
 
       <h2 style={sectionHeadingStyle}>Assignment</h2>

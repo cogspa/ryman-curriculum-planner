@@ -39,7 +39,7 @@ export default function Week06Overview() {
 
       <h2 style={sectionHeadingStyle}>Guest</h2>
       <p style={guestStyle}>
-        Art director or creative agency lead — live demo
+        Christian Hope — live demo
       </p>
 
       <h2 style={sectionHeadingStyle}>Assignment</h2>
