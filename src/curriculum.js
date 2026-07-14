@@ -142,6 +142,7 @@ export const curriculum = [
     },
     saturday: {
       topics: [
+        'Discussion: Continuing digital painting techniques',
         '[NEW] Designing for social, web, and print',
         '[NEW] Cropping & framing',
         'Scalable artwork systems',
