@@ -1129,7 +1129,7 @@ function WeekCard({
             </>
           )}
 
-          {((week.saturday?.assignments && week.saturday.assignments.length > 0) || (week.assignments && week.assignments.length > 0)) && (
+          {((week.saturday?.assignments && week.saturday.assignments.length > 0) || (week.assignments && week.assignments.length > 0) || week.week === 4) && (
             <div style={{
               marginTop: '16px',
               padding: '12px 16px',
