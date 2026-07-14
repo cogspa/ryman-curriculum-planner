@@ -68,7 +68,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     1: { name: 'No speaker - First Class', date: formatDate(tuesdayDate) },
     2: { name: 'Alycea Tinoyan - Background Designer for Rick and Morty', date: formatDate(tuesdayDate) },
     3: { name: 'Jax Jocson: Concept Artist', date: formatDate(tuesdayDate) },
-    4: { name: 'Senior graphic designer', date: formatDate(tuesdayDate) },
+    4: { name: 'James Rallison', date: formatDate(tuesdayDate), saturdaySpeaker: 'Andrea Favilli', saturdayDate: formatDate(saturdayDate) },
     5: { name: 'Nancy Seruto', date: formatDate(tuesdayDate) },
     6: { name: 'Art director or creative agency lead', date: formatDate(tuesdayDate) },
     7: { name: 'TBD', date: formatDate(tuesdayDate) },
@@ -1073,6 +1073,12 @@ function WeekCard({
                     isDraggingActive={isDraggingActive}
                   />
 
+                  {getSpeakerInfoForWeek(week.week, tuesday, saturday).saturdaySpeaker && (
+                    <div className="speaker-box" style={{ borderLeft: '3px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.08)', borderRadius: '6px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '12px', color: '#059669', fontFamily: 'var(--font-mono)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px', width: 'fit-content' }}>
+                      <span>🎤 Speaker: {getSpeakerInfoForWeek(week.week, tuesday, saturday).saturdaySpeaker} · {getSpeakerInfoForWeek(week.week, tuesday, saturday).saturdayDate}</span>
+                    </div>
+                  )}
+
                 </div>
               )}
             </div>
@@ -1148,6 +1154,9 @@ function WeekCard({
                   <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px', color: '#92400e' }}>Deliverables:</strong>
                   {week.week === 3 || week.week === 4 ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
+                        Due Date: July 25th
+                      </div>
                       <div>
                         <strong>Base:</strong> 18 custom brushes in folders + stamp test sheet.
                       </div>

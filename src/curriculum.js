@@ -137,7 +137,7 @@ export const curriculum = [
       readings: [
         'Intro to Adobe Illustrator: Vector vs. Raster guidelines',
         '[NEW] Tools: Adobe InDesign (portfolio layouts, grid frameworks, margins)',
-        'Guest: Senior graphic designer — live portfolio structure walkthrough',
+        'Guest: James Rallison — live portfolio structure walkthrough',
       ],
     },
     saturday: {
@@ -146,6 +146,7 @@ export const curriculum = [
         '[NEW] Cropping & framing',
         'Scalable artwork systems',
         'Exporting for multiple formats',
+        'Guest: Andrea Favilli — live demo & layout workshop',
         '🛠️ Task: Adapt one artwork for print, web, and social formats (hierarchy exercise)',
       ],
       assignments: [],

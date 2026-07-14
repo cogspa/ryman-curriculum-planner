@@ -59,7 +59,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     1: { name: 'No speaker - First Class', date: formatDate(tuesdayDate) },
     2: { name: 'Alycea Tinoyan - Background Designer for Rick and Morty', date: formatDate(tuesdayDate) },
     3: { name: 'Jax Jocson: Concept Artist', date: formatDate(tuesdayDate) },
-    4: { name: 'Senior graphic designer', date: formatDate(tuesdayDate) },
+    4: { name: 'James Rallison', date: formatDate(tuesdayDate), saturdaySpeaker: 'Andrea Favilli', saturdayDate: formatDate(saturdayDate) },
     5: { name: 'Nancy Seruto', date: formatDate(tuesdayDate) },
     6: { name: 'Art director or creative agency lead', date: formatDate(tuesdayDate) },
     7: { name: 'TBD', date: formatDate(tuesdayDate) },
@@ -635,6 +635,11 @@ export default function SyllabusPage() {
                                     );
                                   })}
                                 </ul>
+                              </div>
+                            )}
+                            {speakerInfo && speakerInfo.saturdaySpeaker && (
+                              <div className="syllabus-speaker-box" style={{ borderLeft: '2px solid #10b981', paddingLeft: '10px', background: 'rgba(16, 185, 129, 0.05)', borderRadius: '4px', paddingBottom: '6px', paddingTop: '6px', marginTop: '10px', fontSize: '11px', color: '#059669', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>
+                                🎤 Speaker: {speakerInfo.saturdaySpeaker} · {speakerInfo.saturdayDate}
                               </div>
                             )}
                           </div>

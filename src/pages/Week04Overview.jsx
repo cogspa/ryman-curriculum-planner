@@ -51,7 +51,10 @@ export default function Week04Overview() {
 
       <h2 style={sectionHeadingStyle}>Guest</h2>
       <p style={guestStyle}>
-        Senior graphic designer — live demo
+        James Rallison — Zoom preview & discussion (Tuesday, July 14)
+      </p>
+      <p style={guestStyle}>
+        Andrea Favilli — Studio workshop (Saturday, July 18)
       </p>
 
       <h2 style={sectionHeadingStyle}>Assignment</h2>
