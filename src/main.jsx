@@ -31,6 +31,7 @@ import TriadPalettes from './pages/TriadPalettes.jsx';
 import ProceduralWearLesson from './pages/ProceduralWearLesson.jsx';
 import Week03Overview from './pages/Week03Overview.jsx';
 import Week03TopicDetail from './pages/Week03TopicDetail.jsx';
+import Week03Videos from './pages/Week03Videos.jsx';
 import Week04Overview from './pages/Week04Overview.jsx';
 import Week04TopicDetail from './pages/Week04TopicDetail.jsx';
 import Week05Overview from './pages/Week05Overview.jsx';
@@ -72,6 +73,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/02/procedural-vs-non-procedural" element={<NoiseVsPattern />} />
           <Route path="/week/02/:topicKey" element={<Week02TopicDetail />} />
           <Route path="/week/03" element={<Week03Overview />} />
+          <Route path="/week/03/videos" element={<Week03Videos />} />
           <Route path="/week/03/brush-maker" element={<BrushFoundry />} />
           <Route path="/week/03/notan-light-lab" element={<NotanLightLab />} />
           <Route path="/week/03/threshold-notan" element={<ThresholdNotanLesson />} />

@@ -125,12 +125,14 @@ export default function CalendarPage() {
   const weeks = useMemo(() => {
     const start = parseLocal(startDate);
     const firstTue = findTuesdayOnOrAfter(start);
-    return customCurriculum.map((entry, idx) => {
-      const tue = addDays(firstTue, idx * 7);
-      const sat = addDays(tue, 4);
-      const speaker = getGuestSpeaker(entry.tuesday);
-      return { entry, tuesday: tue, saturday: sat, speaker };
-    });
+    return customCurriculum
+      .map((entry, idx) => {
+        const tue = addDays(firstTue, idx * 7);
+        const sat = addDays(tue, 4);
+        const speaker = getGuestSpeaker(entry.tuesday);
+        return { entry, tuesday: tue, saturday: sat, speaker };
+      })
+      .filter(({ entry }) => Number(entry.week) !== 13);
   }, [startDate, customCurriculum]);
 
   // Compute chronological sessions list

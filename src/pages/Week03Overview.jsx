@@ -79,6 +79,22 @@ export default function Week03Overview() {
       <p style={guestStyle}>
         Compositional Brush Library &amp; Landscape Exploration — see Week 03 assignment brief
       </p>
+
+      <h2 style={sectionHeadingStyle}>Resources</h2>
+      <div style={resourceGridStyle}>
+        <div style={resourceCardStyle}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+            <span style={{ fontSize: '20px' }}>🎥</span>
+            <div style={{ fontSize: '14px', fontFamily: 'Georgia, serif', lineHeight: '1.4' }}>
+              <strong>Video Gallery:</strong> Watch the recorded technique tutorials and blocking guides for Week 3.
+            </div>
+          </div>
+          <Link to="/week/03/videos" style={videoCalloutLinkStyle}>
+            View Video Guides →
+          </Link>
+        </div>
+      </div>
+
       <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );
@@ -223,4 +239,32 @@ const subSectionHeaderStyle = {
   color: '#8b3a2f',
   textTransform: 'uppercase',
   margin: '16px 0 8px',
+};
+
+const resourceGridStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+  gap: '16px',
+  marginBottom: '32px',
+};
+
+const resourceCardStyle = {
+  background: 'rgba(139, 58, 47, 0.06)',
+  border: '1px solid #8b3a2f',
+  borderRadius: '8px',
+  padding: '16px 20px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  gap: '12px',
+};
+
+const videoCalloutLinkStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '12px',
+  fontWeight: 'bold',
+  color: '#8b3a2f',
+  textDecoration: 'none',
+  alignSelf: 'flex-start',
+  borderBottom: '1px solid #8b3a2f',
 };

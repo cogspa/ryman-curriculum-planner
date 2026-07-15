@@ -957,6 +957,36 @@ function WeekCard({
                         <strong>Compositing & Lighting Match:</strong> matching light direction, color temperature, and contrast intensity between photographed elements.
                       </li>
                     </ul>
+                    <div style={{
+                      marginTop: '16px',
+                      display: 'flex',
+                      gap: '12px',
+                      flexWrap: 'wrap',
+                      fontSize: '12px',
+                      fontFamily: 'var(--font-mono, monospace)',
+                      borderTop: '1px solid rgba(0, 0, 0, 0.06)',
+                      paddingTop: '12px'
+                    }}>
+                      <Link 
+                        to="/week/03/videos" 
+                        style={{
+                          textDecoration: 'none',
+                          color: '#8b3a2f',
+                          fontWeight: 'bold',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          border: '1px solid rgba(139, 58, 47, 0.2)',
+                          background: 'rgba(139, 58, 47, 0.04)',
+                          padding: '6px 12px',
+                          borderRadius: '16px',
+                          transition: 'all 0.15s ease'
+                        }}
+                        className="resource-button"
+                      >
+                        🎥 Video Gallery
+                      </Link>
+                    </div>
                   </div>
                 )}
                 {Number(week.week) === 4 && (
