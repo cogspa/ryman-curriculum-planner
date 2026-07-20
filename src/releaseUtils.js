@@ -47,6 +47,9 @@ export function isWeekReleased(weekNum, startDateStr) {
   const role = getActiveRole();
   if (role === 'admin') return true;
   
+  // Explicitly hide Week 5 for students until explicit approval
+  if (Number(weekNum) === 5) return false;
+
   const monday = getWeekMonday(weekNum, startDateStr);
   const today = new Date();
   today.setHours(0, 0, 0, 0);

@@ -4,7 +4,7 @@ import { loadLocalCurriculum, fetchRemoteCurriculum } from './curriculumService.
 import { config } from './curriculum.js';
 import { assignments } from './assignments.js';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
-import { getActiveRole } from './releaseUtils.js';
+import { getActiveRole, isWeekReleased } from './releaseUtils.js';
 
 // ─── Constants & Date Helpers ──────────────────────────────────────────────
 
@@ -625,7 +625,7 @@ export default function CalendarPage() {
                             <p style={{ margin: '0 0 10px 0', fontSize: '12px', fontWeight: '500' }}>
                               {getWeekAssignments(selectedSession.week).title}
                             </p>
-                            {role === 'student' && selectedSession.week !== 1 ? (
+                            {role === 'student' && !isWeekReleased(selectedSession.week) ? (
                               <span style={{
                                 fontSize: '11px',
                                 fontFamily: 'var(--font-mono, monospace)',
@@ -658,7 +658,7 @@ export default function CalendarPage() {
                     {/* Sub-nav Overview Link */}
                     {selectedSession.week <= 7 && (
                       <div style={{ marginTop: '24px', borderTop: '1px solid var(--hairline, #DDD6C6)', paddingTop: '16px', textAlign: 'center' }}>
-                        {role === 'student' && selectedSession.week !== 1 ? (
+                        {role === 'student' && !isWeekReleased(selectedSession.week) ? (
                           <span 
                             style={{ fontSize: '12.5px', fontFamily: 'var(--font-mono, monospace)', textTransform: 'uppercase', color: '#94a3b8', cursor: 'not-allowed' }}
                           >
