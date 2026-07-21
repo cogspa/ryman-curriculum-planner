@@ -431,7 +431,7 @@ function Section({ label, items, weekNumber }) {
             } else if (cleanText.includes('indesign')) {
               linkPath = '/week/04/indesign-intro';
             }
-          } else if (weekNumber === 5 && label === 'Topics') {
+          } else if (weekNumber === 5 && (label === 'Topics' || label === 'Readings')) {
             const cleanText = text.trim().toLowerCase();
             if (cleanText.includes('character') && cleanText.includes('development')) {
               linkPath = '/week/05/character-development';

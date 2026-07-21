@@ -158,12 +158,12 @@ export const curriculum = [
     title: 'Character Dev & Visual Story Telling',
     overview: 'Moving beyond single-frame fine art into visual sequential storytelling, cinematography, and animation principles.',
     tuesday: {
-      topics: [
-        'Discussion: Auditory spaces, diegetic vs. non-diegetic sound, and leitmotifs in film',
-        'Preview: Preston Blair expression guides and character turnaround principles',
-        'Workflow breakdown: The hybrid straight-ahead vs. pose-to-pose animation plan',
-      ],
+      topics: [],
       readings: [
+        'Character development',
+        'Environmental storytelling',
+        '[NEW] Sequential thinking',
+        '[NEW] Storyboarding fundamentals',
         '[NEW] Animation Mechanics: Preston Blair Expression Guides & Cartoon Takes',
         '[NEW] Soundscapes in Media: Diegetic vs. Non-Diegetic Sound & Leitmotifs',
         '[NEW] Cinemagraphics: Dutch Tilt, Pitch Shot, and Dolly Zooms in Storyboards',
