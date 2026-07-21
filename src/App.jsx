@@ -796,11 +796,6 @@ function WeekCard({
               <div><strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 300 DPI, layered PSD).</div>
             </div>
           </div>
-          <div style={{ fontSize: '0.8rem', color: '#5a5048', borderTop: '1px solid rgba(139, 58, 47, 0.15)', paddingTop: '6px' }}>
-            <span style={{ display: 'block' }}>
-              💡 <strong>Optional challenge:</strong> Advanced Integration (Shader Editor & Bake).
-            </span>
-          </div>
         </div>
       )}
 
