@@ -455,111 +455,83 @@ function SymmetryPainter() {
             <span className="ps-options-bar-stat">Size: {size}px</span>
             <span className="ps-options-bar-stat">Opacity: 100%</span>
           </div>
-          <button className={"ps-options-butterfly-btn " + (isMenuOpen ? "is-open" : "") + (mode !== "off" ? " is-active" : "")} onClick={() => setIsMenuOpen(!isMenuOpen)} title="Photoshop Symmetry Menu Options">
-            <ButterflyIcon size={14} />
+          <button className={"ps-options-butterfly-btn " + (isMenuOpen ? "is-open" : "") + (mode !== "off" ? " is-active" : "")} onClick={() => setIsMenuOpen(!isMenuOpen)} title="Photoshop Symmetry Menu Options" style={{ display: 'flex', alignItems: 'center', padding: '4px 6px' }}>
+            <img src="/symmetry_icon.png" alt="Butterfly icon" style={{ width: '16px', height: '16px', objectFit: 'contain' }} />
             <span style={{ fontSize: "7px", marginLeft: "4.5px" }}>▼</span>
           </button>
         </div>
 
         {/* Photoshop Styled Dropdown Menu */}
         {isMenuOpen && (
-          <div className="ps-dropdown-menu">
-            <div className="ps-dropdown-header">
-              <span>Symmetry Options</span>
-              <span className="ps-dropdown-header-close" onClick={() => setIsMenuOpen(false)}>×</span>
-            </div>
-            <ul className="ps-dropdown-list">
-              <li className={"ps-dropdown-item" + (mode === "off" ? " is-active" : "")} onClick={() => handleMenuClick("off")}>
-                <span className="ps-dropdown-check">{mode === "off" ? "✓" : ""}</span>
-                <span className="ps-dropdown-label">Symmetry Off</span>
-              </li>
-              <li className="ps-dropdown-item is-disabled">
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-label">Last Used Symmetry</span>
-              </li>
-              <li className="ps-dropdown-divider" />
-              
-              <li className={"ps-dropdown-item" + (mode === "vertical" ? " is-active" : "")} onClick={() => handleMenuClick("vertical")}>
-                <span className="ps-dropdown-check">{mode === "vertical" ? "✓" : ""}</span>
-                <span className="ps-dropdown-icon-wrap"><VerticalMenuIcon /></span>
-                <span className="ps-dropdown-label">Vertical</span>
-              </li>
-
-              <li className={"ps-dropdown-item" + (mode === "horizontal" ? " is-active" : "")} onClick={() => handleMenuClick("horizontal")}>
-                <span className="ps-dropdown-check">{mode === "horizontal" ? "✓" : ""}</span>
-                <span className="ps-dropdown-icon-wrap"><HorizontalMenuIcon /></span>
-                <span className="ps-dropdown-label">Horizontal</span>
-              </li>
-
-              <li className={"ps-dropdown-item" + (mode === "dual" ? " is-active" : "")} onClick={() => handleMenuClick("dual")}>
-                <span className="ps-dropdown-check">{mode === "dual" ? "✓" : ""}</span>
-                <span className="ps-dropdown-icon-wrap"><DualMenuIcon /></span>
-                <span className="ps-dropdown-label">Dual Axis</span>
-              </li>
-
-              <li className="ps-dropdown-item" onClick={() => handleMenuClick("diagonal")}>
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-icon-wrap"><DiagonalMenuIcon /></span>
-                <span className="ps-dropdown-label">Diagonal</span>
-                <span className="ps-dropdown-badge">PS Only</span>
-              </li>
-
-              <li className="ps-dropdown-item" onClick={() => handleMenuClick("wavy")}>
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-icon-wrap"><WavyMenuIcon /></span>
-                <span className="ps-dropdown-label">Wavy</span>
-                <span className="ps-dropdown-badge">PS Only</span>
-              </li>
-
-              <li className="ps-dropdown-item" onClick={() => handleMenuClick("circle")}>
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-icon-wrap"><CircleMenuIcon /></span>
-                <span className="ps-dropdown-label">Circle</span>
-                <span className="ps-dropdown-badge">PS Only</span>
-              </li>
-
-              <li className="ps-dropdown-item" onClick={() => handleMenuClick("spiral")}>
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-icon-wrap"><SpiralMenuIcon /></span>
-                <span className="ps-dropdown-label">Spiral</span>
-                <span className="ps-dropdown-badge">PS Only</span>
-              </li>
-
-              <li className="ps-dropdown-item" onClick={() => handleMenuClick("parallel")}>
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-icon-wrap"><ParallelMenuIcon /></span>
-                <span className="ps-dropdown-label">Parallel Lines</span>
-                <span className="ps-dropdown-badge">PS Only</span>
-              </li>
-
-              <li className="ps-dropdown-item" onClick={() => handleMenuClick("radial")}>
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-icon-wrap"><RadialMenuIcon /></span>
-                <span className="ps-dropdown-label">Radial...</span>
-                <span className="ps-dropdown-badge">PS Only</span>
-              </li>
-
-              <li className={"ps-dropdown-item" + (mode === "mandala" ? " is-active" : "")} onClick={() => handleMenuClick("mandala")}>
-                <span className="ps-dropdown-check">{mode === "mandala" ? "✓" : ""}</span>
-                <span className="ps-dropdown-icon-wrap"><MandalaMenuIcon /></span>
-                <span className="ps-dropdown-label">Mandala...</span>
-              </li>
-
-              <li className="ps-dropdown-divider" />
-
-              <li className="ps-dropdown-item is-disabled">
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-label">Selected Path</span>
-              </li>
-              <li className="ps-dropdown-item is-disabled">
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-label">Transform Symmetry</span>
-              </li>
-              <li className="ps-dropdown-item is-disabled">
-                <span className="ps-dropdown-check"></span>
-                <span className="ps-dropdown-label">Hide Symmetry</span>
-              </li>
-            </ul>
+          <div className="ps-dropdown-menu-image-container" style={{ position: 'relative' }}>
+            <img 
+              src="/symmetry_dropdown.png" 
+              alt="Photoshop Symmetry Dropdown Menu" 
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                display: 'block', 
+                border: '1.5px solid #1a1a1a', 
+                borderRadius: '4px',
+                boxShadow: '0 4px 14px rgba(0,0,0,0.45)' 
+              }} 
+            />
+            {/* Transparent clickable overlay areas to control painter mode */}
+            <div 
+              onClick={() => handleMenuClick("off")}
+              style={{ position: 'absolute', top: '1%', left: '0', width: '100%', height: '7.5%', cursor: 'pointer' }} 
+              title="Symmetry Off"
+            />
+            <div 
+              onClick={() => handleMenuClick("vertical")}
+              style={{ position: 'absolute', top: '15.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Vertical"
+            />
+            <div 
+              onClick={() => handleMenuClick("horizontal")}
+              style={{ position: 'absolute', top: '21.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Horizontal"
+            />
+            <div 
+              onClick={() => handleMenuClick("dual")}
+              style={{ position: 'absolute', top: '27.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Dual Axis"
+            />
+            <div 
+              onClick={() => handleMenuClick("diagonal")}
+              style={{ position: 'absolute', top: '33.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Diagonal"
+            />
+            <div 
+              onClick={() => handleMenuClick("wavy")}
+              style={{ position: 'absolute', top: '39.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Wavy"
+            />
+            <div 
+              onClick={() => handleMenuClick("circle")}
+              style={{ position: 'absolute', top: '45.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Circle"
+            />
+            <div 
+              onClick={() => handleMenuClick("spiral")}
+              style={{ position: 'absolute', top: '51.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Spiral"
+            />
+            <div 
+              onClick={() => handleMenuClick("parallel")}
+              style={{ position: 'absolute', top: '57.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Parallel Lines"
+            />
+            <div 
+              onClick={() => handleMenuClick("radial")}
+              style={{ position: 'absolute', top: '63.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Radial..."
+            />
+            <div 
+              onClick={() => handleMenuClick("mandala")}
+              style={{ position: 'absolute', top: '69.5%', left: '0', width: '100%', height: '6%', cursor: 'pointer' }} 
+              title="Mandala..."
+            />
           </div>
         )}
 
@@ -642,11 +614,7 @@ export default function SymmetryInPhotoshop() {
             <div>
               <span className="ss-mini-num">B</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-                <svg viewBox="0 0 32 32" fill="none" stroke="#8b3a2f" strokeWidth="1.8" style={{ width: '28px', height: '28px', flexShrink: 0 }}>
-                  <path d="M16 8.5c-.5-1.2-1.8-2.5-3.5-2.5C9.5 6 7 8 7 11.5c0 3.5 2 6 9 8.5 7-2.5 9-5 9-8.5C25 8 22.5 6 19.5 6c-1.7 0-3 1.3-3.5 2.5z" />
-                  <path d="M14 6c0-1.5 1-2.5 2-2.5s2 1 2 2.5" strokeWidth="1.2" />
-                  <line x1="16" y1="2" x2="16" y2="30" strokeDasharray="2.5 2.5" />
-                </svg>
+                <img src="/symmetry_icon.png" alt="Symmetry butterfly icon" style={{ width: '28px', height: '28px', objectFit: 'contain', flexShrink: 0 }} />
                 <h3 className="ss-card-title" style={{ margin: 0 }}>The Symmetry tool</h3>
               </div>
               <p>A Photoshop special. Grab the Brush, click the little <em>butterfly</em> in the options bar, pick an axis, and every stroke mirrors itself as you paint.</p>
