@@ -258,7 +258,7 @@ function buildCreature(cfg, kind) {
   return { bones: [...blobBones, ...bones], cuts };
 }
 
-export default function MirrorLab() {
+export default function MirrorLab({ isEmbedded = false }) {
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
   const rafRef = useRef(null);
@@ -523,9 +523,12 @@ export default function MirrorLab() {
   /* ---------- styles ---------- */
   const S = {
     root: {
-      minHeight: "100vh", background: CREAM, color: INK,
-      fontFamily: "'IBM Plex Mono', monospace", padding: "28px 24px 48px",
+      color: INK,
+      fontFamily: "'IBM Plex Mono', monospace",
       boxSizing: "border-box",
+      padding: isEmbedded ? "0" : "28px 24px 48px",
+      background: isEmbedded ? "transparent" : CREAM,
+      minHeight: isEmbedded ? "auto" : "100vh",
     },
     eyebrow: { fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: OX, marginBottom: 6 },
     title: { fontFamily: "'Newsreader', serif", fontWeight: 500, fontSize: 34, lineHeight: 1.05, margin: 0 },
@@ -636,16 +639,20 @@ export default function MirrorLab() {
         button:focus-visible{outline:2px solid ${OX};outline-offset:2px;}
       `}</style>
 
-      <div style={S.eyebrow}>pLAtform · brush lab</div>
-      <h1 style={S.title}>Mirror Lab</h1>
-      <p style={S.sub}>
-        One symmetry canvas, two ways to work it. <strong>Manual</strong>: paint
-        both halves at once in black or white, hard or soft. <strong>Auto</strong>:
-        pick a generator — random walkers, a human figure, or a full alien with
-        blob, eyes, horns, and extra limbs — and let each ink-then-cutaway cycle
-        file itself in the library. Everything exports as PNG or a
-        Photoshop <code>.abr</code> tip.
-      </p>
+      {!isEmbedded && (
+        <>
+          <div style={S.eyebrow}>pLAtform · brush lab</div>
+          <h1 style={S.title}>Mirror Lab</h1>
+          <p style={S.sub}>
+            One symmetry canvas, two ways to work it. <strong>Manual</strong>: paint
+            both halves at once in black or white, hard or soft. <strong>Auto</strong>:
+            pick a generator — random walkers, a human figure, or a full alien with
+            blob, eyes, horns, and extra limbs — and let each ink-then-cutaway cycle
+            file itself in the library. Everything exports as PNG or a
+            Photoshop <code>.abr</code> tip.
+          </p>
+        </>
+      )}
 
       <div style={S.wrap}>
         {/* ------- canvas ------- */}

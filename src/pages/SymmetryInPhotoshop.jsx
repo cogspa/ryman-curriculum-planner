@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
+import MirrorLab from "./MirrorLab.jsx";
 
 /**
  * SymmetryInPhotoshop.jsx — pLAtform lesson component
@@ -730,6 +731,18 @@ export default function SymmetryInPhotoshop() {
             <p>Hit X to put white in the foreground and paint back into your marks. Cutting away is half the design, especially in mandala mode where it opens up the center.</p>
           </div>
         </div>
+      </section>
+
+      {/* Mirror Lab Section */}
+      <section className="ss-section">
+        <div className="ss-demo-head">
+          <span className="ss-eyebrow">Method C · Interactive</span>
+          <h2 className="ss-h2">Mirror Lab</h2>
+          <p className="ss-demo-dek">
+            A universal vertical-symmetry painter. Paint by hand, or pick an auto-generator (Walkers, Human figure, or Alien creature) to watch shapes grow, export them as PNGs, or compile them into a custom Photoshop <code>.abr</code> brush library.
+          </p>
+        </div>
+        <MirrorLab isEmbedded={true} />
       </section>
 
       {/* Mode gallery */}
