@@ -364,8 +364,14 @@ export default function AssignmentPage() {
                 color: '#78350f',
                 fontFamily: 'var(--font-sans, sans-serif)'
               }}>
-                We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional.
-                {isMultiTrack && " Please refer to the specific deliverables for each track below:"}
+                {Number(week) === 5 ? (
+                  <span>This week features a single, unified Character Development assignment. Please complete all three parts (Thumbnails, Model Sheet, and Final Illustration) as outlined below:</span>
+                ) : (
+                  <>
+                    We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional.
+                    {isMultiTrack && " Please refer to the specific deliverables for each track below:"}
+                  </>
+                )}
               </p>
 
               {isMultiTrack && (

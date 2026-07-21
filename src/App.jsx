@@ -1199,6 +1199,20 @@ function WeekCard({
                     </div>
                   ) : week.week === 1 ? (
                     <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone. Base Assignment requires three initial black and white studies at 16:9, and Take It to the Next Level requires three color versions at 16:9 (but they can also be 9:16).</span>
+                  ) : week.week === 5 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
+                        Due Date: July 28th (End of Class)
+                      </div>
+                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
+                        This week features a single, unified Character Development assignment. Please submit:
+                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
+                          <li style={{ marginBottom: '4px' }}><strong>1. Thumbnail Exploration Page</strong> (Min. 20 thumbnails, 1920 × 1080 px)</li>
+                          <li style={{ marginBottom: '4px' }}><strong>2. Character Model Sheet</strong> (Name, full-body design, 5 expressions/poses, 11" × 17", 150 PPI)</li>
+                          <li style={{ marginBottom: '4px' }}><strong>3. Final Character Illustration</strong> (Rendered character integrated into an environment)</li>
+                        </ul>
+                      </div>
+                    </div>
                   ) : (
                     <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone.</span>
                   )}
