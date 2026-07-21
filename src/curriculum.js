@@ -162,8 +162,6 @@ export const curriculum = [
         '[NEW] Symmetry in Photoshop — the four types + the Symmetry (butterfly) tool',
       ],
       readings: [
-        'Character development',
-        'Environmental storytelling',
         '[NEW] Sequential thinking',
         '[NEW] Storyboarding fundamentals',
         'Guest: Nancy Seruto — Publishing or entertainment illustrator — narrative structure demo',

@@ -1315,13 +1315,26 @@ export default function App() {
           ];
         }
 
+        // Check Tuesday readings for Character development & Environmental storytelling
+        let updatedTuesdayReadings = (week5.tuesday && week5.tuesday.readings) || [];
+        const hasOldReadings = updatedTuesdayReadings.some(r => 
+          r === 'Character development' || r === 'Environmental storytelling'
+        );
+        if (hasOldReadings) {
+          needsUpdate = true;
+          updatedTuesdayReadings = updatedTuesdayReadings.filter(r => 
+            r !== 'Character development' && r !== 'Environmental storytelling'
+          );
+        }
+
         if (needsUpdate) {
           const updatedCurriculum = [...customCurriculum];
           updatedCurriculum[4] = {
             ...week5,
             tuesday: {
               ...(week5.tuesday || {}),
-              topics: updatedTuesdayTopics
+              topics: updatedTuesdayTopics,
+              readings: updatedTuesdayReadings
             },
             saturday: {
               ...week5.saturday,
