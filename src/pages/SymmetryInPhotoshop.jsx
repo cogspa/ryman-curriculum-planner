@@ -152,9 +152,78 @@ const SHORTCUTS = [
   { k: "Cmd/Ctrl + T", d: "Free Transform (flip / rotate)" },
   { k: "Right-click ▸ Flip", d: "Flip horizontal or vertical inside transform" },
   { k: "Cmd/Ctrl + G", d: "Group layers (for glide reflective)" },
-  { k: "Define Brush Preset", d: "Turn a selected shape into a brush" },
-  { k: "X", d: "Swap foreground/background — paint the negative" },
+  // Photoshop UI icons for the Symmetry menu
 ];
+const VerticalMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <line x1="8" y1="1" x2="8" y2="15" />
+    <line x1="6" y1="3" x2="6" y2="13" strokeDasharray="1 2" opacity="0.5" />
+    <line x1="10" y1="3" x2="10" y2="13" strokeDasharray="1 2" opacity="0.5" />
+  </svg>
+);
+const HorizontalMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <line x1="1" y1="8" x2="15" y2="8" />
+    <line x1="3" y1="6" x2="13" y2="6" strokeDasharray="1 2" opacity="0.5" />
+    <line x1="3" y1="10" x2="13" y2="10" strokeDasharray="1 2" opacity="0.5" />
+  </svg>
+);
+const DualMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <line x1="8" y1="1" x2="8" y2="15" />
+    <line x1="1" y1="8" x2="15" y2="8" />
+  </svg>
+);
+const DiagonalMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <line x1="2" y1="14" x2="14" y2="2" />
+  </svg>
+);
+const WavyMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M1 8 C 4 2, 6 14, 8 8 C 10 2, 12 14, 15 8" />
+  </svg>
+);
+const CircleMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <circle cx="8" cy="8" r="6" />
+  </svg>
+);
+const SpiralMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <path d="M8,8 A2,2 0 0,0 6,10 A4,4 0 0,0 10,14 A6,6 0 0,0 14,8 A8,8 0 0,0 6,2" />
+  </svg>
+);
+const ParallelMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <line x1="5" y1="1" x2="5" y2="15" />
+    <line x1="11" y1="1" x2="11" y2="15" />
+  </svg>
+);
+const RadialMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <circle cx="8" cy="8" r="1.5" fill="currentColor" />
+    <line x1="8" y1="2" x2="8" y2="14" />
+    <line x1="2" y1="8" x2="14" y2="8" />
+    <line x1="3.5" y1="3.5" x2="12.5" y2="12.5" />
+    <line x1="3.5" y1="12.5" x2="12.5" y2="3.5" />
+  </svg>
+);
+const MandalaMenuIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <circle cx="8" cy="8" r="2.5" />
+    <path d="M8,1 A3,3 0 0,1 11,4 A3,3 0 0,1 8,7 A3,3 0 0,1 5,4 A3,3 0 0,1 8,1 Z" />
+    <path d="M8,7 A3,3 0 0,1 11,10 A3,3 0 0,1 8,13 A3,3 0 0,1 5,10 A3,3 0 0,1 8,7 Z" transform="rotate(45 8 8)" />
+  </svg>
+);
+
+const ButterflyIcon = ({ size = 20, style = {} }) => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8" style={{ width: size, height: size, ...style }}>
+    <path d="M16 8.5c-.5-1.2-1.8-2.5-3.5-2.5C9.5 6 7 8 7 11.5c0 3.5 2 6 9 8.5 7-2.5 9-5 9-8.5C25 8 22.5 6 19.5 6c-1.7 0-3 1.3-3.5 2.5z" />
+    <path d="M14 6c0-1.5 1-2.5 2-2.5s2 1 2 2.5" strokeWidth="1.2" />
+    <line x1="16" y1="2" x2="16" y2="30" strokeDasharray="2.5 2.5" />
+  </svg>
+);
 
 /* ------------------------------------------------------------------ */
 /* Live multi-mode symmetry painter                                   */
@@ -168,11 +237,13 @@ function SymmetryPainter() {
   const drawingRef = useRef(false);
   const lastRef = useRef(null);
 
-  const [mode, setMode] = useState("vertical"); // vertical | horizontal | dual | mandala
+  const [mode, setMode] = useState("vertical"); // off | vertical | horizontal | dual | mandala
   const [segments, setSegments] = useState(6);
   const [color, setColor] = useState("ink");
   const [size, setSize] = useState(30);
   const [soft, setSoft] = useState(false);
+  const [note, setNote] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const refs = useRef({});
   refs.current = { mode, segments, color, size, soft };
@@ -191,52 +262,64 @@ function SymmetryPainter() {
   const points = useCallback((x, y) => {
     const { mode, segments } = refs.current;
     const cx = CW / 2, cy = CH / 2;
+    if (mode === "off") return [[x, y]];
     if (mode === "vertical") return [[x, y], [CW - x, y]];
     if (mode === "horizontal") return [[x, y], [x, CH - y]];
     if (mode === "dual") return [[x, y], [CW - x, y], [x, CH - y], [CW - x, CH - y]];
+    
     // mandala: rotational copies + mirrored copies about center
     const dx = x - cx, dy = y - cy;
     const r = Math.hypot(dx, dy);
     const a = Math.atan2(dy, dx);
-    const out = [];
+    const results = [];
     const step = (Math.PI * 2) / segments;
-    for (let k = 0; k < segments; k++) {
-      const a1 = a + k * step;
-      const a2 = -a + k * step;
-      out.push([cx + r * Math.cos(a1), cy + r * Math.sin(a1)]);
-      out.push([cx + r * Math.cos(a2), cy + r * Math.sin(a2)]);
+    for (let i = 0; i < segments; i++) {
+      const angle = a + i * step;
+      results.push([cx + Math.cos(angle) * r, cy + Math.sin(angle) * r]);
+      // reflected sector
+      const refAngle = -a + i * step;
+      results.push([cx + Math.cos(refAngle) * r, cy + Math.sin(refAngle) * r]);
     }
-    return out;
+    return results;
   }, []);
 
   const dab = useCallback((ctx, x, y) => {
-    const { size, soft, color } = refs.current;
-    const hex = color === "ink" ? INK : PAPER;
-    for (const [px, py] of points(x, y)) {
-      if (soft) {
-        const g = ctx.createRadialGradient(px, py, 0, px, py, size);
-        g.addColorStop(0, hex);
-        g.addColorStop(1, hex + "00");
-        ctx.fillStyle = g;
-      } else {
-        ctx.fillStyle = hex;
-      }
+    const { color, size, soft } = refs.current;
+    ctx.save();
+    
+    // Brush settings
+    ctx.fillStyle = color === "ink" ? INK : PAPER;
+    const copies = points(x, y);
+
+    copies.forEach(([cx, cy]) => {
       ctx.beginPath();
-      ctx.arc(px, py, size, 0, Math.PI * 2);
+      if (soft) {
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, size / 2);
+        const col = color === "ink" ? "26,21,18" : "245,239,225";
+        grad.addColorStop(0, `rgba(${col}, 1)`);
+        grad.addColorStop(0.3, `rgba(${col}, 0.8)`);
+        grad.addColorStop(1, `rgba(${col}, 0)`);
+        ctx.fillStyle = grad;
+        ctx.arc(cx, cy, size / 2, 0, Math.PI * 2);
+      } else {
+        ctx.arc(cx, cy, size / 2, 0, Math.PI * 2);
+      }
       ctx.fill();
-    }
+    });
+    ctx.restore();
   }, [points]);
 
   const stroke = useCallback((x, y) => {
     const cv = canvasRef.current;
     if (!cv) return;
     const ctx = cv.getContext("2d");
+    
     const last = lastRef.current;
     if (last) {
-      const dx = x - last.x, dy = y - last.y;
+      const dx = x - last.x;
+      const dy = y - last.y;
       const dist = Math.hypot(dx, dy);
-      const step = Math.max(refs.current.size / 3.5, 2);
-      const n = Math.max(1, Math.floor(dist / step));
+      const n = Math.ceil(dist / 2); // interpolate
       for (let i = 1; i <= n; i++) dab(ctx, last.x + (dx * i) / n, last.y + (dy * i) / n);
     } else {
       dab(ctx, x, y);
@@ -265,81 +348,229 @@ function SymmetryPainter() {
   }, []);
 
   const PAINT_MODES = [
+    { id: "off", label: "Symmetry Off" },
     { id: "vertical", label: "Vertical" },
     { id: "horizontal", label: "Horizontal" },
     { id: "dual", label: "Dual" },
     { id: "mandala", label: "Mandala" },
   ];
 
+  const handleMenuClick = (itemId) => {
+    if (itemId === "off" || itemId === "vertical" || itemId === "horizontal" || itemId === "dual" || itemId === "mandala") {
+      setMode(itemId);
+      setNote(null);
+    } else {
+      const displayNames = {
+        diagonal: "Diagonal",
+        wavy: "Wavy",
+        circle: "Circle",
+        spiral: "Spiral",
+        parallel: "Parallel Lines",
+        radial: "Radial",
+      };
+      setNote(`${displayNames[itemId] || itemId} Symmetry is a Photoshop-exclusive mode! Try Vertical, Horizontal, Dual, or Mandala in this web lab.`);
+      setTimeout(() => setNote(null), 5000);
+    }
+  };
+
   return (
-    <div className="ss-painter">
-      <div className="ss-painter-stage">
-        <canvas
-          ref={canvasRef}
-          width={CW}
-          height={CH}
-          className="ss-canvas"
-          onMouseDown={start}
-          onMouseMove={move}
-          onMouseUp={end}
-          onMouseLeave={end}
-          onTouchStart={start}
-          onTouchMove={move}
-          onTouchEnd={end}
-        />
-        {mode === "vertical" && <div className="ss-axis ss-axis-v" aria-hidden="true" />}
-        {mode === "horizontal" && <div className="ss-axis ss-axis-h" aria-hidden="true" />}
-        {mode === "dual" && (<><div className="ss-axis ss-axis-v" /><div className="ss-axis ss-axis-h" /></>)}
-        {mode === "mandala" && <div className="ss-axis-dot" aria-hidden="true" />}
-        <span className="ss-stage-tag">butterfly, live</span>
+    <div className="ss-painter-layout">
+      <div className="ss-painter-col">
+        <div className="ss-painter">
+          <div className="ss-painter-stage">
+            <canvas
+              ref={canvasRef}
+              width={CW}
+              height={CH}
+              className="ss-canvas"
+              onMouseDown={start}
+              onMouseMove={move}
+              onMouseUp={end}
+              onMouseLeave={end}
+              onTouchStart={start}
+              onTouchMove={move}
+              onTouchEnd={end}
+            />
+            {mode === "vertical" && <div className="ss-axis ss-axis-v" aria-hidden="true" />}
+            {mode === "horizontal" && <div className="ss-axis ss-axis-h" aria-hidden="true" />}
+            {mode === "dual" && (<><div className="ss-axis ss-axis-v" /><div className="ss-axis ss-axis-h" /></>)}
+            {mode === "mandala" && <div className="ss-axis-dot" aria-hidden="true" />}
+            <span className="ss-stage-tag">{mode === "off" ? "Symmetry off" : `${mode}, live`}</span>
+          </div>
+
+          <div className="ss-controls">
+            <div className="ss-control-group">
+              <span className="ss-control-label">Symmetry Mode</span>
+              <div className="ss-seg ss-seg-wrap">
+                {PAINT_MODES.map((m) => (
+                  <button key={m.id} className={mode === m.id ? "is-on" : ""} onClick={() => setMode(m.id)}>{m.id === "off" ? "Off" : m.label}</button>
+                ))}
+              </div>
+            </div>
+
+            {mode === "mandala" && (
+              <div className="ss-control-group">
+                <span className="ss-control-label">Segments — {segments}</span>
+                <input type="range" min="3" max="16" value={segments} onChange={(e) => setSegments(Number(e.target.value))} className="ss-range" />
+              </div>
+            )}
+
+            <div className="ss-control-group">
+              <span className="ss-control-label">Brush</span>
+              <button className={"ss-swap " + (color === "ink" ? "is-ink" : "is-paper")} onClick={() => setColor((c) => (c === "ink" ? "paper" : "ink"))} title="Press X to swap">
+                <span className="ss-swap-chip" />
+                {color === "ink" ? "Black — add" : "White — carve"}
+                <span className="ss-swap-key">X</span>
+              </button>
+            </div>
+
+            <div className="ss-control-group">
+              <span className="ss-control-label">Size</span>
+              <input type="range" min="6" max="90" value={size} onChange={(e) => setSize(Number(e.target.value))} className="ss-range" />
+            </div>
+
+            <div className="ss-control-group">
+              <span className="ss-control-label">Edge</span>
+              <div className="ss-seg">
+                <button className={!soft ? "is-on" : ""} onClick={() => setSoft(false)}>Hard</button>
+                <button className={soft ? "is-on" : ""} onClick={() => setSoft(true)}>Soft</button>
+              </div>
+            </div>
+
+            <button className="ss-clear" onClick={fillPaper}>Clear</button>
+          </div>
+          <p className="ss-painter-hint">
+            This is the butterfly tool in miniature. Switch the axis, then paint —
+            every stroke is mirrored live. <b>X</b> flips to white so you can carve the
+            negative back out, exactly like the video.
+          </p>
+        </div>
       </div>
 
-      <div className="ss-controls">
-        <div className="ss-control-group">
-          <span className="ss-control-label">Symmetry</span>
-          <div className="ss-seg ss-seg-wrap">
-            {PAINT_MODES.map((m) => (
-              <button key={m.id} className={mode === m.id ? "is-on" : ""} onClick={() => setMode(m.id)}>{m.label}</button>
-            ))}
+      <div className="ps-sidebar-col">
+        {/* Photoshop Options Bar Simulation */}
+        <div className="ps-options-bar">
+          <div className="ps-options-bar-left">
+            <span className="ps-options-bar-tool">🖌️</span>
+            <span className="ps-options-bar-stat">Size: {size}px</span>
+            <span className="ps-options-bar-stat">Opacity: 100%</span>
           </div>
-        </div>
-
-        {mode === "mandala" && (
-          <div className="ss-control-group">
-            <span className="ss-control-label">Segments — {segments}</span>
-            <input type="range" min="3" max="16" value={segments} onChange={(e) => setSegments(Number(e.target.value))} className="ss-range" />
-          </div>
-        )}
-
-        <div className="ss-control-group">
-          <span className="ss-control-label">Brush</span>
-          <button className={"ss-swap " + (color === "ink" ? "is-ink" : "is-paper")} onClick={() => setColor((c) => (c === "ink" ? "paper" : "ink"))} title="Press X to swap">
-            <span className="ss-swap-chip" />
-            {color === "ink" ? "Black — add" : "White — carve"}
-            <span className="ss-swap-key">X</span>
+          <button className={"ps-options-butterfly-btn " + (isMenuOpen ? "is-open" : "") + (mode !== "off" ? " is-active" : "")} onClick={() => setIsMenuOpen(!isMenuOpen)} title="Photoshop Symmetry Menu Options">
+            <ButterflyIcon size={14} />
+            <span style={{ fontSize: "7px", marginLeft: "4.5px" }}>▼</span>
           </button>
         </div>
 
-        <div className="ss-control-group">
-          <span className="ss-control-label">Size</span>
-          <input type="range" min="6" max="90" value={size} onChange={(e) => setSize(Number(e.target.value))} className="ss-range" />
-        </div>
+        {/* Photoshop Styled Dropdown Menu */}
+        {isMenuOpen && (
+          <div className="ps-dropdown-menu">
+            <div className="ps-dropdown-header">
+              <span>Symmetry Options</span>
+              <span className="ps-dropdown-header-close" onClick={() => setIsMenuOpen(false)}>×</span>
+            </div>
+            <ul className="ps-dropdown-list">
+              <li className={"ps-dropdown-item" + (mode === "off" ? " is-active" : "")} onClick={() => handleMenuClick("off")}>
+                <span className="ps-dropdown-check">{mode === "off" ? "✓" : ""}</span>
+                <span className="ps-dropdown-label">Symmetry Off</span>
+              </li>
+              <li className="ps-dropdown-item is-disabled">
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-label">Last Used Symmetry</span>
+              </li>
+              <li className="ps-dropdown-divider" />
+              
+              <li className={"ps-dropdown-item" + (mode === "vertical" ? " is-active" : "")} onClick={() => handleMenuClick("vertical")}>
+                <span className="ps-dropdown-check">{mode === "vertical" ? "✓" : ""}</span>
+                <span className="ps-dropdown-icon-wrap"><VerticalMenuIcon /></span>
+                <span className="ps-dropdown-label">Vertical</span>
+              </li>
 
-        <div className="ss-control-group">
-          <span className="ss-control-label">Edge</span>
-          <div className="ss-seg">
-            <button className={!soft ? "is-on" : ""} onClick={() => setSoft(false)}>Hard</button>
-            <button className={soft ? "is-on" : ""} onClick={() => setSoft(true)}>Soft</button>
+              <li className={"ps-dropdown-item" + (mode === "horizontal" ? " is-active" : "")} onClick={() => handleMenuClick("horizontal")}>
+                <span className="ps-dropdown-check">{mode === "horizontal" ? "✓" : ""}</span>
+                <span className="ps-dropdown-icon-wrap"><HorizontalMenuIcon /></span>
+                <span className="ps-dropdown-label">Horizontal</span>
+              </li>
+
+              <li className={"ps-dropdown-item" + (mode === "dual" ? " is-active" : "")} onClick={() => handleMenuClick("dual")}>
+                <span className="ps-dropdown-check">{mode === "dual" ? "✓" : ""}</span>
+                <span className="ps-dropdown-icon-wrap"><DualMenuIcon /></span>
+                <span className="ps-dropdown-label">Dual Axis</span>
+              </li>
+
+              <li className="ps-dropdown-item" onClick={() => handleMenuClick("diagonal")}>
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-icon-wrap"><DiagonalMenuIcon /></span>
+                <span className="ps-dropdown-label">Diagonal</span>
+                <span className="ps-dropdown-badge">PS Only</span>
+              </li>
+
+              <li className="ps-dropdown-item" onClick={() => handleMenuClick("wavy")}>
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-icon-wrap"><WavyMenuIcon /></span>
+                <span className="ps-dropdown-label">Wavy</span>
+                <span className="ps-dropdown-badge">PS Only</span>
+              </li>
+
+              <li className="ps-dropdown-item" onClick={() => handleMenuClick("circle")}>
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-icon-wrap"><CircleMenuIcon /></span>
+                <span className="ps-dropdown-label">Circle</span>
+                <span className="ps-dropdown-badge">PS Only</span>
+              </li>
+
+              <li className="ps-dropdown-item" onClick={() => handleMenuClick("spiral")}>
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-icon-wrap"><SpiralMenuIcon /></span>
+                <span className="ps-dropdown-label">Spiral</span>
+                <span className="ps-dropdown-badge">PS Only</span>
+              </li>
+
+              <li className="ps-dropdown-item" onClick={() => handleMenuClick("parallel")}>
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-icon-wrap"><ParallelMenuIcon /></span>
+                <span className="ps-dropdown-label">Parallel Lines</span>
+                <span className="ps-dropdown-badge">PS Only</span>
+              </li>
+
+              <li className="ps-dropdown-item" onClick={() => handleMenuClick("radial")}>
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-icon-wrap"><RadialMenuIcon /></span>
+                <span className="ps-dropdown-label">Radial...</span>
+                <span className="ps-dropdown-badge">PS Only</span>
+              </li>
+
+              <li className={"ps-dropdown-item" + (mode === "mandala" ? " is-active" : "")} onClick={() => handleMenuClick("mandala")}>
+                <span className="ps-dropdown-check">{mode === "mandala" ? "✓" : ""}</span>
+                <span className="ps-dropdown-icon-wrap"><MandalaMenuIcon /></span>
+                <span className="ps-dropdown-label">Mandala...</span>
+              </li>
+
+              <li className="ps-dropdown-divider" />
+
+              <li className="ps-dropdown-item is-disabled">
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-label">Selected Path</span>
+              </li>
+              <li className="ps-dropdown-item is-disabled">
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-label">Transform Symmetry</span>
+              </li>
+              <li className="ps-dropdown-item is-disabled">
+                <span className="ps-dropdown-check"></span>
+                <span className="ps-dropdown-label">Hide Symmetry</span>
+              </li>
+            </ul>
           </div>
-        </div>
+        )}
 
-        <button className="ss-clear" onClick={fillPaper}>Clear</button>
+        {/* Photoshop Exclusive Mode Alert */}
+        {note && (
+          <div className="ps-note-bubble">
+            <span style={{ fontSize: "14px", marginRight: "6px" }}>ℹ️</span>
+            <span>{note}</span>
+          </div>
+        )}
       </div>
-      <p className="ss-painter-hint">
-        This is the butterfly tool in miniature. Switch the axis, then paint —
-        every stroke is mirrored live. <b>X</b> flips to white so you can carve the
-        negative back out, exactly like the video.
-      </p>
     </div>
   );
 }
@@ -407,10 +638,19 @@ export default function SymmetryInPhotoshop() {
             <h3 className="ss-card-title">Duplicate &amp; transform</h3>
             <p>Works in almost any program. Copy a layer, then flip, rotate, or offset the copy. It's all about <em>duplicating and transforming</em> — the spacing you choose is where the surprises are.</p>
           </div>
-          <div className="ss-card">
-            <span className="ss-mini-num">B</span>
-            <h3 className="ss-card-title">The Symmetry tool</h3>
-            <p>A Photoshop special. Grab the Brush, click the little <em>butterfly</em> in the options bar, pick an axis, and every stroke mirrors itself as you paint.</p>
+          <div className="ss-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <span className="ss-mini-num">B</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
+                <svg viewBox="0 0 32 32" fill="none" stroke="#8b3a2f" strokeWidth="1.8" style={{ width: '28px', height: '28px', flexShrink: 0 }}>
+                  <path d="M16 8.5c-.5-1.2-1.8-2.5-3.5-2.5C9.5 6 7 8 7 11.5c0 3.5 2 6 9 8.5 7-2.5 9-5 9-8.5C25 8 22.5 6 19.5 6c-1.7 0-3 1.3-3.5 2.5z" />
+                  <path d="M14 6c0-1.5 1-2.5 2-2.5s2 1 2 2.5" strokeWidth="1.2" />
+                  <line x1="16" y1="2" x2="16" y2="30" strokeDasharray="2.5 2.5" />
+                </svg>
+                <h3 className="ss-card-title" style={{ margin: 0 }}>The Symmetry tool</h3>
+              </div>
+              <p>A Photoshop special. Grab the Brush, click the little <em>butterfly</em> in the options bar, pick an axis, and every stroke mirrors itself as you paint.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -630,4 +870,208 @@ const CSS = `
 @media (max-width:460px){ .ss-modes{grid-template-columns:1fr;} }
 
 .ss-root :focus-visible{outline:2px solid var(--oxblood);outline-offset:2px;}
+
+/* Layout and Sidebar */
+.ss-painter-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: clamp(20px, 3.5vw, 32px);
+  align-items: start;
+}
+.ss-painter-col {
+  flex: 1;
+  min-width: 0;
+}
+.ps-sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 24px;
+}
+
+/* Options Bar simulation */
+.ps-options-bar {
+  background: #2b2b2b;
+  border: 1.5px solid #1c1c1c;
+  border-radius: 4px;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #dfdfdf;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.ps-options-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ps-options-bar-tool {
+  font-size: 14px;
+}
+.ps-options-bar-stat {
+  font-size: 11px;
+  color: #b5b5b5;
+  border-right: 1px solid #404040;
+  padding-right: 12px;
+}
+.ps-options-bar-stat:last-child {
+  border-right: none;
+}
+.ps-options-butterfly-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #b5b5b5;
+  padding: 4px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.1s ease;
+}
+.ps-options-butterfly-btn:hover {
+  background: #3e3e3e;
+  color: #ffffff;
+}
+.ps-options-butterfly-btn.is-active {
+  color: #ffcc00;
+}
+.ps-options-butterfly-btn.is-open {
+  background: #1d73e7;
+  color: #ffffff;
+  border-color: #0f62fe;
+}
+
+/* Dropdown Menu simulation */
+.ps-dropdown-menu {
+  background: #282828;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #dfdfdf;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+}
+.ps-dropdown-header {
+  padding: 6px 12px;
+  background: #353535;
+  border-bottom: 1.5px solid #1a1a1a;
+  border-radius: 3px 3px 0 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: #b5b5b5;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ps-dropdown-header-close {
+  cursor: pointer;
+  font-size: 13px;
+  color: #a0a0a0;
+  line-height: 1;
+}
+.ps-dropdown-header-close:hover {
+  color: #ffffff;
+}
+.ps-dropdown-list {
+  padding: 3px 0;
+  margin: 0;
+  list-style: none;
+}
+.ps-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  cursor: pointer;
+  position: relative;
+  line-height: 1.3;
+}
+.ps-dropdown-item:hover:not(.is-disabled) {
+  background: #1d73e7;
+  color: #ffffff;
+}
+.ps-dropdown-item.is-active {
+  background: #3a3a3a;
+  color: #ffffff;
+  font-weight: 500;
+}
+.ps-dropdown-item.is-active:hover {
+  background: #1d73e7;
+}
+.ps-dropdown-item.is-disabled {
+  color: #656565;
+  cursor: not-allowed;
+}
+.ps-dropdown-check {
+  width: 14px;
+  font-size: 10px;
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1d73e7;
+}
+.ps-dropdown-item:hover:not(.is-disabled) .ps-dropdown-check {
+  color: #ffffff;
+}
+.ps-dropdown-icon-wrap {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  color: #a0a0a0;
+}
+.ps-dropdown-item:hover:not(.is-disabled) .ps-dropdown-icon-wrap {
+  color: #ffffff;
+}
+.ps-dropdown-label {
+  flex: 1;
+}
+.ps-dropdown-divider {
+  height: 1px;
+  background: #3e3e3e;
+  margin: 3px 0;
+}
+.ps-dropdown-badge {
+  font-size: 8px;
+  background: #383838;
+  color: #909090;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+.ps-dropdown-item:hover:not(.is-disabled) .ps-dropdown-badge {
+  background: rgba(255,255,255,0.2);
+  color: #ffffff;
+}
+
+/* Alert Notification Bubble */
+.ps-note-bubble {
+  background: #fdf6e2;
+  border: 1.5px solid #d4c9a8;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #5c4a2f;
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  animation: fadeIn 0.2s ease;
+}
+
+@media (max-width: 1024px) {
+  .ss-painter-layout {
+    grid-template-columns: 1fr;
+  }
+  .ps-sidebar-col {
+    position: static;
+  }
+}
 `;
