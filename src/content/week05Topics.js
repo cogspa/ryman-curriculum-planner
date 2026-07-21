@@ -271,7 +271,7 @@ Storyboards are sketches, not illustrations. A storyboard panel that takes more 
       },
       {
         heading: 'Thumbnails as the storyboard foundation',
-        body: `In PCC's curriculum, thumbnails are introduced as a composition tool — small, fast sketches that explore layout before committing to a final image. They're the foundation skill that storyboarding builds on.
+        body: `Thumbnails are a ideation and brainstorm tool — small, fast sketches that explore layout and character design before committing to a final image. They're the foundation skill that storyboarding, character dev and world building builds on.
 
 Thumbnail principles that carry into storyboarding:
 • Small — usually 2 to 4 inches across
@@ -280,7 +280,7 @@ Thumbnail principles that carry into storyboarding:
 • Many — generate dozens, keep the strongest few
 • Black and white — value structure first, color later
 
-For the 3-panel narrative this week: before drawing any finished panels, draw 12 thumbnail sets (three panels each, 36 thumbnails total). Most will be bad. A few will be good. One will be the story.`,
+For next week: before create finalized, draw 20 thumbnail sets - you may already have a character, but developing simple thumbnails , especially with symmatry tools in photoshop can be very inspiring.`,
       },
       {
         heading: 'The five-shot vocabulary',
