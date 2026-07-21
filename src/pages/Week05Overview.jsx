@@ -42,15 +42,6 @@ export default function Week05Overview() {
         Nancy Seruto — live demo
       </p>
 
-      <h2 style={sectionHeadingStyle}>Assignment</h2>
-      <ul style={topicListStyle}>
-        <li style={topicItemStyle}>
-          <span style={newBadgeStyle}>NEW</span>
-          <Link to="/week/05/three-panel-assignment" style={topicLinkStyle}>
-            3-panel narrative illustration — full workflow brief
-          </Link>
-        </li>
-      </ul>
       <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );
