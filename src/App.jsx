@@ -1276,23 +1276,45 @@ export default function App() {
     }
   }, [startDate]);
 
-  // Automatic migration for Week 5 assignments to ensure old custom databases are updated
+  // Automatic migration for Week 5 assignments and topics to ensure old custom databases are updated
   useEffect(() => {
     if (customCurriculum && customCurriculum.length > 4) {
       const week5 = customCurriculum[4];
-      if (week5 && week5.week === 5 && week5.saturday && week5.saturday.assignments) {
-        const hasOldAssignment = week5.saturday.assignments.some(a => 
+      if (week5 && week5.week === 5 && week5.saturday) {
+        let needsUpdate = false;
+        let updatedAssignments = week5.saturday.assignments || [];
+        let updatedTopics = week5.saturday.topics || [];
+
+        // Check assignments
+        const hasOldAssignment = updatedAssignments.some(a => 
           a.includes('Perspective & Atmospheric Lighting') || a.includes('Next Level: *Narrative Keyframe*')
         );
         if (hasOldAssignment) {
+          needsUpdate = true;
+          updatedAssignments = [
+            '**Base Assignment**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on July 28**.'
+          ];
+        }
+
+        // Check topics
+        const hasOldTopics = updatedTopics.some(t => 
+          t.includes('Character development & emotional range') || t.includes('Environmental storytelling & auditory space')
+        );
+        if (hasOldTopics) {
+          needsUpdate = true;
+          updatedTopics = updatedTopics.filter(t => 
+            !t.includes('Character development & emotional range') && !t.includes('Environmental storytelling & auditory space')
+          );
+        }
+
+        if (needsUpdate) {
           const updatedCurriculum = [...customCurriculum];
           updatedCurriculum[4] = {
             ...week5,
             saturday: {
               ...week5.saturday,
-              assignments: [
-                '**Base Assignment**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on July 28**.'
-              ]
+              assignments: updatedAssignments,
+              topics: updatedTopics
             }
           };
           setCustomCurriculum(updatedCurriculum);
