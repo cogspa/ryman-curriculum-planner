@@ -567,6 +567,73 @@ function RefFigure({ src, Dia, caption }) {
   );
 }
 
+function YoutubeVideoCard({ videoId, title, description, num }) {
+  const [play, setPlay] = useState(false);
+
+  return (
+    <div className="ss-card" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      <div 
+        style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', background: '#000', cursor: 'pointer' }} 
+        onClick={() => !play && setPlay(true)}
+      >
+        {play ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+            title={title}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+          ></iframe>
+        ) : (
+          <>
+            <img 
+              src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`} 
+              onError={(e) => { e.target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`; }}
+              alt={title} 
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Play Button Overlay */}
+            <div style={{
+              position: 'absolute',
+              top: 0, left: 0, right: 0, bottom: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(0, 0, 0, 0.25)',
+              transition: 'background 0.2s ease',
+            }} className="video-overlay-hover">
+              <div style={{
+                width: '54px',
+                height: '54px',
+                borderRadius: '50%',
+                background: 'var(--oxblood)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--paper)',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+                transition: 'transform 0.2s ease, background 0.2s ease'
+              }} className="play-button-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+      <div style={{ padding: '20px', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div>
+          <span className="ss-eyebrow" style={{ fontSize: '10px' }}>Video {num}</span>
+          <h3 className="ss-card-title" style={{ marginTop: '4px', marginBottom: '8px', fontSize: '18px' }}>{title}</h3>
+          <p style={{ fontSize: '13px', color: 'var(--muted)', margin: 0, fontFamily: 'sans-serif', lineHeight: '1.45' }}>{description}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* Lesson                                                             */
 /* ------------------------------------------------------------------ */
@@ -696,6 +763,29 @@ export default function SymmetryInPhotoshop() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Video Guides */}
+      <section className="ss-section">
+        <div className="ss-process-head">
+          <span className="ss-eyebrow">Video Tutorials</span>
+          <h2 className="ss-h2">Workflow &amp; technique guides</h2>
+          <p className="ss-demo-dek">Watch these step-by-step video tutorials to master Photoshop's symmetry tools and character silhouette painting techniques.</p>
+        </div>
+        <div className="ss-two-col">
+          <YoutubeVideoCard 
+            videoId="nNbUBRY3HC8"
+            title="Symmetry in Photoshop"
+            description="Learn how to use Photoshop's butterfly tool, manage vertical and horizontal axes, and quickly build out symmetrical shapes and decorative designs."
+            num="01"
+          />
+          <YoutubeVideoCard 
+            videoId="rvULP02Trk4"
+            title="Symmetry with Silhouettes"
+            description="Explore how symmetry tools can speed up your character design process, from initial thumbnail ideas to full structural block-outs."
+            num="02"
+          />
         </div>
       </section>
 
@@ -1041,5 +1131,16 @@ const CSS = `
   .ps-sidebar-col {
     position: static;
   }
+}
+
+.video-overlay-hover {
+  transition: background 0.2s ease;
+}
+.video-overlay-hover:hover {
+  background: rgba(0, 0, 0, 0.45) !important;
+}
+.video-overlay-hover:hover .play-button-circle {
+  transform: scale(1.1);
+  background: var(--oxblood-deep) !important;
 }
 `;
