@@ -494,95 +494,49 @@ export const assignments = {
     },
   },
   5: {
-    title: 'Assignment 3: Atmospheric Space',
-    subtitle: 'Worldbuilding Step 3: Illustrate a key setting, headquarters, or terrain from your world.',
+    title: 'Assignment 3: Character Development',
+    subtitle: 'Worldbuilding Step 3: Thumbnails, Model Sheet, and Final Illustration',
     tracks: {
       beginner: {
-        title: 'Base Assignment: Perspective & Atmospheric Lighting',
-        subtitle: 'Focus: Linear perspective grids, depth cueing, and value composition.',
+        title: 'Base Assignment: Character Development',
+        subtitle: 'Due: End of Class on July 28',
         sections: [
           {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Paint an environment setting from your IP (e.g., character sanctuary, hideout, landscape) focusing on creating depth. Focus strictly on composition and lighting (no character required).',
+            heading: 'Overview',
+            body: 'Develop one or two characters that either belong to the world you are creating or exist completely on their own. The larger goal is to begin integrating your characters into the environments and scenes you have developed.\n\nThis assignment focuses on the research and development process behind character design. Even if you already have a character in mind, the symmetry and silhouette exercises will help you generate new ideas and explore different variations.\n\nThese techniques can also be applied to the design of props, vehicles, creatures, costumes, architecture, and other elements within a world. The process is both free-flowing and structured, giving you room to experiment within a set of guidelines.'
           },
           {
-            heading: 'Required Techniques',
+            heading: 'Part 1: Thumbnail Research and Character Exploration',
+            body: '### Symmetry and Silhouettes\nUse simple shapes, silhouettes, symmetry, and asymmetry to generate character ideas. Concept artists commonly use these techniques to explore multiple design possibilities quickly before selecting a direction to develop further.\n\n### Thumbnail Sketches\nCreate a series of small sketches known as thumbnails. Working at a small scale encourages you to simplify your ideas, avoid unnecessary details, and focus on the character’s most important shapes and proportions.',
             bullets: [
-              'Establish a clear perspective grid (one-point or two-point perspective).',
-              'Use clear depth cueing: things further away get lighter, lower contrast, and cooler (atmospheric perspective).',
-              'Use a strong directional light source (sun through trees, spotlight, portal glow) to establish a clear value hierarchy (Foreground shadow, midground light, background haze).',
-            ],
+              'Create a minimum of 20 character thumbnails.',
+              'Explore both symmetrical and asymmetrical designs.',
+              'Focus on shape language, proportions, posture, gesture, and silhouette.',
+              'Keep the drawings quick, loose, and experimental.',
+              'You are welcome to create more than 20 thumbnails.'
+            ]
           },
+          {
+            heading: 'Part 2: Character Model Sheet',
+            body: '### Character Development and Emotional Range\nUsing your selected thumbnail as a starting point, create a model sheet that communicates the character’s full-body design, personality, and emotional range.\n\nThe model sheet may remain somewhat rough or sketch-based at this stage, but the character’s design should be clear and readable.\n\n### Full-Body Character Design\nCreate at least one full-body drawing of your character. During this stage, the drawing may be as simple or detailed as needed to communicate the idea.\n\nPossible visual approaches include:\n• Loose or sketchy drawing\n• Cartoon character\n• Anime-inspired character\n• Realistic or stylized character\n• Any other visual style that supports your concept\n\n### Facial Expressions and Poses\nCreate five distinct facial expressions, poses, or a combination of both. These studies should communicate a range of emotions and reveal something about the character’s personality.\n\nUse Preston Blair’s *Learn How to Draw Animated Characters* and Mark Simon’s *Facial Expressions* as references. Pay attention to how changes in the eyes, eyebrows, mouth, cheeks, posture, and gesture communicate emotion.\n\nPlace the character’s name at the top of the model sheet.'
+          },
+          {
+            heading: 'Part 3: Final Character Study',
+            body: 'Create a more fully rendered digital painting of your character in a pose of your choice.\n\nIntegrate the character into one of your previously created environments or backgrounds. Consider how lighting, color, scale, perspective, and composition connect the character to the surrounding world.\n\nThe final image may use either a portrait or landscape orientation.'
+          }
         ],
         submission: [
-          'Linear perspective grid sketch (PNG).',
-          'Value study thumbnail sheet (3 different options).',
-          'Final high-resolution digital painting (PNG).',
+          'Thumbnail Exploration Page (Minimum of 20 thumbnails, including symmetrical and asymmetrical explorations, 1920 × 1080 pixels).',
+          'Character Model Sheet (Character’s name at the top, at least one full-body design, five facial expressions/poses, 11 × 17 inches, 150 PPI).',
+          'Final Character Illustration (One fully rendered character in a clear pose integrated into an environment, portrait or landscape orientation).'
         ],
         critiqueQuestions: [
-          'How does your perspective grid guide the viewer’s eye through the foreground, midground, and background layers?',
-          'How did you use value contrast (light against dark) and color temperature (cool vs. warm) to establish atmospheric depth?',
-          'Does the directional light source feel integrated across all elements, and how does it define the volume of your structures?'
-        ],
-      },
-      intermediate: {
-        title: 'Take It to the Next Level: Narrative Keyframe',
-        subtitle: 'Focus: Combining character and environment to tell a story in a single image.',
-        sections: [
-          {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Paint a story-driven environment keyframe featuring your main character interacting with a dramatic location. The light is the main subject: it must act on the character and surfaces to tell a story.',
-          },
-          {
-            heading: 'Narrative Framing Guidelines',
-            bullets: [
-              'Scale: Establish a clear relationship between the character\'s height and the environment (e.g., massive ruins, tight claustrophobic corridors).',
-              'Focal Point: Guide the viewer\'s eye to a specific point of interest using composition lines and lighting highlights.',
-              'Cinematic effects: Use atmospheric haze, fog rays, dust particles, and soft depth-of-field overlays to give the keyframe a cinematic appearance.',
-            ],
-          },
-        ],
-        submission: [
-          'Initial rough sketch layout and visual research board.',
-          'Value / color keys (3 color script variants).',
-          'Final cinematic environment keyframe render (PNG).',
-        ],
-        critiqueQuestions: [
-          'What story details or character motivations did you focus on communicating in this keyframe setting?',
-          'How does the camera crop and composition layout create a sense of scale and emotional atmosphere (e.g. isolation, epic grandeur, danger)?',
-          'How did you use cinematic light overlays, atmospheric fog, or depth-of-field to integrate the character seamlessly into the scene?'
-        ],
-      },
-      advanced: {
-        title: 'Advanced Integration: 3D Cinematic Block-In',
-        subtitle: 'Focus: Staging environments in 3D, configuring volumetric cameras, and painting over the render.',
-        sections: [
-          {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Build a 3D block-in of your IP environment setting in Blender. Configure composition, volumetric lighting, and camera lenses, then execute a detailed illustrative paint-over in Photoshop.',
-          },
-          {
-            heading: 'Blender-to-Photoshop Pipeline',
-            numberedSteps: [
-              'Staging: Build the environment layout in Blender using modular assets or low-poly boxes.',
-              'Lighting & Volume: Enable volumetrics (Principled Volume) and position lighting to create dramatic god rays, focal highlights, and shadows.',
-              'Camera configuration: Set focal length (e.g., 24mm wide angle for grandeur), enable depth-of-field, and render a high-fidelity pass.',
-              'Photoshop Paint-over: Paint details, hand-rendered textures, environmental flora, and character illustrations over the top of the render layer.',
-            ],
-          },
-        ],
-        submission: [
-          'Blender workspace viewport screenshot showing 3D scene geometry layout.',
-          'Raw Blender render pass (PNG).',
-          'Final painted-over cinematic keyframe (PNG).',
-        ],
-        critiqueQuestions: [
-          'How did staging your camera lens (focal length, sensor size) in Blender help frame the dramatic depth of the environment?',
-          'What changes did you make to the volumetric settings (fog density, light scattering) in 3D to create strong initial values?',
-          'In the Photoshop stage, how did you decide which render details to keep and which areas to paint over to make it feel hand-painted?'
-        ],
-      },
-    },
+          'How did your silhouette thumbnails and symmetry exploration help you discover shapes or proportions you wouldn\'t have initially planned?',
+          'What visual elements in your model sheet (expression changes, posture) best communicate your character\'s personality?',
+          'How did you use color, lighting, or atmospheric perspective to visually integrate your character into the environment painting?'
+        ]
+      }
+    }
   },
   7: {
     title: 'Assignment 4: Narrative Sequence',
