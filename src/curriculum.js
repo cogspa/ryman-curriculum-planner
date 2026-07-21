@@ -155,7 +155,7 @@ export const curriculum = [
   },
   {
     week: 5,
-    title: 'Character Dev @ Visual Story Telling',
+    title: 'Character Dev & Visual Story Telling',
     overview: 'Moving beyond single-frame fine art into visual sequential storytelling, cinematography, and animation principles.',
     tuesday: {
       topics: [

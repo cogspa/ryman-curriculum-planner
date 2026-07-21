@@ -14,7 +14,7 @@ export default function Week05Overview() {
         <div style={dateRangeStyle}>JUL 21 – JUL 25</div>
       </header>
 
-      <h1 style={titleStyle}>Character Dev @ Visual Story Telling</h1>
+      <h1 style={titleStyle}>Character Dev &amp; Visual Story Telling</h1>
 
       <div style={scheduleStyle}>
         <div><strong>TUE</strong> &nbsp; Tue, Jul 21 &nbsp; · &nbsp; 7:00–9:00 pm · Zoom</div>
