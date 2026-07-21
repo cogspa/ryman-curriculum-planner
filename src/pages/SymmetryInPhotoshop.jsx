@@ -1,0 +1,633 @@
+import React, { useRef, useEffect, useState, useCallback } from "react";
+
+/**
+ * SymmetryInPhotoshop.jsx — pLAtform lesson component
+ * "Symmetry in Photoshop — the four types + the Symmetry (butterfly) tool"
+ *
+ * Self-contained. Sibling to SilhouetteSymmetry.jsx / Mirror Study / Mirror Lab.
+ * Design system: oxblood #8b3a2f · paper cream #f5efe1 · IBM Plex Mono · Newsreader.
+ *
+ * Signature element: a live multi-mode symmetry painter that reproduces the
+ * Photoshop butterfly tool — Vertical / Horizontal / Dual Axis / Mandala — with
+ * black-grow / white-carve (X) exactly like the video.
+ *
+ * ── REFERENCE IMAGES ──────────────────────────────────────────────────────
+ * Drop your own stills in here (relative path in the Vite build, or a full URL).
+ * Any slot left null falls back to the built-in diagram, so the lesson is
+ * complete out of the box and upgrades the moment you add a frame.
+ */
+const REFERENCE = {
+  reflective: null,     // e.g. "/frames/reflective.png"
+  glide: null,
+  rotational: null,
+  translation: null,
+  vertical: null,
+  horizontal: null,
+  dualAxis: null,
+  diagonal: null,
+  circle: null,
+  mandala: null,
+};
+
+const PAPER = "#f5efe1";
+const INK = "#1a1512";
+const OXBLOOD = "#8b3a2f";
+
+/* A single biomorphic blob, drawn in a 0..100 box, reused across diagrams. */
+const BLOB =
+  "M50,16 C66,12 84,22 85,40 C86,55 73,64 78,77 C82,89 65,94 53,87 C44,82 40,90 29,85 C14,78 12,58 22,49 C30,41 19,33 26,25 C33,18 40,20 50,16 Z";
+
+/* ------------------------------------------------------------------ */
+/* Diagrams for the four classical symmetry types                     */
+/* ------------------------------------------------------------------ */
+
+const diaProps = { viewBox: "0 0 220 130", role: "img" };
+
+const ReflectiveDia = () => (
+  <svg {...diaProps} aria-label="Reflective symmetry diagram">
+    <line x1="110" y1="8" x2="110" y2="122" stroke={OXBLOOD} strokeWidth="1.5" strokeDasharray="4 4" />
+    <g transform="translate(16,26) scale(0.72)" fill={INK}><path d={BLOB} /></g>
+    <g transform="translate(204,26) scale(-0.72,0.72)" fill={INK}><path d={BLOB} /></g>
+  </svg>
+);
+
+const GlideDia = () => (
+  <svg {...diaProps} aria-label="Glide reflective symmetry diagram">
+    <line x1="110" y1="8" x2="110" y2="122" stroke={OXBLOOD} strokeWidth="1.5" strokeDasharray="4 4" />
+    <g transform="translate(20,8) scale(0.6)" fill={INK}><path d={BLOB} /></g>
+    <g transform="translate(200,52) scale(-0.6,0.6)" fill={INK}><path d={BLOB} /></g>
+  </svg>
+);
+
+const RotationalDia = () => (
+  <svg {...diaProps} aria-label="Rotational symmetry diagram">
+    <g transform="translate(58,20) scale(0.55)" fill={INK}><path d={BLOB} /></g>
+    <g transform="rotate(180 110 65) translate(58,20) scale(0.55)" fill={INK} opacity="0.82"><path d={BLOB} /></g>
+    <circle cx="110" cy="65" r="3" fill={OXBLOOD} />
+  </svg>
+);
+
+const TranslationDia = () => (
+  <svg {...diaProps} aria-label="Translation symmetry diagram">
+    <g transform="translate(14,32) scale(0.58)" fill={INK}><path d={BLOB} /></g>
+    <g transform="translate(118,32) scale(0.58)" fill={INK} opacity="0.82"><path d={BLOB} /></g>
+    <path d="M104,66 l14,0 m-4,-4 l4,4 -4,4" stroke={OXBLOOD} strokeWidth="1.5" fill="none" />
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* Small axis icons for the butterfly modes                           */
+/* ------------------------------------------------------------------ */
+
+const modeIcon = { viewBox: "0 0 60 60", role: "img" };
+const dash = { stroke: OXBLOOD, strokeWidth: 1.6, strokeDasharray: "3 3", fill: "none" };
+const mark = { fill: INK, opacity: 0.85 };
+
+const VerticalIcon = () => (
+  <svg {...modeIcon}><line x1="30" y1="6" x2="30" y2="54" {...dash} /><circle cx="20" cy="26" r="5" {...mark} /><circle cx="40" cy="26" r="5" {...mark} /></svg>
+);
+const HorizontalIcon = () => (
+  <svg {...modeIcon}><line x1="6" y1="30" x2="54" y2="30" {...dash} /><circle cx="26" cy="20" r="5" {...mark} /><circle cx="26" cy="40" r="5" {...mark} /></svg>
+);
+const DualIcon = () => (
+  <svg {...modeIcon}><line x1="30" y1="6" x2="30" y2="54" {...dash} /><line x1="6" y1="30" x2="54" y2="30" {...dash} /><circle cx="19" cy="19" r="4.5" {...mark} /><circle cx="41" cy="19" r="4.5" {...mark} /><circle cx="19" cy="41" r="4.5" {...mark} /><circle cx="41" cy="41" r="4.5" {...mark} /></svg>
+);
+const DiagonalIcon = () => (
+  <svg {...modeIcon}><line x1="10" y1="10" x2="50" y2="50" {...dash} /><circle cx="38" cy="20" r="5" {...mark} /><circle cx="20" cy="38" r="5" {...mark} /></svg>
+);
+const CircleIcon = () => (
+  <svg {...modeIcon}><circle cx="30" cy="30" r="18" {...dash} /><circle cx="30" cy="12" r="3.6" {...mark} /><circle cx="48" cy="30" r="3.6" {...mark} /><circle cx="30" cy="48" r="3.6" {...mark} /><circle cx="12" cy="30" r="3.6" {...mark} /></svg>
+);
+const MandalaIcon = () => (
+  <svg {...modeIcon}>
+    {[0, 45, 90, 135].map((a) => (
+      <line key={a} x1="30" y1="30" x2={30 + 24 * Math.cos((a * Math.PI) / 180)} y2={30 + 24 * Math.sin((a * Math.PI) / 180)} {...dash} />
+    ))}
+    <circle cx="30" cy="14" r="3.4" {...mark} /><circle cx="46" cy="30" r="3.4" {...mark} /><circle cx="30" cy="46" r="3.4" {...mark} /><circle cx="14" cy="30" r="3.4" {...mark} />
+  </svg>
+);
+
+/* ------------------------------------------------------------------ */
+/* Content                                                            */
+/* ------------------------------------------------------------------ */
+
+const TYPES = [
+  {
+    key: "reflective",
+    name: "Reflective",
+    Dia: ReflectiveDia,
+    how: "Duplicate the layer (Cmd/Ctrl+J), move the copy over, then Free Transform (Cmd/Ctrl+T) → right-click → Flip Horizontal. Nudge the spacing — the gap between the two halves is where the interesting negative shapes live.",
+  },
+  {
+    key: "glide",
+    name: "Glide reflective",
+    Dia: GlideDia,
+    how: "Group your reflected pair (Cmd/Ctrl+G), duplicate it, drag it across, then slide one copy along the axis so it's offset. Reflected, but shifted — it reads as a march rather than a mirror.",
+  },
+  {
+    key: "rotational",
+    name: "Rotational",
+    Dia: RotationalDia,
+    how: "Duplicate, Free Transform (Cmd/Ctrl+T), and rotate the copy around a shared center. Repeat at even angles for a pinwheel feel.",
+  },
+  {
+    key: "translation",
+    name: "Translation",
+    Dia: TranslationDia,
+    how: "Duplicate and offset — no flip, no rotate. The same shape repeated at a steady interval. Simple, but it's the engine behind patterns.",
+  },
+];
+
+const MODES = [
+  { key: "vertical", name: "Vertical", Icon: VerticalIcon, note: "Mirror across a vertical line — the workhorse for faces, creatures, pendants." },
+  { key: "horizontal", name: "Horizontal", Icon: HorizontalIcon, note: "Mirror top to bottom — good for reflections and landscapes." },
+  { key: "dualAxis", name: "Dual axis", Icon: DualIcon, note: "Vertical and horizontal at once — four-way, instantly ornamental." },
+  { key: "diagonal", name: "Diagonal", Icon: DiagonalIcon, note: "Mirror across the diagonal for off-kilter, dynamic marks." },
+  { key: "circle", name: "Circle", Icon: CircleIcon, note: "Marks wrap around a circular path — great for rings and halos." },
+  { key: "mandala", name: "Mandala", Icon: MandalaIcon, note: "Set the number of segments and paint a full radial kaleidoscope." },
+];
+
+const SHORTCUTS = [
+  { k: "Cmd/Ctrl + J", d: "Duplicate the layer" },
+  { k: "Cmd/Ctrl + T", d: "Free Transform (flip / rotate)" },
+  { k: "Right-click ▸ Flip", d: "Flip horizontal or vertical inside transform" },
+  { k: "Cmd/Ctrl + G", d: "Group layers (for glide reflective)" },
+  { k: "Define Brush Preset", d: "Turn a selected shape into a brush" },
+  { k: "X", d: "Swap foreground/background — paint the negative" },
+];
+
+/* ------------------------------------------------------------------ */
+/* Live multi-mode symmetry painter                                   */
+/* ------------------------------------------------------------------ */
+
+const CW = 760;
+const CH = 460;
+
+function SymmetryPainter() {
+  const canvasRef = useRef(null);
+  const drawingRef = useRef(false);
+  const lastRef = useRef(null);
+
+  const [mode, setMode] = useState("vertical"); // vertical | horizontal | dual | mandala
+  const [segments, setSegments] = useState(6);
+  const [color, setColor] = useState("ink");
+  const [size, setSize] = useState(30);
+  const [soft, setSoft] = useState(false);
+
+  const refs = useRef({});
+  refs.current = { mode, segments, color, size, soft };
+
+  const fillPaper = useCallback(() => {
+    const cv = canvasRef.current;
+    if (!cv) return;
+    const ctx = cv.getContext("2d");
+    ctx.fillStyle = PAPER;
+    ctx.fillRect(0, 0, CW, CH);
+  }, []);
+
+  useEffect(() => { fillPaper(); }, [fillPaper]);
+
+  // All mirrored/rotated copies of a point for the current mode
+  const points = useCallback((x, y) => {
+    const { mode, segments } = refs.current;
+    const cx = CW / 2, cy = CH / 2;
+    if (mode === "vertical") return [[x, y], [CW - x, y]];
+    if (mode === "horizontal") return [[x, y], [x, CH - y]];
+    if (mode === "dual") return [[x, y], [CW - x, y], [x, CH - y], [CW - x, CH - y]];
+    // mandala: rotational copies + mirrored copies about center
+    const dx = x - cx, dy = y - cy;
+    const r = Math.hypot(dx, dy);
+    const a = Math.atan2(dy, dx);
+    const out = [];
+    const step = (Math.PI * 2) / segments;
+    for (let k = 0; k < segments; k++) {
+      const a1 = a + k * step;
+      const a2 = -a + k * step;
+      out.push([cx + r * Math.cos(a1), cy + r * Math.sin(a1)]);
+      out.push([cx + r * Math.cos(a2), cy + r * Math.sin(a2)]);
+    }
+    return out;
+  }, []);
+
+  const dab = useCallback((ctx, x, y) => {
+    const { size, soft, color } = refs.current;
+    const hex = color === "ink" ? INK : PAPER;
+    for (const [px, py] of points(x, y)) {
+      if (soft) {
+        const g = ctx.createRadialGradient(px, py, 0, px, py, size);
+        g.addColorStop(0, hex);
+        g.addColorStop(1, hex + "00");
+        ctx.fillStyle = g;
+      } else {
+        ctx.fillStyle = hex;
+      }
+      ctx.beginPath();
+      ctx.arc(px, py, size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }, [points]);
+
+  const stroke = useCallback((x, y) => {
+    const cv = canvasRef.current;
+    if (!cv) return;
+    const ctx = cv.getContext("2d");
+    const last = lastRef.current;
+    if (last) {
+      const dx = x - last.x, dy = y - last.y;
+      const dist = Math.hypot(dx, dy);
+      const step = Math.max(refs.current.size / 3.5, 2);
+      const n = Math.max(1, Math.floor(dist / step));
+      for (let i = 1; i <= n; i++) dab(ctx, last.x + (dx * i) / n, last.y + (dy * i) / n);
+    } else {
+      dab(ctx, x, y);
+    }
+    lastRef.current = { x, y };
+  }, [dab]);
+
+  const toCanvas = (e) => {
+    const cv = canvasRef.current;
+    const rect = cv.getBoundingClientRect();
+    const src = e.touches ? e.touches[0] : e;
+    return { x: ((src.clientX - rect.left) / rect.width) * CW, y: ((src.clientY - rect.top) / rect.height) * CH };
+  };
+  const start = (e) => { e.preventDefault(); drawingRef.current = true; lastRef.current = null; const p = toCanvas(e); stroke(p.x, p.y); };
+  const move = (e) => { if (!drawingRef.current) return; e.preventDefault(); const p = toCanvas(e); stroke(p.x, p.y); };
+  const end = () => { drawingRef.current = false; lastRef.current = null; };
+
+  useEffect(() => {
+    const onKey = (e) => {
+      const k = e.key.toLowerCase();
+      if (k === "x") setColor((c) => (c === "ink" ? "paper" : "ink"));
+      if (k === "d") setColor("ink");
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  const PAINT_MODES = [
+    { id: "vertical", label: "Vertical" },
+    { id: "horizontal", label: "Horizontal" },
+    { id: "dual", label: "Dual" },
+    { id: "mandala", label: "Mandala" },
+  ];
+
+  return (
+    <div className="ss-painter">
+      <div className="ss-painter-stage">
+        <canvas
+          ref={canvasRef}
+          width={CW}
+          height={CH}
+          className="ss-canvas"
+          onMouseDown={start}
+          onMouseMove={move}
+          onMouseUp={end}
+          onMouseLeave={end}
+          onTouchStart={start}
+          onTouchMove={move}
+          onTouchEnd={end}
+        />
+        {mode === "vertical" && <div className="ss-axis ss-axis-v" aria-hidden="true" />}
+        {mode === "horizontal" && <div className="ss-axis ss-axis-h" aria-hidden="true" />}
+        {mode === "dual" && (<><div className="ss-axis ss-axis-v" /><div className="ss-axis ss-axis-h" /></>)}
+        {mode === "mandala" && <div className="ss-axis-dot" aria-hidden="true" />}
+        <span className="ss-stage-tag">butterfly, live</span>
+      </div>
+
+      <div className="ss-controls">
+        <div className="ss-control-group">
+          <span className="ss-control-label">Symmetry</span>
+          <div className="ss-seg ss-seg-wrap">
+            {PAINT_MODES.map((m) => (
+              <button key={m.id} className={mode === m.id ? "is-on" : ""} onClick={() => setMode(m.id)}>{m.label}</button>
+            ))}
+          </div>
+        </div>
+
+        {mode === "mandala" && (
+          <div className="ss-control-group">
+            <span className="ss-control-label">Segments — {segments}</span>
+            <input type="range" min="3" max="16" value={segments} onChange={(e) => setSegments(Number(e.target.value))} className="ss-range" />
+          </div>
+        )}
+
+        <div className="ss-control-group">
+          <span className="ss-control-label">Brush</span>
+          <button className={"ss-swap " + (color === "ink" ? "is-ink" : "is-paper")} onClick={() => setColor((c) => (c === "ink" ? "paper" : "ink"))} title="Press X to swap">
+            <span className="ss-swap-chip" />
+            {color === "ink" ? "Black — add" : "White — carve"}
+            <span className="ss-swap-key">X</span>
+          </button>
+        </div>
+
+        <div className="ss-control-group">
+          <span className="ss-control-label">Size</span>
+          <input type="range" min="6" max="90" value={size} onChange={(e) => setSize(Number(e.target.value))} className="ss-range" />
+        </div>
+
+        <div className="ss-control-group">
+          <span className="ss-control-label">Edge</span>
+          <div className="ss-seg">
+            <button className={!soft ? "is-on" : ""} onClick={() => setSoft(false)}>Hard</button>
+            <button className={soft ? "is-on" : ""} onClick={() => setSoft(true)}>Soft</button>
+          </div>
+        </div>
+
+        <button className="ss-clear" onClick={fillPaper}>Clear</button>
+      </div>
+      <p className="ss-painter-hint">
+        This is the butterfly tool in miniature. Switch the axis, then paint —
+        every stroke is mirrored live. <b>X</b> flips to white so you can carve the
+        negative back out, exactly like the video.
+      </p>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Reference figure (image slot with diagram fallback)                */
+/* ------------------------------------------------------------------ */
+
+function RefFigure({ src, Dia, caption }) {
+  return (
+    <figure className="ss-ref">
+      {src ? (
+        <img src={src} alt={caption} className="ss-ref-img" />
+      ) : (
+        <div className="ss-ref-ph">
+          <Dia />
+          <span className="ss-ref-ph-tag">add your still</span>
+        </div>
+      )}
+      <figcaption>{caption}</figcaption>
+    </figure>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Lesson                                                             */
+/* ------------------------------------------------------------------ */
+
+export default function SymmetryInPhotoshop() {
+  return (
+    <div className="ss-root">
+      <style>{CSS}</style>
+
+      <header className="ss-hero">
+        <div className="ss-hero-meta">
+          <span>pLAtform</span><span className="ss-dot" /><span>Photoshop · Symmetry</span>
+        </div>
+        <h1 className="ss-hero-title">Symmetry in <em>Photoshop</em></h1>
+        <p className="ss-hero-dek">
+          Two ways to build symmetry — duplicate-and-transform, or paint straight
+          into it with the Symmetry tool — and the four kinds of symmetry you can
+          combine to get shapes you'd never have drawn on purpose.
+        </p>
+        <div className="ss-hero-rule" />
+        <div className="ss-objectives">
+          <span className="ss-obj-label">In this lesson</span>
+          <ul>
+            <li>Make symmetry by duplicating and transforming layers</li>
+            <li>Reflective, glide reflective, rotational, and translation</li>
+            <li>Paint live symmetry with the butterfly tool</li>
+            <li>Define a shape as a brush and carve the negative with X</li>
+          </ul>
+        </div>
+      </header>
+
+      {/* Two ways */}
+      <section className="ss-section">
+        <div className="ss-process-head">
+          <span className="ss-eyebrow">Start here</span>
+          <h2 className="ss-h2">Two ways to get symmetry</h2>
+        </div>
+        <div className="ss-two-col">
+          <div className="ss-card">
+            <span className="ss-mini-num">A</span>
+            <h3 className="ss-card-title">Duplicate &amp; transform</h3>
+            <p>Works in almost any program. Copy a layer, then flip, rotate, or offset the copy. It's all about <em>duplicating and transforming</em> — the spacing you choose is where the surprises are.</p>
+          </div>
+          <div className="ss-card">
+            <span className="ss-mini-num">B</span>
+            <h3 className="ss-card-title">The Symmetry tool</h3>
+            <p>A Photoshop special. Grab the Brush, click the little <em>butterfly</em> in the options bar, pick an axis, and every stroke mirrors itself as you paint.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Four types */}
+      <section className="ss-section">
+        <div className="ss-process-head">
+          <span className="ss-eyebrow">Method A</span>
+          <h2 className="ss-h2">The four types</h2>
+          <p className="ss-demo-dek">Each is just duplicate-and-transform with a different move. Swap the diagrams for your own frames by filling the <code>REFERENCE</code> object at the top of the file.</p>
+        </div>
+        <div className="ss-types">
+          {TYPES.map((t) => (
+            <div className="ss-type" key={t.key}>
+              <RefFigure src={REFERENCE[t.key]} Dia={t.Dia} caption={t.name} />
+              <p className="ss-type-how">{t.how}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Live painter */}
+      <section className="ss-section">
+        <div className="ss-demo-head">
+          <span className="ss-eyebrow">Method B · Live</span>
+          <h2 className="ss-h2">The Symmetry tool</h2>
+          <p className="ss-demo-dek">
+            The real thing lives under the butterfly icon on the Brush tool. Here's a
+            working stand-in — switch modes and paint to feel how each axis behaves
+            before you're in Photoshop.
+          </p>
+        </div>
+        <SymmetryPainter />
+
+        <div className="ss-tips">
+          <div className="ss-tip">
+            <span className="ss-tip-k">Define Brush Preset</span>
+            <p>Drop an abstract shape onto the canvas, marquee-select it, and choose Edit → Define Brush Preset. Now that weird shape stamps as a brush — feed it into any symmetry mode for instant ornament.</p>
+          </div>
+          <div className="ss-tip">
+            <span className="ss-tip-k">Paint the negative — X</span>
+            <p>Hit X to put white in the foreground and paint back into your marks. Cutting away is half the design, especially in mandala mode where it opens up the center.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Mode gallery */}
+      <section className="ss-section">
+        <div className="ss-process-head">
+          <span className="ss-eyebrow">Reference</span>
+          <h2 className="ss-h2">Butterfly modes</h2>
+        </div>
+        <div className="ss-modes">
+          {MODES.map((m) => (
+            <div className="ss-mode" key={m.key}>
+              <div className="ss-mode-icon">
+                {REFERENCE[m.key] ? <img src={REFERENCE[m.key]} alt={m.name} /> : <m.Icon />}
+              </div>
+              <h4>{m.name}</h4>
+              <p>{m.note}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Shortcuts */}
+      <section className="ss-section">
+        <div className="ss-card ss-shortcuts">
+          <h3 className="ss-card-title">Shortcuts &amp; commands</h3>
+          <ul className="ss-key-list">
+            {SHORTCUTS.map((s) => (
+              <li key={s.k}>
+                <span className="ss-key">{s.k}</span>
+                <span className="ss-key-d">{s.d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <footer className="ss-footer">
+        <span>pLAtform · Ryman Arts</span>
+        <span>Symmetry in Photoshop</span>
+      </footer>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Styles                                                             */
+/* ------------------------------------------------------------------ */
+
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+.ss-root{
+  --paper:#f5efe1; --ink:#1a1512; --oxblood:#8b3a2f; --oxblood-deep:#6e2c23;
+  --line:rgba(26,21,18,.14); --muted:rgba(26,21,18,.60);
+  background:var(--paper); color:var(--ink);
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  max-width:1080px; margin:0 auto; padding:clamp(20px,4vw,56px);
+  -webkit-font-smoothing:antialiased;
+}
+.ss-root *{box-sizing:border-box;}
+.ss-root em{font-style:italic;}
+.ss-root code{font-family:inherit;background:rgba(139,58,47,.1);color:var(--oxblood-deep);padding:1px 5px;font-size:.92em;}
+
+/* Hero */
+.ss-hero{ padding-bottom:clamp(28px,5vw,52px); border-bottom:2px solid var(--ink); }
+.ss-hero-meta{ display:flex; align-items:center; gap:12px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--oxblood); font-weight:600; }
+.ss-dot{width:5px;height:5px;border-radius:50%;background:var(--oxblood);}
+.ss-hero-title{ font-family:'Newsreader',Georgia,serif; font-weight:500; font-size:clamp(44px,9vw,104px); line-height:.92; letter-spacing:-.02em; margin:.28em 0 .12em; }
+.ss-hero-title em{color:var(--oxblood); font-weight:500;}
+.ss-hero-dek{ font-family:'Newsreader',Georgia,serif; font-size:clamp(17px,2.1vw,22px); line-height:1.5; max-width:62ch; margin:0; }
+.ss-hero-rule{height:1px;background:var(--line);margin:clamp(24px,4vw,40px) 0;}
+.ss-objectives{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-start;}
+.ss-obj-label{ font-size:11px;letter-spacing:.16em;text-transform:uppercase; color:var(--muted);font-weight:600;padding-top:3px;white-space:nowrap; }
+.ss-objectives ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;}
+.ss-objectives li{position:relative;padding-left:20px;font-size:14.5px;line-height:1.4;max-width:48ch;}
+.ss-objectives li::before{ content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;background:var(--oxblood);transform:rotate(45deg); }
+
+/* Sections */
+.ss-section{padding:clamp(32px,6vw,64px) 0;border-bottom:1px solid var(--line);}
+.ss-eyebrow{ font-size:11px;letter-spacing:.18em;text-transform:uppercase; color:var(--oxblood);font-weight:600; }
+.ss-h2{ font-family:'Newsreader',Georgia,serif;font-weight:500; font-size:clamp(28px,4.4vw,46px);line-height:1.02;letter-spacing:-.01em;margin:.18em 0 0; }
+.ss-process-head{margin-bottom:30px;max-width:66ch;}
+.ss-demo-head{margin-bottom:24px;max-width:66ch;}
+.ss-demo-dek{font-size:14.5px;line-height:1.55;color:var(--muted);margin:14px 0 0;}
+
+/* Cards / two-col */
+.ss-two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px);}
+.ss-card{border:1.5px solid var(--ink);padding:clamp(20px,3vw,30px);position:relative;}
+.ss-mini-num{ position:absolute;top:18px;right:20px;font-family:'Newsreader',serif;font-size:34px;font-weight:500;color:var(--oxblood);line-height:1; }
+.ss-card-title{ font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:23px;margin:0 0 14px;line-height:1.05; }
+.ss-card p{font-size:14px;line-height:1.6;margin:0;color:var(--ink);}
+.ss-card em{color:var(--oxblood);font-weight:500;}
+
+/* Four types */
+.ss-types{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3.5vw,40px);}
+.ss-type{display:flex;flex-direction:column;gap:14px;}
+.ss-ref{margin:0;}
+.ss-ref-img{display:block;width:100%;aspect-ratio:220/130;object-fit:cover;border:1.5px solid var(--ink);background:#fff;}
+.ss-ref-ph{ position:relative;border:1.5px solid var(--ink);background:#fbf7ee; aspect-ratio:220/130;display:grid;place-items:center;padding:12px; }
+.ss-ref-ph svg{width:100%;height:100%;}
+.ss-ref-ph-tag{ position:absolute;bottom:8px;right:8px;font-size:9px;letter-spacing:.12em;text-transform:uppercase; color:var(--muted);border:1px solid var(--line);padding:2px 6px;background:var(--paper); }
+.ss-ref figcaption{ margin-top:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink); }
+.ss-type-how{font-size:13.5px;line-height:1.58;color:var(--muted);margin:0;}
+
+/* Painter */
+.ss-painter{border:2px solid var(--ink);background:var(--paper);box-shadow:8px 8px 0 var(--ink);}
+.ss-painter-stage{position:relative;line-height:0;border-bottom:2px solid var(--ink);}
+.ss-canvas{display:block;width:100%;height:auto;touch-action:none;cursor:crosshair;background:var(--paper);}
+.ss-axis{position:absolute;pointer-events:none;}
+.ss-axis-v{top:0;bottom:0;left:50%;border-left:1px dashed rgba(139,58,47,.5);}
+.ss-axis-h{left:0;right:0;top:50%;border-top:1px dashed rgba(139,58,47,.5);}
+.ss-axis-dot{position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:rgba(139,58,47,.7);pointer-events:none;}
+.ss-stage-tag{ position:absolute;top:12px;left:12px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--paper);background:var(--oxblood);padding:4px 9px;line-height:1; }
+.ss-controls{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px 24px;padding:16px clamp(14px,3vw,22px);}
+.ss-control-group{display:flex;flex-direction:column;gap:7px;}
+.ss-control-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+
+.ss-seg{display:inline-flex;border:1.5px solid var(--ink);}
+.ss-seg.ss-seg-wrap{flex-wrap:wrap;}
+.ss-seg button{font-family:inherit;font-size:12.5px;font-weight:500;color:var(--ink);background:transparent;border:none;padding:8px 13px;cursor:pointer;}
+.ss-seg button + button{border-left:1.5px solid var(--ink);}
+.ss-seg button.is-on{background:var(--ink);color:var(--paper);}
+
+.ss-swap{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:500;color:var(--ink);background:transparent;border:1.5px solid var(--ink);padding:8px 10px;}
+.ss-swap-chip{width:15px;height:15px;border:1.5px solid var(--ink);}
+.ss-swap.is-ink .ss-swap-chip{background:var(--ink);}
+.ss-swap.is-paper .ss-swap-chip{background:var(--paper);}
+.ss-swap-key{font-size:10px;font-weight:600;color:var(--muted);border:1px solid var(--line);padding:1px 5px;margin-left:2px;}
+
+.ss-range{-webkit-appearance:none;appearance:none;width:150px;height:2px;background:var(--ink);cursor:pointer;}
+.ss-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;background:var(--oxblood);border:2px solid var(--ink);cursor:pointer;}
+.ss-range::-moz-range-thumb{width:16px;height:16px;background:var(--oxblood);border:2px solid var(--ink);cursor:pointer;border-radius:0;}
+
+.ss-clear{margin-left:auto;font-family:inherit;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--oxblood);background:transparent;border:1.5px solid var(--oxblood);padding:9px 16px;cursor:pointer;transition:.12s ease;}
+.ss-clear:hover{background:var(--oxblood);color:var(--paper);}
+.ss-painter-hint{font-size:13px;line-height:1.55;color:var(--muted);margin:0;padding:0 clamp(14px,3vw,22px) 18px;}
+.ss-painter-hint b{color:var(--ink);}
+
+/* Tips */
+.ss-tips{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,26px);margin-top:26px;}
+.ss-tip{border-left:2px solid var(--oxblood);padding:4px 0 4px 18px;}
+.ss-tip-k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--oxblood);}
+.ss-tip p{font-size:13.5px;line-height:1.58;color:var(--ink);margin:8px 0 0;}
+
+/* Mode gallery */
+.ss-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:1.5px solid var(--ink);background:var(--ink);}
+.ss-mode{background:var(--paper);padding:clamp(16px,2.6vw,24px);}
+.ss-mode-icon{width:56px;height:56px;margin-bottom:14px;}
+.ss-mode-icon svg{width:100%;height:100%;}
+.ss-mode-icon img{width:100%;height:100%;object-fit:cover;border:1px solid var(--line);}
+.ss-mode h4{font-family:'Newsreader',serif;font-weight:600;font-size:19px;margin:0 0 6px;}
+.ss-mode p{font-size:12.5px;line-height:1.5;color:var(--muted);margin:0;}
+
+/* Shortcuts */
+.ss-shortcuts{max-width:640px;}
+.ss-key-list{list-style:none;margin:0;padding:0;display:grid;gap:0;}
+.ss-key-list li{display:flex;align-items:center;gap:16px;padding:11px 0;border-top:1px solid var(--line);}
+.ss-key-list li:first-child{border-top:none;}
+.ss-key{flex:none;min-width:158px;font-size:12px;font-weight:600;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);padding:6px 10px;text-align:center;box-shadow:2px 2px 0 var(--ink);}
+.ss-key-d{flex:1;font-size:13.5px;color:var(--ink);}
+
+/* Footer */
+.ss-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:28px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* Responsive */
+@media (max-width:760px){
+  .ss-two-col,.ss-types,.ss-tips{grid-template-columns:1fr;}
+  .ss-modes{grid-template-columns:1fr 1fr;}
+  .ss-painter{box-shadow:5px 5px 0 var(--ink);}
+  .ss-clear{margin-left:0;}
+  .ss-key{min-width:120px;}
+}
+@media (max-width:460px){ .ss-modes{grid-template-columns:1fr;} }
+
+.ss-root :focus-visible{outline:2px solid var(--oxblood);outline-offset:2px;}
+`;

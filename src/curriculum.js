@@ -158,7 +158,9 @@ export const curriculum = [
     title: 'Character Dev & Visual Story Telling',
     overview: 'Moving beyond single-frame fine art into visual sequential storytelling, cinematography, and animation principles.',
     tuesday: {
-      topics: [],
+      topics: [
+        '[NEW] Symmetry in Photoshop — the four types + the Symmetry (butterfly) tool',
+      ],
       readings: [
         'Character development',
         'Environmental storytelling',

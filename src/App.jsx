@@ -437,6 +437,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/05/character-development';
             } else if (cleanText.includes('environmental') && cleanText.includes('storytelling')) {
               linkPath = '/week/05/environmental-storytelling';
+            } else if (cleanText.includes('symmetry') && cleanText.includes('photoshop')) {
+              linkPath = '/week/05/symmetry-in-photoshop';
             } else if (cleanText.includes('sequential') && cleanText.includes('thinking')) {
               linkPath = '/week/05/sequential-thinking';
             } else if (cleanText.includes('storyboarding') && cleanText.includes('fundamentals')) {
@@ -1302,10 +1304,25 @@ export default function App() {
           );
         }
 
+        // Check Tuesday topics for Symmetry in Photoshop
+        let updatedTuesdayTopics = (week5.tuesday && week5.tuesday.topics) || [];
+        const hasSymmetryTopic = updatedTuesdayTopics.some(t => t.includes('Symmetry in Photoshop'));
+        if (!hasSymmetryTopic) {
+          needsUpdate = true;
+          updatedTuesdayTopics = [
+            '[NEW] Symmetry in Photoshop — the four types + the Symmetry (butterfly) tool',
+            ...updatedTuesdayTopics
+          ];
+        }
+
         if (needsUpdate) {
           const updatedCurriculum = [...customCurriculum];
           updatedCurriculum[4] = {
             ...week5,
+            tuesday: {
+              ...(week5.tuesday || {}),
+              topics: updatedTuesdayTopics
+            },
             saturday: {
               ...week5.saturday,
               assignments: updatedAssignments,
