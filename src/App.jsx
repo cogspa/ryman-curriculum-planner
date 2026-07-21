@@ -1276,6 +1276,35 @@ export default function App() {
     }
   }, [startDate]);
 
+  // Automatic migration for Week 5 assignments to ensure old custom databases are updated
+  useEffect(() => {
+    if (customCurriculum && customCurriculum.length > 4) {
+      const week5 = customCurriculum[4];
+      if (week5 && week5.week === 5 && week5.saturday && week5.saturday.assignments) {
+        const hasOldAssignment = week5.saturday.assignments.some(a => 
+          a.includes('Perspective & Atmospheric Lighting') || a.includes('Next Level: *Narrative Keyframe*')
+        );
+        if (hasOldAssignment) {
+          const updatedCurriculum = [...customCurriculum];
+          updatedCurriculum[4] = {
+            ...week5,
+            saturday: {
+              ...week5.saturday,
+              assignments: [
+                '**Base Assignment**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on July 28**.'
+              ]
+            }
+          };
+          setCustomCurriculum(updatedCurriculum);
+          saveLocalCurriculum(updatedCurriculum);
+          if (supabase) {
+            syncRemoteCurriculum(updatedCurriculum);
+          }
+        }
+      }
+    }
+  }, [customCurriculum]);
+
   // Sync from Supabase on load if available
   useEffect(() => {
     if (supabase) {
