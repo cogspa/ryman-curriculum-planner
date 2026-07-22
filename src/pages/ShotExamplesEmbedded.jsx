@@ -243,15 +243,18 @@ export default function ShotExamples() {
     []
   );
 
+  const [lightboxImg, setLightboxImg] = useState(null);
+
   useKey(
     useCallback(
       (e) => {
-        if (grid) return;
+        if (e.key === "Escape") setLightboxImg(null);
+        if (grid || lightboxImg) return;
         if (e.key === "ArrowRight") go(1);
         if (e.key === "ArrowLeft") go(-1);
         if (e.key === "g") setGrid(true);
       },
-      [go, grid]
+      [go, grid, lightboxImg]
     )
   );
 
@@ -290,6 +293,11 @@ export default function ShotExamples() {
         .navbtn:hover { background: ${OX} !important; color: ${PAPER} !important; }
         .thumb { transition: transform .12s ease, box-shadow .12s ease; }
         .thumb:hover { transform: translateY(-2px); }
+        .frame-img-container { position: relative; overflow: hidden; cursor: pointer; }
+        .frame-img-container img { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); object-fit: cover; width: 100%; height: 100%; display: block; }
+        .frame-img-container:hover img { object-fit: contain !important; background: #000; transform: scale(1.02); }
+        .frame-hover-badge { opacity: 0; transition: opacity 0.25s ease; pointer-events: none; }
+        .frame-img-container:hover .frame-hover-badge { opacity: 1; }
       `}</style>
 
       {/* ---------- Masthead ---------- */}
@@ -524,6 +532,7 @@ export default function ShotExamples() {
                     <div style={{ display: "flex", border: `2px solid ${INK}`, background: INK, borderRadius: "6px", overflow: "hidden", boxShadow: "0 4px 16px rgba(0,0,0,0.25)" }}>
                       <Sprockets />
                       <div
+                        className="frame-img-container"
                         style={{
                           flex: 1,
                           display: "flex",
@@ -535,27 +544,44 @@ export default function ShotExamples() {
                           minHeight: dual ? "320px" : still.portrait ? "480px" : "380px",
                           position: "relative"
                         }}
-                        onClick={() => openPicker(si)}
+                        onClick={() => src && setLightboxImg({ src, title: slide.film, sub: `Scan ${still.img} · ${slide.technique}` })}
                         onDragOver={(e) => e.preventDefault()}
                         onDrop={(e) => {
                           e.preventDefault();
                           loadImage(e.dataTransfer.files?.[0], si);
                         }}
                         role="button"
-                        aria-label={`Load scan ${still.img} for this frame`}
+                        aria-label={`Expand scan ${still.img} for this frame`}
                       >
                         {src ? (
-                          <img
-                            src={src}
-                            alt={`${slide.film} still ${still.img}`}
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              maxHeight: dual ? "380px" : still.portrait ? "560px" : "440px",
-                              objectFit: "cover",
-                              display: "block"
-                            }}
-                          />
+                          <>
+                            <img
+                              src={src}
+                              alt={`${slide.film} still ${still.img}`}
+                              style={{
+                                maxHeight: dual ? "380px" : still.portrait ? "560px" : "440px"
+                              }}
+                            />
+                            <div
+                              className="frame-hover-badge mono"
+                              style={{
+                                position: "absolute",
+                                bottom: "12px",
+                                left: "12px",
+                                background: "rgba(139, 58, 47, 0.92)",
+                                color: PAPER,
+                                fontSize: "10px",
+                                letterSpacing: "0.12em",
+                                fontWeight: "bold",
+                                padding: "6px 12px",
+                                borderRadius: "4px",
+                                boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
+                                backdropFilter: "blur(4px)"
+                              }}
+                            >
+                              🔍 HOVER: FULL UNCROPPED SCAN (CLICK TO ENLARGE)
+                            </div>
+                          </>
                         ) : (
                           <div style={{ textAlign: "center", padding: "32px 16px" }}>
                             <div className="mono" style={{ fontSize: "12px", letterSpacing: "0.15em", color: PAPER, marginBottom: "6px" }}>
@@ -718,6 +744,52 @@ export default function ShotExamples() {
         <span>← / → NAVIGATE · G FOR GRID</span>
         <span>RYMAN ARTS · pLAtform LESSON COMPONENT</span>
       </footer>
+
+      {/* ---------- Full Image Lightbox Modal ---------- */}
+      {lightboxImg && (
+        <div
+          onClick={() => setLightboxImg(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(10, 10, 10, 0.94)",
+            zIndex: 99999,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "32px",
+            backdropFilter: "blur(10px)",
+            cursor: "zoom-out"
+          }}
+        >
+          <div className="mono" style={{ position: "absolute", top: "24px", right: "32px", color: PAPER, fontSize: "12px", letterSpacing: "0.15em", opacity: 0.8 }}>
+            [PRESS ESC OR CLICK ANYWHERE TO CLOSE]
+          </div>
+          <div style={{ maxWidth: "92vw", maxHeight: "82vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img
+              src={lightboxImg.src}
+              alt={lightboxImg.title}
+              style={{
+                maxWidth: "100%",
+                maxHeight: "82vh",
+                objectFit: "contain",
+                borderRadius: "6px",
+                boxShadow: "0 16px 64px rgba(0,0,0,0.9)",
+                border: `2px solid ${PAPER}`
+              }}
+            />
+          </div>
+          <div style={{ color: PAPER, marginTop: "20px", textAlign: "center" }}>
+            <div className="serif" style={{ fontSize: "22px", fontWeight: "bold" }}>
+              {lightboxImg.title}
+            </div>
+            <div className="mono" style={{ fontSize: "11px", color: FADE, marginTop: "6px", letterSpacing: "0.12em" }}>
+              {lightboxImg.sub} · FULL UNCROPPED RESOLUTION
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
