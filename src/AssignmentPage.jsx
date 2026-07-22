@@ -100,6 +100,178 @@ function parseInlineMarkdown(text) {
   return processString(withLinks);
 }
 
+function SlideshowCarousel({ slides, title = "Examples of the Instructor's Characters (Joe Micallef :)" }) {
+  const [index, setIndex] = useState(0);
+
+  if (!slides || slides.length === 0) return null;
+
+  const current = slides[index];
+
+  const prevSlide = () => {
+    setIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <div style={{
+      margin: '24px 0 32px',
+      background: '#fff',
+      border: '1.5px solid #1a1512',
+      borderRadius: '12px',
+      boxShadow: '4px 4px 0 #8b3a2f',
+      overflow: 'hidden',
+    }}>
+      {/* Header Bar */}
+      <div style={{
+        padding: '12px 18px',
+        background: '#f5efe1',
+        borderBottom: '1.5px solid #1a1512',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '8px'
+      }}>
+        <div style={{
+          fontFamily: 'Menlo, monospace',
+          fontSize: '11px',
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          color: '#8b3a2f',
+          fontWeight: 'bold',
+        }}>
+          🎨 {title}
+        </div>
+        <div style={{
+          fontFamily: 'Menlo, monospace',
+          fontSize: '11px',
+          color: '#6b6257',
+        }}>
+          Slide {index + 1} of {slides.length}
+        </div>
+      </div>
+
+      {/* Main Image Stage */}
+      <div style={{
+        position: 'relative',
+        background: '#1a1512',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '380px',
+        maxHeight: '520px',
+        padding: '16px',
+      }}>
+        <img
+          src={current.url}
+          alt={current.title || current.caption}
+          style={{
+            maxWidth: '100%',
+            maxHeight: '480px',
+            objectFit: 'contain',
+            borderRadius: '4px',
+          }}
+        />
+
+        {/* Previous Button */}
+        <button
+          onClick={prevSlide}
+          aria-label="Previous Slide"
+          style={{
+            position: 'absolute',
+            left: '12px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            background: 'rgba(245, 239, 225, 0.95)',
+            border: '1.5px solid #1a1512',
+            color: '#1a1512',
+            width: '42px',
+            height: '42px',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            fontSize: '22px',
+            fontWeight: 'bold',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+            transition: 'all 0.15s ease',
+          }}
+        >
+          ‹
+        </button>
+
+        {/* Next Button */}
+        <button
+          onClick={nextSlide}
+          aria-label="Next Slide"
+          style={{
+            position: 'absolute',
+            right: '12px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            background: 'rgba(245, 239, 225, 0.95)',
+            border: '1.5px solid #1a1512',
+            color: '#1a1512',
+            width: '42px',
+            height: '42px',
+            borderRadius: '50%',
+            cursor: 'pointer',
+            fontSize: '22px',
+            fontWeight: 'bold',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+            transition: 'all 0.15s ease',
+          }}
+        >
+          ›
+        </button>
+      </div>
+
+      {/* Caption & Navigation Dots Bar */}
+      <div style={{ padding: '14px 18px', background: '#fff' }}>
+        {current.caption && (
+          <p style={{
+            margin: '0 0 12px',
+            fontSize: '14px',
+            fontFamily: 'Georgia, serif',
+            fontStyle: 'italic',
+            color: '#2a2418',
+            textAlign: 'center',
+          }}>
+            {current.caption}
+          </p>
+        )}
+
+        {/* Thumbnail Indicator Dots */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', alignItems: 'center' }}>
+          {slides.map((slide, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              title={slide.title || `Slide ${i + 1}`}
+              style={{
+                width: i === index ? '24px' : '10px',
+                height: '10px',
+                borderRadius: '5px',
+                background: i === index ? '#8b3a2f' : '#d4c9a8',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AssignmentPage() {
   const { week } = useParams();
   const rawData = assignments[Number(week)];
@@ -541,6 +713,10 @@ export default function AssignmentPage() {
                     <p style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontStyle: 'italic' }}>{section.imageCaption}</p>
                   )}
                 </div>
+              )}
+
+              {section.slideshow && (
+                <SlideshowCarousel slides={section.slideshow} title={section.slideshowTitle} />
               )}
 
               {section.images && (

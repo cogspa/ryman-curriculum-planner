@@ -522,7 +522,16 @@ export const assignments = {
           },
           {
             heading: 'Part 3: Final Character Study',
-            body: 'Create a more fully rendered digital painting of your character in a pose of your choice.\n\nIntegrate the character into one of your previously created environments or backgrounds. Consider how lighting, color, scale, perspective, and composition connect the character to the surrounding world.\n\nThe final image may use either a portrait or landscape orientation.'
+            body: 'Create a more fully rendered digital painting of your character in a pose of your choice.\n\nIntegrate the character into one of your previously created environments or backgrounds. Consider how lighting, color, scale, perspective, and composition connect the character to the surrounding world.\n\nThe final image may use either a portrait or landscape orientation.',
+            slideshowTitle: "Examples of the Instructor's Characters (Joe Micallef :)",
+            slideshow: [
+              { url: '/instructor_examples/cowboy1.png', caption: 'Cowboy Character Study — Joe Micallef :)', title: 'Cowboy Character Study' },
+              { url: '/instructor_examples/fishpolice.png', caption: 'Fish Police Character Concept — Joe Micallef :)', title: 'Fish Police Character Concept' },
+              { url: '/instructor_examples/mermaid.png', caption: 'Mermaid & Aquatic Creature Exploration — Joe Micallef :)', title: 'Mermaid & Aquatic Creature Exploration' },
+              { url: '/instructor_examples/pinkguy.png', caption: 'Pink Guy Character Exploration — Joe Micallef :)', title: 'Pink Guy Character Exploration' },
+              { url: '/instructor_examples/thing.png', caption: 'Monstrous Creature Study — Joe Micallef :)', title: 'Monstrous Creature Study' },
+              { url: '/instructor_examples/turnip_rodeo.png', caption: 'Turnip Rodeo Character Illustration — Joe Micallef :)', title: 'Turnip Rodeo Character Illustration' }
+            ]
           }
         ],
         submission: [
