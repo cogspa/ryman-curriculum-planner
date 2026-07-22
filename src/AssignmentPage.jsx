@@ -291,11 +291,21 @@ export default function AssignmentPage() {
     }
   });
 
+  const [lightboxModal, setLightboxModal] = useState(null);
+
   useEffect(() => {
     if (trackParam && rawData?.tracks?.[trackParam]) {
       setActiveTrack(trackParam);
     }
   }, [trackParam, rawData]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setLightboxModal(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   if (!rawData) {
     return (
@@ -697,20 +707,67 @@ export default function AssignmentPage() {
               <h2 className="phase-title">{section.heading}</h2>
               {section.body && (
                 typeof section.body === 'string' ? (
-                  section.body.split('\n\n').map((para, pi) => (
-                    <p key={pi} className="phase-intro" style={{ marginBottom: '16px' }}>{para}</p>
-                  ))
+                  section.body.split('\n\n').map((para, pi) => {
+                    const trimmed = para.trim();
+                    if (trimmed.startsWith('### ')) {
+                      return (
+                        <h3 key={pi} style={{
+                          fontSize: '18px',
+                          fontWeight: '700',
+                          color: '#8b3a2f',
+                          marginTop: pi > 0 ? '24px' : '8px',
+                          marginBottom: '10px',
+                          fontFamily: 'var(--font-sans, sans-serif)',
+                          borderBottom: '1.5px solid rgba(139, 58, 47, 0.15)',
+                          paddingBottom: '6px',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          {parseInlineMarkdown(trimmed.replace(/^###\s*/, ''))}
+                        </h3>
+                      );
+                    }
+                    if (trimmed.startsWith('## ')) {
+                      return (
+                        <h2 key={pi} style={{
+                          fontSize: '20px',
+                          fontWeight: '700',
+                          color: '#8b3a2f',
+                          marginTop: pi > 0 ? '28px' : '10px',
+                          marginBottom: '12px',
+                          fontFamily: 'var(--font-sans, sans-serif)',
+                          letterSpacing: '-0.01em'
+                        }}>
+                          {parseInlineMarkdown(trimmed.replace(/^##\s*/, ''))}
+                        </h2>
+                      );
+                    }
+                    return (
+                      <p key={pi} className="phase-intro" style={{ marginBottom: '16px', lineHeight: '1.65' }}>
+                        {parseInlineMarkdown(para)}
+                      </p>
+                    );
+                  })
                 ) : (
-                  <p className="phase-intro">{section.body}</p>
+                  <p className="phase-intro">{parseInlineMarkdown(section.body)}</p>
                 )
               )}
               {section.subheading && <p className="phase-sub">{section.subheading}</p>}
 
               {section.imageUrl && (
-                <div style={{ margin: '20px 0', textAlign: 'center' }}>
-                  <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.08)' }} />
+                <div
+                  onClick={() => setLightboxModal({ url: section.imageUrl, title: section.imageCaption || section.heading })}
+                  style={{ margin: '20px 0', textAlign: 'center', cursor: 'pointer' }}
+                >
+                  <img
+                    src={section.imageUrl}
+                    alt={section.imageCaption || section.heading}
+                    style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.08)', transition: 'transform 0.25s ease' }}
+                    className="zoom-on-hover"
+                  />
                   {section.imageCaption && (
-                    <p style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontStyle: 'italic' }}>{section.imageCaption}</p>
+                    <p style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontStyle: 'italic' }}>
+                      {section.imageCaption} <span style={{ fontWeight: '600', color: '#8b3a2f' }}>(Click to enlarge)</span>
+                    </p>
                   )}
                 </div>
               )}
@@ -722,49 +779,88 @@ export default function AssignmentPage() {
               {section.images && (
                 <div style={{
                   display: 'flex',
-                  gap: '16px',
+                  gap: '20px',
                   flexWrap: 'wrap',
-                  marginTop: '14px',
-                  marginBottom: '20px',
+                  marginTop: '18px',
+                  marginBottom: '28px',
                   justifyContent: 'center'
                 }}>
                   {section.images.map((img, idx) => (
-                    <div key={idx} style={{
-                      flex: '1 1 280px',
-                      background: '#fff',
-                      borderRadius: '10px',
-                      border: '1px solid rgba(0, 0, 0, 0.08)',
-                      overflow: 'hidden',
-                      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
-                      maxWidth: '400px'
-                    }}>
+                    <div
+                      key={idx}
+                      onClick={() => setLightboxModal({ url: img.url, title: img.title || img.caption, caption: img.caption })}
+                      style={{
+                        flex: '1 1 300px',
+                        background: '#fff',
+                        borderRadius: '12px',
+                        border: '1.5px solid rgba(0, 0, 0, 0.1)',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.05)',
+                        maxWidth: '440px',
+                        cursor: 'pointer',
+                        transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                        position: 'relative'
+                      }}
+                      className="assignment-image-card"
+                    >
                       <div style={{
                         width: '100%',
-                        aspectRatio: '16 / 10',
+                        height: '240px',
                         overflow: 'hidden',
-                        background: '#f1f0ec',
+                        background: '#0c0c0e',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        position: 'relative'
                       }}>
                         <img
                           src={img.url}
                           alt={img.caption || section.heading}
+                          className="zoom-on-hover"
                           style={{
-                            maxWidth: '100%',
-                            maxHeight: '100%',
+                            width: '100%',
+                            height: '100%',
                             objectFit: 'contain',
-                            display: 'block'
+                            display: 'block',
+                            transition: 'transform 0.3s ease'
                           }}
                         />
+                        <div
+                          style={{
+                            position: 'absolute',
+                            bottom: '10px',
+                            right: '10px',
+                            background: 'rgba(139, 58, 47, 0.9)',
+                            color: '#fff',
+                            fontSize: '11px',
+                            fontWeight: '600',
+                            padding: '4px 10px',
+                            borderRadius: '6px',
+                            backdropFilter: 'blur(4px)',
+                            pointerEvents: 'none',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
+                          }}
+                        >
+                          🔍 Click to Enlarge
+                        </div>
                       </div>
+                      {img.title && (
+                        <div style={{
+                          fontSize: '14px',
+                          fontWeight: 'bold',
+                          color: '#1e293b',
+                          padding: '12px 16px 2px',
+                          fontFamily: 'var(--font-sans, sans-serif)'
+                        }}>
+                          {img.title}
+                        </div>
+                      )}
                       {img.caption && (
                         <p style={{
-                          fontSize: '11px',
-                          fontWeight: '600',
-                          color: 'var(--ink-mid, #64748b)',
-                          textAlign: 'center',
-                          padding: '8px 12px',
+                          fontSize: '12px',
+                          fontWeight: '500',
+                          color: '#64748b',
+                          padding: '4px 16px 14px',
                           margin: 0,
                           fontFamily: 'var(--font-sans, sans-serif)',
                           fontStyle: 'italic'
@@ -1294,7 +1390,66 @@ export default function AssignmentPage() {
             <span style={{ opacity: 0.3 }}>|</span>
             <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
           </div>
-          <LegalDisclaimer style={{ borderTop: 'none', paddingTop: 0 }} />
+          {/* Full Screen Image Lightbox Modal */}
+          {lightboxModal && (
+            <div
+              onClick={() => setLightboxModal(null)}
+              style={{
+                position: 'fixed',
+                inset: 0,
+                background: 'rgba(10, 10, 10, 0.93)',
+                zIndex: 999999,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '24px',
+                backdropFilter: 'blur(8px)',
+                cursor: 'zoom-out'
+              }}
+            >
+              <div style={{
+                position: 'absolute',
+                top: '20px',
+                right: '24px',
+                color: '#fff',
+                fontSize: '12px',
+                fontFamily: 'var(--font-mono, monospace)',
+                letterSpacing: '0.1em',
+                opacity: 0.8
+              }}>
+                [CLICK ANYWHERE OR PRESS ESC TO CLOSE]
+              </div>
+
+              <div style={{ maxWidth: '92vw', maxHeight: '82vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img
+                  src={lightboxModal.url}
+                  alt={lightboxModal.title || 'Enlarged Image'}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '82vh',
+                    objectFit: 'contain',
+                    borderRadius: '8px',
+                    boxShadow: '0 16px 64px rgba(0,0,0,0.8)',
+                    border: '2px solid rgba(255,255,255,0.2)'
+                  }}
+                />
+              </div>
+
+              <div style={{ color: '#fff', marginTop: '16px', textAlign: 'center' }}>
+                {lightboxModal.title && (
+                  <div style={{ fontSize: '18px', fontWeight: 'bold', fontFamily: 'var(--font-sans, sans-serif)' }}>
+                    {lightboxModal.title}
+                  </div>
+                )}
+                {lightboxModal.caption && (
+                  <div style={{ fontSize: '13px', color: '#94a3b8', marginTop: '4px', fontStyle: 'italic' }}>
+                    {lightboxModal.caption}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
