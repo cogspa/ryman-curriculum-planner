@@ -251,9 +251,9 @@ This is why what happens between panels matters as much as what's in them. The s
   },
 
   'storyboarding-fundamentals': {
-    title: 'Storyboarding Fundamentals',
-    pccSources: ['Video: Developing Thumbnail Sketches', 'Thumbnail Examples', 'Assignment 6 — Landscape Progression Part 1', 'Discussion: Thumbnail Sketches for 3D Spaces'],
-    sourceNote: 'PCC teaches thumbnails as a composition tool; storyboarding as a narrative-planning tool extends that foundation.',
+    title: 'Storyboarding Fundamentals & Camera Angles',
+    pccSources: ['Video: Developing Thumbnail Sketches', 'Thumbnail Examples', 'Shot Compositions, Terms and Camera Angles', 'Discussion: Thumbnail Sketches for 3D Spaces'],
+    sourceNote: 'PCC teaches thumbnails as a composition tool; storyboarding and camera angle vocabulary extend that foundation into cinematic visual storytelling.',
     sections: [
       {
         heading: 'What a storyboard is',
@@ -271,7 +271,7 @@ Storyboards are sketches, not illustrations. A storyboard panel that takes more 
       },
       {
         heading: 'Thumbnails as the storyboard foundation',
-        body: `Thumbnails are a ideation and brainstorm tool — small, fast sketches that explore layout and character design before committing to a final image. They're the foundation skill that storyboarding, character dev and world building builds on.
+        body: `Thumbnails are an ideation and brainstorm tool — small, fast sketches that explore layout and character design before committing to a final image. They're the foundation skill that storyboarding, character dev and world building build on.
 
 Thumbnail principles that carry into storyboarding:
 • Small — usually 2 to 4 inches across
@@ -280,75 +280,99 @@ Thumbnail principles that carry into storyboarding:
 • Many — generate dozens, keep the strongest few
 • Black and white — value structure first, color later
 
-For next week: before create finalized, draw 20 thumbnail sets - you may already have a character, but developing simple thumbnails , especially with symmatry tools in photoshop can be very inspiring.`,
+Before creating finalized artwork, draw 20 thumbnail sets — developing simple thumbnails, especially with symmetry tools in Photoshop, provides rapid inspiration.`,
       },
       {
-        heading: 'The five-shot vocabulary',
-        body: `Storyboarding draws on the same vocabulary as cinematography. Five shot sizes cover most narrative needs:
+        heading: '1. Types of Shots and Their Purpose',
+        body: `When developing a storyboard, it's crucial to think about camera angles and how each shot conveys a specific intent. Different shot types emphasize various aspects of the story, creating emotional impact, narrative direction, or a sense of environment:
 
-• Extreme Wide Shot (EWS) — subject is tiny in a vast environment. Establishes location, scale, isolation.
+• **Extreme Long Shot (Wide Shot)**: Establishes the overall environment or setting. Commonly used in establishing shots to orient the audience within the location.
 
-• Wide Shot (WS) — full figure with environmental context. Establishes spatial relationships.
+• **Long Shot**: Focuses on a broader view while introducing key characters or events. Used in introductions to give context and establish character placement.
 
-• Medium Shot (MS) — subject from the waist up. Conversation distance. Most common in dialogue scenes.
+• **Medium Shot**: Brings the focus closer to characters, allowing the audience to engage with their actions, body language, or interactions. Most frequently used for dialogue scenes.
 
-• Close-Up (CU) — face only. Emotional impact, decisive moments.
+• **Close-Up**: Highlights a character's emotions or an important detail, creating a sense of drama or intensity. Ideal for showing emotional reactions and critical narrative beats.
 
-• Extreme Close-Up (ECU) — a single eye, a single object. Intensity, detail, fetishization.
-
-A 3-panel narrative benefits from varying shot size across panels. Wide → Medium → Close-Up is a classic structure: establish the world, then the character, then the emotion. Or invert it: Close-Up → Medium → Wide for a "pull back to reveal" structure.
-
-Holding the same shot size across all three panels can also work intentionally — but only if the lack of camera movement is the point of the story.`,
+• **Extreme Close-Up**: Focuses tightly on a single feature — an eye, a key object, a twitching hand — to emphasize intense focus, tension, or secrecy.`,
+        imageUrl: '/shot_types1.png',
+        imageCaption: 'Camera Shot Compositions & Framing Ranges (Extreme Long Shot to Close-Up)',
       },
       {
-        heading: 'The 180-degree rule',
-        body: `When two characters interact in a scene, an imaginary line runs between them. The camera should stay on one side of this line across the sequence — otherwise the characters appear to swap positions and the reader gets disoriented.
+        heading: 'Shot Composition & Framing Variations',
+        body: `Combining different shot sizes creates a rhythm and narrative flow across sequence panels:
 
-If character A is on the left in panel 1 and character B is on the right, A should stay on the left in panels 2 and 3 unless something has clearly changed their position. Breaking the 180-degree rule confuses the reader for no narrative gain.
+• **Wide → Medium → Close-Up**: A classic narrative sequence that establishes the world, introduces the character, and then locks onto their emotional reaction.
 
-For a 3-panel narrative with a single character, this matters less. But if your three panels involve a character looking at something — another character, an object, a vista — the direction they look in panel 1 should remain consistent unless they physically turn.`,
+• **Close-Up → Medium → Wide**: The "pull-back to reveal" sequence, starting with intense detail and expanding outward to surprise the audience with spatial context.
+
+Holding the same shot size across panels can also be used intentionally — but only when maintaining a static, uncomfortable camera is central to the mood of the scene.`,
+        imageUrl: '/shot_types2.png',
+        imageCaption: 'Shot Placement & Compositional Framing Variations',
       },
       {
-        heading: 'Beat structure — what each panel does',
-        body: `In a 3-panel story, each panel does a specific narrative job:
+        heading: '2. Special Camera Angles',
+        body: `Specialized camera angles break standard eye-level views to evoke psychological reactions:
 
-Panel 1 — Setup. Establish the world, the character, the situation. What is the status quo before the story begins?
+• **Dutch Tilt (Tilt Shot)**: The camera is tilted off-level to create disorientation, tension, instability, action, chase, or dream sequences. It signals to the viewer that something is wrong or chaotic.
 
-Panel 2 — Disruption. Something happens that changes the situation. The protagonist makes a choice, encounters a problem, sees something they didn't expect.
+• **Worm\'s Eye View**: Shows a scene from ground level looking upward. It gives a unique perspective as if the character is small or lying down, or makes the subject above appear monumental, dominant, and heroic.
 
-Panel 3 — Consequence. The result of the disruption. What is the new state? What changed?
+• **Pitch Shot**: The camera is placed at ground level directly in the path of motion, giving the effect of the subject passing directly over the camera. Frequently used in high-octane action sequences.
 
-This is the smallest possible story arc. It's the same structure as a setup/punchline joke, a haiku, a magic trick. The constraint is the discipline.
-
-Variations:
-• Setup → Tension → Resolution
-• Stable → Unstable → New Stable
-• Question → Investigation → Answer
-• Promise → Test → Reveal
-
-Pick the variation that fits your story and let it shape the three panels.`,
+• **Vertical Shot / Zolly Shot (Dolly Zoom)**: Combines a lens zoom-in with physical camera movement backward. This causes the background to recede dramatically while the subject remains constant in size, visually portraying sudden shock, realization, or vertigo.`,
+        imageUrl: '/Dutch_angles.png',
+        imageCaption: 'Dutch Angles & Dynamic Camera Tilts for Psychological Disorientation',
       },
       {
-        heading: 'The storyboard pitch test',
-        body: `A finished storyboard should pass a simple test: hand the three panels to someone who knows nothing about your story, and they should be able to describe the narrative back to you.
+        heading: '3. Camera Movements',
+        body: `Camera movements guide the viewer\'s eye through action across panels:
 
-If they can, the storyboard works. If they can't, something is broken — usually either the panels don't follow logically from each other, or one of the panels is doing too much work, or one of the panels is doing too little.
+• **Panning**: The camera remains fixed on a pivot (or tripod) but turns left-to-right or tilts up-and-down to follow subject movement.
 
-The fix is almost never "make the drawing better." The fix is to clarify the beat structure, change a shot size, or rearrange the order of information within a panel.
+• **Tracking Shot**: The camera moves physically alongside or behind the subject, maintaining spatial connection through the environment.
 
-Pitch the storyboard before you render the panels. It's the cheapest debugging you'll ever do.`,
+• **Zoom vs. Trucking**:
+  - **Zoom**: The camera lens adjusts focal length in or out while the camera body stays stationary.
+  - **Trucking**: The camera body physically travels closer to or farther from the subject, adding true parallax and depth movement.
+
+• **Camera Rotation**: Indicates a rotation in camera focus direction, traditionally noted using curved directional arrows drawn over storyboard panels.`,
       },
       {
-        heading: 'Cinematography & Special Camera Angles',
-        body: `A rich storyboard draws upon deep camera vocabulary to direct focus, build tension, or establish psychological states:
+        heading: '4. Composition Techniques & Spatial Depth',
+        body: `Effective storyboards use composition to direct attention and construct believable 3D space:
 
-• Dutch Tilt (or tilt shot) — tilting the camera slightly off-center to create disorientation, tension, panic, instability, or dreamlike sequences. It signals to the viewer that something is fundamentally wrong in the narrative world.
+• **Rule of Thirds**: Avoid placing main subjects in the dead center of the frame. Dividing the canvas into a 3×3 grid helps construct dynamic, balanced compositions that guide the viewer's eye.
 
-• Worm's Eye View — placing the camera on the ground looking straight up at the subject. It makes the subject appear monumental, dominant, heroic, or threatening, while making the viewer feel small and powerless.
+• **Creating Spatial Depth**: Use overlapping shapes, scale contrast, and camera placement to establish depth. Layering foreground, middle ground, and background elements gives a strong 3D impression to a 2D drawing.`,
+      },
+      {
+        heading: '5. The 180-Degree Rule and Jump Cuts',
+        body: `Maintaining clear spatial orientation is essential for reader comprehension:
 
-• Pitch Shot — placing the camera at ground level directly in the subject's path of motion, making the subject appear to pass over the camera. It adds visceral physical scale and speed.
+• **180-Degree Rule**: When staging a scene between two subjects, draw an imaginary line connecting them. The camera must stay on one side of this axis across shots so characters maintain consistent screen direction (e.g., character A on left, character B on right).
 
-• Zolly Shot (Vertical/Dolly Zoom) — combining a physical camera movement backward with a lens zoom-in, causing the background to recede dramatically while the subject remains constant in size. This creates an optical compression effect that visualizes sudden, gut-wrenching realizations or psychological vertigo.`,
+• **Crossing the Line**: Breaking the 180-degree rule causes jarring spatial confusion unless carefully executed. To transition across the line smoothly:
+  1. Insert a neutral shot (e.g., a straight-on head shot looking directly at the camera).
+  2. Use a cushion shot (a shot placed between subjects to smooth the transition).
+  3. Use a cutaway shot (cutting to an external detail or object before resetting orientation).`,
+      },
+      {
+        heading: '6. Special Effects Shots',
+        body: `Cinematic techniques add dramatic flare when used at climax beats:
+
+• **Bullet Time**: A slow-motion effect created by capturing a subject frozen in time while the camera perspective orbits around them (popularized by *The Matrix*).
+
+• **Rack Focus**: The camera lens shifts focal plane between foreground and background objects, dramatically shifting reader attention from one narrative element to another.`,
+      },
+      {
+        heading: '7. Beat Structure & Storyboard Pitch Test',
+        body: `In a 3-panel narrative, each panel fulfills a distinct beat:
+• **Panel 1 — Setup**: Establish world, character, and status quo.
+• **Panel 2 — Disruption**: An event, choice, or obstacle interrupts the status quo.
+• **Panel 3 — Consequence**: The resolution, reaction, or new state of reality.
+
+**The Pitch Test**: Hand your storyboard panels to someone unfamiliar with your story. If they can describe the narrative sequence back to you accurately, your shot choices and beats are working effectively!`,
       },
     ],
   },
