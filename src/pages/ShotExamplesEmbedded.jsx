@@ -220,7 +220,7 @@ const useKey = (handler) => {
 };
 
 const Sprockets = () => (
-  <div className="flex flex-col justify-between py-2 px-1" aria-hidden="true">
+  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '8px 4px', background: INK, flexShrink: 0 }} aria-hidden="true">
     {[...Array(8)].map((_, i) => (
       <div key={i} style={{ width: 10, height: 14, background: PAPER, borderRadius: 2 }} />
     ))}
@@ -281,67 +281,89 @@ export default function ShotExamples() {
   };
 
   return (
-    <div className="min-h-screen w-full" style={{ background: PAPER, color: INK }}>
+    <div style={{ minHeight: "100vh", width: "100%", background: PAPER, color: INK, fontFamily: "Georgia, serif", display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,400&display=swap');
         .mono { font-family: 'IBM Plex Mono', monospace; }
-        .serif { font-family: 'Newsreader', serif; }
-        .frame-slot { transition: outline-color .15s ease; }
-        .frame-slot:hover { outline-color: ${OX}; }
+        .serif { font-family: 'Newsreader', Georgia, serif; }
         .navbtn { transition: background .12s ease, color .12s ease; }
-        .navbtn:hover { background: ${OX}; color: ${PAPER}; }
+        .navbtn:hover { background: ${OX} !important; color: ${PAPER} !important; }
         .thumb { transition: transform .12s ease, box-shadow .12s ease; }
         .thumb:hover { transform: translateY(-2px); }
-        @media (prefers-reduced-motion: reduce) {
-          .frame-slot, .navbtn, .thumb { transition: none; }
-        }
       `}</style>
 
       {/* ---------- Masthead ---------- */}
       <header
-        className="flex items-end justify-between px-6 pt-5 pb-4"
-        style={{ borderBottom: `2px solid ${INK}` }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "20px 32px",
+          borderBottom: `2px solid ${INK}`,
+          background: "#eae3d1",
+          flexWrap: "wrap",
+          gap: "12px"
+        }}
       >
         <div>
           <Link
             to="/week/05"
-            className="mono text-[11px] tracking-[0.15em] mb-2 inline-block font-bold hover:underline"
-            style={{ color: OX, textDecoration: 'none' }}
+            className="mono"
+            style={{
+              fontSize: "11px",
+              letterSpacing: "0.15em",
+              marginBottom: "6px",
+              display: "inline-block",
+              fontWeight: "bold",
+              color: OX,
+              textDecoration: "none"
+            }}
           >
             ← BACK TO WEEK 05
           </Link>
-          <div className="mono text-[11px] tracking-[0.25em] mb-1" style={{ color: OX }}>
+          <div className="mono" style={{ fontSize: "11px", letterSpacing: "0.25em", color: OX, marginBottom: "4px" }}>
             pLAtform · ADVANCED STORYBOARDING
           </div>
-          <h1 className="serif font-semibold leading-none" style={{ fontSize: 34 }}>
-            Shot Examples
+          <h1 className="serif" style={{ fontSize: "32px", fontWeight: "600", margin: 0, lineHeight: 1.1 }}>
+            Shot Examples &amp; Framing Analysis
           </h1>
         </div>
-        <div className="flex items-end gap-4">
+
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <button
-            className="navbtn mono text-[11px] tracking-widest px-3 py-2"
-            style={{ border: `1.5px solid ${INK}` }}
+            className="navbtn mono"
+            style={{
+              fontSize: "11px",
+              letterSpacing: "0.12em",
+              padding: "8px 14px",
+              border: `1.5px solid ${INK}`,
+              background: grid ? OX : PAPER,
+              color: grid ? PAPER : INK,
+              cursor: "pointer",
+              fontWeight: "bold",
+              borderRadius: "4px"
+            }}
             onClick={() => setGrid((g) => !g)}
           >
-            {grid ? "CLOSE GRID" : "SHOT GRID [G]"}
+            {grid ? "CLOSE GRID [G]" : "SHOT GRID [G]"}
           </button>
-          <div className="mono text-right leading-tight">
-            <div className="text-[22px] font-semibold" style={{ color: OX }}>
+          <div className="mono" style={{ textAlign: "right" }}>
+            <div style={{ fontSize: "24px", fontWeight: "bold", color: OX, lineHeight: 1 }}>
               {String(idx + 1).padStart(2, "0")}
             </div>
-            <div className="text-[10px]" style={{ color: FADE }}>
+            <div style={{ fontSize: "10px", color: FADE, textTransform: "uppercase" }}>
               of {SLIDES.length}
             </div>
           </div>
         </div>
       </header>
 
-      {/* shared hidden file input */}
+      {/* Shared hidden file input */}
       <input
         ref={fileRef}
         type="file"
         accept="image/*"
-        className="hidden"
+        style={{ display: "none" }}
         onChange={(e) => {
           loadImage(e.target.files?.[0]);
           e.target.value = "";
@@ -351,13 +373,21 @@ export default function ShotExamples() {
       {/* ---------- Grid overview ---------- */}
       {grid ? (
         <div
-          className="p-6 grid gap-4"
-          style={{ gridTemplateColumns: "repeat(auto-fill,minmax(200px,1fr))" }}
+          style={{
+            padding: "32px",
+            display: "grid",
+            gap: "20px",
+            gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+            maxWidth: "1280px",
+            margin: "0 auto",
+            width: "100%",
+            boxSizing: "border-box"
+          }}
         >
           {SLIDES.map((s, i) => (
             <button
               key={s.id}
-              className="thumb text-left"
+              className="thumb"
               onClick={() => {
                 setIdx(i);
                 setGrid(false);
@@ -366,26 +396,41 @@ export default function ShotExamples() {
                 background: "#fff",
                 border: `1.5px solid ${i === idx ? OX : LINE}`,
                 boxShadow: "3px 3px 0 " + (i === idx ? OX : LINE),
+                borderRadius: "8px",
+                padding: "12px",
+                cursor: "pointer",
+                textAlign: "left",
+                display: "flex",
+                flexDirection: "column"
               }}
             >
               <div
-                className="w-full flex items-center justify-center overflow-hidden"
-                style={{ height: 120, background: INK }}
+                style={{
+                  width: "100%",
+                  height: "130px",
+                  background: INK,
+                  borderRadius: "4px",
+                  overflow: "hidden",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "10px"
+                }}
               >
                 {firstLoaded(s) ? (
-                  <img src={firstLoaded(s)} alt={s.film} className="w-full h-full object-cover" />
+                  <img src={firstLoaded(s)} alt={s.film} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 ) : (
-                  <span className="mono text-[10px]" style={{ color: FADE }}>
+                  <span className="mono" style={{ fontSize: "10px", color: FADE }}>
                     SCAN {s.stills.map((st) => String(st.img).padStart(2, "0")).join(" + ")}
                   </span>
                 )}
               </div>
-              <div className="p-2">
-                <div className="mono text-[9px] tracking-widest" style={{ color: OX }}>
+              <div>
+                <div className="mono" style={{ fontSize: "10px", letterSpacing: "0.12em", color: OX, fontWeight: "bold" }}>
                   {SECTIONS[s.section].n} · {SECTIONS[s.section].label.toUpperCase()}
                 </div>
-                <div className="serif text-[15px] leading-tight">
-                  {s.film} {s.year && <span style={{ color: FADE }}>({s.year})</span>}
+                <div className="serif" style={{ fontSize: "16px", fontWeight: "600", color: INK, marginTop: "2px" }}>
+                  {s.film} {s.year && <span style={{ color: FADE, fontWeight: "normal" }}>({s.year})</span>}
                 </div>
               </div>
             </button>
@@ -394,13 +439,22 @@ export default function ShotExamples() {
       ) : (
         /* ---------- Slide view ---------- */
         <main
-          className="px-6 py-6 grid gap-8"
-          style={{ gridTemplateColumns: "minmax(0, 5fr) minmax(0, 4fr)" }}
+          style={{
+            padding: "32px",
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1.25fr) minmax(0, 1fr)",
+            gap: "36px",
+            maxWidth: "1360px",
+            margin: "0 auto",
+            width: "100%",
+            boxSizing: "border-box",
+            flex: 1
+          }}
         >
           {/* --- Storyboard frame(s) --- */}
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <div className="mono text-[11px] tracking-widest" style={{ color: FADE }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
+              <div className="mono" style={{ fontSize: "11px", letterSpacing: "0.12em", color: FADE, fontWeight: "bold" }}>
                 {dual
                   ? `PAIRED EXAMPLE · SCANS ${slide.stills
                       .map((s) => String(s.img).padStart(2, "0"))
@@ -411,46 +465,75 @@ export default function ShotExamples() {
               </div>
               {!dual && (
                 <button
-                  className="navbtn mono text-[10px] tracking-widest px-2 py-1"
-                  style={{ border: `1.5px solid ${INK}` }}
+                  className="navbtn mono"
+                  style={{
+                    fontSize: "10px",
+                    letterSpacing: "0.1em",
+                    padding: "4px 10px",
+                    border: `1.5px solid ${INK}`,
+                    background: PAPER,
+                    color: INK,
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                    borderRadius: "4px"
+                  }}
                   onClick={() => openPicker(0)}
                 >
-                  LOAD STILL
+                  REPLACE STILL
                 </button>
               )}
             </div>
 
             <div
-              className={dual ? "grid gap-3" : ""}
-              style={dual ? { gridTemplateColumns: "1fr 1fr" } : undefined}
+              style={{
+                display: "grid",
+                gap: "16px",
+                gridTemplateColumns: dual ? "1fr 1fr" : "1fr",
+                alignItems: "start"
+              }}
             >
               {slide.stills.map((still, si) => {
                 const k = keyFor(slide, si);
                 const src = images[k] || EMBEDDED[still.img];
                 return (
-                  <div key={k}>
+                  <div key={k} style={{ display: "flex", flexDirection: "column" }}>
                     {dual && (
-                      <div className="flex items-center justify-between mb-1">
-                        <div className="mono text-[10px] tracking-widest" style={{ color: OX }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
+                        <div className="mono" style={{ fontSize: "10px", letterSpacing: "0.1em", color: OX, fontWeight: "bold" }}>
                           {still.tag} · SCAN {String(still.img).padStart(2, "0")}
                         </div>
                         <button
-                          className="navbtn mono text-[9px] tracking-widest px-2 py-1"
-                          style={{ border: `1.5px solid ${INK}` }}
+                          className="navbtn mono"
+                          style={{
+                            fontSize: "9px",
+                            letterSpacing: "0.1em",
+                            padding: "3px 8px",
+                            border: `1.5px solid ${INK}`,
+                            background: PAPER,
+                            color: INK,
+                            cursor: "pointer",
+                            fontWeight: "bold",
+                            borderRadius: "3px"
+                          }}
                           onClick={() => openPicker(si)}
                         >
-                          LOAD
+                          REPLACE
                         </button>
                       </div>
                     )}
-                    <div className="flex" style={{ border: `2px solid ${INK}`, background: INK }}>
+                    <div style={{ display: "flex", border: `2px solid ${INK}`, background: INK, borderRadius: "6px", overflow: "hidden", boxShadow: "0 4px 16px rgba(0,0,0,0.25)" }}>
                       <Sprockets />
                       <div
-                        className="frame-slot flex-1 flex items-center justify-center cursor-pointer overflow-hidden"
                         style={{
-                          minHeight: dual ? 300 : still.portrait ? 460 : 340,
-                          outline: `2px dashed ${src ? "transparent" : FADE}`,
-                          outlineOffset: -10,
+                          flex: 1,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          cursor: "pointer",
+                          overflow: "hidden",
+                          background: "#080808",
+                          minHeight: dual ? "320px" : still.portrait ? "480px" : "380px",
+                          position: "relative"
                         }}
                         onClick={() => openPicker(si)}
                         onDragOver={(e) => e.preventDefault()}
@@ -465,19 +548,21 @@ export default function ShotExamples() {
                           <img
                             src={src}
                             alt={`${slide.film} still ${still.img}`}
-                            className="max-w-full object-contain"
-                            style={{ maxHeight: dual ? 380 : still.portrait ? 560 : 420 }}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              maxHeight: dual ? "380px" : still.portrait ? "560px" : "440px",
+                              objectFit: "cover",
+                              display: "block"
+                            }}
                           />
                         ) : (
-                          <div className="text-center px-6 py-12">
-                            <div
-                              className="mono text-[12px] tracking-[0.2em] mb-2"
-                              style={{ color: PAPER }}
-                            >
+                          <div style={{ textAlign: "center", padding: "32px 16px" }}>
+                            <div className="mono" style={{ fontSize: "12px", letterSpacing: "0.15em", color: PAPER, marginBottom: "6px" }}>
                               DROP SCAN {String(still.img).padStart(2, "0")} HERE
                             </div>
-                            <div className="serif italic text-[13px]" style={{ color: FADE }}>
-                              Upload order matches the page scans (1–11).
+                            <div className="serif" style={{ fontStyle: "italic", fontSize: "13px", color: FADE }}>
+                              Click or drag file to swap scan
                             </div>
                           </div>
                         )}
@@ -490,26 +575,57 @@ export default function ShotExamples() {
             </div>
 
             {/* Nav */}
-            <div className="flex items-center justify-between mt-3">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "24px", paddingTop: "16px", borderTop: `1px solid ${LINE}` }}>
               <button
-                className="navbtn mono text-[12px] tracking-widest px-4 py-2"
-                style={{ border: `1.5px solid ${INK}` }}
+                className="navbtn mono"
+                style={{
+                  fontSize: "11px",
+                  letterSpacing: "0.12em",
+                  padding: "8px 18px",
+                  border: `1.5px solid ${INK}`,
+                  background: PAPER,
+                  color: INK,
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                  borderRadius: "4px"
+                }}
                 onClick={() => go(-1)}
               >
                 ← PREV
               </button>
-              <div className="flex gap-1" aria-hidden="true">
+
+              <div style={{ display: "flex", gap: "6px", alignItems: "center" }} aria-hidden="true">
                 {SLIDES.map((s, i) => (
                   <button
                     key={s.id}
                     onClick={() => setIdx(i)}
-                    style={{ width: 18, height: 5, background: i === idx ? OX : LINE }}
+                    title={s.film}
+                    style={{
+                      width: i === idx ? "20px" : "8px",
+                      height: "8px",
+                      borderRadius: "4px",
+                      background: i === idx ? OX : LINE,
+                      border: "none",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease"
+                    }}
                   />
                 ))}
               </div>
+
               <button
-                className="navbtn mono text-[12px] tracking-widest px-4 py-2"
-                style={{ border: `1.5px solid ${INK}` }}
+                className="navbtn mono"
+                style={{
+                  fontSize: "11px",
+                  letterSpacing: "0.12em",
+                  padding: "8px 18px",
+                  border: `1.5px solid ${INK}`,
+                  background: PAPER,
+                  color: INK,
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                  borderRadius: "4px"
+                }}
                 onClick={() => go(1)}
               >
                 NEXT →
@@ -518,56 +634,64 @@ export default function ShotExamples() {
           </div>
 
           {/* --- Analysis panel --- */}
-          <div>
-            <div className="mono text-[11px] tracking-[0.25em] mb-1" style={{ color: OX }}>
+          <div style={{ background: "#fcf8f0", padding: "28px 32px", borderRadius: "8px", border: `1.5px solid ${LINE}`, height: "fit-content", boxShadow: "0 4px 16px rgba(0,0,0,0.03)" }}>
+            <div className="mono" style={{ fontSize: "11px", letterSpacing: "0.2em", color: OX, fontWeight: "bold", marginBottom: "4px" }}>
               {sec.n} · {sec.label.toUpperCase()}
             </div>
-            <h2 className="serif font-semibold leading-tight" style={{ fontSize: dual ? 26 : 30 }}>
+            <h2 className="serif" style={{ fontSize: dual ? "26px" : "30px", fontWeight: "bold", lineHeight: 1.2, margin: "4px 0 6px", color: INK }}>
               {slide.film}{" "}
               {slide.year && (
-                <span className="font-normal" style={{ color: FADE }}>
+                <span style={{ fontWeight: "normal", color: FADE, fontSize: "0.85em" }}>
                   ({slide.year})
                 </span>
               )}
             </h2>
             {slide.dir && (
-              <div className="serif italic text-[15px] mb-3" style={{ color: FADE }}>
+              <div className="serif" style={{ fontStyle: "italic", fontSize: "15px", color: FADE, marginBottom: "16px" }}>
                 dir. {slide.dir}
               </div>
             )}
 
-            <div className="mt-3 mb-4" style={{ borderTop: `2px solid ${INK}` }} />
+            <div style={{ borderTop: `2px solid ${INK}`, margin: "16px 0" }} />
 
-            <div className="mono text-[10px] tracking-[0.2em] mb-1" style={{ color: FADE }}>
+            <div className="mono" style={{ fontSize: "10px", letterSpacing: "0.2em", color: FADE, marginBottom: "4px" }}>
               TECHNIQUE
             </div>
-            <div className="serif text-[19px] mb-4" style={{ color: OX }}>
+            <div className="serif" style={{ fontSize: "19px", fontWeight: "bold", color: OX, marginBottom: "16px" }}>
               {slide.technique}
             </div>
 
-            <div className="mono text-[10px] tracking-[0.2em] mb-1" style={{ color: FADE }}>
+            <div className="mono" style={{ fontSize: "10px", letterSpacing: "0.2em", color: FADE, marginBottom: "4px" }}>
               PURPOSE
             </div>
-            <p className="serif text-[16px] leading-relaxed mb-4">{slide.purpose}</p>
+            <p className="serif" style={{ fontSize: "16px", lineHeight: 1.6, margin: "0 0 20px", color: INK }}>{slide.purpose}</p>
 
-            <div className="mono text-[10px] tracking-[0.2em] mb-2" style={{ color: FADE }}>
+            <div className="mono" style={{ fontSize: "10px", letterSpacing: "0.2em", color: FADE, marginBottom: "10px" }}>
               WHAT TO LOOK FOR IN THE STILL{dual ? "S" : ""}
             </div>
-            <ul className="serif text-[15.5px] leading-relaxed space-y-2">
+            <ul style={{ listStyle: "none", padding: 0, margin: "0 0 20px", display: "flex", flexDirection: "column", gap: "10px" }}>
               {slide.look.map((l, i) => (
-                <li key={i} className="flex gap-3">
-                  <span className="mono text-[11px] mt-1 flex-shrink-0" style={{ color: OX }}>
+                <li key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <span className="mono" style={{ fontSize: "11px", color: OX, fontWeight: "bold", flexShrink: 0, marginTop: "3px" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span>{l}</span>
+                  <span className="serif" style={{ fontSize: "15.5px", lineHeight: 1.5, color: INK }}>{l}</span>
                 </li>
               ))}
             </ul>
 
             {slide.note && (
               <div
-                className="mt-5 px-3 py-2 serif italic text-[14px]"
-                style={{ borderLeft: `3px solid ${OX}`, color: FADE }}
+                className="serif"
+                style={{
+                  marginTop: "20px",
+                  padding: "12px 16px",
+                  fontStyle: "italic",
+                  fontSize: "14px",
+                  borderLeft: `3px solid ${OX}`,
+                  background: "rgba(139, 58, 47, 0.05)",
+                  color: "#4a3f35"
+                }}
               >
                 {slide.note}
               </div>
@@ -577,8 +701,19 @@ export default function ShotExamples() {
       )}
 
       <footer
-        className="px-6 py-3 flex justify-between mono text-[10px] tracking-widest"
-        style={{ borderTop: `1px solid ${LINE}`, color: FADE }}
+        className="mono"
+        style={{
+          padding: "16px 32px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          borderTop: `1px solid ${LINE}`,
+          fontSize: "11px",
+          letterSpacing: "0.12em",
+          color: FADE,
+          background: "#eae3d1",
+          marginTop: "auto"
+        }}
       >
         <span>← / → NAVIGATE · G FOR GRID</span>
         <span>RYMAN ARTS · pLAtform LESSON COMPONENT</span>
