@@ -374,6 +374,12 @@ Holding the same shot size across panels can also be used intentionally — but 
 
 **The Pitch Test**: Hand your storyboard panels to someone unfamiliar with your story. If they can describe the narrative sequence back to you accurately, your shot choices and beats are working effectively!`,
       },
+      {
+        heading: '8. Interactive Lesson: Cinematic Shot Examples',
+        body: `Explore 10 interactive film still analyses — including orientation pairing, camera placement, lens compression, and narrative intent:
+
+👉 [Open Interactive Cinematic Shot Examples Lesson](/week/05/shot-examples)`,
+      },
     ],
   },
 
@@ -483,5 +489,6 @@ A clean delivery package is part of the assignment. Sloppy filenames lose points
 export const topicList = [
   { key: 'symmetry-in-photoshop', label: 'Symmetry in Photoshop — the four types + the Symmetry (butterfly) tool', isNew: true },
   { key: 'sequential-thinking', label: 'Sequential thinking', isNew: true },
-  { key: 'storyboarding-fundamentals', label: 'Storyboarding fundamentals', isNew: true },
+  { key: 'storyboarding-fundamentals', label: 'Storyboarding fundamentals & camera angles', isNew: true },
+  { key: 'shot-examples', label: 'Cinematic Shot Examples & Framing Analysis', isNew: true },
 ];

@@ -443,6 +443,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/05/sequential-thinking';
             } else if (cleanText.includes('storyboarding') && cleanText.includes('fundamentals')) {
               linkPath = '/week/05/storyboarding-fundamentals';
+            } else if (cleanText.includes('shot') && cleanText.includes('examples')) {
+              linkPath = '/week/05/shot-examples';
             }
           } else if (weekNumber === 6 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();

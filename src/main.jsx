@@ -37,6 +37,7 @@ import Week04TopicDetail from './pages/Week04TopicDetail.jsx';
 import Week05Overview from './pages/Week05Overview.jsx';
 import Week05TopicDetail from './pages/Week05TopicDetail.jsx';
 import SymmetryInPhotoshop from './pages/SymmetryInPhotoshop.jsx';
+import ShotExamplesEmbedded from './pages/ShotExamplesEmbedded.jsx';
 import Week06Overview from './pages/Week06Overview.jsx';
 import Week06TopicDetail from './pages/Week06TopicDetail.jsx';
 import Week07Overview from './pages/Week07Overview.jsx';
@@ -93,6 +94,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/04/:topicKey" element={<Week04TopicDetail />} />
           <Route path="/week/05" element={<Week05Overview />} />
           <Route path="/week/05/symmetry-in-photoshop" element={<SymmetryInPhotoshop />} />
+          <Route path="/week/05/shot-examples" element={<ShotExamplesEmbedded />} />
           <Route path="/week/05/:topicKey" element={<Week05TopicDetail />} />
           <Route path="/week/06" element={<Week06Overview />} />
           <Route path="/week/06/:topicKey" element={<Week06TopicDetail />} />
