@@ -518,7 +518,19 @@ export const assignments = {
           },
           {
             heading: 'Part 2: Character Model Sheet',
-            body: '### Character Development and Emotional Range\nUsing your selected thumbnail as a starting point, create a model sheet that communicates the character’s full-body design, personality, and emotional range.\n\nThe model sheet may remain somewhat rough or sketch-based at this stage, but the character’s design should be clear and readable.\n\n### Full-Body Character Design\nCreate at least one full-body drawing of your character. During this stage, the drawing may be as simple or detailed as needed to communicate the idea.\n\nPossible visual approaches include:\n• Loose or sketchy drawing\n• Cartoon character\n• Anime-inspired character\n• Realistic or stylized character\n• Any other visual style that supports your concept\n\n### Facial Expressions and Poses\nCreate five distinct facial expressions, poses, or a combination of both. These studies should communicate a range of emotions and reveal something about the character’s personality.\n\nUse Preston Blair’s *Learn How to Draw Animated Characters* and Mark Simon’s *Facial Expressions* as references. Pay attention to how changes in the eyes, eyebrows, mouth, cheeks, posture, and gesture communicate emotion.\n\nPlace the character’s name at the top of the model sheet.'
+            body: '### Character Development and Emotional Range\nUsing your selected thumbnail as a starting point, create a model sheet that communicates the character’s full-body design, personality, and emotional range.\n\nThe model sheet may remain somewhat rough or sketch-based at this stage, but the character’s design should be clear and readable.\n\n### Full-Body Character Design\nCreate at least one full-body drawing of your character. During this stage, the drawing may be as simple or detailed as needed to communicate the idea.\n\nPossible visual approaches include:\n• Loose or sketchy drawing\n• Cartoon character\n• Anime-inspired character\n• Realistic or stylized character\n• Any other visual style that supports your concept\n\n### Facial Expressions and Poses\nCreate five distinct facial expressions, poses, or a combination of both. These studies should communicate a range of emotions and reveal something about the character’s personality.\n\nUse Preston Blair’s *Learn How to Draw Animated Characters* and Mark Simon’s *Facial Expressions* as references. Pay attention to how changes in the eyes, eyebrows, mouth, cheeks, posture, and gesture communicate emotion.\n\nPlace the character’s name at the top of the model sheet.',
+            images: [
+              {
+                url: '/facial_expressions_Preston_Blair.png',
+                title: 'Facial Expressions in Animation by Preston Blair',
+                caption: 'Facial Expressions in Animation reference guide by Preston Blair'
+              },
+              {
+                url: '/Facial_expressions_Mark_simon.png',
+                title: 'Facial Expression by Mark Simon',
+                caption: 'Facial Expression reference guide by Mark Simon'
+              }
+            ]
           },
           {
             heading: 'Part 3: Final Character Study',
