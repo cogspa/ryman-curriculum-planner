@@ -481,8 +481,6 @@ A clean delivery package is part of the assignment. Sloppy filenames lose points
 };
 
 export const topicList = [
-  { key: 'character-development', label: 'Character development', isNew: false },
-  { key: 'environmental-storytelling', label: 'Environmental storytelling', isNew: false },
   { key: 'symmetry-in-photoshop', label: 'Symmetry in Photoshop — the four types + the Symmetry (butterfly) tool', isNew: true },
   { key: 'sequential-thinking', label: 'Sequential thinking', isNew: true },
   { key: 'storyboarding-fundamentals', label: 'Storyboarding fundamentals', isNew: true },
