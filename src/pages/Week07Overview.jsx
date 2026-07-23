@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week07Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
+import CritiqueZone from '../components/CritiqueZone.jsx';
 
 export default function Week07Overview() {
   return (
@@ -51,6 +52,9 @@ export default function Week07Overview() {
       <p style={assignmentTextStyle}>
         Begin major track project — by end of this week, deliver: written brief, reference board, 12+ thumbnails, one approved direction, and rough comp started.
       </p>
+      <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '2px solid rgba(139, 58, 47, 0.2)' }}>
+        <CritiqueZone week={7} />
+      </div>
       <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );

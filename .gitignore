@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Local Netlify folder
-.netlify
-repomix-*
+# Environment variables
+.env
+.env.*
+!.env.example
+

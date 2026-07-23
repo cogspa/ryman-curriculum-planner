@@ -1,5 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
-import MirrorLab from "./MirrorLab.jsx";
+import React, { useState, useRef, useEffect } from "react";
 
 /**
  * SymmetryInPhotoshop.jsx — pLAtform lesson component
@@ -742,7 +741,7 @@ export default function SymmetryInPhotoshop() {
             A universal vertical-symmetry painter. Paint by hand, or pick an auto-generator (Walkers, Human figure, or Alien creature) to watch shapes grow, export them as PNGs, or compile them into a custom Photoshop <code>.abr</code> brush library.
           </p>
         </div>
-        <MirrorLab isEmbedded={true} />
+        {/* <MirrorLab isEmbedded={true} /> */}
       </section>
 
       {/* Mode gallery */}

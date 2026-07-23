@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week05Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
+import CritiqueZone from '../components/CritiqueZone.jsx';
 
 export default function Week05Overview() {
   return (
@@ -41,7 +42,9 @@ export default function Week05Overview() {
       <p style={guestStyle}>
         Nancy Seruto — live demo
       </p>
-
+      <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '2px solid rgba(139, 58, 47, 0.2)' }}>
+        <CritiqueZone week={5} />
+      </div>
       <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );

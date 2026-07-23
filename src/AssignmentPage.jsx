@@ -3,6 +3,7 @@ import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { assignments } from './assignments.js';
 import { isWeekReleased, getActiveRole } from './releaseUtils.js';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
+import CritiqueZone from './components/CritiqueZone.jsx';
 
 function parseMarkdownLinks(text) {
   if (typeof text !== 'string') return text;
@@ -345,6 +346,8 @@ export default function AssignmentPage() {
             <Link to="/" className="back-link">← Back to Curriculum</Link>
             <span style={{ opacity: 0.3 }}>|</span>
             <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
+            <span style={{ opacity: 0.3 }}>|</span>
+            <Link to="/critique" className="back-link">📌 Critique Zone</Link>
           </div>
 
           {/* Quick links to other assignments */}
@@ -1385,10 +1388,17 @@ export default function AssignmentPage() {
             </section>
           )}
 
+          {/* Critique Zone for the Week */}
+          <div style={{ marginTop: '48px', marginBottom: '40px' }}>
+            <CritiqueZone week={Number(week)} />
+          </div>
+
           <div className="assignment-footer" style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
             <Link to="/" className="back-link">← Back to Curriculum</Link>
             <span style={{ opacity: 0.3 }}>|</span>
             <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
+            <span style={{ opacity: 0.3 }}>|</span>
+            <Link to="/critique" className="back-link">📌 Critique Zone</Link>
           </div>
           {/* Full Screen Image Lightbox Modal */}
           {lightboxModal && (

@@ -1,0 +1,2844 @@
+This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Only files matching these patterns are included: src/pages/Week01Overview.jsx, src/pages/Week01TopicDetail.jsx, src/content/week01Topics.js, src/assignments.js, src/AssignmentPage.jsx, src/curriculum.js
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+src/
+  content/
+    week01Topics.js
+  pages/
+    Week01Overview.jsx
+    Week01TopicDetail.jsx
+  AssignmentPage.jsx
+  assignments.js
+  curriculum.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/pages/Week01Overview.jsx">
+import { Link } from 'react-router-dom';
+import { topicList } from '../content/week01Topics.js';
+import LegalDisclaimer from '../LegalDisclaimer.jsx';
+
+export default function Week01Overview() {
+  return (
+    <div style={containerStyle}>
+      <Link to="/" style={backLinkStyle}>
+        ← Back to Curriculum
+      </Link>
+
+      <header style={headerStyle}>
+        <div style={weekTagStyle}>WEEK 01</div>
+        <div style={dateRangeStyle}>JUN 23 – JUN 27</div>
+      </header>
+
+      <h1 style={titleStyle}>Translating Classical Foundations</h1>
+
+      <div style={scheduleStyle}>
+        <div><strong>TUE</strong> &nbsp; Tue, Jun 23 &nbsp; · &nbsp; 7:00–9:00 pm · Zoom</div>
+        <div><strong>SAT</strong> &nbsp; Sat, Jun 27 &nbsp; · &nbsp; 10:00 am–3:30 pm · Reveal Studio</div>
+      </div>
+
+      <p style={focusStyle}>
+        <strong>Focus:</strong> What carries over from traditional painting —
+        value, composition, gesture, form, and the relationship between digital and physical canvases.
+      </p>
+
+      <h2 style={sectionHeadingStyle}>Topics</h2>
+      <ul style={topicListStyle}>
+        {topicList.map(({ key, label, isNew }) => (
+          <li key={key} style={topicItemStyle}>
+            {isNew && <span style={newBadgeStyle}>NEW</span>}
+            <Link to={`/week/01/${key}`} style={topicLinkStyle}>
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <LegalDisclaimer style={{ marginTop: '36px' }} />
+    </div>
+  );
+}
+
+// ─── Styles (editorial / hauntological — yellowed paper, mono accents) ─────
+const containerStyle = {
+  maxWidth: '720px',
+  margin: '0 auto',
+  padding: '48px 32px',
+  background: '#f5efe1',
+  color: '#2a2418',
+  fontFamily: 'Georgia, "Times New Roman", serif',
+  lineHeight: 1.6,
+  minHeight: '100vh',
+};
+
+const headerStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'baseline',
+  marginBottom: '8px',
+};
+
+const weekTagStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '11px',
+  letterSpacing: '0.15em',
+  color: '#8b3a2f',
+  textTransform: 'uppercase',
+};
+
+const dateRangeStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '11px',
+  letterSpacing: '0.1em',
+  color: '#8b3a2f',
+};
+
+const titleStyle = {
+  fontSize: '32px',
+  fontWeight: 400,
+  fontStyle: 'italic',
+  margin: '0 0 24px',
+  letterSpacing: '-0.01em',
+};
+
+const scheduleStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '13px',
+  margin: '0 0 24px',
+  lineHeight: 1.8,
+};
+
+const focusStyle = {
+  fontSize: '15px',
+  margin: '0 0 32px',
+  paddingBottom: '24px',
+  borderBottom: '1px solid #d4c9a8',
+};
+
+const sectionHeadingStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '11px',
+  letterSpacing: '0.15em',
+  color: '#8b3a2f',
+  textTransform: 'uppercase',
+  margin: '32px 0 16px',
+};
+
+const topicListStyle = {
+  listStyle: 'none',
+  padding: 0,
+  margin: 0,
+};
+
+const topicItemStyle = {
+  display: 'flex',
+  alignItems: 'flex-start',
+  gap: '12px',
+  padding: '14px 0',
+  borderBottom: '1px solid #d4c9a8',
+};
+
+const newBadgeStyle = {
+  background: '#ffe566',
+  color: '#5c4a00',
+  fontFamily: 'Menlo, monospace',
+  fontSize: '9px',
+  letterSpacing: '0.1em',
+  padding: '3px 6px',
+  borderRadius: '2px',
+  flexShrink: 0,
+  marginTop: '3px',
+  fontWeight: 'bold',
+};
+
+const topicLinkStyle = {
+  fontFamily: 'Georgia, serif',
+  fontSize: '15px',
+  color: '#2a2418',
+  textAlign: 'left',
+  textDecoration: 'none',
+  borderBottom: '1px solid #8b3a2f',
+  lineHeight: 1.4,
+};
+
+const backLinkStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '11px',
+  color: '#8b3a2f',
+  letterSpacing: '0.1em',
+  textTransform: 'uppercase',
+  textDecoration: 'none',
+  display: 'inline-block',
+  marginBottom: '24px',
+};
+</file>
+
+<file path="src/pages/Week01TopicDetail.jsx">
+import { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { TOPIC_DETAILS, topicList } from '../content/week01Topics.js';
+import PixelWaveSample from './PixelWaveSample.jsx';
+import TopicNav from './TopicNav.jsx';
+
+function ToolRow({ tool }) {
+  const sameKeys = tool.mac === tool.win;
+  const Cap = ({ children }) => children === '—' ? null : <kbd className="kc">{children}</kbd>;
+  return (
+    <div className="toolrow">
+      <div className="toolhead">
+        <span className="toolname">{tool.name}</span>
+        <span className="keys">
+          {tool.mac !== '—' && (
+            <span className="keygrp">{!sameKeys && <span className="oslabel">mac</span>}<Cap>{tool.mac}</Cap></span>
+          )}
+          {tool.win !== '—' && !sameKeys && (
+            <span className="keygrp"><span className="oslabel">win</span><Cap>{tool.win}</Cap></span>
+          )}
+        </span>
+      </div>
+      <p className="tooldesc">{tool.desc}</p>
+    </div>
+  );
+}
+
+export default function Week01TopicDetail() {
+  const { topicKey } = useParams();
+  const topic = TOPIC_DETAILS[topicKey];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [topicKey]);
+
+  useEffect(() => {
+    if (topic) {
+      document.title = `Week 01 · ${topic.title} — Ryman Curriculum`;
+    } else {
+      document.title = 'Topic Not Found — Ryman Curriculum';
+    }
+  }, [topic]);
+
+  if (!topic) {
+    return (
+      <div style={containerStyle}>
+        <Link to="/week/01" style={backButtonStyle}>
+          ← Back to Week 01
+        </Link>
+        <h1 style={detailTitleStyle}>Topic not found</h1>
+        <p style={sectionBodyStyle}>The requested topic does not exist.</p>
+      </div>
+    );
+  }
+
+  const isCustomTopic = topicKey === 'value-composition-gesture-form';
+
+  return (
+    <div style={containerStyle}>
+      <Link to="/week/01" style={backButtonStyle}>
+        ← Back to Week 01
+      </Link>
+      
+      <h1 style={detailTitleStyle}>{topic.title}</h1>
+      
+      <div style={sourceTagStyle}>
+        {topic.sourceEyebrow ? topic.sourceEyebrow : `Adapted from PCC DMA 12: ${topic.pccSources?.join(' · ')}`}
+      </div>
+
+      {isCustomTopic ? (
+        topic.sections.map((section, i) => (
+          <section key={i} className="sec">
+            <h2 className="sechead">
+              <span className="secnum">{String(i + 1).padStart(2, '0')}</span>
+              {section.heading}
+            </h2>
+            <p className="concept">{section.concept}</p>
+            <p className="bridge">{section.bridge}</p>
+            <div className="panel">
+              <div className="panellabel">In Photoshop</div>
+              <div className="tools">
+                {section.tools.map((t) => (
+                  <ToolRow key={t.name} tool={t} />
+                ))}
+              </div>
+            </div>
+          </section>
+        ))
+      ) : (
+        topic.sections.map((section, i) => (
+          <section key={i} style={sectionStyle}>
+            <h2 style={sectionHeadingStyle}>{section.heading}</h2>
+            <div style={sectionBodyStyle} dangerouslySetInnerHTML={{ __html: section.body.replace(/\n/g, '<br/>') }} />
+            {section.videoUrl && (
+              <div style={{ margin: '24px 0 8px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #d4c9a8' }}>
+                <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+                  <iframe
+                    src={section.videoUrl}
+                    title={section.videoCaption || section.heading}
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                {section.videoCaption && (
+                  <p style={{ fontSize: '11px', color: '#8b3a2f', padding: '8px 12px', margin: 0, fontStyle: 'italic', fontFamily: 'Menlo, monospace', background: 'rgba(0,0,0,0.02)' }}>{section.videoCaption}</p>
+                )}
+              </div>
+            )}
+            {section.imageUrl && (
+              <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '6px', border: '1px solid #d4c9a8' }} />
+                {section.imageCaption && (
+                  <p style={{ fontSize: '11px', color: '#8b3a2f', marginTop: '6px', fontStyle: 'italic', fontFamily: 'Menlo, monospace' }}>{section.imageCaption}</p>
+                )}
+              </div>
+            )}
+            {/* Embed the interactive pixel wave sampler after the first section on the canvas page */}
+            {topicKey === 'digital-vs-physical-canvas' && i === 0 && (
+              <div style={{ margin: '24px 0 8px', padding: '20px 24px', background: 'rgba(0,0,0,0.02)', borderRadius: '8px', border: '1px solid #d4c9a8' }}>
+                <PixelWaveSample />
+              </div>
+            )}
+          </section>
+        ))
+      )}
+
+      <TopicNav topicList={topicList} topicKey={topicKey} weekNum="01" />
+    </div>
+  );
+}
+
+// ─── Styles (editorial / hauntological — yellowed paper, mono accents) ─────
+const containerStyle = {
+  maxWidth: '720px',
+  margin: '0 auto',
+  padding: '48px 32px',
+  background: '#f5efe1',
+  color: '#2a2418',
+  fontFamily: 'Georgia, "Times New Roman", serif',
+  lineHeight: 1.6,
+  minHeight: '100vh',
+};
+
+const detailTitleStyle = {
+  fontSize: '28px',
+  fontWeight: 400,
+  fontStyle: 'italic',
+  margin: '24px 0 8px',
+  letterSpacing: '-0.01em',
+};
+
+const sourceTagStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '10px',
+  color: '#8b3a2f',
+  textTransform: 'uppercase',
+  letterSpacing: '0.1em',
+  marginBottom: '32px',
+  paddingBottom: '16px',
+  borderBottom: '1px solid #d4c9a8',
+};
+
+const sectionHeadingStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '11px',
+  letterSpacing: '0.15em',
+  color: '#8b3a2f',
+  textTransform: 'uppercase',
+  margin: '32px 0 16px',
+};
+
+const sectionStyle = { marginBottom: '24px' };
+
+const sectionBodyStyle = {
+  fontSize: '15px',
+  whiteSpace: 'pre-wrap',
+  margin: 0,
+};
+
+const backButtonStyle = {
+  fontFamily: 'Menlo, monospace',
+  fontSize: '11px',
+  color: '#8b3a2f',
+  cursor: 'pointer',
+  letterSpacing: '0.1em',
+  textTransform: 'uppercase',
+  textDecoration: 'none',
+  display: 'inline-block',
+  marginBottom: '16px',
+};
+</file>
+
+<file path="src/content/week01Topics.js">
+// ──────────────────────────────────────────────────────────────────
+//  WEEK 01 TOPICS DATA SOURCE
+//  Extracted from PCC DMA 12 corpus.
+// ──────────────────────────────────────────────────────────────────
+
+export const TOPIC_DETAILS = {
+  'digital-vs-physical-canvas': {
+    title: 'Digital vs. Physical Canvas / Understanding Pixels',
+    pccSources: ['Pixels: The Building Blocks of Digital Designs', 'Origin of the word Pixel'],
+    sections: [
+      {
+        heading: 'What is a pixel?',
+        body: `The pixel — a portmanteau of "pix" and "element" — is the basic unit of programmable color on a computer display. Every visual element on a screen is comprised of pixels. The screen projects light when creating images, so pixels are the building blocks of digital light.
+
+When creating digital art, we are essentially painting, drawing, sculpting, and <strong>designing the wave samples of the pixel</strong>. The process of digital art is one of manipulating pixels using an interface or code.`,
+      },
+      {
+        heading: "Alvy Ray Smith's definition",
+        body: `"A pixel is a point sample. It exists only at a point. For a color picture, a pixel might actually contain three samples, one for each primary color contributing to the picture at the sampling point. We can still think of this as a point sample of a color. But we cannot think of a pixel as a square — or anything other than a point."
+
+📄 <a href="https://alvyray.com/Memos/CG/Microsoft/6_pixel.pdf" target="_blank" rel="noopener noreferrer" style="color:#8b3a2f; text-decoration:underline;">Read the full paper: <em>A Pixel Is Not A Little Square</em> — Alvy Ray Smith (PDF)</a>`,
+        imageUrl: '/pixel_paper_cover.png',
+        imageCaption: 'A Pixel Is Not A Little Square — Technical Memo 6, Alvy Ray Smith, July 17, 1995',
+      },
+      {
+        heading: 'Physical canvas vs digital canvas',
+        body: `A physical canvas has a fixed surface texture and dimensions. A digital canvas has a resolution — its quality depends on the number of pixels per inch, the bit depth of each pixel, and whether you're outputting for screen (additive RGB light) or print (subtractive CMYK pigment). Understanding that the digital surface is sampled light, not pigment, changes how you think about value, opacity, and blend modes.`,
+      },
+      {
+        heading: 'Who is Alvy Ray Smith?',
+        body: `Alvy Ray Smith is one of the people who turned pixel-based imaging from an expensive research capability into the foundation for painting software, animation, visual effects, and eventually tools like Photoshop.
+
+He worked at several pivotal moments in computer-graphics history: Xerox PARC-era digital paint systems, the New York Institute of Technology computer-graphics lab, Lucasfilm's Computer Division, and Pixar — which he co-founded with Ed Catmull. He was deeply involved in the transition from primitive computer graphics to images that could be painted, layered, animated, composited, and used in filmmaking.
+
+Smith also worked on early high-resolution digital paint systems, including BigPaint3, a 24-bit paint program capable of higher-than-video-resolution imagery. "24-bit" color meant that red, green, and blue values could be stored with enough precision to produce millions of colors — the RGB image model digital artists still use today.`,
+        videoUrl: 'https://www.youtube.com/embed/Vn_TkHwDwq0',
+        videoCaption: 'Alvy Ray Smith — The History of Pixar and Computer Graphics',
+      },
+      {
+        heading: 'The Alpha Channel — Smith\'s most influential contribution',
+        body: `RGB tells software what color a pixel is. Smith's alpha channel tells it how opaque or transparent that pixel is. A pixel can be represented as:
+
+(R, G, B, α)
+
+Where R, G, B describe color and α describes coverage or opacity — how much that image element contributes when combined with another.
+
+This is why a figure can have soft hair edges, smoke can fade into the background, a painted cloud can be partially transparent, and a green-screen subject can be cleanly composited into another scene. Smith's 1978 writing on alpha describes the digital matte concept that became the basis for modern compositing.
+
+In Photoshop, alpha is behind much of what artists take for granted: layer masks, transparent PNGs, selections saved as channels, soft-edged erasing, compositing photographs and painted elements, VFX keying and rotoscoping, motion-blur and atmospheric fades, and exporting assets for games, animation, and web design.
+
+Without alpha logic, digital collage would be like cutting paper shapes with hard edges. With alpha, images can behave like light, fog, paint, glass, fabric, smoke, or a soft brushstroke.`,
+      },
+      {
+        heading: 'Why pixels matter for artists',
+        body: `A pixel is often called "a tiny square," but that is only a useful simplification. More precisely, a pixel is a sample of visual information — a stored measurement of color and sometimes transparency at a particular location in an image. A raster image is a grid: I(x, y) = [R, G, B, α]. Each location stores values that describe the image there.
+
+Once an image becomes a pixel grid, software can operate on it mathematically. A blur averages neighboring samples. A sharpen filter exaggerates local contrast. Levels remap brightness ranges. Curves remap tonal values. A selection isolates a region. A mask controls where an operation applies. A blend mode combines numerical values from two image layers.
+
+An ordinary layer composite can be simplified as:
+
+C_out = α_f · C_f + (1 − α_f) · C_b
+
+Where C_f is the foreground color, C_b is the background color, α_f is the foreground opacity, and C_out is the blended result. When you lower opacity on a Photoshop layer, paint with a semi-transparent brush, or soften a mask, you are working through variations of this logic.`,
+      },
+      {
+        heading: 'The connection to Photoshop',
+        body: `Smith did not invent Photoshop — that was Thomas and John Knoll, developed commercially by Adobe. But Smith's work helped create the technical ecosystem Photoshop depends on: high-color raster painting, editable image regions, transparency logic, digital compositing, channels, anti-aliasing, and the broader premise that pixels are an expressive visual medium.
+
+A useful way to put it: Alvy Ray Smith helped establish the grammar of digital images. Photoshop and later art tools turned that grammar into an accessible studio practice.
+
+The Photoshop canvas is a pixel field. Brushes change pixel values. Masks control alpha. Layers use compositing mathematics. Filters analyze and transform pixel neighborhoods. Channels separate and manipulate image information. The artist is not merely "using effects" — they are directing a structured system of sampled color and transparency.`,
+      },
+      {
+        heading: 'Why this matters for artists learning digital tools',
+        body: `Studying pixels helps artists see digital tools as extensions of visual fundamentals rather than mysterious software features:
+
+Drawing → the placement and variation of marks across a grid.
+Painting → controlled color, value, and opacity changes.
+Composition → the organization of visual information over a frame.
+Texture → patterned variation in color, contrast, and scale.
+Atmosphere → layered transparency, depth, and color scattering.
+Compositing → the visual combination of separate image systems.
+3D rendering → the calculation of pixel values from light, materials, geometry, and camera position.
+
+Smith's larger argument is that digital imagery should not be treated as somehow less real or less artistic because it is numerical. Pixels are simply the medium's basic units — much like pigment particles, halftone dots, film grain, weave in a textile, or marks on paper. His work helped make that medium mature enough for artists to work with directly.`,
+      },
+    ],
+  },
+
+  'origin-of-pixel': {
+    title: 'The Origin of the Pixel',
+    pccSources: ['Origin of the word Pixel'],
+    sections: [
+      {
+        heading: 'Frederic C. Billingsley — JPL, 1965',
+        body: `The word <em>pixel</em> is now part of everyday digital language. It describes the small picture elements that make up photographs, screens, video, digital paintings, games, and computer-generated images.
+
+According to historian and imaging researcher Richard F. Lyon, the term <em>pixel</em> first appeared in print in two 1965 SPIE papers by Frederic C. Billingsley, an engineer at Caltech's Jet Propulsion Laboratory in Pasadena.
+
+Billingsley worked in JPL's Image Processing Laboratory, where engineers developed systems for processing and analyzing images returned from lunar and planetary missions. His work was connected to the growing challenge of converting visual information into measurable samples that could be transmitted, stored, enhanced, and reconstructed.`,
+      },
+      {
+        heading: 'The First Known Published Uses',
+        body: `Lyon identifies Billingsley's two 1965 SPIE papers as the earliest known published uses of the word <em>pixel</em>:
+
+• <em>"Digital Video Processing at JPL"</em>
+• <em>"Processing Ranger and Mariner Photography"</em>
+
+The term was used in the context of scientific image processing rather than computer graphics. At the time, engineers needed a concise way to describe small units of sampled visual information within an image.
+
+Today, we often think of a pixel as a tiny colored square on a screen. In image processing, however, a pixel is more accurately understood as a <strong>discrete sample of visual data</strong>. Each pixel can store information such as brightness, color, depth, temperature, or other measurements captured by an imaging system.`,
+      },
+      {
+        heading: 'Where Did the Word Come From?',
+        body: `Billingsley did not claim to have invented the word himself.
+
+He later recalled that <em>pixel</em> may have come from engineers working for General Precision's Link Division in Palo Alto, a company that built equipment for JPL. Lyon interviewed former Link engineer Keith E. McFarland, who said that the word was already being used informally by colleagues at the time.
+
+The exact origin of the word remains uncertain. What Lyon was able to document is that Billingsley's 1965 papers are the earliest known printed examples of <em>pixel</em> used in its modern technical sense.`,
+      },
+      {
+        heading: 'Why This Matters for Digital Artists',
+        body: `The history of the pixel is also the history of digital image-making.
+
+Before an image can be edited in Photoshop, painted in Procreate, rendered in Blender, composited in After Effects, or displayed on a phone, it must be translated into visual data. Pixels are the basic units that make that translation possible.
+
+They allow an image to be:
+
+• captured by a camera or scanner
+• stored as digital information
+• edited through color, contrast, masks, layers, and filters
+• transmitted across networks
+• displayed on screens
+• analyzed by software and AI systems
+
+For artists, pixels are not just technical limitations. They are the <strong>material structure of the digital canvas</strong>.`,
+      },
+      {
+        heading: 'A Local Connection',
+        body: `JPL's Image Processing Laboratory was located in Pasadena, only a short distance from many of the studios, schools, and creative communities that now use digital tools every day.
+
+That makes the history especially meaningful for Los Angeles-area artists: one of the earliest documented uses of the word <em>pixel</em> emerged from local work on scientific imaging and space exploration.
+
+The same basic idea — breaking an image into small, editable units of information — now supports digital painting, photography, animation, visual effects, game design, graphic design, and AI-assisted image tools.`,
+      },
+      {
+        heading: 'Source',
+        body: `Richard F. Lyon, "A Brief History of 'Pixel,'" <em>Digital Photography II</em>, IS&T/SPIE Symposium on Electronic Imaging, 2006.
+
+📄 <a href="https://www.dicklyon.com/tech/Photography/Pixel-SPIE06-Lyon.pdf" target="_blank" rel="noopener noreferrer" style="color:#8b3a2f; text-decoration:underline;">Read Richard Lyon's "A Brief History of 'Pixel'" (PDF)</a>`,
+      },
+    ],
+  },
+
+  'elements-vs-principles': {
+    title: 'Elements vs. Principles of Design',
+    pccSources: ['Elements of Design', 'Principles of Design', 'Principles of Design-2'],
+    sections: [
+      {
+        heading: 'The Language of Digital Graphics',
+        body: `Computer graphics developed from the same visual building blocks artists have always used: points, lines, shapes, color, form, and time. In digital tools, these elements become both visual and mathematical. A point may be a single pixel of light on a screen or a Bézier anchor point that controls a vector path. Points connect to create lines—either mathematically precise vector curves or the visual illusion of a line created from anti-aliased pixels. Lines enclose shapes; shapes can be painted by hand, constructed with vector mathematics, or assembled into the tessellated faces of a 3D model. Artists can then use light, color, perspective, and texture to create the illusion of dimensional form, or build that form directly in three-dimensional space. Once these elements are organized over time, they can also move, transform, and become animation. Understanding the elements of design therefore means understanding both the foundations of visual art and the underlying language of computer graphics.`,
+      },
+      {
+        heading: 'The Elements of Design',
+        body: `The elements are the raw vocabulary — the things you put on the canvas:
+ 
+• <strong>Points</strong> — A single pixel mark made with the <em>Brush Tool (B)</em> or vector anchor points.
+• <strong>Lines</strong> — <em>Line Tool (U)</em> · Brush Tool (B) · Pen Tool (P) → Stroke Path.
+• <strong>Shapes</strong> — <em>Shape Tool (U)</em>: Rectangle, Ellipse, Polygon, Custom Shape · Pen Tool (P) for custom vector shapes.
+• <strong>Color</strong> — <em>Color Picker (foreground swatch click)</em> · Swatches panel (Window → Swatches) · Eyedropper (I) · Hue/Saturation (⌘U).
+• <strong>Form (Dimension)</strong> — <em>Dodge (O) / Burn (O)</em> to sculpt light and shadow · Layer Styles → Bevel &amp; Emboss · Gradient Tool (G).
+• <strong>Time</strong> — <em>Timeline panel (Window → Timeline)</em> to sequence layers and create animatics or frame animations.
+ 
+For painting and concept art, <strong>points</strong>, <strong>lines</strong>, and <strong>shapes</strong> are the foundation of any composition you create.`,
+      },
+      {
+        heading: 'The Principles of Design',
+        body: `The principles are how you arrange the elements — the grammar:
+
+• <strong>Balance</strong> — <em>View → New Guide Layout</em> · Rule of Thirds grid (Crop Tool overlay) · Flip Canvas (Image → Image Rotation → Flip Canvas Horizontal)
+• <strong>Contrast</strong> — <em>Curves (⌘M)</em> · Levels (⌘L) · Brightness/Contrast (Image → Adjustments) · Black &amp; White (⌘⌥⇧B)
+• <strong>Emphasis</strong> — <em>Selective Color</em> (Image → Adjustments → Selective Color) · Dodge/Burn (O) · Radial Blur (Filter → Blur → Radial Blur)
+• <strong>Movement</strong> — <em>Smudge Tool</em> · Motion Blur (Filter → Blur → Motion Blur) · Warp Transform (Edit → Transform → Warp) · Liquify (⌘⇧X)
+• <strong>Pattern</strong> — <em>Edit → Define Pattern</em> · Pattern Stamp Tool (S) · Fill → Pattern (⇧F5) · Pattern Overlay layer style
+• <strong>Rhythm</strong> — <em>Edit → Free Transform (⌘T)</em> + Step and Repeat (⌘⌥⇧T) to duplicate transforms at regular intervals
+• <strong>Unity/Variety</strong> — <em>Clipping Masks (⌘⌥G)</em> · Linked Layers · Smart Objects (Layer → Smart Objects → Convert) for consistent edits
+• <strong>Direction</strong> — <em>Path Tool (A)</em> · Transform → Rotate/Skew (⌘T) · Pen Tool (P) for directional vector paths · Perspective Transform
+
+These are guidelines, not rigid rules. They're rooted in a mix of physiological, social, and cultural influences. Examining successful designs throughout history shows how these principles have been used to create effective, influential work.`,
+      },
+      {
+        heading: 'The distinction in one line',
+        body: `Elements are the nouns. Principles are the verbs that act on them. A line is an element; rhythm is a principle that organizes lines into a pattern.`,
+      },
+    ],
+  },
+
+  'resolution-and-quality': {
+    title: 'Resolution and Quality',
+    pccSources: ['Resolution and Quality', 'Resolution Revisted'],
+    sections: [
+      {
+        heading: 'Resolution',
+        body: `Resolution is the number of pixels contained on a display monitor, expressed as the number of pixels on the horizontal axis × the number on the vertical axis. In a bitmap image, resolution is the degree of detail, measured in pixels per inch (PPI). Higher resolution = more pixels per inch = better printed image.`,
+      },
+      {
+        heading: 'DPI / PPI',
+        body: `DPI (dots per inch) is the unit of measurement for screen-image sharpness. A computer monitor typically displays images at 72 PPI. To find the on-screen display size of an image, divide horizontal and vertical pixels by 72.
+
+Use 72 PPI for web. Use 200–300 PPI for print.`,
+      },
+      {
+        heading: 'Pixelation, aliasing, interpolation',
+        body: `Scaling up a low-resolution image causes it to "pixelate" — you can see the individual pixels. The process of scaling forces the computer to recalculate the number of pixels, which is called interpolation.
+
+Aliasing produces jagged edges on curved or diagonal lines. Anti-aliasing adds realism by smoothing those edges using partially-filled pixels along the edge to create a gradual fade.`,
+      },
+      {
+        heading: 'Bits per pixel',
+        body: `A pixel can represent several distinct colors depending on the number of bits per pixel (bpp). 1 bpp = on/off. The number of colors doubles with each additional bit — 2 bpp = 4 colors, 3 bpp = 8 colors, 8 bpp = 256 colors, 24 bpp = ~16.7 million colors.`,
+      },
+      {
+        heading: 'Resampling',
+        body: `When you change dimensions or resolution without resampling, image data remains constant — the file's width and height must change to maintain consistent data. With Resample Image selected (in Photoshop's Image Size dialog), you can adjust resolution, width, and height independently, but this adds or removes pixels via interpolation.`,
+      },
+    ],
+  },
+
+  'value-composition-gesture-form': {
+    title: 'Value, Composition, Gesture, and Form',
+    sourceEyebrow: 'Adapted from PCC DMA 12 — What Is Value? · Value Is Emotive · Color Gets the Credit, Value Does the Work · Value and Contrast',
+    sections: [
+      {
+        heading: 'What value is',
+        concept: "Value is the lightness or darkness of a color — one of color's three main properties, alongside hue (the basic color) and saturation (intensity). A value scale runs from black to white through every monochromatic gray between. The eye can distinguish somewhere between 30 and 500 variations of value; the research is inconsistent on the exact number, but computers render 256 shades and most viewers perceive at least 200.",
+        bridge: "To work with value on purpose, you first have to see it on its own — stripped of hue — and then measure it precisely.",
+        tools: [
+          { name: 'Hue / Saturation', mac: '⌘ U', win: 'Ctrl U', desc: 'Drag saturation to zero to inspect the pure value structure of an image, free of color.' },
+          { name: 'Info Panel', mac: 'F8', win: 'F8', desc: 'Read the exact Grayscale (K%) value of any pixel under your cursor.' },
+        ],
+      },
+      {
+        heading: 'Color gets the credit, value does the work',
+        concept: 'Colors are what we recognize, but values carry the impact. An object can be red or blue and still hold the same value. Value is what establishes contrast — and contrast is what gives an image structure, focus, and emotional weight.',
+        bridge: 'Turning that principle into a finished image means controlling the value range directly, and being able to verify it without committing to anything permanent.',
+        tools: [
+          { name: 'Curves', mac: '⌘ M', win: 'Ctrl M', desc: 'Reshape the value range and confirm your focal points hold the strongest contrast.' },
+          { name: 'Levels', mac: '⌘ L', win: 'Ctrl L', desc: 'Set black point, white point, and midtones across the whole image.' },
+          { name: 'Black & White (adjustment layer)', mac: '⌘ ⌥ ⇧ B', win: 'Ctrl Alt Shift B', desc: 'Drop a layer at the top of the stack to toggle grayscale on and off and check value non-destructively.' },
+        ],
+      },
+      {
+        heading: 'Value is emotive',
+        concept: 'Dramatic contrast — bright lights meeting deep shadows — creates tension, drama, suspense. Subtle transitions — gentle gradations from light to dark — evoke calm, serenity, melancholy. A horror film uses stark contrast to unsettle; a romance uses softer, muted values to feel dreamy. The same logic governs a painting or a Photoshop composition.',
+        bridge: 'You can steer that mood deliberately — nudging color temperature in the shadows and highlights, or remapping the entire value range to a chosen palette.',
+        tools: [
+          { name: 'Color Balance', mac: '⌘ B', win: 'Ctrl B', desc: 'Shift shadows toward cool blues and highlights toward warm yellows to set local temperature and mood.' },
+          { name: 'Gradient Map (adjustment layer)', mac: '—', win: '—', desc: 'Map a color ramp directly onto your grayscale values for a global, non-destructive color script.' },
+        ],
+      },
+      {
+        heading: 'Value contrast',
+        concept: "Value contrast is the relationship between areas of dark and light. A single gray can appear to change value depending on what surrounds it. When two tones read as the same value, that's low contrast and the image goes flat; high contrast pulls the eye and creates a focal point.",
+        bridge: 'Once you know where you want the eye to land, these tools let you widen or tighten contrast exactly where it counts.',
+        tools: [
+          { name: 'Curves', mac: '⌘ M', win: 'Ctrl M', desc: 'Steepen the contrast line to widen the gap between darks and lights.' },
+          { name: 'Dodge Tool', mac: 'O', win: 'O', desc: 'Paint brighter highlights onto a layer to lift specific areas.' },
+          { name: 'Burn Tool', mac: '⇧ O', win: 'Shift O', desc: 'Deepen core shadows by hand to emphasize form. (Shift + O cycles between Dodge and Burn.)' },
+        ],
+      },
+      {
+        heading: 'Composition, gesture, form',
+        concept: 'Composition is how you arrange value across the canvas. Gesture is the directional energy — the implied lines of movement that lead the eye. Form is the illusion of three dimensions, built almost entirely from value transitions: highlight, mid-tone, core shadow, reflected light, cast shadow. A painting can survive bad color. It cannot survive bad value structure.',
+        bridge: "Building believable form is hands-on work — sculpting value by hand, then constantly checking the full range you're actually using.",
+        tools: [
+          { name: 'Brush Tool', mac: 'B', win: 'B', desc: 'Lay in highlights, mid-tones, and shadows to sculpt your shapes.' },
+          { name: 'Eraser Tool', mac: 'E', win: 'E', desc: 'Carve back into your value masses to refine edges and transitions.' },
+          { name: 'Levels — histogram', mac: '⌘ L', win: 'Ctrl L', desc: 'Watch the histogram to make sure your values stretch cleanly from pure black to true white.' },
+        ],
+      },
+    ],
+  },
+
+  'workflow-fundamentals': {
+    title: 'Wacom / iPad Workflow & Canvas Fundamentals',
+    pccSources: ['Layer Basics', 'Organizing Layers', 'Non-destructive Editing', 'Common File Formats', 'Mastering the Move Tool', 'Zooming and Panning'],
+    sections: [
+      {
+        heading: 'Layer basics',
+        body: `Layers in Photoshop are like sheets of acetate stacked on top of each other. Transparent areas of a layer can be seen through the layers below. You can move content with the move tool, change stacking order, and adjust opacity to make any layer partially transparent.
+
+Use layers to: composite multiple images, add text, add vector shapes, apply layer styles (drop shadow, glow, etc.), mask out portions, and color-correct.`,
+      },
+      {
+        heading: 'Organizing layers',
+        body: `A new Photoshop image has a single background layer. The number of additional layers, layer effects, and layer sets you can add is limited only by your computer's memory. Group layers (Cmd/Ctrl + G) to reduce clutter — you can nest groups within groups and apply attributes or masks to multiple layers at once. F7 opens the Layers panel.`,
+      },
+      {
+        heading: 'Non-destructive editing',
+        body: `Adjustment Layers hold color or tonal adjustments that affect layers below — without editing image pixels directly. Edit the adjustment layer, leave the original pixels untouched.
+
+Smart Objects contain one or more layers of content. You can scale, skew, or reshape a Smart Object without directly editing pixels, and Smart Filters let you apply filters non-destructively so you can tweak or remove the effect later.`,
+      },
+      {
+        heading: 'File formats',
+        body: `Working formats:
+- PSD — Photoshop's native format. Keeps layers, vectors, masks intact.
+- TIFF — raster with optional layers. Common in print.
+- PSB — for very large files (>30,000 px on a side).
+
+Delivery formats:
+- JPEG — lossy, smaller files, no transparency. Photos.
+- PNG — lossless, supports transparency. Web graphics, exports for clients.
+- GIF — 256 colors, supports animation.
+- SVG — vector format for web. Use when exporting from Figma/Illustrator.
+- PDF — preserves vectors, shareable.`,
+      },
+      {
+        heading: 'The move tool',
+        body: `Shortcut: V. Universal across Adobe apps.
+
+Turn OFF Auto Select — it picks the wrong layer constantly and gets in the way of any compositing workflow.
+
+Show Transform Controls puts a transform box around your selection so you can scale (drag corners) and rotate (just outside corners). Hold Shift while scaling to constrain proportions. Hold Cmd/Ctrl while dragging a corner to skew.`,
+      },
+      {
+        heading: 'Zooming and panning',
+        body: `Spacebar = Pan (move the canvas).
+Spacebar + Cmd (Mac) / Spacebar + Ctrl + Alt (Win) = Zoom In.
+Spacebar + Option (Mac) / Spacebar + Alt (Win) = Zoom Out.
+
+On modern macOS the defaults are Cmd + Plus / Cmd + Minus. Zooming is the single most underused tool for precision — zoom in to refine, zoom out to judge composition.`,
+      },
+      {
+        heading: 'Wacom / iPad setup notes',
+        body: `For Wacom: install the driver, set pressure curve so light pressure produces visible marks (default is often too stiff). Map a tablet button to "undo" — saves your wrist.
+
+For iPad / Procreate: file types behave the same conceptually, but Procreate exports .procreate (working) and PSD/PNG/JPG (delivery). Canvas size at creation matters — Procreate caps layer count based on canvas dimensions.
+
+Canvas size for this class: start at 3000 × 2000 px at 300 DPI for any deliverable. You can always scale down. You can't scale up without losing quality.`,
+      },
+    ],
+  },
+  'biomorphic-shapes-metaballs': {
+    title: 'Biomorphic Shapes & the Metaball Effect',
+    pccSources: ['Implicit Surfaces', 'Scalar Fields and Iso-contours'],
+    sections: [
+      {
+        heading: 'What is a biomorphic metaball blob shape?',
+        body: `In design language, shapes generated this way are often called biomorphic silhouettes, amorphous organic forms, or liquid blob shapes. Creating fluid, organic forms that seamlessly merge is a core technique in visual development, useful for character silhouettes, creature anatomy, and liquid/lava background designs.`,
+      },
+      {
+        heading: 'Photoshop Recipe: Non-destructive Metaballs',
+        body: `Photoshop can simulate metaball blending using image filters and adjustment layers:
+        
+1. Make your source shapes (e.g. black circles) on separate layers.
+2. Select the shape layers, right-click, and choose "Convert to Smart Object". This keeps the workflow non-destructive so you can move the shapes around later.
+3. Choose Filter > Blur > Gaussian Blur. Blur until the shapes' boundaries soften and their outer halos overlap.
+4. Add a Levels adjustment layer (or Threshold adjustment).
+5. Push the black and white Input Levels sliders inward toward the center until the soft blur edges are sharpened back into a crisp, solid silhouette.
+        
+Summary formula: Source Shapes → Blur (Convolution) → Levels/Threshold (Thresholding) = Clean organic blob form.`,
+      },
+      {
+        heading: 'The Computer Graphics Science: Implicit Fields',
+        body: `The math behind this effect is rooted in implicit surfaces (or implicit fields):
+
+- **Scalar Fields**: Rather than defining a shape explicitly using outline vertices (like a vector outline), a metaball defines a shape using a scalar field of influence. Every object projects a soft, invisible field of density values into the surrounding space.
+- **Field Accumulation**: When two objects get close, their soft fields overlap and add their density values together.
+- **Thresholding (Iso-contours)**: The final visible shape is defined by a threshold value. Any point in space where the combined density is higher than the threshold becomes solid; anywhere lower becomes empty. In 2D, this threshold boundary is called an **iso-contour**; in 3D, it is an **iso-surface**.
+
+In modern computer graphics, this concept is widely used in **Signed Distance Fields (SDFs)**, and algorithms like **Marching Squares** (2D) or **Marching Cubes** (3D) are used to compute and render the resulting smooth outlines.`,
+      },
+    ],
+  },
+};
+
+export const topicList = [
+  { key: 'digital-vs-physical-canvas', label: 'Digital vs. Physical Canvas / Understanding Pixels', isNew: true },
+  { key: 'origin-of-pixel', label: 'Origin of the word "pixel"', isNew: true },
+  { key: 'elements-vs-principles', label: 'Elements vs. Principles of Design', isNew: true },
+  { key: 'resolution-and-quality', label: 'Resolution and Quality', isNew: true },
+  { key: 'biomorphic-shapes-metaballs', label: 'Hands-on: Biomorphic shapes & the Metaball effect (Gaussian Blur + Levels thresholding)', isNew: true },
+  { key: 'value-composition-gesture-form', label: 'Value, composition, gesture, and form', isNew: false },
+  { key: 'workflow-fundamentals', label: 'Side-topic conversations (Tue Zoom): Wacom/iPad workflow setup, canvas size, resolution, file types, layer fundamentals, file-naming conventions', isNew: false },
+];
+</file>
+
+<file path="src/AssignmentPage.jsx">
+import React, { useState, useEffect } from 'react';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
+import { assignments } from './assignments.js';
+import { isWeekReleased, getActiveRole } from './releaseUtils.js';
+import LegalDisclaimer from './LegalDisclaimer.jsx';
+
+function parseMarkdownLinks(text) {
+  if (typeof text !== 'string') return text;
+  const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  if (!linkRegex.test(text)) return text;
+  
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  
+  // Reset regex state
+  linkRegex.lastIndex = 0;
+  
+  while ((match = linkRegex.exec(text)) !== null) {
+    const matchIndex = match.index;
+    const [fullMatch, linkText, linkUrl] = match;
+    
+    // Add text before the link
+    if (matchIndex > lastIndex) {
+      parts.push(text.substring(lastIndex, matchIndex));
+    }
+    
+    // Add the link element
+    parts.push(
+      <a 
+        key={matchIndex} 
+        href={linkUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        style={{ color: '#db2777', textDecoration: 'underline', fontWeight: '500' }}
+      >
+        {linkText}
+      </a>
+    );
+    
+    lastIndex = linkRegex.lastIndex;
+  }
+  
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+  
+  return parts;
+}
+
+function parseInlineMarkdown(text) {
+  if (typeof text !== 'string') return text;
+  const withLinks = parseMarkdownLinks(text);
+  const processString = (str) => {
+    if (typeof str !== 'string') return str;
+    const boldRegex = /\*\*(.+?)\*\*/g;
+    if (!boldRegex.test(str)) return str;
+    boldRegex.lastIndex = 0;
+    const parts = [];
+    let last = 0;
+    let m;
+    while ((m = boldRegex.exec(str)) !== null) {
+      if (m.index > last) parts.push(str.substring(last, m.index));
+      parts.push(
+        <strong key={`b${m.index}`} style={{
+          fontWeight: '700',
+          background: 'rgba(0, 0, 0, 0.05)',
+          padding: '1px 5px',
+          borderRadius: '3px',
+          fontSize: '0.92em',
+          fontFamily: 'var(--font-mono, ui-monospace, monospace)',
+          letterSpacing: '0.02em'
+        }}>
+          {m[1]}
+        </strong>
+      );
+      last = boldRegex.lastIndex;
+    }
+    if (last < str.length) parts.push(str.substring(last));
+    return parts;
+  };
+  if (Array.isArray(withLinks)) {
+    return withLinks.flatMap((part) => {
+      const result = processString(part);
+      return Array.isArray(result) ? result : [result];
+    });
+  }
+  return processString(withLinks);
+}
+
+export default function AssignmentPage() {
+  const { week } = useParams();
+  const rawData = assignments[Number(week)];
+  const [searchParams, setSearchParams] = useSearchParams();
+  const trackParam = searchParams.get('track');
+  
+  const [activeTrack, setActiveTrack] = useState(() => {
+    try {
+      if (trackParam && ['beginner', 'intermediate', 'advanced'].includes(trackParam)) {
+        return trackParam;
+      }
+      return localStorage.getItem('cp-active-track') || 'intermediate';
+    } catch {
+      return 'intermediate';
+    }
+  });
+
+  useEffect(() => {
+    if (trackParam && ['beginner', 'intermediate', 'advanced'].includes(trackParam)) {
+      setActiveTrack(trackParam);
+    }
+  }, [trackParam]);
+
+  if (!rawData) {
+    return (
+      <div className="app">
+        <div className="container">
+          <div className="assignment-page">
+            <Link to="/" className="back-link">← Back to Curriculum</Link>
+            <h1 className="assignment-title">Assignment Not Found</h1>
+            <p className="assignment-subtitle">No detailed assignment page exists for Week {week} yet.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const isMultiTrack = !!rawData.tracks;
+  const data = isMultiTrack ? (rawData.tracks[activeTrack] || rawData.tracks['intermediate']) : rawData;
+
+  return (
+    <div className="app">
+      <div className="container">
+        <div className="assignment-page">
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <Link to="/" className="back-link">← Back to Curriculum</Link>
+            <span style={{ opacity: 0.3 }}>|</span>
+            <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
+          </div>
+
+          {/* Quick links to other assignments */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            marginBottom: '32px',
+            marginTop: '12px',
+            flexWrap: 'wrap',
+            fontSize: '12px',
+            fontFamily: 'var(--font-mono, monospace)',
+            borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+            paddingBottom: '16px'
+          }}>
+            <span style={{ color: '#64748b', fontWeight: 'bold', marginRight: '6px' }}>All Assignments:</span>
+            {[1, 3, 5, 7, 9, 10].filter(wk => {
+              const role = getActiveRole();
+              return role === 'admin' || isWeekReleased(wk);
+            }).map((wk) => {
+              const isActive = Number(week) === wk;
+              return (
+                <Link
+                  key={wk}
+                  to={`/assignment/${wk}${activeTrack ? `?track=${activeTrack}` : ''}`}
+                  style={{
+                    textDecoration: 'none',
+                    padding: '6px 12px',
+                    borderRadius: '20px',
+                    background: isActive ? 'rgba(0, 0, 0, 0.06)' : 'transparent',
+                    color: isActive ? '#0f172a' : '#64748b',
+                    fontWeight: isActive ? 'bold' : 'normal',
+                    transition: 'all 0.15s ease',
+                    border: '1px solid',
+                    borderColor: isActive ? 'rgba(0, 0, 0, 0.15)' : 'transparent'
+                  }}
+                  className="assignment-nav-link"
+                >
+                  Week {wk}
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="assignment-header">
+            <img 
+              src="https://images.squarespace-cdn.com/content/v1/67806c279fb734295979b37e/9e044490-3bd2-4589-a460-cbabd7c93b35/Ryman_Arts_Logo_No_Tagline.png" 
+              alt="Ryman Arts Logo" 
+              style={{ height: '48px', marginBottom: '16px', display: 'block' }} 
+            />
+            <p className="assignment-eyebrow">Week {String(week).padStart(2, '0')} · Assignment</p>
+            <h1 className="assignment-title">{rawData.title}</h1>
+            {rawData.subtitle && <p className="assignment-subtitle">{rawData.subtitle}</p>}
+            {rawData.extraCredit && (
+              <p className="assignment-extra-credit">⭐ {rawData.extraCredit}</p>
+            )}
+          </div>
+
+          {/* Assignment Introduction */}
+          {rawData.introduction && (
+            <div style={{
+              background: 'rgba(246, 242, 232, 0.65)',
+              border: '1px solid var(--hairline-strong, #C9C1AE)',
+              borderRadius: '12px',
+              padding: '28px',
+              marginBottom: '36px',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.01)'
+            }}>
+              <h2 style={{
+                fontFamily: 'var(--font-display, serif)',
+                fontSize: '22px',
+                fontWeight: 'normal',
+                margin: '0 0 16px 0',
+                color: 'var(--ink, #1C1A17)',
+                borderBottom: '1px solid var(--hairline, #DDD6C6)',
+                paddingBottom: '10px'
+              }}>
+                {rawData.introduction.heading}
+              </h2>
+              
+              <div style={{
+                display: 'flex',
+                gap: '24px',
+                flexDirection: 'row',
+                alignItems: 'flex-start',
+                flexWrap: 'wrap'
+              }}>
+                <div style={{ flex: '1 1 500px' }}>
+                  {rawData.introduction.body && rawData.introduction.body.split('\n\n').map((para, idx) => (
+                    <p key={idx} style={{
+                      fontSize: '14.5px',
+                      lineHeight: '1.6',
+                      color: 'var(--ink-mid, #44403A)',
+                      marginBottom: '14px'
+                    }}>
+                      {parseMarkdownLinks(para)}
+                    </p>
+                  ))}
+
+                  {rawData.introduction.bullets && (
+                    <ul style={{
+                      paddingLeft: '20px',
+                      margin: '16px 0',
+                      fontSize: '14.5px',
+                      lineHeight: '1.6',
+                      color: 'var(--ink-mid, #44403A)'
+                    }}>
+                      {rawData.introduction.bullets.map((bullet, idx) => (
+                        <li key={idx} style={{ marginBottom: '8px' }}>
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {rawData.introduction.closing && (
+                    <p style={{
+                      fontSize: '14.5px',
+                      lineHeight: '1.6',
+                      fontWeight: '500',
+                      color: 'var(--ink, #1C1A17)',
+                      margin: '16px 0 0 0',
+                      fontStyle: 'italic'
+                    }}>
+                      {parseMarkdownLinks(rawData.introduction.closing)}
+                    </p>
+                  )}
+                </div>
+
+                {rawData.introduction.imageUrl && (
+                  <div style={{
+                    flex: '0 0 180px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    background: '#fff',
+                    padding: '8px',
+                    borderRadius: '8px',
+                    border: '1px solid var(--hairline, #C9C1AE)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.03)',
+                    margin: '4px auto 0 auto'
+                  }}>
+                    <img 
+                      src={rawData.introduction.imageUrl} 
+                      alt={rawData.introduction.imageCaption || "Introduction Visual"} 
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        borderRadius: '4px',
+                        display: 'block'
+                      }}
+                    />
+                    {rawData.introduction.imageCaption && (
+                      <p style={{
+                        fontSize: '11px',
+                        color: 'var(--ink-mid, #64748b)',
+                        marginTop: '8px',
+                        marginBottom: 0,
+                        textAlign: 'center',
+                        lineHeight: '1.3',
+                        fontStyle: 'italic'
+                      }}>
+                        {rawData.introduction.imageCaption}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Track Selector Tab Bar */}
+          {isMultiTrack && (
+            <div style={{
+              display: 'flex',
+              background: 'rgba(255, 255, 255, 0.45)',
+              backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
+              borderRadius: '30px',
+              padding: '6px',
+              gap: '6px',
+              marginBottom: '28px',
+              maxWidth: 'fit-content'
+            }}>
+              {['beginner', 'intermediate', 'advanced'].map((track) => {
+                const isActive = activeTrack === track;
+                const labelMap = {
+                  beginner: 'Base Assignment',
+                  intermediate: 'Take It to the Next Level',
+                  advanced: 'Advanced 3D Integration'
+                };
+                const colorMap = {
+                  beginner: { activeBg: '#3b82f6', text: '#fff' },
+                  intermediate: { activeBg: '#db2777', text: '#fff' },
+                  advanced: { activeBg: '#0f766e', text: '#fff' }
+                };
+                const theme = colorMap[track];
+                return (
+                  <button
+                    key={track}
+                    onClick={() => {
+                      setActiveTrack(track);
+                      try { localStorage.setItem('cp-active-track', track); } catch(e) {}
+                      setSearchParams({ track });
+                    }}
+                    style={{
+                      border: 'none',
+                      background: isActive ? theme.activeBg : 'transparent',
+                      color: isActive ? theme.text : '#475569',
+                      padding: '10px 20px',
+                      borderRadius: '24px',
+                      fontSize: '13px',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease-in-out',
+                      boxShadow: isActive ? '0 4px 12px rgba(0, 0, 0, 0.1)' : 'none',
+                      fontFamily: 'var(--font-sans, sans-serif)'
+                    }}
+                  >
+                    {labelMap[track]}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Track Specific Header details */}
+          {isMultiTrack && (
+            <div style={{
+              borderLeft: `4px solid ${activeTrack === 'beginner' ? '#3b82f6' : activeTrack === 'intermediate' ? '#db2777' : '#0f766e'}`,
+              paddingLeft: '16px',
+              marginBottom: '32px'
+            }}>
+              <h2 style={{ fontSize: '22px', margin: '0 0 6px 0', color: '#0f172a' }}>{data.title}</h2>
+              {data.subtitle && <p style={{ fontSize: '14px', margin: 0, opacity: 0.8, fontStyle: 'italic' }}>{data.subtitle}</p>}
+            </div>
+          )}
+
+           {/* Generic sections format (used by Week 1) */}
+          {data.sections?.map((section, si) => (
+            <section key={si} className="assignment-phase">
+              <h2 className="phase-title">{section.heading}</h2>
+              {section.body && (
+                typeof section.body === 'string' ? (
+                  section.body.split('\n\n').map((para, pi) => (
+                    <p key={pi} className="phase-intro" style={{ marginBottom: '16px' }}>{para}</p>
+                  ))
+                ) : (
+                  <p className="phase-intro">{section.body}</p>
+                )
+              )}
+              {section.subheading && <p className="phase-sub">{section.subheading}</p>}
+
+              {section.imageUrl && (
+                <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                  <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.08)' }} />
+                  {section.imageCaption && (
+                    <p style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontStyle: 'italic' }}>{section.imageCaption}</p>
+                  )}
+                </div>
+              )}
+
+              {section.bullets && (
+                <ul className="phase-list phase-list--accent">
+                  {section.bullets.map((b, i) => {
+                    if (typeof b === 'string') {
+                      return <li key={i}>{parseInlineMarkdown(b)}</li>;
+                    }
+                    return (
+                      <li key={i}>
+                        {parseInlineMarkdown(b.text)}
+                        {b.imageUrl && (
+                          <div style={{
+                            marginTop: '14px',
+                            marginBottom: '8px',
+                            background: '#fff',
+                            borderRadius: '10px',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
+                            overflow: 'hidden',
+                            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+                            maxWidth: '480px'
+                          }}>
+                            <div style={{
+                              width: '100%',
+                              aspectRatio: '16 / 10',
+                              overflow: 'hidden',
+                              background: '#f1f0ec'
+                            }}>
+                              <img
+                                src={b.imageUrl}
+                                alt={b.imageCaption || b.text}
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                  objectFit: 'cover',
+                                  display: 'block'
+                                }}
+                              />
+                            </div>
+                            {b.imageCaption && (
+                              <p style={{
+                                fontSize: '12px',
+                                fontWeight: '600',
+                                color: 'var(--ink-mid, #64748b)',
+                                textAlign: 'center',
+                                padding: '10px 16px',
+                                margin: 0,
+                                fontFamily: 'var(--font-sans, sans-serif)',
+                                fontStyle: 'italic'
+                              }}>
+                                {b.imageCaption}
+                              </p>
+                            )}
+                          </div>
+                        )}
+                        {b.subIntro && (
+                          <p style={{
+                            marginTop: '14px',
+                            marginBottom: '8px',
+                            fontSize: '14px',
+                            color: '#334155',
+                            lineHeight: '1.6',
+                            fontStyle: 'italic'
+                          }}>
+                            {parseInlineMarkdown(b.subIntro)}
+                          </p>
+                        )}
+                        {b.subbullets && (
+                          <ul style={{
+                            paddingLeft: '20px',
+                            margin: '8px 0 8px 0',
+                            fontSize: '13.5px',
+                            color: '#334155',
+                            lineHeight: '1.6',
+                            listStyleType: 'disc'
+                          }}>
+                            {b.subbullets.map((bullet, bi) => (
+                              <li key={bi} style={{ marginBottom: '6px' }}>{parseInlineMarkdown(bullet)}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {b.substeps && (
+                          <ol style={{
+                            paddingLeft: '20px',
+                            margin: '8px 0 4px 0',
+                            fontSize: '13.5px',
+                            color: '#334155',
+                            lineHeight: '1.6'
+                          }}>
+                            {b.substeps.map((step, si) => (
+                              <li key={si} style={{ marginBottom: '8px' }}>{parseInlineMarkdown(step)}</li>
+                            ))}
+                          </ol>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+
+              {section.numberedSteps && (
+                <ol className="phase-steps" start={section.start}>
+                  {section.numberedSteps.map((s, i) => {
+                    if (typeof s === 'string') {
+                      return <li key={i}>{parseInlineMarkdown(s)}</li>;
+                    }
+                    return (
+                      <li key={i}>
+                        {parseInlineMarkdown(s.text)}
+                        {s.imageUrl && (
+                          <div style={{
+                            marginTop: '14px',
+                            marginBottom: '8px',
+                            background: '#fff',
+                            borderRadius: '10px',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
+                            overflow: 'hidden',
+                            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+                            maxWidth: '480px'
+                          }}>
+                            <div style={{
+                              width: '100%',
+                              aspectRatio: '16 / 10',
+                              overflow: 'hidden',
+                              background: '#f1f0ec'
+                            }}>
+                              <img
+                                src={s.imageUrl}
+                                alt={s.imageCaption || s.text}
+                                style={{
+                                  width: '100%',
+                                  height: '100%',
+                                  objectFit: 'cover',
+                                  display: 'block'
+                                }}
+                              />
+                            </div>
+                            {s.imageCaption && (
+                              <p style={{
+                                fontSize: '12px',
+                                fontWeight: '600',
+                                color: 'var(--ink-mid, #64748b)',
+                                textAlign: 'center',
+                                padding: '10px 16px',
+                                margin: 0,
+                                fontFamily: 'var(--font-sans, sans-serif)',
+                                fontStyle: 'italic'
+                              }}>
+                                {s.imageCaption}
+                              </p>
+                            )}
+                          </div>
+                        )}
+                        {s.subIntro && (
+                          <p style={{
+                            marginTop: '14px',
+                            marginBottom: '8px',
+                            fontSize: '14px',
+                            color: '#334155',
+                            lineHeight: '1.6',
+                            fontStyle: 'italic'
+                          }}>
+                            {parseInlineMarkdown(s.subIntro)}
+                          </p>
+                        )}
+                        {s.subbullets && (
+                          <ul style={{
+                            paddingLeft: '20px',
+                            margin: '8px 0 8px 0',
+                            fontSize: '13.5px',
+                            color: '#334155',
+                            lineHeight: '1.6',
+                            listStyleType: 'disc'
+                          }}>
+                            {s.subbullets.map((bullet, bi) => (
+                              <li key={bi} style={{ marginBottom: '6px' }}>{parseInlineMarkdown(bullet)}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {s.substeps && (
+                          <ol style={{
+                            paddingLeft: '20px',
+                            margin: '8px 0 4px 0',
+                            fontSize: '13.5px',
+                            color: '#334155',
+                            lineHeight: '1.6'
+                          }}>
+                            {s.substeps.map((step, si) => (
+                              <li key={si} style={{ marginBottom: '8px' }}>{parseInlineMarkdown(step)}</li>
+                            ))}
+                          </ol>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+              )}
+
+              {section.note && <p className="phase-note">💡 {parseInlineMarkdown(section.note)}</p>}
+
+               {section.toolGuides && (
+                <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  {section.toolGuides.map((tg, tgi) => (
+                    <div key={tgi} style={{
+                      background: 'rgba(255, 255, 255, 0.4)',
+                      border: '1px solid rgba(0, 0, 0, 0.06)',
+                      borderRadius: '8px',
+                      padding: '16px 20px',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.01)'
+                    }}>
+                      <div style={{
+                        display: 'flex',
+                        gap: '20px',
+                        flexDirection: 'row',
+                        alignItems: 'flex-start',
+                        flexWrap: 'wrap-reverse'
+                      }}>
+                        <div style={{ flex: '1 1 300px' }}>
+                          <h3 style={{ fontSize: '16px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#0f172a' }}>{parseInlineMarkdown(tg.title)}</h3>
+                          {tg.subtitle && <p style={{ fontSize: '12px', margin: '0 0 8px 0', color: '#64748b', fontStyle: 'italic' }}>{tg.subtitle}</p>}
+                          {tg.description && <p style={{ fontSize: '14px', margin: '0 0 8px 0', color: '#334155', lineHeight: '1.5' }}>{parseInlineMarkdown(tg.description)}</p>}
+                          {tg.steps && (
+                            <ol style={{ paddingLeft: '20px', margin: '8px 0 0 0', fontSize: '13.5px', color: '#334155', lineHeight: '1.6' }}>
+                              {tg.steps.map((step, si) => (
+                                <li key={si} style={{ marginBottom: '6px' }}>{parseInlineMarkdown(step)}</li>
+                              ))}
+                            </ol>
+                          )}
+                        </div>
+                        {tg.imageUrl && (
+                          <div style={{
+                            flex: '0 0 160px',
+                            background: '#fff',
+                            padding: '4px',
+                            borderRadius: '6px',
+                            border: '1px solid var(--hairline, #C9C1AE)',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
+                            margin: '0 auto 0 auto'
+                          }}>
+                            <img 
+                              src={tg.imageUrl} 
+                              alt={tg.title} 
+                              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px' }} 
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+          ))}
+
+
+          {/* Phases format (used by Week 2) */}
+          {data.phases?.map((phase, pi) => (
+            <section key={pi} className="assignment-phase">
+              <h2 className="phase-title">
+                {phase.name}
+                {phase.points && <span className="phase-points-label"> ({phase.points} pts)</span>}
+              </h2>
+              {phase.intro && <p className="phase-intro">{phase.intro}</p>}
+
+              {phase.imageUrl && (
+                <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                  <img src={phase.imageUrl} alt={phase.imageCaption || phase.name} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.08)' }} />
+                  {phase.imageCaption && (
+                    <p style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', fontStyle: 'italic' }}>{phase.imageCaption}</p>
+                  )}
+                </div>
+              )}
+
+              {phase.bullets && (
+                <ul className="phase-list phase-list--accent">
+                  {phase.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                </ul>
+              )}
+
+              {phase.sets && (
+                <ul className="phase-list phase-list--accent">
+                  {phase.sets.map((s, i) => (
+                    <li key={i}><strong>{s.name}</strong> — {s.desc}</li>
+                  ))}
+                </ul>
+              )}
+
+              {phase.steps && (
+                <>
+                  <p className="phase-sub">To make each brush:</p>
+                  <ol className="phase-steps">
+                    {phase.steps.map((step, i) => (
+                      <li key={i}>{step}</li>
+                    ))}
+                  </ol>
+                </>
+              )}
+
+              {phase.note && <p className="phase-note">💡 {phase.note}</p>}
+
+              {phase.simulationsTable && (
+                <table className="grading-table" style={{ margin: '20px 0' }}>
+                  <thead>
+                    <tr>
+                      <th style={{ width: '40px' }}>#</th>
+                      <th style={{ width: '150px' }}>Medium</th>
+                      <th>Approach</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {phase.simulationsTable.map((sim, i) => (
+                      <tr key={i}>
+                        <td><strong>{sim.num}</strong></td>
+                        <td className="grading-criterion">{sim.medium}</td>
+                        <td className="grading-desc">{sim.approach}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+
+              {phase.subsections?.map((sub, i) => (
+                <div key={i} className="phase-subsection" style={{ marginTop: '20px' }}>
+                  <p className="phase-sub">{sub.title}:</p>
+                  <ul className="phase-list">
+                    {sub.bullets.map((b, j) => <li key={j}>{b}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </section>
+          ))}
+
+          {/* Tools & Shortcuts Cheat sheet */}
+          {data.shortcuts && (
+            <section className="assignment-phase">
+              <h2 className="phase-title">Tools & Shortcuts</h2>
+              <table className="grading-table">
+                <thead>
+                  <tr>
+                    <th style={{ width: '180px' }}>Shortcut</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.shortcuts.map((s, i) => (
+                    <tr key={i}>
+                      <td className="grading-criterion"><code style={{ background: 'rgba(0,0,0,0.05)', padding: '2px 6px', borderRadius: '3px', fontFamily: 'var(--font-mono)' }}>{s.key}</code></td>
+                      <td className="grading-desc">{s.action}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </section>
+          )}
+
+          {/* Workflow Tips */}
+          {data.tips && (
+            <section className="assignment-phase">
+              <h2 className="phase-title">Workflow Tips</h2>
+              <ul className="phase-list phase-list--accent">
+                {data.tips.map((tip, i) => <li key={i}>{tip}</li>)}
+              </ul>
+            </section>
+          )}
+
+          {/* Submission */}
+          {data.submission && (
+            <section className="assignment-phase">
+              <h2 className="phase-title">Submission</h2>
+              <ol className="phase-steps">
+                {data.submission.map((s, i) => <li key={i}>{s}</li>)}
+              </ol>
+            </section>
+          )}
+
+          {/* Discussion */}
+          {data.discussion && (
+            <section className="assignment-phase">
+              <h2 className="phase-title">Discussion / Critique</h2>
+              <p className="phase-intro">{data.discussion}</p>
+            </section>
+          )}
+
+          {/* Critique Questions */}
+          {data.critiqueQuestions && data.critiqueQuestions.length > 0 && (
+            <section className="assignment-phase assignment-critique">
+              <h2 className="phase-title">Critique Discussion Questions</h2>
+              <p className="phase-intro">
+                Reflect on these questions or bring them to your peer critique discussion once the assignment is completed:
+              </p>
+              <ul className="critique-list" style={{ paddingLeft: '20px', lineHeight: '1.7', fontSize: '15px' }}>
+                {data.critiqueQuestions.map((q, i) => (
+                  <li key={i} style={{ marginBottom: '10px' }}>{q}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <div className="assignment-footer" style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <Link to="/" className="back-link">← Back to Curriculum</Link>
+            <span style={{ opacity: 0.3 }}>|</span>
+            <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
+          </div>
+          <LegalDisclaimer style={{ borderTop: 'none', paddingTop: 0 }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+</file>
+
+<file path="src/assignments.js">
+// ──────────────────────────────────────────────────────────────────
+//  ASSIGNMENT DETAIL PAGES (THREE-TRACK MODELS)
+//  Keyed by week number. Each entry contains structured content for 
+//  Beginner, Intermediate, and Advanced tracks under a unified Worldbuilding IP.
+// ──────────────────────────────────────────────────────────────────
+
+export const assignments = {
+  1: {
+    title: 'Assignment 1: Character / Prop Foundation',
+    subtitle: 'Worldbuilding Step 1: Establish your core IP characters and signature items.',
+    introduction: {
+      heading: 'Assignment Introduction: Line, Shape, and the Visual Building Blocks of Digital Art',
+      imageUrl: '/phantoms_in_the_brain.png',
+      imageCaption: 'Phantoms in the Brain by V. S. Ramachandran',
+      body: 'When we look at an image, we do not perceive every detail at once. The visual system first responds to simpler visual information: changes in light and dark, color differences, edges, directions, textures, overlapping forms, and larger shape groupings. In early visual cortex, many neurons are especially responsive to the orientation of an edge or bar—vertical, horizontal, diagonal, curved, or moving. Other visual networks contribute to color, figure-ground separation, spatial depth, motion, and object recognition.\n\nNeurologist V. S. Ramachandran’s book [Phantoms in the Brain](https://www.amazon.com/Phantoms-Brain-Probing-Mysteries-Human/dp/0688172172) explores how neurological conditions can reveal the hidden structure of perception. When a specific part of the visual system is damaged or disrupted, a person may lose one aspect of visual experience while retaining others. Someone may see objects but struggle to perceive motion, recognize faces, judge distance, organize space, or identify a familiar form.\n\nThese cases show that vision is not a single process. The brain builds visual understanding from many interacting systems that process edges, contrast, color, motion, shape, depth, attention, and object identity. What feels like one seamless image is actually the result of many forms of analysis occurring at once.\n\nThis is directly relevant to digital artists. When we break down an image into gesture lines, silhouettes, value masses, color groupings, perspective guides, and simple geometric forms, we are separating the same kinds of visual information the brain must organize in order to make sense of a scene.\n\nDigital graphics tools make these components visible and editable. Pixels store small samples of color and brightness; vector paths use points and Bézier curves to construct lines and shapes; layers, masks, and channels isolate visual information; and tools such as Blur, Sharpen, Levels, Curves, and Filters allow us to analyze and adjust contrast, edge clarity, color, texture, and depth.\n\nIt is more accurate to say that digital tools let us separate and manipulate visual variables than to say they reproduce the brain’s exact mechanisms. Photoshop channels, Curves, masks, Bézier paths, filters, and pixel grids are engineering systems, but they are powerful for artists because they map well onto the visual information viewers use: edge, contrast, color, shape, scale, and spatial separation.\n\nAnd this is how many digital artists work as well. They break images down into components, base shapes, and line structures. The exercises here reflect the common techniques digital painters use to block out forms, structures, and define lighting in their compositions, which is very much how the brain itself works—by unlocking patterns of perception that we normally don\'t think about.\n\nThe purpose of this assignment is to study an image as a constructed visual system. By identifying its major lines, shapes, values, negative spaces, and spatial cues, you will better understand how an image guides perception—and how to use those same tools in your own original digital work.\n\nFor this assignment, break down your selected reference into its visual building blocks:',
+      bullets: [
+        'Major shapes: What are the largest light, dark, and color masses?',
+        'Silhouette and negative space: What makes the subject separate from its background?',
+        'Directional lines: Where do gesture, perspective, contours, or repeated angles guide the eye?',
+        'Simple forms: Can complex objects be reduced to boxes, cylinders, spheres, wedges, or flat graphic shapes?',
+        'Value structure: Does the image still read when viewed small, blurred, or in grayscale?',
+        'Focal hierarchy: Where are the sharpest edges, strongest contrast, highest saturation, or most specific details?'
+      ],
+      closing: 'The goal is not to trace a finished image. The goal is to understand its visual construction well enough to use those principles in your own original digital artwork.'
+    },
+    tracks: {
+      beginner: {
+        title: 'Base Assignment: Traditional Translation',
+        subtitle: 'Focus: Mastering digital brush mechanics, line control, and basic layers.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Select one traditional sketch or drawing of a character or prop from your traditional portfolio. You will recreate this sketch digitally. This character or prop will serve as the core element of your worldbuilding project throughout the remaining assignments.',
+          },
+          {
+            heading: 'Exercise Guidelines',
+            body: 'Using your selected traditional sketch as reference, create three separate digital versions of your character or prop—each using a different blocking approach.',
+            bullets: [
+              { text: '**Straight Line Blocking:** Use the Pen Tool (**P**) to lay down precise bezier paths, or use the Brush Tool (**B**) with **Shift** held down to click point-to-point for rigid straight-line construction. Focus on angular structure and clean geometric edges.', imageUrl: '/example_lasso_shape_blocking.png', imageCaption: 'Straight Line Blocking' },
+              { text: '**Sketch Approach:** Work freehand with the Brush Tool, using brush smoothing (80–90%) to achieve loose, gestural, expressive lines. Capture energy and movement over precision.', imageUrl: '/example_sketch_approach.png', imageCaption: 'Sketch Approach' },
+              { text: '**Lasso Block Approach:** Use the Polygonal Lasso Tool (**L**) to click out flat shape selections, then fill them with the Paint Bucket or brush inside the selection boundary. Build up your character/prop as a series of flat, hard-edged value masses—like a paper cut-out silhouette.', imageUrl: '/example_straight_line_blocking.png', imageCaption: 'Lasso Block Approach', subIntro: 'This is a simple process, and many artists use it as an initial step to create a landscape. It\'s quick and simple because it works best with a mouse, and the results for landscape depth can be surprisingly good for such a simple process. Here are the steps:', substeps: ['Create a New Layer — For each layer type (background, midground, foreground), create a new layer in Photoshop. Use the keyboard shortcut **Ctrl + Alt + Shift + N** (**Cmd + Option + Shift + N** on Mac) to quickly add a new layer.', 'Select the Polygonal Lasso Tool — Select the Polygonal Lasso tool from the toolbar to create your landscape elements. Access this tool quickly by pressing **Shift + L** until the Polygonal Lasso tool is active.', 'Draw and Fill Your Landscape Shapes — Using the Polygonal Lasso tool, draw the outline of your landscape elements such as mountains, rivers, or trees. You can switch from the Polygonal Lasso to the freeform Lasso by holding **Alt/Option**. Once you\'ve completed a selection, fill it with your chosen color by pressing **Alt + Backspace** (**Option + Delete** on Mac) to fill with the foreground color.', 'Deselect and Move to the Next Layer — After you have filled the selection, deselect by pressing **Ctrl + D** (**Cmd + D** on Mac). Move on to the next layer to create your next landscape element.'] },
+            ],
+          },
+          {
+            heading: 'Tool Guide: Creating Straight Lines in Photoshop',
+            body: 'You will be using the following tools to create straight lines. These tools are fairly common for the majority of the software products that I have previously mentioned, but most of the details I provide below pertain mostly to Photoshop. I will explain in our first Zoom how these tools work in other programs.',
+            toolGuides: [
+              {
+                title: 'The Pen Tool (**P**)',
+                subtitle: '(found in Photoshop, Illustrator, GIMP, and Figma)',
+                description: 'The Pen tool (**P**) is used to create paths or vectors (also called strokes). With the Pen tool, you draw out your paths point by point. The path is called a bezier.',
+              },
+              {
+                title: 'The Path Palette',
+                description: 'In Photoshop, paths are stored in the Path Palette. You can finish a path by hitting Escape, then draw a new path.',
+              },
+              {
+                title: 'Converting Paths to Pixels in Photoshop',
+                description: 'Here are the steps to turn the paths into pixels:',
+                steps: [
+                  'First, create a new layer.',
+                  'Then use the Path Selection tool (**A** shortcut in Photoshop) to select the paths.',
+                  'Select the paths, then right-click on the paths, and in the menu that appears click "Stroke Path" and select the Pencil tool or the Brush tool.',
+                  'The pencil or brush tool settings will determine the quality of the brushstroke that is applied to the path.',
+                ],
+              },
+              {
+                title: 'The Brush Tool (**B**)',
+                description: 'We can use the Brush tool (**B** shortcut in Photoshop) to create straight lines by dragging on the canvas while hitting **Shift**. Click once, hit **Shift**, and then click somewhere else where you want the line to end. This technique works in Photoshop, GIMP, and Magma.io. After each line, hit **Escape**, otherwise, you will get one continuous line.',
+              },
+              {
+                title: 'The Line Tool (**U**)',
+                description: 'In Photoshop, you will have to press **Shift + U** a couple of times to access the Line tool. Make sure the line type is set to pixels.',
+              },
+              {
+                title: 'The Polygonal Lasso Tool (**L**)',
+                subtitle: '(Photoshop and digital painting software)',
+                description: 'The Polygonal Lasso tool (**L**) is a powerful tool to build up initial digital painting concepts. Instead of drawing paths point-by-point like the Pen tool, the Polygonal Lasso lets you click to create straight-edge selection boundaries. Constrain angles using **Shift**, click to set corners, and close the loop to make your selection active.',
+                imageUrl: '/polygonal_lasso_tool.png',
+                steps: [
+                  'Use it to quickly block in value masses: layout background, midground, and foreground planes on separate layers to immediately establish structure and form.',
+                  'Create quick character silhouettes or hard-edged mechanical shapes in the scene.',
+                  'Use selections to paint straight beams of light or crisp cast shadows without overspraying onto other areas.',
+                  'Fill selections directly with the Paint Bucket tool or brush inside the active boundary to lock in the shapes.'
+                ]
+              },
+            ],
+          },
+          {
+            heading: 'Recommended File Setup',
+            numberedSteps: [
+              'Layer 1 (Bottom): Import your traditional sketch scan/photo, set opacity to 30%.',
+              'Layer 2 (Middle): Solid white background layer.',
+              'Layer 3 (Top): Your active drawing layer for inking.',
+            ],
+          },
+        ],
+
+        submission: [
+          'Scan/photo of the original traditional reference.',
+          'Finished Straight Line Blocking version as a PNG.',
+          'Finished Sketch Approach version as a PNG.',
+          'Finished Lasso Block Approach version as a PNG.',
+        ],
+        critiqueQuestions: [
+          'How did you translate the organic, tactile feel of your traditional sketch into clean digital lines?',
+          'What did you discover about your brush control and line confidence when comparing the straight-line and curved-line versions?',
+          'How does the layer structure you set up make it easier to isolate lines and prep for future coloring or adjustments?'
+        ],
+      },
+      intermediate: {
+        title: 'Assignment 1 — Part 2: Scene Integration',
+        subtitle: 'Focus: Combining your blocking methods, working from photo reference, and moving from value to color through lighting.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'In Part 1, you translated a traditional sketch into a digital character or prop and explored three different blocking approaches. That character or prop is the seed of your world. In Part 2, you will plant it in three different environments.\n\nYou will create **three scenes**, each built from a different photographic reference, and place your IP character or prop into each one. This is where the methods from Part 1 stop being separate exercises and start working together. The goal is **not** a finished photoreal scene — it is to capture the *essence* of the world you are developing. Keep everything loose and sketchy. The viewer\'s imagination fills the gaps.',
+          },
+          {
+            heading: 'Exercise Guidelines',
+            body: 'Gather three different photographic references — three distinct environments, moods, or settings your character could inhabit. For each one, build a scene by working through the process below.',
+          },
+          {
+            heading: 'Process',
+            numberedSteps: [
+              '**Block out and sketch the scene.**\nStart by combining the techniques from Part 1. You can sketch freehand or block out background elements with the Polygonal Lasso — or both in the same scene. Use straight-line blocking, the sketch approach, and lasso blocks wherever they fit. Establish the big forms first: where the character sits, where the major masses of the environment are.',
+              '**Refine the forms.**\nOnce the main forms are determined, sketch further and tighten things up. You are not chasing detail — you are finding the structure and the shape relationships.',
+              '**Organize with layers and your Library.**\nUse layers to keep your scene readable (background, midground, foreground, character, lighting). Use the CC Library to store and reuse assets across your three scenes — your character, props, or any shape you want to carry forward.',
+              '**Think about shape language.**\nAs you block and refine, pay attention to the *shape language* of your forms — the angles, curves, and silhouettes that define the feel of your world. If a shape becomes interesting or reusable, save it to the Library too.',
+              '**Keep brushes simple.**\nWe have not covered custom brushes yet, so stay with the basics. Don\'t get distracted by texture or fancy strokes — the focus right now is structure, value, and light.',
+            ],
+          },
+          {
+            heading: 'From Value to Color',
+            start: 6,
+            numberedSteps: [
+              '**Study the light in your reference.**\nLook at your photo reference and read the light: where it\'s coming from, the direction it travels, and how that translates into color. This observation is what makes the next steps believable.',
+              '**Block everything out in greyscale.**\nGet the full scene working in value first — lights and darks, no color. A scene that reads in greyscale will read in color.',
+              '**Build a small palette and paint the light.**\nOnce the greyscale is in place, build a focused color palette of **4 to 6 colors** and paint the lighting over your value blockout.',
+              {
+                text: '**Apply the lighting with blend modes.**\nFor now, use layer blend modes to apply lighting rather than painting it manually — it\'s faster and keeps you flexible. My recommended starting points:',
+                subbullets: [
+                  '**Linear Light** — for your darker colors (shadows)',
+                  '**Pin Light** — for your lighter colors (highlights)',
+                  '**Overlay** — for your mid-tones'
+                ],
+                subIntro: 'Put your lighting/color passes on their own layers so you can dial intensity and swap modes freely.'
+              }
+            ],
+          },
+          {
+            heading: 'Working With Your Reference',
+            body: 'A few ways to keep your photo reference visible while you paint:',
+            bullets: [
+              'Place the reference on a **separate artboard** alongside your canvas.',
+              'Use **PureRef** (note: this is now a paid app).',
+              'Or drop the reference on the **base layer** and toggle layers on and off to compare against it.',
+            ],
+          },
+          {
+            heading: 'Recommended File Setup',
+            bullets: [
+              '**Reference layer (bottom):** Your photographic reference, set to a low opacity, on its own toggleable layer.',
+              '**Greyscale blockout:** Background, midground, foreground, and character forms on organized layers.',
+              '**Lighting / color passes (top):** Separate layers set to your recommended blend modes.',
+              '**Library:** Character, props, and any reusable shapes saved for use across all three scenes.',
+            ],
+          },
+        ],
+        submission: [
+          'The three photographic references used (one per scene).',
+          'Scene 1 — finished loose color study as a PNG.',
+          'Scene 2 — finished loose color study as a PNG.',
+          'Scene 3 — finished loose color study as a PNG.',
+        ],
+        critiqueQuestions: [
+          'How did combining the Part 1 methods change the way you approached building a full scene?',
+          'What did studying the light in your reference teach you about translating value into color?',
+          'How did the blend-mode lighting workflow affect the mood of each scene, and which mode gave you the most useful result?',
+          'Looking at all three scenes together, what shape language is starting to define your world?',
+        ],
+      },
+      advanced: {
+        title: 'Advanced 3D Integration: 3D Base Model & Paint-over',
+        subtitle: 'Focus: Modeling assets in Blender and painting details digitally in Photoshop.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Model your character base mesh or signature prop using Blender. You will render orthographic views (Front, Side, Back) and paint over them in Photoshop in two different commercial styles.',
+          },
+          {
+            heading: 'Blender & Photoshop Workflow',
+            numberedSteps: [
+              'Block out the prop or low-poly character mannequin in Blender using primitive shapes and subdivision modifiers.',
+              'Set up orthographic cameras (Front, Side, and Back) and render them with flat gray shaders.',
+              'Import renders into Photoshop, establish a clean line art overlay, and apply two distinct style renders (flat graphic and textured painterly).',
+            ],
+          },
+        ],
+        submission: [
+          'Screenshot of the Blender viewport showing your 3D mesh topology.',
+          'Orthographic flat renders (PNG).',
+          'Two final style paint-overs (PNG).',
+        ],
+        critiqueQuestions: [
+          'How did blocking out the 3D shapes in Blender help clarify the proportions and perspective of your initial sketch?',
+          'What choices did you make in your orthographic viewport setups to ensure your renders were clean templates for drawing?',
+          'How did you merge 3D structural correctness with the expressive qualities of hand-drawn digital painting during the paint-over?'
+        ],
+      },
+    },
+  },
+  3: {
+    title: 'Assignment 2: Compositional Brush Library & Landscape Exploration',
+    subtitle: 'Worldbuilding Step 2: Build custom brushes from real-world imagery and use them to construct environment compositions.',
+    tracks: {
+      beginner: {
+        title: 'Base Assignment: Compositional Brush Library',
+        subtitle: 'Focus: Building custom brush libraries from real-world imagery to use as compositional painting tools.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'In this assignment, you will build your own custom brush library that represents the visual elements of your world.\n\nAn important distinction: the brushes you are creating here are not meant to emulate traditional artistic materials like charcoal, oil paint, or watercolor. Instead, these brushes represent real compositional elements—clouds, building silhouettes, tree canopies, industrial structures, terrain features—that you stamp and paint directly onto the canvas to construct a scene. This is how many professional concept artists and digital matte painters work. They build libraries of compositional brushes sourced from photographic reference, then use those brushes to rapidly block out environments, establish depth, and define lighting in their compositions.\n\nIf you don\'t have Photoshop, you can use Photopea.com, which supports custom brush definition the same way.',
+          },
+          {
+            heading: 'Create Your Brush Library',
+            body: 'Start with a minimum of three core categories — Atmospheric, Landscape/Background, and Messy/Junk brushes. Aim for six brushes in each, but push for more from the expanded list below. Having a broad brush library is essential as you build up your digital painting skills. Use images that are wide enough to ensure the brushes have sufficient detail, and organize your brushes into clearly labeled folders within the Brushes panel.',
+            imageUrl: '/brush_types_examples.png',
+            imageCaption: 'Examples of the three brush categories: Atmospheric, Background, and Messy/Junk brushes.',
+            bullets: [
+              { text: '**Atmospheric Brushes:** Clouds, fog banks, smoke plumes, mist layers, and sky textures. These are used to establish mood, atmosphere, and depth in the background and sky areas of your composition. For atmospheric brushes, it\'s good to feather the selection edges before defining the brush (Select > Modify > Feather, set to 40–50px) so you don\'t get hard edges when painting.', imageCaption: 'Atmospheric Brushes' },
+              { text: '**Landscape/Background Brushes:** City skyline silhouettes, mountain ridges, tree lines, building clusters, terrain profiles, and architectural forms. These define the structural shapes and horizon lines of your environments. These brushes can keep their hard edges since architectural and landscape forms naturally have defined silhouettes.', imageCaption: 'Landscape/Background Brushes' },
+              { text: '**Messy/Junk Brushes:** Industrial parts, girders, telephone poles, mechanical fragments, scaffolding, pipes, wires, and random geometric debris. These add visual complexity, foreground interest, and textural grit to your scenes. They\'re great for framing elements—creating the feeling of looking through something to see the scene behind it.', imageCaption: 'Messy/Junk Brushes' },
+              '**Architectural Brushes:** windows, brick, concrete seams, roof tiles, scaffolding, pipes, vents, signage, trim, perspective-grid marks.',
+              '**Figure / Anatomy Brushes:** gesture lines, skin texture, hair, fabric folds, hands, facial planes, silhouettes, crowd stamps.',
+              '**Vehicle / Mechanical Brushes:** tires, treads, panel lines, rivets, exhaust grime, cables, gears, engine parts, chrome reflections.',
+              '**Nature / Organic Brushes:** foliage, bark, rocks, grass, moss, clouds, water, dirt, coral, insects, fur.',
+              '**Industrial / Construction Brushes:** rust, weld marks, hazard stripes, concrete damage, peeling paint, rebar, chain-link, metal grates.',
+              '**Graphic-Design Brushes:** halftones, ink splatter, dry marker, screenprint grain, photocopy noise, tape edges, torn paper.',
+              '**Material Brushes:** leather, denim, wood grain, brushed metal, plastic, ceramic, velvet, scales, slime, cracked paint.',
+              '**Lighting / Effects Brushes:** bloom, fog, smoke, sparks, rain, snow, lens grime, glowing particles, rim-light haze.',
+              '**Narrative / Worldbuilding Brushes:** symbols, posters, graffiti, maps, alien writing, warning labels, UI fragments, emblems.',
+              '**Creature / Character-Detail Brushes:** scales, pores, horns, feathers, claws, wrinkles, wounds, armor plates, bioluminescent markings.',
+              '**Pattern / Textile Brushes:** embroidery, plaid, camouflage, knit fabric, lace, quilting, woven fibers, decorative trims.',
+              '**Damage / Age Brushes:** scratches, dents, chipped edges, corrosion, soot, oil stains, water streaks, mold, grime buildup.',
+            ],
+          },
+          {
+            heading: 'How to Create a Brush',
+            body: 'The process for turning a found image into a usable compositional brush:',
+            numberedSteps: [
+              'Find your source image (search for clouds, city skylines, industrial structures, etc.) and copy or screenshot the portion you want.',
+              'In Photoshop (or Photopea.com), paste the selection into a new or existing document.',
+              'Convert to black and white: **Image > Adjustments > Black and White** (**Cmd + Option + Shift + B** on Mac).',
+              'Add contrast using Levels (**Cmd + L**): push the dark triangle to the right and the light triangle to the left to increase contrast. Remember: white areas become transparent in the brush, so you want a clean white background with strong dark forms.',
+              'Use the Rectangular Marquee tool (**M**) to select the area you want to define as a brush. Make the selection comprehensive—bigger brushes are generally better than smaller ones.',
+              'Define the brush: **Edit > Define Brush Preset**. Name it clearly (e.g., "Cloud 01", "Skyline 02", "Grunge 03").',
+            ],
+            note: 'Tip: For atmospheric brushes like clouds, the grayscale values of the cloud may need to be inverted (**Cmd + I**) before defining the brush—since brushes paint with dark values, and clouds are naturally light. Use Levels to push the background fully white after inverting so you get a clean, usable cloud brush.',
+          },
+          {
+            heading: 'Understanding Levels for Brush Creation',
+            body: 'Levels is a critical tool for this assignment. In the Levels panel, you see a histogram of the image\'s tonal values with three triangles beneath it: black (shadows), gray (midtones), and white (highlights).\n\nDragging the black triangle to the right makes dark areas darker. Dragging the white triangle to the left makes light areas lighter. Together, these push your image toward a high-contrast silhouette—which is exactly what you want for a clean brush definition.\n\nWhy does this matter? A brush is defined by its dark values—the dark areas become the painted marks, and the white areas become transparent. If your source image has muddy grays in the background, those will show up as faint noise when you paint. By using Levels to push the background fully white and your subject fully dark, you get crisp, intentional brush strokes.\n\nLevels also has broader uses beyond brush creation: increasing vibrancy, revealing detail in dark or light areas, and making colors stand out. Understanding Levels will serve you well throughout your digital painting workflow.',
+          },
+        ],
+        submission: [
+          'Brush library screenshot showing your organized brush folders (Atmospheric, Background, Messy/Junk) with all 18 brushes.',
+          'A test sheet showing each brush stamped once at full size, labeled with its name and category.',
+        ],
+        critiqueQuestions: [
+          'How did your choice of source imagery for each brush category (clouds, skylines, industrial parts) reflect the world you are building?',
+          'How did you use Levels to clean up your brush definitions, and what difference did it make in the quality of the brush strokes?',
+          'Which brushes do you think will be the most versatile for composing full environments, and why?'
+        ],
+      },
+      intermediate: {
+        title: 'Take It to the Next Level: Landscape Compositions',
+        subtitle: 'Focus: Using your custom brush library to paint three themed landscape compositions with depth layering.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Now that you have built your compositional brush library (from the Base Assignment), put it to work. You will use your brush library, starting with the Atmospheric, Background, and Messy/Junk brushes, to paint three separate landscape compositions—all set within the same world as your character IP, but each showing a different phase or variation of that world.\n\nThis process will involve stamping your brushes rather than painting with them. Each time you stamp, create a new layer for that stamped brush.\n\nUse techniques to establish landmasses and structure, such as polygonal lasso blocking, in addition to the brushes you will use.\n\nKeeping your layers organized is critical—so be sure to use groups and subgroups to keep this organized.\n\nMake this greyscale for now.',
+            imageUrl: '/three_compositions_example.png',
+            imageCaption: 'Three separate landscape compositions — each showing a different phase of the same world.',
+          },
+          {
+            heading: 'Paint Three Landscape Compositions',
+            body: 'Using your custom brushes, create three separate landscape compositions. Each composition should be 11" × 17" at 72 DPI. All three landscapes exist within the same world as your character IP, but each one shows a different phase or variation of that world.\n\nChoose one thematic approach for your three phases:',
+            bullets: [
+              'Seasonal: Summer → Fall → Winter (or any three seasons)',
+              'Genre Shift: Fantasy → Modern → Science Fiction',
+              'Timeline: Past → Present → Future',
+              'Time of Day: Dawn → Midday → Night',
+            ],
+          },
+          {
+            heading: 'Composing with Depth: Foreground, Midground & Background',
+            body: 'As you build each landscape, think in terms of three depth layers. Keep each layer on its own separate layer in your Photoshop file—this is essential because in a future assignment, we will combine all three landscapes into one long panoramic image, colorize them, and animate the foreground, midground, and background at different speeds to create a parallax animation.\n\nValue creates the illusion of depth:',
+            bullets: [
+              'Foreground elements should be the darkest values—use your Messy/Junk brushes and strong black shapes to create framing elements close to the viewer.',
+              'Midground elements should be medium values—use your Background brushes for architecture, terrain, and structural forms.',
+              'Background elements should be the lightest values—use your Atmospheric brushes for sky, clouds, distant mountains, and haze. Things fade out the further they recede into the distance.',
+            ],
+            note: 'You can build up density by clicking multiple times with the same brush. You can also paint in white to carve back into dark areas and break up repetitive patterns. Scale your brushes up and down, and rotate them to create variety.',
+          },
+          {
+            heading: 'File Setup & Organization',
+            bullets: [
+              'Work in a single Photoshop document with three Artboards (use the Artboard tool to create each one at 11" × 17"), or create three separate .PSD files.',
+              'Keep foreground, midground, and background on separate layers within each composition.',
+              'Save your working files as .PSD to preserve layers—you will need them for the parallax animation assignment.',
+              'Export each composition as a PNG for submission.',
+            ],
+          },
+        ],
+        submission: [
+          'Three landscape compositions as PNG files (11" × 17" at 72 DPI).',
+          'Each composition should clearly show foreground, midground, and background depth separation.',
+          'Layered .PSD files with foreground, midground, and background on separate layers.',
+        ],
+        critiqueQuestions: [
+          'How did your choice of source imagery for each brush category (clouds, skylines, industrial parts) affect the mood and genre of your final landscapes?',
+          'How did you use value contrast across your foreground, midground, and background layers to create a convincing sense of depth?',
+          'Which brushes were the most versatile across your three compositions, and how did scaling, rotating, and layering them create variety from a limited set?'
+        ],
+      },
+      advanced: {
+        title: 'Advanced 3D Integration: Shader Editor, Render Bake & Photoshop Asset Authoring',
+        subtitle: 'Focus: Prop Wear States — The Procedural-to-Painted Pipeline.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Take the signature prop of your character and tell its life story across four wear-and-tear states. But instead of painting each state from scratch, you\'ll first turn Blender into an asset factory: build procedural materials on your prop, bake out physically meaningful maps, and convert those bakes into a reusable Photoshop library of patterns, brushes, and masks. Then you\'ll assemble all four wear states non-destructively over a single untouched base.\n\nThe point: clean mathematical procedural surfaces from Blender + the warmth of hand-painted overlays in Photoshop, with the bakes deciding where wear is physically allowed to live.',
+          },
+          {
+            heading: 'The Core Idea: Blender Ships Photoshop Three Asset Classes',
+            body: 'Blender\'s procedural shaders and baking pipeline produce three distinct types of assets that become your Photoshop toolkit:',
+            bullets: [
+              'Patterns — Built by baking a procedural shader to a tileable square (Emit bake). Becomes a Define Pattern → Pattern Fill layer in Photoshop. Used to express broad surfaces: rust fields, moss carpets, scratch grain.',
+              'Brushes — Built by baking a single isolated element to a grayscale alpha. Becomes a Define Brush Preset → scatter/jitter stamp. Used to express discrete damage: cracks, dents, moss clumps, energy fissures.',
+              'Mask Maps — Built by baking AO, curvature, and position from the prop. Loaded as selections or layer masks. Used to decide where wear goes — the wear logic.',
+            ],
+            note: 'The mask maps are the lesson. They aren\'t textures — they\'re rules. Curvature (Pointiness) → exposed edges → metal scrape, paint chip, rust onset (the story of handling). Ambient Occlusion → crevices and contact points → grime, moss, damp settling (the story of storage/environment). Z-Position/Height → base vs. top → mud and ground contact below, sun-bleach above (the story of orientation in the world).',
+          },
+          {
+            heading: 'Part A — Blender: Build the Shader and the Asset Library',
+            body: 'This part covers the Blender-side workflow: building procedural wear shaders, baking passes, and creating tileable patterns and stamp brushes.',
+          },
+          {
+            heading: 'A1. Procedural Wear Shader',
+            body: 'Build a node setup in the Shader Editor that defines wear boundaries procedurally:',
+            bullets: [
+              'Use Noise Texture for organic grain and patina. (Blender 5.1 has no standalone Musgrave node — it lives inside Noise Texture under the Type dropdown: fBM, Multifractal, Ridged Multifractal, Hetero Terrain.)',
+              'Use Voronoi for cellular rust pitting and chipped-paint cells.',
+              'Drive everything through Color Ramps to harden the wear boundaries (narrow ramps = crisp edge scraping; soft ramps = gradual patina).',
+              'Mix layers with Mix/MixColor nodes, masked by a Geometry > Pointiness signal so rust and scrape concentrate on exposed edges.',
+            ],
+          },
+          {
+            heading: 'A2. Unwrap and Bake (Cycles)',
+            body: 'Switch the render engine to Cycles (EEVEE baking is limited). UV unwrap the prop, create and assign an image texture node, then bake each pass to its own image. Set a Margin/bleed of a few pixels to avoid UV-seam halos.\n\nBake these passes as separate PNGs:',
+            bullets: [
+              'Diffuse / Base Color — Bake Type: Diffuse, uncheck Direct & Indirect, keep Color only (gives flat base color, no baked lighting).',
+              'Ambient Occlusion — Bake Type: Ambient Occlusion. Your crevice/grime/moss mask.',
+              'Curvature — plug Geometry > Pointiness → ColorRamp (squeeze the ramp around the mid-gray to isolate edges) → Emission, then Bake Type: Emit. Your edge-wear mask. (Pointiness reads flat on low-poly — subdivide the mesh or bake from a high-poly version.)',
+              'Position / Height — Geometry > Position → Separate XYZ → Z → ColorRamp → Emission → Bake Emit. Your top-vs-base mask for sun-bleach and mud.',
+              '(Optional) Normal map for relighting/detail in Photoshop.',
+            ],
+            note: 'The Emit-bake trick: to capture any raw procedural value cleanly (curvature, position, a noise field), plug it into an Emission shader and bake Emit. This bypasses all scene lighting so you get the pure data, not a lit render.',
+          },
+          {
+            heading: 'A3. Build the Tileable Patterns',
+            body: 'On a separate flat plane (UVs filling 0–1), build a procedural rust/moss/scratch material and bake it via the Emit trick to a square image. To make it seamless for a Pattern Fill: run Photoshop\'s Filter > Other > Offset with Wrap Around on, then heal the seam line that appears. (Truly procedural tiling via wrapped coordinates is the advanced route — Offset-and-heal is the dependable classroom method.)',
+          },
+          {
+            heading: 'A4. Build the Stamp Brushes',
+            body: 'Model or procedurally isolate a single wear element — one crack, one moss clump, one dent, one energy fissure — on a black background. Bake its height or AO to a square grayscale image. In Photoshop: desaturate, push contrast with Levels, then Edit > Define Brush Preset. In the Brush Settings panel enable Scattering, Size Jitter, and Angle Jitter so repeated stamps never look cloned.',
+          },
+          {
+            heading: 'Part B — Photoshop: Assemble the Four Wear States Non-Destructively',
+            body: 'Build one master file. The baked Diffuse + AO form the foundation layer that you never paint on directly — every wear state is a group of fills, stamps, and adjustments masked above it.\n\nStandard stack, bottom to top:',
+            numberedSteps: [
+              'Base — baked Diffuse (locked).',
+              'AO — set to Multiply, low opacity, to ground every layer above.',
+              'Wear groups — each is a Pattern Fill (rust/moss/mud) + a layer mask driven by the relevant baked map (Curvature for edge rust; AO + Position for moss and mud) + clipped adjustment layers for color.',
+              'Hand-paint — your custom brushes, clipped to the wear group, adding the warmth and intent the procedural can\'t.',
+              'Energy/glow (ruined state) — emission painting on Screen or Linear Dodge (Add), masked tightly to the cracks.',
+              'Global grade — adjustment layers on top to unify each state\'s mood.',
+            ],
+            note: 'Each of the four states is the same prop shape with a different recombination of these groups — toggle groups on/off to move between states.',
+          },
+          {
+            heading: 'Required Wear States',
+            bullets: [
+              'Pristine / Factory — perfect surfaces, clean speculars and reflections. Mostly base + light AO; minimal masking.',
+              'Oxidized / Weathered — rust, patina, sun-bleach, micro-scratches. Edge-rust via the Curvature mask; sun-bleach via the Position mask top; scratch brush stamping.',
+              'Overgrown / Organic — moss, mud, vine growth, damp. Moss pattern via AO + Position-base mask; mud at the base; raise roughness, kill speculars.',
+              'Ruined / Active — severe battle damage (cracks, dents) + glowing cracked energy. Crack and dent brushes; energy group on Screen/Add leaking from the fissures.',
+            ],
+          },
+        ],
+        submission: [
+          'Photographic material reference board — 10–15 reference photos covering all four states.',
+          'Blender node setup screenshot — the procedural shader mapping in the Shader Editor.',
+          'Baked passes (separate PNGs) — Diffuse, AO, Curvature, Position (Normal optional).',
+          'Custom asset library — at least 2 tileable patterns + 3 stamp brushes derived from your bakes (the .pat / .abr exports or screenshots of them defined).',
+          'Completed 2×2 prop wear sheet (PNG) — all four states, same shape.',
+          'Final illustrative paint-over render (PNG) — your best single state, fully finished.',
+        ],
+        critiqueQuestions: [
+          'How did your node configuration (Noise Texture type + Voronoi + Color Ramps, masked by Pointiness) target edges and crevices rather than washing wear evenly across the surface?',
+          'What did the AO and Curvature bakes bring to your Photoshop stack — how did you blend baked masks with hand-painted color, and where did each mask decide placement for you?',
+          'How did you vary highlights, specular reflection, and surface roughness to read metal vs. moss vs. energy as genuinely different materials?',
+          'How does the placement of wear tell the prop\'s story — edges from handling, crevices from where it was kept, base from ground contact, cracks from what damaged it?',
+          'What non-destructive setup (pattern fills, layer masks driven by bakes, clipped adjustment layers, smart objects) let you move between four states while keeping the original shape untouched?',
+          'How did you balance the mathematical precision of procedural 3D shaders with the warmth and charm of digital paint-over — where did each one win?'
+        ],
+      },
+    },
+  },
+  5: {
+    title: 'Assignment 3: Atmospheric Space',
+    subtitle: 'Worldbuilding Step 3: Illustrate a key setting, headquarters, or terrain from your world.',
+    tracks: {
+      beginner: {
+        title: 'Base Assignment: Perspective & Atmospheric Lighting',
+        subtitle: 'Focus: Linear perspective grids, depth cueing, and value composition.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Paint an environment setting from your IP (e.g., character sanctuary, hideout, landscape) focusing on creating depth. Focus strictly on composition and lighting (no character required).',
+          },
+          {
+            heading: 'Required Techniques',
+            bullets: [
+              'Establish a clear perspective grid (one-point or two-point perspective).',
+              'Use clear depth cueing: things further away get lighter, lower contrast, and cooler (atmospheric perspective).',
+              'Use a strong directional light source (sun through trees, spotlight, portal glow) to establish a clear value hierarchy (Foreground shadow, midground light, background haze).',
+            ],
+          },
+        ],
+        submission: [
+          'Linear perspective grid sketch (PNG).',
+          'Value study thumbnail sheet (3 different options).',
+          'Final high-resolution digital painting (PNG).',
+        ],
+        critiqueQuestions: [
+          'How does your perspective grid guide the viewer’s eye through the foreground, midground, and background layers?',
+          'How did you use value contrast (light against dark) and color temperature (cool vs. warm) to establish atmospheric depth?',
+          'Does the directional light source feel integrated across all elements, and how does it define the volume of your structures?'
+        ],
+      },
+      intermediate: {
+        title: 'Take It to the Next Level: Narrative Keyframe',
+        subtitle: 'Focus: Combining character and environment to tell a story in a single image.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Paint a story-driven environment keyframe featuring your main character interacting with a dramatic location. The light is the main subject: it must act on the character and surfaces to tell a story.',
+          },
+          {
+            heading: 'Narrative Framing Guidelines',
+            bullets: [
+              'Scale: Establish a clear relationship between the character\'s height and the environment (e.g., massive ruins, tight claustrophobic corridors).',
+              'Focal Point: Guide the viewer\'s eye to a specific point of interest using composition lines and lighting highlights.',
+              'Cinematic effects: Use atmospheric haze, fog rays, dust particles, and soft depth-of-field overlays to give the keyframe a cinematic appearance.',
+            ],
+          },
+        ],
+        submission: [
+          'Initial rough sketch layout and visual research board.',
+          'Value / color keys (3 color script variants).',
+          'Final cinematic environment keyframe render (PNG).',
+        ],
+        critiqueQuestions: [
+          'What story details or character motivations did you focus on communicating in this keyframe setting?',
+          'How does the camera crop and composition layout create a sense of scale and emotional atmosphere (e.g. isolation, epic grandeur, danger)?',
+          'How did you use cinematic light overlays, atmospheric fog, or depth-of-field to integrate the character seamlessly into the scene?'
+        ],
+      },
+      advanced: {
+        title: 'Advanced 3D Integration: 3D Cinematic Block-In',
+        subtitle: 'Focus: Staging environments in 3D, configuring volumetric cameras, and painting over the render.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Build a 3D block-in of your IP environment setting in Blender. Configure composition, volumetric lighting, and camera lenses, then execute a detailed illustrative paint-over in Photoshop.',
+          },
+          {
+            heading: 'Blender-to-Photoshop Pipeline',
+            numberedSteps: [
+              'Staging: Build the environment layout in Blender using modular assets or low-poly boxes.',
+              'Lighting & Volume: Enable volumetrics (Principled Volume) and position lighting to create dramatic god rays, focal highlights, and shadows.',
+              'Camera configuration: Set focal length (e.g., 24mm wide angle for grandeur), enable depth-of-field, and render a high-fidelity pass.',
+              'Photoshop Paint-over: Paint details, hand-rendered textures, environmental flora, and character illustrations over the top of the render layer.',
+            ],
+          },
+        ],
+        submission: [
+          'Blender workspace viewport screenshot showing 3D scene geometry layout.',
+          'Raw Blender render pass (PNG).',
+          'Final painted-over cinematic keyframe (PNG).',
+        ],
+        critiqueQuestions: [
+          'How did staging your camera lens (focal length, sensor size) in Blender help frame the dramatic depth of the environment?',
+          'What changes did you make to the volumetric settings (fog density, light scattering) in 3D to create strong initial values?',
+          'In the Photoshop stage, how did you decide which render details to keep and which areas to paint over to make it feel hand-painted?'
+        ],
+      },
+    },
+  },
+  7: {
+    title: 'Assignment 4: Narrative Sequence',
+    subtitle: 'Worldbuilding Step 4: Map character consistency and tell a sequential action story.',
+    tracks: {
+      beginner: {
+        title: 'Base Assignment: 3-Panel Comic & Turnaround',
+        subtitle: 'Focus: Character proportions, expression, and basic multi-panel framing.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Depict a simple interaction or scene in your IP story. You will create a basic 3-panel comic layout showing a character performing an action, alongside a clean turnaround sketch showing the character from the front and side.',
+          },
+          {
+            heading: 'Sequential Formatting',
+            bullets: [
+              'Panel 1: Establishing Shot — Show the environment setting.',
+              'Panel 2: Medium Shot — Show the character preparing for an action.',
+              'Panel 3: Close-Up — Show the result of the action or the character\'s reaction.',
+              'Character turnaround: Ensure proportions (height, features) match between the front and side sketches.',
+            ],
+          },
+        ],
+        submission: [
+          'Clean 3-panel comic sheet layout (PNG).',
+          '2-view character turnaround line art sheet (PNG).',
+        ],
+        critiqueQuestions: [
+          'How did the panel framing (establishing shot, medium shot, close-up) help clarify the action and the character’s reaction?',
+          'What features or structural details did you focus on to ensure your character looked consistent between the front and side views?',
+          'How did your clean line art help clarify the focus of each panel without relying on color or shading?'
+        ],
+      },
+      intermediate: {
+        title: 'Take It to the Next Level: Storyboard Sequence & Turnarounds',
+        subtitle: 'Focus: Camera angles, cinematography codes, and model turnaround templates.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Create a professional storyboard sequence (6-to-9 panels) detailing a high-stakes moment in your IP. Pair this with a standard character model turnaround sheet containing orthographic views (Front, Side, Back) and 4 expression studies.',
+          },
+          {
+            heading: 'Cinematography Codes',
+            bullets: [
+              'Use diverse camera angles: High angle (vulnerability), Low angle (power), Dutch tilt (tension).',
+              'Show camera movement indicators (zoom arrows, tracking paths) within your panels.',
+              'Format storyboard sheets cleanly with action captions, dialog, and panel numbering.',
+            ],
+          },
+        ],
+        submission: [
+          'Completed 6-9 panel storyboard sequence sheet (PNG/PDF).',
+          'Character model turnaround sheet showing Front, Side, Back, and Expressions (PNG).',
+        ],
+        critiqueQuestions: [
+          'How did using dynamic camera angles (high, low, Dutch tilts) emphasize the emotional shifts in your storyboard sequence?',
+          'What challenges did you face when showing camera motion (e.g. pans, zooms) inside static panels, and how did you use arrows/guides?',
+          'How do the turnaround expression studies help define the character’s acting style and emotional personality?'
+        ],
+      },
+      advanced: {
+        title: 'Advanced 3D Integration: Blender Grease Pencil / Animatic Block-In',
+        subtitle: 'Focus: Virtual camera timelines, 3D storyboard blocking, and Grease Pencil sketching.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Stage a 6-to-9 panel storyboard sequence directly in Blender. Set up a multi-camera timeline to block out camera angles, and sketch character action in 3D space using Grease Pencil.',
+          },
+          {
+            heading: '3D Storyboard Pipeline',
+            numberedSteps: [
+              'Set up a simple 3D staging ground in Blender with low-poly assets and character mannequins.',
+              'Create camera objects, configure aspect ratios (e.g., 1.85:1 or 2.39:1 cinema scope), and keyframe camera switches along the timeline.',
+              'Use Grease Pencil layers to draw character poses, gestures, and action indicators directly in 3D space over the low-poly mannequin meshes.',
+              'Export the sequence as storyboard cards or compile an animatic render.',
+            ],
+          },
+        ],
+        submission: [
+          'Blender workspace viewport screenshot showing camera rigs and Grease Pencil drawings.',
+          'Completed storyboard sequence sheet exported directly from Blender (PNG/PDF) or compiled animatic video (MP4).',
+        ],
+        critiqueQuestions: [
+          'How did staging the storyboard in a 3D environment help you test camera movements and spatial relationships before drawing?',
+          'What advantages did you find in drawing on a 3D grid with Grease Pencil compared to standard 2D sketching?',
+          'How did timing your panels along the Blender timeline help you understand the pacing and rhythm of the cinematic sequence?'
+        ],
+      },
+    },
+  },
+  9: {
+    title: 'Assignment 5: Release Campaign',
+    subtitle: 'Worldbuilding Step 5: Design the promotional assets and release package for your world.',
+    tracks: {
+      beginner: {
+        title: 'Base Assignment: "Your World" Poster Campaign',
+        subtitle: 'Focus: Typography hierarchy, bleed margins, and raster-vector combinations.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Design a clean commercial poster showcasing your main character or signature environment. Pair your digital illustration with custom logo/typography layouts.',
+          },
+          {
+            heading: 'Design Layout Specs',
+            bullets: [
+              'Canvas Size: 11" x 17" with 0.25" bleed margins.',
+              'Combine your raster digital painting (from Photoshop/Procreate) with vector text layers.',
+              'Create a hierarchy of information: Title/Logo (focal point), tagline (medium size), credits (small size at bottom).',
+            ],
+          },
+        ],
+        submission: [
+          'Mockup design thumbnail sketch showing layout grids.',
+          'Completed poster print-ready file (PDF or high-res PNG).',
+        ],
+        critiqueQuestions: [
+          'How did you establish typography hierarchy so that the title/logo is read first, followed by taglines and secondary credits?',
+          'What choices did you make regarding margins and layout grid alignment to ensure the poster feels balanced and commercial?',
+          'How did the composition of your digital painting adapt to leave appropriate negative space for the text overlay?'
+        ],
+      },
+      intermediate: {
+        title: 'Take It to the Next Level: Multi-Format Key Art Campaign',
+        subtitle: 'Focus: Layout engineering in InDesign, CC Libraries, and responsive print/web layouts.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Design a premium commercial campaign cover (e.g., game case art or film poster). You will adapt this campaign into four completely different layout sizes (horizontal web banner, vertical poster, mobile feed post, and package spine/box art).',
+          },
+          {
+            heading: 'Responsive Campaign Specs',
+            bullets: [
+              'Use Adobe InDesign to establish master grid structures for margins, column bounds, and text flow.',
+              'Manage your asset links: Use Photoshop smart objects and Illustrator vector assets linked through CC Libraries to maintain resolution.',
+              'Ensure composition responds dynamically to different sizes without simply stretching the image (cropping, rearranging elements, adjusting text layout).',
+            ],
+          },
+        ],
+        submission: [
+          'Completed campaign package containing 4 layout formats (PDF/PNG).',
+          'Asset package folder screenshot showing linked high-res source files.',
+        ],
+        critiqueQuestions: [
+          'How did you adapt your layout grids in InDesign to fit four very different shapes (horizontal, vertical, square, spine)?',
+          'What adjustments did you make to the focal points, text positioning, and crop bounds to keep the story clear in every size?',
+          'How did linking assets (smart objects, vectors) through libraries help you work efficiently and avoid losing quality?'
+        ],
+      },
+      advanced: {
+        title: 'Advanced 3D Integration: 3D Studio lighting & Asset Marketing Deck',
+        subtitle: 'Focus: Setting up studio lighting in Blender, rendering hero passes, and compiling marketing decks.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Set up high-end virtual studio lighting in Blender (three-point lighting, rim lights, gobos) to render your hero character model or prop. Bring these renders into Photoshop/InDesign to construct the final marketing deck.',
+          },
+          {
+            heading: 'Studio Lighting & Render Workflow',
+            numberedSteps: [
+              'Import your high-poly character or prop model into a clean Blender staging scene.',
+              'Lighting: Set up a three-point lighting system (Key, Fill, Rim) with dramatic colors to match your IP\'s mood. Use spotlight gobos to create textured light patterns.',
+              'Baking/Rendering: Render out high-resolution transparency passes (alpha channel shadows, emission passes).',
+              'Composite & Design: Combine your 3D renders with graphic elements and typography in Photoshop/InDesign to create print-ready ads and digital banners.',
+            ],
+          },
+        ],
+        submission: [
+          'Blender workspace viewport screenshot showing 3D studio light positioning.',
+          'Raw 3D render passes (transparent background PNG).',
+          'Completed multi-format marketing deck layouts (PDF/PNG).',
+        ],
+        critiqueQuestions: [
+          'How did your three-point studio lighting setup (Key, Fill, Rim) in Blender carve out form and highlight the model’s details?',
+          'What role did colored light accents or spotlight gobos play in matching the marketing deck\'s theme with the IP\'s story?',
+          'How did you organize your render passes (shadow catchers, emissions) in Photoshop/InDesign to create a professional commercial layout?'
+        ],
+      },
+    },
+  },
+  10: {
+    title: 'Assignment 6: Capstone Pitch Deck',
+    subtitle: 'Worldbuilding Step 6: Compile your IP worldbuilding project into a showcase-ready presentation.',
+    tracks: {
+      beginner: {
+        title: 'Base Assignment: Portfolio Showcase Deck',
+        subtitle: 'Focus: Curating art assets, organizing presentation grids, and formatting layout pages.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Compile and format 6-8 of your best polished digital art assets generated during the program. Package them into a cohesive digital presentation PDF or personal portfolio website layout.',
+          },
+          {
+            heading: 'Presentation Elements',
+            bullets: [
+              'Title slide containing your IP name, logo, and a brief description of the world.',
+              'Clean card layout slides: Use consistent margins, font sizes, and grids to frame your artwork.',
+              'Process page: Show the progression of one piece from the rough sketch to the final color render.',
+            ],
+          },
+        ],
+        submission: [
+          'Completed portfolio showcase deck (PDF or link to live website).',
+        ],
+        critiqueQuestions: [
+          'What unified design choices (margins, fonts, color themes) did you establish to make the entire presentation slide deck feel cohesive?',
+          'How did you organize your presentation grids to balance artwork focal points with descriptive text columns?',
+          'Does your process page clearly show a progression that helps other artists understand your digital workflow?'
+        ],
+      },
+      intermediate: {
+        title: 'Take It to the Next Level: IP Worldbuilding Pitch Deck',
+        subtitle: 'Focus: Character lineups, color keys, world guides, and professional presentation decks.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Compile a complete "IP Worldbuilding Pitch Deck" that pitches your project as a potential TV show, video game, or comic. This deck will showcase your character lineups, prop sheets, narrative keyframes, and color scripts.',
+          },
+          {
+            heading: 'Required Pitch Deck Slides',
+            bullets: [
+              'Slide 1: Logline & IP Overview (Concept summary and target audience).',
+              'Slide 2: Main Character Lineup (Character turnaround, details callouts, expressions).',
+              'Slide 3: Signature Prop & Material Guide (Asset wear sheets, textures).',
+              'Slide 4: Key Locations & Cinematic Keyframes (Environment shots, atmosphere).',
+              'Slide 5: Narrative Sequence & Storyboards (Sequential panels showing storytelling).',
+              'Slide 6: Color Script & Mood Keys (Color script chart showing emotional beats).',
+            ],
+          },
+        ],
+        submission: [
+          'Completed IP Worldbuilding Pitch Deck (16:9 PDF format).',
+        ],
+        critiqueQuestions: [
+          'How did you sequence the slides (logline, characters, environments, storyboards) to build a compelling narrative about your IP?',
+          'What choices did you make in typography size, page grids, and color schemes to give your pitch deck a premium, studio-ready look?',
+          'Does the color script successfully show the emotional beats of the story in a simple, visual chart?'
+        ],
+      },
+      advanced: {
+        title: 'Advanced 3D Integration: IP Production Bible & 3D Assets Deck',
+        subtitle: 'Focus: 3D modeling topology, rendering breakdowns, and master visual production bibles.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Compile a comprehensive "IP Production Bible & 3D Assets Deck" that shows your Blender-to-Photoshop pipeline. This presentation is designed to show a potential studio that you understand technical 3D workflows, asset modularity, and high-fidelity rendering.',
+          },
+          {
+            heading: 'Required Production Deck Slides',
+            bullets: [
+              'Slide 1: IP Concept & 3D Pipeline Overview (Workflow charts and render engine choices).',
+              'Slide 2: 3D Character Mesh & Topology (Low-poly topology screenshots, wireframes, turnarounds).',
+              'Slide 3: Modular Asset Kit & Prop Shaders (Asset mesh grid, Shader Editor layouts, UV map layouts).',
+              'Slide 4: Environment Composition & Lighting Keys (3D scene block-ins vs. final paint-over keyframes).',
+              'Slide 5: Cinematic Animatic / Grease Pencil Storyboards (Multi-camera staging, 3D storyboard passes).',
+              'Slide 6: Marketing Release Composites (Renders integrated into print-ready layouts and digital banners).',
+            ],
+          },
+        ],
+        submission: [
+          'Completed IP Production Bible & 3D Assets Deck (16:9 PDF format).',
+        ],
+        critiqueQuestions: [
+          'How does your slide layout explain your Blender-to-Photoshop pipeline to someone who might not know 3D software?',
+          'How did you frame wireframes and topology views to showcase your clean modeling work and polygon efficiency?',
+          'Does the modular asset kit layout demonstrate how individual 3D objects can build a wider world efficiently?'
+        ],
+      },
+    },
+  },
+};
+</file>
+
+<file path="src/curriculum.js">
+// ─── Curriculum Data ──────────────────────────────────────────────
+// Populated with distinct Tuesday (Zoom) and Saturday (In-Person Reveal Studio) tracks.
+// Tuesdays preview Saturdays and pull from discussions/readings.
+// Week 01 Tuesday covers intro, Reveal parking/entry procedures, and meet-and-greet.
+
+export const config = {
+  startDate: '2026-06-23',
+  endDate: '2026-09-12',
+
+  tuesday: {
+    label: 'Tuesday (Virtual)',
+    time: '7:00–9:00 pm',
+    location: 'Zoom',
+  },
+  saturday: {
+    label: 'Saturday (In-Person)',
+    time: '10:00 am–3:30 pm',
+    location: 'Reveal Studio',
+  },
+
+  capstoneNote: 'Capstone showcase — September 2026 · final presentations',
+  storageVersion: 1,
+};
+
+export const curriculum = [
+  {
+    week: 1,
+    title: 'Translating Classical Foundations',
+    overview: 'What carries over from traditional painting — value, composition, gesture, form, and the relationship between digital and physical canvases.',
+    tuesday: {
+      topics: [
+        'Class Introduction & Meet and Greet',
+        'Reveal Studio Logistics & Procedures (directions, parking, entry, safety)',
+        'Overview of the program, Wacom/iPad setup checklist, and file-naming rules',
+        'Discussion: Preview of Saturday\'s classical-to-digital translation paradigm',
+      ],
+      readings: [
+        '[NEW] Photoshop — Learn at Your Own Pace Videos: https://www.youtube.com/playlist?list=PL96BXqp9fQs6EcSwTbDgo57DFI-6EXzQ8',
+        'Tools Overview: Adobe Photoshop vs. Procreate workflows',
+        '[NEW] Reading: V. S. Ramachandran — Phantoms in the Brain: Probing the Mysteries of the Human Mind: https://www.amazon.com/Phantoms-Brain-Probing-Mysteries-Human/dp/0688172172',
+        'Guest: No speaker - First Class',
+      ],
+    },
+    saturday: {
+      topics: [
+        '[NEW] Digital vs. Physical Canvas / Understanding Pixels',
+        '[NEW] Origin of the word "pixel"',
+        '[NEW] Elements vs. Principles of Design',
+        '[NEW] Resolution and Quality',
+        '[NEW] Hands-on: Biomorphic shapes & the Metaball effect (Gaussian Blur + Levels thresholding to generate organic blob forms via implicit scalar fields)',
+        'Hands-on: Value, composition, gesture, and form on a digital screen',
+      ],
+      assignments: [
+        '[NEW] **Base Assignment**: *Traditional Translation* — Recreate a traditional character sketch or prop study digitally in Photoshop or Procreate to learn basic brush control and layer setup.',
+        '[NEW] **Next Level**: *Style Adaptability* — Translate a character or prop design into two distinct production styles (e.g., flat graphic vs. painterly visual development) to build stylistic range.',
+        '[NEW] **3D Integration**: *3D Block-In & Paint* — Model a character base mesh or prop in Blender, render orthographic views, and paint them digitally in Photoshop in two different styles.'
+      ],
+    }
+  },
+  {
+    week: 2,
+    title: 'Digital Brushes & Texture Systems',
+    overview: 'Simulating physical media digitally with custom brush assets and procedural overlay systems.',
+    tuesday: {
+      topics: [
+        'Discussion: Simulating tactile surfaces in a backlit digital space',
+        'Preview: Tuesday readings review — Noise vs. Pattern & Procedural generation',
+        'Workflow breakdown: Contrast preparation for custom brush presets',
+        '[NEW] Color palette extraction — building color libraries, the ASE format, and SwatchForge tool',
+      ],
+      readings: [
+        '[NEW] Defining Brushes — capture-to-preset workflow',
+        '[NEW] Painting In Photoshop + Brush Hardness and Size — brush engine fundamentals',
+        '[NEW] What is Pattern? and Noise vs. Pattern, Procedural vs. Non-procedural — texture theory',
+        '[NEW] Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation',
+        '[NEW] Cellular Noise (The Book of Shaders) — https://thebookofshaders.com/12/',
+        '[NEW] Cracked Earth Texture (video walkthrough) — canvas simulation demo',
+        '[NEW] What are Blend Modes + The Special "8" Blend Modes — layering texture passes',
+        '[NEW] Color Palette Extraction — building color libraries and ASE swatch formats',
+        'Guest: Senior digital illustrator — live demo on building a personal brush library',
+      ],
+    },
+    saturday: {
+      topics: [
+        '⛔ July 4th Holiday — No Saturday Studio Class',
+      ],
+      assignments: [],
+    }
+  },
+  {
+    week: 3,
+    title: 'Light, Color & Atmosphere for Screen',
+    overview: 'Advanced digital rendering using blending modes, atmospheric depth, and cinematic lighting treatments, combined with Week 2 material workshop.',
+    tuesday: {
+      topics: [
+        'Discussion: Traditional glazing vs. digital layering and transparency',
+        'Preview: Lighting as a character and cinematic depth',
+        'Workflow breakdown: Non-destructive light adjustments and layer stack safety',
+      ],
+      readings: [
+        '[NEW] Glazing vs. Digital Layering — core mechanics of transparent overlays',
+        'Layer Basics: Selection masking, non-destructive adjustment layers, and layer organization',
+        'Guest: Concept artist or film matte painter — live demo on building atmospheric depth',
+      ],
+    },
+    saturday: {
+      topics: [
+        '🎨 PUSHED FROM WEEK 2: Custom brush creation & Wacom brackets-key flow',
+        '🎨 PUSHED FROM WEEK 2: Procedural texture generation (Perlin/cellular surface simulation)',
+        '🎨 PUSHED FROM WEEK 2: Special 8 Blend Modes and stipple/grain overlays',
+        'Glazing vs. digital layering transparent applications',
+        'Cinematic lighting, atmospheric perspective, & selection masking compositing',
+      ],
+      assignments: [
+        '[NEW] **Base Assignment**: *Media Tile* — Render a simple character prop on a 2×2 grid simulating traditional media (oil, watercolor, charcoal, digital) using custom brush presets and basic blend modes.',
+        '[NEW] **Next Level**: *Wear & Tear prop sheet* — Paint a signature prop from your IP in four distinct wear/weathered states (new, rusted, mossy, active/damaged) to demonstrate texture rendering.',
+        '[NEW] **3D Integration**: *Shader Editor & Bake* — Model the prop in Blender, apply procedural wear shaders, bake ambient occlusion and light passes, and do the final painting in Photoshop.'
+      ],
+    }
+  },
+  {
+    week: 4,
+    title: 'Composition for Screen-Based Media',
+    overview: 'Designing scalable artwork and layout structures for modern print and digital platforms.',
+    tuesday: {
+      topics: [
+        'Discussion: Responsive layout design for variable screen viewports',
+        'Preview: InDesign page engineering and grids vs. Illustrator vector assets',
+        'Workflow breakdown: Export conventions and bleed parameters',
+      ],
+      readings: [
+        'Intro to Adobe Illustrator: Vector vs. Raster guidelines',
+        '[NEW] Tools: Adobe InDesign (portfolio layouts, grid frameworks, margins)',
+        'Guest: Senior graphic designer — live portfolio structure walkthrough',
+      ],
+    },
+    saturday: {
+      topics: [
+        '[NEW] Designing for social, web, and print',
+        '[NEW] Cropping & framing',
+        'Scalable artwork systems',
+        'Exporting for multiple formats',
+        '🛠️ Task: Adapt one artwork for print, web, and social formats (hierarchy exercise)',
+      ],
+      assignments: [],
+    }
+  },
+  {
+    week: 5,
+    title: 'Illustration & Visual Storytelling',
+    overview: 'Moving beyond single-frame fine art into visual sequential storytelling, cinematography, and animation principles.',
+    tuesday: {
+      topics: [
+        'Discussion: Auditory spaces, diegetic vs. non-diegetic sound, and leitmotifs in film',
+        'Preview: Preston Blair expression guides and character turnaround principles',
+        'Workflow breakdown: The hybrid straight-ahead vs. pose-to-pose animation plan',
+      ],
+      readings: [
+        '[NEW] Animation Mechanics: Preston Blair Expression Guides & Cartoon Takes',
+        '[NEW] Soundscapes in Media: Diegetic vs. Non-Diegetic Sound & Leitmotifs',
+        '[NEW] Cinemagraphics: Dutch Tilt, Pitch Shot, and Dolly Zooms in Storyboards',
+        'Guest: Nancy Seruto — Publishing or entertainment illustrator — narrative structure demo',
+      ],
+    },
+    saturday: {
+      topics: [
+        '[NEW] Character development & emotional range (Preston Blair expression sheets, cartoon takes)',
+        '[NEW] Environmental storytelling & auditory space (diegetic vs. non-diegetic sound, leitmotifs)',
+        '[NEW] Sequential thinking & animation planning (straight ahead vs. pose to pose hybrid approach)',
+        '[NEW] Storyboarding fundamentals & visual cinematography (Dutch tilt, worm\'s eye view, pitch shot, zolly/dolly zooms)',
+      ],
+      assignments: [
+        '[NEW] **Base Assignment**: *Atmospheric perspective* — Paint a home base or environment from your IP, focusing on linear perspective, value depth, and dynamic directional light.',
+        '[NEW] **Next Level**: *Narrative Keyframe* — Paint a story-driven environment keyframe featuring your character. Focus on visual storytelling and scale relationships.',
+        '[NEW] **3D Integration**: *3D Cinematic Block-in* — Build the environment in Blender, configure camera focal length and depth-of-field, set up volumetric lighting, and paint over the render.'
+      ],
+    }
+  },
+  {
+    week: 6,
+    title: 'Introduction to Commercial Application',
+    overview: 'Turning painterly skill into professional paid work through layouts, key art, and design campaigns.',
+    tuesday: {
+      topics: [
+        'Discussion: Working under the parameters of a professional design brief',
+        'Preview: Page engineering margins, columns, and document bounds in InDesign',
+        'Workflow breakdown: Assets syncing with CC Libraries and shared color spaces',
+      ],
+      readings: [
+        '[NEW] Layout Engineering: InDesign Page Layout Specs, Margins, and Master Pages',
+        '[NEW] Brand Architecture: Integrated Campaigns & Asset Management (CC Libraries)',
+        '[NEW] Visual Pitching: Combining Type & Image for the "Your World" Design Brief',
+        'Guest: Art director or creative agency lead — live portfolio brief breakdown',
+      ],
+    },
+    saturday: {
+      topics: [
+        '[NEW] Book covers & key art page layouts (margins, columns, grids in InDesign)',
+        '[NEW] Integrated ad campaigns (combining typography, graphic layout, & illustration)',
+        '[NEW] Asset management & CC Libraries (collaborative libraries & master page templates)',
+        '[NEW] The commercial brief (visual hierarchy, type & image pairing, campaign pitching)',
+      ],
+      assignments: [],
+    }
+  },
+  {
+    week: 7,
+    title: 'Advanced Project Development',
+    overview: 'Beginning the Client Simulation Project — selecting a track and building a professional layout from a brief.',
+    tuesday: {
+      topics: [
+        'Discussion: The anatomy of a professional design brief',
+        'Preview: The four distinct simulation tracks (Concept Art, Poster, Storyboard, Book Cover)',
+        'Workflow breakdown: How peer review validates the integrity of a brief',
+      ],
+      readings: [
+        '[NEW] Client Simulation Framework: Anatomy of a Professional Design Brief',
+      ],
+    },
+    saturday: {
+      topics: [
+        '[NEW] Concept art piece (hero rendering, silhouette sheets, value & color studies, callouts)',
+        '[NEW] Illustrated poster series (Polish Poster, Tanaka type-as-image, Rand economy of form, Makela layers)',
+        '[NEW] Storyboards / sequential art (camera shots/angles/moves, Script Courier 12pt specifications)',
+        '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
+      ],
+      assignments: [
+        '[NEW] **Base Assignment**: *Narrative Panels* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout.',
+        '[NEW] **Next Level**: *Production Storyboards* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.',
+        '[NEW] **3D Integration**: *Blender Grease Pencil / Animatic* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil.'
+      ],
+    }
+  },
+  {
+    week: 8,
+    title: 'Refinement & Presentation',
+    overview: 'Polishing individual assets and compiling them into presentation-ready boards for critiques.',
+    tuesday: {
+      topics: [
+        'Discussion: Receiving and processing constructive art direction',
+        'Preview: Structuring a professional presentation pitch deck',
+        'Workflow breakdown: Handoff formats and packaging documents',
+      ],
+      readings: [
+        'Industry Standards: Design reviews & creative studio hierarchy',
+        'Guest: Panel critic — live review of past student portfolios',
+      ],
+    },
+    saturday: {
+      topics: [
+        'Artwork refinement & rendering polish',
+        'Presentation board layout creation',
+        'Final edit checks & margins alignment',
+        'Studio handoff etiquette & conventions',
+        'Working with art directors role-play',
+        'Formal pitch rehearsal & timing',
+        '🛠️ Task: Refine narrative panels for portfolio: export finished layouts and organize reference sheets',
+      ],
+      assignments: [],
+    }
+  },
+  {
+    week: 9,
+    title: 'Freelance, Contracts & Business Skills',
+    overview: 'Exploring pricing, contract basics, taxes, and intellectual property for independent creative paths.',
+    tuesday: {
+      topics: [
+        'Discussion: What makes a contract legally binding and protective for creatives',
+        'Preview: Freelance business operations & tax structures',
+        'Workflow breakdown: Drafting client agreements and proposal sheets',
+      ],
+      readings: [
+        'Intellectual Property Guide: Copyrights, trademarks, and usage licensing rights',
+        'Guest: Eugenia Chen — Creative entrepreneur — navigating freelance taxes & operations',
+      ],
+    },
+    saturday: {
+      topics: [
+        'Pricing your work & project scoping',
+        'Contracts & intellectual property deep dive',
+        'Client communication & relationship skills',
+        'Taxes basics for creative sole proprietors',
+        '🛠️ Task: Refine campaign assets & apply peer feedback from Week 8 pitch rehearsals',
+      ],
+      assignments: [
+        '[NEW] **Base Assignment**: *"Your World" Poster* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
+        '[NEW] **Next Level**: *Senior Key Art & Grids* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
+        '[NEW] **3D Integration**: *3D Studio Render & Wrap* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
+      ],
+    }
+  },
+  {
+    week: 10,
+    title: 'Job Readiness & Interview Training',
+    overview: 'Preparing portfolios, professional resumes, and interview protocols to enter the creative workforce.',
+    tuesday: {
+      topics: [
+        'Discussion: Crafting a compelling elevator pitch and story',
+        'Preview: Hiring pipelines in animation, tech, and creative agencies',
+        'Workflow breakdown: Resumes and LinkedIn profiles optimized for ATS bots',
+      ],
+      readings: [
+        'Recruiter Insights: What catches the eye in a 6-second portfolio review',
+        'Guest: Jeremy Costello — Hiring managers & agency recruiters (Guest Panel)',
+      ],
+    },
+    saturday: {
+      topics: [
+        'Resume & LinkedIn optimization workshop',
+        'Interview role-play and behavioral scenarios',
+        'Portfolio storytelling: structuring process cases',
+        'Salary negotiation basics & pricing confidence',
+      ],
+      assignments: [
+        '[NEW] **Base Assignment**: *Portfolio Showcase* — Curate and compile 6-8 of your best polished pieces from the assignments into a clean digital portfolio PDF or website.',
+        '[NEW] **Next Level**: *IP Worldbuilding Deck* — Compile a full pitch deck for your IP, including a character lineup, world guide, and color scripts/keys.',
+        '[NEW] **3D Integration**: *IP Production Kit & Bible* — Compile a comprehensive production deck/bible featuring your Blender model layouts, modular kits, and final digital paints.'
+      ],
+    }
+  },
+  {
+    week: 11,
+    title: 'Final Portfolio Refinement',
+    overview: 'Curating final artwork and organizing layouts for digital platforms and print books.',
+    tuesday: {
+      topics: [
+        'Discussion: Selection vs. clutter — why removing weaker pieces saves a portfolio',
+        'Preview: Interactive web formats vs. static multi-page PDF presentation books',
+        'Workflow breakdown: Grid alignments and negative space in portfolio cards',
+      ],
+      readings: [
+        'Modern Portfolios: Grid standards, typography, and site architectures',
+        'Guest: Heidi Hirsch — live review of student portfolios',
+      ],
+    },
+    saturday: {
+      topics: [
+        '⛔ September 5th Holiday (Labor Day Weekend) — No Saturday Studio Class',
+      ],
+      assignments: [],
+    }
+  },
+  {
+    week: 12,
+    title: 'Capstone Preparation',
+    overview: 'Rehearsing final presentation pitches and putting final polishes on the capstone portfolio deck.',
+    tuesday: {
+      topics: [
+        'Discussion: Formulating a cohesive narrative about your creative trajectory',
+        'Preview: Presentation staging, pacing, and time management',
+        'Workflow breakdown: AV guidelines, screen share checks, and backup decks',
+      ],
+      readings: [
+        'Pitch Deck Guide: Formats, sequences, and slide outlines',
+        'Guest Speakers: Past graduates sharing their showcase experiences',
+      ],
+    },
+    saturday: {
+      topics: [
+        '🎨 PUSHED FROM WEEK 11: Portfolio layout & sequence curation',
+        '🎨 PUSHED FROM WEEK 11: Removing weaker pieces & streamlining selections',
+        '🎨 PUSHED FROM WEEK 11: Final presentation deck preparation',
+        'Portfolio layout check (PDF + website ready)',
+        'Removing weaker pieces final review',
+        'Final presentation preparation',
+        'Rehearsal & peer feedback sessions',
+        '🛠️ Task: Capstone curation: Assemble 6-8 high-quality digital works, commercial campaign, & pitch deck',
+      ],
+      assignments: [],
+    }
+  },
+  {
+    week: 13,
+    title: 'CAPSTONE SHOWCASE',
+    overview: 'Formal portfolio reviews, presentations, and networking mixers with industry panels.',
+    dateOverride: 'End of September',
+    saturday: {
+      topics: [
+        'Formal portfolio reviews and critiques with panels',
+        'Networking mixer and peer interactions',
+        'Career pathway and educational progression guidance',
+        'Final portfolio showcases',
+        '🛠️ Task: Final Project and Portfolio Deck reveal',
+      ],
+      assignments: [],
+    }
+  },
+];
+
+// ─── Changelog ────────────────────────────────────────────────────
+export const changelog = [
+  {
+    date: '2026-06-19',
+    message: 'Added condensed Alvy Ray Smith bio, YouTube video embed, and link to "A Pixel Is Not A Little Square" PDF on the Digital vs. Physical Canvas topic page (Week 01).',
+  },
+  {
+    date: '2026-06-19',
+    message: 'Split Curriculum Vision intro into three paragraphs with a highlighted 3D Integration callout note on the Syllabus page.',
+  },
+  {
+    date: '2026-06-19',
+    message: 'Updated Capstone Showcase (Week 13): removed Tuesday Zoom session, set final date to "End of September," location at Reveal Studio.',
+  },
+  {
+    date: '2026-06-18',
+    message: 'Added condensed syllabus toggle view and "Download Condensed Syllabus PDF" button alongside the full syllabus download.',
+  },
+  {
+    date: '2026-06-18',
+    message: 'Assignment 5 renamed from "Most Wanted" Poster Campaign to "Your World" Poster Campaign — updated across syllabus, assignments, and topic pages.',
+  },
+  {
+    date: '2026-06-01',
+    message: 'Added a dedicated Potential Guest Speaker database page populated with 19 local industry leads, linked in cyan directly below the Class FAQ banner.',
+  },
+  {
+    date: '2026-06-01',
+    message: 'Added a dedicated Class FAQ page detailing Saturdays at Reveal Studios (Glendale coordinates, rules, parking, computers, kitchenette, entry word-bubble) and linked it beautifully under the header rule.',
+  },
+  {
+    date: '2026-06-01',
+    message: 'Labeled all 6 graded biweekly milestones with clear assignment numbers (Assignment 1 through Assignment 6) across both interactive cards and linear print pages.',
+  },
+  {
+    date: '2026-05-28',
+    message: 'Rebuilt curriculum assignment cadence to a clean biweekly model: 6 graded milestones (Weeks 1, 3, 5, 7, 9, 10), with all other deliverables reframed as preparatory milestones in topics.',
+  },
+  {
+    date: '2026-05-28',
+    message: 'Consolidated July 4th (Week 2 Saturday holiday) brush & texture workshop topics and material tiles assignments onto July 11th (Week 3 Saturday), keeping the calendar structure intact.',
+  },
+  {
+    date: '2026-05-28',
+    message: 'Restructured all 13 weeks to feature split Tuesday (Zoom discussion & readings preview) and Saturday (In-person Reveal Studio workshop) sections. Week 1 Tuesday specifically details Intro & Reveal logistics.',
+  },
+  {
+    date: '2026-05-28',
+    message: 'Week 7 detailed pages wired up: Client Simulation brief framework, Concept Art deliverables, Poster Series lineages, Storyboard shots, and Book Cover design traditions.',
+  },
+  {
+    date: '2026-05-28',
+    message: 'Week 6 expanded with InDesign layout specifications, master pages, integrated campaign artboards, CC Libraries asset management, and "Your World" design brief.',
+  },
+  {
+    date: '2026-05-27',
+    message: 'Updated Week 5 with 2D animation integration: Preston Blair expression guides, auditory space/leitmotifs, straight-ahead vs. pose-to-pose planning, and cinematic camera angles.',
+  },
+];
+</file>
+
+</files>

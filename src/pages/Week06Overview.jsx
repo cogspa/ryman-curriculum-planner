@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week06Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
+import CritiqueZone from '../components/CritiqueZone.jsx';
 
 export default function Week06Overview() {
   return (
@@ -51,6 +52,9 @@ export default function Week06Overview() {
           </Link>
         </li>
       </ul>
+      <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '2px solid rgba(139, 58, 47, 0.2)' }}>
+        <CritiqueZone week={6} />
+      </div>
       <LegalDisclaimer style={{ marginTop: '36px' }} />
     </div>
   );
