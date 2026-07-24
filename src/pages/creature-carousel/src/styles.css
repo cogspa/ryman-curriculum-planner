@@ -1,0 +1,27 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #12161a;
+  color: #dcd7c9;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+.page { min-height: 100vh; padding: clamp(40px, 8vh, 96px) 0 0; }
+.page-title {
+  margin: 0 0 6px;
+  padding: 0 clamp(16px, 4vw, 48px);
+  font-family: "Bodoni Moda", Didot, serif;
+  font-weight: 500;
+  font-size: clamp(44px, 9vw, 108px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.page-note {
+  margin: 0 0 clamp(28px, 6vh, 64px);
+  padding: 0 clamp(16px, 4vw, 48px);
+  max-width: 46ch;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #8d9299;
+}

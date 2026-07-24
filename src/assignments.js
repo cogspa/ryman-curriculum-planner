@@ -514,7 +514,8 @@ export const assignments = {
               'Focus on shape language, proportions, posture, gesture, and silhouette.',
               'Keep the drawings quick, loose, and experimental.',
               'You are welcome to create more than 20 thumbnails.'
-            ]
+            ],
+            showCreatureCarousel: true
           },
           {
             heading: 'Part 2: Character Model Sheet',

@@ -4,6 +4,7 @@ import { assignments } from './assignments.js';
 import { isWeekReleased, getActiveRole } from './releaseUtils.js';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
 import CritiqueZone from './components/CritiqueZone.jsx';
+import CreatureCarousel from './components/CreatureCarousel.jsx';
 
 function parseMarkdownLinks(text) {
   if (typeof text !== 'string') return text;
@@ -975,6 +976,12 @@ export default function AssignmentPage() {
                     );
                   })}
                 </ul>
+              )}
+
+              {section.showCreatureCarousel && (
+                <div style={{ marginTop: '28px', marginBottom: '20px', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.12)' }}>
+                  <CreatureCarousel label="Plate 01 — Character & Silhouette Studies" />
+                </div>
               )}
 
               {section.numberedSteps && (
