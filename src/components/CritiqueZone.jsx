@@ -52,12 +52,14 @@ async function getSupabase() {
   _sbTried = true;
   const url = import.meta.env?.VITE_SUPABASE_URL;
   const key = import.meta.env?.VITE_SUPABASE_ANON_KEY;
-  if (!url || !key) return null;
+  if (!url || !key || typeof url !== 'string' || (!url.startsWith('http://') && !url.startsWith('https://'))) {
+    return null;
+  }
   try {
     const { createClient } = await import("@supabase/supabase-js");
     _sb = createClient(url, key);
   } catch (e) {
-    console.warn("[CritiqueZone] supabase-js not installed — demo mode.", e);
+    console.warn("[CritiqueZone] Supabase client init failed — falling back to demo mode.", e);
     _sb = null;
   }
   return _sb;
