@@ -1201,7 +1201,7 @@ function WeekCard({
                   ) : week.week === 5 ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                       <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
-                        Due Date: July 28th (End of Class)
+                        Due Date: August 1st (End of Class)
                       </div>
                       <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
                         This week features a single, unified Character Development assignment. Please submit:
@@ -1291,7 +1291,7 @@ export default function App() {
         if (hasOldAssignment) {
           needsUpdate = true;
           updatedAssignments = [
-            '**Base Assignment**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on July 28**.'
+            '**Base Assignment**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on August 1**.'
           ];
         }
 

@@ -174,7 +174,7 @@ export const curriculum = [
         '[NEW] Storyboarding fundamentals & visual cinematography (Dutch tilt, worm\'s eye view, pitch shot, zolly/dolly zooms)',
       ],
       assignments: [
-        '**Base Assignment**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on July 28**.'
+        '**Base Assignment**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on August 1**.'
       ],
     }
   },

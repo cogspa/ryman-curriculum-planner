@@ -499,7 +499,7 @@ export const assignments = {
     tracks: {
       beginner: {
         title: 'Base Assignment: Character Development',
-        subtitle: 'Due: End of Class on July 28',
+        subtitle: 'Due: End of Class on August 1',
         sections: [
           {
             heading: 'Overview',
