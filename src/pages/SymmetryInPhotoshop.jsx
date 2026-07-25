@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 
 /**
  * SymmetryInPhotoshop.jsx — pLAtform lesson component
@@ -642,6 +643,10 @@ export default function SymmetryInPhotoshop() {
   return (
     <div className="ss-root">
       <style>{CSS}</style>
+
+      <Link to="/week/05" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#8b3a2f', textDecoration: 'none', fontSize: '13px', fontWeight: '600', marginBottom: '24px', fontFamily: 'IBM Plex Mono, monospace' }}>
+        ← Back to Week 05 Overview
+      </Link>
 
       <header className="ss-hero">
         <div className="ss-hero-meta">
