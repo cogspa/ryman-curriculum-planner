@@ -46,9 +46,9 @@ export default function Week06Overview() {
       <h2 style={sectionHeadingStyle}>Assignment</h2>
       <ul style={topicListStyle}>
         <li style={topicItemStyle}>
-          <span style={newBadgeStyle}>NEW</span>
-          <Link to="/week/06/commercial-campaign-assignment" style={topicLinkStyle}>
-            Respond to a professional brief: The "Your World" Integrated Campaign
+          <span style={newBadgeStyle}>ASSIGNMENT 4</span>
+          <Link to="/assignment/6" style={topicLinkStyle}>
+            Assignment 4: Narrative Sequence (3-Panel Comic, Storyboard Sequence, or Blender Animatic Block-In) — <strong>Due: End of Class on August 8</strong>
           </Link>
         </li>
       </ul>

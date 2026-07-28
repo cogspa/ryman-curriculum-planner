@@ -202,7 +202,11 @@ export const curriculum = [
         '[NEW] Asset management & CC Libraries (collaborative libraries & master page templates)',
         '[NEW] The commercial brief (visual hierarchy, type & image pairing, campaign pitching)',
       ],
-      assignments: [],
+      assignments: [
+        '[NEW] **Base Assignment**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout. **Due at the end of Class on August 8**.',
+        '[NEW] **Next Level**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies. **Due at the end of Class on August 8**.',
+        '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. **Due at the end of Class on August 8**.'
+      ],
     }
   },
   {
@@ -227,11 +231,7 @@ export const curriculum = [
         '[NEW] Storyboards / sequential art (camera shots/angles/moves, Script Courier 12pt specifications)',
         '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
       ],
-      assignments: [
-        '[NEW] **Base Assignment**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout.',
-        '[NEW] **Next Level**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.',
-        '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil.'
-      ],
+      assignments: [],
     }
   },
   {

@@ -295,7 +295,7 @@ function Section({ label, items, weekNumber }) {
 
           let linkPath = null;
           let isExternal = false;
-          if (label === 'Assignments' && [1, 3, 5, 7, 9, 10].includes(Number(weekNumber))) {
+          if (label === 'Assignments' && [1, 3, 5, 6, 9, 10].includes(Number(weekNumber))) {
             const cleanText = text.toLowerCase();
             if (cleanText.includes('base assignment') || cleanText.includes('base')) {
               linkPath = `/assignment/${Number(weekNumber)}?track=beginner`;
@@ -1354,6 +1354,55 @@ export default function App() {
     }
   }, [customCurriculum]);
 
+  // Automatic migration for Week 6 & Week 7 assignments (pushing Assignment 4 to Week 6)
+  useEffect(() => {
+    if (customCurriculum && customCurriculum.length > 6) {
+      const week6Idx = customCurriculum.findIndex(w => w.week === 6);
+      const week7Idx = customCurriculum.findIndex(w => w.week === 7);
+      
+      if (week6Idx !== -1 && week7Idx !== -1) {
+        const week6 = customCurriculum[week6Idx];
+        const week7 = customCurriculum[week7Idx];
+        const week6Assignments = week6.saturday?.assignments || [];
+        const week7Assignments = week7.saturday?.assignments || [];
+        
+        const hasAssignment4InWeek7 = week7Assignments.some(a => a.includes('3-Panel Comic') || a.includes('Narrative Sequence'));
+        const isWeek6MissingAssignments = week6Assignments.length === 0;
+
+        if (hasAssignment4InWeek7 || isWeek6MissingAssignments) {
+          const updatedCurriculum = [...customCurriculum];
+          const newWeek6Assignments = [
+            '[NEW] **Base Assignment**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout. **Due at the end of Class on August 8**.',
+            '[NEW] **Next Level**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies. **Due at the end of Class on August 8**.',
+            '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. **Due at the end of Class on August 8**.'
+          ];
+
+          updatedCurriculum[week6Idx] = {
+            ...week6,
+            saturday: {
+              ...(week6.saturday || {}),
+              assignments: newWeek6Assignments
+            }
+          };
+
+          updatedCurriculum[week7Idx] = {
+            ...week7,
+            saturday: {
+              ...(week7.saturday || {}),
+              assignments: []
+            }
+          };
+
+          setCustomCurriculum(updatedCurriculum);
+          saveLocalCurriculum(updatedCurriculum);
+          if (supabase) {
+            syncRemoteCurriculum(updatedCurriculum);
+          }
+        }
+      }
+    }
+  }, [customCurriculum]);
+
   // Sync from Supabase on load if available
   useEffect(() => {
     if (supabase) {
@@ -1696,7 +1745,7 @@ export default function App() {
             >
               VIEW HUB →
             </Link>
-            {[1, 3, 5, 7, 9, 10].map((wk) => {
+            {[1, 3, 5, 6, 9, 10].map((wk) => {
               const weekData = weeks.find(w => w.entry.week === wk);
               if (!weekData) return null;
               
@@ -1818,7 +1867,7 @@ export default function App() {
                 { num: 1, name: 'Character/Prop/Environment Blocking Foundation', wk: 1 },
                 { num: 2, name: 'Textures, Brushes and Landscape Studies', wk: 3 },
                 { num: 3, name: 'Character Development', wk: 5 },
-                { num: 4, name: 'Narrative Sequence', wk: 7 },
+                { num: 4, name: 'Narrative Sequence', wk: 6 },
                 { num: 5, name: 'Release Campaign', wk: 9 },
                 { num: 6, name: 'Capstone Pitch Deck', wk: 10 }
               ].filter(asg => {

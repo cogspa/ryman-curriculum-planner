@@ -48,9 +48,9 @@ export default function Week07Overview() {
         ))}
       </ul>
 
-      <h2 style={sectionHeadingStyle}>Assignment</h2>
+      <h2 style={sectionHeadingStyle}>Assignment Milestone</h2>
       <p style={assignmentTextStyle}>
-        Begin major track project — by end of this week, deliver: written brief, reference board, 12+ thumbnails, one approved direction, and rough comp started.
+        <strong>Assignment 4: Narrative Sequence</strong> — Final submissions due at the end of Class on August 8. <Link to="/assignment/6" style={{ color: '#8b3a2f', textDecoration: 'underline' }}>View Assignment Guide →</Link>
       </p>
       <div style={{ marginTop: '48px', paddingTop: '32px', borderTop: '2px solid rgba(139, 58, 47, 0.2)' }}>
         <CritiqueZone week={7} />

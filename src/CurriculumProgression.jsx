@@ -6,7 +6,7 @@ import React, { useState, useRef, useEffect } from "react";
  * Horizontal "journey rail" and Vertical "timeline" of the program's
  * worldbuilding milestones, each tagged with its program week.
  *
- * Steps = the six graded Saturday milestones (Weeks 1, 3, 5, 7, 9, 10)
+ * Steps = the six graded Saturday milestones (Weeks 1, 3, 5, 6, 9, 10)
  * plus the Week 13 Final Capstone Showcase. Accents run a warm earth-tone
  * ramp (ochre -> terracotta -> oxblood) that builds toward the capstone.
  */
@@ -18,7 +18,7 @@ const STEPS = [
     desc: "Worldbuilding Step 2 — build custom brushes from real-world imagery and construct environments." },
   { n: 3, week: 5,  accent: "#B25C2D", title: "Character Development",
     desc: "Worldbuilding Step 3 — develop symmetrical and asymmetrical character concepts, expression model sheets, and a final character study." },
-  { n: 4, week: 7,  accent: "#A8482A", title: "Narrative Sequence",
+  { n: 4, week: 6,  accent: "#A8482A", title: "Narrative Sequence",
     desc: "Worldbuilding Step 4 — map character consistency and tell a sequential action story." },
   { n: 5, week: 9,  accent: "#94381F", title: "Release Campaign",
     desc: "Worldbuilding Step 5 — design the promotional assets and release package for your world." },

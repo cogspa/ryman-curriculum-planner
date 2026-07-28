@@ -519,8 +519,13 @@ export const assignments = {
           },
           {
             heading: 'Part 2: Character Model Sheet',
-            body: '### Character Development and Emotional Range\nUsing your selected thumbnail as a starting point, create a model sheet that communicates the character’s full-body design, personality, and emotional range.\n\nThe model sheet may remain somewhat rough or sketch-based at this stage, but the character’s design should be clear and readable.\n\n### Full-Body Character Design\nCreate at least one full-body drawing of your character. During this stage, the drawing may be as simple or detailed as needed to communicate the idea.\n\nPossible visual approaches include:\n• Loose or sketchy drawing\n• Cartoon character\n• Anime-inspired character\n• Realistic or stylized character\n• Any other visual style that supports your concept\n\n### Facial Expressions and Poses\nCreate five distinct facial expressions, poses, or a combination of both. These studies should communicate a range of emotions and reveal something about the character’s personality.\n\nUse Preston Blair’s *Learn How to Draw Animated Characters* and Mark Simon’s *Facial Expressions* as references. Pay attention to how changes in the eyes, eyebrows, mouth, cheeks, posture, and gesture communicate emotion.\n\nPlace the character’s name at the top of the model sheet.',
+            body: '### Character Development and Emotional Range\nUsing your selected thumbnail as a starting point, create a model sheet that communicates the character’s full-body design, personality, and emotional range.\n\nThe model sheet may remain somewhat rough or sketch-based at this stage, but the character’s design should be clear and readable.\n\n### Full-Body Character Design\nCreate at least one full-body drawing of your character. During this stage, the drawing may be as simple or detailed as needed to communicate the idea.\n\nPossible visual approaches include:\n• Loose or sketchy drawing\n• Cartoon character\n• Anime-inspired character\n• Realistic or stylized character\n• Any other visual style that supports your concept\n\n### Facial Expressions and Poses\nCreate five distinct facial expressions, poses, or a combination of both. These studies should communicate a range of emotions and reveal something about the character’s personality.\n\nUse Preston Blair’s *Learn How to Draw Animated Characters* and Mark Simon’s *Facial Expressions* as references. Pay attention to how changes in the eyes, eyebrows, mouth, cheeks, posture, and gesture communicate emotion.\n\n### Model Sheet Template & Example\nDownload the official **Character Model Sheet Template (PDF)** below to set up your 11″ × 17″ submission, and reference the **Example Character Model Sheet** for layout inspiration.\n\nPlace the character’s name at the top of the model sheet.',
             images: [
+              {
+                url: '/character_model_sheet.png',
+                title: 'Example Character Model Sheet',
+                caption: 'Character Model Sheet Example — full-body turnarounds, expression studies, and scale details'
+              },
               {
                 url: '/facial_expressions_Preston_Blair.png',
                 title: 'Facial Expressions in Animation by Preston Blair',
@@ -530,6 +535,14 @@ export const assignments = {
                 url: '/Facial_expressions_Mark_simon.png',
                 title: 'Facial Expression by Mark Simon',
                 caption: 'Facial Expression reference guide by Mark Simon'
+              }
+            ],
+            downloads: [
+              {
+                url: '/character-model-sheet-template.pdf',
+                title: 'Character Model Sheet Template (PDF)',
+                description: 'Downloadable 11" × 17" Character Model Sheet layout template PDF.',
+                filename: 'character-model-sheet-template.pdf'
               }
             ]
           },
@@ -560,68 +573,104 @@ export const assignments = {
       }
     }
   },
-  7: {
+  6: {
     title: 'Assignment 4: Narrative Sequence',
     subtitle: 'Worldbuilding Step 4: Map character consistency and tell a sequential action story.',
     tracks: {
       beginner: {
         title: 'Base Assignment: 3-Panel Comic & Turnaround',
-        subtitle: 'Focus: Character proportions, expression, and basic multi-panel framing.',
+        subtitle: 'Due: End of Class on August 8',
         sections: [
           {
             heading: 'Overview & Worldbuilding Through-line',
-            body: 'Depict a simple interaction or scene in your IP story. You will create a basic 3-panel comic layout showing a character performing an action, alongside a clean turnaround sketch showing the character from the front and side.',
+            body: 'Depict a simple interaction or scene in your IP story. Pull from your existing artwork so that at this stage your overall concept is coming together using the characters and environments you have already established.\n\nUse Adobe InDesign or Illustrator to engineer your page layout. This assignment compiles your worldbuilding elements into a polished, professional presentation layout.',
           },
           {
-            heading: 'Sequential Formatting',
-            bullets: [
-              'Panel 1: Establishing Shot — Show the environment setting.',
-              'Panel 2: Medium Shot — Show the character preparing for an action.',
-              'Panel 3: Close-Up — Show the result of the action or the character\'s reaction.',
-              'Character turnaround: Ensure proportions (height, features) match between the front and side sketches.',
-            ],
+            heading: 'Step 1: Initial Panel Drawings & Character Integrations',
+            body: '### Pulling From Previous Weeks\nBegin by creating or selecting 3 key drawings from your previous character and environment studies (layouts, character integrations, pose studies, and establishing shots).\n\n### Sequential Formatting Options\nWhile an establishing shot, medium shot, and close-up sequence is a helpful suggestion, try panel arrangements that adhere best to the specific story you are telling.',
+            images: [
+              {
+                url: '/storyboard_panel1.png',
+                title: 'Panel 1 Drawing: Establishing Environment Layout',
+                caption: 'Initial layout drawing establishing the environment and setting from previous weeks.'
+              },
+              {
+                url: '/storyboard_panel2.png',
+                title: 'Panel 2 Drawing: Character Action Study',
+                caption: 'Initial drawing showing character integration, posture, and action setup.'
+              },
+              {
+                url: '/storyboard_panel3.png',
+                title: 'Panel 3 Drawing: Reaction & Action Result',
+                caption: 'Initial close-up drawing focusing on emotion, reaction, or action outcome.'
+              }
+            ]
           },
+          {
+            heading: 'Step 2: Combined Comic Book Style Layout',
+            body: '### Assembling in InDesign or Illustrator\nTake your 3 initial panel drawings and bring them into Adobe InDesign or Illustrator to assemble a unified, comic book style page layout.\n\n### Branding & Title Section\nReserve a section on your layout for a logo that represents your brand. If you do not have a logo yet, simply select a clean typography font that fits your brand identity for the project title.',
+            images: [
+              {
+                url: '/imagination_meltdown.png',
+                title: 'Final Combined Layout Example ("Imagination Meltdown")',
+                caption: 'Final comic book style layout assembling the 3 panel drawings in Illustrator/InDesign with brand title typography, clean panel borders, and custom story layout.'
+              }
+            ],
+            bullets: [
+              'Layout Software: Construct and assemble your final presentation in Adobe InDesign or Illustrator.',
+              'Existing Artwork: Integrate your character studies, model sheets, and environment drawings.',
+              'Flexible Panel Arrangement: Arrange panels to best serve your narrative flow.',
+              'Brand Title Block: Reserve space for a custom logo or brand title typography.',
+              'Final PDF Output: Export a clean, print-ready or digital PDF for submission.'
+            ]
+          }
         ],
         submission: [
-          'Clean 3-panel comic sheet layout (PNG).',
-          '2-view character turnaround line art sheet (PNG).',
+          'Clean portfolio-ready PDF layout created in InDesign or Illustrator containing your narrative panel sequence, character turnaround sketches, and brand title block.',
         ],
         critiqueQuestions: [
-          'How did the panel framing (establishing shot, medium shot, close-up) help clarify the action and the character’s reaction?',
-          'What features or structural details did you focus on to ensure your character looked consistent between the front and side views?',
-          'How did your clean line art help clarify the focus of each panel without relying on color or shading?'
+          'How did your 3 initial panel drawings evolve once you combined them into the final InDesign/Illustrator comic layout?',
+          'How did your panel arrangements and framing choices help communicate the story you are telling?',
+          'How did using InDesign or Illustrator improve the overall visual presentation, spacing, and brand logo/title block?'
         ],
       },
       intermediate: {
-        title: 'Take It to the Next Level: Storyboard Sequence & Turnarounds',
-        subtitle: 'Focus: Camera angles, cinematography codes, and model turnaround templates.',
+        title: 'Take It to the Next Level: Storyboard Sequence',
+        subtitle: 'Due: End of Class on August 8',
         sections: [
           {
             heading: 'Overview & Worldbuilding Through-line',
-            body: 'Create a professional storyboard sequence (6-to-9 panels) detailing a high-stakes moment in your IP. Pair this with a standard character model turnaround sheet containing orthographic views (Front, Side, Back) and 4 expression studies.',
+            body: 'Create a professional storyboard sequence (6-to-9 panels) detailing a high-stakes moment in your IP.',
           },
           {
-            heading: 'Cinematography Codes',
+            heading: 'Cinematography Codes & Storyboard Layout',
+            body: 'Format your storyboard sheets cleanly with action captions, camera direction notes, and panel numbering.',
             bullets: [
               'Use diverse camera angles: High angle (vulnerability), Low angle (power), Dutch tilt (tension).',
               'Show camera movement indicators (zoom arrows, tracking paths) within your panels.',
               'Format storyboard sheets cleanly with action captions, dialog, and panel numbering.',
             ],
+            images: [
+              {
+                url: '/mainstoryboard.png',
+                title: 'Professional Storyboard Sequence Example',
+                caption: 'Example storyboard layout detailing panel sequence, camera movements, action captions, and dialog.'
+              }
+            ]
           },
         ],
         submission: [
           'Completed 6-9 panel storyboard sequence sheet (PNG/PDF).',
-          'Character model turnaround sheet showing Front, Side, Back, and Expressions (PNG).',
         ],
         critiqueQuestions: [
           'How did using dynamic camera angles (high, low, Dutch tilts) emphasize the emotional shifts in your storyboard sequence?',
           'What challenges did you face when showing camera motion (e.g. pans, zooms) inside static panels, and how did you use arrows/guides?',
-          'How do the turnaround expression studies help define the character’s acting style and emotional personality?'
+          'How did your action captions and panel layout help communicate pacing and storytelling clarity?'
         ],
       },
       advanced: {
         title: 'Advanced Integration: Blender Grease Pencil / Animatic Block-In',
-        subtitle: 'Focus: Virtual camera timelines, 3D storyboard blocking, and Grease Pencil sketching.',
+        subtitle: 'Due: End of Class on August 8',
         sections: [
           {
             heading: 'Overview & Worldbuilding Through-line',

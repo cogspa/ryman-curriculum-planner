@@ -365,7 +365,7 @@ export default function AssignmentPage() {
             paddingBottom: '16px'
           }}>
             <span style={{ color: '#64748b', fontWeight: 'bold', marginRight: '6px' }}>All Assignments:</span>
-            {[1, 3, 5, 7, 9, 10].filter(wk => {
+            {[1, 3, 5, 6, 9, 10].filter(wk => {
               const role = getActiveRole();
               return role === 'admin' || isWeekReleased(wk);
             }).map((wk) => {
@@ -872,6 +872,85 @@ export default function AssignmentPage() {
                           {img.caption}
                         </p>
                       )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {section.downloads && section.downloads.length > 0 && (
+                <div style={{
+                  marginTop: '16px',
+                  marginBottom: '28px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px'
+                }}>
+                  {section.downloads.map((dl, dlIdx) => (
+                    <div
+                      key={dlIdx}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        flexWrap: 'wrap',
+                        gap: '16px',
+                        background: 'linear-gradient(135deg, #fdfbf7 0%, #f7f2e8 100%)',
+                        border: '1.5px solid rgba(139, 58, 47, 0.25)',
+                        borderRadius: '12px',
+                        padding: '16px 20px',
+                        boxShadow: '0 4px 14px rgba(0, 0, 0, 0.04)'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: '1 1 260px' }}>
+                        <div style={{
+                          fontSize: '26px',
+                          width: '46px',
+                          height: '46px',
+                          borderRadius: '10px',
+                          background: 'rgba(139, 58, 47, 0.08)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: '#8b3a2f',
+                          flexShrink: 0
+                        }}>
+                          📄
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '15px', fontWeight: 'bold', color: '#1a1512', fontFamily: 'Georgia, serif' }}>
+                            {dl.title}
+                          </div>
+                          {dl.description && (
+                            <div style={{ fontSize: '13px', color: '#524636', marginTop: '2px', lineHeight: '1.4' }}>
+                              {dl.description}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <a
+                        href={dl.url}
+                        download={dl.filename || true}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          background: '#8b3a2f',
+                          color: '#ffffff',
+                          padding: '10px 18px',
+                          borderRadius: '8px',
+                          textDecoration: 'none',
+                          fontSize: '13px',
+                          fontWeight: '600',
+                          fontFamily: 'Menlo, monospace',
+                          boxShadow: '0 2px 6px rgba(139, 58, 47, 0.25)',
+                          transition: 'all 0.2s ease',
+                          whiteSpace: 'nowrap'
+                        }}
+                      >
+                        <span>⬇ Download Template</span>
+                      </a>
                     </div>
                   ))}
                 </div>
