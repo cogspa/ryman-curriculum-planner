@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Outlet, Navigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, Navigate, useLocation, Link } from 'react-router-dom';
 import { isWeekReleased, getActiveRole } from './releaseUtils.js';
+import CapstoneFooter from './components/CapstoneFooter.jsx';
 
 const AUTH_KEY = 'cp-auth-session';
 const ROLE_KEY = 'cp-auth-role';
@@ -17,6 +18,23 @@ export default function LoginGate() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const location = useLocation();
+
+  const isCapstonePage = location.pathname === '/capstone';
+
+  // Smooth scroll to anchor targets on route/hash change
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location.pathname, location.hash]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -79,6 +97,7 @@ export default function LoginGate() {
     
     // Student allowed pages:
     // - Home: /
+    // - Capstone: /capstone
     // - Syllabus: /syllabus
     // - FAQ: /faq
     // - Calendar: /calendar
@@ -88,7 +107,7 @@ export default function LoginGate() {
     
     let isAllowed = false;
     
-    if (path === '/' || path === '/syllabus' || path === '/assignments' || path === '/faq' || path === '/calendar' || path === '/pixel-budget' || path === '/critique') {
+    if (path === '/' || path === '/capstone' || path === '/syllabus' || path === '/assignments' || path === '/faq' || path === '/calendar' || path === '/pixel-budget' || path === '/critique') {
       isAllowed = true;
     } else {
       const assignmentMatch = path.match(/^\/assignment\/(\d+)/);
@@ -123,7 +142,7 @@ export default function LoginGate() {
   };
 
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
       {authRole === 'admin' && (
         <div className="admin-simulation-banner" style={{
           background: viewAsStudent ? '#1e293b' : '#7c3aed',
@@ -187,7 +206,13 @@ export default function LoginGate() {
           )}
         </div>
       )}
-      <Outlet />
-    </>
+      <div style={{ flex: 1, width: '100%' }}>
+        <Outlet />
+      </div>
+      <CapstoneFooter 
+        basePath={isCapstonePage ? "" : "/capstone"} 
+        linkComponent={Link} 
+      />
+    </div>
   );
 }

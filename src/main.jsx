@@ -48,6 +48,7 @@ import RosterPage from './RosterPage.jsx';
 import MentorshipPage from './MentorshipPage.jsx';
 import PixelBudget from './PixelBudget.jsx';
 import CritiquePage from './pages/CritiquePage.jsx';
+import CapstoneWorldBuilding from './components/CapstoneWorldBuilding.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -56,6 +57,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<LoginGate />}>
           <Route path="/" element={<App />} />
+          <Route path="/capstone" element={<CapstoneWorldBuilding />} />
           <Route path="/critique" element={<CritiquePage />} />
           <Route path="/assignment/:week" element={<AssignmentPage />} />
           <Route path="/assignments" element={<AssignmentsHubPage />} />
