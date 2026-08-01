@@ -5,6 +5,22 @@ import initialSketchImg from "./assets/zark-initial-sketch.jpg";
 import siteThumbImg from "./assets/zark-site-thumb.jpg";
 import siteHtml from "./assets/zark-site.html?raw";
 
+import phase1Img from "./assets/ZARK-capstone-sections/01-Blockouts-and-Thumbnails.png";
+import phase2Img from "./assets/ZARK-capstone-sections/02-Rendered-Environments.png";
+import phase3Img from "./assets/ZARK-capstone-sections/03-Character-Development.png";
+import phase4Img from "./assets/ZARK-capstone-sections/04-Narrative-Storyboards-and-Iterations.png";
+import phase5Img from "./assets/ZARK-capstone-sections/05-Hero-Project.png";
+import phase6Img from "./assets/ZARK-capstone-sections/06-Closing-Statement-and-Contact.png";
+
+const PHASE_IMAGES = [
+  phase1Img,
+  phase2Img,
+  phase3Img,
+  phase4Img,
+  phase5Img,
+  phase6Img,
+];
+
 /* ============================================================
    FullProjectFlow — Capstone footer component
    Demonstrates the phased Capstone development & presentation
@@ -223,14 +239,13 @@ export default function FullProjectFlow() {
       <div style={st.phases}>
         {PHASES.map((ph, i) => (
           <article key={i} style={st.phase}>
-            <div
-              role="img"
-              aria-label={`Sketch panel: ${ph.title}`}
-              style={{
-                ...cropStyle({ ...PANEL_PX[i], ...PANEL_Y }),
-                ...st.phaseArt,
-              }}
-            />
+            <div style={st.phaseArtWrap}>
+              <img
+                src={PHASE_IMAGES[i]}
+                alt={`Sketch panel: ${ph.title}`}
+                style={st.phaseArtImg}
+              />
+            </div>
             <div>
               <div style={st.phaseNum}>{String(i + 1).padStart(2, "0")}</div>
               <h3 style={st.phaseTitle}>{ph.title}</h3>
@@ -410,7 +425,8 @@ const st = {
     gap: "1.4rem",
     alignItems: "start",
   },
-  phaseArt: { border: `2px solid ${INK}`, background: "#fff", width: "100%" },
+  phaseArtWrap: { border: `2px solid ${INK}`, background: "#fff", width: "100%", overflow: "hidden", borderRadius: "2px" },
+  phaseArtImg: { display: "block", width: "100%", height: "auto", objectFit: "contain" },
   phaseNum: {
     fontFamily: MONO,
     fontSize: ".7rem",
