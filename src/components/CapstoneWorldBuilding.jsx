@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import FullProjectFlow from "./FullProjectFlow/FullProjectFlow";
 
 /**
  * CapstoneWorldBuilding.jsx
@@ -597,6 +598,8 @@ export default function CapstoneWorldBuilding() {
               thing.
             </p>
           </section>
+
+          <FullProjectFlow />
         </main>
       </div>
     </div>
