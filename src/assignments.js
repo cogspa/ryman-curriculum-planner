@@ -658,6 +658,11 @@ export const assignments = {
               }
             ]
           },
+          {
+            heading: 'Interactive Panel Lab — Multi-Format Storyboard Optimization',
+            body: 'Explore how a sequence of storyboard panels can be formatted, presented, and optimized across different digital media formats. Test switching between the 4 output presentation modes below:\n\n• **Frames (SRC)**: Extract and organize individual storyboard frames.\n• **Carousel (OUT1)**: Infinite loop presentation for web portfolios.\n• **Walkthrough (OUT2)**: 3D spatial perspective layout for pitch decks.\n• **Sound Grid (OUT3)**: Audio-reactive grid sequence for animatics.\n• **Magazine (OUT4)**: Multi-page print layout format.',
+            showPanelLab: true
+          }
         ],
         submission: [
           'Completed 6-9 panel storyboard sequence sheet (PNG/PDF).',

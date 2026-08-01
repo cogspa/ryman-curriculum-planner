@@ -25,6 +25,8 @@ In Adobe InDesign, the default workspace is engineered around document geometry.
 A Master Page acts as a global template for your document. Any element placed on a Master Page—such as grid alignments, background textures, folio page numbers, or corporate logo headers—will automatically render on all document pages to which that master is applied. 
 
 If an art director requests that a logo be moved 10 pixels to the left across a 24-page catalog, a designer who manually positioned the logo would have to edit 24 pages. A professional using Master Pages changes it once on the master, and InDesign instantly updates all 24 pages. This guarantees perfect structural layout alignment across the entire visual campaign.`,
+        videoUrl: 'https://www.youtube.com/embed/yg_jh9hiXj0',
+        videoCaption: 'Video Tutorial: Mastering InDesign Parent & Master Pages for Multi-Page Layouts',
       },
       {
         heading: 'Adding High-Resolution Content via Linking',
@@ -36,6 +38,8 @@ InDesign displays a low-resolution proxy preview of your illustration on the scr
 • Never rename, delete, or move your illustration files after placing them in InDesign. Doing so breaks the link, resulting in a pixelated, low-resolution final print.
 • Use the **Links Palette** to monitor status. A red exclamation mark (!) indicates a missing link, while a yellow warning triangle indicates the link is modified and needs to be updated.
 • When delivering your project to a client, always use InDesign's **Package** feature (File > Package). This automatically crawls your document and gathers all fonts, linked illustrations, and color profiles into a single, organized folder for delivery.`,
+        videoUrl: 'https://www.youtube.com/embed/wpai2H0uLIs',
+        videoCaption: 'Video Tutorial: Placing & Linking High-Resolution Graphics in InDesign',
       },
     ],
   },

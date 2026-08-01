@@ -107,7 +107,7 @@ export default function LoginGate() {
     
     let isAllowed = false;
     
-    if (path === '/' || path === '/capstone' || path === '/syllabus' || path === '/assignments' || path === '/faq' || path === '/calendar' || path === '/pixel-budget' || path === '/critique') {
+    if (path === '/' || path === '/capstone' || path === '/panel-lab' || path === '/syllabus' || path === '/assignments' || path === '/faq' || path === '/calendar' || path === '/pixel-budget' || path === '/critique') {
       isAllowed = true;
     } else {
       const assignmentMatch = path.match(/^\/assignment\/(\d+)/);

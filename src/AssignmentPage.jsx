@@ -5,6 +5,7 @@ import { isWeekReleased, getActiveRole } from './releaseUtils.js';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
 import CritiqueZone from './components/CritiqueZone.jsx';
 import CreatureCarousel from './components/CreatureCarousel.jsx';
+import PanelLab from './pages/panel-lab.jsx';
 
 function parseMarkdownLinks(text) {
   if (typeof text !== 'string') return text;
@@ -1060,6 +1061,12 @@ export default function AssignmentPage() {
               {section.showCreatureCarousel && (
                 <div style={{ marginTop: '28px', marginBottom: '20px', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(0, 0, 0, 0.12)' }}>
                   <CreatureCarousel label="Plate 01 — Character & Silhouette Studies" />
+                </div>
+              )}
+
+              {section.showPanelLab && (
+                <div style={{ marginTop: '28px', marginBottom: '28px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(237, 230, 216, 0.2)', boxShadow: '0 8px 30px rgba(0,0,0,0.25)' }}>
+                  <PanelLab />
                 </div>
               )}
 
