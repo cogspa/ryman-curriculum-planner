@@ -1256,13 +1256,45 @@ const ANATOMY_SECTIONS = [
 
 function InteractiveBriefInspector({ setI, setActiveModal }) {
   const [activeSecId, setActiveSecId] = useState("sec4");
+  const [hoverWholeDoc, setHoverWholeDoc] = useState(false);
 
   const currentSec = ANATOMY_SECTIONS.find((s) => s.id === activeSecId) || ANATOMY_SECTIONS[2];
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-      {/* Quick Section Selector Buttons */}
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", borderBottom: `1.5px solid ${T.ink}`, paddingBottom: 14 }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: 20, position: "relative" }}>
+      {/* Quick Section Selector Buttons + WHOLE DOCUMENT HOVER BUTTON */}
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center", borderBottom: `1.5px solid ${T.ink}`, paddingBottom: 14 }}>
+        <button
+          onMouseEnter={() => setHoverWholeDoc(true)}
+          onMouseLeave={() => setHoverWholeDoc(false)}
+          onClick={() => setActiveModal({
+            title: "Full Client Brief Document Page",
+            style: "COMPLETE UN-CROPPED SPECIMEN · 20 STRUCTURAL SECTIONS",
+            src: "/brief-anatomy-plate.svg",
+            color: T.red,
+            desc: "Full single-page schematic layout detailing all 20 structural components comprising a professional design brief."
+          })}
+          className="db-mono"
+          style={{
+            border: `2px solid ${T.ink}`,
+            background: hoverWholeDoc ? T.ink : T.red,
+            color: T.paper,
+            padding: "6px 14px",
+            fontSize: 11.5,
+            fontWeight: 800,
+            cursor: "pointer",
+            boxShadow: `3px 3px 0 ${T.ink}`,
+            transition: "all 0.15s ease",
+            display: "flex",
+            alignItems: "center",
+            gap: 6
+          }}
+        >
+          <span>📄 SHOW WHOLE DOCUMENT (HOVER)</span>
+        </button>
+
+        <span style={{ color: T.line }}>|</span>
+
         {ANATOMY_SECTIONS.map((sec) => {
           const isActive = sec.id === activeSecId;
           return (
@@ -1296,8 +1328,43 @@ function InteractiveBriefInspector({ setI, setActiveModal }) {
           gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
           gap: 24,
           alignItems: "start",
+          position: "relative",
         }}
       >
+        {/* FLOATING HOVER PREVIEW CARD (Triggered when hovering "SHOW WHOLE DOCUMENT") */}
+        {hoverWholeDoc && (
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 999,
+              width: "min(600px, 92%)",
+              background: T.paper,
+              border: `3px solid ${T.ink}`,
+              boxShadow: `10px 14px 0 ${T.ink}`,
+              padding: 16,
+              pointerEvents: "none",
+              animation: "db-pop 0.2s cubic-bezier(0.16, 1, 0.3, 1)"
+            }}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8, borderBottom: `1.5px solid ${T.ink}`, paddingBottom: 6 }}>
+              <span className="db-mono" style={{ color: T.red, fontWeight: 700, fontSize: 11, letterSpacing: "0.1em" }}>
+                🔍 FULL DOCUMENT HOVER PREVIEW
+              </span>
+              <span className="db-mono" style={{ color: T.pencil, fontSize: 10 }}>CLICK TO LOCK ENLARGED VIEW</span>
+            </div>
+            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FFF", overflow: "hidden", maxHeight: 520 }}>
+              <img
+                src="/brief-anatomy-plate.svg"
+                alt="Full Design Brief Master Schematic"
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </div>
+          </div>
+        )}
+
         {/* Left Panel: Graphic Plate with Interactive Overlay Hotspots */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <div
@@ -1326,6 +1393,29 @@ function InteractiveBriefInspector({ setI, setActiveModal }) {
                 pointerEvents: "auto",
               }}
             >
+              {/* Central Document Page Whole Document Hover Target */}
+              <rect
+                x={420}
+                y={110}
+                width={360}
+                height={720}
+                fill={hoverWholeDoc ? "rgba(196, 59, 42, 0.1)" : "transparent"}
+                stroke={hoverWholeDoc ? T.red : "transparent"}
+                strokeWidth={hoverWholeDoc ? 3 : 0}
+                strokeDasharray="6 4"
+                rx={4}
+                style={{ cursor: "pointer", transition: "all 0.2s ease" }}
+                onMouseEnter={() => setHoverWholeDoc(true)}
+                onMouseLeave={() => setHoverWholeDoc(false)}
+                onClick={() => setActiveModal({
+                  title: "Full Client Brief Document Page",
+                  style: "COMPLETE UN-CROPPED SPECIMEN · 20 STRUCTURAL SECTIONS",
+                  src: "/brief-anatomy-plate.svg",
+                  color: T.red,
+                  desc: "Full single-page schematic layout detailing all 20 structural components comprising a professional design brief."
+                })}
+              />
+
               {ANATOMY_SECTIONS.map((sec) => {
                 const isActive = sec.id === activeSecId;
                 return (
@@ -1371,7 +1461,7 @@ function InteractiveBriefInspector({ setI, setActiveModal }) {
             </svg>
           </div>
           <div className="db-mono" style={{ fontSize: 11, color: T.pencil, textAlign: "center" }}>
-            💡 HOVER OVER ANY CALLOUT BOX OR DOCUMENT REGION ABOVE TO MAGNIFY
+            💡 HOVER OVER ANY CALLOUT BOX, DOCUMENT REGION, OR "SHOW WHOLE DOCUMENT" BUTTON TO PREVIEW
           </div>
         </div>
 
