@@ -62,7 +62,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     4: { name: 'James Rallison', date: formatDate(tuesdayDate), saturdaySpeaker: 'Andrea Favilla', saturdayDate: formatDate(saturdayDate) },
     5: { name: 'Nancy Seruto', date: formatDate(tuesdayDate) },
     6: { name: 'Christian Hope', date: formatDate(tuesdayDate) },
-    7: { name: 'Sam Gochman (Gensler)', date: formatDate(tuesdayDate) },
+    7: { name: 'Sam Gochman - Creative Technologist, and Hassan Ragab - interdisciplinary designer, visual artist, and Creative AI leader', date: formatDate(tuesdayDate) },
     8: { name: 'Wayne Hunt', date: formatDate(tuesdayDate), saturdaySpeaker: 'Eugenia Chen', saturdayDate: formatDate(saturdayDate) },
     9: { name: 'None', date: formatDate(tuesdayDate) },
     10: { name: 'Jeremy Costello', date: formatDate(tuesdayDate) },

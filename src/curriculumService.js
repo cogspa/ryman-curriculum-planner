@@ -9,10 +9,20 @@ export function loadLocalCurriculum() {
     const data = localStorage.getItem(STORAGE_KEY);
     if (!data) return defaultCurriculum;
     const parsed = JSON.parse(data);
-    return parsed.map(w => ({
-      ...w,
-      week: Number(w.week)
-    }));
+    return parsed.map(w => {
+      const weekNum = Number(w.week);
+      if (weekNum === 7 && w.tuesday && w.tuesday.readings) {
+        w.tuesday.readings = w.tuesday.readings.map(r =>
+          r.includes('Sam Gochman (Gensler)')
+            ? 'Guest: Sam Gochman - Creative Technologist, and Hassan Ragab - interdisciplinary designer, visual artist, and Creative AI leader — design brief & development feedback'
+            : r
+        );
+      }
+      return {
+        ...w,
+        week: weekNum
+      };
+    });
   } catch {
     return defaultCurriculum;
   }
@@ -62,10 +72,20 @@ export async function fetchRemoteCurriculum() {
           rawData = parsed.data || defaultCurriculum;
           updatedTime = parsed.updated || 0;
         }
-        const sanitized = rawData.map(w => ({
-          ...w,
-          week: Number(w.week)
-        }));
+        const sanitized = rawData.map(w => {
+          const weekNum = Number(w.week);
+          if (weekNum === 7 && w.tuesday && w.tuesday.readings) {
+            w.tuesday.readings = w.tuesday.readings.map(r =>
+              r.includes('Sam Gochman (Gensler)')
+                ? 'Guest: Sam Gochman - Creative Technologist, and Hassan Ragab - interdisciplinary designer, visual artist, and Creative AI leader — design brief & development feedback'
+                : r
+            );
+          }
+          return {
+            ...w,
+            week: weekNum
+          };
+        });
         return { 
           data: sanitized, 
           updated: updatedTime 

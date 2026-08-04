@@ -42,6 +42,7 @@ import Week06Overview from './pages/Week06Overview.jsx';
 import Week06TopicDetail from './pages/Week06TopicDetail.jsx';
 import Week07Overview from './pages/Week07Overview.jsx';
 import Week07TopicDetail from './pages/Week07TopicDetail.jsx';
+import DesignBriefPresentation from './pages/DesignBriefPresentation.jsx';
 import ClassFAQPage from './ClassFAQPage.jsx';
 import SpeakerListPage from './SpeakerListPage.jsx';
 import RosterPage from './RosterPage.jsx';
@@ -109,6 +110,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/06" element={<Week06Overview />} />
           <Route path="/week/06/:topicKey" element={<Week06TopicDetail />} />
           <Route path="/week/07" element={<Week07Overview />} />
+          <Route path="/week/07/design-brief-presentation" element={<DesignBriefPresentation />} />
           <Route path="/week/07/:topicKey" element={<Week07TopicDetail />} />
         </Route>
       </Routes>

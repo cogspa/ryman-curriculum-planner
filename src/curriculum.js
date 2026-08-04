@@ -221,7 +221,7 @@ export const curriculum = [
       ],
       readings: [
         '[NEW] Client Simulation Framework: Anatomy of a Professional Design Brief',
-        'Guest: Sam Gochman (Gensler) — design brief & development feedback',
+        'Guest: Sam Gochman - Creative Technologist, and Hassan Ragab - interdisciplinary designer, visual artist, and Creative AI leader — design brief & development feedback',
       ],
     },
     saturday: {

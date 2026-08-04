@@ -34,6 +34,12 @@ export default function Week07Overview() {
             Client Simulation — the design brief framework (read this first)
           </Link>
         </li>
+        <li style={topicItemStyle}>
+          <span style={newBadgeStyle}>NEW</span>
+          <Link to="/week/07/design-brief-presentation" style={topicLinkStyle}>
+            Discussion: The anatomy of a professional design brief (Presentation)
+          </Link>
+        </li>
       </ul>
 
       <h2 style={sectionHeadingStyle}>Tracks (pick one)</h2>

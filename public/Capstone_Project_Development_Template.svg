@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1800" height="720" viewBox="0 0 1800 720">
+  <title>Capstone Project Development Template</title>
+  <desc>Editable presentation-board template for student capstone projects. Replace placeholder frames and text in Adobe Illustrator, then place the SVG in Adobe InDesign.</desc>
+
+  <defs>
+    <style><![CDATA[
+      .page { fill:#f7f6f2; }
+      .ink { fill:#262b2f; }
+      .rule { fill:none; stroke:#262b2f; stroke-width:2; }
+      .light-rule { fill:none; stroke:#a7adb1; stroke-width:1.5; }
+      .placeholder { fill:#ececea; stroke:#90979b; stroke-width:1.5; stroke-dasharray:8 7; }
+      .hero-placeholder { fill:#e6eef0; stroke:#507b86; stroke-width:2; stroke-dasharray:10 7; }
+      .accent-fill { fill:#507b86; }
+      .accent-stroke { fill:none; stroke:#507b86; stroke-width:2; }
+      .section-title { font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:700; letter-spacing:1.8px; fill:#262b2f; }
+      .small-title { font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; letter-spacing:1.2px; fill:#262b2f; }
+      .label { font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700; letter-spacing:.8px; fill:#507b86; }
+      .body { font-family:Arial, Helvetica, sans-serif; font-size:15px; fill:#42484c; }
+      .small { font-family:Arial, Helvetica, sans-serif; font-size:12px; fill:#747b7f; }
+      .tiny { font-family:Arial, Helvetica, sans-serif; font-size:10px; fill:#747b7f; letter-spacing:.5px; }
+      .board-title { font-family:Arial, Helvetica, sans-serif; font-size:25px; font-weight:700; letter-spacing:3px; fill:#262b2f; }
+    ]]></style>
+    <pattern id="thumbPattern" width="12" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0,12 L12,0" stroke="#d6dadb" stroke-width="1"/>
+    </pattern>
+    <symbol id="imageIcon" viewBox="0 0 40 32">
+      <rect x="1" y="1" width="38" height="30" rx="2" fill="none" stroke="#90979b" stroke-width="2"/>
+      <circle cx="29" cy="10" r="3" fill="#90979b"/>
+      <path d="M5 27 L15 17 L21 22 L26 17 L36 27" fill="none" stroke="#90979b" stroke-width="2"/>
+    </symbol>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <g id="BACKGROUND">
+    <rect class="page" x="0" y="0" width="1800" height="720"/>
+    <rect x="25" y="22" width="1750" height="676" rx="4" fill="#ffffff" stroke="#c9cdcf" stroke-width="1.5"/>
+  </g>
+
+  <!-- HEADER: edit the project title and student name -->
+  <g id="HEADER">
+    <text class="board-title" x="48" y="61">CAPSTONE PROJECT DEVELOPMENT</text>
+    <line class="accent-stroke" x1="48" y1="76" x2="1752" y2="76"/>
+    <text class="label" x="1120" y="53">PROJECT TITLE:</text>
+    <line class="light-rule" x1="1245" y1="56" x2="1480" y2="56"/>
+    <text class="label" x="1510" y="53">STUDENT:</text>
+    <line class="light-rule" x1="1590" y1="56" x2="1752" y2="56"/>
+  </g>
+
+  <!-- SECTION 01 -->
+  <g id="01_BLOCKOUTS_THUMBNAILS">
+    <rect class="rule" x="48" y="95" width="242" height="480"/>
+    <rect class="accent-fill" x="48" y="95" width="242" height="6"/>
+    <text class="section-title" x="169" y="126" text-anchor="middle">BLOCKOUTS /</text>
+    <text class="section-title" x="169" y="147" text-anchor="middle">THUMBNAILS</text>
+    <text class="small" x="169" y="167" text-anchor="middle">Early ideas, silhouettes, compositions</text>
+
+    <g id="BLOCKOUT_PLACEHOLDERS">
+      <rect class="placeholder" x="63" y="185" width="99" height="73" rx="2"/>
+      <rect class="placeholder" x="176" y="185" width="99" height="73" rx="2"/>
+      <rect class="placeholder" x="63" y="271" width="99" height="73" rx="2"/>
+      <rect class="placeholder" x="176" y="271" width="99" height="73" rx="2"/>
+      <rect class="placeholder" x="63" y="357" width="99" height="73" rx="2"/>
+      <rect class="placeholder" x="176" y="357" width="99" height="73" rx="2"/>
+      <rect class="placeholder" x="63" y="443" width="99" height="73" rx="2"/>
+      <rect class="placeholder" x="176" y="443" width="99" height="73" rx="2"/>
+      <g opacity=".6">
+        <use xlink:href="#imageIcon" x="92" y="204" width="40" height="32"/>
+        <use xlink:href="#imageIcon" x="205" y="204" width="40" height="32"/>
+        <use xlink:href="#imageIcon" x="92" y="290" width="40" height="32"/>
+        <use xlink:href="#imageIcon" x="205" y="290" width="40" height="32"/>
+        <use xlink:href="#imageIcon" x="92" y="376" width="40" height="32"/>
+        <use xlink:href="#imageIcon" x="205" y="376" width="40" height="32"/>
+        <use xlink:href="#imageIcon" x="92" y="462" width="40" height="32"/>
+        <use xlink:href="#imageIcon" x="205" y="462" width="40" height="32"/>
+      </g>
+    </g>
+    <text class="tiny" x="169" y="550" text-anchor="middle">REPLACE WITH PROCESS IMAGES</text>
+  </g>
+
+  <!-- SECTION 02 -->
+  <g id="02_ENVIRONMENTS">
+    <rect class="rule" x="310" y="95" width="260" height="480"/>
+    <rect class="accent-fill" x="310" y="95" width="260" height="6"/>
+    <text class="section-title" x="440" y="132" text-anchor="middle">ENVIRONMENTS</text>
+    <text class="small" x="440" y="153" text-anchor="middle">Space, lighting, mood, worldbuilding</text>
+    <g id="ENVIRONMENT_PLACEHOLDERS">
+      <rect class="placeholder" x="326" y="174" width="228" height="110" rx="2"/>
+      <rect class="placeholder" x="326" y="300" width="228" height="110" rx="2"/>
+      <rect class="placeholder" x="326" y="426" width="228" height="110" rx="2"/>
+      <use xlink:href="#imageIcon" x="420" y="213" width="40" height="32" opacity=".6"/>
+      <use xlink:href="#imageIcon" x="420" y="339" width="40" height="32" opacity=".6"/>
+      <use xlink:href="#imageIcon" x="420" y="465" width="40" height="32" opacity=".6"/>
+    </g>
+    <text class="tiny" x="440" y="557" text-anchor="middle">ADD 3 KEY ENVIRONMENT IMAGES</text>
+  </g>
+
+  <!-- SECTION 03 -->
+  <g id="03_CHARACTERS">
+    <rect class="rule" x="590" y="95" width="230" height="480"/>
+    <rect class="accent-fill" x="590" y="95" width="230" height="6"/>
+    <text class="section-title" x="705" y="132" text-anchor="middle">CHARACTERS</text>
+    <text class="small" x="705" y="153" text-anchor="middle">Design, expressions, model sheets</text>
+    <g id="CHARACTER_PLACEHOLDERS">
+      <rect class="placeholder" x="606" y="174" width="198" height="227" rx="2"/>
+      <use xlink:href="#imageIcon" x="685" y="263" width="40" height="32" opacity=".6"/>
+      <rect class="placeholder" x="606" y="417" width="57" height="91" rx="2"/>
+      <rect class="placeholder" x="677" y="417" width="57" height="91" rx="2"/>
+      <rect class="placeholder" x="747" y="417" width="57" height="91" rx="2"/>
+    </g>
+    <text class="tiny" x="705" y="537" text-anchor="middle">HERO + SUPPORTING VIEWS</text>
+  </g>
+
+  <!-- SECTION 04 -->
+  <g id="04_ITERATIONS_NARRATIVE_STORYBOARD">
+    <rect class="rule" x="840" y="95" width="335" height="480"/>
+    <rect class="accent-fill" x="840" y="95" width="335" height="6"/>
+    <text class="small-title" x="1007.5" y="126" text-anchor="middle">ITERATIONS / NARRATIVE /</text>
+    <text class="small-title" x="1007.5" y="146" text-anchor="middle">STORYBOARD</text>
+    <text class="small" x="1007.5" y="166" text-anchor="middle">Show how the idea develops and moves</text>
+    <g id="STORYBOARD_PLACEHOLDERS">
+      <rect class="placeholder" x="856" y="185" width="145" height="103" rx="2"/>
+      <rect class="placeholder" x="1014" y="185" width="145" height="103" rx="2"/>
+      <rect class="placeholder" x="856" y="315" width="145" height="103" rx="2"/>
+      <rect class="placeholder" x="1014" y="315" width="145" height="103" rx="2"/>
+      <rect class="placeholder" x="856" y="445" width="145" height="103" rx="2"/>
+      <rect class="placeholder" x="1014" y="445" width="145" height="103" rx="2"/>
+      <text class="tiny" x="863" y="201">FRAME 01</text>
+      <text class="tiny" x="1021" y="201">FRAME 02</text>
+      <text class="tiny" x="863" y="331">FRAME 03</text>
+      <text class="tiny" x="1021" y="331">FRAME 04</text>
+      <text class="tiny" x="863" y="461">FRAME 05</text>
+      <text class="tiny" x="1021" y="461">FRAME 06</text>
+    </g>
+  </g>
+
+  <!-- SECTION 05 -->
+  <g id="05_HERO_PROJECT">
+    <rect class="rule" x="1195" y="95" width="310" height="480"/>
+    <rect class="accent-fill" x="1195" y="95" width="310" height="6"/>
+    <text class="section-title" x="1350" y="132" text-anchor="middle">HERO PROJECT</text>
+    <text class="small" x="1350" y="153" text-anchor="middle">The primary, presentation-ready outcome</text>
+    <g id="HERO_PROJECT_PLACEHOLDER">
+      <rect class="hero-placeholder" x="1212" y="174" width="276" height="280" rx="3"/>
+      <circle cx="1350" cy="298" r="55" fill="url(#thumbPattern)" stroke="#a7adb1" stroke-width="1.5"/>
+      <use xlink:href="#imageIcon" x="1330" y="282" width="40" height="32" opacity=".7"/>
+      <text class="label" x="1350" y="376" text-anchor="middle">PLACE HERO IMAGE HERE</text>
+    </g>
+    <text class="label" x="1212" y="480">FORMAT / MEDIUM:</text>
+    <line class="light-rule" x1="1212" y1="495" x2="1488" y2="495"/>
+    <text class="label" x="1212" y="521">ONE-LINE PROJECT DESCRIPTION:</text>
+    <line class="light-rule" x1="1212" y1="537" x2="1488" y2="537"/>
+    <line class="light-rule" x1="1212" y1="555" x2="1488" y2="555"/>
+  </g>
+
+  <!-- SECTION 06 -->
+  <g id="06_CLOSING_CONTACT">
+    <rect class="rule" x="1525" y="95" width="227" height="480"/>
+    <rect class="accent-fill" x="1525" y="95" width="227" height="6"/>
+    <text class="small-title" x="1638.5" y="126" text-anchor="middle">CLOSING STATEMENT /</text>
+    <text class="small-title" x="1638.5" y="146" text-anchor="middle">CONTACT INFO</text>
+    <text class="small" x="1638.5" y="167" text-anchor="middle">End with a clear takeaway</text>
+    <text class="label" x="1542" y="203">CLOSING STATEMENT</text>
+    <line class="light-rule" x1="1542" y1="219" x2="1735" y2="219"/>
+    <line class="light-rule" x1="1542" y1="242" x2="1735" y2="242"/>
+    <line class="light-rule" x1="1542" y1="265" x2="1735" y2="265"/>
+    <line class="light-rule" x1="1542" y1="288" x2="1735" y2="288"/>
+    <line class="light-rule" x1="1542" y1="311" x2="1735" y2="311"/>
+    <rect class="placeholder" x="1542" y="337" width="72" height="72" rx="2"/>
+    <text class="tiny" x="1578" y="428" text-anchor="middle">QR / PHOTO</text>
+    <text class="label" x="1633" y="351">NAME</text>
+    <line class="light-rule" x1="1633" y1="365" x2="1735" y2="365"/>
+    <text class="label" x="1633" y="389">ROLE / DISCIPLINE</text>
+    <line class="light-rule" x1="1633" y1="403" x2="1735" y2="403"/>
+    <text class="label" x="1542" y="459">EMAIL</text>
+    <line class="light-rule" x1="1542" y1="474" x2="1735" y2="474"/>
+    <text class="label" x="1542" y="500">WEBSITE / PORTFOLIO</text>
+    <line class="light-rule" x1="1542" y1="515" x2="1735" y2="515"/>
+    <text class="label" x="1542" y="541">SOCIAL / LINKEDIN</text>
+    <line class="light-rule" x1="1542" y1="556" x2="1735" y2="556"/>
+  </g>
+
+  <!-- BRANDING STRIP: replace the dashed box with the student's own logo -->
+  <g id="BRANDING_STRIP">
+    <rect x="48" y="598" width="1704" height="75" rx="3" fill="#f1f4f4" stroke="#a7adb1" stroke-width="1.5"/>
+    <text class="section-title" x="69" y="626">BRANDED THROUGHOUT</text>
+    <text class="body" x="69" y="650">Use a consistent logo, color palette, typography, and project voice across every section.</text>
+    <rect class="hero-placeholder" x="1228" y="610" width="503" height="51" rx="3"/>
+    <text class="label" x="1479.5" y="634" text-anchor="middle">PLACE YOUR OWN LOGO HERE</text>
+    <text class="tiny" x="1479.5" y="650" text-anchor="middle">DELETE THIS TEXT AFTER ADDING YOUR LOGO</text>
+  </g>
+
+  <!-- OPTIONAL EDITING NOTE -->
+  <g id="EDITING_NOTE">
+    <text class="tiny" x="48" y="689">EDITABLE SVG TEMPLATE • REPLACE DASHED BOXES WITH ARTWORK • EDIT ALL PLACEHOLDER TEXT • BUILT FOR ILLUSTRATOR + INDESIGN</text>
+  </g>
+</svg>

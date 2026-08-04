@@ -71,7 +71,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     4: { name: 'James Rallison', date: formatDate(tuesdayDate), saturdaySpeaker: 'Andrea Favilla', saturdayDate: formatDate(saturdayDate) },
     5: { name: 'Nancy Seruto', date: formatDate(tuesdayDate) },
     6: { name: 'Christian Hope', date: formatDate(tuesdayDate) },
-    7: { name: 'Sam Gochman (Gensler)', date: formatDate(tuesdayDate) },
+    7: { name: 'Sam Gochman - Creative Technologist, and Hassan Ragab - interdisciplinary designer, visual artist, and Creative AI leader', date: formatDate(tuesdayDate) },
     8: { name: 'Wayne Hunt', date: formatDate(tuesdayDate), saturdaySpeaker: 'Eugenia Chen', saturdayDate: formatDate(saturdayDate) },
     9: { name: 'None', date: formatDate(tuesdayDate) },
     10: { name: 'Jeremy Costello', date: formatDate(tuesdayDate) },
@@ -468,7 +468,9 @@ function Section({ label, items, weekNumber }) {
             }
           } else if (weekNumber === 7 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();
-            if (cleanText.includes('short animation')) {
+            if (cleanText.includes('anatomy of a professional design brief') || cleanText.includes('design-brief-presentation')) {
+              linkPath = '/week/07/design-brief-presentation';
+            } else if (cleanText.includes('short animation')) {
               linkPath = '/week/07/short-animation';
             } else if (cleanText.includes('graphic novel')) {
               linkPath = '/week/07/graphic-novel-pages';
@@ -1360,7 +1362,7 @@ export default function App() {
     }
   }, [customCurriculum]);
 
-  // Automatic migration for Week 6 & Week 7 assignments (pushing Assignment 4 to Week 6)
+  // Automatic migration for Week 6 & Week 7 assignments (pushing Assignment 4 to Week 6) and Week 7 guest speaker info
   useEffect(() => {
     if (customCurriculum && customCurriculum.length > 6) {
       const week6Idx = customCurriculum.findIndex(w => w.week === 6);
@@ -1371,33 +1373,53 @@ export default function App() {
         const week7 = customCurriculum[week7Idx];
         const week6Assignments = week6.saturday?.assignments || [];
         const week7Assignments = week7.saturday?.assignments || [];
+        const week7Readings = week7.tuesday?.readings || [];
         
         const hasAssignment4InWeek7 = week7Assignments.some(a => a.includes('3-Panel Comic') || a.includes('Narrative Sequence'));
         const isWeek6MissingAssignments = week6Assignments.length === 0;
+        const hasOldSpeaker = week7Readings.some(r => r.includes('Sam Gochman (Gensler)'));
 
-        if (hasAssignment4InWeek7 || isWeek6MissingAssignments) {
+        if (hasAssignment4InWeek7 || isWeek6MissingAssignments || hasOldSpeaker) {
           const updatedCurriculum = [...customCurriculum];
-          const newWeek6Assignments = [
-            '[NEW] **Base Assignment**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout. **Due at the end of Class on August 8**.',
-            '[NEW] **Next Level**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies. **Due at the end of Class on August 8**.',
-            '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. **Due at the end of Class on August 8**.'
-          ];
+          
+          if (hasAssignment4InWeek7 || isWeek6MissingAssignments) {
+            const newWeek6Assignments = [
+              '[NEW] **Base Assignment**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout. **Due at the end of Class on August 8**.',
+              '[NEW] **Next Level**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies. **Due at the end of Class on August 8**.',
+              '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. **Due at the end of Class on August 8**.'
+            ];
 
-          updatedCurriculum[week6Idx] = {
-            ...week6,
-            saturday: {
-              ...(week6.saturday || {}),
-              assignments: newWeek6Assignments
-            }
-          };
+            updatedCurriculum[week6Idx] = {
+              ...week6,
+              saturday: {
+                ...(week6.saturday || {}),
+                assignments: newWeek6Assignments
+              }
+            };
 
-          updatedCurriculum[week7Idx] = {
-            ...week7,
-            saturday: {
-              ...(week7.saturday || {}),
-              assignments: []
-            }
-          };
+            updatedCurriculum[week7Idx] = {
+              ...updatedCurriculum[week7Idx],
+              saturday: {
+                ...(week7.saturday || {}),
+                assignments: []
+              }
+            };
+          }
+
+          if (hasOldSpeaker) {
+            const newReadings = week7Readings.map(r => 
+              r.includes('Sam Gochman (Gensler)') 
+                ? 'Guest: Sam Gochman - Creative Technologist, and Hassan Ragab - interdisciplinary designer, visual artist, and Creative AI leader — design brief & development feedback'
+                : r
+            );
+            updatedCurriculum[week7Idx] = {
+              ...updatedCurriculum[week7Idx],
+              tuesday: {
+                ...(updatedCurriculum[week7Idx].tuesday || {}),
+                readings: newReadings
+              }
+            };
+          }
 
           setCustomCurriculum(updatedCurriculum);
           saveLocalCurriculum(updatedCurriculum);
