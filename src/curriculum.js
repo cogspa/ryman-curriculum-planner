@@ -216,7 +216,7 @@ export const curriculum = [
     tuesday: {
       topics: [
         'Discussion: The anatomy of a professional design brief',
-        'Preview: The four distinct simulation tracks (Concept Art, Poster, Storyboard, Book Cover)',
+        'Preview: The seven distinct simulation tracks (Animation, Graphic Novel, Product Design, Interactive, Pitch, App, Personal)',
         'Workflow breakdown: How peer review validates the integrity of a brief',
       ],
       readings: [
@@ -226,10 +226,13 @@ export const curriculum = [
     },
     saturday: {
       topics: [
-        '[NEW] Concept art piece (hero rendering, silhouette sheets, value & color studies, callouts)',
-        '[NEW] Illustrated poster series (Polish Poster, Tanaka type-as-image, Rand economy of form, Makela layers)',
-        '[NEW] Storyboards / sequential art (camera shots/angles/moves, Script Courier 12pt specifications)',
-        '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
+        '[NEW] Track A — A short animation',
+        '[NEW] Track B — Several finished pages from a graphic novel',
+        '[NEW] Track C — A product design or product rendering',
+        '[NEW] Track D — An interactive experience',
+        '[NEW] Track E — A pitch or proof of concept for a larger project',
+        '[NEW] Track F — An app or digital experience',
+        '[NEW] Track G — A personal or autobiographical project',
       ],
       assignments: [
         '[NEW] **Base Assignment**: *Portfolio Showcase Deck* — Curate and compile 6-8 of your best polished pieces from the assignments into a clean digital portfolio PDF or website.',

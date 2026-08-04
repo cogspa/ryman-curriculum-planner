@@ -468,14 +468,20 @@ function Section({ label, items, weekNumber }) {
             }
           } else if (weekNumber === 7 && label === 'Topics') {
             const cleanText = text.trim().toLowerCase();
-            if (cleanText.includes('concept art')) {
-              linkPath = '/week/07/concept-art-track';
-            } else if (cleanText.includes('poster series')) {
-              linkPath = '/week/07/poster-series-track';
-            } else if (cleanText.includes('storyboards') || cleanText.includes('sequential')) {
-              linkPath = '/week/07/storyboard-track';
-            } else if (cleanText.includes('book cover') || cleanText.includes('children')) {
-              linkPath = '/week/07/book-cover-track';
+            if (cleanText.includes('short animation')) {
+              linkPath = '/week/07/short-animation';
+            } else if (cleanText.includes('graphic novel')) {
+              linkPath = '/week/07/graphic-novel-pages';
+            } else if (cleanText.includes('product design') || cleanText.includes('product rendering')) {
+              linkPath = '/week/07/product-design';
+            } else if (cleanText.includes('interactive experience')) {
+              linkPath = '/week/07/interactive-experience';
+            } else if (cleanText.includes('pitch') || cleanText.includes('proof of concept')) {
+              linkPath = '/week/07/pitch-proof-of-concept';
+            } else if (cleanText.includes('app') || cleanText.includes('digital experience')) {
+              linkPath = '/week/07/app-digital-experience';
+            } else if (cleanText.includes('personal') || cleanText.includes('autobiographical')) {
+              linkPath = '/week/07/personal-project';
             }
           }
 
