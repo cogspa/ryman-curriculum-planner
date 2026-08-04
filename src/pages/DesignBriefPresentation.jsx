@@ -1056,19 +1056,47 @@ export default function DesignBriefDeck() {
             </div>
 
             {/* Modal Image Box */}
-            <div style={{ border: `2px solid ${T.ink}`, background: "#FFF", padding: 16, marginBottom: 18, maxHeight: "70vh", overflowY: "auto" }}>
-              <img
-                src={activeModal.src}
-                alt={activeModal.title}
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
+            <div style={{ border: `2px solid ${T.ink}`, background: "#FFF", padding: 16, marginBottom: 18, maxHeight: "70vh", overflowY: "auto", display: "flex", justifyContent: "center" }}>
+              {activeModal.cropDocument ? (
+                <div style={{ width: "100%", maxWidth: 480, border: `1.5px solid ${T.ink}`, boxShadow: `4px 4px 0 ${T.ink}`, background: "#FDFBF3", padding: 6 }}>
+                  <svg viewBox="410 100 380 740" style={{ width: "100%", height: "auto", display: "block" }}>
+                    <image href="/brief-anatomy-plate.svg" width="1200" height="900" />
+                  </svg>
+                </div>
+              ) : (
+                <img
+                  src={activeModal.src}
+                  alt={activeModal.title}
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+              )}
             </div>
 
             {/* Modal Footer */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-              <p className="db-body" style={{ margin: 0, fontSize: 15, color: T.pencil }}>
-                {activeModal.desc || "High-resolution SVG document template for capstone client simulation."}
-              </p>
+              <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+                <p className="db-body" style={{ margin: 0, fontSize: 15, color: T.pencil }}>
+                  {activeModal.desc || "High-resolution SVG document template for capstone client simulation."}
+                </p>
+                {activeModal.src === "/brief-anatomy-plate.svg" && (
+                  <button
+                    onClick={() => setActiveModal({ ...activeModal, cropDocument: !activeModal.cropDocument })}
+                    className="db-mono"
+                    style={{
+                      border: `1.5px solid ${T.ink}`,
+                      background: T.paper,
+                      color: T.red,
+                      padding: "5px 10px",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      boxShadow: `2px 2px 0 ${T.ink}`,
+                    }}
+                  >
+                    {activeModal.cropDocument ? "📋 TOGGLE FULL SCHEMATIC" : "📄 TOGGLE DOCUMENT SHEET ONLY"}
+                  </button>
+                )}
+              </div>
               <a
                 href={activeModal.src}
                 target="_blank"
@@ -1268,11 +1296,12 @@ function InteractiveBriefInspector({ setI, setActiveModal }) {
           onMouseEnter={() => setHoverWholeDoc(true)}
           onMouseLeave={() => setHoverWholeDoc(false)}
           onClick={() => setActiveModal({
-            title: "Full Client Brief Document Page",
-            style: "COMPLETE UN-CROPPED SPECIMEN · 20 STRUCTURAL SECTIONS",
+            title: "Client Brief Document Sheet Specimen",
+            style: "DOCUMENT SHEET SPECIMEN · 20 STRUCTURAL SECTIONS",
             src: "/brief-anatomy-plate.svg",
+            cropDocument: true,
             color: T.red,
-            desc: "Full single-page schematic layout detailing all 20 structural components comprising a professional design brief."
+            desc: "Clean single-page specimen view displaying the complete 20-section design brief document structure."
           })}
           className="db-mono"
           style={{
@@ -1331,7 +1360,7 @@ function InteractiveBriefInspector({ setI, setActiveModal }) {
           position: "relative",
         }}
       >
-        {/* FLOATING HOVER PREVIEW CARD (Triggered when hovering "SHOW WHOLE DOCUMENT") */}
+        {/* FLOATING HOVER PREVIEW CARD (Displays ONLY the document portion) */}
         {hoverWholeDoc && (
           <div
             style={{
@@ -1340,7 +1369,7 @@ function InteractiveBriefInspector({ setI, setActiveModal }) {
               left: "50%",
               transform: "translateX(-50%)",
               zIndex: 999,
-              width: "min(600px, 92%)",
+              width: "min(460px, 92%)",
               background: T.paper,
               border: `3px solid ${T.ink}`,
               boxShadow: `10px 14px 0 ${T.ink}`,
@@ -1351,16 +1380,14 @@ function InteractiveBriefInspector({ setI, setActiveModal }) {
           >
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8, borderBottom: `1.5px solid ${T.ink}`, paddingBottom: 6 }}>
               <span className="db-mono" style={{ color: T.red, fontWeight: 700, fontSize: 11, letterSpacing: "0.1em" }}>
-                🔍 FULL DOCUMENT HOVER PREVIEW
+                📄 FULL DOCUMENT SHEET HOVER PREVIEW
               </span>
               <span className="db-mono" style={{ color: T.pencil, fontSize: 10 }}>CLICK TO LOCK ENLARGED VIEW</span>
             </div>
-            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FFF", overflow: "hidden", maxHeight: 520 }}>
-              <img
-                src="/brief-anatomy-plate.svg"
-                alt="Full Design Brief Master Schematic"
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
+            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FDFBF3", padding: 6, overflow: "hidden", maxHeight: 560 }}>
+              <svg viewBox="410 100 380 740" style={{ width: "100%", height: "auto", display: "block" }}>
+                <image href="/brief-anatomy-plate.svg" width="1200" height="900" />
+              </svg>
             </div>
           </div>
         )}
@@ -1408,11 +1435,12 @@ function InteractiveBriefInspector({ setI, setActiveModal }) {
                 onMouseEnter={() => setHoverWholeDoc(true)}
                 onMouseLeave={() => setHoverWholeDoc(false)}
                 onClick={() => setActiveModal({
-                  title: "Full Client Brief Document Page",
-                  style: "COMPLETE UN-CROPPED SPECIMEN · 20 STRUCTURAL SECTIONS",
+                  title: "Client Brief Document Sheet Specimen",
+                  style: "DOCUMENT SHEET SPECIMEN · 20 STRUCTURAL SECTIONS",
                   src: "/brief-anatomy-plate.svg",
+                  cropDocument: true,
                   color: T.red,
-                  desc: "Full single-page schematic layout detailing all 20 structural components comprising a professional design brief."
+                  desc: "Clean single-page specimen view displaying the complete 20-section design brief document structure."
                 })}
               />
 
