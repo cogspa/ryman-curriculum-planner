@@ -703,6 +703,240 @@ export default function DesignBriefDeck() {
         </div>
       </nav>
       <div style={{ height: 2, background: T.ink }} />
+
+      {/* ————————————————————————————————————————————————
+         BOTTOM SUPPLEMENTARY MATERIALS
+         1. Brief Anatomy Graphic Plate
+         2. Creative Brief Specimens & Templates (4 Styles)
+         ———————————————————————————————————————————————— */}
+      <section
+        className="db-body"
+        style={{
+          width: "100%",
+          maxWidth: 1040,
+          margin: "42px auto 32px auto",
+          padding: "0 22px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 40,
+          boxSizing: "border-box"
+        }}
+      >
+        {/* 1. Brief Anatomy Graphic Plate */}
+        <div
+          style={{
+            border: `2px solid ${T.ink}`,
+            background: T.paper,
+            boxShadow: `6px 6px 0 ${T.ink}`,
+            padding: "clamp(20px, 3.5vw, 40px)",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 12, marginBottom: 16, borderBottom: `1.5px solid ${T.ink}`, paddingBottom: 12 }}>
+            <div>
+              <Eyebrow color={T.red}>Master Reference Graphic</Eyebrow>
+              <h2 className="db-display" style={{ fontSize: "clamp(22px, 3.5vw, 32px)", margin: 0, textTransform: "uppercase", color: T.ink }}>
+                Anatomy of a Professional Design Brief
+              </h2>
+            </div>
+            <a
+              href="/brief-anatomy-plate.svg"
+              target="_blank"
+              rel="noreferrer"
+              className="db-mono"
+              style={{
+                border: `1.5px solid ${T.ink}`,
+                background: T.paper,
+                color: T.red,
+                padding: "8px 16px",
+                fontSize: 12,
+                fontWeight: 700,
+                textDecoration: "none",
+                boxShadow: `2.5px 2.5px 0 ${T.ink}`,
+              }}
+            >
+              OPEN FULL RESOLUTION SVG ↗
+            </a>
+          </div>
+          <p className="db-body" style={{ fontSize: 16, color: T.pencil, marginBottom: 22, lineHeight: 1.6 }}>
+            Full schematic breakdown detailing the 20 structural components comprising a production-ready brief.
+          </p>
+          <div style={{ border: `1.5px solid ${T.ink}`, background: "#FDFBF3", padding: 12, display: "flex", justifyContent: "center" }}>
+            <img
+              src="/brief-anatomy-plate.svg"
+              alt="Anatomy of a Professional Design Brief Master Graphic"
+              style={{ width: "100%", height: "auto", display: "block", maxHeight: 900 }}
+            />
+          </div>
+        </div>
+
+        {/* 2. Creative Brief Samples & Templates */}
+        <div
+          style={{
+            border: `2px solid ${T.ink}`,
+            background: T.paper,
+            boxShadow: `6px 6px 0 ${T.ink}`,
+            padding: "clamp(20px, 3.5vw, 40px)",
+          }}
+        >
+          <div style={{ marginBottom: 24, borderBottom: `1.5px solid ${T.ink}`, paddingBottom: 14 }}>
+            <Eyebrow color={T.blue}>Document Layout Archetypes</Eyebrow>
+            <h2 className="db-display" style={{ fontSize: "clamp(22px, 3.5vw, 32px)", margin: 0, textTransform: "uppercase", color: T.ink }}>
+              4 Creative Brief Sample Styles
+            </h2>
+            <p className="db-body" style={{ fontSize: 16, color: T.pencil, marginTop: 8, marginBottom: 0, lineHeight: 1.6 }}>
+              Four distinct formatting and typographic layout treatments for structuring your Capstone brief. Choose the template archetype that best matches your client's industry and brand tone.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: 24,
+            }}
+          >
+            {/* Sample 1 */}
+            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FBF7EA", boxShadow: `4px 4px 0 ${T.ink}`, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <div className="db-mono" style={{ fontSize: 12, color: T.red, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
+                  STYLE 01 · CLASSIC MINIMAL
+                </div>
+                <h3 className="db-display" style={{ fontSize: 18, margin: "0 0 12px 0", color: T.ink }}>
+                  Editorial &amp; Independent Publishing
+                </h3>
+                <div style={{ border: `1px solid ${T.line}`, background: "#FFF", padding: 8, marginBottom: 14 }}>
+                  <img src="/style1-classic-minimal.svg" alt="Style 1 Classic Minimal Brief Sample" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+              </div>
+              <a
+                href="/style1-classic-minimal.svg"
+                target="_blank"
+                rel="noreferrer"
+                className="db-mono"
+                style={{
+                  display: "inline-block",
+                  border: `1.5px solid ${T.ink}`,
+                  background: T.paper,
+                  color: T.ink,
+                  padding: "6px 14px",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  boxShadow: `2px 2px 0 ${T.ink}`,
+                  textAlign: "center",
+                }}
+              >
+                VIEW SAMPLE 1 SVG ↗
+              </a>
+            </div>
+
+            {/* Sample 2 */}
+            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FBF7EA", boxShadow: `4px 4px 0 ${T.ink}`, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <div className="db-mono" style={{ fontSize: 12, color: T.blue, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
+                  STYLE 02 · CORPORATE GRID
+                </div>
+                <h3 className="db-display" style={{ fontSize: 18, margin: "0 0 12px 0", color: T.ink }}>
+                  Agency &amp; Enterprise Systems
+                </h3>
+                <div style={{ border: `1px solid ${T.line}`, background: "#FFF", padding: 8, marginBottom: 14 }}>
+                  <img src="/style2-corporate-grid.svg" alt="Style 2 Corporate Grid Brief Sample" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+              </div>
+              <a
+                href="/style2-corporate-grid.svg"
+                target="_blank"
+                rel="noreferrer"
+                className="db-mono"
+                style={{
+                  display: "inline-block",
+                  border: `1.5px solid ${T.ink}`,
+                  background: T.paper,
+                  color: T.ink,
+                  padding: "6px 14px",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  boxShadow: `2px 2px 0 ${T.ink}`,
+                  textAlign: "center",
+                }}
+              >
+                VIEW SAMPLE 2 SVG ↗
+              </a>
+            </div>
+
+            {/* Sample 3 */}
+            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FBF7EA", boxShadow: `4px 4px 0 ${T.ink}`, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <div className="db-mono" style={{ fontSize: 12, color: T.red, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
+                  STYLE 03 · STUDIO BRANDED
+                </div>
+                <h3 className="db-display" style={{ fontSize: 18, margin: "0 0 12px 0", color: T.ink }}>
+                  Entertainment &amp; Creative IP
+                </h3>
+                <div style={{ border: `1px solid ${T.line}`, background: "#FFF", padding: 8, marginBottom: 14 }}>
+                  <img src="/style3-studio-branded.svg" alt="Style 3 Studio Branded Brief Sample" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+              </div>
+              <a
+                href="/style3-studio-branded.svg"
+                target="_blank"
+                rel="noreferrer"
+                className="db-mono"
+                style={{
+                  display: "inline-block",
+                  border: `1.5px solid ${T.ink}`,
+                  background: T.paper,
+                  color: T.ink,
+                  padding: "6px 14px",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  boxShadow: `2px 2px 0 ${T.ink}`,
+                  textAlign: "center",
+                }}
+              >
+                VIEW SAMPLE 3 SVG ↗
+              </a>
+            </div>
+
+            {/* Sample 4 */}
+            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FBF7EA", boxShadow: `4px 4px 0 ${T.ink}`, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <div className="db-mono" style={{ fontSize: 12, color: T.blue, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
+                  STYLE 04 · MODULAR QUESTIONNAIRE
+                </div>
+                <h3 className="db-display" style={{ fontSize: 18, margin: "0 0 12px 0", color: T.ink }}>
+                  Form-Based &amp; Client Handoff
+                </h3>
+                <div style={{ border: `1px solid ${T.line}`, background: "#FFF", padding: 8, marginBottom: 14 }}>
+                  <img src="/style4-questionnaire.svg" alt="Style 4 Questionnaire Brief Sample" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+              </div>
+              <a
+                href="/style4-questionnaire.svg"
+                target="_blank"
+                rel="noreferrer"
+                className="db-mono"
+                style={{
+                  display: "inline-block",
+                  border: `1.5px solid ${T.ink}`,
+                  background: T.paper,
+                  color: T.ink,
+                  padding: "6px 14px",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  boxShadow: `2px 2px 0 ${T.ink}`,
+                  textAlign: "center",
+                }}
+              >
+                VIEW SAMPLE 4 SVG ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
