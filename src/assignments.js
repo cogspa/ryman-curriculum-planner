@@ -704,94 +704,96 @@ export const assignments = {
     },
   },
   7: {
-    title: 'Assignment 5: Capstone Pitch Deck',
-    subtitle: 'Worldbuilding Step 5: Compile your IP worldbuilding project into a showcase-ready presentation.',
-    tracks: {
-      beginner: {
-        title: 'Base Assignment: Portfolio Showcase Deck',
-        subtitle: 'Focus: Curating art assets, organizing presentation grids, and formatting layout pages.',
-        sections: [
-          {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Compile and format 6-8 of your best polished digital art assets generated during the program. Package them into a cohesive digital presentation PDF or personal portfolio website layout.',
-          },
-          {
-            heading: 'Presentation Elements',
-            bullets: [
-              'Title slide containing your IP name, logo, and a brief description of the world.',
-              'Clean card layout slides: Use consistent margins, font sizes, and grids to frame your artwork.',
-              'Process page: Show the progression of one piece from the rough sketch to the final color render.',
-            ],
-          },
-        ],
-        submission: [
-          'Completed portfolio showcase deck (PDF or link to live website).',
-        ],
-        critiqueQuestions: [
-          'What unified design choices (margins, fonts, color themes) did you establish to make the entire presentation slide deck feel cohesive?',
-          'How did you organize your presentation grids to balance artwork focal points with descriptive text columns?',
-          'Does your process page clearly show a progression that helps other artists understand your digital workflow?'
-        ],
-      },
-      intermediate: {
-        title: 'Take It to the Next Level: IP Worldbuilding Pitch Deck',
-        subtitle: 'Focus: Character lineups, color keys, world guides, and professional presentation decks.',
-        sections: [
-          {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Compile a complete "IP Worldbuilding Pitch Deck" that pitches your project as a potential TV show, video game, or comic. This deck will showcase your character lineups, prop sheets, narrative keyframes, and color scripts.',
-          },
-          {
-            heading: 'Required Pitch Deck Slides',
-            bullets: [
-              'Slide 1: Logline & IP Overview (Concept summary and target audience).',
-              'Slide 2: Main Character Lineup (Character turnaround, details callouts, expressions).',
-              'Slide 3: Signature Prop & Material Guide (Asset wear sheets, textures).',
-              'Slide 4: Key Locations & Cinematic Keyframes (Environment shots, atmosphere).',
-              'Slide 5: Narrative Sequence & Storyboards (Sequential panels showing storytelling).',
-              'Slide 6: Color Script & Mood Keys (Color script chart showing emotional beats).',
-            ],
-          },
-        ],
-        submission: [
-          'Completed IP Worldbuilding Pitch Deck (16:9 PDF format).',
-        ],
-        critiqueQuestions: [
-          'How did you sequence the slides (logline, characters, environments, storyboards) to build a compelling narrative about your IP?',
-          'What choices did you make in typography size, page grids, and color schemes to give your pitch deck a premium, studio-ready look?',
-          'Does the color script successfully show the emotional beats of the story in a simple, visual chart?'
-        ],
-      },
-      advanced: {
-        title: 'Advanced Integration: IP Production Bible & 3D Assets Deck',
-        subtitle: 'Focus: 3D modeling topology, rendering breakdowns, and master visual production bibles.',
-        sections: [
-          {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Compile a comprehensive "IP Production Bible & 3D Assets Deck" that shows your Blender-to-Photoshop pipeline. This presentation is designed to show a potential studio that you understand technical 3D workflows, asset modularity, and high-fidelity rendering.',
-          },
-          {
-            heading: 'Required Production Deck Slides',
-            bullets: [
-              'Slide 1: IP Concept & 3D Pipeline Overview (Workflow charts and render engine choices).',
-              'Slide 2: 3D Character Mesh & Topology (Low-poly topology screenshots, wireframes, turnarounds).',
-              'Slide 3: Modular Asset Kit & Prop Shaders (Asset mesh grid, Shader Editor layouts, UV map layouts).',
-              'Slide 4: Environment Composition & Lighting Keys (3D scene block-ins vs. final paint-over keyframes).',
-              'Slide 5: Cinematic Animatic / Grease Pencil Storyboards (Multi-camera staging, 3D storyboard passes).',
-              'Slide 6: Marketing Release Composites (Renders integrated into print-ready layouts and digital banners).',
-            ],
-          },
-        ],
-        submission: [
-          'Completed IP Production Bible & 3D Assets Deck (16:9 PDF format).',
-        ],
-        critiqueQuestions: [
-          'How does your slide layout explain your Blender-to-Photoshop pipeline to someone who might not know 3D software?',
-          'How did you frame wireframes and topology views to showcase your clean modeling work and polygon efficiency?',
-          'Does the modular asset kit layout demonstrate how individual 3D objects can build a wider world efficiently?'
-        ],
-      },
+    title: 'Assignment 5: Creative Brief & Capstone Reference Board',
+    subtitle: 'Worldbuilding Step 5: Define your project scope, select your Hero Project track, and lay out the full Capstone template.',
+    introduction: {
+      heading: 'Why This Assignment Matters',
+      body: `This initial preparation will help you keep your Capstone project organized — not only for yourself, but also for visiting funders, presenters, mentors, and instructors. It will serve as a valuable reference as you develop your final video, website, Capstone presentation, and artist statement.
+
+Most importantly, it will give you a clear and professional way to answer when someone asks, "What are you working on?"
+
+Real professional work begins with a brief — a document from a client describing what they want, who it's for, when they need it, and what success looks like. Until you've worked from a brief, you've been making art for yourself. Working from a brief is making work for someone else, on their terms, with their deadlines. A client simulation gives you the rigor of professional work without the risk.`,
     },
+    sections: [
+      {
+        heading: 'Part 1: The Creative Brief (Due Saturday, August 8)',
+        body: `Write a one-page Creative Brief that defines the scope, audience, and deliverables for your Capstone Hero Project. The brief must be finalized and approved by the end of Saturday class on August 8th.
+
+### How to Write Your Brief
+
+Open a text file. Use these prompts as headers:
+
+**CLIENT:** [Who is hiring me?]
+**PROJECT:** [What am I making in one sentence?]
+**AUDIENCE:** [Who will see this?]
+**DELIVERABLES:** [Exactly what files, dimensions, formats?]
+**SCHEDULE:** [Brief due, thumbnails due, comp due, final due]
+**SUCCESS:** [How will I know it worked?]
+
+Fill each in. Three sentences max per section. The whole brief should fit on one page.
+
+### Peer Review
+
+Bring the printed brief to Tuesday's class. The first half hour will be brief reviews — students reading each other's briefs and finding gaps. A brief that survives peer review is a brief you can build from.
+
+### Select Your Hero Project Track
+
+You must also select one of the seven Hero Project tracks. Don't hedge between tracks; each requires different skills and reads as different work in your portfolio.
+
+• **Track A** — A short animation
+• **Track B** — Several finished pages from a graphic novel — not the whole book
+• **Track C** — A product design or product rendering
+• **Track D** — An interactive experience
+• **Track E** — A pitch or proof of concept for a larger future project
+• **Track F** — An app or digital experience
+• **Track G** — A personal or autobiographical project
+
+Read all seven track detail pages on this site before picking. Visit the [Client Simulation Overview](/week/07/client-simulation-overview) for full track descriptions.`,
+      },
+      {
+        heading: 'Part 2: Capstone Reference Board Template (Due Saturday, August 15)',
+        body: `Using the provided SVG template (or building your own in InDesign/Illustrator), lay out the full thumbnail sketch concept of your entire Capstone project on one formatted board.
+
+### What the Reference Board Includes
+
+The template contains sections for each major area of your project development:
+
+• **Blockouts / Thumbnails** — Early ideas, silhouettes, and compositions
+• **Environments** — Space, lighting, mood, and worldbuilding
+• **Characters** — Design, expressions, and model sheets
+• **Iterations / Narrative / Storyboard** — Show how the idea develops and moves
+• **Hero Project** — The primary, presentation-ready outcome
+• **Closing Statement / Contact Info** — End with a clear takeaway, your name, role, and contact details
+
+### Branded Throughout
+
+Use a consistent logo, color palette, typography, and project voice across every section. Replace dashed placeholder boxes with your own artwork. Edit all placeholder text. The template is built for Illustrator / InDesign.
+
+### One Strong Direction
+
+By the end of Saturday, August 15th, you should have one strong direction selected and approved by the instructor. This board becomes the blueprint for everything you build in the remaining weeks.`,
+        downloads: [
+          {
+            url: '/Capstone_Project_Development_Template.svg',
+            title: 'Capstone Project Development Template (SVG)',
+            description: 'Editable SVG template — replace dashed boxes with artwork, edit all placeholder text. Built for Illustrator / InDesign.',
+            filename: 'Capstone_Project_Development_Template.svg'
+          }
+        ]
+      },
+    ],
+    submission: [
+      'Part 1: Completed one-page Creative Brief (printed or PDF) — approved by end of class August 8th.',
+      'Part 1: Hero Project track selection confirmed.',
+      'Part 2: Completed Capstone Reference Board (InDesign/Illustrator/SVG layout) — due August 15th.',
+      'Part 2: One strong direction selected and approved by instructor.',
+    ],
+    critiqueQuestions: [
+      'Does your Creative Brief clearly define all six sections (Client, Project, Audience, Deliverables, Schedule, Success) in a way that another artist could understand your project scope?',
+      'How does your Reference Board visually communicate the full arc of your Capstone project — from early thumbnails through to the hero piece and closing statement?',
+      'What design choices (typography, color palette, logo placement) did you make to keep the board branded and cohesive across all sections?',
+      'Is there a clear "one strong direction" evident in your board, or are you still hedging between multiple concepts?'
+    ],
   },
   10: {
     title: 'Assignment 6: Release Campaign',

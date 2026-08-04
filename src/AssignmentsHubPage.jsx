@@ -125,24 +125,35 @@ export default function AssignmentsHubPage() {
                     </p>
 
                     <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '8px', borderTop: '1px solid rgba(0,0,0,0.05)', paddingTop: '16px' }}>
-                      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#3b82f6' }}></span>
-                        <span style={{ fontSize: '11.5px', color: '#475569' }}>
-                          <strong>Base:</strong> {info.tracks?.beginner?.title?.replace(/^Base Assignment:\s*/i, '') || 'Digital Art Foundations'}
-                        </span>
-                      </div>
-                      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#db2777' }}></span>
-                        <span style={{ fontSize: '11.5px', color: '#475569' }}>
-                          <strong>Next Level:</strong> {info.tracks?.intermediate?.title?.replace(/^Take It to the Next Level:\s*/i, '') || 'Portfolio Scaling'}
-                        </span>
-                      </div>
-                      <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#0f766e' }}></span>
-                        <span style={{ fontSize: '11.5px', color: '#475569' }}>
-                          <strong>Advanced:</strong> {info.tracks?.advanced?.title?.replace(/^Advanced Integration:\s*/i, '')?.replace(/^Advanced 3D Integration:\s*/i, '') || 'Blender Concept Pipeline'}
-                        </span>
-                      </div>
+                      {info.tracks ? (
+                        <>
+                          <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#3b82f6' }}></span>
+                            <span style={{ fontSize: '11.5px', color: '#475569' }}>
+                              <strong>Base:</strong> {info.tracks?.beginner?.title?.replace(/^Base Assignment:\s*/i, '') || 'Digital Art Foundations'}
+                            </span>
+                          </div>
+                          <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#db2777' }}></span>
+                            <span style={{ fontSize: '11.5px', color: '#475569' }}>
+                              <strong>Next Level:</strong> {info.tracks?.intermediate?.title?.replace(/^Take It to the Next Level:\s*/i, '') || 'Portfolio Scaling'}
+                            </span>
+                          </div>
+                          <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#0f766e' }}></span>
+                            <span style={{ fontSize: '11.5px', color: '#475569' }}>
+                              <strong>Advanced:</strong> {info.tracks?.advanced?.title?.replace(/^Advanced Integration:\s*/i, '')?.replace(/^Advanced 3D Integration:\s*/i, '') || 'Blender Concept Pipeline'}
+                            </span>
+                          </div>
+                        </>
+                      ) : (
+                        info.submission && info.submission.slice(0, 3).map((item, idx) => (
+                          <div key={idx} style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8b3a2f' }}></span>
+                            <span style={{ fontSize: '11.5px', color: '#475569' }}>{item}</span>
+                          </div>
+                        ))
+                      )}
                     </div>
 
                     <div className="hub-card-arrow" style={{

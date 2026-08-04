@@ -235,9 +235,7 @@ export const curriculum = [
         '[NEW] Track G — A personal or autobiographical project',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *Portfolio Showcase Deck* — Curate and compile 6-8 of your best polished pieces from the assignments into a clean digital portfolio PDF or website.',
-        '[NEW] **Next Level**: *IP Worldbuilding Pitch Deck* — Compile a full pitch deck for your IP, including a character lineup, world guide, and color scripts/keys.',
-        '[NEW] **Advanced Integration**: *IP Production Bible & 3D Assets Deck* — Compile a comprehensive production deck/bible featuring your Blender model layouts, modular kits, and final digital paints.'
+        '[NEW] **Creative Brief & Capstone Reference Board** — Write a one-page creative brief defining your project scope and Hero Project track (due Aug 8). Then lay out your full Capstone reference board using the provided SVG template or your own InDesign/Illustrator file (due Aug 15).'
       ],
     }
   },
