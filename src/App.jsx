@@ -1685,6 +1685,23 @@ export default function App() {
           </div>
         )}
 
+        {(role === 'admin' || role === 'student') && (
+          <div className="brief-builder-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(139, 58, 47, 0.05)', border: '1px solid rgba(139, 58, 47, 0.18)', borderRadius: '8px', padding: '12px 18px', marginBottom: '12px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>🛠️</span>
+              <span style={{ fontSize: '13px', fontWeight: '500', color: '#8b3a2f' }}>
+                <strong>Brief Builder:</strong> Interactive creative brief tool — define your project scope, audience, deliverables, and schedule.
+              </span>
+            </div>
+            <Link 
+              to="/brief-builder" 
+              style={{ textDecoration: 'none', background: '#8b3a2f', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s', fontFamily: "'IBM Plex Mono', monospace" }}
+            >
+              BRIEF BUILDER →
+            </Link>
+          </div>
+        )}
+
         {role === 'admin' && (
           <div className="speakers-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(6, 182, 212, 0.05)', border: '1px solid rgba(6, 182, 212, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

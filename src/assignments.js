@@ -732,6 +732,10 @@ Open a text file. Use these prompts as headers:
 
 Fill each in. Three sentences max per section. The whole brief should fit on one page.
 
+### 🛠️ Use the Interactive Brief Builder
+
+You can also use our [interactive Brief Builder tool](/brief-builder) to draft your brief directly on the platform. It walks you through each section, tracks your sentence count, includes a mini schedule timeline, and saves your work. You can export your completed brief as a PDF or spreadsheet.
+
 ### Peer Review
 
 Bring the printed brief to Tuesday's class. The first half hour will be brief reviews — students reading each other's briefs and finding gaps. A brief that survives peer review is a brief you can build from.

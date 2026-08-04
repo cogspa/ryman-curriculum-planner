@@ -48,6 +48,7 @@ import RosterPage from './RosterPage.jsx';
 import MentorshipPage from './MentorshipPage.jsx';
 import PixelBudget from './PixelBudget.jsx';
 import CritiquePage from './pages/CritiquePage.jsx';
+import BriefBuilderPage from './pages/BriefBuilderPage.jsx';
 import CapstoneWorldBuilding from './components/CapstoneWorldBuilding.jsx';
 import PanelLab from './pages/panel-lab.jsx';
 import './index.css';
@@ -62,6 +63,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/panel-lab" element={<PanelLab />} />
           <Route path="/week/06/panel-lab" element={<PanelLab />} />
           <Route path="/critique" element={<CritiquePage />} />
+          <Route path="/brief-builder" element={<BriefBuilderPage />} />
+          <Route path="/week/07/brief-builder" element={<BriefBuilderPage />} />
           <Route path="/assignment/:week" element={<AssignmentPage />} />
           <Route path="/assignments" element={<AssignmentsHubPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
