@@ -609,10 +609,48 @@ const slides = [
   },
 ];
 
+// Sample datasets
+const SAMPLES = [
+  {
+    id: 1,
+    style: "STYLE 01 · CLASSIC MINIMAL",
+    title: "Editorial & Independent Publishing",
+    color: T.red,
+    src: "/style1-classic-minimal.svg",
+    desc: "Clean, elegant typography layout for art directors and independent authors.",
+  },
+  {
+    id: 2,
+    style: "STYLE 02 · CORPORATE GRID",
+    title: "Agency & Enterprise Systems",
+    color: T.blue,
+    src: "/style2-corporate-grid.svg",
+    desc: "Structured multi-column data grid for agency workflows and enterprise handoffs.",
+  },
+  {
+    id: 3,
+    style: "STYLE 03 · STUDIO BRANDED",
+    title: "Entertainment & Creative IP",
+    color: T.red,
+    src: "/style3-studio-branded.svg",
+    desc: "High-impact visual identity header for animation, games, and film pitches.",
+  },
+  {
+    id: 4,
+    style: "STYLE 04 · MODULAR QUESTIONNAIRE",
+    title: "Form-Based & Client Handoff",
+    color: T.blue,
+    src: "/style4-questionnaire.svg",
+    desc: "Questionnaire-style prompts for client intake and collaborative briefing.",
+  },
+];
+
 /* ——— deck shell ——— */
 
 export default function DesignBriefDeck() {
   const [i, setI] = useState(0);
+  const [activeModal, setActiveModal] = useState(null); // { title, src, style, color, desc }
+  const [hoveredSampleId, setHoveredSampleId] = useState(null);
   const last = slides.length - 1;
 
   const go = useCallback(
@@ -622,12 +660,16 @@ export default function DesignBriefDeck() {
 
   useEffect(() => {
     const onKey = (e) => {
+      if (activeModal) {
+        if (e.key === "Escape") setActiveModal(null);
+        return;
+      }
       if (e.key === "ArrowRight" || e.key === " ") go(1);
       if (e.key === "ArrowLeft") go(-1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [go]);
+  }, [go, activeModal]);
 
   return (
     <div
@@ -636,7 +678,8 @@ export default function DesignBriefDeck() {
         minHeight: "100vh", background: T.paperDark, display: "flex",
         flexDirection: "column", color: T.ink,
         backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(31,27,22,0.035) 27px, rgba(31,27,22,0.035) 28px)`,
-        paddingBottom: '24px'
+        paddingBottom: '32px',
+        position: "relative"
       }}
     >
       <style>{fontCSS}</style>
@@ -646,6 +689,28 @@ export default function DesignBriefDeck() {
           .db-roles { grid-template-columns: 1fr !important; }
         }
         a:focus-visible, button:focus-visible { outline: 3px solid ${T.blue}; outline-offset: 2px; }
+        
+        .db-zoom-card {
+          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+        }
+        .db-zoom-card:hover {
+          transform: translateY(-8px) scale(1.025);
+          box-shadow: 8px 12px 0 ${T.ink} !important;
+        }
+        .db-zoom-card:hover .db-img-preview {
+          transform: scale(1.06);
+        }
+        .db-zoom-card:hover .db-card-overlay {
+          opacity: 1;
+        }
+        .db-img-preview {
+          transition: transform 0.35s ease;
+        }
+        .db-card-overlay {
+          opacity: 0;
+          transition: opacity 0.22s ease;
+        }
       `}</style>
 
       {/* header bar — job ticket strip */}
@@ -738,34 +803,88 @@ export default function DesignBriefDeck() {
                 Anatomy of a Professional Design Brief
               </h2>
             </div>
-            <a
-              href="/brief-anatomy-plate.svg"
-              target="_blank"
-              rel="noreferrer"
-              className="db-mono"
-              style={{
-                border: `1.5px solid ${T.ink}`,
-                background: T.paper,
-                color: T.red,
-                padding: "8px 16px",
-                fontSize: 12,
-                fontWeight: 700,
-                textDecoration: "none",
-                boxShadow: `2.5px 2.5px 0 ${T.ink}`,
-              }}
-            >
-              OPEN FULL RESOLUTION SVG ↗
-            </a>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <button
+                onClick={() => setActiveModal({
+                  title: "Anatomy of a Professional Design Brief",
+                  style: "MASTER REFERENCE SCHEMATIC · PLATE I",
+                  src: "/brief-anatomy-plate.svg",
+                  color: T.red,
+                  desc: "Full structural breakdown detailing the 20 structural components comprising a production-ready brief."
+                })}
+                className="db-mono"
+                style={{
+                  border: `1.5px solid ${T.ink}`,
+                  background: T.red,
+                  color: T.paper,
+                  padding: "8px 16px",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  boxShadow: `2.5px 2.5px 0 ${T.ink}`,
+                }}
+              >
+                🔍 ENLARGE MASTER SCHEMATIC
+              </button>
+              <a
+                href="/brief-anatomy-plate.svg"
+                target="_blank"
+                rel="noreferrer"
+                className="db-mono"
+                style={{
+                  border: `1.5px solid ${T.ink}`,
+                  background: T.paper,
+                  color: T.ink,
+                  padding: "8px 16px",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  boxShadow: `2.5px 2.5px 0 ${T.ink}`,
+                }}
+              >
+                OPEN RAW SVG ↗
+              </a>
+            </div>
           </div>
           <p className="db-body" style={{ fontSize: 16, color: T.pencil, marginBottom: 22, lineHeight: 1.6 }}>
-            Full schematic breakdown detailing the 20 structural components comprising a production-ready brief.
+            Full schematic breakdown detailing the 20 structural components comprising a production-ready brief. Hover over or click the plate below to view in high resolution.
           </p>
-          <div style={{ border: `1.5px solid ${T.ink}`, background: "#FDFBF3", padding: 12, display: "flex", justifyContent: "center" }}>
+          <div
+            className="db-zoom-card"
+            onClick={() => setActiveModal({
+              title: "Anatomy of a Professional Design Brief",
+              style: "MASTER REFERENCE SCHEMATIC · PLATE I",
+              src: "/brief-anatomy-plate.svg",
+              color: T.red,
+              desc: "Full structural breakdown detailing the 20 structural components comprising a production-ready brief."
+            })}
+            style={{ border: `1.5px solid ${T.ink}`, background: "#FDFBF3", padding: 12, position: "relative", overflow: "hidden" }}
+          >
             <img
               src="/brief-anatomy-plate.svg"
               alt="Anatomy of a Professional Design Brief Master Graphic"
+              className="db-img-preview"
               style={{ width: "100%", height: "auto", display: "block", maxHeight: 900 }}
             />
+            <div
+              className="db-card-overlay"
+              style={{
+                position: "absolute", inset: 0, background: "rgba(31, 27, 22, 0.45)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                backdropFilter: "blur(2px)"
+              }}
+            >
+              <span
+                className="db-mono"
+                style={{
+                  background: T.paper, color: T.red, border: `2px solid ${T.ink}`,
+                  padding: "12px 24px", fontSize: 14, fontWeight: 700,
+                  boxShadow: `4px 4px 0 ${T.ink}`, letterSpacing: "0.1em"
+                }}
+              >
+                🔍 CLICK OR HOVER TO EXPAND MASTER GRAPHIC
+              </span>
+            </div>
           </div>
         </div>
 
@@ -784,7 +903,7 @@ export default function DesignBriefDeck() {
               4 Creative Brief Sample Styles
             </h2>
             <p className="db-body" style={{ fontSize: 16, color: T.pencil, marginTop: 8, marginBottom: 0, lineHeight: 1.6 }}>
-              Four distinct formatting and typographic layout treatments for structuring your Capstone brief. Choose the template archetype that best matches your client's industry and brand tone.
+              Four distinct formatting and typographic layout treatments for structuring your Capstone brief. Hover over any sample card to scale up, or click to open full-screen lightbox preview.
             </p>
           </div>
 
@@ -795,148 +914,217 @@ export default function DesignBriefDeck() {
               gap: 24,
             }}
           >
-            {/* Sample 1 */}
-            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FBF7EA", boxShadow: `4px 4px 0 ${T.ink}`, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <div className="db-mono" style={{ fontSize: 12, color: T.red, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
-                  STYLE 01 · CLASSIC MINIMAL
-                </div>
-                <h3 className="db-display" style={{ fontSize: 18, margin: "0 0 12px 0", color: T.ink }}>
-                  Editorial &amp; Independent Publishing
-                </h3>
-                <div style={{ border: `1px solid ${T.line}`, background: "#FFF", padding: 8, marginBottom: 14 }}>
-                  <img src="/style1-classic-minimal.svg" alt="Style 1 Classic Minimal Brief Sample" style={{ width: "100%", height: "auto", display: "block" }} />
-                </div>
-              </div>
-              <a
-                href="/style1-classic-minimal.svg"
-                target="_blank"
-                rel="noreferrer"
-                className="db-mono"
+            {SAMPLES.map((sample) => (
+              <div
+                key={sample.id}
+                className="db-zoom-card"
+                onMouseEnter={() => setHoveredSampleId(sample.id)}
+                onMouseLeave={() => setHoveredSampleId(null)}
+                onClick={() => setActiveModal(sample)}
                 style={{
-                  display: "inline-block",
                   border: `1.5px solid ${T.ink}`,
-                  background: T.paper,
-                  color: T.ink,
-                  padding: "6px 14px",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  textDecoration: "none",
-                  boxShadow: `2px 2px 0 ${T.ink}`,
-                  textAlign: "center",
+                  background: "#FBF7EA",
+                  boxShadow: `4px 4px 0 ${T.ink}`,
+                  padding: 18,
+                  display: "flex",
+                  flexDirection: "column",
+                  justify: "space-between",
+                  position: "relative"
                 }}
               >
-                VIEW SAMPLE 1 SVG ↗
-              </a>
+                <div>
+                  <div className="db-mono" style={{ fontSize: 12, color: sample.color, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
+                    {sample.style}
+                  </div>
+                  <h3 className="db-display" style={{ fontSize: 18, margin: "0 0 12px 0", color: T.ink }}>
+                    {sample.title}
+                  </h3>
+                  
+                  {/* Image container with hover scaling */}
+                  <div style={{ border: `1.5px solid ${T.ink}`, background: "#FFF", padding: 8, marginBottom: 14, overflow: "hidden", position: "relative" }}>
+                    <img
+                      src={sample.src}
+                      alt={`${sample.style} Brief Sample`}
+                      className="db-img-preview"
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        display: "block",
+                        transform: hoveredSampleId === sample.id ? "scale(1.12)" : "scale(1)"
+                      }}
+                    />
+                    
+                    {/* Hover hover overlay prompt */}
+                    <div
+                      className="db-card-overlay"
+                      style={{
+                        position: "absolute", inset: 0, background: "rgba(31, 27, 22, 0.4)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        padding: 12, textAlign: "center"
+                      }}
+                    >
+                      <span
+                        className="db-mono"
+                        style={{
+                          background: T.paper, color: T.ink, border: `1.5px solid ${T.ink}`,
+                          padding: "6px 12px", fontSize: 11, fontWeight: 700,
+                          boxShadow: `3px 3px 0 ${T.ink}`, letterSpacing: "0.06em"
+                        }}
+                      >
+                        🔍 CLICK TO ENLARGE
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActiveModal(sample);
+                    }}
+                    className="db-mono"
+                    style={{
+                      flex: 1,
+                      border: `1.5px solid ${T.ink}`,
+                      background: sample.color,
+                      color: T.paper,
+                      padding: "7px 10px",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      boxShadow: `2px 2px 0 ${T.ink}`,
+                      textAlign: "center",
+                    }}
+                  >
+                    PREVIEW 🔍
+                  </button>
+                  <a
+                    href={sample.src}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="db-mono"
+                    style={{
+                      border: `1.5px solid ${T.ink}`,
+                      background: T.paper,
+                      color: T.ink,
+                      padding: "7px 10px",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      textDecoration: "none",
+                      boxShadow: `2px 2px 0 ${T.ink}`,
+                      textAlign: "center",
+                    }}
+                  >
+                    SVG ↗
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ————————————————————————————————————————————————
+         LIGHTBOX / SCALED-UP MODAL OVERLAY
+         ———————————————————————————————————————————————— */}
+      {activeModal && (
+        <div
+          onClick={() => setActiveModal(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 99999,
+            background: "rgba(31, 27, 22, 0.85)",
+            backdropFilter: "blur(4px)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justify: "center",
+            padding: "24px",
+            boxSizing: "border-box",
+            overflowY: "auto"
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              width: "100%",
+              maxWidth: 960,
+              background: T.paper,
+              border: `3px solid ${T.ink}`,
+              boxShadow: `12px 16px 0 ${T.ink}`,
+              padding: "clamp(20px, 3vw, 36px)",
+              position: "relative",
+              margin: "auto"
+            }}
+          >
+            {/* Modal Header */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16, borderBottom: `2px solid ${T.ink}`, paddingBottom: 12 }}>
+              <div>
+                <div className="db-mono" style={{ fontSize: 13, color: activeModal.color || T.red, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+                  {activeModal.style}
+                </div>
+                <h2 className="db-display" style={{ fontSize: 28, margin: "4px 0 0 0", color: T.ink }}>
+                  {activeModal.title}
+                </h2>
+              </div>
+              <button
+                onClick={() => setActiveModal(null)}
+                className="db-mono"
+                aria-label="Close modal"
+                style={{
+                  border: `2px solid ${T.ink}`,
+                  background: T.red,
+                  color: T.paper,
+                  padding: "6px 14px",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  boxShadow: `3px 3px 0 ${T.ink}`,
+                }}
+              >
+                ✕ CLOSE (ESC)
+              </button>
             </div>
 
-            {/* Sample 2 */}
-            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FBF7EA", boxShadow: `4px 4px 0 ${T.ink}`, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <div className="db-mono" style={{ fontSize: 12, color: T.blue, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
-                  STYLE 02 · CORPORATE GRID
-                </div>
-                <h3 className="db-display" style={{ fontSize: 18, margin: "0 0 12px 0", color: T.ink }}>
-                  Agency &amp; Enterprise Systems
-                </h3>
-                <div style={{ border: `1px solid ${T.line}`, background: "#FFF", padding: 8, marginBottom: 14 }}>
-                  <img src="/style2-corporate-grid.svg" alt="Style 2 Corporate Grid Brief Sample" style={{ width: "100%", height: "auto", display: "block" }} />
-                </div>
-              </div>
-              <a
-                href="/style2-corporate-grid.svg"
-                target="_blank"
-                rel="noreferrer"
-                className="db-mono"
-                style={{
-                  display: "inline-block",
-                  border: `1.5px solid ${T.ink}`,
-                  background: T.paper,
-                  color: T.ink,
-                  padding: "6px 14px",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  textDecoration: "none",
-                  boxShadow: `2px 2px 0 ${T.ink}`,
-                  textAlign: "center",
-                }}
-              >
-                VIEW SAMPLE 2 SVG ↗
-              </a>
+            {/* Modal Image Box */}
+            <div style={{ border: `2px solid ${T.ink}`, background: "#FFF", padding: 16, marginBottom: 18, maxHeight: "70vh", overflowY: "auto" }}>
+              <img
+                src={activeModal.src}
+                alt={activeModal.title}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
             </div>
 
-            {/* Sample 3 */}
-            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FBF7EA", boxShadow: `4px 4px 0 ${T.ink}`, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <div className="db-mono" style={{ fontSize: 12, color: T.red, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
-                  STYLE 03 · STUDIO BRANDED
-                </div>
-                <h3 className="db-display" style={{ fontSize: 18, margin: "0 0 12px 0", color: T.ink }}>
-                  Entertainment &amp; Creative IP
-                </h3>
-                <div style={{ border: `1px solid ${T.line}`, background: "#FFF", padding: 8, marginBottom: 14 }}>
-                  <img src="/style3-studio-branded.svg" alt="Style 3 Studio Branded Brief Sample" style={{ width: "100%", height: "auto", display: "block" }} />
-                </div>
-              </div>
+            {/* Modal Footer */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+              <p className="db-body" style={{ margin: 0, fontSize: 15, color: T.pencil }}>
+                {activeModal.desc || "High-resolution SVG document template for capstone client simulation."}
+              </p>
               <a
-                href="/style3-studio-branded.svg"
+                href={activeModal.src}
                 target="_blank"
                 rel="noreferrer"
                 className="db-mono"
                 style={{
-                  display: "inline-block",
-                  border: `1.5px solid ${T.ink}`,
-                  background: T.paper,
-                  color: T.ink,
-                  padding: "6px 14px",
-                  fontSize: 11,
+                  border: `2px solid ${T.ink}`,
+                  background: T.blue,
+                  color: T.paper,
+                  padding: "8px 18px",
+                  fontSize: 12,
                   fontWeight: 700,
                   textDecoration: "none",
-                  boxShadow: `2px 2px 0 ${T.ink}`,
-                  textAlign: "center",
+                  boxShadow: `3px 3px 0 ${T.ink}`,
                 }}
               >
-                VIEW SAMPLE 3 SVG ↗
-              </a>
-            </div>
-
-            {/* Sample 4 */}
-            <div style={{ border: `1.5px solid ${T.ink}`, background: "#FBF7EA", boxShadow: `4px 4px 0 ${T.ink}`, padding: 18, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <div className="db-mono" style={{ fontSize: 12, color: T.blue, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>
-                  STYLE 04 · MODULAR QUESTIONNAIRE
-                </div>
-                <h3 className="db-display" style={{ fontSize: 18, margin: "0 0 12px 0", color: T.ink }}>
-                  Form-Based &amp; Client Handoff
-                </h3>
-                <div style={{ border: `1px solid ${T.line}`, background: "#FFF", padding: 8, marginBottom: 14 }}>
-                  <img src="/style4-questionnaire.svg" alt="Style 4 Questionnaire Brief Sample" style={{ width: "100%", height: "auto", display: "block" }} />
-                </div>
-              </div>
-              <a
-                href="/style4-questionnaire.svg"
-                target="_blank"
-                rel="noreferrer"
-                className="db-mono"
-                style={{
-                  display: "inline-block",
-                  border: `1.5px solid ${T.ink}`,
-                  background: T.paper,
-                  color: T.ink,
-                  padding: "6px 14px",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  textDecoration: "none",
-                  boxShadow: `2px 2px 0 ${T.ink}`,
-                  textAlign: "center",
-                }}
-              >
-                VIEW SAMPLE 4 SVG ↗
+                OPEN RAW SVG IN NEW TAB ↗
               </a>
             </div>
           </div>
         </div>
-      </section>
+      )}
     </div>
   );
 }
