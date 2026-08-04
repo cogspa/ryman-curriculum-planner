@@ -231,7 +231,11 @@ export const curriculum = [
         '[NEW] Storyboards / sequential art (camera shots/angles/moves, Script Courier 12pt specifications)',
         '[NEW] Book cover / children’s book illustration (Ann & Paul Rand children\'s books, Zwart constructivist covers)',
       ],
-      assignments: [],
+      assignments: [
+        '[NEW] **Base Assignment**: *Portfolio Showcase Deck* — Curate and compile 6-8 of your best polished pieces from the assignments into a clean digital portfolio PDF or website.',
+        '[NEW] **Next Level**: *IP Worldbuilding Pitch Deck* — Compile a full pitch deck for your IP, including a character lineup, world guide, and color scripts/keys.',
+        '[NEW] **Advanced Integration**: *IP Production Bible & 3D Assets Deck* — Compile a comprehensive production deck/bible featuring your Blender model layouts, modular kits, and final digital paints.'
+      ],
     }
   },
   {
@@ -257,6 +261,7 @@ export const curriculum = [
         'Studio handoff etiquette & conventions',
         'Working with art directors role-play',
         'Formal pitch rehearsal & timing',
+        'Guest: Eugenia Chen — Creative entrepreneur — navigating freelance taxes & operations',
         '🛠️ Task: Refine narrative panels for portfolio: export finished layouts and organize reference sheets',
       ],
       assignments: [],
@@ -274,7 +279,6 @@ export const curriculum = [
       ],
       readings: [
         'Intellectual Property Guide: Copyrights, trademarks, and usage licensing rights',
-        'Guest: Eugenia Chen — Creative entrepreneur — navigating freelance taxes & operations',
       ],
     },
     saturday: {
@@ -285,11 +289,7 @@ export const curriculum = [
         'Taxes basics for creative sole proprietors',
         '🛠️ Task: Refine campaign assets & apply peer feedback from Week 8 pitch rehearsals',
       ],
-      assignments: [
-        '[NEW] **Base Assignment**: *"Your World" Poster Campaign* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
-        '[NEW] **Next Level**: *Multi-Format Key Art Campaign* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
-        '[NEW] **Advanced Integration**: *3D Studio lighting & Asset Marketing Deck* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
-      ],
+      assignments: [],
     }
   },
   {
@@ -315,9 +315,9 @@ export const curriculum = [
         'Salary negotiation basics & pricing confidence',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *Portfolio Showcase Deck* — Curate and compile 6-8 of your best polished pieces from the assignments into a clean digital portfolio PDF or website.',
-        '[NEW] **Next Level**: *IP Worldbuilding Pitch Deck* — Compile a full pitch deck for your IP, including a character lineup, world guide, and color scripts/keys.',
-        '[NEW] **Advanced Integration**: *IP Production Bible & 3D Assets Deck* — Compile a comprehensive production deck/bible featuring your Blender model layouts, modular kits, and final digital paints.'
+        '[NEW] **Base Assignment**: *"Your World" Poster Campaign* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
+        '[NEW] **Next Level**: *Multi-Format Key Art Campaign* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
+        '[NEW] **Advanced Integration**: *3D Studio lighting & Asset Marketing Deck* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
       ],
     }
   },

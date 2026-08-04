@@ -59,15 +59,19 @@ function isSameDate(d1, d2) {
          d1.getDate() === d2.getDate();
 }
 
-function getGuestSpeaker(tuesday) {
-  if (!tuesday || !tuesday.readings) return null;
-  const guestItem = tuesday.readings.find(r => 
-    r.startsWith('Guest:') || 
-    r.startsWith('Guest Panel:') || 
-    r.startsWith('Guest Speakers:')
+function getGuestSpeaker(session) {
+  if (!session) return null;
+  const list = [...(session.readings || []), ...(session.topics || [])];
+  const guestItem = list.find(r => 
+    typeof r === 'string' && (
+      r.startsWith('Guest:') || 
+      r.startsWith('Guest Panel:') || 
+      r.startsWith('Guest Speakers:') ||
+      r.startsWith('Speaker:')
+    )
   );
   if (guestItem) {
-    return guestItem.replace(/^Guest( Panel| Speakers)?:\s*/i, '');
+    return guestItem.replace(/^(Guest( Panel| Speakers)?|Speaker):\s*/i, '');
   }
   return null;
 }
@@ -130,7 +134,8 @@ export default function CalendarPage() {
         const tue = addDays(firstTue, idx * 7);
         const sat = addDays(tue, 4);
         const speaker = getGuestSpeaker(entry.tuesday);
-        return { entry, tuesday: tue, saturday: sat, speaker };
+        const satSpeaker = getGuestSpeaker(entry.saturday);
+        return { entry, tuesday: tue, saturday: sat, speaker, satSpeaker };
       })
       .filter(({ entry }) => Number(entry.week) !== 13);
   }, [startDate, customCurriculum]);
@@ -138,7 +143,7 @@ export default function CalendarPage() {
   // Compute chronological sessions list
   const chronologicalSessions = useMemo(() => {
     const list = [];
-    weeks.forEach(({ entry, tuesday, saturday, speaker }) => {
+    weeks.forEach(({ entry, tuesday, saturday, speaker, satSpeaker }) => {
       if (entry.tuesday) {
         list.push({
           date: tuesday,
@@ -165,6 +170,7 @@ export default function CalendarPage() {
           week: entry.week,
           name: `Week ${String(entry.week).padStart(2, '0')} · Saturday Studio ${isSatHoliday ? '(Holiday Break)' : ''}`,
           description: isSatHoliday ? 'Holiday Break — No Saturday Studio Class' : entry.overview,
+          speaker: satSpeaker,
           topics: entry.saturday.topics || [],
           isHoliday: isSatHoliday
         });
@@ -218,7 +224,7 @@ export default function CalendarPage() {
           if (w.entry.tuesday && isSameDate(date, w.tuesday)) {
             session = { type: 'tuesday', week: w.entry.week, date, entry: w.entry, speaker: w.speaker };
           } else if (w.entry.saturday && isSameDate(date, w.saturday)) {
-            session = { type: 'saturday', week: w.entry.week, date, entry: w.entry };
+            session = { type: 'saturday', week: w.entry.week, date, entry: w.entry, speaker: w.satSpeaker };
           }
         });
         
@@ -782,7 +788,7 @@ export default function CalendarPage() {
                   </h3>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    {weeks.filter(w => w.entry.saturday).map(({ entry, saturday, speaker }) => {
+                    {weeks.filter(w => w.entry.saturday).map(({ entry, saturday, speaker, satSpeaker }) => {
                       const isSatHoliday = entry.saturday?.topics?.[0]?.includes('Holiday') || isHoliday(saturday);
                       const assignment = getWeekAssignments(entry.week);
 
@@ -798,7 +804,7 @@ export default function CalendarPage() {
                             cursor: 'pointer',
                             opacity: isSatHoliday ? 0.75 : 1
                           }}
-                          onClick={() => !isSatHoliday && setSelectedSession({ type: 'saturday', week: entry.week, date: saturday, entry, speaker })}
+                          onClick={() => !isSatHoliday && setSelectedSession({ type: 'saturday', week: entry.week, date: saturday, entry, speaker: satSpeaker })}
                           className={`directory-list-item ${selectedSession?.type === 'saturday' && Number(selectedSession?.week) === Number(entry.week) ? 'is-active' : ''}`}
                         >
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
