@@ -1377,7 +1377,7 @@ export default function App() {
         
         const hasAssignment4InWeek7 = week7Assignments.some(a => a.includes('3-Panel Comic') || a.includes('Narrative Sequence'));
         const isWeek6MissingAssignments = week6Assignments.length === 0;
-        const hasOldSpeaker = week7Readings.some(r => r.includes('Sam Gochman (Gensler)'));
+        const hasOldSpeaker = week7Readings.some(r => r.toLowerCase().includes('gochman') && !r.includes('Hassan'));
 
         if (hasAssignment4InWeek7 || isWeek6MissingAssignments || hasOldSpeaker) {
           const updatedCurriculum = [...customCurriculum];
@@ -1408,7 +1408,7 @@ export default function App() {
 
           if (hasOldSpeaker) {
             const newReadings = week7Readings.map(r => 
-              r.includes('Sam Gochman (Gensler)') 
+              r.toLowerCase().includes('gochman') && !r.includes('Hassan')
                 ? 'Guest: Sam Gochman - Creative Technologist, and Hassan Ragab - interdisciplinary designer, visual artist, and Creative AI leader — design brief & development feedback'
                 : r
             );

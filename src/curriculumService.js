@@ -14,7 +14,7 @@ export function loadLocalCurriculum() {
       const weekNum = Number(w.week);
       if (weekNum === 7 && w.tuesday && w.tuesday.readings) {
         const newReadings = w.tuesday.readings.map(r => {
-          if (r.includes('Sam Gochman (Gensler)')) {
+          if (r.toLowerCase().includes('gochman') && !r.includes('Hassan')) {
             isModified = true;
             return 'Guest: Sam Gochman - Creative Technologist, and Hassan Ragab - interdisciplinary designer, visual artist, and Creative AI leader — design brief & development feedback';
           }
@@ -85,7 +85,7 @@ export async function fetchRemoteCurriculum() {
           const weekNum = Number(w.week);
           if (weekNum === 7 && w.tuesday && w.tuesday.readings) {
             w.tuesday.readings = w.tuesday.readings.map(r =>
-              r.includes('Sam Gochman (Gensler)')
+              r.toLowerCase().includes('gochman') && !r.includes('Hassan')
                 ? 'Guest: Sam Gochman - Creative Technologist, and Hassan Ragab - interdisciplinary designer, visual artist, and Creative AI leader — design brief & development feedback'
                 : r
             );
