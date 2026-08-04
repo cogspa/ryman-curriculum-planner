@@ -19,7 +19,7 @@ export const config = {
   },
 
   capstoneNote: 'Capstone showcase — September 2026 · final presentations',
-  storageVersion: 1,
+  storageVersion: 2,
 };
 
 export const curriculum = [

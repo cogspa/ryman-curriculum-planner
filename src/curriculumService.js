@@ -1,11 +1,15 @@
-import { curriculum as defaultCurriculum } from './curriculum.js';
+import { config, curriculum as defaultCurriculum } from './curriculum.js';
 import { supabase } from './supabaseClient.js';
 
-const STORAGE_KEY = 'cp-custom-curriculum';
-const UPDATED_KEY = 'cp-custom-curriculum-updated';
+const STORAGE_KEY = `cp-custom-curriculum-v${config.storageVersion || 2}`;
+const UPDATED_KEY = `cp-custom-curriculum-updated-v${config.storageVersion || 2}`;
 
 export function loadLocalCurriculum() {
   try {
+    // Purge unversioned legacy local storage key if present
+    localStorage.removeItem('cp-custom-curriculum');
+    localStorage.removeItem('cp-custom-curriculum-updated');
+
     const data = localStorage.getItem(STORAGE_KEY);
     if (!data) return defaultCurriculum;
     const parsed = JSON.parse(data);

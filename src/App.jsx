@@ -1437,11 +1437,11 @@ export default function App() {
       setSaveStatus('connecting to cloud...');
       fetchRemoteCurriculum().then((remoteObj) => {
         if (remoteObj && remoteObj.data) {
-          const localUpdated = parseInt(localStorage.getItem('cp-custom-curriculum-updated') || '0', 10);
+          const localUpdated = parseInt(localStorage.getItem(`cp-custom-curriculum-updated-v${config.storageVersion || 2}`) || '0', 10);
           if (remoteObj.updated > localUpdated) {
             setCustomCurriculum(remoteObj.data);
-            localStorage.setItem('cp-custom-curriculum', JSON.stringify(remoteObj.data));
-            localStorage.setItem('cp-custom-curriculum-updated', remoteObj.updated.toString());
+            localStorage.setItem(`cp-custom-curriculum-v${config.storageVersion || 2}`, JSON.stringify(remoteObj.data));
+            localStorage.setItem(`cp-custom-curriculum-updated-v${config.storageVersion || 2}`, remoteObj.updated.toString());
             setSaveStatus('cloud loaded');
           } else {
             setSaveStatus('local state is newer');
