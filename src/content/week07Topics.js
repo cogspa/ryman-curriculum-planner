@@ -57,10 +57,10 @@ By end of Saturday, Aug 15:
 • Reference Board complete (the thumbnail sketch concept of the whole project laid out in one InDesign/Illustrator file)
 • One strong direction selected and approved by the instructor
 
-The discipline here is restraint. Don't start rendering anything beautiful yet. The first weeks are for thinking, planning, and committing to a direction. Beautiful work happens in the weeks after — but only if the brief and layout planning are done well.`,
+This initial preparation will help you keep your Capstone project organized—not only for yourself, but also for visiting funders, presenters, mentors, and instructors. It will serve as a valuable reference as you develop your final video, website, Capstone presentation, and artist statement. Most importantly, it will give you a clear and professional way to answer when someone asks, “What are you working on?”`,
       },
       {
-        heading: 'How to write your brief tonight',
+        heading: 'How to write your brief',
         body: `Open a text file. Use these prompts as headers:
 
 CLIENT: [Who is hiring me?]
