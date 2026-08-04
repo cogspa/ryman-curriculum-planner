@@ -6,7 +6,7 @@ import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 export default function AssignmentsHubPage() {
   const role = getActiveRole();
-  const gradedWeeks = [1, 3, 5, 6, 9, 10].filter((wk) => {
+  const gradedWeeks = [1, 3, 5, 6, 7, 10].filter((wk) => {
     return role === 'admin' || isWeekReleased(wk);
   });
 

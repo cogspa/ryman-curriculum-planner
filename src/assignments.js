@@ -703,98 +703,9 @@ export const assignments = {
       },
     },
   },
-  9: {
-    title: 'Assignment 5: Release Campaign',
-    subtitle: 'Worldbuilding Step 5: Design the promotional assets and release package for your world.',
-    tracks: {
-      beginner: {
-        title: 'Base Assignment: "Your World" Poster Campaign',
-        subtitle: 'Focus: Typography hierarchy, bleed margins, and raster-vector combinations.',
-        sections: [
-          {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Design a clean commercial poster showcasing your main character or signature environment. Pair your digital illustration with custom logo/typography layouts.',
-          },
-          {
-            heading: 'Design Layout Specs',
-            bullets: [
-              'Canvas Size: 11" x 17" with 0.25" bleed margins.',
-              'Combine your raster digital painting (from Photoshop/Procreate) with vector text layers.',
-              'Create a hierarchy of information: Title/Logo (focal point), tagline (medium size), credits (small size at bottom).',
-            ],
-          },
-        ],
-        submission: [
-          'Mockup design thumbnail sketch showing layout grids.',
-          'Completed poster print-ready file (PDF or high-res PNG).',
-        ],
-        critiqueQuestions: [
-          'How did you establish typography hierarchy so that the title/logo is read first, followed by taglines and secondary credits?',
-          'What choices did you make regarding margins and layout grid alignment to ensure the poster feels balanced and commercial?',
-          'How did the composition of your digital painting adapt to leave appropriate negative space for the text overlay?'
-        ],
-      },
-      intermediate: {
-        title: 'Take It to the Next Level: Multi-Format Key Art Campaign',
-        subtitle: 'Focus: Layout engineering in InDesign, CC Libraries, and responsive print/web layouts.',
-        sections: [
-          {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Design a premium commercial campaign cover (e.g., game case art or film poster). You will adapt this campaign into four completely different layout sizes (horizontal web banner, vertical poster, mobile feed post, and package spine/box art).',
-          },
-          {
-            heading: 'Responsive Campaign Specs',
-            bullets: [
-              'Use Adobe InDesign to establish master grid structures for margins, column bounds, and text flow.',
-              'Manage your asset links: Use Photoshop smart objects and Illustrator vector assets linked through CC Libraries to maintain resolution.',
-              'Ensure composition responds dynamically to different sizes without simply stretching the image (cropping, rearranging elements, adjusting text layout).',
-            ],
-          },
-        ],
-        submission: [
-          'Completed campaign package containing 4 layout formats (PDF/PNG).',
-          'Asset package folder screenshot showing linked high-res source files.',
-        ],
-        critiqueQuestions: [
-          'How did you adapt your layout grids in InDesign to fit four very different shapes (horizontal, vertical, square, spine)?',
-          'What adjustments did you make to the focal points, text positioning, and crop bounds to keep the story clear in every size?',
-          'How did linking assets (smart objects, vectors) through libraries help you work efficiently and avoid losing quality?'
-        ],
-      },
-      advanced: {
-        title: 'Advanced Integration: 3D Studio lighting & Asset Marketing Deck',
-        subtitle: 'Focus: Setting up studio lighting in Blender, rendering hero passes, and compiling marketing decks.',
-        sections: [
-          {
-            heading: 'Overview & Worldbuilding Through-line',
-            body: 'Set up high-end virtual studio lighting in Blender (three-point lighting, rim lights, gobos) to render your hero character model or prop. Bring these renders into Photoshop/InDesign to construct the final marketing deck.',
-          },
-          {
-            heading: 'Studio Lighting & Render Workflow',
-            numberedSteps: [
-              'Import your high-poly character or prop model into a clean Blender staging scene.',
-              'Lighting: Set up a three-point lighting system (Key, Fill, Rim) with dramatic colors to match your IP\'s mood. Use spotlight gobos to create textured light patterns.',
-              'Baking/Rendering: Render out high-resolution transparency passes (alpha channel shadows, emission passes).',
-              'Composite & Design: Combine your 3D renders with graphic elements and typography in Photoshop/InDesign to create print-ready ads and digital banners.',
-            ],
-          },
-        ],
-        submission: [
-          'Blender workspace viewport screenshot showing 3D studio light positioning.',
-          'Raw 3D render passes (transparent background PNG).',
-          'Completed multi-format marketing deck layouts (PDF/PNG).',
-        ],
-        critiqueQuestions: [
-          'How did your three-point studio lighting setup (Key, Fill, Rim) in Blender carve out form and highlight the model’s details?',
-          'What role did colored light accents or spotlight gobos play in matching the marketing deck\'s theme with the IP\'s story?',
-          'How did you organize your render passes (shadow catchers, emissions) in Photoshop/InDesign to create a professional commercial layout?'
-        ],
-      },
-    },
-  },
-  10: {
-    title: 'Assignment 6: Capstone Pitch Deck',
-    subtitle: 'Worldbuilding Step 6: Compile your IP worldbuilding project into a showcase-ready presentation.',
+  7: {
+    title: 'Assignment 5: Capstone Pitch Deck',
+    subtitle: 'Worldbuilding Step 5: Compile your IP worldbuilding project into a showcase-ready presentation.',
     tracks: {
       beginner: {
         title: 'Base Assignment: Portfolio Showcase Deck',
@@ -878,6 +789,95 @@ export const assignments = {
           'How does your slide layout explain your Blender-to-Photoshop pipeline to someone who might not know 3D software?',
           'How did you frame wireframes and topology views to showcase your clean modeling work and polygon efficiency?',
           'Does the modular asset kit layout demonstrate how individual 3D objects can build a wider world efficiently?'
+        ],
+      },
+    },
+  },
+  10: {
+    title: 'Assignment 6: Release Campaign',
+    subtitle: 'Worldbuilding Step 6: Design the promotional assets and release package for your world.',
+    tracks: {
+      beginner: {
+        title: 'Base Assignment: "Your World" Poster Campaign',
+        subtitle: 'Focus: Typography hierarchy, bleed margins, and raster-vector combinations.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Design a clean commercial poster showcasing your main character or signature environment. Pair your digital illustration with custom logo/typography layouts.',
+          },
+          {
+            heading: 'Design Layout Specs',
+            bullets: [
+              'Canvas Size: 11" x 17" with 0.25" bleed margins.',
+              'Combine your raster digital painting (from Photoshop/Procreate) with vector text layers.',
+              'Create a hierarchy of information: Title/Logo (focal point), tagline (medium size), credits (small size at bottom).',
+            ],
+          },
+        ],
+        submission: [
+          'Mockup design thumbnail sketch showing layout grids.',
+          'Completed poster print-ready file (PDF or high-res PNG).',
+        ],
+        critiqueQuestions: [
+          'How did you establish typography hierarchy so that the title/logo is read first, followed by taglines and secondary credits?',
+          'What choices did you make regarding margins and layout grid alignment to ensure the poster feels balanced and commercial?',
+          'How did the composition of your digital painting adapt to leave appropriate negative space for the text overlay?'
+        ],
+      },
+      intermediate: {
+        title: 'Take It to the Next Level: Multi-Format Key Art Campaign',
+        subtitle: 'Focus: Layout engineering in InDesign, CC Libraries, and responsive print/web layouts.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Design a premium commercial campaign cover (e.g., game case art or film poster). You will adapt this campaign into four completely different layout sizes (horizontal web banner, vertical poster, mobile feed post, and package spine/box art).',
+          },
+          {
+            heading: 'Responsive Campaign Specs',
+            bullets: [
+              'Use Adobe InDesign to establish master grid structures for margins, column bounds, and text flow.',
+              'Manage your asset links: Use Photoshop smart objects and Illustrator vector assets linked through CC Libraries to maintain resolution.',
+              'Ensure composition responds dynamically to different sizes without simply stretching the image (cropping, rearranging elements, adjusting text layout).',
+            ],
+          },
+        ],
+        submission: [
+          'Completed campaign package containing 4 layout formats (PDF/PNG).',
+          'Asset package folder screenshot showing linked high-res source files.',
+        ],
+        critiqueQuestions: [
+          'How did you adapt your layout grids in InDesign to fit four very different shapes (horizontal, vertical, square, spine)?',
+          'What adjustments did you make to the focal points, text positioning, and crop bounds to keep the story clear in every size?',
+          'How did linking assets (smart objects, vectors) through libraries help you work efficiently and avoid losing quality?'
+        ],
+      },
+      advanced: {
+        title: 'Advanced Integration: 3D Studio lighting & Asset Marketing Deck',
+        subtitle: 'Focus: Setting up studio lighting in Blender, rendering hero passes, and compiling marketing decks.',
+        sections: [
+          {
+            heading: 'Overview & Worldbuilding Through-line',
+            body: 'Set up high-end virtual studio lighting in Blender (three-point lighting, rim lights, gobos) to render your hero character model or prop. Bring these renders into Photoshop/InDesign to construct the final marketing deck.',
+          },
+          {
+            heading: 'Studio Lighting & Render Workflow',
+            numberedSteps: [
+              'Import your high-poly character or prop model into a clean Blender staging scene.',
+              'Lighting: Set up a three-point lighting system (Key, Fill, Rim) with dramatic colors to match your IP\'s mood. Use spotlight gobos to create textured light patterns.',
+              'Baking/Rendering: Render out high-resolution transparency passes (alpha channel shadows, emission passes).',
+              'Composite & Design: Combine your 3D renders with graphic elements and typography in Photoshop/InDesign to create print-ready ads and digital banners.',
+            ],
+          },
+        ],
+        submission: [
+          'Blender workspace viewport screenshot showing 3D studio light positioning.',
+          'Raw 3D render passes (transparent background PNG).',
+          'Completed multi-format marketing deck layouts (PDF/PNG).',
+        ],
+        critiqueQuestions: [
+          'How did your three-point studio lighting setup (Key, Fill, Rim) in Blender carve out form and highlight the model’s details?',
+          'What role did colored light accents or spotlight gobos play in matching the marketing deck\'s theme with the IP\'s story?',
+          'How did you organize your render passes (shadow catchers, emissions) in Photoshop/InDesign to create a professional commercial layout?'
         ],
       },
     },
