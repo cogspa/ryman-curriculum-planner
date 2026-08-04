@@ -47,9 +47,10 @@ export function isWeekReleased(weekNum, startDateStr) {
   const role = getActiveRole();
   if (role === 'admin') return true;
   
-  // Week 8 and beyond are hidden for students
-  if (weekNum >= 8) return false;
+  // Weeks 1 through 7 are live for all students
+  if (weekNum <= 7) return true;
 
+  // Week 8 and beyond are released on their respective Mondays
   const monday = getWeekMonday(weekNum, startDateStr);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
