@@ -787,7 +787,7 @@ export default function DesignBriefDeck() {
           boxSizing: "border-box"
         }}
       >
-        {/* 1. Brief Anatomy Graphic Plate */}
+        {/* 1. Interactive Anatomical Brief Inspector */}
         <div
           style={{
             border: `2px solid ${T.ink}`,
@@ -798,7 +798,7 @@ export default function DesignBriefDeck() {
         >
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 12, marginBottom: 16, borderBottom: `1.5px solid ${T.ink}`, paddingBottom: 12 }}>
             <div>
-              <Eyebrow color={T.red}>Master Reference Graphic</Eyebrow>
+              <Eyebrow color={T.red}>Interactive Document Inspector</Eyebrow>
               <h2 className="db-display" style={{ fontSize: "clamp(22px, 3.5vw, 32px)", margin: 0, textTransform: "uppercase", color: T.ink }}>
                 Anatomy of a Professional Design Brief
               </h2>
@@ -824,7 +824,7 @@ export default function DesignBriefDeck() {
                   boxShadow: `2.5px 2.5px 0 ${T.ink}`,
                 }}
               >
-                🔍 ENLARGE MASTER SCHEMATIC
+                🔍 FULL-SCREEN SCHEMATIC
               </button>
               <a
                 href="/brief-anatomy-plate.svg"
@@ -846,46 +846,12 @@ export default function DesignBriefDeck() {
               </a>
             </div>
           </div>
-          <p className="db-body" style={{ fontSize: 16, color: T.pencil, marginBottom: 22, lineHeight: 1.6 }}>
-            Full schematic breakdown detailing the 20 structural components comprising a production-ready brief. Hover over or click the plate below to view in high resolution.
+          <p className="db-body" style={{ fontSize: 16, color: T.pencil, marginBottom: 20, lineHeight: 1.6 }}>
+            Hover over any section button or schematic region to dynamically inspect its <strong>magnified section view</strong>, <strong>fill-in prompt</strong>, and <strong>studio guidance</strong>.
           </p>
-          <div
-            className="db-zoom-card"
-            onClick={() => setActiveModal({
-              title: "Anatomy of a Professional Design Brief",
-              style: "MASTER REFERENCE SCHEMATIC · PLATE I",
-              src: "/brief-anatomy-plate.svg",
-              color: T.red,
-              desc: "Full structural breakdown detailing the 20 structural components comprising a production-ready brief."
-            })}
-            style={{ border: `1.5px solid ${T.ink}`, background: "#FDFBF3", padding: 12, position: "relative", overflow: "hidden" }}
-          >
-            <img
-              src="/brief-anatomy-plate.svg"
-              alt="Anatomy of a Professional Design Brief Master Graphic"
-              className="db-img-preview"
-              style={{ width: "100%", height: "auto", display: "block", maxHeight: 900 }}
-            />
-            <div
-              className="db-card-overlay"
-              style={{
-                position: "absolute", inset: 0, background: "rgba(31, 27, 22, 0.45)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                backdropFilter: "blur(2px)"
-              }}
-            >
-              <span
-                className="db-mono"
-                style={{
-                  background: T.paper, color: T.red, border: `2px solid ${T.ink}`,
-                  padding: "12px 24px", fontSize: 14, fontWeight: 700,
-                  boxShadow: `4px 4px 0 ${T.ink}`, letterSpacing: "0.1em"
-                }}
-              >
-                🔍 CLICK OR HOVER TO EXPAND MASTER GRAPHIC
-              </span>
-            </div>
-          </div>
+
+          {/* Inspector Component Container */}
+          <InteractiveBriefInspector setI={setI} setActiveModal={setActiveModal} />
         </div>
 
         {/* 2. Creative Brief Samples & Templates */}
@@ -1129,8 +1095,423 @@ export default function DesignBriefDeck() {
   );
 }
 
+const ANATOMY_SECTIONS = [
+  {
+    id: "sec1",
+    num: "1",
+    name: "Title Block & Versioning",
+    slideIdx: 2,
+    color: T.red,
+    boxCallout: { x: 40, y: 130, w: 375, h: 60 },
+    boxDoc: { x: 430, y: 120, w: 340, h: 72 },
+    summary: "Project working title, client organization, designer name, date, and document version number.",
+    prompt: "Project: ZARK · Client: Neon Circuit Interactive · Designer: Joe Micallef · Brief v1.0",
+    callout: "The document's official identity card. Always include version control (Brief v1.0) so team members reference the latest specs.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "15%" },
+  },
+  {
+    id: "sec2",
+    num: "2-3",
+    name: "Client Overview & Background",
+    slideIdx: 2,
+    color: T.blue,
+    boxCallout: { x: 40, y: 195, w: 375, h: 60 },
+    boxDoc: { x: 430, y: 192, w: 340, h: 100 },
+    summary: "Who the client is, their industry, core mission, and why this project is commissioned right now.",
+    prompt: "We are an organization that specializes in [___]. Existing projects do not adequately [___], so this project addresses that gap by [___].",
+    callout: "Establishes commercial context. Answers 'why now?' and identifies unexplored opportunities in existing markets.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "25%" },
+  },
+  {
+    id: "sec4",
+    num: "4",
+    name: "Problem / Opportunity Statement",
+    slideIdx: 3,
+    color: T.red,
+    boxCallout: { x: 40, y: 280, w: 375, h: 60 },
+    boxDoc: { x: 430, y: 292, w: 340, h: 60 },
+    summary: "States the central design challenge WITHOUT prescribing the visual solution upfront.",
+    prompt: "The client needs a way to [___] for [___] because [___].",
+    callout: "Human-centered design starts with people's needs. A productive problem statement leaves room for creative discovery.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "36%" },
+  },
+  {
+    id: "sec5",
+    num: "5-6",
+    name: "Purpose, Goals & Objectives",
+    slideIdx: 4,
+    color: T.blue,
+    boxCallout: { x: 40, y: 365, w: 375, h: 60 },
+    boxDoc: { x: 430, y: 352, w: 340, h: 54 },
+    summary: "One broad overarching goal + 2 to 4 evaluable, measurable project objectives.",
+    prompt: "Primary Goal: Introduce audiences to [___]. Objectives: 1. Establish visual identity · 2. Introduce characters & conflict.",
+    callout: "Goals set broad intent; objectives provide specific, checkable criteria evaluated at project completion.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "43%" },
+  },
+  {
+    id: "sec7",
+    num: "7",
+    name: "Target Audience",
+    slideIdx: 5,
+    color: T.red,
+    boxCallout: { x: 40, y: 445, w: 375, h: 60 },
+    boxDoc: { x: 430, y: 406, w: 340, h: 54 },
+    summary: "Primary (direct consumers/viewers) and secondary (publishers, funders, studios, employers). Never 'everyone'.",
+    prompt: "Primary: [Young adults interested in sci-fi]. Secondary: [Game studios, animation recruiters, gallery curators].",
+    callout: "Designing for real demographics ensures story pacing, visual density, and handoff formats fit the target user.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "50%" },
+  },
+  {
+    id: "sec8",
+    num: "8",
+    name: "Desired Response (Think/Feel/Do)",
+    slideIdx: 5,
+    color: T.blue,
+    boxCallout: { x: 40, y: 525, w: 375, h: 60 },
+    boxDoc: { x: 430, y: 460, w: 340, h: 48 },
+    summary: "The four key verbs defining audience cognition, emotional impact, and post-experience action.",
+    prompt: "Think: [Consequences of unfinished AI]. Feel: [Curious & unsettled]. Remember: [ZARK world]. Do: [Explore story].",
+    callout: "The gold-standard evaluation matrix used by leading branding & interactive agencies.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "55%" },
+  },
+  {
+    id: "sec9",
+    num: "9",
+    name: "Key Message",
+    slideIdx: 6,
+    color: T.red,
+    boxCallout: { x: 785, y: 165, w: 375, h: 60 },
+    boxDoc: { x: 430, y: 508, w: 340, h: 46 },
+    summary: "The single central thesis statement guiding story world, imagery, tone, and presentation.",
+    prompt: "Key Message: 'Ideas that are abandoned do not always disappear — they can evolve into something unexpected.'",
+    callout: "Not a marketing tag line, but the structural core that holds the creative narrative together.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "61%" },
+  },
+  {
+    id: "sec10",
+    num: "10-11",
+    name: "Scope & Deliverables",
+    slideIdx: 7,
+    color: T.blue,
+    boxCallout: { x: 785, y: 300, w: 375, h: 72 },
+    boxDoc: { x: 430, y: 554, w: 340, h: 64 },
+    summary: "Explicit list of what is IN scope vs OUT of scope, plus exact formats, dimensions, and quantities.",
+    prompt: "Deliverables: 1. Hero Project · 2. 60-90s Process Video (1920x1080 MP4) · 3. Project Website · 4. Print Materials.",
+    callout: "Your shield against scope creep. Outlining out-of-scope items ensures Capstone deliverables remain achievable.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "67%" },
+  },
+  {
+    id: "sec13",
+    num: "13-14",
+    name: "Tone & Visual Direction",
+    slideIdx: 8,
+    color: T.red,
+    boxCallout: { x: 785, y: 455, w: 375, h: 60 },
+    boxDoc: { x: 430, y: 618, w: 340, h: 48 },
+    summary: "3-5 brand personality keywords + visual attributes (and explicitly what it should NOT feel like).",
+    prompt: "Tone: Mysterious, energetic, technological, slightly unstable. NOT: violent, hopeless, or corporate.",
+    callout: "Defines visual boundaries (lighting, palette, typography) while keeping creative freedom open.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "74%" },
+  },
+  {
+    id: "sec16",
+    num: "16",
+    name: "Constraints & Parameters",
+    slideIdx: 9,
+    color: T.blue,
+    boxCallout: { x: 785, y: 555, w: 375, h: 60 },
+    boxDoc: { x: 430, y: 664, w: 340, h: 48 },
+    summary: "Schedule, software tools, equipment, print bounds, age rating, and non-negotiables.",
+    prompt: "Constraints: 13-week production timeline; software limited to Photoshop, Blender, and InDesign.",
+    callout: "Constraints sharpen focus and force inventive creative problem-solving.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "80%" },
+  },
+  {
+    id: "sec17",
+    num: "17-19",
+    name: "Timeline, Approval & Success",
+    slideIdx: 10,
+    color: T.red,
+    boxCallout: { x: 785, y: 645, w: 375, h: 65 },
+    boxDoc: { x: 430, y: 710, w: 340, h: 54 },
+    summary: "Review milestones, approval chain, revision rounds, and evaluation criteria.",
+    prompt: "Measures of Success: Audience understands core message; identity is consistent across print & digital.",
+    callout: "Defines how feedback is delivered, establishing criteria before artistic reviews begin.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "86%" },
+  },
+  {
+    id: "sec20",
+    num: "20",
+    name: "Client Approval Signatures",
+    slideIdx: 12,
+    color: T.blue,
+    boxCallout: { x: 40, y: 770, w: 375, h: 65 },
+    boxDoc: { x: 430, y: 764, w: 340, h: 60 },
+    summary: "Formal approval signatures turning the brief into a shared creative contract.",
+    prompt: "Client Signature: [___] · Designer Signature: [___] · Date: August 4th, 2026",
+    callout: "Signatures transform paperwork into a binding blueprint for the entire project life cycle.",
+    zoomStyle: { scale: 3.5, originX: "50%", originY: "93%" },
+  },
+];
+
+function InteractiveBriefInspector({ setI, setActiveModal }) {
+  const [activeSecId, setActiveSecId] = useState("sec4");
+
+  const currentSec = ANATOMY_SECTIONS.find((s) => s.id === activeSecId) || ANATOMY_SECTIONS[2];
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+      {/* Quick Section Selector Buttons */}
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", borderBottom: `1.5px solid ${T.ink}`, paddingBottom: 14 }}>
+        {ANATOMY_SECTIONS.map((sec) => {
+          const isActive = sec.id === activeSecId;
+          return (
+            <button
+              key={sec.id}
+              onClick={() => setActiveSecId(sec.id)}
+              onMouseEnter={() => setActiveSecId(sec.id)}
+              className="db-mono"
+              style={{
+                border: `1.5px solid ${T.ink}`,
+                background: isActive ? sec.color : T.paper,
+                color: isActive ? T.paper : T.ink,
+                padding: "5px 10px",
+                fontSize: 11,
+                fontWeight: 700,
+                cursor: "pointer",
+                boxShadow: isActive ? `3px 3px 0 ${T.ink}` : `1.5px 1.5px 0 ${T.ink}`,
+                transition: "all 0.15s ease",
+              }}
+            >
+              §{sec.num} {sec.name.split(" ")[0]}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Main Interactive Split Inspector: Hotspot Graphic (Left) vs Magnified Crop & Callout (Right) */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: 24,
+          alignItems: "start",
+        }}
+      >
+        {/* Left Panel: Graphic Plate with Interactive Overlay Hotspots */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div
+            style={{
+              border: `1.5px solid ${T.ink}`,
+              background: "#FDFBF3",
+              padding: 10,
+              position: "relative",
+              boxShadow: `4px 4px 0 ${T.ink}`,
+            }}
+          >
+            <img
+              src="/brief-anatomy-plate.svg"
+              alt="Anatomy of a Professional Design Brief Master Graphic"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+
+            {/* SVG Interactive Hotspot Layer for BOTH Callouts and Document Regions */}
+            <svg
+              viewBox="0 0 1200 900"
+              style={{
+                position: "absolute",
+                inset: 10,
+                width: "calc(100% - 20px)",
+                height: "calc(100% - 20px)",
+                pointerEvents: "auto",
+              }}
+            >
+              {ANATOMY_SECTIONS.map((sec) => {
+                const isActive = sec.id === activeSecId;
+                return (
+                  <g key={sec.id} style={{ cursor: "pointer" }} onClick={() => setActiveSecId(sec.id)} onMouseEnter={() => setActiveSecId(sec.id)}>
+                    {/* Callout box highlight */}
+                    <rect
+                      x={sec.boxCallout.x}
+                      y={sec.boxCallout.y}
+                      width={sec.boxCallout.w}
+                      height={sec.boxCallout.h}
+                      fill={isActive ? "rgba(196, 59, 42, 0.15)" : "transparent"}
+                      stroke={isActive ? sec.color : "transparent"}
+                      strokeWidth={isActive ? 3 : 0}
+                      rx={4}
+                      style={{ transition: "all 0.2s ease" }}
+                    />
+
+                    {/* Document region highlight */}
+                    <rect
+                      x={sec.boxDoc.x}
+                      y={sec.boxDoc.y}
+                      width={sec.boxDoc.w}
+                      height={sec.boxDoc.h}
+                      fill={isActive ? "rgba(196, 59, 42, 0.22)" : "transparent"}
+                      stroke={isActive ? sec.color : "transparent"}
+                      strokeWidth={isActive ? 3.5 : 0}
+                      rx={3}
+                      style={{ transition: "all 0.2s ease" }}
+                    />
+
+                    {/* Glowing active indicator pin */}
+                    {isActive && (
+                      <g transform={`translate(${sec.boxDoc.x + sec.boxDoc.w - 12}, ${sec.boxDoc.y + 12})`}>
+                        <circle r={11} fill={sec.color} stroke={T.ink} strokeWidth={1.5} />
+                        <text x={0} y={4} fill={T.paper} fontSize={11} fontFamily="monospace" fontWeight="bold" textAnchor="middle">
+                          ✓
+                        </text>
+                      </g>
+                    )}
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+          <div className="db-mono" style={{ fontSize: 11, color: T.pencil, textAlign: "center" }}>
+            💡 HOVER OVER ANY CALLOUT BOX OR DOCUMENT REGION ABOVE TO MAGNIFY
+          </div>
+        </div>
+
+        {/* Right Panel: Magnified Section Crop & Dynamic Callout Card */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {/* Magnified Cropped Section Box */}
+          <div
+            style={{
+              border: `2px solid ${T.ink}`,
+              background: "#FFF",
+              boxShadow: `4px 4px 0 ${T.ink}`,
+              padding: 14,
+              overflow: "hidden",
+              position: "relative",
+              height: 240,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              className="db-mono"
+              style={{
+                position: "absolute",
+                top: 8,
+                left: 10,
+                zIndex: 10,
+                background: currentSec.color,
+                color: T.paper,
+                fontSize: 10.5,
+                fontWeight: 700,
+                padding: "4px 10px",
+                letterSpacing: "0.1em",
+                boxShadow: `2px 2px 0 ${T.ink}`,
+              }}
+            >
+              MAGNIFIED SECTION PREVIEW §{currentSec.num}
+            </div>
+
+            {/* Cropped Magnified Image */}
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                overflow: "hidden",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src="/brief-anatomy-plate.svg"
+                alt={`Magnified View of ${currentSec.name}`}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  transform: `scale(${currentSec.zoomStyle.scale})`,
+                  transformOrigin: `${currentSec.zoomStyle.originX} ${currentSec.zoomStyle.originY}`,
+                  transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Callout Detail Card */}
+          <div
+            style={{
+              border: `2px solid ${T.ink}`,
+              background: "#FBF7EA",
+              boxShadow: `4px 4px 0 ${T.ink}`,
+              padding: "18px 20px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 12,
+            }}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+              <span className="db-mono" style={{ color: currentSec.color, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em" }}>
+                SECTION {currentSec.num}
+              </span>
+              <button
+                onClick={() => {
+                  setI(currentSec.slideIdx);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="db-mono"
+                style={{
+                  border: `1.5px solid ${T.ink}`,
+                  background: T.paper,
+                  color: T.red,
+                  padding: "4px 10px",
+                  fontSize: 10.5,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  boxShadow: `1.5px 1.5px 0 ${T.ink}`,
+                }}
+              >
+                JUMP TO SLIDE {currentSec.slideIdx + 1} →
+              </button>
+            </div>
+
+            <h3 className="db-display" style={{ fontSize: 22, margin: 0, color: T.ink }}>
+              {currentSec.name}
+            </h3>
+
+            <p className="db-body" style={{ fontSize: 14.5, lineHeight: 1.55, color: T.ink, margin: 0 }}>
+              {currentSec.summary}
+            </p>
+
+            {/* Prompt Template */}
+            <div
+              className="db-mono"
+              style={{
+                borderLeft: `3px solid ${currentSec.color}`,
+                background: "rgba(31,27,22,0.04)",
+                padding: "9px 13px",
+                fontSize: 12,
+                lineHeight: 1.5,
+                color: T.ink,
+              }}
+            >
+              <span style={{ color: currentSec.color, fontWeight: 700 }}>STUDENT TEMPLATE: </span>
+              {currentSec.prompt}
+            </div>
+
+            {/* Studio Best Practice Callout */}
+            <div style={{ fontSize: 13, color: T.pencil, fontStyle: "italic", borderTop: `1px dashed ${T.line}`, paddingTop: 10, margin: 0 }}>
+              💡 <strong>Studio Guidance:</strong> {currentSec.callout}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const navBtn = (disabled) => ({
   border: `1.5px solid ${T.ink}`, background: disabled ? T.paperDark : T.red,
   color: disabled ? T.pencil : T.paper, padding: "7px 14px", fontSize: 12,
   cursor: disabled ? "default" : "pointer", boxShadow: disabled ? "none" : `2px 2px 0 ${T.ink}`,
 });
+
+
