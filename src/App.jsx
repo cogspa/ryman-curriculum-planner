@@ -1220,6 +1220,26 @@ function WeekCard({
                         </ul>
                       </div>
                     </div>
+                  ) : week.week === 7 || week.week === 8 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
+                        Due Dates: August 8th (Creative Brief) &amp; August 15th (Capstone Reference Board)
+                      </div>
+                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
+                        Please prepare and submit the following Capstone Client Simulation deliverables:
+                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>1. One-Page Creative Brief</strong> — Define your project scope, client simulation premise, problem statement, target audience, key message, and Hero Project track. <em>(Due Aug 8, End of Class)</em>
+                          </li>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>2. Capstone Reference Board Layout</strong> — Complete your full visual reference board using the provided SVG template (<code style={{ background: 'rgba(245, 158, 11, 0.15)', padding: '1px 5px', borderRadius: '3px' }}>Capstone_Project_Development_Template.svg</code>) or your own InDesign/Illustrator grid. <em>(Due Aug 15, End of Class)</em>
+                          </li>
+                        </ul>
+                      </div>
+                      <div style={{ fontSize: '12px', marginTop: '4px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.18)', color: '#b45309', fontStyle: 'italic' }}>
+                        <strong>Tip:</strong> Complete your Creative Brief first to clarify your Hero Project track choice before assembling your reference board layout.
+                      </div>
+                    </div>
                   ) : (
                     <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone.</span>
                   )}
