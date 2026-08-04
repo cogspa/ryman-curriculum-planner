@@ -295,7 +295,7 @@ function Section({ label, items, weekNumber }) {
 
           let linkPath = null;
           let isExternal = false;
-          if (label === 'Assignments' && [1, 3, 5, 6, 9, 10].includes(Number(weekNumber))) {
+          if (label === 'Assignments' && [1, 3, 5, 6, 7, 10].includes(Number(weekNumber))) {
             const cleanText = text.toLowerCase();
             if (cleanText.includes('base assignment') || cleanText.includes('base')) {
               linkPath = `/assignment/${Number(weekNumber)}?track=beginner`;
@@ -1751,7 +1751,7 @@ export default function App() {
             >
               VIEW HUB →
             </Link>
-            {[1, 3, 5, 6, 9, 10].map((wk) => {
+            {[1, 3, 5, 6, 7, 10].map((wk) => {
               const weekData = weeks.find(w => w.entry.week === wk);
               if (!weekData) return null;
               

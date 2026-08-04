@@ -6,7 +6,7 @@ import React, { useState, useRef, useEffect } from "react";
  * Horizontal "journey rail" and Vertical "timeline" of the program's
  * worldbuilding milestones, each tagged with its program week.
  *
- * Steps = the six graded Saturday milestones (Weeks 1, 3, 5, 6, 9, 10)
+ * Steps = the six graded Saturday milestones (Weeks 1, 3, 5, 6, 7, 10)
  * plus the Week 13 Final Capstone Showcase. Accents run a warm earth-tone
  * ramp (ochre -> terracotta -> oxblood) that builds toward the capstone.
  */

@@ -536,7 +536,7 @@ export default function SyllabusPage() {
                         </h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                           {assignmentsList.map((a, i) => {
-                            const isGradedAssignment = [1, 3, 5, 6, 9, 10].includes(Number(week.week));
+                            const isGradedAssignment = [1, 3, 5, 6, 7, 10].includes(Number(week.week));
                             let trackParam = '';
                             const lower = a.toLowerCase();
                             if (lower.includes('base assignment') || lower.includes('base')) {
@@ -612,7 +612,7 @@ export default function SyllabusPage() {
                                 <h5 style={{ fontSize: '10px', textTransform: 'uppercase', color: '#0891b2', margin: '0 0 6px', fontFamily: 'Menlo, monospace', fontWeight: 'bold' }}>Assignments & Prep</h5>
                                 <ul style={{ margin: 0, paddingLeft: '20px' }}>
                                   {week.saturday.assignments.map((a, i) => {
-                                    const isGradedAssignment = [1, 3, 5, 6, 9, 10].includes(week.week);
+                                    const isGradedAssignment = [1, 3, 5, 6, 7, 10].includes(week.week);
                                     let trackParam = '';
                                     const lower = a.toLowerCase();
                                     if (lower.includes('base assignment') || lower.includes('base')) {
@@ -670,7 +670,7 @@ export default function SyllabusPage() {
                             <h3 className="syllabus-block-label" style={{ color: '#0891b2', fontWeight: 'bold', margin: '0 0 6px' }}>Assignments</h3>
                             <ul style={{ margin: 0, paddingLeft: '20px' }}>
                               {week.assignments.map((a, i) => {
-                                const isGradedAssignment = [1, 3, 5, 6, 9, 10].includes(week.week);
+                                const isGradedAssignment = [1, 3, 5, 6, 7, 10].includes(week.week);
                                 let trackParam = '';
                                 const lower = a.toLowerCase();
                                 if (lower.includes('base assignment') || lower.includes('base')) {

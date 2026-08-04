@@ -366,7 +366,7 @@ export default function AssignmentPage() {
             paddingBottom: '16px'
           }}>
             <span style={{ color: '#64748b', fontWeight: 'bold', marginRight: '6px' }}>All Assignments:</span>
-            {[1, 3, 5, 6, 9, 10].filter(wk => {
+            {[1, 3, 5, 6, 7, 10].filter(wk => {
               const role = getActiveRole();
               return role === 'admin' || isWeekReleased(wk);
             }).map((wk) => {
