@@ -49,18 +49,15 @@ Each track gets its own detail page on this site. Read all seven before picking.
         heading: 'The schedule for this week and next',
         body: `Week 07 is the beginning of the major track project. The full project runs across multiple weeks; what you do this week sets the foundation.
 
-By end of Tuesday, Aug 4:
-• Brief written and approved (one page)
-• Track selected
-• Reference board started (10–20 images)
-
 By end of Saturday, Aug 8:
-• Reference board complete
-• 12+ thumbnail sketches generated
-• One strong direction selected and approved by the instructor
-• Rough comp started
+• Design Brief approved and finalized (one page)
+• Track selected
 
-The discipline here is restraint. Don't start rendering anything beautiful yet. The week is for thinking, planning, and committing to a direction. Beautiful work happens in the weeks after — but only if this week is done well.`,
+By end of Saturday, Aug 15:
+• Reference Board complete (the thumbnail sketch concept of the whole project laid out in one InDesign/Illustrator file)
+• One strong direction selected and approved by the instructor
+
+The discipline here is restraint. Don't start rendering anything beautiful yet. The first weeks are for thinking, planning, and committing to a direction. Beautiful work happens in the weeks after — but only if the brief and layout planning are done well.`,
       },
       {
         heading: 'How to write your brief tonight',

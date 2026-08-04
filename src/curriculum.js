@@ -265,7 +265,7 @@ export const curriculum = [
         'Working with art directors role-play',
         'Formal pitch rehearsal & timing',
         'Guest: Eugenia Chen — Creative entrepreneur — navigating freelance taxes & operations',
-        '🛠️ Task: Refine narrative panels for portfolio: export finished layouts and organize reference sheets',
+        '🛠️ Task: Reference Board complete (the thumbnail sketch concept of the whole project laid out in one InDesign/Illustrator file)',
       ],
       assignments: [],
     }
