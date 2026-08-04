@@ -772,6 +772,13 @@ Use a consistent logo, color palette, typography, and project voice across every
 ### One Strong Direction
 
 By the end of Saturday, August 15th, you should have one strong direction selected and approved by the instructor. This board becomes the blueprint for everything you build in the remaining weeks.`,
+        images: [
+          {
+            url: '/Capstone_Project_Development_Template_preview.png',
+            title: 'Capstone Project Development Template Preview',
+            caption: 'This is an example template. Feel free to modify it to fit your project and personal style.'
+          }
+        ],
         downloads: [
           {
             url: '/Capstone_Project_Development_Template.svg',
