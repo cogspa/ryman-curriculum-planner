@@ -1220,7 +1220,7 @@ function WeekCard({
                         </ul>
                       </div>
                     </div>
-                  ) : week.week === 6 ? (
+                  ) : week.week === 6 || week.week === 7 ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                       <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
                         Due Date: August 8th (End of Class)
@@ -1239,8 +1239,11 @@ function WeekCard({
                           </li>
                         </ul>
                       </div>
+                      <div style={{ fontSize: '12px', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.18)', color: '#b45309' }}>
+                        <strong>Capstone Milestone:</strong> One-Page Creative Brief due August 8th; Capstone Reference Board due August 15th.
+                      </div>
                     </div>
-                  ) : week.week === 7 || week.week === 8 ? (
+                  ) : week.week === 8 ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
                         Due Dates: August 8th (Creative Brief) &amp; August 15th (Capstone Reference Board)
