@@ -267,7 +267,9 @@ A storyboard panel typically includes:
 • A note describing dialogue or sound, if relevant
 • An arrow showing camera movement, if relevant
 
-Storyboards are sketches, not illustrations. A storyboard panel that takes more than five minutes is too detailed.`,
+Storyboards are sketches, not illustrations. A storyboard panel that takes more than five minutes is too detailed.
+
+🎬 [Open Interactive Storyboard Presentation Deck](/week/05/storyboards)`,
       },
       {
         heading: 'Thumbnails as the storyboard foundation',

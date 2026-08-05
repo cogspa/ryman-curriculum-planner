@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="385" height="745" viewBox="410 100 385 745">
+<rect x="435" y="125" width="340" height="700" fill="#1F1B16"/>
+<rect x="430" y="120" width="340" height="700" fill="#FDFBF3" stroke="#1F1B16" stroke-width="2"/>
+<rect x="446" y="138" width="308" height="44" fill="none" stroke="#1F1B16" stroke-width="1.2"/>
+<text x="452" y="151" font-family="'Courier New', monospace" font-size="7.5" fill="#C43B2A" letter-spacing="1">PROJECT</text>
+<line x1="580" y1="151" x2="746" y2="151" stroke="#C9BD9E"/>
+<text x="452" y="164" font-family="'Courier New', monospace" font-size="7.5" fill="#C43B2A" letter-spacing="1">CLIENT</text>
+<line x1="580" y1="164" x2="746" y2="164" stroke="#C9BD9E"/>
+<text x="452" y="177" font-family="'Courier New', monospace" font-size="7.5" fill="#C43B2A" letter-spacing="1">DESIGNER · DATE · VERSION</text>
+<line x1="580" y1="177" x2="746" y2="177" stroke="#C9BD9E"/>
+<rect x="446" y="192" width="308" height="12" fill="#1F1B16"/>
+<text x="451" y="201.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">2 · CLIENT OVERVIEW</text>
+<rect x="446" y="210" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="219" width="277.2" height="2" fill="#B9B09A"/>
+<rect x="446" y="228" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="247" width="308" height="12" fill="#1F1B16"/>
+<text x="451" y="256.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">3 · PROJECT BACKGROUND</text>
+<rect x="446" y="265" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="274" width="277.2" height="2" fill="#B9B09A"/>
+<rect x="446" y="283" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="302" width="308" height="12" fill="#C43B2A"/>
+<text x="451" y="311.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">4 · PROBLEM STATEMENT</text>
+<rect x="446" y="320" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="329" width="277.2" height="2" fill="#B9B09A"/>
+<rect x="446" y="338" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="357" width="308" height="12" fill="#1F1B16"/>
+<text x="451" y="366.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">5-6 · PURPOSE · GOAL · OBJECTIVES</text>
+<rect x="446" y="375" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="384" width="277.2" height="2" fill="#B9B09A"/>
+<rect x="446" y="393" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="412" width="308" height="12" fill="#1F1B16"/>
+<text x="451" y="421.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">7 · TARGET AUDIENCE</text>
+<rect x="446" y="430" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="439" width="277.2" height="2" fill="#B9B09A"/>
+<rect x="446" y="448" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="467" width="308" height="12" fill="#1F1B16"/>
+<text x="451" y="476.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">8 · DESIRED RESPONSE</text>
+<rect x="446" y="485" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="494" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="513" width="308" height="12" fill="#C43B2A"/>
+<text x="451" y="522.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">9 · KEY MESSAGE</text>
+<rect x="446" y="531" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="540" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="559" width="308" height="12" fill="#1F1B16"/>
+<text x="451" y="568.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">10-11 · SCOPE &amp; DELIVERABLES</text>
+<rect x="446" y="577" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="586" width="277.2" height="2" fill="#B9B09A"/>
+<rect x="446" y="595" width="261.8" height="2" fill="#B9B09A"/>
+<rect x="446" y="604" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="623" width="308" height="12" fill="#1F1B16"/>
+<text x="451" y="632.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">13-14 · TONE &amp; VISUAL DIRECTION</text>
+<rect x="446" y="641" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="650" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="669" width="308" height="12" fill="#1F1B16"/>
+<text x="451" y="678.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">16 · CONSTRAINTS</text>
+<rect x="446" y="687" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="696" width="169.4" height="2" fill="#B9B09A"/>
+<rect x="446" y="715" width="308" height="12" fill="#1F1B16"/>
+<text x="451" y="724.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">17-19 · TIMELINE · APPROVAL · SUCCESS</text>
+<rect x="446" y="733" width="292.59999999999997" height="2" fill="#B9B09A"/>
+<rect x="446" y="742" width="277.2" height="2" fill="#B9B09A"/>
+<rect x="446" y="751" width="169.4" height="2" fill="#B9B09A"/>
+<line x1="446" y1="784" x2="592.0" y2="784" stroke="#1F1B16"/>
+<line x1="608.0" y1="784" x2="754" y2="784" stroke="#1F1B16"/>
+<text x="446" y="795" font-family="'Courier New', monospace" font-size="6.5" fill="#8B8272">CLIENT APPROVAL</text>
+<text x="608.0" y="795" font-family="'Courier New', monospace" font-size="6.5" fill="#8B8272">DESIGNER</text>
+<g transform="translate(652,128) rotate(-7)">
+<rect width="104" height="30" fill="none" stroke="#C43B2A" stroke-width="2"/>
+<text x="52" y="14" font-family="'Courier New', monospace" font-size="9" fill="#C43B2A" text-anchor="middle" font-weight="bold" letter-spacing="1">BRIEF v1.0</text>
+<text x="52" y="25" font-family="'Courier New', monospace" font-size="6" fill="#C43B2A" text-anchor="middle">APPROVED FOR PRODUCTION</text>
+</g>
+</svg>

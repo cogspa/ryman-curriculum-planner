@@ -49,11 +49,9 @@ export default function Week05TopicDetail() {
       {topic.sections.map((section, i) => (
         <section key={i} style={sectionStyle}>
           <h2 style={sectionHeadingStyle}>{section.heading}</h2>
-          <p style={sectionBodyStyle}>
-            {section.body && section.body.split('**').map((part, idx) => 
-              idx % 2 === 1 ? <strong key={idx}>{part}</strong> : part
-            )}
-          </p>
+          <div style={sectionBodyStyle}>
+            {renderFormattedBody(section.body)}
+          </div>
           {section.imageUrl && (
             <div style={{ margin: '20px 0', textAlign: 'center' }}>
               <img src={section.imageUrl} alt={section.imageCaption || section.heading} style={{ maxWidth: '100%', maxHeight: '420px', borderRadius: '6px', border: '1px solid #d4c9a8' }} />
@@ -137,3 +135,131 @@ const backButtonStyle = {
   display: 'inline-block',
   marginBottom: '16px',
 };
+
+function renderFormattedBody(bodyText) {
+  if (!bodyText) return null;
+
+  const paragraphs = bodyText.split('\n\n');
+
+  return paragraphs.map((paragraph, pIdx) => {
+    const singleLinkMatch = paragraph.trim().match(/^(👉|🎬|▶|↗)?\s*\[([^\]]+)\]\(([^)]+)\)$/);
+    if (singleLinkMatch) {
+      const emoji = singleLinkMatch[1] || '👉';
+      const label = singleLinkMatch[2];
+      const url = singleLinkMatch[3];
+
+      return (
+        <div key={pIdx} style={{ margin: '20px 0' }}>
+          <Link
+            to={url}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              background: '#8b3a2f',
+              color: '#f5efe1',
+              padding: '12px 20px',
+              borderRadius: '4px',
+              fontFamily: 'Menlo, monospace',
+              fontSize: '12.5px',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              letterSpacing: '0.04em',
+              boxShadow: '3px 3px 0 #2a2418',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <span>{emoji}</span>
+            <span>{label}</span>
+          </Link>
+        </div>
+      );
+    }
+
+    const lines = paragraph.split('\n');
+
+    return (
+      <div key={pIdx} style={{ marginBottom: '16px' }}>
+        {lines.map((line, lIdx) => {
+          const isBullet = line.trim().startsWith('•') || line.trim().startsWith('-');
+          return (
+            <div
+              key={lIdx}
+              style={{
+                paddingLeft: isBullet ? '16px' : '0',
+                marginBottom: lIdx < lines.length - 1 ? '6px' : '0',
+                lineHeight: 1.65,
+              }}
+            >
+              {parseLineFormatting(line)}
+            </div>
+          );
+        })}
+      </div>
+    );
+  });
+}
+
+function parseLineFormatting(line) {
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const elements = [];
+  let lastIdx = 0;
+  let match;
+
+  while ((match = linkRegex.exec(line)) !== null) {
+    if (match.index > lastIdx) {
+      elements.push(parseBold(line.substring(lastIdx, match.index)));
+    }
+
+    const label = match[1];
+    const url = match[2];
+
+    if (url.startsWith('/')) {
+      elements.push(
+        <Link
+          key={match.index}
+          to={url}
+          style={{
+            color: '#8b3a2f',
+            fontWeight: 'bold',
+            textDecoration: 'underline',
+          }}
+        >
+          {label}
+        </Link>
+      );
+    } else {
+      elements.push(
+        <a
+          key={match.index}
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            color: '#8b3a2f',
+            fontWeight: 'bold',
+            textDecoration: 'underline',
+          }}
+        >
+          {label}
+        </a>
+      );
+    }
+
+    lastIdx = match.index + match[0].length;
+  }
+
+  if (lastIdx < line.length) {
+    elements.push(parseBold(line.substring(lastIdx)));
+  }
+
+  return elements;
+}
+
+function parseBold(text) {
+  if (!text.includes('**')) return text;
+  return text.split('**').map((part, idx) =>
+    idx % 2 === 1 ? <strong key={idx}>{part}</strong> : part
+  );
+}
+

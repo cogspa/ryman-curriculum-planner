@@ -54,6 +54,8 @@ import CapstoneWorldBuilding from './components/CapstoneWorldBuilding.jsx';
 import PanelLab from './pages/panel-lab.jsx';
 import './index.css';
 
+import StoryboardsDeckPage from './pages/StoryboardsDeckPage.jsx';
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -106,6 +108,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/05" element={<Week05Overview />} />
           <Route path="/week/05/symmetry-in-photoshop" element={<SymmetryInPhotoshop />} />
           <Route path="/week/05/shot-examples" element={<ShotExamplesEmbedded />} />
+          <Route path="/week/05/storyboards" element={<StoryboardsDeckPage />} />
+          <Route path="/week/05/storyboard-presentation" element={<StoryboardsDeckPage />} />
           <Route path="/week/05/:topicKey" element={<Week05TopicDetail />} />
           <Route path="/week/06" element={<Week06Overview />} />
           <Route path="/week/06/:topicKey" element={<Week06TopicDetail />} />
