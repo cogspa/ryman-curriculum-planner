@@ -15,7 +15,7 @@ export default function Week07Overview() {
         <div style={dateRangeStyle}>AUG 4 – AUG 8</div>
       </header>
 
-      <h1 style={titleStyle}>Advanced Project Development</h1>
+      <h1 style={titleStyle}>Capstone Project Development</h1>
 
       <div style={scheduleStyle}>
         <div><strong>TUE</strong> &nbsp; Tue, Aug 4 &nbsp; · &nbsp; 7:00–9:00 pm · Zoom</div>
@@ -23,7 +23,7 @@ export default function Week07Overview() {
       </div>
 
       <p style={focusStyle}>
-        <strong>Focus:</strong> Client Simulation Project — students select one track and build a portfolio-quality deliverable across multiple weeks.
+        <strong>Focus:</strong> Beginning the Capstone Project — students select a hero project and build a portfolio-quality deliverable across multiple weeks.
       </p>
 
       <h2 style={sectionHeadingStyle}>Start Here</h2>
@@ -42,7 +42,7 @@ export default function Week07Overview() {
         </li>
       </ul>
 
-      <h2 style={sectionHeadingStyle}>Tracks (pick one)</h2>
+      <h2 style={sectionHeadingStyle}>Hero Projects (pick one)</h2>
       <ul style={topicListStyle}>
         {topicList.map(({ key, label, isNew }) => (
           <li key={key} style={topicItemStyle}>

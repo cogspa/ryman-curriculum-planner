@@ -740,19 +740,19 @@ You can also use our [interactive Brief Builder tool](/brief-builder) to draft y
 
 Bring the printed brief to Tuesday's class. The first half hour will be brief reviews — students reading each other's briefs and finding gaps. A brief that survives peer review is a brief you can build from.
 
-### Select Your Hero Project Track
+### Select Your Hero Project
 
-You must also select one of the seven Hero Project tracks. Don't hedge between tracks; each requires different skills and reads as different work in your portfolio.
+You must also select one of the seven Hero Projects. Don't hedge between hero projects; each requires different skills and reads as different work in your portfolio.
 
-• **Track A** — A short animation
-• **Track B** — Several finished pages from a graphic novel — not the whole book
-• **Track C** — A product design or product rendering
-• **Track D** — An interactive experience
-• **Track E** — A pitch or proof of concept for a larger future project
-• **Track F** — An app or digital experience
-• **Track G** — A personal or autobiographical project
+• **Hero Project A** — A short animation
+• **Hero Project B** — Several finished pages from a graphic novel — not the whole book
+• **Hero Project C** — A product design or product rendering
+• **Hero Project D** — An interactive experience
+• **Hero Project E** — A pitch or proof of concept for a larger future project
+• **Hero Project F** — An app or digital experience
+• **Hero Project G** — A personal or autobiographical project
 
-Read all seven track detail pages on this site before picking. Visit the [Client Simulation Overview](/week/07/client-simulation-overview) for full track descriptions.`,
+Read all seven hero project detail pages on this site before picking. Visit the [Client Simulation Overview](/week/07/client-simulation-overview) for full descriptions.`,
       },
       {
         heading: 'Part 2: Capstone Reference Board Template (Due Saturday, August 15)',

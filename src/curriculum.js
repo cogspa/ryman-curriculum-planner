@@ -211,12 +211,12 @@ export const curriculum = [
   },
   {
     week: 7,
-    title: 'Advanced Project Development',
-    overview: 'Beginning the Client Simulation Project — selecting a track and building a professional layout from a brief.',
+    title: 'Capstone Project Development',
+    overview: 'Beginning the Capstone Project — selecting a hero project and building a professional layout from a brief.',
     tuesday: {
       topics: [
         'Discussion: The anatomy of a professional design brief',
-        'Preview: The seven distinct simulation tracks (Animation, Graphic Novel, Product Design, Interactive, Pitch, App, Personal)',
+        'Preview: The seven distinct simulation hero projects (Animation, Graphic Novel, Product Design, Interactive, Pitch, App, Personal)',
         'Workflow breakdown: How peer review validates the integrity of a brief',
       ],
       readings: [
@@ -226,16 +226,16 @@ export const curriculum = [
     },
     saturday: {
       topics: [
-        '[NEW] Track A — A short animation',
-        '[NEW] Track B — Several finished pages from a graphic novel',
-        '[NEW] Track C — A product design or product rendering',
-        '[NEW] Track D — An interactive experience',
-        '[NEW] Track E — A pitch or proof of concept for a larger project',
-        '[NEW] Track F — An app or digital experience',
-        '[NEW] Track G — A personal or autobiographical project',
+        '[NEW] Hero Project A — A short animation',
+        '[NEW] Hero Project B — Several finished pages from a graphic novel',
+        '[NEW] Hero Project C — A product design or product rendering',
+        '[NEW] Hero Project D — An interactive experience',
+        '[NEW] Hero Project E — A pitch or proof of concept for a larger project',
+        '[NEW] Hero Project F — An app or digital experience',
+        '[NEW] Hero Project G — A personal or autobiographical project',
       ],
       assignments: [
-        '[NEW] **Creative Brief & Capstone Reference Board** — Write a one-page creative brief defining your project scope and Hero Project track (due Aug 8). Then lay out your full Capstone reference board using the provided SVG template or your own InDesign/Illustrator file (due Aug 15).'
+        '[NEW] **Creative Brief & Capstone Reference Board** — Write a one-page creative brief defining your project scope and Hero Project selection (due Aug 8). Then lay out your full Capstone reference board using the provided SVG template or your own InDesign/Illustrator file (due Aug 15).'
       ],
     }
   },

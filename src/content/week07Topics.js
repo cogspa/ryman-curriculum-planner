@@ -32,26 +32,26 @@ This is the skill that turns a portfolio into a career. You can paint beautifull
 If you can't fill out all six sections clearly, you don't have a brief yet — and starting the work will waste time.`,
       },
       {
-        heading: 'The Seven Hero Project Tracks',
-        body: `Pick one track and commit. Don't hedge between tracks; each requires different skills and reads as different work in your portfolio.
+        heading: 'The Seven Hero Projects',
+        body: `Pick one hero project and commit. Don't hedge between hero projects; each requires different skills and reads as different work in your portfolio.
 
-• Track A: A short animation — Create a short animated piece, animatic, or motion design sequence.
-• Track B: Several finished pages from a graphic novel — Illustrate and letter completed pages highlighting narrative sequence and panel flow.
-• Track C: A product design or product rendering — Design and render a physical product, package, or 3D product visualization.
-• Track D: An interactive experience — Design an interactive installation, UI flow, web prototype, or game mechanic mockup.
-• Track E: A pitch or proof of concept for a larger future project — Compile a pitch package, mood boards, and proof-of-concept visual deliverables.
-• Track F: An app or digital experience — Design mockups, wireframes, style guides, and user flow screens for a mobile or digital software experience.
-• Track G: A personal or autobiographical project — Develop a deeply personal, memoir, or autobiographical visual narrative or series.
+• Hero Project A: A short animation — Create a short animated piece, animatic, or motion design sequence.
+• Hero Project B: Several finished pages from a graphic novel — Illustrate and letter completed pages highlighting narrative sequence and panel flow.
+• Hero Project C: A product design or product rendering — Design and render a physical product, package, or 3D product visualization.
+• Hero Project D: An interactive experience — Design an interactive installation, UI flow, web prototype, or game mechanic mockup.
+• Hero Project E: A pitch or proof of concept for a larger future project — Compile a pitch package, mood boards, and proof-of-concept visual deliverables.
+• Hero Project F: An app or digital experience — Design mockups, wireframes, style guides, and user flow screens for a mobile or digital software experience.
+• Hero Project G: A personal or autobiographical project — Develop a deeply personal, memoir, or autobiographical visual narrative or series.
 
-Each track gets its own detail page on this site. Read all seven before picking.`,
+Each hero project gets its own detail page on this site. Read all seven before picking.`,
       },
       {
         heading: 'The schedule for this week and next',
-        body: `Week 07 is the beginning of the major track project. The full project runs across multiple weeks; what you do this week sets the foundation.
+        body: `Week 07 is the beginning of the major Capstone project. The full project runs across multiple weeks; what you do this week sets the foundation.
 
 By end of Saturday, Aug 8:
 • Design Brief approved and finalized (one page)
-• Track selected
+• Hero Project selected
 
 By end of Saturday, Aug 15:
 • Reference Board complete (the thumbnail sketch concept of the whole project laid out in one InDesign/Illustrator file)
@@ -78,12 +78,12 @@ Bring the printed brief to Tuesday's class. The first half hour will be brief re
   },
 
   'short-animation': {
-    title: 'Track A — A Short Animation',
+    title: 'Hero Project A — A Short Animation',
     pccSources: [],
     sections: [
       {
-        heading: 'What this track is for',
-        body: `This track focuses on the creation of a short animated piece, animatic, or motion design sequence. It highlights timing, keyframing, motion principles, and storytelling through dynamic visuals.`,
+        heading: 'What this hero project is for',
+        body: `This hero project focuses on the creation of a short animated piece, animatic, or motion design sequence. It highlights timing, keyframing, motion principles, and storytelling through dynamic visuals.`,
       },
       {
         heading: 'Required deliverables',
@@ -96,12 +96,12 @@ Bring the printed brief to Tuesday's class. The first half hour will be brief re
   },
 
   'graphic-novel-pages': {
-    title: 'Track B — Several Finished Pages from a Graphic Novel',
+    title: 'Hero Project B — Several Finished Pages from a Graphic Novel',
     pccSources: [],
     sections: [
       {
-        heading: 'What this track is for',
-        body: `This track focuses on the layout, illustration, and lettering of several completed pages from a graphic novel (not the whole book). It emphasizes panel flow, narrative sequence, and character consistency across panels.`,
+        heading: 'What this hero project is for',
+        body: `This hero project focuses on the layout, illustration, and lettering of several completed pages from a graphic novel (not the whole book). It emphasizes panel flow, narrative sequence, and character consistency across panels.`,
       },
       {
         heading: 'Required deliverables',
@@ -114,12 +114,12 @@ Bring the printed brief to Tuesday's class. The first half hour will be brief re
   },
 
   'product-design': {
-    title: 'Track C — A Product Design or Product Rendering',
+    title: 'Hero Project C — A Product Design or Product Rendering',
     pccSources: [],
     sections: [
       {
-        heading: 'What this track is for',
-        body: `This track focuses on the design and rendering of a physical product, package design, industrial design, or 3D product visualization, emphasizing form, material, and branding.`,
+        heading: 'What this hero project is for',
+        body: `This hero project focuses on the design and rendering of a physical product, package design, industrial design, or 3D product visualization, emphasizing form, material, and branding.`,
       },
       {
         heading: 'Required deliverables',
@@ -132,12 +132,12 @@ Bring the printed brief to Tuesday's class. The first half hour will be brief re
   },
 
   'interactive-experience': {
-    title: 'Track D — An Interactive Experience',
+    title: 'Hero Project D — An Interactive Experience',
     pccSources: [],
     sections: [
       {
-        heading: 'What this track is for',
-        body: `This track focuses on the design of an interactive experience, website prototype, user interface (UI) flow, or game mechanic mockup, highlighting user agency, feedback loops, and state changes.`,
+        heading: 'What this hero project is for',
+        body: `This hero project focuses on the design of an interactive experience, website prototype, user interface (UI) flow, or game mechanic mockup, highlighting user agency, feedback loops, and state changes.`,
       },
       {
         heading: 'Required deliverables',
@@ -150,12 +150,12 @@ Bring the printed brief to Tuesday's class. The first half hour will be brief re
   },
 
   'pitch-proof-of-concept': {
-    title: 'Track E — A Pitch or Proof of Concept',
+    title: 'Hero Project E — A Pitch or Proof of Concept',
     pccSources: [],
     sections: [
       {
-        heading: 'What this track is for',
-        body: `This track focuses on the preparation of a pitch package, mood boards, concept art, and proof-of-concept visual deliverables for a larger scale project (animation, game, or series).`,
+        heading: 'What this hero project is for',
+        body: `This hero project focuses on the preparation of a pitch package, mood boards, concept art, and proof-of-concept visual deliverables for a larger scale project (animation, game, or series).`,
       },
       {
         heading: 'Required deliverables',
@@ -168,12 +168,12 @@ Bring the printed brief to Tuesday's class. The first half hour will be brief re
   },
 
   'app-digital-experience': {
-    title: 'Track F — An App or Digital Experience',
+    title: 'Hero Project F — An App or Digital Experience',
     pccSources: [],
     sections: [
       {
-        heading: 'What this track is for',
-        body: `This track focuses on designing the wireframes, layouts, visual design system, and user experience (UX) flows for a mobile app or custom software dashboard.`,
+        heading: 'What this hero project is for',
+        body: `This hero project focuses on designing the wireframes, layouts, visual design system, and user experience (UX) flows for a mobile app or custom software dashboard.`,
       },
       {
         heading: 'Required deliverables',
@@ -186,12 +186,12 @@ Bring the printed brief to Tuesday's class. The first half hour will be brief re
   },
 
   'personal-project': {
-    title: 'Track G — A Personal or Autobiographical Project',
+    title: 'Hero Project G — A Personal or Autobiographical Project',
     pccSources: [],
     sections: [
       {
-        heading: 'What this track is for',
-        body: `This track focuses on a deeply personal, autobiographical, or visual memoir project that explores individual styling, identity, and personal narrative voice.`,
+        heading: 'What this hero project is for',
+        body: `This hero project focuses on a deeply personal, autobiographical, or visual memoir project that explores individual styling, identity, and personal narrative voice.`,
       },
       {
         heading: 'Required deliverables',
@@ -205,11 +205,11 @@ Bring the printed brief to Tuesday's class. The first half hour will be brief re
 };
 
 export const topicList = [
-  { key: 'short-animation', label: 'Track A — A short animation', isNew: true },
-  { key: 'graphic-novel-pages', label: 'Track B — Several finished pages from a graphic novel', isNew: true },
-  { key: 'product-design', label: 'Track C — A product design or product rendering', isNew: true },
-  { key: 'interactive-experience', label: 'Track D — An interactive experience', isNew: true },
-  { key: 'pitch-proof-of-concept', label: 'Track E — A pitch or proof of concept for a larger future project', isNew: true },
-  { key: 'app-digital-experience', label: 'Track F — An app or digital experience', isNew: true },
-  { key: 'personal-project', label: 'Track G — A personal or autobiographical project', isNew: true },
+  { key: 'short-animation', label: 'Hero Project A — A short animation', isNew: true },
+  { key: 'graphic-novel-pages', label: 'Hero Project B — Several finished pages from a graphic novel', isNew: true },
+  { key: 'product-design', label: 'Hero Project C — A product design or product rendering', isNew: true },
+  { key: 'interactive-experience', label: 'Hero Project D — An interactive experience', isNew: true },
+  { key: 'pitch-proof-of-concept', label: 'Hero Project E — A pitch or proof of concept for a larger future project', isNew: true },
+  { key: 'app-digital-experience', label: 'Hero Project F — An app or digital experience', isNew: true },
+  { key: 'personal-project', label: 'Hero Project G — A personal or autobiographical project', isNew: true },
 ];

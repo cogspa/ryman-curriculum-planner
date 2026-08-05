@@ -126,10 +126,10 @@ const SLIDES = [
   {
     kind: "statement",
     section: "METHOD",
-    title: "Keep the UX Storyboard Short",
+    title: "Keep the Storyboard Simple",
     body: [
-      "You don\u2019t need to create highly-detailed storyboards to get your point across.",
-      "Six to twelve \u201Crectangles\u201D or \u201Cscenes\u201D should be enough.",
+      "You don\u2019t need to create highly-detailed drawings to get your point across.", "Keep the drawings simple.",
+
     ],
   },
   {
