@@ -787,7 +787,7 @@ function WeekCard({
         </div>
       )}
 
-      {(week.week === 3 || week.week === 4 || week.week === 5) && (
+      {(Number(week.week) === 3 || Number(week.week) === 4) && (
         <div className="week-due-banner" style={{
           margin: '12px 0 16px 0',
           padding: '12px 14px',
@@ -806,6 +806,80 @@ function WeekCard({
             <div style={{ marginTop: '4px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <div><strong>Base:</strong> 18 custom brushes in folders + stamp test sheet.</div>
               <div><strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 300 DPI, layered PSD).</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {Number(week.week) === 5 && (
+        <div className="week-due-banner" style={{
+          margin: '12px 0 16px 0',
+          padding: '12px 14px',
+          background: 'rgba(139, 58, 47, 0.06)',
+          borderLeft: '4px solid #8b3a2f',
+          borderRadius: '0 8px 8px 0',
+          fontSize: '0.85rem',
+          lineHeight: '1.4',
+          color: '#2b2622'
+        }}>
+          <div style={{ fontWeight: 'bold', color: '#8b3a2f', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem' }}>
+            ⏳ Deliverable Alert
+          </div>
+          <div style={{ marginBottom: '8px' }}>
+            <strong>Must do by August 1 (End of Class):</strong>
+            <div style={{ marginTop: '4px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div><strong>1. Thumbnail Exploration Page:</strong> Min. 20 thumbnails (1920 × 1080 px).</div>
+              <div><strong>2. Character Model Sheet:</strong> Name, full-body design &amp; 5 expressions/poses (11" × 17", 150 PPI).</div>
+              <div><strong>3. Final Character Illustration:</strong> Rendered character in an environment — <em>Optional</em></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {Number(week.week) === 6 && (
+        <div className="week-due-banner" style={{
+          margin: '12px 0 16px 0',
+          padding: '12px 14px',
+          background: 'rgba(139, 58, 47, 0.06)',
+          borderLeft: '4px solid #8b3a2f',
+          borderRadius: '0 8px 8px 0',
+          fontSize: '0.85rem',
+          lineHeight: '1.4',
+          color: '#2b2622'
+        }}>
+          <div style={{ fontWeight: 'bold', color: '#8b3a2f', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem' }}>
+            ⏳ Deliverable Alert
+          </div>
+          <div style={{ marginBottom: '8px' }}>
+            <strong>Must do by August 8 (End of Class):</strong>
+            <div style={{ marginTop: '4px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div><strong>Base:</strong> 3-panel sequential comic strip showing a simple character action, alongside a basic turnaround layout.</div>
+              <div><strong>Next Level:</strong> 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.</div>
+              <div><strong>Advanced Integration (Optional):</strong> 6-to-9 panel Blender Grease Pencil 3D animatic block-in.</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {Number(week.week) === 7 && (
+        <div className="week-due-banner" style={{
+          margin: '12px 0 16px 0',
+          padding: '12px 14px',
+          background: 'rgba(139, 58, 47, 0.06)',
+          borderLeft: '4px solid #8b3a2f',
+          borderRadius: '0 8px 8px 0',
+          fontSize: '0.85rem',
+          lineHeight: '1.4',
+          color: '#2b2622'
+        }}>
+          <div style={{ fontWeight: 'bold', color: '#8b3a2f', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem' }}>
+            ⏳ Deliverable Alert
+          </div>
+          <div style={{ marginBottom: '8px' }}>
+            <strong>Must do by August 8 &amp; August 15:</strong>
+            <div style={{ marginTop: '4px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div><strong>One-Page Creative Brief:</strong> Define project scope, client simulation premise &amp; Hero Project. <em>(Due Aug 8, End of Class)</em></div>
+              <div><strong>Capstone Reference Board Layout:</strong> Complete full visual reference board using the SVG template. <em>(Due Aug 15, End of Class)</em></div>
             </div>
           </div>
         </div>
