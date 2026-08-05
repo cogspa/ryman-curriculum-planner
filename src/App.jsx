@@ -2031,7 +2031,7 @@ export default function App() {
                 { num: 3, name: 'Character Development', wk: 5 },
                 { num: 4, name: 'Narrative Sequence', wk: 6 },
                 { num: 5, name: 'Release Campaign', wk: 9 },
-                { num: 6, name: 'Capstone Pitch Deck', wk: 10 }
+                { num: 6, name: 'Capstone Creative Brief and Reference Board', wk: 10 }
               ].filter(asg => {
                 const weekData = weeks.find(w => w.entry.week === asg.wk);
                 return !weekData || role === 'admin' || isWeekReleased(asg.wk);

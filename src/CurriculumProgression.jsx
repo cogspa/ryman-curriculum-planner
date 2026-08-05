@@ -12,19 +12,19 @@ import React, { useState, useRef, useEffect } from "react";
  */
 
 const STEPS = [
-  { n: 1, week: 1,  accent: "#C68A3A", title: "Character/Prop/Environment Blocking Foundation",
+  { n: 1, week: 1,  due: "Due Jul 11", accent: "#C68A3A", title: "Character/Prop/Environment Blocking Foundation",
     desc: "Worldbuilding Step 1 — establish your core IP characters and signature items." },
-  { n: 2, week: 3,  accent: "#BC7333", title: "Compositional Brush Library & Landscape",
+  { n: 2, week: 3,  due: "Due Jul 25", accent: "#BC7333", title: "Compositional Brush Library & Landscape",
     desc: "Worldbuilding Step 2 — build custom brushes from real-world imagery and construct environments." },
-  { n: 3, week: 5,  accent: "#B25C2D", title: "Character Development",
+  { n: 3, week: 5,  due: "Due Aug 1", accent: "#B25C2D", title: "Character Development",
     desc: "Worldbuilding Step 3 — develop symmetrical and asymmetrical character concepts, expression model sheets, and a final character study." },
-  { n: 4, week: 6,  accent: "#A8482A", title: "Narrative Sequence",
+  { n: 4, week: 6,  due: "Due Aug 8", accent: "#A8482A", title: "Narrative Sequence",
     desc: "Worldbuilding Step 4 — map character consistency and tell a sequential action story." },
-  { n: 5, week: 7,  accent: "#94381F", title: "Capstone Pitch Deck",
-    desc: "Worldbuilding Step 5 — compile your IP project into a showcase-ready presentation." },
-  { n: 6, week: 10, accent: "#7E2F1A", title: "Release Campaign",
+  { n: 5, week: 7,  due: "Due Aug 8 & 15", accent: "#94381F", title: "Capstone Creative Brief and Reference Board",
+    desc: "Worldbuilding Step 5 — compile your IP project creative brief (Aug 8) and reference board layout (Aug 15)." },
+  { n: 6, week: 10, due: "Due Aug 29", accent: "#7E2F1A", title: "Release Campaign",
     desc: "Worldbuilding Step 6 — design the promotional assets and release package for your world." },
-  { n: 7, week: 13, accent: "#6E2D17", title: "Final Capstone Showcase",
+  { n: 7, week: 13, due: "Due Sep 19", accent: "#6E2D17", title: "Final Capstone Showcase",
     desc: "Present your completed world to industry panels, mentors, and peers.", final: true },
 ];
 
@@ -66,11 +66,26 @@ function Connector({ from, to, isVertical }) {
 function StepCard({ step }) {
   return (
     <article className="cp-card" style={{ borderTop: `3px solid ${step.accent}` }}>
-      <div className="cp-card-head">
+      <div className="cp-card-head" style={{ gap: '6px', flexWrap: 'wrap' }}>
         <span className="cp-num" style={{ background: step.accent }}>{step.n}</span>
         <span className="cp-week" style={{ color: step.accent, background: `${step.accent}14` }}>
           Week {step.week}
         </span>
+        {step.due && (
+          <span className="cp-due" style={{
+            color: '#8b3a2f',
+            background: 'rgba(139, 58, 47, 0.09)',
+            border: '1px solid rgba(139, 58, 47, 0.25)',
+            padding: '2px 6px',
+            borderRadius: '4px',
+            fontSize: '9.5px',
+            fontFamily: 'Menlo, monospace',
+            fontWeight: '600',
+            letterSpacing: '0.02em'
+          }}>
+            {step.due}
+          </span>
+        )}
         {step.final && (
           <span className="cp-final" style={{ color: step.accent, borderColor: step.accent }}>
             Final
