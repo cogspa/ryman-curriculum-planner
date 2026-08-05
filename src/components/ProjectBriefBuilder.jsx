@@ -98,6 +98,7 @@ export default function ProjectBriefBuilder() {
   const [loadingSheet, setLoadingSheet] = useState(false);
   const [saving, setSaving] = useState(false);
   const [demo, setDemo] = useState(false);
+  const [activeSvgBrief, setActiveSvgBrief] = useState(null);
   const channelRef = useRef(null);
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
@@ -159,15 +160,20 @@ export default function ProjectBriefBuilder() {
     setSaving(true);
     const sb = await getSupabase();
     if (!sb) {
-      demoStore.briefs.push({ ...form, id: `demo_${Date.now()}`, submittedAt: new Date().toISOString() });
+      const demoBrief = { ...form, id: `demo_${Date.now()}`, submittedAt: new Date().toISOString() };
+      demoStore.briefs.push(demoBrief);
       setStatus({ type: "ok", msg: "Filed (demo mode — session only). Set Supabase env vars to make it stick." });
       setSaving(false);
+      setActiveSvgBrief(demoBrief);
       return;
     }
     const { error } = await sb.from(TABLE).insert(toRow(form));
-    setStatus(error
-      ? { type: "err", msg: `Not saved: ${error.message}` }
-      : { type: "ok", msg: "Brief filed to the Master Sheet. Your entry is visible to the whole class." });
+    if (error) {
+      setStatus({ type: "err", msg: `Not saved: ${error.message}` });
+    } else {
+      setStatus({ type: "ok", msg: "Brief filed to the Master Sheet. Your entry is visible to the whole class." });
+      setActiveSvgBrief({ ...form, submittedAt: new Date().toISOString() });
+    }
     setSaving(false);
   };
 
@@ -371,6 +377,9 @@ export default function ProjectBriefBuilder() {
               <button className="btn solid" onClick={submit} disabled={saving}>
                 {saving ? "Filing…" : "File brief → master sheet"}
               </button>
+              <button className="btn" onClick={() => setActiveSvgBrief(form)}>
+                🎨 View SVG Brief Plate
+              </button>
               <button className="btn" onClick={downloadTxt}>Download .txt</button>
               <button className="btn" onClick={() => { setForm(emptyForm()); setStatus(null); }}>Clear</button>
             </div>
@@ -406,7 +415,7 @@ export default function ProjectBriefBuilder() {
                     <tr>
                       <th>Studio / Name</th><th>Client</th><th>Project</th><th>Audience</th>
                       <th>Deliverables</th><th>Brief</th><th>Thumbs</th><th>Comp</th><th>Final</th>
-                      <th>Success</th><th>Filed</th><th className="no-print"></th>
+                      <th>Success</th><th>Filed</th><th className="no-print">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -428,7 +437,10 @@ export default function ProjectBriefBuilder() {
                         <td className="mono" style={{ fontSize: "0.7rem", whiteSpace: "nowrap" }}>
                           {b.submittedAt ? b.submittedAt.slice(0, 10) : ""}
                         </td>
-                        <td className="no-print">
+                        <td className="no-print" style={{ whiteSpace: "nowrap" }}>
+                          <button className="btn" style={{ padding: "4px 8px", fontSize: "0.6rem", marginRight: "4px", color: OX, fontWeight: "bold" }} onClick={() => setActiveSvgBrief(b)}>
+                            🎨 SVG Plate
+                          </button>
                           <button className="btn" style={{ padding: "4px 8px", fontSize: "0.6rem" }} onClick={() => removeRow(b.id)}>✕</button>
                         </td>
                       </tr>
@@ -440,11 +452,255 @@ export default function ProjectBriefBuilder() {
           </main>
         )}
 
+        {/* Modal for SVG Brief Plate */}
+        <BriefSvgModal brief={activeSvgBrief} onClose={() => setActiveSvgBrief(null)} />
+
         <footer style={{ borderTop: `1px solid ${RULE}`, padding: "16px 24px" }}>
           <div className="mono" style={{ maxWidth: 900, margin: "0 auto", fontSize: "0.62rem", letterSpacing: "0.12em", color: FADE, textTransform: "uppercase" }}>
             A brief that fits on one page is a brief that gets read.
           </div>
         </footer>
+      </div>
+    </div>
+  );
+}
+
+function wrapSvgText(text = "", maxChars = 72) {
+  if (!text) return ["—"];
+  const words = text.split(/\s+/);
+  const lines = [];
+  let currentLine = "";
+
+  words.forEach((word) => {
+    if ((currentLine + " " + word).trim().length <= maxChars) {
+      currentLine = (currentLine + " " + word).trim();
+    } else {
+      if (currentLine) lines.push(currentLine);
+      currentLine = word;
+    }
+  });
+  if (currentLine) lines.push(currentLine);
+  return lines.length ? lines : ["—"];
+}
+
+function BriefSvgModal({ brief, onClose }) {
+  const svgRef = useRef(null);
+  if (!brief) return null;
+
+  const dateStr = brief.submittedAt ? brief.submittedAt.slice(0, 10) : new Date().toISOString().slice(0, 10);
+  const designerName = brief.name || "Anonymous Designer";
+  const clientName = brief.client || "Unspecified Client";
+
+  const projectLines = wrapSvgText(brief.project || "—", 72);
+  const audienceLines = wrapSvgText(brief.audience || "—", 72);
+  const deliverableLines = wrapSvgText(brief.deliverables || "—", 72);
+  const successLines = wrapSvgText(brief.success || "—", 72);
+
+  const handleDownloadSvg = () => {
+    if (!svgRef.current) return;
+    const svgData = new XMLSerializer().serializeToString(svgRef.current);
+    const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `Creative_Brief_${(brief.name || "Student").replace(/\s+/g, "_")}.svg`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
+
+  return (
+    <div className="no-print-modal" style={{
+      position: "fixed", inset: 0, zIndex: 9999,
+      background: "rgba(20, 16, 14, 0.85)", backdropFilter: "blur(6px)",
+      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+      padding: "20px"
+    }}>
+      {/* Top action bar */}
+      <div className="no-print" style={{
+        display: "flex", gap: "12px", alignItems: "center", justifyContent: "space-between",
+        maxWidth: "840px", width: "100%", marginBottom: "12px", background: "#f5efe1",
+        padding: "10px 16px", borderRadius: "6px", border: "1.5px solid #8b3a2f"
+      }}>
+        <span style={{ fontFamily: "Menlo, monospace", fontSize: "12px", fontWeight: "bold", color: "#8b3a2f" }}>
+          📄 CREATIVE BRIEF SVG PLATE PREVIEW
+        </span>
+        <div style={{ display: "flex", gap: "8px" }}>
+          <button className="btn solid" style={{ fontSize: "11px", padding: "6px 12px" }} onClick={handleDownloadSvg}>
+            📥 Download .SVG
+          </button>
+          <button className="btn" style={{ fontSize: "11px", padding: "6px 12px" }} onClick={handlePrint}>
+            🖨️ Print / PDF
+          </button>
+          <button className="btn" style={{ fontSize: "11px", padding: "6px 12px", background: "#8b3a2f", color: "#fff" }} onClick={onClose}>
+            ✕ Close
+          </button>
+        </div>
+      </div>
+
+      {/* SVG Container Stage */}
+      <div style={{
+        maxWidth: "840px", width: "100%", maxHeight: "85vh", overflowY: "auto",
+        background: "#f5efe1", borderRadius: "8px", border: "2px solid #2b2320",
+        padding: "16px", boxShadow: "0 20px 50px rgba(0,0,0,0.5)"
+      }}>
+        <svg
+          ref={svgRef}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 800 1060"
+          width="100%"
+          style={{ display: "block", background: "#FDFBF3" }}
+        >
+          {/* Paper Border & Shadow */}
+          <rect x="15" y="15" width="770" height="1030" fill="#FDFBF3" stroke="#2B2320" strokeWidth="2.5" />
+          <rect x="25" y="25" width="750" height="1010" fill="none" stroke="#8b3a2f" strokeWidth="1" strokeDasharray="6 4" opacity="0.4" />
+
+          {/* Header Section */}
+          <rect x="40" y="45" width="720" height="95" fill="#1F1B16" />
+          <text x="60" y="70" fontFamily="'IBM Plex Mono', monospace" fontSize="9" fill="#8b3a2f" letterSpacing="2.5" fontWeight="bold">
+            pLAtform · RYMAN ARTS CAPSTONE PROGRAM
+          </text>
+          <text x="60" y="98" fontFamily="'Newsreader', Georgia, serif" fontSize="24" fill="#FDFBF3" fontWeight="bold" letterSpacing="0.5">
+            OFFICIAL CREATIVE BRIEF
+          </text>
+
+          {/* Header Metadata Box (Right) */}
+          <rect x="480" y="55" width="265" height="75" fill="none" stroke="#8b3a2f" strokeWidth="1.2" />
+          <text x="492" y="72" fontFamily="'IBM Plex Mono', monospace" fontSize="8" fill="#FDFBF3" letterSpacing="1">
+            DESIGNER: <tspan fill="#e2b980" fontWeight="bold">{designerName.slice(0, 24)}</tspan>
+          </text>
+          <text x="492" y="90" fontFamily="'IBM Plex Mono', monospace" fontSize="8" fill="#FDFBF3" letterSpacing="1">
+            CLIENT: <tspan fill="#e2b980">{clientName.slice(0, 26)}</tspan>
+          </text>
+          <text x="492" y="108" fontFamily="'IBM Plex Mono', monospace" fontSize="8" fill="#8b3a2f" letterSpacing="1">
+            FILED DATE: {dateStr}
+          </text>
+
+          {/* Section 1: PROJECT STATEMENT */}
+          <g transform="translate(40, 160)">
+            <rect x="0" y="0" width="720" height="22" fill="#1F1B16" />
+            <text x="12" y="15" fontFamily="'IBM Plex Mono', monospace" fontSize="9.5" fill="#FDFBF3" fontWeight="bold" letterSpacing="1.5">
+              1 · PROJECT STATEMENT &amp; LOGLINE
+            </text>
+            <rect x="0" y="26" width="720" height="95" fill="#F8F4E8" stroke="#D4C9A8" strokeWidth="1" />
+            <text x="16" y="48" fontFamily="'Newsreader', Georgia, serif" fontSize="13.5" fill="#2B2320">
+              {projectLines.map((line, i) => (
+                <tspan key={i} x="16" dy={i === 0 ? 0 : 20}>{line}</tspan>
+              ))}
+            </text>
+          </g>
+
+          {/* Section 2: TARGET AUDIENCE */}
+          <g transform="translate(40, 295)">
+            <rect x="0" y="0" width="720" height="22" fill="#1F1B16" />
+            <text x="12" y="15" fontFamily="'IBM Plex Mono', monospace" fontSize="9.5" fill="#FDFBF3" fontWeight="bold" letterSpacing="1.5">
+              2 · TARGET AUDIENCE &amp; USER PROFILE
+            </text>
+            <rect x="0" y="26" width="720" height="95" fill="#F8F4E8" stroke="#D4C9A8" strokeWidth="1" />
+            <text x="16" y="48" fontFamily="'Newsreader', Georgia, serif" fontSize="13.5" fill="#2B2320">
+              {audienceLines.map((line, i) => (
+                <tspan key={i} x="16" dy={i === 0 ? 0 : 20}>{line}</tspan>
+              ))}
+            </text>
+          </g>
+
+          {/* Section 3: SCOPE & DELIVERABLES */}
+          <g transform="translate(40, 430)">
+            <rect x="0" y="0" width="720" height="22" fill="#1F1B16" />
+            <text x="12" y="15" fontFamily="'IBM Plex Mono', monospace" fontSize="9.5" fill="#FDFBF3" fontWeight="bold" letterSpacing="1.5">
+              3 · SCOPE, FORMATS &amp; DELIVERABLES
+            </text>
+            <rect x="0" y="26" width="720" height="95" fill="#F8F4E8" stroke="#D4C9A8" strokeWidth="1" />
+            <text x="16" y="48" fontFamily="'Newsreader', Georgia, serif" fontSize="13.5" fill="#2B2320">
+              {deliverableLines.map((line, i) => (
+                <tspan key={i} x="16" dy={i === 0 ? 0 : 20}>{line}</tspan>
+              ))}
+            </text>
+          </g>
+
+          {/* Section 4: PRODUCTION SCHEDULE TIMELINE */}
+          <g transform="translate(40, 565)">
+            <rect x="0" y="0" width="720" height="22" fill="#8b3a2f" />
+            <text x="12" y="15" fontFamily="'IBM Plex Mono', monospace" fontSize="9.5" fill="#FDFBF3" fontWeight="bold" letterSpacing="1.5">
+              4 · PRODUCTION SCHEDULE TIMELINE
+            </text>
+            <rect x="0" y="26" width="720" height="135" fill="#F8F4E8" stroke="#8b3a2f" strokeWidth="1" />
+
+            {/* Dates grid display */}
+            <g transform="translate(20, 42)">
+              {[
+                { label: "BRIEF DUE", val: brief.briefDue || "—" },
+                { label: "THUMBS DUE", val: brief.thumbsDue || "—" },
+                { label: "COMP DUE", val: brief.compDue || "—" },
+                { label: "FINAL DUE", val: brief.finalDue || "—" },
+              ].map((d, idx) => (
+                <g key={idx} transform={`translate(${idx * 170}, 0)`}>
+                  <rect x="0" y="0" width="150" height="42" fill="#F5EFE1" stroke="#D4C9A8" strokeWidth="1" />
+                  <text x="10" y="16" fontFamily="'IBM Plex Mono', monospace" fontSize="8" fill="#8b3a2f" letterSpacing="1" fontWeight="bold">
+                    {d.label}
+                  </text>
+                  <text x="10" y="32" fontFamily="'IBM Plex Mono', monospace" fontSize="11" fill="#2B2320" fontWeight="bold">
+                    {d.val}
+                  </text>
+                </g>
+              ))}
+            </g>
+
+            {/* Visual Timeline Bar */}
+            <g transform="translate(20, 105)">
+              <line x1="0" y1="12" x2="680" y2="12" stroke="#8b3a2f" strokeWidth="2" />
+              <rect x="0" y="4" width="220" height="16" fill="#8b3a2f" opacity="0.85" />
+              <rect x="220" y="4" width="230" height="16" fill="#a85a4a" opacity="0.85" />
+              <rect x="450" y="4" width="230" height="16" fill="#c07d66" opacity="0.85" />
+              <circle cx="0" cy="12" r="5" fill="#1F1B16" />
+              <circle cx="220" cy="12" r="5" fill="#1F1B16" />
+              <circle cx="450" cy="12" r="5" fill="#1F1B16" />
+              <circle cx="680" cy="12" r="5" fill="#1F1B16" />
+            </g>
+          </g>
+
+          {/* Section 5: SUCCESS CRITERIA */}
+          <g transform="translate(40, 740)">
+            <rect x="0" y="0" width="720" height="22" fill="#1F1B16" />
+            <text x="12" y="15" fontFamily="'IBM Plex Mono', monospace" fontSize="9.5" fill="#FDFBF3" fontWeight="bold" letterSpacing="1.5">
+              5 · SUCCESS CRITERIA &amp; PORTFOLIO STANDARDS
+            </text>
+            <rect x="0" y="26" width="720" height="95" fill="#F8F4E8" stroke="#D4C9A8" strokeWidth="1" />
+            <text x="16" y="48" fontFamily="'Newsreader', Georgia, serif" fontSize="13.5" fill="#2B2320">
+              {successLines.map((line, i) => (
+                <tspan key={i} x="16" dy={i === 0 ? 0 : 20}>{line}</tspan>
+              ))}
+            </text>
+          </g>
+
+          {/* Footer & Approval Signatures */}
+          <g transform="translate(40, 880)">
+            <line x1="0" y1="50" x2="300" y2="50" stroke="#2B2320" strokeWidth="1.5" />
+            <text x="0" y="66" fontFamily="'IBM Plex Mono', monospace" fontSize="8.5" fill="#8b3a2f" letterSpacing="1">
+              CLIENT APPROVAL SIGNATURE
+            </text>
+
+            <line x1="420" y1="50" x2="720" y2="50" stroke="#2B2320" strokeWidth="1.5" />
+            <text x="420" y="66" fontFamily="'IBM Plex Mono', monospace" fontSize="8.5" fill="#8b3a2f" letterSpacing="1">
+              DESIGNER: {designerName.toUpperCase()}
+            </text>
+          </g>
+
+          {/* Official Stamp Graphic */}
+          <g transform="translate(540, 935) rotate(-6)">
+            <rect width="210" height="52" fill="none" stroke="#8b3a2f" strokeWidth="2.5" rx="3" />
+            <rect x="4" y="4" width="202" height="44" fill="none" stroke="#8b3a2f" strokeWidth="1" strokeDasharray="4 2" />
+            <text x="105" y="24" fontFamily="'IBM Plex Mono', monospace" fontSize="10" fill="#8b3a2f" textAnchor="middle" fontWeight="bold" letterSpacing="1.5">
+              ★ APPROVED BRIEF ★
+            </text>
+            <text x="105" y="40" fontFamily="'IBM Plex Mono', monospace" fontSize="7.5" fill="#8b3a2f" textAnchor="middle" letterSpacing="1">
+              RYMAN ARTS · PRODUCTION v1.0
+            </text>
+          </g>
+        </svg>
       </div>
     </div>
   );
