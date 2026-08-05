@@ -148,10 +148,14 @@ function renderFormattedBody(bodyText) {
       const label = singleLinkMatch[2];
       const url = singleLinkMatch[3];
 
+      const isExternal = url.startsWith('http');
+      const LinkComponent = isExternal ? 'a' : Link;
+      const extraProps = isExternal ? { href: url, target: '_blank', rel: 'noreferrer' } : { to: url };
+
       return (
         <div key={pIdx} style={{ margin: '20px 0' }}>
-          <Link
-            to={url}
+          <LinkComponent
+            {...extraProps}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -171,7 +175,7 @@ function renderFormattedBody(bodyText) {
           >
             <span>{emoji}</span>
             <span>{label}</span>
-          </Link>
+          </LinkComponent>
         </div>
       );
     }

@@ -382,6 +382,12 @@ Holding the same shot size across panels can also be used intentionally — but 
 
 👉 [Open Interactive Cinematic Shot Examples Lesson](/week/05/shot-examples)`,
       },
+      {
+        heading: '9. Storyboard Examples',
+        body: `Browse real-world storyboard examples, professional industry techniques, and breakdowns across film, animation, and advertising:
+
+↗ [Explore Professional Storyboard Examples on Boords](https://boords.com/storyboard-examples)`,
+      },
     ],
   },
 
