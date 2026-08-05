@@ -6,6 +6,7 @@ import LegalDisclaimer from './LegalDisclaimer.jsx';
 import CritiqueZone from './components/CritiqueZone.jsx';
 import CreatureCarousel from './components/CreatureCarousel.jsx';
 import PanelLab from './pages/panel-lab.jsx';
+import ProjectBriefBuilder from './components/ProjectBriefBuilder.jsx';
 
 function parseMarkdownLinks(text) {
   if (typeof text !== 'string') return text;
@@ -1069,6 +1070,12 @@ export default function AssignmentPage() {
               {section.showPanelLab && (
                 <div style={{ marginTop: '28px', marginBottom: '28px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(237, 230, 216, 0.2)', boxShadow: '0 8px 30px rgba(0,0,0,0.25)' }}>
                   <PanelLab />
+                </div>
+              )}
+
+              {section.showBriefBuilder && (
+                <div id="brief-builder-embed" style={{ marginTop: '28px', marginBottom: '36px', borderRadius: '12px', border: '1px solid rgba(139, 58, 47, 0.25)', boxShadow: '0 8px 30px rgba(0,0,0,0.08)', background: '#f5efe1', padding: '20px' }}>
+                  <ProjectBriefBuilder />
                 </div>
               )}
 

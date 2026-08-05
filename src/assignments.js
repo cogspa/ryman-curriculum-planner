@@ -717,6 +717,7 @@ Real professional work begins with a brief — a document from a client describi
     sections: [
       {
         heading: 'Part 1: The Creative Brief (Due Saturday, August 8)',
+        showBriefBuilder: true,
         body: `Write a one-page Creative Brief that defines the scope, audience, and deliverables for your Capstone Hero Project. The brief must be finalized and approved by the end of Saturday class on August 8th.
 
 ### How to Write Your Brief
