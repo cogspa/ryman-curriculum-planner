@@ -1216,7 +1216,27 @@ function WeekCard({
                         <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
                           <li style={{ marginBottom: '4px' }}><strong>1. Thumbnail Exploration Page</strong> (Min. 20 thumbnails, 1920 × 1080 px)</li>
                           <li style={{ marginBottom: '4px' }}><strong>2. Character Model Sheet</strong> (Name, full-body design, 5 expressions/poses, 11" × 17", 150 PPI)</li>
-                          <li style={{ marginBottom: '4px' }}><strong>3. Final Character Illustration</strong> (Rendered character integrated into an environment)</li>
+                          <li style={{ marginBottom: '4px' }}><strong>3. Final Character Illustration</strong> (Rendered character integrated into an environment) — <em>Optional</em></li>
+                        </ul>
+                      </div>
+                    </div>
+                  ) : week.week === 6 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
+                        Due Date: August 8th (End of Class)
+                      </div>
+                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
+                        This week features Assignment 4: Narrative Sequence &amp; Storyboarding tracks:
+                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>Base Assignment: 3-Panel Comic &amp; Turnaround</strong> — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout.
+                          </li>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>Next Level: Storyboard Sequence &amp; Turnarounds</strong> — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.
+                          </li>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>Advanced Integration: Blender Grease Pencil / Animatic Block-In</strong> — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. — <em>Optional</em>
+                          </li>
                         </ul>
                       </div>
                     </div>
