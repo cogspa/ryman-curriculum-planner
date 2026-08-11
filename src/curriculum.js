@@ -265,7 +265,9 @@ export const curriculum = [
         'Guest: Eugenia Chen — Creative entrepreneur — navigating freelance taxes & operations',
         '🛠️ Task: Reference Board complete (the thumbnail sketch concept of the whole project laid out in one InDesign/Illustrator file)',
       ],
-      assignments: [],
+      assignments: [
+        '**Capstone Reference Board Layout**: Complete full visual reference board using the SVG template. *(Due Aug 15, End of Class)*'
+      ],
     }
   },
   {

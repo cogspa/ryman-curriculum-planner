@@ -277,7 +277,7 @@ function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      {([1, 2, 3, 4, 5, 6, 7].includes(Number(weekNumber))) && (label === 'Topics' || label === 'Readings') ? (
+      {([1, 2, 3, 4, 5, 6, 7, 8].includes(Number(weekNumber))) && (label === 'Topics' || label === 'Readings') ? (
         <Link to={`/week/0${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
@@ -484,6 +484,21 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/07/app-digital-experience';
             } else if (cleanText.includes('personal') || cleanText.includes('autobiographical')) {
               linkPath = '/week/07/personal-project';
+            }
+          } else if (weekNumber === 8 && label === 'Topics') {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('receiving and processing constructive art direction') || cleanText.includes('constructive art direction')) {
+              linkPath = '/week/08/receiving-constructive-art-direction';
+            } else if (cleanText.includes('presentation pitch deck')) {
+              linkPath = '/week/08/structuring-a-presentation-pitch-deck';
+            } else if (cleanText.includes('handoff formats') || cleanText.includes('packaging documents')) {
+              linkPath = '/week/08/handoff-formats-and-packaging-documents';
+            } else if (cleanText.includes('presentation board layout')) {
+              linkPath = '/week/08/presentation-board-layout-creation';
+            } else if (cleanText.includes('studio handoff etiquette')) {
+              linkPath = '/week/08/studio-handoff-etiquette-and-conventions';
+            } else if (cleanText.includes('working with art directors')) {
+              linkPath = '/week/08/working-with-art-directors-roleplay';
             }
           }
 
@@ -885,6 +900,29 @@ function WeekCard({
         </div>
       )}
 
+      {Number(week.week) === 8 && (
+        <div className="week-due-banner" style={{
+          margin: '12px 0 16px 0',
+          padding: '12px 14px',
+          background: 'rgba(139, 58, 47, 0.06)',
+          borderLeft: '4px solid #8b3a2f',
+          borderRadius: '0 8px 8px 0',
+          fontSize: '0.85rem',
+          lineHeight: '1.4',
+          color: '#2b2622'
+        }}>
+          <div style={{ fontWeight: 'bold', color: '#8b3a2f', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem' }}>
+            ⏳ Deliverable Alert
+          </div>
+          <div style={{ marginBottom: '8px' }}>
+            <strong>Must do by August 15 (End of Class):</strong>
+            <div style={{ marginTop: '4px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div><strong>Capstone Reference Board Layout:</strong> Complete full visual reference board using the SVG template. <em>(Due Aug 15, End of Class)</em></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {(hasContent || adminMode) && (
         <div className="curriculum-content">
           {adminMode ? (
@@ -898,7 +936,11 @@ function WeekCard({
             week.overview && (
               <>
                 <p className="overview">
-                  {Number(week.week) === 7 ? (
+                  {Number(week.week) === 8 ? (
+                    <Link to="/week/08" className="overview-link">
+                      {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
+                    </Link>
+                  ) : Number(week.week) === 7 ? (
                     <Link to="/week/07/client-simulation-overview" className="overview-link">
                       {week.overview} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[READ BRIEF FRAMEWORK →]</span>
                     </Link>

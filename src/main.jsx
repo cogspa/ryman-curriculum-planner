@@ -42,6 +42,9 @@ import Week06Overview from './pages/Week06Overview.jsx';
 import Week06TopicDetail from './pages/Week06TopicDetail.jsx';
 import Week07Overview from './pages/Week07Overview.jsx';
 import Week07TopicDetail from './pages/Week07TopicDetail.jsx';
+import Week08Overview from './pages/Week08Overview.jsx';
+import Week08TopicDetail from './pages/Week08TopicDetail.jsx';
+import HandoffFormats from './pages/HandoffFormats.jsx';
 import DesignBriefPresentation from './pages/DesignBriefPresentation.jsx';
 import ClassFAQPage from './ClassFAQPage.jsx';
 import SpeakerListPage from './SpeakerListPage.jsx';
@@ -116,6 +119,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/07" element={<Week07Overview />} />
           <Route path="/week/07/design-brief-presentation" element={<DesignBriefPresentation />} />
           <Route path="/week/07/:topicKey" element={<Week07TopicDetail />} />
+          <Route path="/week/08" element={<Week08Overview />} />
+          <Route path="/week/08/handoff-formats-and-packaging-documents" element={<HandoffFormats />} />
+          <Route path="/week/08/handoff-formats" element={<HandoffFormats />} />
+          <Route path="/week/08/:topicKey" element={<Week08TopicDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
