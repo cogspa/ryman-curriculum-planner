@@ -408,7 +408,7 @@ One student role-plays the **Art Director / Client**, presenting difficult revis
 export const topicList = [
   { key: 'receiving-constructive-art-direction', label: 'Discussion: Receiving and Processing Constructive Art Direction', isNew: true },
   { key: 'handoff-formats-and-packaging-documents', label: 'Workflow breakdown: Handoff formats and packaging documents', isNew: true },
-  { key: 'structuring-a-presentation-pitch-deck', label: 'Preview: Structuring a professional presentation pitch deck', isNew: true },
+  { key: 'structuring-a-professional-presentation-pitch-deck', label: 'Preview: Structuring a professional presentation pitch deck', isNew: true },
   { key: 'presentation-board-layout-creation', label: 'Presentation board layout creation', isNew: true },
   { key: 'studio-handoff-etiquette-and-conventions', label: 'Studio handoff etiquette & conventions', isNew: true },
   { key: 'working-with-art-directors-roleplay', label: 'Working with art directors role-play', isNew: true },

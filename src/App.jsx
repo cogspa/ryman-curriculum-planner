@@ -489,8 +489,8 @@ function Section({ label, items, weekNumber }) {
             const cleanText = text.trim().toLowerCase();
             if (cleanText.includes('receiving and processing constructive art direction') || cleanText.includes('constructive art direction')) {
               linkPath = '/week/08/receiving-constructive-art-direction';
-            } else if (cleanText.includes('presentation pitch deck')) {
-              linkPath = '/week/08/structuring-a-presentation-pitch-deck';
+            } else if (cleanText.includes('presentation pitch deck') || cleanText.includes('pitch deck') || cleanText.includes('structuring a professional presentation')) {
+              linkPath = '/week/08/structuring-a-professional-presentation-pitch-deck';
             } else if (cleanText.includes('handoff formats') || cleanText.includes('packaging documents')) {
               linkPath = '/week/08/handoff-formats-and-packaging-documents';
             } else if (cleanText.includes('presentation board layout')) {
