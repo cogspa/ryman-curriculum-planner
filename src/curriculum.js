@@ -290,7 +290,7 @@ export const curriculum = [
         'Contracts & intellectual property deep dive',
         'Client communication & relationship skills',
         'Taxes basics for creative sole proprietors',
-        '🛠️ Task: Refine campaign assets & apply peer feedback from Week 8 pitch rehearsals',
+        '🛠️ Task: Refine campaign assets & apply peer feedback from Week 8 pitch rehearsals (Practice Pitch: Be prepared to deliver a practice pitch of your project on August 22)',
       ],
       assignments: [],
     }

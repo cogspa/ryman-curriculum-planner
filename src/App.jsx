@@ -277,7 +277,7 @@ function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      {([1, 2, 3, 4, 5, 6, 7, 8].includes(Number(weekNumber))) && (label === 'Topics' || label === 'Readings') ? (
+      {([1, 2, 3, 4, 5, 6, 7, 8, 9].includes(Number(weekNumber))) && (label === 'Topics' || label === 'Readings') ? (
         <Link to={`/week/0${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
@@ -499,6 +499,27 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/08/studio-handoff-etiquette-and-conventions';
             } else if (cleanText.includes('working with art directors')) {
               linkPath = '/week/08/working-with-art-directors-roleplay';
+            }
+          } else if (Number(weekNumber) === 9 && (label === 'Topics' || label === 'Readings')) {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('contract legally binding') || cleanText.includes('binding and protective')) {
+              linkPath = '/week/09/contracts-legally-binding';
+            } else if (cleanText.includes('freelance business operations') || cleanText.includes('tax structures')) {
+              linkPath = '/week/09/freelance-business-operations';
+            } else if (cleanText.includes('drafting client agreements') || cleanText.includes('proposal sheets')) {
+              linkPath = '/week/09/drafting-agreements-and-proposals';
+            } else if (cleanText.includes('intellectual property guide') || cleanText.includes('copyrights, trademarks') || cleanText.includes('licensing rights')) {
+              linkPath = '/week/09/intellectual-property-guide';
+            } else if (cleanText.includes('pricing your work') || cleanText.includes('project scoping')) {
+              linkPath = '/week/09/pricing-your-work-and-project-scoping';
+            } else if (cleanText.includes('contracts & intellectual property') || cleanText.includes('deep dive') || cleanText.includes('negotiating the rights')) {
+              linkPath = '/week/09/contracts-and-ip-negotiating-rights';
+            } else if (cleanText.includes('client communication') || cleanText.includes('relationship skills')) {
+              linkPath = '/week/09/client-communication-and-relationship-skills';
+            } else if (cleanText.includes('taxes basics') || cleanText.includes('creative sole proprietors')) {
+              linkPath = '/week/09/tax-basics-for-creative-sole-proprietors';
+            } else if (cleanText.includes('refine campaign assets') || cleanText.includes('peer feedback') || cleanText.includes('pitch rehearsals')) {
+              linkPath = '/week/09/refine-campaign-assets-peer-feedback';
             }
           }
 
@@ -1139,8 +1160,200 @@ function WeekCard({
                     </ul>
                   </div>
                 )}
+                {Number(week.week) === 9 && (
+                  <div style={{
+                    marginTop: '12px',
+                    marginBottom: '4px',
+                    display: 'flex',
+                    gap: '10px',
+                    flexWrap: 'wrap',
+                    fontSize: '12px',
+                    fontFamily: 'var(--font-mono, monospace)',
+                  }}>
+                    <Link 
+                      to="/week/09" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      📖 Week 9 Overview &amp; All 8 Articles →
+                    </Link>
+                    <Link 
+                      to="/week/09#master-resources" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#1e4620',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(30, 70, 32, 0.25)',
+                        background: 'rgba(30, 70, 32, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      📚 Master Resource Directory (38 Links) →
+                    </Link>
+                  </div>
+                )}
               </>
             )
+          )}
+
+          {((week.saturday?.assignments && week.saturday.assignments.length > 0) || (week.assignments && week.assignments.length > 0) || week.week === 4 || week.week === 9) && (
+            <div style={{
+              marginTop: '16px',
+              marginBottom: '16px',
+              padding: '12px 16px',
+              background: week.week === 9 ? 'rgba(239, 68, 68, 0.05)' : 'rgba(245, 158, 11, 0.04)',
+              border: week.week === 9 ? '1px solid rgba(239, 68, 68, 0.28)' : '1px solid rgba(245, 158, 11, 0.18)',
+              borderLeft: week.week === 9 ? '4px solid #dc2626' : undefined,
+              borderRadius: '8px',
+              fontSize: '13px',
+              lineHeight: '1.45',
+              color: week.week === 9 ? '#7f1d1d' : '#78350f',
+              fontFamily: 'var(--font-sans, sans-serif)',
+            }}>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                <span style={{ fontSize: '16px', lineHeight: '1.2' }}>📋</span>
+                <div style={{ width: '100%' }}>
+                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px', color: week.week === 9 ? '#b91c1c' : '#92400e' }}>Deliverables:</strong>
+                  {week.week === 3 || week.week === 4 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
+                        Due Date: July 25th
+                      </div>
+                      <div>
+                        <strong>Base:</strong> 18 custom brushes in folders + stamp test sheet.
+                      </div>
+                      <div>
+                        <strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 300 DPI, layered PSD).
+                      </div>
+                      <div style={{ fontSize: '12px', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.15)', color: '#b45309', fontStyle: 'italic' }}>
+                        <strong>Note:</strong> Keep active Artboards to a minimum. Advanced Integration is optional. Save files for final capstone.
+                      </div>
+                    </div>
+                  ) : week.week === 1 ? (
+                    <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone. Base Assignment requires three initial black and white studies at 16:9, and Take It to the Next Level requires three color versions at 16:9 (but they can also be 9:16).</span>
+                  ) : week.week === 5 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
+                        Due Date: August 1st (End of Class)
+                      </div>
+                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
+                        This week features a single, unified Character Development assignment. Please submit:
+                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
+                          <li style={{ marginBottom: '4px' }}><strong>1. Thumbnail Exploration Page</strong> (Min. 20 thumbnails, 1920 × 1080 px)</li>
+                          <li style={{ marginBottom: '4px' }}><strong>2. Character Model Sheet</strong> (Name, full-body design, 5 expressions/poses, 11" × 17", 150 PPI)</li>
+                          <li style={{ marginBottom: '4px' }}><strong>3. Final Character Illustration</strong> (Rendered character integrated into an environment) — <em>Optional</em></li>
+                        </ul>
+                      </div>
+                    </div>
+                  ) : week.week === 6 || week.week === 7 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
+                        Due Date: August 8th (End of Class)
+                      </div>
+                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
+                        This week features Assignment 4: Narrative Sequence &amp; Storyboarding tracks:
+                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>Base Assignment: 3-Panel Comic &amp; Turnaround</strong> — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout.
+                          </li>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>Next Level: Storyboard Sequence &amp; Turnarounds</strong> — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.
+                          </li>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>Advanced Integration: Blender Grease Pencil / Animatic Block-In</strong> — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. — <em>Optional</em>
+                          </li>
+                        </ul>
+                      </div>
+                      <div style={{ fontSize: '12px', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.18)', color: '#b45309' }}>
+                        <strong>Capstone Milestone:</strong> One-Page Creative Brief due August 8th; Capstone Reference Board due August 15th.
+                      </div>
+                    </div>
+                  ) : week.week === 8 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
+                        Due Dates: August 8th (Creative Brief) &amp; August 15th (Capstone Reference Board)
+                      </div>
+                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
+                        Please prepare and submit the following Capstone Client Simulation deliverables:
+                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>1. One-Page Creative Brief</strong> — Define your project scope, client simulation premise, problem statement, target audience, key message, and Hero Project track. <em>(Due Aug 8, End of Class)</em>
+                          </li>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>2. Capstone Reference Board Layout</strong> — Complete your full visual reference board using the provided SVG template (<code style={{ background: 'rgba(245, 158, 11, 0.15)', padding: '1px 5px', borderRadius: '3px' }}>Capstone_Project_Development_Template.svg</code>) or your own InDesign/Illustrator grid. <em>(Due Aug 15, End of Class)</em>
+                          </li>
+                        </ul>
+                      </div>
+                      <div style={{ fontSize: '12px', marginTop: '4px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.18)', color: '#b45309', fontStyle: 'italic' }}>
+                        <strong>Tip:</strong> Complete your Creative Brief first to clarify your Hero Project track choice before assembling your reference board layout.
+                      </div>
+                    </div>
+                  ) : week.week === 9 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      <div>
+                        <div style={{ color: '#991b1b', fontWeight: 'bold', marginBottom: '4px', fontSize: '13.5px', lineHeight: '1.4' }}>
+                          For Tuesday Night (August 18th) deliverables due, lets see where everyone is at with the Capstone Reference Board
+                        </div>
+                        <div style={{ marginTop: '4px' }}>
+                          <img 
+                            src="/Capstone_Project_Development_Template_preview.png" 
+                            alt="Capstone Project Development Template Preview" 
+                            style={{
+                              width: '100%',
+                              maxWidth: '720px',
+                              borderRadius: '6px',
+                              border: '1px solid rgba(220, 38, 38, 0.25)',
+                              display: 'block',
+                              margin: '6px 0 8px',
+                              boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
+                            }}
+                          />
+                          <div style={{ fontSize: '12px', color: '#991b1b', fontStyle: 'italic', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+                            <span><strong>Capstone Project Development Template Preview</strong> — Check in with your Blockouts, Environments, Characters, Storyboards, and Hero Project.</span>
+                            <a 
+                              href="/Capstone_Project_Development_Template.svg" 
+                              download="Capstone_Project_Development_Template.svg"
+                              style={{ color: '#b91c1c', fontWeight: 'bold', textDecoration: 'underline' }}
+                            >
+                              Download SVG Template ↓
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style={{ paddingTop: '8px', borderTop: '1px solid rgba(220, 38, 38, 0.2)' }}>
+                        <div style={{ color: '#991b1b', fontWeight: 'bold', fontSize: '13.5px', marginBottom: '3px' }}>
+                          Due Date: Saturday, August 22nd — Practice Pitch
+                        </div>
+                        <div style={{ fontSize: '13px', color: '#7f1d1d', lineHeight: '1.45' }}>
+                          Be prepared to deliver a practice pitch of your project on August 22.
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone.</span>
+                  )}
+                </div>
+              </div>
+            </div>
           )}
 
           {week.tuesday || week.saturday ? (
@@ -1286,105 +1499,6 @@ function WeekCard({
                 isDraggingActive={isDraggingActive}
               />
             </>
-          )}
-
-          {((week.saturday?.assignments && week.saturday.assignments.length > 0) || (week.assignments && week.assignments.length > 0) || week.week === 4) && (
-            <div style={{
-              marginTop: '16px',
-              padding: '12px 16px',
-              background: 'rgba(245, 158, 11, 0.04)',
-              border: '1px solid rgba(245, 158, 11, 0.18)',
-              borderRadius: '8px',
-              fontSize: '13px',
-              lineHeight: '1.45',
-              color: '#78350f',
-              fontFamily: 'var(--font-sans, sans-serif)',
-              marginBottom: '16px'
-            }}>
-              <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                <span style={{ fontSize: '16px', lineHeight: '1.2' }}>📋</span>
-                <div style={{ width: '100%' }}>
-                  <strong style={{ display: 'block', marginBottom: '6px', fontSize: '14px', color: '#92400e' }}>Deliverables:</strong>
-                  {week.week === 3 || week.week === 4 ? (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
-                        Due Date: July 25th
-                      </div>
-                      <div>
-                        <strong>Base:</strong> 18 custom brushes in folders + stamp test sheet.
-                      </div>
-                      <div>
-                        <strong>Next Level:</strong> 3 landscape compositions (11" × 17" at 300 DPI, layered PSD).
-                      </div>
-                      <div style={{ fontSize: '12px', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.15)', color: '#b45309', fontStyle: 'italic' }}>
-                        <strong>Note:</strong> Keep active Artboards to a minimum. Advanced Integration is optional. Save files for final capstone.
-                      </div>
-                    </div>
-                  ) : week.week === 1 ? (
-                    <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone. Base Assignment requires three initial black and white studies at 16:9, and Take It to the Next Level requires three color versions at 16:9 (but they can also be 9:16).</span>
-                  ) : week.week === 5 ? (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
-                        Due Date: August 1st (End of Class)
-                      </div>
-                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
-                        This week features a single, unified Character Development assignment. Please submit:
-                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
-                          <li style={{ marginBottom: '4px' }}><strong>1. Thumbnail Exploration Page</strong> (Min. 20 thumbnails, 1920 × 1080 px)</li>
-                          <li style={{ marginBottom: '4px' }}><strong>2. Character Model Sheet</strong> (Name, full-body design, 5 expressions/poses, 11" × 17", 150 PPI)</li>
-                          <li style={{ marginBottom: '4px' }}><strong>3. Final Character Illustration</strong> (Rendered character integrated into an environment) — <em>Optional</em></li>
-                        </ul>
-                      </div>
-                    </div>
-                  ) : week.week === 6 || week.week === 7 ? (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
-                        Due Date: August 8th (End of Class)
-                      </div>
-                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
-                        This week features Assignment 4: Narrative Sequence &amp; Storyboarding tracks:
-                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
-                          <li style={{ marginBottom: '4px' }}>
-                            <strong>Base Assignment: 3-Panel Comic &amp; Turnaround</strong> — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout.
-                          </li>
-                          <li style={{ marginBottom: '4px' }}>
-                            <strong>Next Level: Storyboard Sequence &amp; Turnarounds</strong> — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies.
-                          </li>
-                          <li style={{ marginBottom: '4px' }}>
-                            <strong>Advanced Integration: Blender Grease Pencil / Animatic Block-In</strong> — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. — <em>Optional</em>
-                          </li>
-                        </ul>
-                      </div>
-                      <div style={{ fontSize: '12px', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.18)', color: '#b45309' }}>
-                        <strong>Capstone Milestone:</strong> One-Page Creative Brief due August 8th; Capstone Reference Board due August 15th.
-                      </div>
-                    </div>
-                  ) : week.week === 8 ? (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px' }}>
-                        Due Dates: August 8th (Creative Brief) &amp; August 15th (Capstone Reference Board)
-                      </div>
-                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
-                        Please prepare and submit the following Capstone Client Simulation deliverables:
-                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
-                          <li style={{ marginBottom: '4px' }}>
-                            <strong>1. One-Page Creative Brief</strong> — Define your project scope, client simulation premise, problem statement, target audience, key message, and Hero Project track. <em>(Due Aug 8, End of Class)</em>
-                          </li>
-                          <li style={{ marginBottom: '4px' }}>
-                            <strong>2. Capstone Reference Board Layout</strong> — Complete your full visual reference board using the provided SVG template (<code style={{ background: 'rgba(245, 158, 11, 0.15)', padding: '1px 5px', borderRadius: '3px' }}>Capstone_Project_Development_Template.svg</code>) or your own InDesign/Illustrator grid. <em>(Due Aug 15, End of Class)</em>
-                          </li>
-                        </ul>
-                      </div>
-                      <div style={{ fontSize: '12px', marginTop: '4px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.18)', color: '#b45309', fontStyle: 'italic' }}>
-                        <strong>Tip:</strong> Complete your Creative Brief first to clarify your Hero Project track choice before assembling your reference board layout.
-                      </div>
-                    </div>
-                  ) : (
-                    <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone.</span>
-                  )}
-                </div>
-              </div>
-            </div>
           )}
         </div>
       )}

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repomix>
+  <summary>
+    <feature>Your Notes (Autosave &amp; Supabase Cloud Sync)</feature>
+    <description>Complete source code, persistence layer, Supabase cloud sync, React UI, and CSS for the note-taking feature on curriculum week cards.</description>
+  </summary>
+
+  <files>
+    <file path="src/App.jsx" section="Local Persistence Functions">
+<![CDATA[
+const STORAGE_PREFIX = `cp-v${config.storageVersion}-notes-week-`;
+
+function loadNote(weekNum) {
+  try {
+    return localStorage.getItem(STORAGE_PREFIX + weekNum) || '';
+  } catch {
+    return '';
+  }
+}
+
+function saveNote(weekNum, value) {
+  try {
+    localStorage.setItem(STORAGE_PREFIX + weekNum, value);
+  } catch {}
+}
+]]>
+    </file>
+
+    <file path="src/App.jsx" section="WeekCard Component Notes Hooks">
+<![CDATA[
+function WeekCard({ week, ...props }) {
+  const [notes, setNotes] = useState(() => loadNote(week.week));
+  const [savedAt, setSavedAt] = useState(null);
+  const [syncStatus, setSyncStatus] = useState(supabase ? 'connecting...' : null);
+
+  // Fetch initial notes from Supabase (if connected)
+  useEffect(() => {
+    if (!supabase) return;
+    let isMounted = true;
+    supabase
+      .from('notes')
+      .select('content')
+      .eq('week_number', week.week)
+      .single()
+      .then(({ data, error }) => {
+        if (!isMounted) return;
+        if (data && !error) {
+          setNotes(data.content || '');
+          saveNote(week.week, data.content || '');
+        }
+        setSyncStatus(null);
+      })
+      .catch(() => {
+        if (isMounted) setSyncStatus(null);
+      });
+    return () => { isMounted = false; };
+  }, [week.week]);
+
+  // Save notes locally and remotely with debouncing
+  useEffect(() => {
+    const t = setTimeout(async () => {
+      // Always save locally first
+      saveNote(week.week, notes);
+      setSavedAt(Date.now());
+      
+      // Then try cloud sync
+      if (supabase) {
+        try {
+          setSyncStatus('syncing...');
+          const { error } = await supabase
+            .from('notes')
+            .upsert({ week_number: week.week, content: notes });
+          setSyncStatus(error ? 'sync error — saved locally' : 'cloud saved');
+        } catch {
+          setSyncStatus('offline — saved locally');
+        }
+        setTimeout(() => setSyncStatus(null), 2500);
+      }
+    }, 800);
+    return () => clearTimeout(t);
+  }, [notes, week.week]);
+]]>
+    </file>
+
+    <file path="src/App.jsx" section="WeekCard Notes Textarea Render">
+<![CDATA[
+      <div className="notes-wrap">
+        <label className="notes-label" htmlFor={`notes-${week.week}`}>Your notes</label>
+        <textarea
+          id={`notes-${week.week}`}
+          className="notes"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="Prep, reflections, references, links…"
+          rows={6}
+        />
+        <div className="save-row">
+          {syncStatus ? (
+            <span className="saved">{syncStatus}</span>
+          ) : savedAt ? (
+            <span className="saved">local save</span>
+          ) : null}
+        </div>
+      </div>
+]]>
+    </file>
+
+    <file path="src/supabaseClient.js">
+<![CDATA[
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+const isValidUrl = (url) => {
+  if (!url || typeof url !== 'string') return false;
+  return url.startsWith('http://') || url.startsWith('https://');
+};
+
+let client = null;
+
+if (isValidUrl(supabaseUrl) && supabaseKey) {
+  try {
+    client = createClient(supabaseUrl, supabaseKey);
+  } catch (e) {
+    console.warn('[SupabaseClient] Initialization failed, falling back to local mode:', e);
+    client = null;
+  }
+}
+
+export const supabase = client;
+]]>
+    </file>
+
+    <file path="src/index.css" section="Notes CSS Styles">
+<![CDATA[
+/* notes */
+
+.notes-wrap {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px dashed var(--hairline);
+}
+
+.notes-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 6px;
+}
+
+.notes {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--hairline);
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+  resize: vertical;
+  min-height: 96px;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.notes::placeholder { color: var(--ink-mute); }
+
+.notes:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(168, 72, 42, 0.02);
+}
+
+.save-row {
+  height: 14px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.saved {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--ink-mute);
+  animation: fadeInOut 1600ms ease;
+}
+]]>
+    </file>
+  </files>
+</repomix>

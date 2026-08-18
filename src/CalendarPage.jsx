@@ -662,7 +662,7 @@ export default function CalendarPage() {
                     )}
 
                     {/* Sub-nav Overview Link */}
-                    {selectedSession.week <= 7 && (
+                    {selectedSession.week <= 9 && (
                       <div style={{ marginTop: '24px', borderTop: '1px solid var(--hairline, #DDD6C6)', paddingTop: '16px', textAlign: 'center' }}>
                         {role === 'student' && !isWeekReleased(selectedSession.week) ? (
                           <span 

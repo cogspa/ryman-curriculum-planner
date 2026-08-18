@@ -1,46 +1,40 @@
 This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
 
-<file_summary>
-This section contains a summary of this file.
+# File Summary
 
-<purpose>
+## Purpose
 This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
 It is designed to be easily consumable by AI systems for analysis, code review,
 or other automated processes.
-</purpose>
 
-<file_format>
+## File Format
 The content is organized as follows:
 1. This summary section
 2. Repository information
 3. Directory structure
 4. Repository files (if enabled)
 5. Multiple file entries, each consisting of:
-  - File path as an attribute
-  - Full contents of the file
-</file_format>
+  a. A header with the file path (## File: path/to/file)
+  b. The full contents of the file in a code block
 
-<usage_guidelines>
+## Usage Guidelines
 - This file should be treated as read-only. Any changes should be made to the
   original repository files, not this packed version.
 - When processing this file, use the file path to distinguish
   between different files in the repository.
 - Be aware that this file may contain sensitive information. Handle it with
   the same level of security as you would the original repository.
-</usage_guidelines>
 
-<notes>
+## Notes
 - Some files may have been excluded based on .gitignore rules and Repomix's configuration
 - Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
 - Files matching these patterns are excluded: src/assets/Converting zip contents into an interactive app - Claude_files/**, repomix-output.*
 - Files matching patterns in .gitignore are excluded
 - Files matching default ignore patterns are excluded
 - Files are sorted by Git change count (files with more changes are at the bottom)
-</notes>
 
-</file_summary>
-
-<directory_structure>
+# Directory Structure
+```
 .netlify/
   netlify.toml
   state.json
@@ -200,16 +194,17 @@ repomix-week1-assignment1.xml
 repomix-week4.md
 tuesday_schedule.csv
 vite.config.js
-</directory_structure>
+```
 
-<files>
-This section contains the contents of the repository's files.
+# Files
 
-<file path="public/_redirects">
+## File: public/_redirects
+````
 /*    /index.html   200
-</file>
+````
 
-<file path="src/content/week01Topics.js">
+## File: src/content/week01Topics.js
+````javascript
 // ──────────────────────────────────────────────────────────────────
 //  WEEK 01 TOPICS DATA SOURCE
 //  Extracted from PCC DMA 12 corpus.
@@ -677,9 +672,10 @@ export const topicList = [
   { key: 'value-composition-gesture-form', label: 'Value, composition, gesture, and form', isNew: false },
   { key: 'workflow-fundamentals', label: 'Side-topic conversations (Tue Zoom): Wacom/iPad workflow setup, canvas size, resolution, file types, layer fundamentals, file-naming conventions', isNew: false },
 ];
-</file>
+````
 
-<file path="src/content/week02Topics.js">
+## File: src/content/week02Topics.js
+````javascript
 // ──────────────────────────────────────────────────────────────────
 //  WEEK 02 TOPICS DATA SOURCE
 //  Extracted from PCC DMA 12 corpus.
@@ -1037,9 +1033,10 @@ export const readingsList = [
   { key: 'canvas-simulation', label: 'Perlin/Fractal Noise and Cellular/Worley Noise — algorithmic surface generation', isNew: true },
   { key: 'cracked-earth-texture', label: 'Cracked Earth Texture (video walkthrough) — canvas simulation demo', isNew: true },
 ];
-</file>
+````
 
-<file path="src/content/week04Topics.js">
+## File: src/content/week04Topics.js
+````javascript
 // ──────────────────────────────────────────────────────────────────
 //  WEEK 04 TOPICS DATA SOURCE
 //  Adapted from PCC DMA 12 corpus + new framing.
@@ -1590,9 +1587,10 @@ export const readingsList = [
   { key: 'illustrator-intro', label: 'Tools: Adobe Illustrator — intro (vectors, Pen tool, Boolean operations, Image Trace)', isNew: false },
   { key: 'indesign-intro', label: 'Tools: Adobe InDesign — portfolio basics (frames, masters, multi-page layout)', isNew: true },
 ];
-</file>
+````
 
-<file path="src/pages/DefinePresetsLesson.jsx">
+## File: src/pages/DefinePresetsLesson.jsx
+````javascript
 import React from "react";
 import { Link } from "react-router-dom";
 import TopicNav from "./TopicNav.jsx";
@@ -1933,9 +1931,10 @@ const CSS = `
   .dpl-card:hover{ transform:translateY(-2px); border-color:${T.oxbloodSoft}; }
 }
 `;
-</file>
+````
 
-<file path="src/pages/NoiseLesson.jsx">
+## File: src/pages/NoiseLesson.jsx
+````javascript
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import TopicNav from "./TopicNav.jsx";
@@ -2270,9 +2269,10 @@ const CSS = `
   .nz-root *, .nz-root *::before, .nz-root *::after { transition: none !important; animation: none !important; }
 }
 `;
-</file>
+````
 
-<file path="src/pages/NoiseVsPattern.jsx">
+## File: src/pages/NoiseVsPattern.jsx
+````javascript
 import React, { useEffect, useRef, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import TopicNav from "./TopicNav.jsx";
@@ -3058,9 +3058,10 @@ const S = {
     color: C.inkSoft,
   },
 };
-</file>
+````
 
-<file path="src/pages/PixelWaveSample.jsx">
+## File: src/pages/PixelWaveSample.jsx
+````javascript
 import { useState, useRef, useEffect, useCallback } from "react";
 
 /**
@@ -3457,9 +3458,10 @@ export default function PixelWaveSample() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/TopicNav.jsx">
+## File: src/pages/TopicNav.jsx
+````javascript
 import { Link } from 'react-router-dom';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
 
@@ -3553,9 +3555,10 @@ const backLinkStyle = {
   flexShrink: 0,
   opacity: 0.7,
 };
-</file>
+````
 
-<file path="src/pages/Week01Shortcuts.jsx">
+## File: src/pages/Week01Shortcuts.jsx
+````javascript
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -3848,9 +3851,10 @@ const footerCardStyle = {
   color: '#8b3a2f',
   fontFamily: 'Georgia, serif',
 };
-</file>
+````
 
-<file path="src/pages/Week01TopicDetail.jsx">
+## File: src/pages/Week01TopicDetail.jsx
+````javascript
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOPIC_DETAILS, topicList } from '../content/week01Topics.js';
@@ -4057,9 +4061,10 @@ const backButtonStyle = {
   display: 'inline-block',
   marginBottom: '16px',
 };
-</file>
+````
 
-<file path="src/pages/Week01Videos.jsx">
+## File: src/pages/Week01Videos.jsx
+````javascript
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -4238,9 +4243,10 @@ const videoTitleStyle = {
   margin: 0,
   color: '#2a2418',
 };
-</file>
+````
 
-<file path="src/pages/Week02TopicDetail.jsx">
+## File: src/pages/Week02TopicDetail.jsx
+````javascript
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOPIC_DETAILS, topicList } from '../content/week02Topics.js';
@@ -4385,9 +4391,10 @@ const backButtonStyle = {
   display: 'inline-block',
   marginBottom: '16px',
 };
-</file>
+````
 
-<file path="src/pages/Week04TopicDetail.jsx">
+## File: src/pages/Week04TopicDetail.jsx
+````javascript
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOPIC_DETAILS, topicList } from '../content/week04Topics.js';
@@ -4527,9 +4534,10 @@ const backButtonStyle = {
   display: 'inline-block',
   marginBottom: '16px',
 };
-</file>
+````
 
-<file path="src/pages/Week07TopicDetail.jsx">
+## File: src/pages/Week07TopicDetail.jsx
+````javascript
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOPIC_DETAILS, topicList } from '../content/week07Topics.js';
@@ -4669,9 +4677,10 @@ const backButtonStyle = {
   display: 'inline-block',
   marginBottom: '16px',
 };
-</file>
+````
 
-<file path="src/ClassFAQPage.jsx">
+## File: src/ClassFAQPage.jsx
+````javascript
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
@@ -4824,9 +4833,10 @@ export default function ClassFAQPage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/index.css">
+## File: src/index.css
+````css
 /* ─── reset ──────────────────────────────────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -7349,9 +7359,10 @@ kbd {
     width: 100%;
   }
 }
-</file>
+````
 
-<file path="src/LegalDisclaimer.jsx">
+## File: src/LegalDisclaimer.jsx
+````javascript
 import React from 'react';
 
 export default function LegalDisclaimer({ style }) {
@@ -7372,9 +7383,10 @@ export default function LegalDisclaimer({ style }) {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/MentorshipPage.jsx">
+## File: src/MentorshipPage.jsx
+````javascript
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { rosterData } from './rosterData.js';
@@ -7892,9 +7904,10 @@ export default function MentorshipPage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/PixelBudget.jsx">
+## File: src/PixelBudget.jsx
+````javascript
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import TopicNav from "./pages/TopicNav.jsx";
@@ -8355,9 +8368,10 @@ export default function PixelBudget() {
   </div>
 );
 }
-</file>
+````
 
-<file path="src/rosterData.js">
+## File: src/rosterData.js
+````javascript
 export const rosterData = [
   {
     "name": "Alyssa Valdivia",
@@ -8500,9 +8514,10 @@ export const rosterData = [
     "portfolioGoal": "A portfolio goal I want to accomplish during the program would be updating the character design portion of my portfolio website. In its current state, I've filtered out a lot of my work and the style and art direction just doesn't reflect the types of projects I would want to work on currently. I don't expect to have a full fleshed out portfolio by the end but I would like to get started on having more updated pieces to pick from and show the content I'm interested in and learn how to effectively show my though process in design. At the very least I would want a new character exploration sheet that shows off effective design as well as a narrative illustration to go with that character. I would love to work in design but at the moment I want to to explore character from a more illustrator position,  creating something like splash art."
   }
 ];
-</file>
+````
 
-<file path="src/RosterPage.jsx">
+## File: src/RosterPage.jsx
+````javascript
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
@@ -9087,9 +9102,10 @@ export default function RosterPage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/SwatchForge.jsx">
+## File: src/SwatchForge.jsx
+````javascript
 import React, { useRef, useState, useEffect, useCallback } from "react";
 
 /**
@@ -9514,9 +9530,10 @@ export default function SwatchForge() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/syllabusHistory.js">
+## File: src/syllabusHistory.js
+````javascript
 // ──────────────────────────────────────────────────────────────────
 //  SYLLABUS VERSION HISTORY SNAPSHOTS
 //  Allows users to toggle/scroll through past versions of the syllabus.
@@ -9877,9 +9894,10 @@ export const syllabusVersions = [
     ]
   }
 ];
-</file>
+````
 
-<file path="index.html">
+## File: index.html
+````html
 <!doctype html>
 <html lang="en">
   <head>
@@ -9898,9 +9916,10 @@ export const syllabusVersions = [
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-</file>
+````
 
-<file path="README.md">
+## File: README.md
+````markdown
 # Curriculum Planner
 
 A 12-week visual curriculum planner with persistent notes — Tuesdays + Saturdays, editorial paper aesthetic.
@@ -9972,9 +9991,10 @@ src/
 ├── index.css        ← styles
 └── main.jsx         ← entry
 ```
-</file>
+````
 
-<file path="tuesday_schedule.csv">
+## File: tuesday_schedule.csv
+````
 Week,Date,Speaker/Guest,Topics
 1,June 23, 2026,TBD,"Class Introduction & Meet and Greet; Reveal Studio Logistics & Procedures (directions, parking, entry, safety); Overview of the program, Wacom/iPad setup checklist, and file-naming rules; Discussion: Preview of Saturday's classical-to-digital translation paradigm"
 2,June 30, 2026,Senior digital illustrator — live demo on building a personal brush library,"Discussion: Simulating tactile surfaces in a backlit digital space; Preview: Tuesday readings review — Noise vs. Pattern & Procedural generation; Workflow breakdown: Contrast preparation for custom brush presets"
@@ -9989,18 +10009,20 @@ Week,Date,Speaker/Guest,Topics
 11,September 1, 2026,TBD,"Discussion: Selection vs. clutter — why removing weaker pieces saves a portfolio; Preview: Interactive web formats vs. static multi-page PDF presentation books; Workflow breakdown: Grid alignments and negative space in portfolio cards"
 12,September 8, 2026,Past graduates sharing their showcase experiences (Guest Speakers),"Discussion: Formulating a cohesive narrative about your creative trajectory; Preview: Presentation staging, pacing, and time management; Workflow breakdown: AV guidelines, screen share checks, and backup decks"
 13,September 15, 2026,TBD,"Discussion: Networking and professional social etiquette at Reveal; Preview: Meet the panel profiles and company briefs; Workflow breakdown: Following up, promo cards, and email templates"
-</file>
+````
 
-<file path="vite.config.js">
+## File: vite.config.js
+````javascript
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
 });
-</file>
+````
 
-<file path=".netlify/netlify.toml">
+## File: .netlify/netlify.toml
+````toml
 plugins = []
 headers = []
 
@@ -10039,19 +10061,22 @@ force = false
 [redirects.conditions]
 
 [redirects.headers]
-</file>
+````
 
-<file path=".netlify/state.json">
+## File: .netlify/state.json
+````json
 {
 	"siteId": "df949b44-534a-41da-bc08-5a728fee81d9"
 }
-</file>
+````
 
-<file path="public/brief-anatomy-plate.svg">
+## File: public/brief-anatomy-plate.svg
+````
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900"><rect width="1200" height="900" fill="#F2EBD8"/><line x1="0" y1="0" x2="1200" y2="0" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="26" x2="1200" y2="26" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="52" x2="1200" y2="52" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="78" x2="1200" y2="78" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="104" x2="1200" y2="104" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="130" x2="1200" y2="130" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="156" x2="1200" y2="156" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="182" x2="1200" y2="182" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="208" x2="1200" y2="208" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="234" x2="1200" y2="234" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="260" x2="1200" y2="260" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="286" x2="1200" y2="286" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="312" x2="1200" y2="312" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="338" x2="1200" y2="338" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="364" x2="1200" y2="364" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="390" x2="1200" y2="390" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="416" x2="1200" y2="416" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="442" x2="1200" y2="442" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="468" x2="1200" y2="468" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="494" x2="1200" y2="494" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="520" x2="1200" y2="520" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="546" x2="1200" y2="546" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="572" x2="1200" y2="572" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="598" x2="1200" y2="598" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="624" x2="1200" y2="624" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="650" x2="1200" y2="650" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="676" x2="1200" y2="676" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="702" x2="1200" y2="702" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="728" x2="1200" y2="728" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="754" x2="1200" y2="754" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="780" x2="1200" y2="780" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="806" x2="1200" y2="806" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="832" x2="1200" y2="832" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="858" x2="1200" y2="858" stroke="#1F1B16" stroke-opacity="0.035"/><line x1="0" y1="884" x2="1200" y2="884" stroke="#1F1B16" stroke-opacity="0.035"/><text x="600.0" y="52" font-family="'Arial Black', Impact, sans-serif" font-size="34" fill="#1F1B16" text-anchor="middle" letter-spacing="1">ANATOMY OF A PROFESSIONAL DESIGN BRIEF</text><text x="600.0" y="76" font-family="'Courier New', monospace" font-size="12" fill="#8B8272" text-anchor="middle" letter-spacing="4">FIG. 1 — THE DOCUMENT, DISSECTED · CLIENT SIMULATION FRAMEWORK</text><line x1="60" y1="90" x2="1140" y2="90" stroke="#1F1B16" stroke-width="2"/><rect x="435" y="125" width="340" height="700" fill="#1F1B16"/><rect x="430" y="120" width="340" height="700" fill="#FDFBF3" stroke="#1F1B16" stroke-width="2"/><rect x="446" y="138" width="308" height="44" fill="none" stroke="#1F1B16" stroke-width="1.2"/><text x="452" y="151" font-family="'Courier New', monospace" font-size="7.5" fill="#C43B2A" letter-spacing="1">PROJECT</text><line x1="580" y1="151" x2="746" y2="151" stroke="#C9BD9E"/><text x="452" y="164" font-family="'Courier New', monospace" font-size="7.5" fill="#C43B2A" letter-spacing="1">CLIENT</text><line x1="580" y1="164" x2="746" y2="164" stroke="#C9BD9E"/><text x="452" y="177" font-family="'Courier New', monospace" font-size="7.5" fill="#C43B2A" letter-spacing="1">DESIGNER · DATE · VERSION</text><line x1="580" y1="177" x2="746" y2="177" stroke="#C9BD9E"/><rect x="446" y="192" width="308" height="12" fill="#1F1B16"/><text x="451" y="201.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">2 · CLIENT OVERVIEW</text><rect x="446" y="210" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="219" width="277.2" height="2" fill="#B9B09A"/><rect x="446" y="228" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="247" width="308" height="12" fill="#1F1B16"/><text x="451" y="256.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">3 · PROJECT BACKGROUND</text><rect x="446" y="265" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="274" width="277.2" height="2" fill="#B9B09A"/><rect x="446" y="283" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="302" width="308" height="12" fill="#C43B2A"/><text x="451" y="311.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">4 · PROBLEM STATEMENT</text><rect x="446" y="320" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="329" width="277.2" height="2" fill="#B9B09A"/><rect x="446" y="338" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="357" width="308" height="12" fill="#1F1B16"/><text x="451" y="366.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">5-6 · PURPOSE · GOAL · OBJECTIVES</text><rect x="446" y="375" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="384" width="277.2" height="2" fill="#B9B09A"/><rect x="446" y="393" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="412" width="308" height="12" fill="#1F1B16"/><text x="451" y="421.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">7 · TARGET AUDIENCE</text><rect x="446" y="430" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="439" width="277.2" height="2" fill="#B9B09A"/><rect x="446" y="448" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="467" width="308" height="12" fill="#1F1B16"/><text x="451" y="476.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">8 · DESIRED RESPONSE</text><rect x="446" y="485" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="494" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="513" width="308" height="12" fill="#C43B2A"/><text x="451" y="522.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">9 · KEY MESSAGE</text><rect x="446" y="531" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="540" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="559" width="308" height="12" fill="#1F1B16"/><text x="451" y="568.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">10-11 · SCOPE &amp; DELIVERABLES</text><rect x="446" y="577" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="586" width="277.2" height="2" fill="#B9B09A"/><rect x="446" y="595" width="261.8" height="2" fill="#B9B09A"/><rect x="446" y="604" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="623" width="308" height="12" fill="#1F1B16"/><text x="451" y="632.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">13-14 · TONE &amp; VISUAL DIRECTION</text><rect x="446" y="641" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="650" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="669" width="308" height="12" fill="#1F1B16"/><text x="451" y="678.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">16 · CONSTRAINTS</text><rect x="446" y="687" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="696" width="169.4" height="2" fill="#B9B09A"/><rect x="446" y="715" width="308" height="12" fill="#1F1B16"/><text x="451" y="724.5" font-family="'Courier New', monospace" font-size="8" fill="#FDFBF3" letter-spacing="1.5" font-weight="bold">17-19 · TIMELINE · APPROVAL · SUCCESS</text><rect x="446" y="733" width="292.59999999999997" height="2" fill="#B9B09A"/><rect x="446" y="742" width="277.2" height="2" fill="#B9B09A"/><rect x="446" y="751" width="169.4" height="2" fill="#B9B09A"/><line x1="446" y1="784" x2="592.0" y2="784" stroke="#1F1B16"/><line x1="608.0" y1="784" x2="754" y2="784" stroke="#1F1B16"/><text x="446" y="795" font-family="'Courier New', monospace" font-size="6.5" fill="#8B8272">CLIENT APPROVAL</text><text x="608.0" y="795" font-family="'Courier New', monospace" font-size="6.5" fill="#8B8272">DESIGNER</text><g transform="translate(652,128) rotate(-7)"><rect width="104" height="30" fill="none" stroke="#C43B2A" stroke-width="2"/><text x="52" y="14" font-family="'Courier New', monospace" font-size="9" fill="#C43B2A" text-anchor="middle" font-weight="bold" letter-spacing="1">BRIEF v1.0</text><text x="52" y="25" font-family="'Courier New', monospace" font-size="6" fill="#C43B2A" text-anchor="middle">APPROVED FOR PRODUCTION</text></g><circle cx="215.6" cy="144" r="2.5" fill="#1F1B16"/><polyline points="215.6,144 404,144 422,160.0" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="424" cy="160.0" r="3.5" fill="#C43B2A"/><rect x="60" y="136" width="30" height="20" fill="#1F1B16"/><text x="75.0" y="150" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">1</text><text x="98" y="150" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">TITLE BLOCK</text><text x="60" y="168" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Project, client, designer, date, version.</text><text x="60" y="181" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">The document&#x27;s ID card — versioning matters.</text><circle cx="301.9" cy="209" r="2.5" fill="#1F1B16"/><polyline points="301.9,209 404,209 422,214.5" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="424" cy="214.5" r="3.5" fill="#C43B2A"/><rect x="60" y="201" width="39.5" height="20" fill="#1F1B16"/><text x="79.75" y="215" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">2-3</text><text x="107.5" y="215" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">CLIENT &amp; BACKGROUND</text><text x="60" y="233" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Who is commissioning this and why now?</text><text x="60" y="246" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Mission, industry, and the gap in their existing work.</text><circle cx="273.2" cy="294" r="2.5" fill="#1F1B16"/><polyline points="273.2,294 404,294 422,324.5" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="424" cy="324.5" r="3.5" fill="#C43B2A"/><rect x="60" y="286" width="30" height="20" fill="#1F1B16"/><text x="75.0" y="300" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">4</text><text x="98" y="300" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">PROBLEM STATEMENT</text><text x="60" y="318" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">The heart of the brief. Needs + audience + reason —</text><text x="60" y="331" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">never the visual solution. Leaves room for discovery.</text><circle cx="263.5" cy="379" r="2.5" fill="#1F1B16"/><polyline points="263.5,379 404,379 422,379.5" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="424" cy="379.5" r="3.5" fill="#C43B2A"/><rect x="60" y="371" width="39.5" height="20" fill="#1F1B16"/><text x="79.75" y="385" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">5-6</text><text x="107.5" y="385" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">PURPOSE &amp; GOALS</text><text x="60" y="403" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">One broad goal; 2-4 measurable objectives</text><text x="60" y="416" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">that can be checked at the end.</text><circle cx="254.0" cy="459" r="2.5" fill="#1F1B16"/><polyline points="254.0,459 404,459 422,434.5" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="424" cy="434.5" r="3.5" fill="#C43B2A"/><rect x="60" y="451" width="30" height="20" fill="#1F1B16"/><text x="75.0" y="465" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">7</text><text x="98" y="465" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">TARGET AUDIENCE</text><text x="60" y="483" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Primary (who engages) + secondary (who funds,</text><text x="60" y="496" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">publishes, hires). Never &#x27;everyone.&#x27;</text><circle cx="263.6" cy="539" r="2.5" fill="#1F1B16"/><polyline points="263.6,539 404,539 422,485.0" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="424" cy="485.0" r="3.5" fill="#C43B2A"/><rect x="60" y="531" width="30" height="20" fill="#1F1B16"/><text x="75.0" y="545" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">8</text><text x="98" y="545" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">DESIRED RESPONSE</text><text x="60" y="563" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Think · Feel · Remember · Do —</text><text x="60" y="576" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">the four verbs every experience is judged by.</text><circle cx="187.8" cy="784" r="2.5" fill="#1F1B16"/><polyline points="187.8,784 404,784 422,784.0" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="424" cy="784.0" r="3.5" fill="#C43B2A"/><rect x="60" y="776" width="31.0" height="20" fill="#1F1B16"/><text x="75.5" y="790" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">20</text><text x="99.0" y="790" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">APPROVAL</text><text x="60" y="808" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Signatures make it a contract:</text><text x="60" y="821" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">the shared reference for every future critique.</text><circle cx="798" cy="179" r="2.5" fill="#1F1B16"/><polyline points="798,179 796,179 778,531.0" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="776" cy="531.0" r="3.5" fill="#C43B2A"/><rect x="810" y="171" width="30" height="20" fill="#1F1B16"/><text x="825.0" y="185" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">9</text><text x="848" y="185" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">KEY MESSAGE</text><text x="810" y="203" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">The single idea underneath everything.</text><text x="810" y="216" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Not a slogan — a compass for story, image, tone.</text><circle cx="798" cy="314" r="2.5" fill="#1F1B16"/><polyline points="798,314 796,314 778,586.0" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="776" cy="586.0" r="3.5" fill="#C43B2A"/><rect x="810" y="306" width="56.5" height="20" fill="#1F1B16"/><text x="838.25" y="320" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">10-11</text><text x="874.5" y="320" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">SCOPE &amp; DELIVERABLES</text><text x="810" y="338" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">What&#x27;s IN, what&#x27;s OUT, and exactly what ships:</text><text x="810" y="351" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">quantity, dimensions, duration, format, platform.</text><text x="810" y="364" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">The armor against scope creep.</text><circle cx="798" cy="469" r="2.5" fill="#1F1B16"/><polyline points="798,469 796,469 778,641.0" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="776" cy="641.0" r="3.5" fill="#C43B2A"/><rect x="810" y="461" width="56.5" height="20" fill="#1F1B16"/><text x="838.25" y="475" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">13-14</text><text x="874.5" y="475" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">TONE &amp; DIRECTION</text><text x="810" y="493" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">3-5 personality words + what it should NOT feel</text><text x="810" y="506" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">like. Visual qualities without prescribing the design.</text><circle cx="798" cy="569" r="2.5" fill="#1F1B16"/><polyline points="798,569 796,569 778,687.0" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="776" cy="687.0" r="3.5" fill="#C43B2A"/><rect x="810" y="561" width="31.0" height="20" fill="#1F1B16"/><text x="825.5" y="575" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">16</text><text x="849.0" y="575" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">CONSTRAINTS</text><text x="810" y="593" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Weeks, tools, platforms, budget, age rating.</text><text x="810" y="606" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Limits that focus decisions, not block them.</text><circle cx="798" cy="659" r="2.5" fill="#1F1B16"/><polyline points="798,659 796,659 778,737.5" fill="none" stroke="#1F1B16" stroke-width="1.2"/><circle cx="776" cy="737.5" r="3.5" fill="#C43B2A"/><rect x="810" y="651" width="56.5" height="20" fill="#1F1B16"/><text x="838.25" y="665" font-family="'Courier New', monospace" font-size="11" fill="#F2EBD8" text-anchor="middle" font-weight="bold">17-19</text><text x="874.5" y="665" font-family="'Arial Black', Impact, sans-serif" font-size="13.5" fill="#1F1B16" letter-spacing="0.5">TIMELINE &amp; SUCCESS</text><text x="810" y="683" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">Review milestones, who approves, revision rounds,</text><text x="810" y="696" font-family="Arial, sans-serif" font-size="10.5" fill="#8B8272">and how the client knows it worked.</text><line x1="60" y1="854" x2="1140" y2="854" stroke="#1F1B16" stroke-width="2"/><text x="60" y="876" font-family="'Courier New', monospace" font-size="10" fill="#8B8272" letter-spacing="2">CLIENT SIMULATION FRAMEWORK · CAPSTONE</text><text x="1140" y="876" font-family="'Courier New', monospace" font-size="10" fill="#8B8272" text-anchor="end" letter-spacing="2">PLATE I — READ TOP TO BOTTOM, ARGUE EVERY SECTION</text></svg>
-</file>
+````
 
-<file path="public/brief-only.svg">
+## File: public/brief-only.svg
+````
 <svg xmlns="http://www.w3.org/2000/svg" width="385" height="745" viewBox="410 100 385 745">
 <rect x="435" y="125" width="340" height="700" fill="#1F1B16"/>
 <rect x="430" y="120" width="340" height="700" fill="#FDFBF3" stroke="#1F1B16" stroke-width="2"/>
@@ -10124,9 +10149,10 @@ force = false
 <text x="52" y="25" font-family="'Courier New', monospace" font-size="6" fill="#C43B2A" text-anchor="middle">APPROVED FOR PRODUCTION</text>
 </g>
 </svg>
-</file>
+````
 
-<file path="public/Capstone_Project_Development_Template.svg">
+## File: public/Capstone_Project_Development_Template.svg
+````
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -10326,9 +10352,10 @@ force = false
     <text class="tiny" x="48" y="689">EDITABLE SVG TEMPLATE • REPLACE DASHED BOXES WITH ARTWORK • EDIT ALL PLACEHOLDER TEXT • BUILT FOR ILLUSTRATOR + INDESIGN</text>
   </g>
 </svg>
-</file>
+````
 
-<file path="public/design-brief-presentation.jsx">
+## File: public/design-brief-presentation.jsx
+````javascript
 import React, { useState, useEffect, useCallback } from "react";
 
 /* ————————————————————————————————————————————————
@@ -11040,25 +11067,30 @@ const navBtn = (disabled) => ({
   color: disabled ? T.pencil : T.paper, padding: "7px 14px", fontSize: 12,
   cursor: disabled ? "default" : "pointer", boxShadow: disabled ? "none" : `2px 2px 0 ${T.ink}`,
 });
-</file>
+````
 
-<file path="public/style1-classic-minimal.svg">
+## File: public/style1-classic-minimal.svg
+````
 <svg xmlns="http://www.w3.org/2000/svg" width="850" height="1100" viewBox="0 0 850 1100"><rect width="850" height="1100" fill="#FFFFFF"/><rect x="30" y="30" width="790" height="1040" fill="none" stroke="#DDDDDD" stroke-width="1"/><text x="780" y="70" font-family="Arial" font-size="11" font-weight="bold" fill="#111111" text-anchor="end">STUDIO / COURSE NAME</text><text x="70" y="105" font-family="Georgia, serif" font-size="26" fill="#111111">Design Brief Template</text><line x1="70" y1="118" x2="780" y2="118" stroke="#333333" stroke-width="1.5"/><text x="70" y="155" font-family="Arial" font-size="12" font-weight="bold" fill="#111111">Project:</text><line x1="134" y1="157" x2="434" y2="157" stroke="#111111" stroke-width="0.8"/><text x="470" y="155" font-family="Arial" font-size="12" font-weight="bold" fill="#111111">Date:</text><line x1="513" y1="157" x2="713" y2="157" stroke="#111111" stroke-width="0.8"/><text x="70" y="183" font-family="Arial" font-size="12" font-weight="bold" fill="#111111">Client:</text><line x1="127" y1="185" x2="430" y2="185" stroke="#111111" stroke-width="0.8"/><text x="470" y="183" font-family="Arial" font-size="12" font-weight="bold" fill="#111111">Version:</text><line x1="534" y1="185" x2="714" y2="185" stroke="#111111" stroke-width="0.8"/><text x="70" y="211" font-family="Arial" font-size="12" font-weight="bold" fill="#111111">Designer:</text><line x1="141" y1="213" x2="429" y2="213" stroke="#111111" stroke-width="0.8"/><text x="70" y="253" font-family="Arial" font-size="12.5" font-weight="bold" fill="#111111">Problem Statement:</text><text x="780" y="253" font-family="Arial" font-size="10" font-style="italic" fill="#888888" text-anchor="end">&quot;The client needs a way to ____ for ____ because ____.&quot;</text><line x1="70" y1="275" x2="780" y2="275" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="297" x2="780" y2="297" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="319" x2="780" y2="319" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="341" x2="780" y2="341" stroke="#999999" stroke-width="0.7"/><text x="70" y="381" font-family="Arial" font-size="12.5" font-weight="bold" fill="#111111">Purpose &amp; Primary Goal:</text><line x1="70" y1="403" x2="780" y2="403" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="425" x2="780" y2="425" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="447" x2="780" y2="447" stroke="#999999" stroke-width="0.7"/><text x="70" y="487" font-family="Arial" font-size="12.5" font-weight="bold" fill="#111111">Target Audience (primary / secondary):</text><line x1="70" y1="509" x2="780" y2="509" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="531" x2="780" y2="531" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="553" x2="780" y2="553" stroke="#999999" stroke-width="0.7"/><text x="70" y="593" font-family="Arial" font-size="12.5" font-weight="bold" fill="#111111">Key Message:</text><line x1="70" y1="615" x2="780" y2="615" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="637" x2="780" y2="637" stroke="#999999" stroke-width="0.7"/><text x="70" y="677" font-family="Arial" font-size="12.5" font-weight="bold" fill="#111111">Desired Response (think / feel / remember / do):</text><line x1="70" y1="699" x2="780" y2="699" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="721" x2="780" y2="721" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="743" x2="780" y2="743" stroke="#999999" stroke-width="0.7"/><text x="70" y="783" font-family="Arial" font-size="12.5" font-weight="bold" fill="#111111">Deliverables:</text><text x="780" y="783" font-family="Arial" font-size="10" font-style="italic" fill="#888888" text-anchor="end">quantity · size · duration · format · platform</text><line x1="70" y1="805" x2="780" y2="805" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="827" x2="780" y2="827" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="849" x2="780" y2="849" stroke="#999999" stroke-width="0.7"/><line x1="70" y1="871" x2="780" y2="871" stroke="#999999" stroke-width="0.7"/><text x="70" y="911" font-family="Arial" font-size="12.5" font-weight="bold" fill="#111111">Constraints:</text><text x="90" y="935" font-family="Arial" font-size="11.5" fill="#111111">1.</text><line x1="110" y1="937" x2="500" y2="937" stroke="#999999" stroke-width="0.7"/><text x="90" y="959" font-family="Arial" font-size="11.5" fill="#111111">2.</text><line x1="110" y1="961" x2="500" y2="961" stroke="#999999" stroke-width="0.7"/><text x="90" y="983" font-family="Arial" font-size="11.5" fill="#111111">3.</text><line x1="110" y1="985" x2="500" y2="985" stroke="#999999" stroke-width="0.7"/><text x="90" y="1007" font-family="Arial" font-size="11.5" fill="#111111">4.</text><line x1="110" y1="1009" x2="500" y2="1009" stroke="#999999" stroke-width="0.7"/><text x="90" y="1031" font-family="Arial" font-size="11.5" fill="#111111">5.</text><line x1="110" y1="1033" x2="500" y2="1033" stroke="#999999" stroke-width="0.7"/><text x="540" y="911" font-family="Arial" font-size="12.5" font-weight="bold" fill="#111111">Tone (3–5 words):</text><line x1="540" y1="937" x2="780" y2="937" stroke="#999999" stroke-width="0.7"/><line x1="540" y1="961" x2="780" y2="961" stroke="#999999" stroke-width="0.7"/><line x1="540" y1="985" x2="780" y2="985" stroke="#999999" stroke-width="0.7"/><line x1="540" y1="1009" x2="780" y2="1009" stroke="#999999" stroke-width="0.7"/></svg>
-</file>
+````
 
-<file path="public/style2-corporate-grid.svg">
+## File: public/style2-corporate-grid.svg
+````
 <svg xmlns="http://www.w3.org/2000/svg" width="850" height="1180" viewBox="0 0 850 1180"><rect width="850" height="1180" fill="#FFFFFF"/><text x="55" y="62" font-family="Arial" font-size="19" font-weight="bold" fill="#2E6E65" letter-spacing="1">SAMPLE CREATIVE BRIEF</text><rect x="55" y="80" width="740" height="14" fill="#111111"/><rect x="55" y="94" width="150" height="26" fill="#B9DCDC" stroke="#9FB8B6"/><rect x="205" y="94" width="590" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><text x="63" y="111" font-family="Arial" font-size="9.5" font-weight="bold" fill="#111111">PROJECT NAME</text><rect x="55" y="120" width="150" height="26" fill="#B9DCDC" stroke="#9FB8B6"/><rect x="205" y="120" width="590" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><text x="63" y="137" font-family="Arial" font-size="9.5" font-weight="bold" fill="#111111">CLIENT</text><rect x="55" y="146" width="150" height="26" fill="#B9DCDC" stroke="#9FB8B6"/><rect x="205" y="146" width="590" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><text x="63" y="163" font-family="Arial" font-size="9.5" font-weight="bold" fill="#111111">BRAND / COURSE</text><rect x="55" y="172" width="150" height="26" fill="#B9DCDC" stroke="#9FB8B6"/><rect x="205" y="172" width="590" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><text x="63" y="189" font-family="Arial" font-size="9.5" font-weight="bold" fill="#111111">PROJECT TYPE</text><rect x="55" y="198" width="150" height="104" fill="#B9DCDC" stroke="#9FB8B6"/><text x="63" y="213" font-family="Arial" font-size="9.5" font-weight="bold" fill="#111111">CONTACT /</text><text x="63" y="226" font-family="Arial" font-size="9.5" font-weight="bold" fill="#111111">APPROVALS</text><rect x="205" y="198" width="140" height="26" fill="#DFEFEF" stroke="#9FB8B6"/><text x="212" y="214" font-family="Arial" font-size="8.5" fill="#111111">NAME &amp; TITLE</text><rect x="345" y="198" width="450" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="205" y="224" width="140" height="26" fill="#DFEFEF" stroke="#9FB8B6"/><text x="212" y="240" font-family="Arial" font-size="8.5" fill="#111111">EMAIL</text><rect x="345" y="224" width="450" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="205" y="250" width="140" height="26" fill="#DFEFEF" stroke="#9FB8B6"/><text x="212" y="266" font-family="Arial" font-size="8.5" fill="#111111">PHONE</text><rect x="345" y="250" width="450" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="205" y="276" width="140" height="26" fill="#DFEFEF" stroke="#9FB8B6"/><text x="212" y="292" font-family="Arial" font-size="8.5" fill="#111111">REVIEW DATES</text><rect x="345" y="276" width="450" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="302" width="150" height="26" fill="#B9DCDC" stroke="#9FB8B6"/><text x="63" y="319" font-family="Arial" font-size="9.5" font-weight="bold" fill="#111111">DATE:</text><rect x="205" y="302" width="200" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="405" y="302" width="100" height="26" fill="#B9DCDC" stroke="#9FB8B6"/><text x="413" y="319" font-family="Arial" font-size="9.5" font-weight="bold" fill="#111111">AUTHOR:</text><rect x="505" y="302" width="290" height="26" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="346" width="740" height="24" fill="#2E6E65"/><text x="425.0" y="362" font-family="Arial" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">PROJECT OVERVIEW</text><rect x="55" y="370" width="740" height="20" fill="#EAF4F3" stroke="#9FB8B6"/><text x="63" y="383" font-family="Arial" font-size="8.5" font-style="italic" fill="#2E6E65">PURPOSE  |  problem or opportunity statement — do not prescribe the visual solution</text><rect x="55" y="390" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="414" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="438" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="478" width="740" height="24" fill="#2E6E65"/><text x="425.0" y="494" font-family="Arial" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">OBJECTIVES</text><rect x="55" y="502" width="740" height="20" fill="#EAF4F3" stroke="#9FB8B6"/><text x="63" y="515" font-family="Arial" font-size="8.5" font-style="italic" fill="#2E6E65">GOALS, OUTCOMES, MEASURABLE OBJECTIVES  |  one primary goal + 2–4 objectives</text><rect x="55" y="522" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="546" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="570" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="610" width="740" height="24" fill="#2E6E65"/><text x="425.0" y="626" font-family="Arial" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">TARGET AUDIENCE</text><rect x="55" y="634" width="740" height="20" fill="#EAF4F3" stroke="#9FB8B6"/><text x="63" y="647" font-family="Arial" font-size="8.5" font-style="italic" fill="#2E6E65">PRIMARY &amp; SECONDARY  |  who they are, interests, where they encounter the project</text><rect x="55" y="654" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="678" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="702" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="742" width="740" height="24" fill="#2E6E65"/><text x="425.0" y="758" font-family="Arial" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">KEY MESSAGE &amp; DESIRED RESPONSE</text><rect x="55" y="766" width="740" height="20" fill="#EAF4F3" stroke="#9FB8B6"/><text x="63" y="779" font-family="Arial" font-size="8.5" font-style="italic" fill="#2E6E65">THINK · FEEL · REMEMBER · DO</text><rect x="55" y="786" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="810" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="834" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="874" width="740" height="24" fill="#2E6E65"/><text x="425.0" y="890" font-family="Arial" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">DELIVERABLES &amp; SCOPE</text><rect x="55" y="898" width="740" height="20" fill="#EAF4F3" stroke="#9FB8B6"/><text x="63" y="911" font-family="Arial" font-size="8.5" font-style="italic" fill="#2E6E65">IN / OUT OF SCOPE  |  quantity, dimensions, duration, format, platform</text><rect x="55" y="918" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="942" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="966" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="990" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="1030" width="740" height="24" fill="#2E6E65"/><text x="425.0" y="1046" font-family="Arial" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">TONE &amp; VISUAL DIRECTION</text><rect x="55" y="1054" width="740" height="20" fill="#EAF4F3" stroke="#9FB8B6"/><text x="63" y="1067" font-family="Arial" font-size="8.5" font-style="italic" fill="#2E6E65">3–5 WORDS + WHAT IT SHOULD NOT FEEL LIKE</text><rect x="55" y="1074" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="1098" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="1138" width="740" height="24" fill="#2E6E65"/><text x="425.0" y="1154" font-family="Arial" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">CONSTRAINTS, TIMELINE &amp; SUCCESS</text><rect x="55" y="1162" width="740" height="20" fill="#EAF4F3" stroke="#9FB8B6"/><text x="63" y="1175" font-family="Arial" font-size="8.5" font-style="italic" fill="#2E6E65">MILESTONES · REVIEW ROUNDS · MEASURES OF SUCCESS</text><rect x="55" y="1182" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="1206" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/><rect x="55" y="1230" width="740" height="24" fill="#FFFFFF" stroke="#9FB8B6"/></svg>
-</file>
+````
 
-<file path="public/style3-studio-branded.svg">
+## File: public/style3-studio-branded.svg
+````
 <svg xmlns="http://www.w3.org/2000/svg" width="850" height="1150" viewBox="0 0 850 1150"><rect width="850" height="1150" fill="#FFFFFF"/><rect x="0" y="40" width="850" height="70" fill="#5C1E5E"/><circle cx="90" cy="75" r="26" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1.5"/><circle cx="90" cy="75" r="14.3" fill="none" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1"/><circle cx="135" cy="75" r="15" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1.5"/><circle cx="135" cy="75" r="8.25" fill="none" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1"/><circle cx="168" cy="75" r="9" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1.5"/><circle cx="168" cy="75" r="4.95" fill="none" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1"/><circle cx="700" cy="75" r="20" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1.5"/><circle cx="700" cy="75" r="11.0" fill="none" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1"/><circle cx="745" cy="75" r="12" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1.5"/><circle cx="745" cy="75" r="6.6000000000000005" fill="none" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1"/><text x="810" y="80" font-family="Arial" font-size="15" fill="#FFFFFF" text-anchor="end" font-weight="bold" letter-spacing="1">STUDIO_ Design Brief_ Template</text><text x="120" y="150" font-family="Arial" font-size="11.5" fill="#333333">This design brief template is designed to enable you to provide as much information</text><text x="120" y="167" font-family="Arial" font-size="11.5" fill="#333333">as possible so that your reviewers have a clear understanding of your project's</text><text x="120" y="184" font-family="Arial" font-size="11.5" fill="#333333">position and requirements. Complete every section before your first review.</text><text x="120" y="224" font-family="Arial" font-size="13" font-weight="bold" fill="#A2359C">Part One: Proposition Summary</text><text x="120" y="246" font-family="Arial" font-size="11" fill="#333333">Your name:</text><line x1="190.0" y1="248" x2="550.0" y2="248" stroke="#B48CB6" stroke-width="0.9"/><text x="120" y="268" font-family="Arial" font-size="11" fill="#333333">Project title:</text><line x1="214.8" y1="270" x2="550.0" y2="270" stroke="#B48CB6" stroke-width="0.9"/><text x="120" y="290" font-family="Arial" font-size="11" fill="#333333">Client (fictional):</text><line x1="245.8" y1="292" x2="550.0" y2="292" stroke="#B48CB6" stroke-width="0.9"/><text x="120" y="312" font-family="Arial" font-size="11" fill="#333333">Date / version:</text><line x1="221.0" y1="314" x2="550.0" y2="314" stroke="#B48CB6" stroke-width="0.9"/><text x="120" y="346" font-family="Arial" font-size="13" font-weight="bold" fill="#A2359C">Part Two: The Problem</text><text x="120" y="368" font-family="Arial" font-size="10" font-style="italic" fill="#A2359C">The client needs a way to ____ for ____ because ____.  (do not prescribe the solution)</text><line x1="120" y1="386" x2="730" y2="386" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="408" x2="730" y2="408" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="430" x2="730" y2="430" stroke="#B48CB6" stroke-width="0.9"/><text x="120" y="466" font-family="Arial" font-size="13" font-weight="bold" fill="#A2359C">Part Three: Purpose, Goal &amp; Objectives</text><text x="120" y="488" font-family="Arial" font-size="10" font-style="italic" fill="#A2359C">One primary goal, two to four measurable objectives.</text><line x1="120" y1="506" x2="730" y2="506" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="528" x2="730" y2="528" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="550" x2="730" y2="550" stroke="#B48CB6" stroke-width="0.9"/><text x="120" y="586" font-family="Arial" font-size="13" font-weight="bold" fill="#A2359C">Part Four: Audience &amp; Desired Response</text><text x="120" y="608" font-family="Arial" font-size="10" font-style="italic" fill="#A2359C">Primary + secondary audiences. What should they think, feel, remember, do?</text><line x1="120" y1="626" x2="730" y2="626" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="648" x2="730" y2="648" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="670" x2="730" y2="670" stroke="#B48CB6" stroke-width="0.9"/><text x="120" y="706" font-family="Arial" font-size="13" font-weight="bold" fill="#A2359C">Part Five: Key Message &amp; Tone</text><text x="120" y="728" font-family="Arial" font-size="10" font-style="italic" fill="#A2359C">One central idea. Three to five tone words — and what it should NOT feel like.</text><line x1="120" y1="746" x2="730" y2="746" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="768" x2="730" y2="768" stroke="#B48CB6" stroke-width="0.9"/><text x="120" y="804" font-family="Arial" font-size="13" font-weight="bold" fill="#A2359C">Part Six: Deliverables, Scope &amp; Constraints</text><text x="120" y="826" font-family="Arial" font-size="10" font-style="italic" fill="#A2359C">In / out of scope. Quantity, dimensions, duration, format, platform. Time &amp; tools.</text><line x1="120" y1="844" x2="730" y2="844" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="866" x2="730" y2="866" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="888" x2="730" y2="888" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="910" x2="730" y2="910" stroke="#B48CB6" stroke-width="0.9"/><line x1="120" y1="1080" x2="730" y2="1080" stroke="#A2359C" stroke-width="1"/><text x="120" y="1100" font-family="Arial" font-size="9.5" font-weight="bold" fill="#5C1E5E">Professional Practice · Capstone Client Simulation</text><text x="730" y="1100" font-family="Arial" font-size="9.5" fill="#5C1E5E" text-anchor="end">page 1 of 1</text></svg>
-</file>
+````
 
-<file path="public/style4-questionnaire.svg">
+## File: public/style4-questionnaire.svg
+````
 <svg xmlns="http://www.w3.org/2000/svg" width="850" height="1220" viewBox="0 0 850 1220"><rect width="850" height="1220" fill="#FFFFFF"/><text x="70" y="70" font-family="Arial" font-size="17" font-weight="bold" fill="#D0342C">Brand &amp; Project Design Brief for <tspan fill="#222222">Your Project Name</tspan></text><text x="70" y="92" font-family="Arial" font-size="10" font-style="italic" fill="#D0342C">Date</text><text x="70" y="120" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">Text in italics gives you tips for completing the document. Items in red are things you need to change.</text><text x="70" y="150" font-family="Arial" font-size="14" font-weight="bold" fill="#D0342C">The client</text><rect x="70" y="168" width="710" height="70" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/><line x1="70" y1="192" x2="780" y2="192" stroke="#CCCCCC"/><text x="82" y="185" font-family="Arial" font-size="11.5" font-weight="bold" fill="#222222">1.  Who is the client?</text><text x="90" y="210" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">Your fictional organization&#x27;s full name and what field it belongs to.</text><line x1="90" y1="234" x2="760" y2="234" stroke="#E0E0E0"/><rect x="70" y="252" width="710" height="108" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/><line x1="70" y1="276" x2="780" y2="276" stroke="#CCCCCC"/><text x="82" y="269" font-family="Arial" font-size="11.5" font-weight="bold" fill="#222222">2.  What do they do — and why are they commissioning this?</text><text x="90" y="294" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">&#x27;We are ____, we specialize in ____, our mission is ____.&#x27;</text><text x="90" y="310" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">Be as specific as you can.</text><line x1="90" y1="334" x2="760" y2="334" stroke="#E0E0E0"/><line x1="90" y1="356" x2="760" y2="356" stroke="#E0E0E0"/><text x="70" y="374" font-family="Arial" font-size="14" font-weight="bold" fill="#D0342C">The problem</text><rect x="70" y="392" width="710" height="108" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/><line x1="70" y1="416" x2="780" y2="416" stroke="#CCCCCC"/><text x="82" y="409" font-family="Arial" font-size="11.5" font-weight="bold" fill="#222222">3.  What does the client need?</text><text x="90" y="434" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">The client needs a way to ____ for ____ because ____.</text><text x="90" y="450" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">Leave room for discovery — no format or style decisions here.</text><line x1="90" y1="474" x2="760" y2="474" stroke="#E0E0E0"/><line x1="90" y1="496" x2="760" y2="496" stroke="#E0E0E0"/><text x="70" y="514" font-family="Arial" font-size="14" font-weight="bold" fill="#D0342C">The audience</text><rect x="70" y="532" width="710" height="108" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/><line x1="70" y1="556" x2="780" y2="556" stroke="#CCCCCC"/><text x="82" y="549" font-family="Arial" font-size="11.5" font-weight="bold" fill="#222222">4.  Who is this for?</text><text x="90" y="574" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">Primary: age, interests, media habits, where they&#x27;ll find it. Never &#x27;everyone.&#x27;</text><text x="90" y="590" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">Secondary: mentors, funders, publishers, employers.</text><line x1="90" y1="614" x2="760" y2="614" stroke="#E0E0E0"/><line x1="90" y1="636" x2="760" y2="636" stroke="#E0E0E0"/><rect x="70" y="654" width="710" height="114" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/><line x1="70" y1="678" x2="780" y2="678" stroke="#CCCCCC"/><text x="82" y="671" font-family="Arial" font-size="11.5" font-weight="bold" fill="#222222">5.  What should they think, feel, remember, and do?</text><text x="90" y="696" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">One line for each.</text><line x1="90" y1="720" x2="760" y2="720" stroke="#E0E0E0"/><line x1="90" y1="742" x2="760" y2="742" stroke="#E0E0E0"/><line x1="90" y1="764" x2="760" y2="764" stroke="#E0E0E0"/><text x="70" y="782" font-family="Arial" font-size="14" font-weight="bold" fill="#D0342C">The work</text><rect x="70" y="800" width="710" height="70" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/><line x1="70" y1="824" x2="780" y2="824" stroke="#CCCCCC"/><text x="82" y="817" font-family="Arial" font-size="11.5" font-weight="bold" fill="#222222">6.  What is the key message?</text><text x="90" y="842" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">Not a slogan — the single idea that guides story, imagery, tone.</text><line x1="90" y1="866" x2="760" y2="866" stroke="#E0E0E0"/><rect x="70" y="884" width="710" height="130" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/><line x1="70" y1="908" x2="780" y2="908" stroke="#CCCCCC"/><text x="82" y="901" font-family="Arial" font-size="11.5" font-weight="bold" fill="#222222">7.  What will you deliver?</text><text x="90" y="926" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">List each item with quantity, size, duration, format, platform.</text><text x="90" y="942" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">State what is OUT of scope, too.</text><line x1="90" y1="966" x2="760" y2="966" stroke="#E0E0E0"/><line x1="90" y1="988" x2="760" y2="988" stroke="#E0E0E0"/><line x1="90" y1="1010" x2="760" y2="1010" stroke="#E0E0E0"/><rect x="70" y="1028" width="710" height="108" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1"/><line x1="70" y1="1052" x2="780" y2="1052" stroke="#CCCCCC"/><text x="82" y="1045" font-family="Arial" font-size="11.5" font-weight="bold" fill="#222222">8.  What are the constraints and how is success measured?</text><text x="90" y="1070" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">Weeks available, tools, platforms, age-appropriateness.</text><text x="90" y="1086" font-family="Arial" font-size="10.5" font-style="italic" fill="#777777">How will the client know it worked?</text><line x1="90" y1="1110" x2="760" y2="1110" stroke="#E0E0E0"/><line x1="90" y1="1132" x2="760" y2="1132" stroke="#E0E0E0"/></svg>
-</file>
+````
 
-<file path="src/assets/camera angles shot types/Camera_angles.md">
+## File: src/assets/camera angles shot types/Camera_angles.md
+````markdown
 # Shot Compositions, Terms and Camera Angles
 
 Shot Compositions, Terms and Camera Angles
@@ -11148,9 +11180,10 @@ Each shot should have a clear narrative or emotional purpose.
 Use camera movements and angles strategically to enhance the scene.
 Avoid jarring transitions by following the 180-degree rule unless there’s a specific reason to break it.
 Experiment with special angles and effects to make scenes more dynamic.
-</file>
+````
 
-<file path="src/brief-builder-supabase/PROMPT.md">
+## File: src/brief-builder-supabase/PROMPT.md
+````markdown
 # PROMPT.md — Project Brief Builder integration
 # Paste this into Cursor / Windsurf / Claude Code from the repo root.
 
@@ -11184,9 +11217,10 @@ The database table must be created by hand:
 1. Open the Supabase dashboard → SQL Editor (same project as the Critique Zone).
 2. Paste and run `supabase-schema.sql`. Expect "Success. No rows returned."
 3. Done. No new env vars, no new bucket, no Netlify changes.
-</file>
+````
 
-<file path="src/brief-builder-supabase/README.md">
+## File: src/brief-builder-supabase/README.md
+````markdown
 # Project Brief Builder — Supabase edition
 
 Fill-in-the-blank creative brief tool for pLAtform. Students (or invented design
@@ -11244,9 +11278,10 @@ dev without secrets.
   ✕ buttons will simply start failing with a visible error.
 - Realtime is enabled: the Master Sheet refreshes automatically when a
   student files a brief mid-class.
-</file>
+````
 
-<file path="src/brief-builder-supabase/supabase-schema.sql">
+## File: src/brief-builder-supabase/supabase-schema.sql
+````sql
 -- ============================================================
 -- pLAtform — PROJECT BRIEF BUILDER · Supabase schema
 -- Run ONCE in the SQL Editor of your existing Supabase project
@@ -11292,9 +11327,10 @@ end $$;
 
 -- Sanity check (optional): should return 0 rows, no error.
 -- select * from public.project_briefs limit 1;
-</file>
+````
 
-<file path="src/capstone-pkg/src/components/CapstoneFooter.jsx">
+## File: src/capstone-pkg/src/components/CapstoneFooter.jsx
+````javascript
 import React, { useMemo, useState, useEffect, useRef } from "react";
 
 /**
@@ -11844,9 +11880,10 @@ const CSS = `
   .cf-part { opacity: 1; transform: none; }
 }
 `;
-</file>
+````
 
-<file path="src/capstone-pkg/src/components/CapstoneWorldBuilding.jsx">
+## File: src/capstone-pkg/src/components/CapstoneWorldBuilding.jsx
+````javascript
 import React, { useState, useMemo, useEffect, useRef } from "react";
 
 /**
@@ -12813,9 +12850,10 @@ const CSS = `
   }
 }
 `;
-</file>
+````
 
-<file path="src/capstone-pkg/PROMPT.md">
+## File: src/capstone-pkg/PROMPT.md
+````markdown
 # PROMPT.md — paste into Cursor / Windsurf / Claude Code
 
 Two prompts. Run **Prompt 1** to wire the files in. Run **Prompt 2** only if
@@ -12974,9 +13012,10 @@ mono / utility IBM Plex Mono
 Both files load Newsreader and IBM Plex Mono via `@import` at the top of their
 `CSS` string. **If the fonts are already loaded globally on pLAtform, delete
 those two `@import` lines** — duplicate font loads slow first paint.
-</file>
+````
 
-<file path="src/capstone-pkg/README.md">
+## File: src/capstone-pkg/README.md
+````markdown
 # pLAtform Capstone — brief page, footer, and deck
 
 "Creating in a World-Building Context." Three deliverables built from one
@@ -13079,9 +13118,10 @@ and respect `prefers-reduced-motion`.
 
 If Newsreader and IBM Plex Mono are already loaded globally on pLAtform,
 delete the `@import` line at the top of each component's `CSS` string.
-</file>
+````
 
-<file path="src/components/FullProjectFlow/assets/zark-site.html">
+## File: src/components/FullProjectFlow/assets/zark-site.html
+````html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13434,9 +13474,10 @@ footer{margin-top:4rem;border-top:2.5px solid var(--ink);background:var(--paper)
 </script>
 </body>
 </html>
-</file>
+````
 
-<file path="src/components/FullProjectFlow/PROMPT.md">
+## File: src/components/FullProjectFlow/PROMPT.md
+````markdown
 # IDE PROMPT — add FullProjectFlow to the pLAtform Capstone page
 
 Paste into Cursor / Windsurf / Claude Code from the ryman-curriculum
@@ -13472,9 +13513,10 @@ Add the FullProjectFlow component to the Capstone page footer.
    component folder.
 
 ---
-</file>
+````
 
-<file path="src/components/FullProjectFlow/README.md">
+## File: src/components/FullProjectFlow/README.md
+````markdown
 # FullProjectFlow — Capstone footer component
 
 A self-contained React component demonstrating the phased Capstone
@@ -13535,9 +13577,10 @@ regenerate `assets/zark-site-thumb.jpg` from a screenshot of it.
 `assets/zark-strip.png`. To replace the sketch with final rendered
 art, either update the strip image + regions, or replace each phase's
 crop `div` with an `<img>` — layout is independent of the crops.
-</file>
+````
 
-<file path="src/components/CapstoneFooter.jsx">
+## File: src/components/CapstoneFooter.jsx
+````javascript
 import React, { useMemo, useState, useEffect, useRef } from "react";
 
 /**
@@ -14087,9 +14130,10 @@ const CSS = `
   .cf-part { opacity: 1; transform: none; }
 }
 `;
-</file>
+````
 
-<file path="src/components/CreatureCarousel.css">
+## File: src/components/CreatureCarousel.css
+````css
 /* CreatureCarousel — specimen-wall strip
    field: cold ink slate · cards: bone paper · tags: brass */
 
@@ -14285,9 +14329,10 @@ const CSS = `
   .cc-head { flex-direction: column; gap: 4px; }
   .cc-card { padding: 10px 12px 8px; }
 }
-</file>
+````
 
-<file path="src/components/CreatureCarousel.jsx">
+## File: src/components/CreatureCarousel.jsx
+````javascript
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./CreatureCarousel.css";
 
@@ -14402,9 +14447,10 @@ export default function CreatureCarousel({
     </section>
   );
 }
-</file>
+````
 
-<file path="src/critique-zone/PROMPT.md">
+## File: src/critique-zone/PROMPT.md
+````markdown
 # IDE PROMPT — Integrate Critique Zone into the pLAtform Curriculum Site
 
 Paste this into Cursor / Windsurf / Claude Code at the repo root.
@@ -14447,9 +14493,10 @@ Integrate the Critique Zone feature into this React/Vite curriculum site.
 - Keep the component self-contained — no extraction into multiple files.
 - Escape/keyboard behavior and reduced-motion handling are already inside;
   don't wrap the overlays in another modal system.
-</file>
+````
 
-<file path="src/critique-zone/README.md">
+## File: src/critique-zone/README.md
+````markdown
 # Critique Zone — pLAtform Curriculum
 
 A per-week studio crit wall for the Ryman Curriculum site. Students pin work
@@ -14529,9 +14576,10 @@ strings to your own crit protocol; they're plain text near the top of each
 subcomponent.
 
 Week range defaults to 14 (`weeks` prop) to match the pLAtform semester.
-</file>
+````
 
-<file path="src/critique-zone/supabase-schema.sql">
+## File: src/critique-zone/supabase-schema.sql
+````sql
 -- ============================================================================
 -- Critique Zone — Supabase schema
 -- pLAtform Curriculum · Ryman Arts
@@ -14611,9 +14659,10 @@ alter publication supabase_realtime add table public.critique_notes;
 -- Delete a pin (cascades notes). Run from the SQL editor / service role:
 --   delete from public.critique_pins where id = '...';
 --   -- then remove the file in Storage > critique-uploads if desired.
-</file>
+````
 
-<file path="src/FullProjectFlow/assets/zark-site.html">
+## File: src/FullProjectFlow/assets/zark-site.html
+````html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14966,9 +15015,10 @@ footer{margin-top:4rem;border-top:2.5px solid var(--ink);background:var(--paper)
 </script>
 </body>
 </html>
-</file>
+````
 
-<file path="src/FullProjectFlow/PROMPT.md">
+## File: src/FullProjectFlow/PROMPT.md
+````markdown
 # IDE PROMPT — add FullProjectFlow to the pLAtform Capstone page
 
 Paste into Cursor / Windsurf / Claude Code from the ryman-curriculum
@@ -15004,9 +15054,10 @@ Add the FullProjectFlow component to the Capstone page footer.
    component folder.
 
 ---
-</file>
+````
 
-<file path="src/FullProjectFlow/README.md">
+## File: src/FullProjectFlow/README.md
+````markdown
 # FullProjectFlow — Capstone footer component
 
 A self-contained React component demonstrating the phased Capstone
@@ -15067,9 +15118,10 @@ regenerate `assets/zark-site-thumb.jpg` from a screenshot of it.
 `assets/zark-strip.png`. To replace the sketch with final rendered
 art, either update the strip image + regions, or replace each phase's
 crop `div` with an `<img>` — layout is independent of the crops.
-</file>
+````
 
-<file path="src/pages/creature-carousel/src/App.jsx">
+## File: src/pages/creature-carousel/src/App.jsx
+````javascript
 import CreatureCarousel from "./CreatureCarousel.jsx";
 import specimens from "./specimens.js";
 import "./styles.css";
@@ -15094,9 +15146,10 @@ export default function App() {
     </main>
   );
 }
-</file>
+````
 
-<file path="src/pages/creature-carousel/src/CreatureCarousel.css">
+## File: src/pages/creature-carousel/src/CreatureCarousel.css
+````css
 /* CreatureCarousel — specimen-wall strip
    field: cold ink slate · cards: bone paper · tags: brass */
 
@@ -15292,9 +15345,10 @@ export default function App() {
   .cc-head { flex-direction: column; gap: 4px; }
   .cc-card { padding: 10px 12px 8px; }
 }
-</file>
+````
 
-<file path="src/pages/creature-carousel/src/CreatureCarousel.jsx">
+## File: src/pages/creature-carousel/src/CreatureCarousel.jsx
+````javascript
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./CreatureCarousel.css";
 
@@ -15409,9 +15463,10 @@ export default function CreatureCarousel({
     </section>
   );
 }
-</file>
+````
 
-<file path="src/pages/creature-carousel/src/main.jsx">
+## File: src/pages/creature-carousel/src/main.jsx
+````javascript
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
@@ -15421,9 +15476,10 @@ createRoot(document.getElementById("root")).render(
     <App />
   </StrictMode>
 );
-</file>
+````
 
-<file path="src/pages/creature-carousel/src/specimens.js">
+## File: src/pages/creature-carousel/src/specimens.js
+````javascript
 // Auto-loads every PNG in ./assets/specimens — drop a new file in and it joins the strip.
 const files = import.meta.glob("./assets/specimens/*.png", { eager: true, query: "?url", import: "default" });
 
@@ -15436,9 +15492,10 @@ const specimens = Object.entries(files)
   }));
 
 export default specimens;
-</file>
+````
 
-<file path="src/pages/creature-carousel/src/styles.css">
+## File: src/pages/creature-carousel/src/styles.css
+````css
 :root { color-scheme: dark; }
 * { box-sizing: border-box; }
 body {
@@ -15466,9 +15523,10 @@ body {
   line-height: 1.7;
   color: #8d9299;
 }
-</file>
+````
 
-<file path="src/pages/creature-carousel/tools/segment_sheet.py">
+## File: src/pages/creature-carousel/tools/segment_sheet.py
+````python
 #!/usr/bin/env python3
 """Cut a sheet of figures into transparent, height-normalized specimen PNGs.
 
@@ -15537,9 +15595,10 @@ if __name__ == "__main__":
     p.add_argument("--bind", type=int, default=9)
     args = p.parse_args()
     segment(args.sheet, args.out, args.height, args.max_width, args.bind)
-</file>
+````
 
-<file path="src/pages/creature-carousel/index.html">
+## File: src/pages/creature-carousel/index.html
+````html
 <!doctype html>
 <html lang="en">
   <head>
@@ -15558,9 +15617,10 @@ if __name__ == "__main__":
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-</file>
+````
 
-<file path="src/pages/creature-carousel/package.json">
+## File: src/pages/creature-carousel/package.json
+````json
 {
   "name": "creature-carousel",
   "private": true,
@@ -15580,9 +15640,10 @@ if __name__ == "__main__":
     "vite": "^5.4.0"
   }
 }
-</file>
+````
 
-<file path="src/pages/creature-carousel/PROMPT.md">
+## File: src/pages/creature-carousel/PROMPT.md
+````markdown
 # IDE prompt — extending Creature Carousel
 
 Paste into Claude Code / Cursor from the project root.
@@ -15611,9 +15672,10 @@ Tasks:
    its filename, and prev/next arrows. Esc closes, focus returns to the card.
 4. Add pointer drag-to-scrub on the viewport that offsets the animation without breaking the
    loop, and resumes from the dragged position on release.
-</file>
+````
 
-<file path="src/pages/creature-carousel/README.md">
+## File: src/pages/creature-carousel/README.md
+````markdown
 # Creature Carousel
 
 An infinite, constant-speed silhouette strip built from your creature sheet. The sheet was
@@ -15674,9 +15736,10 @@ python3 tools/segment_sheet.py my-sheet.png src/assets/specimens
 
 Overlapping figures merge into one crop — the script prints any box wider than expected so you
 can set a manual split column.
-</file>
+````
 
-<file path="src/pages/creature-carousel/vite.config.js">
+## File: src/pages/creature-carousel/vite.config.js
+````javascript
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -15684,9 +15747,10 @@ export default defineConfig({
   plugins: [react()],
   base: "./",
 });
-</file>
+````
 
-<file path="src/pages/BlockOutStudy.jsx">
+## File: src/pages/BlockOutStudy.jsx
+````javascript
 import React, { useEffect, useRef, useState } from "react";
 import { topicList } from "../content/week03Topics.js";
 import TopicNav from "./TopicNav.jsx";
@@ -16296,9 +16360,10 @@ export default function BlockOutStudy() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/BriefBuilderPage.jsx">
+## File: src/pages/BriefBuilderPage.jsx
+````javascript
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProjectBriefBuilder from '../components/ProjectBriefBuilder.jsx';
@@ -16335,9 +16400,10 @@ export default function BriefBuilderPage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/brush-maker.jsx">
+## File: src/pages/brush-maker.jsx
+````javascript
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { topicList } from "../content/week03Topics.js";
@@ -16766,9 +16832,10 @@ export default function BrushFoundry() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/CritiquePage.jsx">
+## File: src/pages/CritiquePage.jsx
+````javascript
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CritiqueZone from '../components/CritiqueZone.jsx';
@@ -16805,9 +16872,10 @@ export default function CritiquePage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/GradientMarquee.jsx">
+## File: src/pages/GradientMarquee.jsx
+````javascript
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { topicList } from "../content/week03Topics.js";
 import TopicNav from "./TopicNav.jsx";
@@ -17266,9 +17334,10 @@ export default function GradientMarquee() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/LayerBasics.jsx">
+## File: src/pages/LayerBasics.jsx
+````javascript
 import React from "react";
 import { topicList } from "../content/week03Topics.js";
 import TopicNav from "./TopicNav.jsx";
@@ -17749,9 +17818,10 @@ const css = `
   letter-spacing: 0.1em; text-transform: uppercase; margin-top: 30px;
 }
 `;
-</file>
+````
 
-<file path="src/pages/NotanLightLab2.jsx">
+## File: src/pages/NotanLightLab2.jsx
+````javascript
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
@@ -18490,9 +18560,10 @@ export default function NotanLightLab() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/panel-lab.jsx">
+## File: src/pages/panel-lab.jsx
+````javascript
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import * as THREE from "three";
 
@@ -19202,9 +19273,10 @@ export default function PanelLab() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/PlatformFooter.jsx">
+## File: src/pages/PlatformFooter.jsx
+````javascript
 import React, { useMemo, useState, useEffect, useRef } from "react";
 
 /**
@@ -19699,9 +19771,10 @@ const CSS = `
   .pf-part { opacity: 1; transform: none; }
 }
 `;
-</file>
+````
 
-<file path="src/pages/SphereMaterialStudies.jsx">
+## File: src/pages/SphereMaterialStudies.jsx
+````javascript
 // SphereMaterialStudies.jsx
 // pLAtform · Cinematic Lighting — Diffuse & Specular on a Sphere + Brush Hardness Materials
 // Drop the four PNGs into src/assets/lighting/ (paths below) or adjust imports.
@@ -19970,9 +20043,10 @@ export default function SphereMaterialStudies() {
     </section>
   );
 }
-</file>
+````
 
-<file path="src/pages/StoryboardsDeckPage.jsx">
+## File: src/pages/StoryboardsDeckPage.jsx
+````javascript
 import Storyboards from '../storyboards-deck/src/Storyboards.jsx';
 import { Link } from 'react-router-dom';
 
@@ -19988,9 +20062,10 @@ export default function StoryboardsDeckPage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/TriadPalettes.jsx">
+## File: src/pages/TriadPalettes.jsx
+````javascript
 import { useState } from "react";
 
 /* ── pLAtform design system ─────────────────────────────
@@ -20221,9 +20296,10 @@ export default function TriadPalettes() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/ValueStudiesCarousel.jsx">
+## File: src/pages/ValueStudiesCarousel.jsx
+````javascript
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { topicList } from "../content/week03Topics.js";
 import TopicNav from "./TopicNav.jsx";
@@ -20508,9 +20584,10 @@ function arrowStyle(side) {
     paddingBottom: 3,
   };
 }
-</file>
+````
 
-<file path="src/pages/Week01Overview.jsx">
+## File: src/pages/Week01Overview.jsx
+````javascript
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week01Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -20772,9 +20849,10 @@ const videoCalloutLinkStyle = {
   alignSelf: 'flex-start',
   borderBottom: '1px solid #8b3a2f',
 };
-</file>
+````
 
-<file path="src/pages/Week02Overview.jsx">
+## File: src/pages/Week02Overview.jsx
+````javascript
 import { Link } from 'react-router-dom';
 import { topicList, readingsList } from '../content/week02Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -21016,9 +21094,10 @@ const guestStyle = {
   borderLeft: '2px solid #d4c9a8',
   fontStyle: 'italic',
 };
-</file>
+````
 
-<file path="src/pages/Week03Videos.jsx">
+## File: src/pages/Week03Videos.jsx
+````javascript
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -21190,9 +21269,10 @@ const videoTitleStyle = {
   margin: 0,
   color: '#2a2418',
 };
-</file>
+````
 
-<file path="src/pages/Week06TopicDetail.jsx">
+## File: src/pages/Week06TopicDetail.jsx
+````javascript
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOPIC_DETAILS, topicList } from '../content/week06Topics.js';
@@ -21352,9 +21432,10 @@ const backButtonStyle = {
   display: 'inline-block',
   marginBottom: '16px',
 };
-</file>
+````
 
-<file path="src/storyboards-deck/PROMPT.md">
+## File: src/storyboards-deck/PROMPT.md
+````markdown
 # IDE PROMPT — Integrate the Storyboards deck into the pLAtform curriculum site
 
 Paste this into Cursor / Windsurf / Claude Code from the repo root of the
@@ -21386,9 +21467,10 @@ Integrate a new lesson deck component into this Vite + React project:
    (counter button, top right) opens.
 
 Do not modify slide content or the SLIDES data array.
-</file>
+````
 
-<file path="src/storyboards-deck/README.md">
+## File: src/storyboards-deck/README.md
+````markdown
 # Storyboards — pLAtform Lesson Deck
 
 A 23-slide React presentation converted from the Storyboards lesson PDF, with every
@@ -21438,9 +21520,10 @@ no config needed.
 oxblood `#8b3a2f` · paper cream `#f5efe1` · Newsreader (display) ·
 IBM Plex Mono (labels/UI). Google Fonts loaded via `<link>` inside the
 component — remove that line if fonts are already loaded app-wide.
-</file>
+````
 
-<file path="src/SpeakerListPage.jsx">
+## File: src/SpeakerListPage.jsx
+````javascript
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
@@ -21847,9 +21930,10 @@ export default function SpeakerListPage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/supabaseClient.js">
+## File: src/supabaseClient.js
+````javascript
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -21872,15 +21956,17 @@ if (isValidUrl(supabaseUrl) && supabaseKey) {
 }
 
 export const supabase = client;
-</file>
+````
 
-<file path=".env.example">
+## File: .env.example
+````
 # Supabase Configuration Example
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key-here
-</file>
+````
 
-<file path=".gitignore">
+## File: .gitignore
+````
 # Logs
 logs
 *.log
@@ -21910,9 +21996,10 @@ dist-ssr
 .env
 .env.*
 !.env.example
-</file>
+````
 
-<file path="package.json">
+## File: package.json
+````json
 {
   "name": "curriculum-planner",
   "private": true,
@@ -21936,9 +22023,10 @@ dist-ssr
     "vite": "^5.4.0"
   }
 }
-</file>
+````
 
-<file path="repomix-week1-assignment1.xml">
+## File: repomix-week1-assignment1.xml
+````xml
 This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
 
 <file_summary>
@@ -24783,9 +24871,10 @@ export const changelog = [
 </file>
 
 </files>
-</file>
+````
 
-<file path="repomix-week4.md">
+## File: repomix-week4.md
+````markdown
 This file is a merged representation of a subset of the codebase, containing specifically included files, combined into a single document by Repomix.
 
 # File Summary
@@ -25721,9 +25810,10 @@ const guestStyle = {
   fontStyle: 'italic',
 };
 ```
-</file>
+````
 
-<file path="src/brief-builder-supabase/src/components/ProjectBriefBuilder.jsx">
+## File: src/brief-builder-supabase/src/components/ProjectBriefBuilder.jsx
+````javascript
 // ============================================================================
 // pLAtform — PROJECT BRIEF BUILDER  (Supabase edition)
 // Fill-in-the-blank creative brief → shared Master Sheet (project_briefs table)
@@ -26533,9 +26623,10 @@ function BriefBlank({ section, value, onChange }) {
     </section>
   );
 }
-</file>
+````
 
-<file path="src/components/FullProjectFlow/FullProjectFlow.jsx">
+## File: src/components/FullProjectFlow/FullProjectFlow.jsx
+````javascript
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import stripImg from "./assets/zark-strip.png";
 import logoImg from "./assets/zark-logo.png";
@@ -27053,9 +27144,10 @@ const st = {
     marginTop: ".7rem",
   },
 };
-</file>
+````
 
-<file path="src/components/CapstoneWorldBuilding.jsx">
+## File: src/components/CapstoneWorldBuilding.jsx
+````javascript
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import FullProjectFlow from "./FullProjectFlow/FullProjectFlow";
@@ -28072,9 +28164,10 @@ const CSS = `
   }
 }
 `;
-</file>
+````
 
-<file path="src/components/CritiqueZone.jsx">
+## File: src/components/CritiqueZone.jsx
+````javascript
 // ============================================================================
 // CritiqueZone.jsx — pLAtform Curriculum · Ryman Arts
 // ----------------------------------------------------------------------------
@@ -29010,9 +29103,10 @@ const S = {
   noteForm: { display: "flex", flexDirection: "column", gap: 8 },
   noteInput: { resize: "vertical", marginTop: 0 },
 };
-</file>
+````
 
-<file path="src/components/ProjectBriefBuilder.jsx">
+## File: src/components/ProjectBriefBuilder.jsx
+````javascript
 // ============================================================================
 // pLAtform — PROJECT BRIEF BUILDER  (Supabase edition)
 // Fill-in-the-blank creative brief → shared Master Sheet (project_briefs table)
@@ -29822,9 +29916,10 @@ function BriefBlank({ section, value, onChange }) {
     </section>
   );
 }
-</file>
+````
 
-<file path="src/content/week06Topics.js">
+## File: src/content/week06Topics.js
+````javascript
 // ─── Content adapted from Ryman Curriculum + PCC DMA 10 Integrated Campaigns ───
 export const TOPIC_DETAILS = {
   'book-covers-and-key-art': {
@@ -30069,9 +30164,10 @@ export const topicList = [
   { key: 'asset-management-cc-libraries', label: 'Asset management & CC Libraries (collaborative libraries & master page templates)', isNew: true },
   { key: 'the-commercial-brief', label: 'The commercial brief (visual hierarchy, type & image pairing, campaign pitching)', isNew: true },
 ];
-</file>
+````
 
-<file path="src/critique-zone/CritiqueZone.jsx">
+## File: src/critique-zone/CritiqueZone.jsx
+````javascript
 // ============================================================================
 // CritiqueZone.jsx — pLAtform Curriculum · Ryman Arts
 // ----------------------------------------------------------------------------
@@ -31007,9 +31103,10 @@ const S = {
   noteForm: { display: "flex", flexDirection: "column", gap: 8 },
   noteInput: { resize: "vertical", marginTop: 0 },
 };
-</file>
+````
 
-<file path="src/FullProjectFlow/FullProjectFlow.jsx">
+## File: src/FullProjectFlow/FullProjectFlow.jsx
+````javascript
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import stripImg from "./assets/zark-strip.png";
 import logoImg from "./assets/zark-logo.png";
@@ -31527,9 +31624,10 @@ const st = {
     marginTop: ".7rem",
   },
 };
-</file>
+````
 
-<file path="src/pages/BlockOutProcess.jsx">
+## File: src/pages/BlockOutProcess.jsx
+````javascript
 import { useState, useEffect, useRef, useCallback } from "react";
 import { topicList } from "../content/week03Topics.js";
 import TopicNav from "./TopicNav.jsx";
@@ -32125,9 +32223,10 @@ function navBtn(disabled) {
     cursor: disabled ? "default" : "pointer",
   };
 }
-</file>
+````
 
-<file path="src/pages/BrushFoundryII.jsx">
+## File: src/pages/BrushFoundryII.jsx
+````javascript
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { topicList } from "../content/week03Topics.js";
 import TopicNav from "./TopicNav.jsx";
@@ -33045,9 +33144,10 @@ export default function BrushFoundryII() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/ProceduralWearLesson.jsx">
+## File: src/pages/ProceduralWearLesson.jsx
+````javascript
 import React, { useState } from "react";
 import LegalDisclaimer from "../LegalDisclaimer.jsx";
 
@@ -33518,9 +33618,10 @@ export default function ProceduralWearLesson() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/SkyColorLesson.jsx">
+## File: src/pages/SkyColorLesson.jsx
+````javascript
 import { useState } from "react";
 import { topicList } from "../content/week03Topics.js";
 import TopicNav from "./TopicNav.jsx";
@@ -34249,9 +34350,10 @@ export default function SkyColorLesson() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/ThresholdNotanLesson.jsx">
+## File: src/pages/ThresholdNotanLesson.jsx
+````javascript
 import { useState, useEffect, useRef, useCallback } from "react";
 import { topicList } from "../content/week03Topics.js";
 import TopicNav from "./TopicNav.jsx";
@@ -34896,9 +34998,10 @@ export default function ThresholdNotanLesson() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/Week03TopicDetail.jsx">
+## File: src/pages/Week03TopicDetail.jsx
+````javascript
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOPIC_DETAILS, topicList } from '../content/week03Topics.js';
@@ -35075,9 +35178,10 @@ const backButtonStyle = {
   display: 'inline-block',
   marginBottom: '16px',
 };
-</file>
+````
 
-<file path="src/pages/Week04Overview.jsx">
+## File: src/pages/Week04Overview.jsx
+````javascript
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week04Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -35270,9 +35374,10 @@ const guestStyle = {
   borderLeft: '2px solid #d4c9a8',
   fontStyle: 'italic',
 };
-</file>
+````
 
-<file path="src/pages/Week05TopicDetail.jsx">
+## File: src/pages/Week05TopicDetail.jsx
+````javascript
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { TOPIC_DETAILS, topicList } from '../content/week05Topics.js';
@@ -35541,9 +35646,10 @@ function parseBold(text) {
     idx % 2 === 1 ? <strong key={idx}>{part}</strong> : part
   );
 }
-</file>
+````
 
-<file path="src/storyboards-deck/src/Storyboards.jsx">
+## File: src/storyboards-deck/src/Storyboards.jsx
+````javascript
 import { useState, useEffect, useCallback } from "react";
 
 /* ============================================================
@@ -36325,9 +36431,10 @@ function navBtn(disabled) {
     cursor: disabled ? "default" : "pointer",
   };
 }
-</file>
+````
 
-<file path="src/pages/ShotExamplesEmbedded.jsx">
+## File: src/pages/ShotExamplesEmbedded.jsx
+````javascript
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -37123,9 +37230,10 @@ export default function ShotExamples() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/pages/Week06Overview.jsx">
+## File: src/pages/Week06Overview.jsx
+````javascript
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week06Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -37308,9 +37416,10 @@ const guestStyle = {
   borderLeft: '2px solid #d4c9a8',
   fontStyle: 'italic',
 };
-</file>
+````
 
-<file path="src/AssignmentsHubPage.jsx">
+## File: src/AssignmentsHubPage.jsx
+````javascript
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { assignments } from './assignments.js';
@@ -37496,9 +37605,10 @@ export default function AssignmentsHubPage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/CalendarPage.jsx">
+## File: src/CalendarPage.jsx
+````javascript
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { loadLocalCurriculum, fetchRemoteCurriculum } from './curriculumService.js';
@@ -38487,9 +38597,10 @@ export default function CalendarPage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/content/week07Topics.js">
+## File: src/content/week07Topics.js
+````javascript
 // ─── Content adapted from PCC corpus (DMA 010, DMA 012, DMA 072) ──────
 export const TOPIC_DETAILS = {
   'client-simulation-overview': {
@@ -38705,9 +38816,10 @@ export const topicList = [
   { key: 'app-digital-experience', label: 'Hero Project F — An app or digital experience', isNew: true },
   { key: 'personal-project', label: 'Hero Project G — A personal or autobiographical project', isNew: true },
 ];
-</file>
+````
 
-<file path="src/pages/Week07Overview.jsx">
+## File: src/pages/Week07Overview.jsx
+````javascript
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week07Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -38896,9 +39008,10 @@ const assignmentTextStyle = {
   borderLeft: '2px solid #d4c9a8',
   fontStyle: 'italic',
 };
-</file>
+````
 
-<file path="src/curriculumService.js">
+## File: src/curriculumService.js
+````javascript
 import { config, curriculum as defaultCurriculum } from './curriculum.js';
 import { supabase } from './supabaseClient.js';
 
@@ -39134,9 +39247,10 @@ export async function syncRemoteVersions(versions) {
     console.error('Failed to sync custom versions to cloud:', e);
   }
 }
-</file>
+````
 
-<file path="src/LoginGate.jsx">
+## File: src/LoginGate.jsx
+````javascript
 import React, { useState, useEffect } from 'react';
 import { Outlet, Navigate, useLocation, Link } from 'react-router-dom';
 import { isWeekReleased, getActiveRole } from './releaseUtils.js';
@@ -39367,9 +39481,10 @@ export default function LoginGate() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/CurriculumProgression.jsx">
+## File: src/CurriculumProgression.jsx
+````javascript
 import React, { useState, useRef, useEffect } from "react";
 
 /**
@@ -39848,9 +39963,10 @@ const cpStyles = `
   }
 }
 `;
-</file>
+````
 
-<file path="src/pages/DesignBriefPresentation.jsx">
+## File: src/pages/DesignBriefPresentation.jsx
+````javascript
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 
@@ -41484,9 +41600,10 @@ const navBtn = (disabled) => ({
   color: disabled ? T.pencil : T.paper, padding: "7px 14px", fontSize: 12,
   cursor: disabled ? "default" : "pointer", boxShadow: disabled ? "none" : `2px 2px 0 ${T.ink}`,
 });
-</file>
+````
 
-<file path="src/pages/Week05Overview.jsx">
+## File: src/pages/Week05Overview.jsx
+````javascript
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week05Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -41659,9 +41776,10 @@ const guestStyle = {
   borderLeft: '2px solid #d4c9a8',
   fontStyle: 'italic',
 };
-</file>
+````
 
-<file path="src/SyllabusPage.jsx">
+## File: src/SyllabusPage.jsx
+````javascript
 import { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { curriculum, config } from './curriculum.js';
@@ -42413,9 +42531,10 @@ export default function SyllabusPage() {
     </div >
   );
 }
-</file>
+````
 
-<file path="src/content/week05Topics.js">
+## File: src/content/week05Topics.js
+````javascript
 // ─── Content adapted from PCC DMA 12 corpus + new framing ────────────
 export const TOPIC_DETAILS = {
   'character-development': {
@@ -42918,9 +43037,10 @@ export const topicList = [
   { key: 'storyboarding-fundamentals', label: 'Storyboarding fundamentals & camera angles', isNew: true },
   { key: 'shot-examples', label: 'Cinematic Shot Examples & Framing Analysis', isNew: true },
 ];
-</file>
+````
 
-<file path="src/pages/SymmetryInPhotoshop.jsx">
+## File: src/pages/SymmetryInPhotoshop.jsx
+````javascript
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 
@@ -44084,9 +44204,10 @@ const CSS = `
   background: var(--oxblood-deep) !important;
 }
 `;
-</file>
+````
 
-<file path="src/pages/Week03Overview.jsx">
+## File: src/pages/Week03Overview.jsx
+````javascript
 import { Link } from 'react-router-dom';
 import { topicList } from '../content/week03Topics.js';
 import LegalDisclaimer from '../LegalDisclaimer.jsx';
@@ -44362,9 +44483,10 @@ const videoCalloutLinkStyle = {
   alignSelf: 'flex-start',
   borderBottom: '1px solid #8b3a2f',
 };
-</file>
+````
 
-<file path="src/releaseUtils.js">
+## File: src/releaseUtils.js
+````javascript
 import { config } from './curriculum.js';
 
 function parseLocal(str) {
@@ -44435,9 +44557,10 @@ export function isNewPillActive(weekNum, startDateStr) {
     return true;
   }
 }
-</file>
+````
 
-<file path="src/content/week03Topics.js">
+## File: src/content/week03Topics.js
+````javascript
 // ──────────────────────────────────────────────────────────────────
 //  WEEK 03 TOPICS DATA SOURCE
 //  Extracted from PCC DMA 12 corpus + cinematic framing.
@@ -44790,9 +44913,10 @@ export const topicList = [
   { key: 'gradient-marquee', label: 'Tool: Gradient Marquee', isNew: true },
   { key: 'brush-foundry-ii', label: 'Tool: Brush Maker II', isNew: true },
 ];
-</file>
+````
 
-<file path="src/AssignmentPage.jsx">
+## File: src/AssignmentPage.jsx
+````javascript
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { assignments } from './assignments.js';
@@ -46362,9 +46486,10 @@ export default function AssignmentPage() {
     </div>
   );
 }
-</file>
+````
 
-<file path="src/assignments.js">
+## File: src/assignments.js
+````javascript
 // ──────────────────────────────────────────────────────────────────
 //  ASSIGNMENT DETAIL PAGES (THREE-TRACK MODELS)
 //  Keyed by week number. Each entry contains structured content for 
@@ -47264,9 +47389,10 @@ By the end of Saturday, August 15th, you should have one strong direction select
     },
   },
 };
-</file>
+````
 
-<file path="src/main.jsx">
+## File: src/main.jsx
+````javascript
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -47390,9 +47516,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </React.StrictMode>
 );
-</file>
+````
 
-<file path="src/curriculum.js">
+## File: src/curriculum.js
+````javascript
 // ─── Curriculum Data ──────────────────────────────────────────────
 // Populated with distinct Tuesday (Zoom) and Saturday (In-Person Reveal Studio) tracks.
 // Tuesdays preview Saturdays and pull from discussions/readings.
@@ -47845,9 +47972,10 @@ export const changelog = [
     message: 'Updated Week 5 with 2D animation integration: Preston Blair expression guides, auditory space/leitmotifs, straight-ahead vs. pose-to-pose planning, and cinematic camera angles.',
   },
 ];
-</file>
+````
 
-<file path="src/App.jsx">
+## File: src/App.jsx
+````javascript
 import { useEffect, useMemo, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { curriculum, config, changelog } from './curriculum.js';
@@ -49994,6 +50122,4 @@ export default function App() {
     </div>
   );
 }
-</file>
-
-</files>
+````
