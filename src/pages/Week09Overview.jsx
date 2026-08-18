@@ -101,6 +101,49 @@ export default function Week09Overview() {
           </div>
         </div>
 
+        {/* Capstone Gallery Website Builder Tool Callout */}
+        <div style={toolCardStyle}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>🌐</span>
+              <span style={{ fontFamily: 'Menlo, monospace', fontSize: '11px', fontWeight: 'bold', color: '#0369a1', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                Interactive Tool · Capstone Website Builder
+              </span>
+            </div>
+            <Link
+              to="/week/09/capstone-gallery-builder"
+              style={{
+                fontFamily: 'Menlo, monospace',
+                fontSize: '11px',
+                fontWeight: 'bold',
+                textDecoration: 'none',
+                background: '#0284c7',
+                color: '#ffffff',
+                padding: '6px 14px',
+                borderRadius: '4px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }}
+            >
+              Launch Website Builder →
+            </Link>
+          </div>
+          <p style={{ margin: '0 0 6px', fontWeight: 'bold', fontSize: '15px', color: '#0c4a6e', lineHeight: 1.4 }}>
+            Capstone Gallery Website Builder
+          </p>
+          <p style={{ margin: '0 0 10px', fontSize: '13.5px', lineHeight: 1.55, color: '#1e293b' }}>
+            Turn your Capstone Development Board into a responsive, presentation-ready website. Drag and drop artwork directly into Blockouts, Environments, Characters, Storyboard sequence, Hero Project, and Contact slots. Customize branding, typography, and color schemes, then export a complete Netlify-ready website package (<code style={{ background: 'rgba(2, 132, 199, 0.12)', padding: '1px 5px', borderRadius: '3px' }}>index.html</code>, <code style={{ background: 'rgba(2, 132, 199, 0.12)', padding: '1px 5px', borderRadius: '3px' }}>styles.css</code>, <code style={{ background: 'rgba(2, 132, 199, 0.12)', padding: '1px 5px', borderRadius: '3px' }}>script.js</code>).
+          </p>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', fontSize: '12px', color: '#0369a1', fontFamily: 'Menlo, monospace' }}>
+            <span>✓ Drag &amp; Drop Reordering</span>
+            <span>✓ 13 Google Font Pairings</span>
+            <span>✓ Netlify Drop Ready</span>
+            <span>✓ Built-in Lightbox</span>
+          </div>
+        </div>
+
         {/* Saturday Studio Task Callout */}
         <div style={studioTaskCardStyle}>
           <p style={{ margin: '0 0 6px', fontWeight: 'bold', fontSize: '15px', color: '#1e4620' }}>
@@ -417,6 +460,15 @@ const tuesdayDeliverableCardStyle = {
   borderRadius: '6px',
   padding: '18px 20px',
   margin: '12px 0 20px',
+};
+
+const toolCardStyle = {
+  background: '#f0f9ff',
+  border: '1px solid rgba(2, 132, 199, 0.25)',
+  borderLeft: '4px solid #0284c7',
+  borderRadius: '6px',
+  padding: '18px 20px',
+  margin: '16px 0 20px',
 };
 
 const studioTaskCardStyle = {

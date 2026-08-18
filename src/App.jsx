@@ -1190,6 +1190,25 @@ function WeekCard({
                       📖 Week 9 Overview &amp; All 8 Articles →
                     </Link>
                     <Link 
+                      to="/week/09/capstone-gallery-builder" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#0369a1',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(2, 132, 199, 0.25)',
+                        background: 'rgba(2, 132, 199, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      🌐 Capstone Gallery Website Builder →
+                    </Link>
+                    <Link 
                       to="/week/09#master-resources" 
                       style={{
                         textDecoration: 'none',

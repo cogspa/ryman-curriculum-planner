@@ -46,6 +46,7 @@ import Week08Overview from './pages/Week08Overview.jsx';
 import Week08TopicDetail from './pages/Week08TopicDetail.jsx';
 import Week09Overview from './pages/Week09Overview.jsx';
 import Week09TopicDetail from './pages/Week09TopicDetail.jsx';
+import CapstoneGallery from './capstone-gallery-builder/CapstoneGallery.jsx';
 import HandoffFormats from './pages/HandoffFormats.jsx';
 import PitchDeckStructure from './pages/PitchDeckStructure.jsx';
 import DesignBriefPresentation from './pages/DesignBriefPresentation.jsx';
@@ -132,6 +133,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/08/handoff-formats" element={<HandoffFormats />} />
           <Route path="/week/08/:topicKey" element={<Week08TopicDetail />} />
           <Route path="/week/09" element={<Week09Overview />} />
+          <Route path="/week/09/capstone-gallery-builder" element={<CapstoneGallery />} />
+          <Route path="/capstone-gallery-builder" element={<CapstoneGallery />} />
           <Route path="/week/09/:topicKey" element={<Week09TopicDetail />} />
         </Route>
       </Routes>
