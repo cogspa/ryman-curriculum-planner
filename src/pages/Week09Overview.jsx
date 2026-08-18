@@ -144,6 +144,49 @@ export default function Week09Overview() {
           </div>
         </div>
 
+        {/* Style Inspiration Gallery Callout */}
+        <div style={filmCardStyle}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>🎨</span>
+              <span style={{ fontFamily: 'Menlo, monospace', fontSize: '11px', fontWeight: 'bold', color: '#8b3a2f', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                Screening Watchlist · Style Reference Gallery
+              </span>
+            </div>
+            <Link
+              to="/week/09/style-inspiration-gallery"
+              style={{
+                fontFamily: 'Menlo, monospace',
+                fontSize: '11px',
+                fontWeight: 'bold',
+                textDecoration: 'none',
+                background: '#8b3a2f',
+                color: '#ffffff',
+                padding: '6px 14px',
+                borderRadius: '4px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }}
+            >
+              Launch Style Gallery →
+            </Link>
+          </div>
+          <p style={{ margin: '0 0 6px', fontWeight: 'bold', fontSize: '15px', color: '#5a221b', lineHeight: 1.4 }}>
+            Independent Animation: Essential Short Films
+          </p>
+          <p style={{ margin: '0 0 10px', fontSize: '13.5px', lineHeight: 1.55, color: '#2a2418' }}>
+            A curated visual watchlist of 20 seminal independent, auteur, and experimental animation short films across the 1960s to 2000s—including Aleksandr Petrov’s <em>The Cow</em>, Raimund Krumme’s <em>Rope Dance</em>, Mark Baker’s <em>The Hill Farm</em>, Frédéric Back’s <em>The Man Who Planted Trees</em>, and Michaël Dudok de Wit’s <em>Father and Daughter</em>. Explore eras, master color scripting, staging, and motion traditions.
+          </p>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', fontSize: '12px', color: '#8b3a2f', fontFamily: 'Menlo, monospace' }}>
+            <span>✓ 20 Master Short Films</span>
+            <span>✓ Era Filtering (60s–00s)</span>
+            <span>✓ Direct Video Links</span>
+            <span>✓ Style &amp; Medium Breakdown</span>
+          </div>
+        </div>
+
         {/* Saturday Studio Task Callout */}
         <div style={studioTaskCardStyle}>
           <p style={{ margin: '0 0 6px', fontWeight: 'bold', fontSize: '15px', color: '#1e4620' }}>
@@ -466,6 +509,15 @@ const toolCardStyle = {
   background: '#f0f9ff',
   border: '1px solid rgba(2, 132, 199, 0.25)',
   borderLeft: '4px solid #0284c7',
+  borderRadius: '6px',
+  padding: '18px 20px',
+  margin: '16px 0 16px',
+};
+
+const filmCardStyle = {
+  background: '#fcf6ec',
+  border: '1px solid rgba(139, 58, 47, 0.25)',
+  borderLeft: '4px solid #8b3a2f',
   borderRadius: '6px',
   padding: '18px 20px',
   margin: '16px 0 20px',

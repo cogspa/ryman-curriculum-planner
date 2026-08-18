@@ -1209,6 +1209,25 @@ function WeekCard({
                       🌐 Capstone Gallery Website Builder →
                     </Link>
                     <Link 
+                      to="/week/09/style-inspiration-gallery" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      🎨 Style Inspiration Gallery →
+                    </Link>
+                    <Link 
                       to="/week/09#master-resources" 
                       style={{
                         textDecoration: 'none',
