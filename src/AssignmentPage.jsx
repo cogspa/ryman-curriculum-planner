@@ -345,12 +345,35 @@ export default function AssignmentPage() {
     <div className="app">
       <div className="container">
         <div className="assignment-page">
-          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <Link to="/" className="back-link">← Back to Curriculum</Link>
-            <span style={{ opacity: 0.3 }}>|</span>
-            <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
-            <span style={{ opacity: 0.3 }}>|</span>
-            <Link to="/critique" className="back-link">📌 Critique Zone</Link>
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <Link to="/" className="back-link">← Back to Curriculum</Link>
+              <span style={{ opacity: 0.3 }}>|</span>
+              <Link to="/assignments" className="back-link">📂 Assignments Hub</Link>
+              <span style={{ opacity: 0.3 }}>|</span>
+              <Link to="/critique" className="back-link">📌 Critique Zone</Link>
+            </div>
+            <a
+              href="https://www.dropbox.com/request/d56lyvzlb50sm3vjg0yp"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '6px 14px',
+                background: '#0061fe',
+                color: '#ffffff',
+                borderRadius: '20px',
+                fontSize: '12px',
+                fontWeight: 'bold',
+                textDecoration: 'none',
+                boxShadow: '0 2px 6px rgba(0, 97, 254, 0.25)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <span>📤</span> Upload to Dropbox ↗
+            </a>
           </div>
 
           {/* Quick links to other assignments */}
@@ -1459,8 +1482,31 @@ export default function AssignmentPage() {
 
           {/* Deliverables */}
           {data.submission && (
-            <section className="assignment-phase">
-              <h2 className="phase-title">Deliverables</h2>
+            <section className="assignment-phase" style={{ position: 'relative' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
+                <h2 className="phase-title" style={{ margin: 0 }}>Deliverables & Submission</h2>
+                <a
+                  href="https://www.dropbox.com/request/d56lyvzlb50sm3vjg0yp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '8px 18px',
+                    background: '#0061fe',
+                    color: '#ffffff',
+                    borderRadius: '20px',
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                    textDecoration: 'none',
+                    boxShadow: '0 2px 6px rgba(0, 97, 254, 0.25)',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <span>📤</span> Upload to Class Dropbox ↗
+                </a>
+              </div>
               <ol className="phase-steps">
                 {data.submission.map((s, i) => <li key={i}>{s}</li>)}
               </ol>

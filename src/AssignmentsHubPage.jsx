@@ -71,6 +71,102 @@ export default function AssignmentsHubPage() {
             </div>
           </section>
 
+          {/* Quick Submission & Zoom Access Callout */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '16px',
+            marginBottom: '32px'
+          }}>
+            <div style={{
+              background: 'rgba(0, 97, 254, 0.06)',
+              border: '1px solid rgba(0, 97, 254, 0.2)',
+              borderRadius: '10px',
+              padding: '20px 22px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              gap: '14px'
+            }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <span style={{ fontSize: '20px' }}>📥</span>
+                  <h3 style={{ margin: 0, fontSize: '15px', color: '#0052cc', fontWeight: 'bold' }}>
+                    Dropbox Assignment Upload
+                  </h3>
+                </div>
+                <p style={{ margin: 0, fontSize: '13px', color: '#334155', lineHeight: '1.5' }}>
+                  Upload your Photoshop, Blender, and portfolio assignment files directly to our class Dropbox request folder.
+                </p>
+              </div>
+              <a
+                href="https://www.dropbox.com/request/d56lyvzlb50sm3vjg0yp"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 18px',
+                  background: '#0061fe',
+                  color: '#ffffff',
+                  borderRadius: '20px',
+                  fontSize: '12.5px',
+                  fontWeight: 'bold',
+                  textDecoration: 'none',
+                  boxShadow: '0 2px 6px rgba(0, 97, 254, 0.25)',
+                  alignSelf: 'flex-start'
+                }}
+              >
+                <span>📤</span> UPLOAD TO DROPBOX ↗
+              </a>
+            </div>
+
+            <div style={{
+              background: 'rgba(37, 99, 235, 0.06)',
+              border: '1px solid rgba(37, 99, 235, 0.2)',
+              borderRadius: '10px',
+              padding: '20px 22px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              gap: '14px'
+            }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <span style={{ fontSize: '20px' }}>📹</span>
+                  <h3 style={{ margin: 0, fontSize: '15px', color: '#1d4ed8', fontWeight: 'bold' }}>
+                    Weekly Zoom Class Meeting
+                  </h3>
+                </div>
+                <p style={{ margin: 0, fontSize: '13px', color: '#334155', lineHeight: '1.5' }}>
+                  Join our weekly live class discussions, demos, and guest lectures every Tuesday evening at 6:00 PM.
+                </p>
+              </div>
+              <a
+                href="https://us06web.zoom.us/j/6122246828"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 18px',
+                  background: '#2563eb',
+                  color: '#ffffff',
+                  borderRadius: '20px',
+                  fontSize: '12.5px',
+                  fontWeight: 'bold',
+                  textDecoration: 'none',
+                  boxShadow: '0 2px 6px rgba(37, 99, 235, 0.25)',
+                  alignSelf: 'flex-start'
+                }}
+              >
+                <span>📹</span> JOIN WEEKLY ZOOM ↗
+              </a>
+            </div>
+          </div>
+
           {/* Graded Assignments 6-Panel Grid */}
           <div className="hub-grid" style={{ 
             display: 'grid', 

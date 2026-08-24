@@ -25,13 +25,70 @@ export default function ClassFAQPage() {
           {/* Section: Time & Scheduling */}
           <section className="assignment-phase" style={{ position: 'relative' }}>
             <h2 className="phase-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>⏰</span> Time & Attendance
+              <span>⏰</span> Time, Zoom & Attendance
             </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', margin: '16px 0 20px 0' }}>
+              <div style={{ background: 'rgba(37, 99, 235, 0.06)', border: '1px solid rgba(37, 99, 235, 0.2)', borderRadius: '8px', padding: '16px' }}>
+                <h4 style={{ margin: '0 0 6px 0', fontSize: '14px', color: '#1d4ed8', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span>📹</span> Tuesday Virtual Class (Zoom)
+                </h4>
+                <p style={{ margin: '0 0 10px 0', fontSize: '13px', color: '#334155' }}>
+                  Weekly online sessions: <strong>7:00 pm – 9:00 pm</strong>
+                </p>
+                <a
+                  href="https://us06web.zoom.us/j/6122246828"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '6px 14px',
+                    background: '#2563eb',
+                    color: '#fff',
+                    borderRadius: '20px',
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    textDecoration: 'none'
+                  }}
+                >
+                  JOIN WEEKLY ZOOM ↗
+                </a>
+              </div>
+
+              <div style={{ background: 'rgba(0, 97, 254, 0.06)', border: '1px solid rgba(0, 97, 254, 0.2)', borderRadius: '8px', padding: '16px' }}>
+                <h4 style={{ margin: '0 0 6px 0', fontSize: '14px', color: '#0052cc', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span>📥</span> Assignment File Uploads
+                </h4>
+                <p style={{ margin: '0 0 10px 0', fontSize: '13px', color: '#334155' }}>
+                  Submit homework & milestone files via Dropbox
+                </p>
+                <a
+                  href="https://www.dropbox.com/request/d56lyvzlb50sm3vjg0yp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '6px 14px',
+                    background: '#0061fe',
+                    color: '#fff',
+                    borderRadius: '20px',
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    textDecoration: 'none'
+                  }}
+                >
+                  UPLOAD TO DROPBOX ↗
+                </a>
+              </div>
+            </div>
             <p className="phase-intro">
-              Classes run strictly from <strong>10:00 am – 3:30 pm</strong>.
+              Saturday in-person classes run strictly from <strong>10:00 am – 3:30 pm</strong> at Reveal Studios.
             </p>
             <ul className="phase-list phase-list--accent">
-              <li>Please arrive by <strong>9:50 am</strong> so that setup is finished and class can start on time at 10:00.</li>
+              <li>Please arrive by <strong>9:50 am</strong> on Saturdays so that workstation setup is finished and class can start on time at 10:00.</li>
               <li>A <strong>30-minute lunch break</strong> will be provided, along with several shorter break windows throughout the day.</li>
             </ul>
           </section>

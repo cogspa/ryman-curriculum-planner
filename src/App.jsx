@@ -14,6 +14,7 @@ import {
 } from './curriculumService.js';
 import LegalDisclaimer from './LegalDisclaimer.jsx';
 import CurriculumProgression from './CurriculumProgression.jsx';
+import TopicSearch from './TopicSearch.jsx';
 
 
 const HOLIDAYS = [
@@ -206,6 +207,50 @@ function Header({ startDate, setStartDate, totalWeeks }) {
           <span className="dot">·</span>
           {config.saturday.label}s {config.saturday.time} · {config.saturday.location}
         </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '16px' }}>
+          <a 
+            href="https://us06web.zoom.us/j/6122246828" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '6px 14px',
+              background: '#2563eb',
+              color: '#ffffff',
+              borderRadius: '20px',
+              fontSize: '12px',
+              fontWeight: '600',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 2px 6px rgba(37, 99, 235, 0.25)'
+            }}
+          >
+            <span>📹</span> Weekly Zoom Link ↗
+          </a>
+          <a 
+            href="https://www.dropbox.com/request/d56lyvzlb50sm3vjg0yp" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '6px 14px',
+              background: '#0061fe',
+              color: '#ffffff',
+              borderRadius: '20px',
+              fontSize: '12px',
+              fontWeight: '600',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 2px 6px rgba(0, 97, 254, 0.25)'
+            }}
+          >
+            <span>📥</span> Upload Assignments (Dropbox) ↗
+          </a>
+        </div>
       </div>
       <div className="header-right">
         {role === 'admin' && (
@@ -225,6 +270,72 @@ function Header({ startDate, setStartDate, totalWeeks }) {
         </div>
       </div>
     </header>
+  );
+}
+
+function WeekNavBar({ weeks, startDate, activeWeek, onSelectWeek }) {
+  const role = getActiveRole();
+
+  const handleWeekClick = (e, weekNum, isReleased) => {
+    if (!isReleased) {
+      e.preventDefault();
+      return;
+    }
+    if (onSelectWeek) {
+      onSelectWeek(weekNum);
+    }
+    const targetElement = document.getElementById(`week-${weekNum}`);
+    if (targetElement) {
+      e.preventDefault();
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      targetElement.classList.remove('card-highlight-pulse');
+      void targetElement.offsetWidth; // trigger reflow
+      targetElement.classList.add('card-highlight-pulse');
+    }
+  };
+
+  return (
+    <nav className="week-navbar" aria-label="Curriculum Weeks Navigation">
+      <div className="week-navbar-inner">
+        <div className="week-navbar-header">
+          <span className="week-navbar-title">
+            <span>🗓️</span> Jump to Week
+          </span>
+          <span className="week-navbar-count">12 Weeks + Final Capstone</span>
+        </div>
+        <div className="week-navbar-scroll">
+          {weeks.map(({ entry }) => {
+            const isCapstone = Number(entry.week) === 13;
+            const released = role === 'admin' || isWeekReleased(entry.week, startDate);
+            const label = isCapstone ? '⭐ Capstone Showcase' : `Week ${entry.week}`;
+            const isActive = activeWeek === entry.week;
+
+            return (
+              <a
+                key={entry.week}
+                href={`#week-${entry.week}`}
+                onClick={(e) => handleWeekClick(e, entry.week, released)}
+                className={`week-nav-item ${released ? 'is-released' : 'is-locked'} ${isCapstone ? 'is-capstone' : ''} ${isActive ? 'is-active-nav' : ''}`}
+                title={released ? `${label}: ${entry.title}` : `${label} is coming soon and will unlock as the week posts.`}
+                aria-disabled={!released}
+              >
+                <span className="week-nav-badge">
+                  {isCapstone ? 'CAPSTONE' : `W${String(entry.week).padStart(2, '0')}`}
+                </span>
+                <span className="week-nav-label-text">
+                  {isCapstone ? 'Showcase' : `Week ${entry.week}`}
+                </span>
+                {!released ? (
+                  <span className="week-nav-tag coming-soon">🔒 Coming Soon</span>
+                ) : (
+                  isCapstone && <span className="week-nav-tag capstone-tag">FINAL</span>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </nav>
   );
 }
 function NewPill() {
@@ -680,6 +791,7 @@ function WeekCard({
   tuesday,
   saturday,
   isCapstone,
+  isSelected = false,
   index,
   adminMode,
   isAdminView = false,
@@ -750,7 +862,8 @@ function WeekCard({
 
   return (
     <article
-      className={`card${isCapstone ? ' card-capstone' : ''}`}
+      id={`week-${week.week}`}
+      className={`card${isCapstone ? ' card-capstone' : ''}${isSelected ? ' card-selected-glow' : ''}`}
       style={{ animationDelay: `${index * 40}ms` }}
     >
       <div className="card-head">
@@ -1572,6 +1685,7 @@ function WeekCard({
 // ─── app ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
+  const [activeWeek, setActiveWeek] = useState(null);
   const [startDate, setStartDate] = useState(() => {
     try {
       return localStorage.getItem('cp-start-date') || config.startDate;
@@ -1984,6 +2098,54 @@ export default function App() {
           totalWeeks={weeks.length}
         />
 
+        <TopicSearch
+          customCurriculum={customCurriculum}
+          onSelectWeek={setActiveWeek}
+        />
+
+        <WeekNavBar
+          weeks={weeks}
+          startDate={startDate}
+          activeWeek={activeWeek}
+          onSelectWeek={setActiveWeek}
+        />
+
+        {/* Weekly Zoom Link Bar */}
+        <div className="zoom-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(37, 99, 235, 0.05)', border: '1px solid rgba(37, 99, 235, 0.2)', borderRadius: '8px', padding: '12px 18px', marginBottom: '12px', marginTop: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '20px' }}>📹</span>
+            <span style={{ fontSize: '13.5px', fontWeight: '500', color: '#1d4ed8' }}>
+              <strong>Weekly Zoom link:</strong> Join our live Tuesday evening class sessions (6:00 PM – 7:30 PM).
+            </span>
+          </div>
+          <a 
+            href="https://us06web.zoom.us/j/6122246828"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none', background: '#2563eb', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 16px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '6px', transition: 'all 0.2s', boxShadow: '0 2px 6px rgba(37, 99, 235, 0.25)' }}
+          >
+            JOIN WEEKLY ZOOM ↗
+          </a>
+        </div>
+
+        {/* Dropbox Assignment Upload Bar */}
+        <div className="dropbox-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(0, 97, 254, 0.05)', border: '1px solid rgba(0, 97, 254, 0.2)', borderRadius: '8px', padding: '12px 18px', marginBottom: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '20px' }}>📥</span>
+            <span style={{ fontSize: '13.5px', fontWeight: '500', color: '#0052cc' }}>
+              <strong>Assignment Uploads:</strong> Submit your weekly homework, exercises, and project milestones directly to the class Dropbox folder.
+            </span>
+          </div>
+          <a 
+            href="https://www.dropbox.com/request/d56lyvzlb50sm3vjg0yp"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none', background: '#0061fe', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 16px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', gap: '6px', transition: 'all 0.2s', boxShadow: '0 2px 6px rgba(0, 97, 254, 0.25)' }}
+          >
+            UPLOAD ASSIGNMENTS (DROPBOX) ↗
+          </a>
+        </div>
+
         {(role === 'admin' || role === 'student') && (
           <div className="faq-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(5, 150, 105, 0.05)', border: '1px solid rgba(5, 150, 105, 0.15)', borderRadius: '8px', padding: '12px 18px', marginBottom: '12px', marginTop: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -2094,6 +2256,14 @@ export default function App() {
             </span>
           </div>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+            <a 
+              href="https://www.dropbox.com/request/d56lyvzlb50sm3vjg0yp"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', background: '#0061fe', color: '#fff', fontSize: '11.5px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center', gap: '5px' }}
+            >
+              📤 DROPBOX UPLOAD ↗
+            </a>
             <Link 
               to="/assignments" 
               style={{ textDecoration: 'none', background: '#db2777', color: '#fff', fontSize: '11.5px', fontWeight: 'bold', padding: '6px 16px', borderRadius: '20px', transition: 'all 0.2s', display: 'inline-flex', alignItems: 'center', border: '1px dashed #fff' }}
@@ -2278,6 +2448,7 @@ export default function App() {
               tuesday={tuesday}
               saturday={saturday}
               isCapstone={Number(entry.week) === 13}
+              isSelected={activeWeek === entry.week}
               index={idx}
               adminMode={adminMode && role === 'admin'}
               isAdminView={role === 'admin'}
