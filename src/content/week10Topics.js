@@ -187,7 +187,7 @@ The **2026 Otis College Creative Economy Report** documents a California creativ
       },
       {
         heading: 'Further Reading & Career Tools',
-        body: `• **CareerOneStop (U.S. Department of Labor):** [Networking and Your Elevator Speech](https://www.careeronestop.org/JobSearch/Network/networking-and-your-elevator-speech.aspx) — how a concise professional introduction communicates transferable skills and career goals.
+        body: `• **CareerOneStop (U.S. Department of Labor):** [Networking and Your Elevator Speech](https://www.careeronestop.org/JobSearch/Network/how-to-network.aspx) — how a concise professional introduction communicates transferable skills and career goals.
 • **LinkedIn:** [Create a Good LinkedIn Profile](https://www.linkedin.com/help/linkedin/answer/a554351) — utilizing the headline and About section to convey motivations, technical competencies, and curated portfolio links.
 • **Otis College:** [2026 Creative Economy Report](https://www.otis.edu/about/initiatives/creative-economy/) — LA-specific market context for understanding how creative careers are evolving.`
       }
@@ -384,8 +384,8 @@ If their response is *"I'm not sure,"* that is vital diagnostic feedback. The is
       text: 'Structure answers into Situation, Task, Action, and Result to communicate how you navigate feedback, deadlines, and technical roadblocks.',
       links: [
         {
-          label: 'CareerOneStop: Get Ready to Interview (U.S. Dept of Labor) →',
-          url: 'https://www.careeronestop.org/JobSearch/Interview/get-ready-to-interview.aspx'
+          label: 'CareerOneStop: Common Interview Questions (U.S. Dept of Labor) →',
+          url: 'https://www.careeronestop.org/JobSearch/Interview/common-interview-questions.aspx'
         }
       ]
     },
@@ -413,7 +413,7 @@ If their response is *"I'm not sure,"* that is vital diagnostic feedback. The is
         heading: 'Further Reading & Career Tools',
         body: `• **Indeed:** [How to Use the STAR Interview Technique](https://www.indeed.com/career-advice/interviewing/how-to-use-the-star-interview-response-technique) — updated guide to behavioral response structure.
 • **Indeed:** [Behavioral Interview Practice Questions](https://www.indeed.com/career-advice/interviewing/behavioral-interview-questions) — questions and sample answers.
-• **CareerOneStop:** [Get Ready to Interview](https://www.careeronestop.org/JobSearch/Interview/get-ready-to-interview.aspx) — employer research, practicing responses, and interviewer question prep.`
+• **CareerOneStop:** [Common Interview Questions & Preparation](https://www.careeronestop.org/JobSearch/Interview/common-interview-questions.aspx) — employer research, practicing responses, and interviewer question prep.`
       }
     ]
   },
@@ -461,7 +461,7 @@ Otis College research shows that organizational adoption hinges on **brand value
       {
         heading: 'Further Reading & Career Tools',
         body: `• **Otis College:** [AI and California's Creative Economy](https://www.otis.edu/about/initiatives/creative-economy/) — values, IP safety, and artistic integrity in creative studios.
-• **CareerOneStop:** [Common Interview Questions & Preparation](https://www.careeronestop.org/JobSearch/Interview/interview-questions.aspx) — framing answers around underlying employer concerns.`
+• **CareerOneStop:** [Common Interview Questions & Preparation](https://www.careeronestop.org/JobSearch/Interview/common-interview-questions.aspx) — framing answers around underlying employer concerns.`
       }
     ]
   },
