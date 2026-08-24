@@ -8,7 +8,8 @@ import LegalDisclaimer from '../LegalDisclaimer.jsx';
  *   topicKey   — current topic key string
  *   weekNum    — two-digit week string, e.g. '01'
  */
-export default function TopicNav({ topicList, topicKey, weekNum }) {
+export default function TopicNav({ topicList = [], topicKey, weekNum }) {
+  if (!Array.isArray(topicList) || topicList.length === 0) return null;
   const idx = topicList.findIndex((t) => t.key === topicKey);
   if (idx === -1) return null;
 

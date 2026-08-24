@@ -46,6 +46,8 @@ import Week08Overview from './pages/Week08Overview.jsx';
 import Week08TopicDetail from './pages/Week08TopicDetail.jsx';
 import Week09Overview from './pages/Week09Overview.jsx';
 import Week09TopicDetail from './pages/Week09TopicDetail.jsx';
+import Week10Overview from './pages/Week10Overview.jsx';
+import Week10TopicDetail from './pages/Week10TopicDetail.jsx';
 import CapstoneGallery from './capstone-gallery-builder/CapstoneGallery.jsx';
 import FilmReferenceGallery from './style_inspiration_gallery/FilmReferenceGallery.jsx';
 import HandoffFormats from './pages/HandoffFormats.jsx';
@@ -140,6 +142,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/09/film-reference-gallery" element={<FilmReferenceGallery />} />
           <Route path="/style-inspiration-gallery" element={<FilmReferenceGallery />} />
           <Route path="/week/09/:topicKey" element={<Week09TopicDetail />} />
+          <Route path="/week/10" element={<Week10Overview />} />
+          <Route path="/week/10/:topicKey" element={<Week10TopicDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

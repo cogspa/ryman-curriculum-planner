@@ -581,7 +581,7 @@ export default function AssignmentPage() {
                   <span>This week features a single, unified assignment: complete your <strong>Creative Brief</strong> (due August 8th) and your <strong>Capstone Reference Board</strong> (due August 15th). No separate tracks — all students complete both parts.</span>
                 ) : (
                   <>
-                    We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional.
+                    All tracks below are <strong>optional</strong> — choose the level of challenge that best fits your schedule and goals.
                     {isMultiTrack && " Please refer to the specific deliverables for each track below:"}
                   </>
                 )}
@@ -599,7 +599,7 @@ export default function AssignmentPage() {
                   {beginnerTrack && (
                     <div style={{ fontSize: '13.5px', fontFamily: 'var(--font-sans, sans-serif)' }}>
                       <div style={{ fontWeight: 'bold', color: '#92400e', marginBottom: '4px' }}>
-                        Base Assignment: <span style={{ textDecoration: 'underline' }}>{cleanTitle(beginnerTrack.title, 'Base Track')}</span>
+                        Base Assignment (Optional): <span style={{ textDecoration: 'underline' }}>{cleanTitle(beginnerTrack.title, 'Base Track')}</span>
                       </div>
                       {beginnerTrack.submission && (
                         <ul style={{ margin: 0, paddingLeft: '20px', color: '#78350f', lineHeight: '1.45' }}>
@@ -613,7 +613,7 @@ export default function AssignmentPage() {
                   {intermediateTrack && (
                     <div style={{ fontSize: '13.5px', fontFamily: 'var(--font-sans, sans-serif)' }}>
                       <div style={{ fontWeight: 'bold', color: '#92400e', marginBottom: '4px' }}>
-                        Take It to the Next Level: <span style={{ textDecoration: 'underline' }}>{cleanTitle(intermediateTrack.title, 'Next Level')}</span>
+                        Take It to the Next Level (Optional): <span style={{ textDecoration: 'underline' }}>{cleanTitle(intermediateTrack.title, 'Next Level')}</span>
                       </div>
                       {intermediateTrack.submission && (
                         <ul style={{ margin: 0, paddingLeft: '20px', color: '#78350f', lineHeight: '1.45' }}>

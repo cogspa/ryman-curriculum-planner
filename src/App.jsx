@@ -632,6 +632,29 @@ function Section({ label, items, weekNumber }) {
             } else if (cleanText.includes('refine campaign assets') || cleanText.includes('peer feedback') || cleanText.includes('pitch rehearsals')) {
               linkPath = '/week/09/refine-campaign-assets-peer-feedback';
             }
+          } else if (Number(weekNumber) === 10 && (label === 'Topics' || label === 'Readings')) {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('elevator pitch') || cleanText.includes('30-second story') || cleanText.includes('compelling elevator')) {
+              linkPath = '/week/10/elevator-pitch-and-story';
+            } else if (cleanText.includes('hiring pipelines') || cleanText.includes('how creative hiring actually works')) {
+              linkPath = '/week/10/creative-hiring-pipelines';
+            } else if (cleanText.includes('resumes and linkedin') || cleanText.includes('ats')) {
+              linkPath = '/week/10/resumes-linkedin-ats';
+            } else if (cleanText.includes('6-second') || cleanText.includes('six-second') || cleanText.includes('recruiter insights')) {
+              linkPath = '/week/10/six-second-portfolio-test';
+            } else if (cleanText.includes('resume & linkedin') || cleanText.includes('optimization workshop')) {
+              linkPath = '/week/10/resumes-linkedin-ats';
+            } else if (cleanText.includes('interview role-play') || cleanText.includes('star') || cleanText.includes('behavioral')) {
+              linkPath = '/week/10/interview-storytelling-star';
+            } else if (cleanText.includes('portfolio storytelling') || cleanText.includes('structuring process') || cleanText.includes('problem → process')) {
+              linkPath = '/week/10/portfolio-storytelling-process';
+            } else if (cleanText.includes('salary negotiation') || cleanText.includes('pricing confidence')) {
+              linkPath = '/week/10/salary-negotiation-market-data';
+            } else if (cleanText.includes('freelance') || cleanText.includes('scenarios')) {
+              linkPath = '/week/10/freelance-pricing-conversations';
+            } else if (cleanText.includes('los angeles creative economy') || cleanText.includes('industry context')) {
+              linkPath = '/week/10/la-creative-economy-2026';
+            }
           }
 
           return (
@@ -1358,6 +1381,55 @@ function WeekCard({
                       className="resource-button"
                     >
                       📚 Master Resource Directory (38 Links) →
+                    </Link>
+                  </div>
+                )}
+                {week.week === 10 && (
+                  <div style={{
+                    marginTop: '16px',
+                    display: 'flex',
+                    gap: '10px',
+                    flexWrap: 'wrap',
+                    fontSize: '12px',
+                    fontFamily: 'var(--font-mono, monospace)',
+                  }}>
+                    <Link 
+                      to="/week/10" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      📖 Week 10 Overview &amp; All 10 Lessons →
+                    </Link>
+                    <Link 
+                      to="/week/10/la-creative-economy-2026" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#1e40af',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(30, 64, 175, 0.25)',
+                        background: 'rgba(30, 64, 175, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      🌟 The LA Creative Economy (2026+) →
                     </Link>
                   </div>
                 )}
