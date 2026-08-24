@@ -188,7 +188,7 @@ The **2026 Otis College Creative Economy Report** documents a California creativ
       {
         heading: 'Further Reading & Career Tools',
         body: `• **CareerOneStop (U.S. Department of Labor):** [Networking and Your Elevator Speech](https://www.careeronestop.org/JobSearch/Network/how-to-network.aspx) — how a concise professional introduction communicates transferable skills and career goals.
-• **LinkedIn:** [Create a Good LinkedIn Profile](https://www.linkedin.com/help/linkedin/answer/a554351) — utilizing the headline and About section to convey motivations, technical competencies, and curated portfolio links.
+• **LinkedIn:** [Create a Good LinkedIn Profile](https://www.linkedin.com/help/linkedin/answer/a544837) — utilizing the headline and About section to convey motivations, technical competencies, and curated portfolio links.
 • **Otis College:** [2026 Creative Economy Report](https://www.otis.edu/about/initiatives/creative-economy/) — LA-specific market context for understanding how creative careers are evolving.`
       }
     ]
@@ -235,8 +235,8 @@ In Greater Los Angeles, hiring pathways span major entertainment studios, tech f
       {
         heading: 'Further Reading & Career Tools',
         body: `• **Behance:** [Recruiter Pro: Portfolio-First Hiring for Creative Teams](https://www.behance.net/blog/recruiter-pro) — creative recruitment moving toward portfolios and demonstrated skills.
-• **LinkedIn:** [Future of Recruiting Research](https://business.linkedin.com/talent-solutions/resources/recruiting-trends) — the role of AI-assisted recruiting and human evaluation.
-• **LinkedIn:** [Skills-First Hiring Framework](https://business.linkedin.com/talent-solutions/resources/recruiting-trends) — evaluating candidates on demonstrable capabilities rather than pedigree alone.`
+• **LinkedIn:** [Future of Recruiting & Talent Insights](https://www.linkedin.com/business/talent/blog) — AI-assisted recruiting and human evaluation.
+• **LinkedIn:** [Skills-First Hiring Framework](https://www.linkedin.com/business/talent/blog) — evaluating candidates on demonstrable capabilities rather than pedigree alone.`
       }
     ]
   },
@@ -282,8 +282,8 @@ The first is a label; the second is proof of professional creative judgment.`
       {
         heading: 'Further Reading & Career Tools',
         body: `• **Indeed:** [How to Write an ATS-Friendly Resume](https://www.indeed.com/career-advice/resumes-cover-letters/ats-resume) — updated guidance on keywords, typography, and section headers.
-• **LinkedIn:** [Create a Good LinkedIn Profile](https://www.linkedin.com/help/linkedin/answer/a554351) — optimizing headlines, About summaries, and project galleries.
-• **LinkedIn:** [Skills as the New Hiring Currency](https://business.linkedin.com/talent-solutions/resources/recruiting-trends) — why clearly defining capabilities matters in recruiting search.`
+• **LinkedIn:** [Create a Good LinkedIn Profile](https://www.linkedin.com/help/linkedin/answer/a544837) — optimizing headlines, About summaries, and project galleries.
+• **LinkedIn:** [Skills as the New Hiring Currency](https://www.linkedin.com/business/talent/blog) — why clearly defining capabilities matters in recruiting search.`
       }
     ]
   },
@@ -326,7 +326,7 @@ If their response is *"I'm not sure,"* that is vital diagnostic feedback. The is
         heading: 'Further Reading & Career Tools',
         body: `• **Behance:** [Portfolio-First Hiring for Creative Teams](https://www.behance.net/blog/recruiter-pro) — work-first candidate discovery examples.
 • **Behance:** [How to Build a Portfolio That Gets You Hired](https://www.behance.net/blog/how-to-build-a-portfolio-that-gets-you-hired) — thoughtful curation and first-impression impact.
-• **AIGA:** [Portfolio and Professional Practice Guide](https://www.aiga.org/design/design-education) — audience awareness and presenting your target focus.`
+• **AIGA:** [Professional Standards & Career Practice Guide](https://www.aiga.org/professional-development) — audience awareness and presenting your target focus.`
       }
     ]
   },
@@ -366,7 +366,7 @@ If their response is *"I'm not sure,"* that is vital diagnostic feedback. The is
       {
         heading: 'Further Reading & Career Tools',
         body: `• **Otis College:** [Creative Disruption: AI and California's Creative Economy](https://www.otis.edu/about/initiatives/creative-economy/) — deep examination of AI and creative labor in California.
-• **AIGA:** [Design Process & UX Case Study Guide](https://www.aiga.org/design/design-education) — communicating project context, failure, pivots, and learning.
+• **AIGA:** [Design Process & Standards Guide](https://www.aiga.org/professional-development) — communicating project context, failure, pivots, and learning.
 • **Behance:** [Portfolio-First Recruiting Trends](https://www.behance.net/blog/recruiter-pro) — demonstrating why process work serves as verified hiring evidence.`
       }
     ]
@@ -514,7 +514,7 @@ Before negotiating, build your **Compensation Worksheet**:
         heading: 'Further Reading & Career Tools',
         body: `• **California DIR:** [California Equal Pay Act & Pay Transparency Law](https://www.dir.ca.gov/dlse/California_Equal_Pay_Act.htm) — statutory pay scale disclosure rules.
 • **CareerOneStop:** [Salary Finder & Offer Negotiation](https://www.careeronestop.org/Toolkit/Wages/find-salary.aspx) — salary comparison and negotiation strategies.
-• **Adobe:** [The Economic State of Creative Professions](https://www.adobe.com/creativecloud/business/enterprise/resources.html) — occupational wage comparisons across nine creative disciplines.`
+• **Adobe:** [The Economic State of Creative Professions](https://www.adobe.com/creativecloud/business.html) — occupational wage comparisons across creative disciplines.`
       }
     ]
   },
