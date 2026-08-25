@@ -301,7 +301,7 @@ The first is a label; the second is proof of professional creative judgment.`
       links: [
         {
           label: 'Behance: How to Build a Portfolio That Gets You Hired →',
-          url: 'https://www.behance.net/blog/how-to-build-a-portfolio-that-gets-you-hired'
+          url: 'https://www.behance.net/blog/portfolio-that-gets-you-hired'
         }
       ]
     },
@@ -325,7 +325,7 @@ If their response is *"I'm not sure,"* that is vital diagnostic feedback. The is
       {
         heading: 'Further Reading & Career Tools',
         body: `• **Behance:** [Portfolio-First Hiring for Creative Teams](https://www.behance.net/blog/recruiter-pro) — work-first candidate discovery examples.
-• **Behance:** [How to Build a Portfolio That Gets You Hired](https://www.behance.net/blog/how-to-build-a-portfolio-that-gets-you-hired) — thoughtful curation and first-impression impact.
+• **Behance:** [How to Build a Portfolio That Gets You Hired](https://www.behance.net/blog/portfolio-that-gets-you-hired) — thoughtful curation and first-impression impact.
 • **AIGA:** [Professional Standards & Career Practice Guide](https://www.aiga.org/professional-development) — audience awareness and presenting your target focus.`
       }
     ]
