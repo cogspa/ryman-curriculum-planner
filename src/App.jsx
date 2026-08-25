@@ -393,11 +393,43 @@ function Section({ label, items, weekNumber }) {
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
       ) : label === 'Assignments' ? (
-        <Link to="/assignments" className="section-label-link">
-          {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW HUB →]</span>
+        <Link to="/assignments" className="section-label-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+          <span>{label}</span>
+          <span style={{
+            fontSize: '11px',
+            fontWeight: '800',
+            color: '#b91c1c',
+            background: 'rgba(239, 68, 68, 0.1)',
+            border: '1px solid rgba(239, 68, 68, 0.35)',
+            padding: '1px 6px',
+            borderRadius: '4px',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            display: 'inline-block'
+          }}>
+            (OPTIONAL)
+          </span>
+          <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW HUB →]</span>
         </Link>
       ) : (
-        <p className="section-label">{label}</p>
+        <p className="section-label" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <span>{label}</span>
+          {label === 'Assignments' && (
+            <span style={{
+              fontSize: '10px',
+              fontWeight: '800',
+              color: '#b91c1c',
+              background: 'rgba(239, 68, 68, 0.1)',
+              border: '1px solid rgba(239, 68, 68, 0.35)',
+              padding: '1px 5px',
+              borderRadius: '4px',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase'
+            }}>
+              (OPTIONAL)
+            </span>
+          )}
+        </p>
       )}
       <ul className="section-list">
         {items.map((item, i) => {
@@ -1571,6 +1603,26 @@ function WeekCard({
                         </div>
                       </div>
                     </div>
+                  ) : week.week === 10 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div style={{ color: '#b45309', fontWeight: 'bold', marginBottom: '2px', fontSize: '13.5px' }}>
+                        Due Date: Saturday, August 29th (End of Class) — Capstone Finalization
+                      </div>
+                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
+                        By the end of class on August 29, all students must complete:
+                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>1. Artist Statement</strong> — Complete and refine your written artist statement describing your creative vision, themes, narrative, and technical process.
+                          </li>
+                          <li style={{ marginBottom: '4px' }}>
+                            <strong>2. Final Hero Image &amp; Title Slide</strong> — Complete your final polished Hero Image / Title slide layout finalized and ready for the <strong>CAPSTONE</strong>.
+                          </li>
+                        </ul>
+                      </div>
+                      <div style={{ fontSize: '12px', marginTop: '4px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.18)', color: '#b45309', fontStyle: 'italic' }}>
+                        <strong>Note:</strong> Weekly assignment tracks (Base, Next Level, Advanced Integration) are optional; prioritize completing your Artist Statement and Final Hero Image / Title Slide for the Capstone.
+                      </div>
+                    </div>
                   ) : (
                     <span>We recommend focusing on both the <strong>Base Assignment</strong> and <strong>Take It to the Next Level</strong> tracks. The <strong>Advanced Integration</strong> track is optional. If you choose to use Photoshop, we recommend keeping the number of active Artboards to a minimum, as a high count can significantly increase your file size. Save files for weekly critique and capstone.</span>
                   )}
@@ -1726,6 +1778,76 @@ function WeekCard({
         </div>
       )}
 
+      {Number(week.week) === 10 && (
+        <div style={{
+          marginTop: '16px',
+          marginBottom: '18px',
+          padding: '14px 18px',
+          background: 'linear-gradient(135deg, rgba(139, 58, 47, 0.07) 0%, rgba(246, 242, 232, 0.95) 100%)',
+          border: '1.5px solid rgba(139, 58, 47, 0.28)',
+          borderLeft: '4px solid #8b3a2f',
+          borderRadius: '8px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '12px'
+        }}>
+          <div>
+            <div style={{
+              fontFamily: 'var(--font-mono, monospace)',
+              fontSize: '10.5px',
+              fontWeight: '700',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              color: '#8b3a2f',
+              marginBottom: '4px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}>
+              <span>🛠️</span> BONUS TOOL
+            </div>
+            <div style={{
+              fontSize: '14.5px',
+              fontWeight: '700',
+              color: 'var(--ink, #1c1a17)',
+              marginBottom: '3px'
+            }}>
+              Tips and Tricks Database
+            </div>
+            <div style={{
+              fontSize: '12.5px',
+              color: 'var(--ink-mid, #44403a)',
+              lineHeight: '1.4'
+            }}>
+              Interactive field guide and curated specimen archive of digital painting, 3D workflows, brushes, lighting, and animation tips.
+            </div>
+          </div>
+          <Link
+            to="/week/10/tips-and-tricks"
+            style={{
+              textDecoration: 'none',
+              background: '#8b3a2f',
+              color: '#ffffff',
+              fontWeight: '600',
+              fontSize: '12.5px',
+              padding: '8px 16px',
+              borderRadius: '20px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              transition: 'all 0.15s ease',
+              boxShadow: '0 2px 6px rgba(139, 58, 47, 0.25)',
+              whiteSpace: 'nowrap'
+            }}
+            className="bonus-tool-btn"
+          >
+            EXPLORE TIPS &amp; TRICKS DATABASE →
+          </Link>
+        </div>
+      )}
+
       <div className="notes-wrap">
         <label className="notes-label" htmlFor={`notes-${week.week}`}>Your notes</label>
         <textarea
@@ -1780,6 +1902,59 @@ export default function App() {
     }
   }, [startDate]);
 
+  // Automatic migration to ensure all assignment labels include (Optional) in bold text
+  useEffect(() => {
+    if (customCurriculum && customCurriculum.length > 0) {
+      let hasChanges = false;
+      const updated = customCurriculum.map(week => {
+        if (week.saturday && Array.isArray(week.saturday.assignments)) {
+          const newAsgs = week.saturday.assignments.map(asg => {
+            let updatedAsg = asg;
+            if (updatedAsg.includes('**Base Assignment**') && !updatedAsg.includes('(Optional)')) {
+              updatedAsg = updatedAsg.replace('**Base Assignment**', '**Base Assignment (Optional)**');
+              hasChanges = true;
+            }
+            if (updatedAsg.includes('**Next Level**') && !updatedAsg.includes('(Optional)')) {
+              updatedAsg = updatedAsg.replace('**Next Level**', '**Next Level (Optional)**');
+              hasChanges = true;
+            }
+            if (updatedAsg.includes('**Advanced Integration**') && !updatedAsg.includes('(Optional)')) {
+              updatedAsg = updatedAsg.replace('**Advanced Integration**', '**Advanced Integration (Optional)**');
+              hasChanges = true;
+            }
+            if (updatedAsg.includes('**Creative Brief & Capstone Reference Board**') && !updatedAsg.includes('(Optional)')) {
+              updatedAsg = updatedAsg.replace('**Creative Brief & Capstone Reference Board**', '**Creative Brief & Capstone Reference Board (Optional)**');
+              hasChanges = true;
+            }
+            if (updatedAsg.includes('**Capstone Reference Board Layout**') && !updatedAsg.includes('(Optional)')) {
+              updatedAsg = updatedAsg.replace('**Capstone Reference Board Layout**', '**Capstone Reference Board Layout (Optional)**');
+              hasChanges = true;
+            }
+            return updatedAsg;
+          });
+          if (hasChanges) {
+            return {
+              ...week,
+              saturday: {
+                ...week.saturday,
+                assignments: newAsgs
+              }
+            };
+          }
+        }
+        return week;
+      });
+
+      if (hasChanges) {
+        setCustomCurriculum(updated);
+        saveLocalCurriculum(updated);
+        if (supabase) {
+          syncRemoteCurriculum(updated);
+        }
+      }
+    }
+  }, [customCurriculum]);
+
   // Automatic migration for Week 5 assignments and topics to ensure old custom databases are updated
   useEffect(() => {
     if (customCurriculum && customCurriculum.length > 4) {
@@ -1796,7 +1971,7 @@ export default function App() {
         if (hasOldAssignment) {
           needsUpdate = true;
           updatedAssignments = [
-            '**Base Assignment**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on August 1**.'
+            '**Base Assignment (Optional)**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on August 1**.'
           ];
         }
 
@@ -1881,9 +2056,9 @@ export default function App() {
           
           if (hasAssignment4InWeek7 || isWeek6MissingAssignments) {
             const newWeek6Assignments = [
-              '[NEW] **Base Assignment**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout. **Due at the end of Class on August 8**.',
-              '[NEW] **Next Level**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies. **Due at the end of Class on August 8**.',
-              '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. **Due at the end of Class on August 8**.'
+              '[NEW] **Base Assignment (Optional)**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout. **Due at the end of Class on August 8**.',
+              '[NEW] **Next Level (Optional)**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies. **Due at the end of Class on August 8**.',
+              '[NEW] **Advanced Integration (Optional)**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. **Due at the end of Class on August 8**.'
             ];
 
             updatedCurriculum[week6Idx] = {

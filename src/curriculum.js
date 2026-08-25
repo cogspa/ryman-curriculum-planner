@@ -54,9 +54,9 @@ export const curriculum = [
         'Hands-on: Value, composition, gesture, and form on a digital screen',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *Traditional Translation* — Recreate a traditional character sketch or prop study digitally in Photoshop or Procreate to learn basic brush control and layer setup.',
-        '[NEW] **Next Level**: *Scene Integration* — Place your IP character or prop into three distinct photo-reference scenes, conducting value-to-color lighting studies.',
-        '[NEW] **Advanced Integration**: *Illustrated 3D Prop Composite* — Convert a 2D outline into a simple 3D object in Blender, apply Grease Pencil line art, and composite it back into a scene.'
+        '[NEW] **Base Assignment (Optional)**: *Traditional Translation* — Recreate a traditional character sketch or prop study digitally in Photoshop or Procreate to learn basic brush control and layer setup.',
+        '[NEW] **Next Level (Optional)**: *Scene Integration* — Place your IP character or prop into three distinct photo-reference scenes, conducting value-to-color lighting studies.',
+        '[NEW] **Advanced Integration (Optional)**: *Illustrated 3D Prop Composite* — Convert a 2D outline into a simple 3D object in Blender, apply Grease Pencil line art, and composite it back into a scene.'
       ],
     }
   },
@@ -118,9 +118,9 @@ export const curriculum = [
         '[NEW] Tool: Brush Maker II',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *Compositional Brush Library* — Build custom brush presets from real-world photos (atmospheric, landscape, messy/junk) to establish a digital painting toolbox.',
-        '[NEW] **Next Level**: *Landscape Compositions* — Paint three themed landscape scenes using your custom brush presets to establish foreground, midground, and background depth layering.',
-        '[NEW] **Advanced Integration**: *Shader Editor & Bake* — Create a procedural wear shader on your Blender model, bake ambient occlusion and curvature maps, and assemble four wear-and-tear states in Photoshop.'
+        '[NEW] **Base Assignment (Optional)**: *Compositional Brush Library* — Build custom brush presets from real-world photos (atmospheric, landscape, messy/junk) to establish a digital painting toolbox.',
+        '[NEW] **Next Level (Optional)**: *Landscape Compositions* — Paint three themed landscape scenes using your custom brush presets to establish foreground, midground, and background depth layering.',
+        '[NEW] **Advanced Integration (Optional)**: *Shader Editor & Bake* — Create a procedural wear shader on your Blender model, bake ambient occlusion and curvature maps, and assemble four wear-and-tear states in Photoshop.'
       ],
     }
   },
@@ -174,7 +174,7 @@ export const curriculum = [
         '[NEW] Storyboarding fundamentals & visual cinematography (Dutch tilt, worm\'s eye view, pitch shot, zolly/dolly zooms)',
       ],
       assignments: [
-        '**Base Assignment**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on August 1**.'
+        '**Base Assignment (Optional)**: *Character Development: Thumbnails, Model Sheet, and Final Illustration* — Develop a page of character thumbnails, a model sheet with expressions, and a final character study integrated into an environment. **Due at the end of Class on August 1**.'
       ],
     }
   },
@@ -203,9 +203,9 @@ export const curriculum = [
         '[NEW] The commercial brief (visual hierarchy, type & image pairing, campaign pitching)',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout. **Due at the end of Class on August 8**.',
-        '[NEW] **Next Level**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies. **Due at the end of Class on August 8**.',
-        '[NEW] **Advanced Integration**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. **Due at the end of Class on August 8**.'
+        '[NEW] **Base Assignment (Optional)**: *3-Panel Comic & Turnaround* — Draw a 3-panel sequential comic strip showing a simple character action, alongside a basic character turnaround layout. **Due at the end of Class on August 8**.',
+        '[NEW] **Next Level (Optional)**: *Storyboard Sequence & Turnarounds* — Create a 6-to-9 panel storyboard layout with camera moves (dolly zoom, tilt, track), alongside a character model turnaround sheet with expression studies. **Due at the end of Class on August 8**.',
+        '[NEW] **Advanced Integration (Optional)**: *Blender Grease Pencil / Animatic Block-In* — Layout a 6-to-9 panel storyboard sequence in Blender using 3D camera staging, and sketch drawings in 3D space using Grease Pencil. **Due at the end of Class on August 8**.'
       ],
     }
   },
@@ -235,7 +235,7 @@ export const curriculum = [
         '[NEW] Hero Project G — A personal or autobiographical project',
       ],
       assignments: [
-        '[NEW] **Creative Brief & Capstone Reference Board** — Write a one-page creative brief defining your project scope and Hero Project selection (due Aug 8). Then lay out your full Capstone reference board using the provided SVG template or your own InDesign/Illustrator file (due Aug 15).'
+        '[NEW] **Creative Brief & Capstone Reference Board (Optional)** — Write a one-page creative brief defining your project scope and Hero Project selection (due Aug 8). Then lay out your full Capstone reference board using the provided SVG template or your own InDesign/Illustrator file (due Aug 15).'
       ],
     }
   },
@@ -266,7 +266,7 @@ export const curriculum = [
         '🛠️ Task: Reference Board complete (the thumbnail sketch concept of the whole project laid out in one InDesign/Illustrator file)',
       ],
       assignments: [
-        '**Capstone Reference Board Layout**: Complete full visual reference board using the SVG template. *(Due Aug 15, End of Class)*'
+        '**Capstone Reference Board Layout (Optional)**: Complete full visual reference board using the SVG template. *(Due Aug 15, End of Class)*'
       ],
     }
   },
@@ -318,9 +318,9 @@ export const curriculum = [
         'Salary negotiation basics & pricing confidence',
       ],
       assignments: [
-        '[NEW] **Base Assignment**: *"Your World" Poster Campaign* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
-        '[NEW] **Next Level**: *Multi-Format Key Art Campaign* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
-        '[NEW] **Advanced Integration**: *3D Studio lighting & Asset Marketing Deck* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
+        '[NEW] **Base Assignment (Optional)**: *"Your World" Poster Campaign* — Design a clean poster for your IP pairing your main illustration with custom typography and logo layouts.',
+        '[NEW] **Next Level (Optional)**: *Multi-Format Key Art Campaign* — Design a high-end key art poster and adapt it into 4 different layout form-factors using InDesign master grids and smart objects.',
+        '[NEW] **Advanced Integration (Optional)**: *3D Studio lighting & Asset Marketing Deck* — Set up studio lighting for your Blender models, render hero passes, and compile the marketing campaign using modular templates.'
       ],
     }
   },

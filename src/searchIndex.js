@@ -211,6 +211,15 @@ export const INTERACTIVE_TOOLS = [
     tags: ['film', 'inspiration', 'style', 'moodboard', 'references', 'visual development', 'cinematography']
   },
   {
+    id: 'tips-and-tricks-database',
+    title: 'Tips and Tricks Database',
+    category: 'Bonus Tool',
+    week: 10,
+    url: '/week/10/tips-and-tricks',
+    description: 'Interactive field guide and curated specimen archive of digital painting, 3D workflows, brushes, lighting, and animation tips.',
+    tags: ['tips', 'tricks', 'pigment', 'database', 'archive', 'specimens', 'blender', 'houdini', 'brushes', 'lighting', 'field guide']
+  },
+  {
     id: 'critique-zone',
     title: 'Critique Zone Studio Pin-Up Wall',
     category: 'Studio Tool',
