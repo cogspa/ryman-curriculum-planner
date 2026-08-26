@@ -1445,6 +1445,25 @@ function WeekCard({
                       📖 Week 10 Overview &amp; All 10 Lessons →
                     </Link>
                     <Link 
+                      to="/week/10/artist-statements" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      🖼️ Real Artist Statements Deck →
+                    </Link>
+                    <Link 
                       to="/week/10/la-creative-economy-2026" 
                       style={{
                         textDecoration: 'none',
@@ -1611,8 +1630,29 @@ function WeekCard({
                       <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
                         By the end of class on August 29, all students must complete:
                         <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
-                          <li style={{ marginBottom: '4px' }}>
+                          <li style={{ marginBottom: '8px', lineHeight: '1.55' }}>
                             <strong>1. Artist Statement</strong> — Complete and refine your written artist statement describing your creative vision, themes, narrative, and technical process.
+                            <div style={{ marginTop: '5px' }}>
+                              <Link 
+                                to="/week/10/artist-statements"
+                                style={{
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: '6px',
+                                  background: '#8b3a2f',
+                                  color: '#ffffff',
+                                  padding: '4px 10px',
+                                  borderRadius: '4px',
+                                  fontSize: '11.5px',
+                                  fontWeight: '700',
+                                  textDecoration: 'none',
+                                  fontFamily: 'var(--font-mono, monospace)',
+                                  letterSpacing: '0.03em'
+                                }}
+                              >
+                                🖼️ Real Artist Statements Presentation &amp; Drafting Tool →
+                              </Link>
+                            </div>
                           </li>
                           <li style={{ marginBottom: '4px' }}>
                             <strong>2. Final Hero Image &amp; Title Slide</strong> — Complete your final polished Hero Image / Title slide layout finalized and ready for the <strong>CAPSTONE</strong>.

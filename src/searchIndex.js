@@ -220,6 +220,15 @@ export const INTERACTIVE_TOOLS = [
     tags: ['tips', 'tricks', 'pigment', 'database', 'archive', 'specimens', 'blender', 'houdini', 'brushes', 'lighting', 'field guide']
   },
   {
+    id: 'artist-statements',
+    title: 'Real Artist Statements Guide & Drafting Tool',
+    category: 'Capstone Tool',
+    week: 10,
+    url: '/week/10/artist-statements',
+    description: '11-slide lesson presentation, structural move analysis (What/Why/How/Intent), and interactive drafting instrument for Capstone Artist Statements.',
+    tags: ['artist statement', 'statement', 'capstone', 'drafting', 'writing', 'presentation', 'slides', 'deck', 'moves', 'intent', 'vision']
+  },
+  {
     id: 'critique-zone',
     title: 'Critique Zone Studio Pin-Up Wall',
     category: 'Studio Tool',

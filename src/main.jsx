@@ -63,6 +63,7 @@ import BriefBuilderPage from './pages/BriefBuilderPage.jsx';
 import CapstoneWorldBuilding from './components/CapstoneWorldBuilding.jsx';
 import PanelLab from './pages/panel-lab.jsx';
 import TipsAndTricksPage from './pages/TipsAndTricksPage.jsx';
+import ArtistStatementsPage from './pages/ArtistStatementsPage.jsx';
 import './index.css';
 
 import StoryboardsDeckPage from './pages/StoryboardsDeckPage.jsx';
@@ -74,6 +75,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route element={<LoginGate />}>
           <Route path="/" element={<App />} />
           <Route path="/capstone" element={<CapstoneWorldBuilding />} />
+          <Route path="/artist-statements" element={<ArtistStatementsPage />} />
+          <Route path="/week/10/artist-statements" element={<ArtistStatementsPage />} />
+          <Route path="/capstone/artist-statements" element={<ArtistStatementsPage />} />
           <Route path="/tips-and-tricks" element={<TipsAndTricksPage />} />
           <Route path="/week/10/tips-and-tricks" element={<TipsAndTricksPage />} />
           <Route path="/pigment-index" element={<TipsAndTricksPage />} />
