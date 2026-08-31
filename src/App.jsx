@@ -76,7 +76,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     8: { name: 'Wayne Hunt', date: formatDate(tuesdayDate), saturdaySpeaker: 'Eugenia Chen', saturdayDate: formatDate(saturdayDate) },
     9: { name: 'None', date: formatDate(tuesdayDate) },
     10: { name: 'Jeremy Costello', date: formatDate(tuesdayDate) },
-    11: { name: 'Heidi Hirsch', date: formatDate(saturdayDate) },
+    11: { name: 'None', date: formatDate(tuesdayDate) },
     12: { name: 'Domee Shi (TBD)', date: formatDate(tuesdayDate) },
     13: { name: 'None', date: 'End of September' }
   };
@@ -686,6 +686,11 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/10/freelance-pricing-conversations';
             } else if (cleanText.includes('los angeles creative economy') || cleanText.includes('industry context')) {
               linkPath = '/week/10/la-creative-economy-2026';
+            }
+          } else if (Number(weekNumber) === 11 && (label === 'Topics' || label === 'Readings')) {
+            const cleanText = text.trim().toLowerCase();
+            if (cleanText.includes('typography') || cleanText.includes('glyph') || cleanText.includes('type design') || cleanText.includes('letterform') || cleanText.includes('font')) {
+              linkPath = '/week/11/glyph-table';
             }
           }
 
@@ -1884,6 +1889,77 @@ function WeekCard({
             className="bonus-tool-btn"
           >
             EXPLORE TIPS &amp; TRICKS DATABASE →
+          </Link>
+        </div>
+      )}
+
+      {Number(week.week) === 11 && (
+        <div style={{
+          marginTop: '16px',
+          marginBottom: '18px',
+          padding: '14px 18px',
+          background: 'linear-gradient(135deg, rgba(216, 178, 95, 0.08) 0%, rgba(14, 22, 38, 0.04) 100%)',
+          border: '1.5px solid rgba(216, 178, 95, 0.35)',
+          borderLeft: '4px solid #d8b25f',
+          borderRadius: '8px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '12px'
+        }}>
+          <div>
+            <div style={{
+              fontFamily: 'var(--font-mono, monospace)',
+              fontSize: '10.5px',
+              fontWeight: '700',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              color: '#9a7522',
+              marginBottom: '4px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}>
+              <span>✒️</span> BONUS TOOL
+            </div>
+            <div style={{
+              fontSize: '14.5px',
+              fontWeight: '700',
+              color: 'var(--ink, #1c1a17)',
+              marginBottom: '3px'
+            }}>
+              Glyph Table — Custom Typography &amp; Font Builder
+            </div>
+            <div style={{
+              fontSize: '12.5px',
+              color: 'var(--ink-mid, #44403a)',
+              lineHeight: '1.4'
+            }}>
+              Interactive type design studio: draw custom letterforms, adjust ascender/descender metrics, test live proof text, and export installable TrueType fonts (.ttf).
+            </div>
+          </div>
+          <Link
+            to="/week/11/glyph-table"
+            style={{
+              textDecoration: 'none',
+              background: '#0E1626',
+              color: '#D8B25F',
+              border: '1px solid #D8B25F',
+              fontWeight: '600',
+              fontSize: '12.5px',
+              padding: '8px 16px',
+              borderRadius: '20px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              transition: 'all 0.15s ease',
+              boxShadow: '0 2px 6px rgba(0, 0, 0, 0.15)',
+              whiteSpace: 'nowrap'
+            }}
+            className="bonus-tool-btn"
+          >
+            LAUNCH GLYPH TABLE →
           </Link>
         </div>
       )}

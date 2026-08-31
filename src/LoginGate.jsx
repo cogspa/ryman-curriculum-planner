@@ -118,7 +118,10 @@ export default function LoginGate() {
       path === '/pixel-budget' || 
       path === '/critique' ||
       path === '/brief-builder' ||
-      path === '/week/07/brief-builder'
+      path === '/week/07/brief-builder' ||
+      path === '/glyph-table' ||
+      path === '/week/11/glyph-table' ||
+      path === '/week/11/custom-typography'
     ) {
       isAllowed = true;
     } else {

@@ -336,7 +336,7 @@ export const curriculum = [
       ],
       readings: [
         'Modern Portfolios: Grid standards, typography, and site architectures',
-        'Guest: Heidi Hirsch — live review of student portfolios',
+        '[NEW] Interactive Tool: Glyph Table — Type design studio & installable TTF font exporter',
       ],
     },
     saturday: {
@@ -395,6 +395,10 @@ export const curriculum = [
 
 // ─── Changelog ────────────────────────────────────────────────────
 export const changelog = [
+  {
+    date: '2026-06-20',
+    message: 'Integrated Glyph Table into Week 11: interactive custom type & letterform drawing studio with TrueType (.ttf) font and vector export.',
+  },
   {
     date: '2026-06-19',
     message: 'Added condensed Alvy Ray Smith bio, YouTube video embed, and link to "A Pixel Is Not A Little Square" PDF on the Digital vs. Physical Canvas topic page (Week 01).',

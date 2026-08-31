@@ -229,6 +229,15 @@ export const INTERACTIVE_TOOLS = [
     tags: ['artist statement', 'statement', 'capstone', 'drafting', 'writing', 'presentation', 'slides', 'deck', 'moves', 'intent', 'vision']
   },
   {
+    id: 'glyph-table',
+    title: 'Glyph Table — Custom Typography & Font Builder',
+    category: 'Bonus Tool',
+    week: 11,
+    url: '/week/11/glyph-table',
+    description: 'Interactive type design studio: draw custom letterforms, adjust ascender/descender metrics, test live proof text, and export installable TrueType fonts (.ttf).',
+    tags: ['glyph table', 'typography', 'font', 'ttf', 'type design', 'lettering', 'custom font', 'portfolio', 'branding', 'display font', 'metrics', 'glyphs']
+  },
+  {
     id: 'critique-zone',
     title: 'Critique Zone Studio Pin-Up Wall',
     category: 'Studio Tool',

@@ -66,7 +66,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     8: { name: 'Wayne Hunt', date: formatDate(tuesdayDate), saturdaySpeaker: 'Eugenia Chen', saturdayDate: formatDate(saturdayDate) },
     9: { name: 'None', date: formatDate(tuesdayDate) },
     10: { name: 'Jeremy Costello', date: formatDate(tuesdayDate) },
-    11: { name: 'Heidi Hirsch', date: formatDate(saturdayDate) },
+    11: { name: 'None', date: formatDate(tuesdayDate) },
     12: { name: 'Domee Shi (TBD)', date: formatDate(tuesdayDate) },
     13: { name: 'None', date: 'End of September' }
   };

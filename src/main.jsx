@@ -64,6 +64,7 @@ import CapstoneWorldBuilding from './components/CapstoneWorldBuilding.jsx';
 import PanelLab from './pages/panel-lab.jsx';
 import TipsAndTricksPage from './pages/TipsAndTricksPage.jsx';
 import ArtistStatementsPage from './pages/ArtistStatementsPage.jsx';
+import GlyphTablePage from './pages/GlyphTablePage.jsx';
 import './index.css';
 
 import StoryboardsDeckPage from './pages/StoryboardsDeckPage.jsx';
@@ -74,6 +75,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<LoginGate />}>
           <Route path="/" element={<App />} />
+          <Route path="/glyph-table" element={<GlyphTablePage />} />
+          <Route path="/week/11/glyph-table" element={<GlyphTablePage />} />
+          <Route path="/week/11/custom-typography" element={<GlyphTablePage />} />
           <Route path="/capstone" element={<CapstoneWorldBuilding />} />
           <Route path="/artist-statements" element={<ArtistStatementsPage />} />
           <Route path="/week/10/artist-statements" element={<ArtistStatementsPage />} />
