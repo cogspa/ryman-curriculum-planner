@@ -48,6 +48,8 @@ import Week09Overview from './pages/Week09Overview.jsx';
 import Week09TopicDetail from './pages/Week09TopicDetail.jsx';
 import Week10Overview from './pages/Week10Overview.jsx';
 import Week10TopicDetail from './pages/Week10TopicDetail.jsx';
+import Week11Overview from './pages/Week11Overview.jsx';
+import Week11TopicDetail from './pages/Week11TopicDetail.jsx';
 import CapstoneGallery from './capstone-gallery-builder/CapstoneGallery.jsx';
 import FilmReferenceGallery from './style_inspiration_gallery/FilmReferenceGallery.jsx';
 import HandoffFormats from './pages/HandoffFormats.jsx';
@@ -65,6 +67,7 @@ import PanelLab from './pages/panel-lab.jsx';
 import TipsAndTricksPage from './pages/TipsAndTricksPage.jsx';
 import ArtistStatementsPage from './pages/ArtistStatementsPage.jsx';
 import GlyphTablePage from './pages/GlyphTablePage.jsx';
+import PortfolioReferenceGalleryPage from './pages/PortfolioReferenceGalleryPage.jsx';
 import './index.css';
 
 import StoryboardsDeckPage from './pages/StoryboardsDeckPage.jsx';
@@ -75,6 +78,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<LoginGate />}>
           <Route path="/" element={<App />} />
+          <Route path="/portfolio-reference-gallery" element={<PortfolioReferenceGalleryPage />} />
+          <Route path="/week/11/portfolio-reference-gallery" element={<PortfolioReferenceGalleryPage />} />
+          <Route path="/week/11/portfolio-references" element={<PortfolioReferenceGalleryPage />} />
+          <Route path="/week/11/modern-portfolios" element={<PortfolioReferenceGalleryPage />} />
           <Route path="/glyph-table" element={<GlyphTablePage />} />
           <Route path="/week/11/glyph-table" element={<GlyphTablePage />} />
           <Route path="/week/11/custom-typography" element={<GlyphTablePage />} />
@@ -156,6 +163,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/09/:topicKey" element={<Week09TopicDetail />} />
           <Route path="/week/10" element={<Week10Overview />} />
           <Route path="/week/10/:topicKey" element={<Week10TopicDetail />} />
+          <Route path="/week/11" element={<Week11Overview />} />
+          <Route path="/week/11/:topicKey" element={<Week11TopicDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

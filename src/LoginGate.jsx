@@ -121,7 +121,11 @@ export default function LoginGate() {
       path === '/week/07/brief-builder' ||
       path === '/glyph-table' ||
       path === '/week/11/glyph-table' ||
-      path === '/week/11/custom-typography'
+      path === '/week/11/custom-typography' ||
+      path === '/portfolio-reference-gallery' ||
+      path === '/week/11/portfolio-reference-gallery' ||
+      path === '/week/11/portfolio-references' ||
+      path === '/week/11/modern-portfolios'
     ) {
       isAllowed = true;
     } else {

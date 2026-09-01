@@ -336,6 +336,11 @@ export const curriculum = [
       ],
       readings: [
         'Modern Portfolios: Grid standards, typography, and site architectures',
+        '[NEW] Behance Guide: How to Build a Portfolio That Gets You Hired & Art Director Advice',
+        '[NEW] Nielsen Norman Group: UX Design Portfolio Architecture & Case Studies',
+        '[NEW] Adobe Guide: Graphic Design Portfolio Formats & Acrobat PDF Portfolios',
+        '[NEW] W3C: Web Content Accessibility Guidelines (WCAG) & Easy Accessibility Checks',
+        '[NEW] Interaction Design Foundation: Grid Systems, Negative Space, & Visual Hierarchy',
         '[NEW] Interactive Tool: Glyph Table — Type design studio & installable TTF font exporter',
       ],
     },
@@ -395,6 +400,10 @@ export const curriculum = [
 
 // ─── Changelog ────────────────────────────────────────────────────
 export const changelog = [
+  {
+    date: '2026-06-21',
+    message: 'Added full Week 11 Portfolio Refinement curriculum lessons: Lesson 1 (Selection vs. Clutter), Lesson 2 (Interactive Web vs. Static PDF Book), and Lesson 3 (Grid Alignment & Negative Space in Portfolio Cards) with interactive activities, W3C accessibility checkpoints, and master resource links.',
+  },
   {
     date: '2026-06-20',
     message: 'Integrated Glyph Table into Week 11: interactive custom type & letterform drawing studio with TrueType (.ttf) font and vector export.',

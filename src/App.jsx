@@ -388,8 +388,8 @@ function Section({ label, items, weekNumber }) {
   if (!items || items.length === 0) return null;
   return (
     <div className="section">
-      {([1, 2, 3, 4, 5, 6, 7, 8, 9].includes(Number(weekNumber))) && (label === 'Topics' || label === 'Readings') ? (
-        <Link to={`/week/0${weekNumber}`} className="section-label-link">
+      {([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(Number(weekNumber))) && (label === 'Topics' || label === 'Readings') ? (
+        <Link to={Number(weekNumber) < 10 ? `/week/0${weekNumber}` : `/week/${weekNumber}`} className="section-label-link">
           {label} <span style={{ fontSize: '0.85em', opacity: 0.8 }}>[VIEW ALL →]</span>
         </Link>
       ) : label === 'Assignments' ? (
@@ -689,7 +689,15 @@ function Section({ label, items, weekNumber }) {
             }
           } else if (Number(weekNumber) === 11 && (label === 'Topics' || label === 'Readings')) {
             const cleanText = text.trim().toLowerCase();
-            if (cleanText.includes('typography') || cleanText.includes('glyph') || cleanText.includes('type design') || cleanText.includes('letterform') || cleanText.includes('font')) {
+            if (cleanText.includes('selection vs') || cleanText.includes('selection vs. clutter') || cleanText.includes('removing weaker pieces')) {
+              linkPath = '/week/11/selection-vs-clutter';
+            } else if (cleanText.includes('interactive web') || cleanText.includes('static multi-page pdf') || cleanText.includes('web formats vs')) {
+              linkPath = '/week/11/interactive-web-vs-static-pdf';
+            } else if (cleanText.includes('modern portfolios') || cleanText.includes('portfolio-reference-gallery') || cleanText.includes('portfolio reference') || cleanText.includes('site architectures') || cleanText.includes('grid standards')) {
+              linkPath = '/portfolio-reference-gallery';
+            } else if (cleanText.includes('grid alignments') || cleanText.includes('negative space') || cleanText.includes('grid alignment')) {
+              linkPath = '/week/11/grid-alignment-and-negative-space';
+            } else if (cleanText.includes('typography') || cleanText.includes('glyph') || cleanText.includes('type design') || cleanText.includes('letterform') || cleanText.includes('font')) {
               linkPath = '/week/11/glyph-table';
             }
           }
@@ -1486,6 +1494,131 @@ function WeekCard({
                       className="resource-button"
                     >
                       🌟 The LA Creative Economy (2026+) →
+                    </Link>
+                  </div>
+                )}
+                {week.week === 11 && (
+                  <div style={{
+                    marginTop: '16px',
+                    display: 'flex',
+                    gap: '10px',
+                    flexWrap: 'wrap',
+                    fontSize: '12px',
+                    fontFamily: 'var(--font-mono, monospace)',
+                  }}>
+                    <Link 
+                      to="/week/11" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      📖 Week 11 Overview &amp; All 3 Lessons →
+                    </Link>
+                    <Link 
+                      to="/week/11/selection-vs-clutter" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      🎯 Lesson 1: Selection vs. Clutter →
+                    </Link>
+                    <Link 
+                      to="/week/11/interactive-web-vs-static-pdf" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#1e40af',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(30, 64, 175, 0.25)',
+                        background: 'rgba(30, 64, 175, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      🌐 Lesson 2: Web vs. PDF →
+                    </Link>
+                    <Link 
+                      to="/week/11/grid-alignment-and-negative-space" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      📐 Lesson 3: Grid Alignment →
+                    </Link>
+                    <Link 
+                      to="/portfolio-reference-gallery" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      🖼️ Portfolio References (15 Artists) →
+                    </Link>
+                    <Link 
+                      to="/week/11/glyph-table" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#b45309',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(180, 83, 9, 0.25)',
+                        background: 'rgba(180, 83, 9, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      ✒️ Glyph Table Studio →
                     </Link>
                   </div>
                 )}

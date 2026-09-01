@@ -662,7 +662,7 @@ export default function CalendarPage() {
                     )}
 
                     {/* Sub-nav Overview Link */}
-                    {selectedSession.week <= 9 && (
+                    {selectedSession.week <= 11 && (
                       <div style={{ marginTop: '24px', borderTop: '1px solid var(--hairline, #DDD6C6)', paddingTop: '16px', textAlign: 'center' }}>
                         {role === 'student' && !isWeekReleased(selectedSession.week) ? (
                           <span 
@@ -672,7 +672,7 @@ export default function CalendarPage() {
                           </span>
                         ) : (
                           <Link 
-                            to={`/week/0${selectedSession.week}`} 
+                            to={selectedSession.week < 10 ? `/week/0${selectedSession.week}` : `/week/${selectedSession.week}`} 
                             className="inline-link"
                             style={{ fontSize: '12.5px', fontFamily: 'var(--font-mono, monospace)', textTransform: 'uppercase', textDecoration: 'none', fontWeight: 'bold' }}
                           >

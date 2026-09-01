@@ -7,6 +7,8 @@ import { TOPIC_DETAILS as w6 } from './content/week06Topics.js';
 import { TOPIC_DETAILS as w7 } from './content/week07Topics.js';
 import { TOPIC_DETAILS as w8 } from './content/week08Topics.js';
 import { TOPIC_DETAILS as w9 } from './content/week09Topics.js';
+import { TOPIC_DETAILS as w10 } from './content/week10Topics.js';
+import { TOPIC_DETAILS as w11 } from './content/week11Topics.js';
 import { curriculum } from './curriculum.js';
 import { assignments } from './assignments.js';
 
@@ -229,6 +231,15 @@ export const INTERACTIVE_TOOLS = [
     tags: ['artist statement', 'statement', 'capstone', 'drafting', 'writing', 'presentation', 'slides', 'deck', 'moves', 'intent', 'vision']
   },
   {
+    id: 'portfolio-reference-gallery',
+    title: 'Portfolio Reference Gallery (15 Entertainment Design References)',
+    category: 'Visual Reference',
+    week: 11,
+    url: '/portfolio-reference-gallery',
+    description: 'Classroom gallery of 15 entertainment-design portfolio references across concept art, visual development, background design/layout, and emerging artists.',
+    tags: ['portfolio', 'references', 'gallery', 'concept art', 'visdev', 'visual development', 'background design', 'layout', 'artists', 'structure', 'modern portfolios', 'case studies']
+  },
+  {
     id: 'glyph-table',
     title: 'Glyph Table — Custom Typography & Font Builder',
     category: 'Bonus Tool',
@@ -317,7 +328,7 @@ export const INTERACTIVE_TOOLS = [
 export function buildSearchIndex(customCurriculum = curriculum) {
   const index = [];
 
-  // 1. Topic Detail Pages from week01 to week09
+  // 1. Topic Detail Pages from week01 to week11
   const topicSources = [
     { wk: 1, topics: w1 },
     { wk: 2, topics: w2 },
@@ -328,6 +339,8 @@ export function buildSearchIndex(customCurriculum = curriculum) {
     { wk: 7, topics: w7 },
     { wk: 8, topics: w8 },
     { wk: 9, topics: w9 },
+    { wk: 10, topics: w10 },
+    { wk: 11, topics: w11 },
   ];
 
   topicSources.forEach(({ wk, topics }) => {
