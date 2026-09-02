@@ -115,7 +115,7 @@ const ARTISTS = [
     pick: "BG / layout organization",
     why: "Navigation literally separates “Visual Development” and “BG Paint/Layout,” with projects presented as complete visual-development packages.",
     projects: ["Visual Development", "BG Paint / Layout"],
-    url: "https://ishajambhale.carrd.co",
+    url: "https://ishajambhaleportfolio.carrd.co",
   },
   {
     id: "loke",
