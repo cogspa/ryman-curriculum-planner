@@ -689,13 +689,13 @@ function Section({ label, items, weekNumber }) {
             }
           } else if (Number(weekNumber) === 11 && (label === 'Topics' || label === 'Readings')) {
             const cleanText = text.trim().toLowerCase();
-            if (cleanText.includes('selection vs') || cleanText.includes('selection vs. clutter') || cleanText.includes('removing weaker pieces')) {
+            if (cleanText.includes('selection vs') || cleanText.includes('selection vs. clutter') || cleanText.includes('removing weaker pieces') || cleanText.includes('behance guide') || cleanText.includes('art director advice')) {
               linkPath = '/week/11/selection-vs-clutter';
-            } else if (cleanText.includes('interactive web') || cleanText.includes('static multi-page pdf') || cleanText.includes('web formats vs')) {
+            } else if (cleanText.includes('interactive web') || cleanText.includes('static multi-page pdf') || cleanText.includes('web formats vs') || cleanText.includes('nielsen norman') || cleanText.includes('adobe guide') || cleanText.includes('w3c') || cleanText.includes('accessibility')) {
               linkPath = '/week/11/interactive-web-vs-static-pdf';
             } else if (cleanText.includes('modern portfolios') || cleanText.includes('portfolio-reference-gallery') || cleanText.includes('portfolio reference') || cleanText.includes('site architectures') || cleanText.includes('grid standards')) {
               linkPath = '/portfolio-reference-gallery';
-            } else if (cleanText.includes('grid alignments') || cleanText.includes('negative space') || cleanText.includes('grid alignment')) {
+            } else if (cleanText.includes('grid alignments') || cleanText.includes('negative space') || cleanText.includes('grid alignment') || cleanText.includes('interaction design foundation') || cleanText.includes('visual hierarchy')) {
               linkPath = '/week/11/grid-alignment-and-negative-space';
             } else if (cleanText.includes('typography') || cleanText.includes('glyph') || cleanText.includes('type design') || cleanText.includes('letterform') || cleanText.includes('font')) {
               linkPath = '/week/11/glyph-table';
