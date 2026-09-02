@@ -126,6 +126,29 @@ export default function Week11Overview() {
           <h2 style={sessionTitleStyle}>Tuesday Session — Zoom (Preview &amp; Discussion)</h2>
           <span style={sessionBadgeStyle}>SEP 01 · 7:00–9:00 PM</span>
         </div>
+
+        {/* Guest Speaker Callout */}
+        <div style={{
+          background: 'rgba(16, 185, 129, 0.08)',
+          borderLeft: '4px solid #10b981',
+          borderRadius: '8px',
+          padding: '12px 16px',
+          marginBottom: '20px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px'
+        }}>
+          <span style={{ fontSize: '20px' }}>🎤</span>
+          <div>
+            <div style={{ fontFamily: 'Menlo, monospace', fontSize: '11px', fontWeight: 'bold', color: '#047857', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+              Guest Speaker · Tue Sep 01
+            </div>
+            <div style={{ fontSize: '14.5px', fontWeight: '700', color: '#065f46', marginTop: '2px' }}>
+              Stephanie Jazmines — Senior Designer at Walt Disney Imagineering &amp; Ryman Arts Alumna ('06)
+            </div>
+          </div>
+        </div>
+
         <div style={topicGridStyle}>
           {topicList.map(topic => (
             <Link key={topic.key} to={`/week/11/${topic.key}`} style={topicCardStyle}>

@@ -4,6 +4,18 @@ import LegalDisclaimer from './LegalDisclaimer.jsx';
 
 const speakersData = [
   {
+    firstName: 'Stephanie',
+    lastName: 'Jazmines',
+    role: 'Senior Designer & Architect',
+    org: 'Walt Disney Imagineering (WDI) / Ryman Arts Alumna',
+    industry: 'Themed Entertainment / LBE / Architecture',
+    fit: 'Spatial Storytelling, Themed Design & Portfolio Curation (Confirmed Week 11 Speaker)',
+    contactPerson: 'Ryman Arts Lead',
+    contactDate: '2026-09-01',
+    note: 'Week 11 Guest Speaker (Sep 1)',
+    website: ''
+  },
+  {
     firstName: 'John Michael',
     lastName: 'Kelly',
     role: 'Digital Artist',

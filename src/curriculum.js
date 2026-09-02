@@ -335,6 +335,7 @@ export const curriculum = [
         'Workflow breakdown: Grid alignments and negative space in portfolio cards',
       ],
       readings: [
+        'Guest: Stephanie Jazmines — Senior Designer at Walt Disney Imagineering & Ryman Arts Alumna',
         'Modern Portfolios: Grid standards, typography, and site architectures',
         '[NEW] Behance Guide: How to Build a Portfolio That Gets You Hired & Art Director Advice',
         '[NEW] Nielsen Norman Group: UX Design Portfolio Architecture & Case Studies',
