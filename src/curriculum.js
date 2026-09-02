@@ -343,6 +343,7 @@ export const curriculum = [
         '[NEW] W3C: Web Content Accessibility Guidelines (WCAG) & Easy Accessibility Checks',
         '[NEW] Interaction Design Foundation: Grid Systems, Negative Space, & Visual Hierarchy',
         '[NEW] Interactive Tool: Glyph Table — Type design studio & installable TTF font exporter',
+        '[NEW] Interactive Starter: Sidebar Portfolio Starter — 8-step interactive HTML/CSS grid & sticky sidebar builder',
       ],
     },
     saturday: {

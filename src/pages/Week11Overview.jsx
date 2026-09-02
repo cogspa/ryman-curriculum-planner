@@ -21,6 +21,25 @@ export default function Week11Overview() {
         </Link>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
           <Link
+            to="/sidebar-portfolio-starter"
+            style={{
+              fontSize: '12.5px',
+              fontFamily: 'Menlo, monospace',
+              color: '#8c3f3f',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              background: 'rgba(140, 63, 63, 0.08)',
+              padding: '6px 12px',
+              borderRadius: '16px',
+              border: '1px solid rgba(140, 63, 63, 0.25)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}
+          >
+            💻 Sidebar Starter (8-Step Guide) →
+          </Link>
+          <Link
             to="/portfolio-reference-gallery"
             style={{
               fontSize: '12.5px',
@@ -101,6 +120,9 @@ export default function Week11Overview() {
           <Link to="/week/11/grid-alignment-and-negative-space" style={pillarSecondaryLinkStyle}>
             Lesson 3: Grid Alignment →
           </Link>
+          <Link to="/sidebar-portfolio-starter" style={pillarSecondaryLinkStyle}>
+            💻 Sidebar Starter →
+          </Link>
           <Link to="/portfolio-reference-gallery" style={pillarSecondaryLinkStyle}>
             🖼️ 15 Artist References →
           </Link>
@@ -160,8 +182,52 @@ export default function Week11Overview() {
         </div>
       </section>
 
-      {/* Visual Reference & Tools Section (2 Columns) */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px', marginBottom: '32px' }}>
+      {/* Visual Reference & Tools Section (3 Columns) */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '32px' }}>
+        {/* Sidebar Portfolio Starter Card */}
+        <div style={{
+          background: '#faf4f4',
+          border: '1px solid #8c3f3f',
+          borderRadius: '12px',
+          padding: '22px 24px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          boxShadow: '0 4px 12px rgba(140, 63, 63, 0.08)'
+        }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <span style={{ fontSize: '22px' }}>💻</span>
+              <span style={{ fontFamily: 'Menlo, monospace', fontSize: '11px', fontWeight: 'bold', color: '#8c3f3f', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                HTML/CSS Starter Kit
+              </span>
+            </div>
+            <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: '800', color: '#2a1f1b' }}>
+              Sidebar Portfolio Starter
+            </h3>
+            <p style={{ margin: '0 0 16px', fontSize: '13.5px', color: '#6e5f57', lineHeight: '1.5' }}>
+              Interactive 8-step visual walkthrough to build a responsive portfolio with sticky left sidebar, nested menus, and 4-column image grid.
+            </p>
+          </div>
+          <Link
+            to="/sidebar-portfolio-starter"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              alignSelf: 'flex-start',
+              background: '#8c3f3f',
+              color: '#ffffff',
+              fontSize: '13px',
+              fontWeight: '700',
+              padding: '8px 16px',
+              borderRadius: '6px',
+              textDecoration: 'none'
+            }}
+          >
+            Launch 8-Step Stepper →
+          </Link>
+        </div>
+
         {/* Portfolio Reference Gallery Card */}
         <div style={{
           background: '#f5efe1',
@@ -181,10 +247,10 @@ export default function Week11Overview() {
               </span>
             </div>
             <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: '800', color: '#2a1f1b' }}>
-              Portfolio Reference Gallery (15 Artists)
+              Portfolio References (15 Artists)
             </h3>
             <p style={{ margin: '0 0 16px', fontSize: '13.5px', color: '#6e5f57', lineHeight: '1.5' }}>
-              Curated showcase of 15 entertainment-design portfolio benchmarks across Concept Design, Visual Development, Background/Layout, and Emerging Artists.
+              Curated showcase of 15 entertainment-design portfolio benchmarks across Concept Design, VisDev, BG/Layout, and Emerging Artists.
             </p>
           </div>
           <Link
@@ -222,7 +288,7 @@ export default function Week11Overview() {
               </span>
             </div>
             <h3 style={{ margin: '0 0 8px', fontSize: '18px', fontWeight: '800', color: '#FFFFFF' }}>
-              Glyph Table — Custom Type Studio
+              Glyph Table — Custom Type
             </h3>
             <p style={{ margin: '0 0 16px', fontSize: '13.5px', color: '#E2E8F0', lineHeight: '1.5' }}>
               Design custom vector letterforms, test live proof text, and export installable TrueType fonts (.ttf) for your portfolio branding.

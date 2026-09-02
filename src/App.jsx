@@ -695,6 +695,8 @@ function Section({ label, items, weekNumber }) {
               linkPath = '/week/11/interactive-web-vs-static-pdf';
             } else if (cleanText.includes('modern portfolios') || cleanText.includes('portfolio-reference-gallery') || cleanText.includes('portfolio reference') || cleanText.includes('site architectures') || cleanText.includes('grid standards')) {
               linkPath = '/portfolio-reference-gallery';
+            } else if (cleanText.includes('sidebar portfolio') || cleanText.includes('portfolio starter') || cleanText.includes('sidebar-portfolio-starter')) {
+              linkPath = '/sidebar-portfolio-starter';
             } else if (cleanText.includes('grid alignments') || cleanText.includes('negative space') || cleanText.includes('grid alignment') || cleanText.includes('interaction design foundation') || cleanText.includes('visual hierarchy')) {
               linkPath = '/week/11/grid-alignment-and-negative-space';
             } else if (cleanText.includes('typography') || cleanText.includes('glyph') || cleanText.includes('type design') || cleanText.includes('letterform') || cleanText.includes('font')) {
@@ -1600,6 +1602,25 @@ function WeekCard({
                       className="resource-button"
                     >
                       🖼️ Portfolio References (15 Artists) →
+                    </Link>
+                    <Link 
+                      to="/sidebar-portfolio-starter" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8c3f3f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(140, 63, 63, 0.25)',
+                        background: 'rgba(140, 63, 63, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      💻 Sidebar Starter (8-Step Guide) →
                     </Link>
                     <Link 
                       to="/week/11/glyph-table" 

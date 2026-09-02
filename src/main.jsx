@@ -68,6 +68,7 @@ import TipsAndTricksPage from './pages/TipsAndTricksPage.jsx';
 import ArtistStatementsPage from './pages/ArtistStatementsPage.jsx';
 import GlyphTablePage from './pages/GlyphTablePage.jsx';
 import PortfolioReferenceGalleryPage from './pages/PortfolioReferenceGalleryPage.jsx';
+import SidebarPortfolioStarterPage from './pages/SidebarPortfolioStarterPage.jsx';
 import './index.css';
 
 import StoryboardsDeckPage from './pages/StoryboardsDeckPage.jsx';
@@ -78,6 +79,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<LoginGate />}>
           <Route path="/" element={<App />} />
+          <Route path="/sidebar-portfolio-starter" element={<SidebarPortfolioStarterPage />} />
+          <Route path="/week/11/sidebar-portfolio-starter" element={<SidebarPortfolioStarterPage />} />
+          <Route path="/week/11/portfolio-starter" element={<SidebarPortfolioStarterPage />} />
+          <Route path="/portfolio-starter" element={<SidebarPortfolioStarterPage />} />
           <Route path="/portfolio-reference-gallery" element={<PortfolioReferenceGalleryPage />} />
           <Route path="/week/11/portfolio-reference-gallery" element={<PortfolioReferenceGalleryPage />} />
           <Route path="/week/11/portfolio-references" element={<PortfolioReferenceGalleryPage />} />

@@ -125,7 +125,11 @@ export default function LoginGate() {
       path === '/portfolio-reference-gallery' ||
       path === '/week/11/portfolio-reference-gallery' ||
       path === '/week/11/portfolio-references' ||
-      path === '/week/11/modern-portfolios'
+      path === '/week/11/modern-portfolios' ||
+      path === '/sidebar-portfolio-starter' ||
+      path === '/week/11/sidebar-portfolio-starter' ||
+      path === '/week/11/portfolio-starter' ||
+      path === '/portfolio-starter'
     ) {
       isAllowed = true;
     } else {

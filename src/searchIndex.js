@@ -249,6 +249,15 @@ export const INTERACTIVE_TOOLS = [
     tags: ['glyph table', 'typography', 'font', 'ttf', 'type design', 'lettering', 'custom font', 'portfolio', 'branding', 'display font', 'metrics', 'glyphs']
   },
   {
+    id: 'sidebar-portfolio-starter',
+    title: 'Sidebar Portfolio Starter (8-Step HTML/CSS Builder)',
+    category: 'Starter Kit',
+    week: 11,
+    url: '/sidebar-portfolio-starter',
+    description: 'Interactive 8-step visual walkthrough and starter template for building a responsive left-sidebar + CSS image grid web portfolio.',
+    tags: ['sidebar portfolio', 'starter', 'html', 'css', 'grid', 'web portfolio', 'responsive', 'code', 'stepper', 'wireframe', 'layout', 'sticky']
+  },
+  {
     id: 'critique-zone',
     title: 'Critique Zone Studio Pin-Up Wall',
     category: 'Studio Tool',
