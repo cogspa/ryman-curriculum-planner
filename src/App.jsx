@@ -2615,21 +2615,27 @@ export default function App() {
     }
   }, [customCurriculum]);
 
-  // Automatic migration for Week 12 to remove Domi / Domee Shi as guest speaker if present in custom curriculum
+  // Automatic migration for Week 12 to remove PUSHED FROM WEEK 11 topics and Domi / Domee Shi
   useEffect(() => {
     if (customCurriculum && customCurriculum.length > 11) {
       const week12Idx = customCurriculum.findIndex(w => w.week === 12);
       if (week12Idx !== -1) {
         const week12 = customCurriculum[week12Idx];
         const week12Readings = week12.tuesday?.readings || [];
+        const week12SatTopics = week12.saturday?.topics || [];
         const hasDomee = week12Readings.some(r => r.toLowerCase().includes('domee') || r.toLowerCase().includes('domi'));
-        if (hasDomee) {
+        const hasPushedTopics = week12SatTopics.some(t => t.toLowerCase().includes('pushed from week 11'));
+        if (hasDomee || hasPushedTopics) {
           const updatedCurriculum = [...customCurriculum];
           updatedCurriculum[week12Idx] = {
             ...week12,
             tuesday: {
               ...(week12.tuesday || {}),
-              readings: week12Readings.filter(r => !r.toLowerCase().includes('domee') && !r.toLowerCase().includes('domi'))
+              readings: hasDomee ? week12Readings.filter(r => !r.toLowerCase().includes('domee') && !r.toLowerCase().includes('domi')) : week12Readings
+            },
+            saturday: {
+              ...(week12.saturday || {}),
+              topics: hasPushedTopics ? week12SatTopics.filter(t => !t.toLowerCase().includes('pushed from week 11')) : week12SatTopics
             }
           };
           setCustomCurriculum(updatedCurriculum);

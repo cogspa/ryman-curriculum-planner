@@ -372,8 +372,6 @@ export const curriculum = [
     saturday: {
       topics: [
         '🎨 Saturday Sept 12 (1:00 PM): Initial Portfolio Review with Heidi Hirsch',
-        '🎨 PUSHED FROM WEEK 11: Portfolio layout & sequence curation',
-        '🎨 PUSHED FROM WEEK 11: Removing weaker pieces & streamlining selections',
         'Portfolio layout check (PDF + website ready)',
         'Final presentation deck preparation & rehearsal sessions',
         '🛠️ Task: Capstone curation: Assemble 6-8 high-quality digital works, commercial campaign, & pitch deck',
