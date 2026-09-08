@@ -418,25 +418,46 @@ export default function CapstoneWorldBuilding() {
       <header className="cap-hero">
         <div className="cap-hero-text">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
-            <Link to="/" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: '11px',
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              color: '#8b3a2f',
-              textDecoration: 'none',
-              fontWeight: '600',
-              background: 'rgba(139, 58, 47, 0.08)',
-              padding: '6px 14px',
-              borderRadius: '20px',
-              border: '1px solid rgba(139, 58, 47, 0.2)',
-              transition: 'all 0.2s ease'
-            }}>
-              ← Back to Home
-            </Link>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+              <Link to="/" style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: '11px',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#8b3a2f',
+                textDecoration: 'none',
+                fontWeight: '600',
+                background: 'rgba(139, 58, 47, 0.08)',
+                padding: '6px 14px',
+                borderRadius: '20px',
+                border: '1px solid rgba(139, 58, 47, 0.2)',
+                transition: 'all 0.2s ease'
+              }}>
+                ← Back to Home
+              </Link>
+              <Link to="/capstone/timeline" style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: '11px',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#8b3a2f',
+                textDecoration: 'none',
+                fontWeight: '600',
+                background: 'rgba(139, 58, 47, 0.08)',
+                padding: '6px 14px',
+                borderRadius: '20px',
+                border: '1px solid rgba(139, 58, 47, 0.2)',
+                transition: 'all 0.2s ease'
+              }}>
+                📅 View September Timeline →
+              </Link>
+            </div>
             <p className="cap-eyebrow" style={{ margin: 0 }}>pLAtform · Capstone</p>
           </div>
           <h1 className="cap-title">
@@ -470,6 +491,20 @@ export default function CapstoneWorldBuilding() {
               <strong>
                 {SHOWCASE.label} <span className="cap-year">{year}</span>
               </strong>
+              <Link
+                to="/capstone/timeline"
+                style={{
+                  display: 'inline-block',
+                  fontFamily: "'IBM Plex Mono', monospace",
+                  fontSize: '10.5px',
+                  color: '#8b3a2f',
+                  textDecoration: 'underline',
+                  marginTop: '4px',
+                  fontWeight: '600'
+                }}
+              >
+                View full schedule &amp; run of show →
+              </Link>
             </div>
             <div className="cap-showcase-days">
               <strong>{days}</strong>

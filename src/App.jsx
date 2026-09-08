@@ -1127,6 +1127,47 @@ function WeekCard({
         </div>
       )}
 
+      {Number(week.week) === 12 && (
+        <div className="week-due-banner" style={{
+          margin: '12px 0 16px 0',
+          padding: '14px 16px',
+          background: 'rgba(139, 58, 47, 0.06)',
+          borderLeft: '4px solid #8b3a2f',
+          borderRadius: '0 8px 8px 0',
+          fontSize: '0.85rem',
+          lineHeight: '1.45',
+          color: '#2b2622'
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '6px' }}>
+            <div style={{ fontWeight: 'bold', color: '#8b3a2f', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem' }}>
+              🎯 Capstone Presentation Milestones &amp; Key Dates
+            </div>
+            <Link
+              to="/capstone/timeline"
+              style={{
+                fontSize: '11px',
+                fontFamily: "'IBM Plex Mono', monospace",
+                color: '#8b3a2f',
+                fontWeight: '700',
+                textDecoration: 'none',
+                background: 'rgba(139, 58, 47, 0.1)',
+                padding: '3px 8px',
+                borderRadius: '10px'
+              }}
+            >
+              View September Timeline →
+            </Link>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <div><strong>Tue Sep 8:</strong> Zoom Project Reviews (Focused work session; no guest speaker).</div>
+            <div><strong>Sat Sep 12 (1:00 PM):</strong> Initial Portfolio Review with Heidi Hirsch.</div>
+            <div style={{ color: '#b45309' }}><strong>Mon Sep 14 (Dropbox):</strong> Portfolio Submission Cutoff for WDI Review.</div>
+            <div><strong>Fri Sep 18 (10:00 AM – 12:30 PM):</strong> WDI Tour &amp; Portfolio Review in Glendale.</div>
+            <div style={{ color: '#8b3a2f', fontWeight: 'bold' }}>Sat Sep 19 (11:00 AM – 3:30 PM): Final Capstone Showcase Presentation &amp; Reception.</div>
+          </div>
+        </div>
+      )}
+
       {(hasContent || adminMode) && (
         <div className="curriculum-content">
           {adminMode ? (
@@ -1643,11 +1684,149 @@ function WeekCard({
                     </Link>
                   </div>
                 )}
+                {week.week === 12 && (
+                  <div style={{
+                    marginTop: '16px',
+                    display: 'flex',
+                    gap: '10px',
+                    flexWrap: 'wrap',
+                    fontSize: '12px',
+                    fontFamily: 'var(--font-mono, monospace)',
+                  }}>
+                    <Link 
+                      to="/capstone/timeline" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      📅 September Capstone Timeline &amp; Run of Show →
+                    </Link>
+                    <Link 
+                      to="/week/12" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      📖 Week 12 Overview &amp; Milestones →
+                    </Link>
+                    <Link 
+                      to="/capstone" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      🏛️ Capstone World-Building Brief →
+                    </Link>
+                    <a 
+                      href="https://www.dropbox.com/request/d56lyvzlb50sm3vjg0yp" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        textDecoration: 'none',
+                        color: '#0052cc',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(0, 97, 254, 0.25)',
+                        background: 'rgba(0, 97, 254, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      📥 Dropbox Submission Folder ↗
+                    </a>
+                  </div>
+                )}
+                {week.week === 13 && (
+                  <div style={{
+                    marginTop: '16px',
+                    display: 'flex',
+                    gap: '10px',
+                    flexWrap: 'wrap',
+                    fontSize: '12px',
+                    fontFamily: 'var(--font-mono, monospace)',
+                  }}>
+                    <Link 
+                      to="/capstone/timeline" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      📅 September 19 Run of Show &amp; Presentation Schedule →
+                    </Link>
+                    <Link 
+                      to="/capstone" 
+                      style={{
+                        textDecoration: 'none',
+                        color: '#8b3a2f',
+                        fontWeight: 'bold',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        border: '1px solid rgba(139, 58, 47, 0.25)',
+                        background: 'rgba(139, 58, 47, 0.06)',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        transition: 'all 0.15s ease'
+                      }}
+                      className="resource-button"
+                    >
+                      🏛️ Capstone World-Building Brief →
+                    </Link>
+                  </div>
+                )}
               </>
             )
           )}
 
-          {((week.saturday?.assignments && week.saturday.assignments.length > 0) || (week.assignments && week.assignments.length > 0) || week.week === 4 || week.week === 9) && (
+          {((week.saturday?.assignments && week.saturday.assignments.length > 0) || (week.assignments && week.assignments.length > 0) || week.week === 4 || week.week === 9 || week.week === 12) && (
             <div style={{
               marginTop: '16px',
               marginBottom: '16px',
@@ -1820,6 +1999,69 @@ function WeekCard({
                       </div>
                       <div style={{ fontSize: '12px', marginTop: '4px', paddingTop: '6px', borderTop: '1px solid rgba(245, 158, 11, 0.18)', color: '#b45309', fontStyle: 'italic' }}>
                         <strong>Note:</strong> Weekly assignment tracks (Base, Next Level, Advanced Integration) are optional; prioritize completing your Artist Statement and Final Hero Image / Title Slide for the Capstone.
+                      </div>
+                    </div>
+                  ) : week.week === 12 ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div style={{ color: '#8b3a2f', fontWeight: 'bold', marginBottom: '2px', fontSize: '13.5px' }}>
+                        🎯 Capstone Presentation Milestones &amp; Upcoming Deadlines
+                      </div>
+                      <div style={{ fontSize: '13px', lineHeight: '1.5' }}>
+                        Week 12 marks the transition into final portfolio review and presentation staging:
+                        <ul style={{ margin: '6px 0 0 16px', padding: 0 }}>
+                          <li style={{ marginBottom: '6px', lineHeight: '1.5' }}>
+                            <strong>Initial Portfolio Review (Sat, Sep 12 · 1:00 PM):</strong> In-person critique with Heidi Hirsch during studio hours.
+                          </li>
+                          <li style={{ marginBottom: '6px', lineHeight: '1.5' }}>
+                            <strong>Portfolio Submission Deadline (Mon, Sep 14 · Dropbox):</strong> Hard cutoff to submit your curated PDF deck for the Walt Disney Imagineering review.
+                          </li>
+                          <li style={{ marginBottom: '6px', lineHeight: '1.5' }}>
+                            <strong>WDI Tour &amp; Review (Fri, Sep 18 · 10:00 AM – 12:30 PM):</strong> Offsite tour at Walt Disney Imagineering in Glendale.
+                          </li>
+                          <li style={{ marginBottom: '6px', lineHeight: '1.5' }}>
+                            <strong>Capstone Showcase (Sat, Sep 19 · 11:00 AM – 3:30 PM):</strong> Final presentations (3 mins max per student), reception, and networking mixer.
+                          </li>
+                        </ul>
+                      </div>
+                      <div style={{ marginTop: '6px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                        <Link
+                          to="/capstone/timeline"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            background: '#8b3a2f',
+                            color: '#ffffff',
+                            padding: '5px 12px',
+                            borderRadius: '4px',
+                            fontSize: '11.5px',
+                            fontWeight: '700',
+                            textDecoration: 'none',
+                            fontFamily: 'var(--font-mono, monospace)',
+                            letterSpacing: '0.03em'
+                          }}
+                        >
+                          📅 September Capstone Timeline &amp; Run of Show →
+                        </Link>
+                        <Link
+                          to="/week/12"
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            background: 'rgba(139, 58, 47, 0.1)',
+                            color: '#8b3a2f',
+                            padding: '5px 12px',
+                            borderRadius: '4px',
+                            fontSize: '11.5px',
+                            fontWeight: '700',
+                            textDecoration: 'none',
+                            fontFamily: 'var(--font-mono, monospace)',
+                            border: '1px solid rgba(139, 58, 47, 0.2)'
+                          }}
+                        >
+                          📖 Week 12 Overview →
+                        </Link>
                       </div>
                     </div>
                   ) : (
@@ -2850,6 +3092,25 @@ export default function App() {
             >
               VIEW CALENDAR GRID →
             </Link>
+          </div>
+        )}
+
+        {(role === 'admin' || role === 'student') && (
+          <div className="capstone-timeline-bar" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(139, 58, 47, 0.05)', border: '1px solid rgba(139, 58, 47, 0.2)', borderRadius: '8px', padding: '12px 18px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>⏱️</span>
+              <span style={{ fontSize: '13px', fontWeight: '500', color: '#8b3a2f' }}>
+                <strong>September Capstone Timeline:</strong> Key presentation countdown dates from Week 12 to the final September 19 showcase &amp; run of show.
+              </span>
+            </div>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <Link 
+                to="/capstone/timeline" 
+                style={{ textDecoration: 'none', background: '#8b3a2f', color: '#fff', fontSize: '12px', fontWeight: 'bold', padding: '6px 14px', borderRadius: '20px', display: 'inline-flex', alignItems: 'center', transition: 'all 0.2s', fontFamily: "'IBM Plex Mono', monospace" }}
+              >
+                SEPTEMBER TIMELINE &amp; RUN OF SHOW →
+              </Link>
+            </div>
           </div>
         )}
 

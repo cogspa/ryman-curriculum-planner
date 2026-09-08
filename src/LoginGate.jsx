@@ -110,6 +110,11 @@ export default function LoginGate() {
     if (
       path === '/' || 
       path === '/capstone' || 
+      path === '/capstone/timeline' || 
+      path === '/capstone-timeline' || 
+      path === '/week/12' || 
+      path === '/week/12/timeline' || 
+      path === '/week/12/capstone-timeline' || 
       path === '/panel-lab' || 
       path === '/syllabus' || 
       path === '/assignments' || 

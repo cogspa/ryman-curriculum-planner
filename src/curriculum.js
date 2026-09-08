@@ -355,28 +355,31 @@ export const curriculum = [
   },
   {
     week: 12,
-    title: 'Capstone Preparation',
-    overview: 'Rehearsing final presentation pitches and putting final polishes on the capstone portfolio deck.',
+    title: 'Capstone Preparation & Presentation Milestones',
+    overview: 'Rehearsing final presentation pitches, putting final polishes on the capstone portfolio deck, and tracking key countdown dates for the upcoming Heidi Hirsch review, WDI portfolio submission, and September 19 Showcase.',
     tuesday: {
       topics: [
         'Discussion: Formulating a cohesive narrative about your creative trajectory',
-        'Preview: Presentation staging, pacing, and time management',
+        'Preview: Presentation staging, pacing, and time management (3 minutes per presenter)',
         'Workflow breakdown: AV guidelines, screen share checks, and backup decks',
+        '🎯 Tuesday Sept 8 Review: Individual Capstone project check-ins & feedback (No guest speaker)',
       ],
       readings: [
         'Pitch Deck Guide: Formats, sequences, and slide outlines',
+        'September Capstone Timeline: Important dates, deadlines & Sept 19 Run of Show',
       ],
     },
     saturday: {
       topics: [
+        '🎨 Saturday Sept 12 (1:00 PM): Initial Portfolio Review with Heidi Hirsch',
         '🎨 PUSHED FROM WEEK 11: Portfolio layout & sequence curation',
         '🎨 PUSHED FROM WEEK 11: Removing weaker pieces & streamlining selections',
-        '🎨 PUSHED FROM WEEK 11: Final presentation deck preparation',
         'Portfolio layout check (PDF + website ready)',
-        'Removing weaker pieces final review',
-        'Final presentation preparation',
-        'Rehearsal & peer feedback sessions',
+        'Final presentation deck preparation & rehearsal sessions',
         '🛠️ Task: Capstone curation: Assemble 6-8 high-quality digital works, commercial campaign, & pitch deck',
+        '📅 UPCOMING DEADLINE: Monday Sept 14 — Portfolio Submission Due in Dropbox for WDI Review',
+        '🏛️ UPCOMING EVENT: Friday Sept 18 (10:00 AM – 12:30 PM) — WDI Tour & Portfolio Review',
+        '🎓 UPCOMING SHOWCASE: Saturday Sept 19 (11:00 AM – 3:30 PM) — Capstone Presentation Showcase & Reception',
       ],
       assignments: [],
     }

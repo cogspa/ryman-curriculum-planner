@@ -69,6 +69,8 @@ import ArtistStatementsPage from './pages/ArtistStatementsPage.jsx';
 import GlyphTablePage from './pages/GlyphTablePage.jsx';
 import PortfolioReferenceGalleryPage from './pages/PortfolioReferenceGalleryPage.jsx';
 import SidebarPortfolioStarterPage from './pages/SidebarPortfolioStarterPage.jsx';
+import CapstoneTimelinePage from './pages/CapstoneTimelinePage.jsx';
+import Week12Overview from './pages/Week12Overview.jsx';
 import './index.css';
 
 import StoryboardsDeckPage from './pages/StoryboardsDeckPage.jsx';
@@ -170,6 +172,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/week/10/:topicKey" element={<Week10TopicDetail />} />
           <Route path="/week/11" element={<Week11Overview />} />
           <Route path="/week/11/:topicKey" element={<Week11TopicDetail />} />
+          <Route path="/week/12" element={<Week12Overview />} />
+          <Route path="/week/12/timeline" element={<CapstoneTimelinePage />} />
+          <Route path="/week/12/capstone-timeline" element={<CapstoneTimelinePage />} />
+          <Route path="/capstone/timeline" element={<CapstoneTimelinePage />} />
+          <Route path="/capstone-timeline" element={<CapstoneTimelinePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

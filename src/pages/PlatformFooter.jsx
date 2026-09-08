@@ -51,6 +51,7 @@ const COLUMNS_DEFAULT = [
     title: "Program & Info",
     links: [
       { label: "Calendar", href: "/calendar" },
+      { label: "Capstone Timeline", href: "/capstone/timeline" },
       { label: "Guest Speakers", href: "/speakers" },
       { label: "Class Roster", href: "/roster" },
       { label: "Mentorship", href: "/mentorship" },
@@ -188,6 +189,17 @@ export default function PlatformFooter({
             onClick={(e) => nav(e, "/capstone")}
           >
             Open the Capstone brief
+            <span className="pf-cta-arrow" aria-hidden="true">
+              &rarr;
+            </span>
+          </a>
+          <a
+            className="pf-cta"
+            href="/capstone/timeline"
+            onClick={(e) => nav(e, "/capstone/timeline")}
+            style={{ marginTop: '10px' }}
+          >
+            September Capstone Timeline
             <span className="pf-cta-arrow" aria-hidden="true">
               &rarr;
             </span>
