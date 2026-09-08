@@ -365,7 +365,6 @@ export const curriculum = [
       ],
       readings: [
         'Pitch Deck Guide: Formats, sequences, and slide outlines',
-        'Guest: Domee Shi (TBD) — live showcase preview & QA',
       ],
     },
     saturday: {

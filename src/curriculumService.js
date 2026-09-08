@@ -26,6 +26,13 @@ export function loadLocalCurriculum() {
         });
         w.tuesday.readings = newReadings;
       }
+      if (weekNum === 12 && w.tuesday && w.tuesday.readings) {
+        const hasDomee = w.tuesday.readings.some(r => r.toLowerCase().includes('domee') || r.toLowerCase().includes('domi'));
+        if (hasDomee) {
+          isModified = true;
+          w.tuesday.readings = w.tuesday.readings.filter(r => !r.toLowerCase().includes('domee') && !r.toLowerCase().includes('domi'));
+        }
+      }
       return {
         ...w,
         week: weekNum

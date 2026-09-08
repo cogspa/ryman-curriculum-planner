@@ -77,7 +77,7 @@ function getSpeakerInfoForWeek(weekNum, tuesdayDate, saturdayDate) {
     9: { name: 'None', date: formatDate(tuesdayDate) },
     10: { name: 'Jeremy Costello', date: formatDate(tuesdayDate) },
     11: { name: 'Stephanie Jazmines — Senior Designer at Walt Disney Imagineering & Ryman Arts Alum', date: formatDate(tuesdayDate) },
-    12: { name: 'Domee Shi (TBD)', date: formatDate(tuesdayDate) },
+    12: { name: 'None', date: formatDate(tuesdayDate) },
     13: { name: 'None', date: 'End of September' }
   };
   return speakersMap[weekNum] || { name: 'TBD', date: formatDate(tuesdayDate) };
@@ -2363,6 +2363,33 @@ export default function App() {
             };
           }
 
+          setCustomCurriculum(updatedCurriculum);
+          saveLocalCurriculum(updatedCurriculum);
+          if (supabase) {
+            syncRemoteCurriculum(updatedCurriculum);
+          }
+        }
+      }
+    }
+  }, [customCurriculum]);
+
+  // Automatic migration for Week 12 to remove Domi / Domee Shi as guest speaker if present in custom curriculum
+  useEffect(() => {
+    if (customCurriculum && customCurriculum.length > 11) {
+      const week12Idx = customCurriculum.findIndex(w => w.week === 12);
+      if (week12Idx !== -1) {
+        const week12 = customCurriculum[week12Idx];
+        const week12Readings = week12.tuesday?.readings || [];
+        const hasDomee = week12Readings.some(r => r.toLowerCase().includes('domee') || r.toLowerCase().includes('domi'));
+        if (hasDomee) {
+          const updatedCurriculum = [...customCurriculum];
+          updatedCurriculum[week12Idx] = {
+            ...week12,
+            tuesday: {
+              ...(week12.tuesday || {}),
+              readings: week12Readings.filter(r => !r.toLowerCase().includes('domee') && !r.toLowerCase().includes('domi'))
+            }
+          };
           setCustomCurriculum(updatedCurriculum);
           saveLocalCurriculum(updatedCurriculum);
           if (supabase) {
